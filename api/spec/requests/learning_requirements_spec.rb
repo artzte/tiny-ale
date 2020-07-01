@@ -88,6 +88,21 @@ RSpec.describe 'Learning requirements API', type: :request do
       new_ealr = Ealr.find_by_category_and_ealr_and_seq ealr.category, ealr.ealr, seq
       expect(ealr).not_to be_nil
     end
-  end
 
+    it 'deletes a requirement' do
+      count = Ealr.count
+      ealr = Ealr.first
+  
+      delete "/api/admin/learning-requirements/#{ealr.id}", headers: json_request_headers
+  
+      expect(response).to have_http_status(204)
+      expect(body).to be_empty
+
+      new_count = Ealr.count
+      expect(new_count).to eq(count - 1)
+  
+      deleted_ealr = Ealr.find_by_category_and_ealr_and_seq ealr.category, ealr.ealr, ealr.seq
+      expect(deleted_ealr).to be_nil
+    end
+  end
 end
