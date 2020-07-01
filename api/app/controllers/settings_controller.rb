@@ -16,8 +16,4 @@ class SettingsController < ApiBaseController
 
     render json: years
   end
-
-  def learning_requirement_categories
-    render json: Ealr.categories
-  end
 end
