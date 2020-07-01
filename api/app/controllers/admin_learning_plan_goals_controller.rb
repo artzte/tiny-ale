@@ -1,0 +1,2 @@
+class AdminLearningPlanGoalsController < ApplicationController
+end

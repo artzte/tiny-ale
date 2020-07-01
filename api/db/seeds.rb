@@ -202,3 +202,15 @@ GraduationPlanMapping.create! graduation_plan: graduation_plan, graduation_plan_
 GraduationPlanMapping.create! graduation_plan: graduation_plan, graduation_plan_requirement: gradLang2, credit_assignment: credit_assignments.pop
 GraduationPlanMapping.create! graduation_plan: graduation_plan, graduation_plan_requirement: gradGeneral1, notes: 'It is done', date_completed: '2019-06-15'
 GraduationPlanMapping.create! graduation_plan: graduation_plan, graduation_plan_requirement: gradService1, notes: 'It is serviced', date_completed: '2019-06-15'
+
+(1..4).each do |i|
+  LearningPlanGoal.create! description: "Required learning plan goal #{i}", active: true, required: true
+end
+
+(1..4).each do |i|
+  LearningPlanGoal.create! description: "Optional learning plan goal #{i}", active: true, required: false
+end
+
+(1..4).each do |i|
+  LearningPlanGoal.create! description: "Inactive learning plan goal #{i}", active: false, required: false
+end
