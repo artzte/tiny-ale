@@ -61,6 +61,33 @@ RSpec.describe 'Learning requirements API', type: :request do
       new_ealr = Ealr.find_by_category_and_ealr_and_seq @category, ealr, seq
       expect(ealr).not_to be_empty
     end
+
+    it 'updates a requirement' do
+      count = Ealr.count
+      ealr = Ealr.first
+      seq = '99.9'
+
+      body = {
+        data: {
+          attributes: {
+            seq: seq
+          }
+        }
+      }
+
+      put "/api/admin/learning-requirements/#{ealr.id}", params: body.to_json, headers: json_request_headers
+
+      expect(response).to have_http_status(200)
+      expect(json).not_to be_empty
+      expect(json['data']['id']).to eq(ealr.id.to_s)
+      expect(json['data']['attributes']['seq']).to eq(seq)
+      expect(json['data']['attributes']['category']).to eq(ealr.category)
+      new_count = Ealr.count
+      expect(new_count).to eq(count)
+
+      new_ealr = Ealr.find_by_category_and_ealr_and_seq ealr.category, ealr.ealr, seq
+      expect(ealr).not_to be_nil
+    end
   end
 
 end
