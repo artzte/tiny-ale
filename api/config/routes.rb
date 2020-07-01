@@ -65,6 +65,9 @@ Rails.application.routes.draw do
     get '/credits', to: 'credits#index'
     get '/credits/:id', to: 'credits#show'
 
+    get '/learning-requirements/categories', to: 'learning_requirements#categories'
+    get '/learning-requirements', to: 'learning_requirements#index'
+
     resources :staff
     resources :statuses, controller: 'status'
 
@@ -88,6 +91,10 @@ Rails.application.routes.draw do
       post '/contract-categories', to: 'admin_contract_categories#create'
       put '/contract-categories/:id', to: 'admin_contract_categories#update'
       delete '/contract-categories/:id', to: 'admin_contract_categories#destroy'
+
+      post '/learning-requirements', to: 'admin_learning_requirements#create'
+      put '/learning-requirements/:id', to: 'admin_learning_requirements#update'
+      delete '/learning-requirements/:id', to: 'admin_learning_requirements#destroy'
 
       put '/graduation-plan-requirements/sort', to: 'admin_graduation_plan_requirements#sort'
       put '/graduation-plan-requirements/:id', to: 'admin_graduation_plan_requirements#update'

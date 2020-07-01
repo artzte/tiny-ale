@@ -76,11 +76,10 @@ end
   CreditAssignment.create! credit: @credit2, contract: contract, credit_hours: 2
 end
 
-(1..2).each do |category_num|
-  category_name = "Category #{category_num}"
+Ealr.categories.each_with_index do |category_name, category_num|
   (1..2).each do |ealr_num|
-    seq = "#{category_num}.#{ealr_num}"
-    Ealr.create! category: category_name, seq: seq
+    seq = "#{category_num + 1}.#{ealr_num}"
+    Ealr.create! ealr: "#{category_name} #{ealr_num}", category: category_name, seq: seq
   end
 end
 
