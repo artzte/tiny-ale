@@ -106,6 +106,7 @@ Rails.application.routes.draw do
       put '/credits/:id', to: 'admin_credits#update'
       put '/credits/:id', to: 'admin_credits#update'
 
+      get '/learning-plan-goals', to: 'learning_plan_goals#index'
       post '/learning-plan-goals', to: 'admin_learning_plan_goals#create'
       put '/learning-plan-goals/:id', to: 'admin_learning_plan_goals#update'
       delete '/learning-plan-goals/:id', to: 'admin_learning_plan_goals#destroy'

@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'Graduation plan requirements API', type: :request do
+RSpec.describe 'Learning plans API', type: :request do
   before(:each) do
     @grad1 = create :graduation_plan_requirement, name: Faker::Name.name, status: 'active'
     @grad2 = create :graduation_plan_requirement, name: Faker::Name.name, status: 'active'

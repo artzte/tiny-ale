@@ -214,3 +214,11 @@ end
 (1..4).each do |i|
   LearningPlanGoal.create! description: "Inactive learning plan goal #{i}", active: false, required: false
 end
+
+[CURRENT_YEAR, LAST_YEAR].each do |year|
+  @students.each do |student|
+    plan = LearningPlan.create user: student, year: year
+    plan.learning_plan_goals << LearningPlanGoal.where('active = true AND required = true')
+    plan.save!
+  end
+end
