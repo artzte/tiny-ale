@@ -69,6 +69,10 @@ Rails.application.routes.draw do
     get '/learning-requirements', to: 'learning_requirements#index'
 
     get '/learning-plans/:user_id', to: 'learning_plans#show'
+    post '/learning-plans/:user_id', to: 'learning_plans#create'
+    put '/learning-plans/:learning_plan_id', to: 'learning_plans#update'
+    post '/learning-plans/:user_id/goals/:id', to: 'learning_plans#add_goal'
+    delete '/learning-plans/:user_id/goals/:id', to: 'learning_plans#add_goal'
 
     resources :staff
     resources :statuses, controller: 'status'

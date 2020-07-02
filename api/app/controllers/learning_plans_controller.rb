@@ -20,12 +20,13 @@ class LearningPlansController < ApplicationController
 
   end
 
-  def update
+  def create
+    plan = LearningPlan.create!(learning_plan_attributes)
 
-
+    render json: LearningPlanSerializer.new(plan)
   end
 
-  def create
+  def update
 
 
   end
@@ -33,5 +34,12 @@ class LearningPlansController < ApplicationController
 protected
   def year_param
     params.dig(:year)
+  end
+
+  def learning_plan_attributes
+    params
+      .require(:data)
+      .require(:attributes)
+      .permit(:year, :user_goals, :weekly_hours)
   end
 end
