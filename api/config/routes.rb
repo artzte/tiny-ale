@@ -68,7 +68,7 @@ Rails.application.routes.draw do
     get '/learning-requirements/categories', to: 'learning_requirements#categories'
     get '/learning-requirements', to: 'learning_requirements#index'
 
-    get '/learning-plan-goals', to: 'learning_plan_goals#index'
+    get '/learning-plans/:user_id', to: 'learning_plans#show'
 
     resources :staff
     resources :statuses, controller: 'status'

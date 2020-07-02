@@ -217,7 +217,7 @@ end
 
 [CURRENT_YEAR, LAST_YEAR].each do |year|
   @students.each do |student|
-    plan = LearningPlan.create user: student, year: year
+    plan = LearningPlan.create user: student, year: year, weekly_hours: 25, user_goals: 'Make friends and achieve success'
     plan.learning_plan_goals << LearningPlanGoal.where('active = true AND required = true')
     plan.save!
   end
