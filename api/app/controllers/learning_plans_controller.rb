@@ -1,5 +1,6 @@
 class LearningPlansController < ApplicationController
   def show
+    Rails.logger.info "#{year_param} was received from #{params}"
     year = year_param || Setting.current_year
     plan = LearningPlan
       .where(user_id: params[:user_id], year: year)
@@ -7,7 +8,7 @@ class LearningPlansController < ApplicationController
     if plan
       render json: LearningPlanSerializer.new(plan, { include: [:learning_plan_goals ]})
     else
-      render status: 404
+      render json: { message: "No learning plan found for year #{year}"}, status: :not_found
     end
   end
 

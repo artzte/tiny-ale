@@ -68,6 +68,7 @@ Rails.application.routes.draw do
     get '/learning-requirements/categories', to: 'learning_requirements#categories'
     get '/learning-requirements', to: 'learning_requirements#index'
 
+    get '/learning-plans/:user_id/:year', to: 'learning_plans#show'
     get '/learning-plans/:user_id', to: 'learning_plans#show'
     post '/learning-plans/:user_id', to: 'learning_plans#create'
     put '/learning-plans/:learning_plan_id', to: 'learning_plans#update'
