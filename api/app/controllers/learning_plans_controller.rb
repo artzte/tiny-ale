@@ -4,6 +4,7 @@ class LearningPlansController < ApplicationController
     plan = LearningPlan
       .where(user_id: student_id_param, year: year)
       .first
+
     if plan
       render json: LearningPlanSerializer.new(plan, { include: [:learning_plan_goals]})
     else

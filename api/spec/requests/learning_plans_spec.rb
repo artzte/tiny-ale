@@ -61,13 +61,12 @@ RSpec.describe 'Learning plans API', type: :request do
       post "/api/learning-plans/#{@student.id}",
         params: body.to_json,
         headers: json_request_headers
-        Rails.logger.info "BADASDFASFD"
-Rails.logger.info json
+
       expect(response).to have_http_status(200)
       expect(json).not_to be_empty
 
       expect(json['data']['attributes']['year']).to eq(year)
-      expect(json['data']['attributes']['hours']).to eq(hours)
+      expect(json['data']['attributes']['weeklyHours']).to eq(hours)
       expect(json['data']['attributes']['userGoals']).to eq(do_things_and_pass)
     end
   end
