@@ -42,4 +42,33 @@ RSpec.describe 'Learning plans API', type: :request do
       expect(json).not_to be_empty
     end
   end
+
+  describe 'POST /api/learning_plans/:student_id' do
+    it 'creates a student learning plan for next year' do
+      do_things_and_pass = 'Do things and pass'
+      hours = 20
+      year = Setting.current_year + 2
+      body = {
+        data: {
+          attributes: {
+            year: year,
+            weekly_hours: hours,
+            user_goals: do_things_and_pass
+          }
+        }
+      }
+
+      post "/api/learning-plans/#{@student.id}",
+        params: body.to_json,
+        headers: json_request_headers
+        Rails.logger.info "BADASDFASFD"
+Rails.logger.info json
+      expect(response).to have_http_status(200)
+      expect(json).not_to be_empty
+
+      expect(json['data']['attributes']['year']).to eq(year)
+      expect(json['data']['attributes']['hours']).to eq(hours)
+      expect(json['data']['attributes']['userGoals']).to eq(do_things_and_pass)
+    end
+  end
 end

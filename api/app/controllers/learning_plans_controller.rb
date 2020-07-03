@@ -1,12 +1,11 @@
 class LearningPlansController < ApplicationController
   def show
-    Rails.logger.info "#{year_param} was received from #{params}"
     year = year_param || Setting.current_year
     plan = LearningPlan
-      .where(user_id: params[:user_id], year: year)
+      .where(user_id: student_id_param, year: year)
       .first
     if plan
-      render json: LearningPlanSerializer.new(plan, { include: [:learning_plan_goals ]})
+      render json: LearningPlanSerializer.new(plan, { include: [:learning_plan_goals]})
     else
       render json: { message: "No learning plan found for year #{year}"}, status: :not_found
     end
@@ -22,7 +21,10 @@ class LearningPlansController < ApplicationController
   end
 
   def create
-    plan = LearningPlan.create!(learning_plan_attributes)
+    student = User.find student_id_param
+    plan = LearningPlan.create(learning_plan_attributes)
+    plan.user = student
+    plan.save!
 
     render json: LearningPlanSerializer.new(plan)
   end
@@ -33,8 +35,12 @@ class LearningPlansController < ApplicationController
   end
 
 protected
+  def student_id_param
+    params[:student_id]
+  end
+
   def year_param
-    params.dig(:year)
+    params[:year]
   end
 
   def learning_plan_attributes
