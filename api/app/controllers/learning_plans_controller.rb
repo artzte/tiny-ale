@@ -33,6 +33,9 @@ class LearningPlansController < ApplicationController
     plan.user = student
     plan.save!
 
+    active_goals = LearningPlanGoal.where(active: true, required: true)
+    plan.learning_plan_goals << active_goals
+
     render json: LearningPlanSerializer.new(plan)
   end
 
