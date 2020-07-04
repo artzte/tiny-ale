@@ -30,9 +30,6 @@ class AdminCreditsController < AdminController
   def update_attributes(model)
     attrs = credit_attributes
 
-    Rails.logger.info '*************'
-    Rails.logger.info attrs
-
     attrs[:course_type] = case attrs[:course_type]
                           when 'general'
                             Credit::TYPE_GENERAL
@@ -41,10 +38,6 @@ class AdminCreditsController < AdminController
                           else
                             Credit::TYPE_NONE
       end
-
-    Rails.logger.info '*************'
-    Rails.logger.info attrs
-    Rails.logger.info '*************'
 
     model.update_attributes attrs
   end

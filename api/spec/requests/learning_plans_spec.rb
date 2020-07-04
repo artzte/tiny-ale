@@ -19,6 +19,10 @@ RSpec.describe 'Learning plans API', type: :request do
     @learning_plan_from_last_year = create :learning_plan, year: Setting.current_year - 1, user: @student
   end
 
+  after(:each) do
+    DatabaseCleaner.clean
+  end
+
   describe 'GET /api/learning_plans' do
     it 'returns a student learning plan for current year' do
       get "/api/learning-plans/#{@student.id}"
@@ -44,30 +48,42 @@ RSpec.describe 'Learning plans API', type: :request do
   end
 
   describe 'POST /api/learning_plans/:student_id' do
-    it 'creates a student learning plan for next year' do
-      do_things_and_pass = 'Do things and pass'
-      hours = 20
-      year = Setting.current_year + 2
-      body = {
+    before(:each) do
+      @do_things_and_pass = 'Do things and pass'
+      @hours = 20
+      @year = Setting.current_year + 2
+      @body = {
         data: {
           attributes: {
-            year: year,
-            weekly_hours: hours,
-            user_goals: do_things_and_pass
+            year: @year,
+            weekly_hours: @hours,
+            user_goals: @do_things_and_pass
           }
         }
       }
-
+    end
+  
+    it 'creates a student learning plan for next year' do
       post "/api/learning-plans/#{@student.id}",
-        params: body.to_json,
+        params: @body.to_json,
         headers: json_request_headers
 
       expect(response).to have_http_status(200)
       expect(json).not_to be_empty
 
-      expect(json['data']['attributes']['year']).to eq(year)
-      expect(json['data']['attributes']['weeklyHours']).to eq(hours)
-      expect(json['data']['attributes']['userGoals']).to eq(do_things_and_pass)
+      expect(json['data']['attributes']['year']).to eq(@year)
+      expect(json['data']['attributes']['weeklyHours']).to eq(@hours)
+      expect(json['data']['attributes']['userGoals']).to eq(@do_things_and_pass)
+    end
+
+    it 'mistakenly creates another student learning plan for a duplicate year' do
+      @body[:data][:attributes][:year] = @learning_plan.year
+      post "/api/learning-plans/#{@student.id}",
+        params: @body.to_json,
+        headers: json_request_headers
+
+      expect(response).to have_http_status(422)
+      expect(json).not_to be_empty
     end
   end
 end
