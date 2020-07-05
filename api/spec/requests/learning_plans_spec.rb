@@ -15,8 +15,11 @@ RSpec.describe 'Learning plans API', type: :request do
       @optional << create(:learning_plan_goal, description: "Learning requirement (optional) #{i}", required: false, active: true)
     end
 
-    @learning_plan = create :learning_plan, year: Setting.current_year, user: @student
-    @learning_plan_from_last_year = create :learning_plan, year: Setting.current_year - 1, user: @student
+    @learning_plan = create :learning_plan, year: Setting.current_year, user: @student, weekly_hours: 25
+    @learning_plan_from_last_year = create :learning_plan, year: Setting.current_year - 1, user: @student, weekly_hours: 25
+
+    @learning_plan.learning_plan_goals << @required
+    @learning_plan_from_last_year.learning_plan_goals << @required
   end
 
   after(:each) do
@@ -44,6 +47,21 @@ RSpec.describe 'Learning plans API', type: :request do
       get "/api/learning-plans/#{@student.id}/1900"
       expect(response).to have_http_status(404)
       expect(json).not_to be_empty
+    end
+  end
+
+  describe 'POST /api/learning_plans/:student_id/goals/:learning_plan_goal_id' do
+    it 'adds a new learning plan goal' do
+      goal = @optional.first
+
+      post "/api/learning-plans/#{@learning_plan.id}/goals/#{goal.id}"
+      expect(response).to have_http_status(200)
+      expect(json).not_to be_empty
+      
+      added_goal = @learning_plan.learning_plan_goals.reload.find { |g| g.id == goal.id }
+
+      expect(added_goal).to be_present
+      expect(json['data']['relationships']['learningPlanGoals']['data'].size).to eq(@learning_plan.learning_plan_goals.size)
     end
   end
 

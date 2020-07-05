@@ -11,8 +11,16 @@ class LearningPlansController < ApplicationController
   end
 
   def add_goal
+    plan = LearningPlan
+      .find(params[:learning_plan_id])
 
+    existing_goal = plan.learning_plan_goals.find_by_id(params[:id])
+    unless existing_goal
+      goal = LearningPlanGoal.find params[:id]
+      plan.learning_plan_goals << goal
+    end
 
+    render json: LearningPlanSerializer.new(plan)
   end
 
   def remove_goal
@@ -46,7 +54,8 @@ class LearningPlansController < ApplicationController
 
 protected
   def find_learning_plan
-    LearningPlan.find_by_user_id_and_year(student_id_param,  year_param)
+    LearningPlan
+      .find_by(user_id: student_id_param, year: year_param)
   end
 
   def student_id_param
