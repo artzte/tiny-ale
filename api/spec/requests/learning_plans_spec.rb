@@ -62,6 +62,10 @@ RSpec.describe 'Learning plans API', type: :request do
 
       expect(added_goal).to be_present
       expect(json['data']['relationships']['learningPlanGoals']['data'].size).to eq(@learning_plan.learning_plan_goals.size)
+
+      post "/api/learning-plans/#{@learning_plan.id}/goals/#{goal.id}"
+      expect(response).to have_http_status(422)
+      expect(json).not_to be_empty
     end
   end
 

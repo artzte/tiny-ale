@@ -15,10 +15,13 @@ class LearningPlansController < ApplicationController
       .find(params[:learning_plan_id])
 
     existing_goal = plan.learning_plan_goals.find_by_id(params[:id])
-    unless existing_goal
-      goal = LearningPlanGoal.find params[:id]
-      plan.learning_plan_goals << goal
+    if existing_goal
+      plan.errors.add(:learning_plan_goals, 'this new learning plan goal will duplicate an existing one')
+      raise ActiveRecord::RecordInvalid.new(plan)
     end
+    
+    goal = LearningPlanGoal.find params[:id]
+    plan.learning_plan_goals << goal
 
     render json: LearningPlanSerializer.new(plan)
   end
