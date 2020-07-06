@@ -63,9 +63,27 @@ RSpec.describe 'Learning plans API', type: :request do
       expect(added_goal).to be_present
       expect(json['data']['relationships']['learningPlanGoals']['data'].size).to eq(@learning_plan.learning_plan_goals.size)
 
+      # a duplicate is refused
       post "/api/learning-plans/#{@learning_plan.id}/goals/#{goal.id}"
       expect(response).to have_http_status(422)
       expect(json).not_to be_empty
+    end
+  end
+
+  describe 'DELETE /api/learning_plans/:student_id/goals/:learning_plan_goal_id' do
+    it 'removes a learning plan goal' do
+      goal = @optional.first
+      @learning_plan.learning_plan_goals << goal
+
+      delete "/api/learning-plans/#{@learning_plan.id}/goals/#{goal.id}"
+      expect(response).to have_http_status(204)
+      expect(body).to be_empty
+
+      @learning_plan.learning_plan_goals.reload
+      expect(@learning_plan.learning_plan_goals.find_by_id(goal.id)).to be_nil
+      
+      delete "/api/learning-plans/#{@learning_plan.id}/goals/#{goal.id}"
+      expect(response).to have_http_status(404)
     end
   end
 

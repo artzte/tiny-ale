@@ -1,4 +1,4 @@
-class LearningPlansController < ApplicationController
+class LearningPlansController < ApiBaseController
   def show
     year = year_param
     plan = find_learning_plan
@@ -11,10 +11,10 @@ class LearningPlansController < ApplicationController
   end
 
   def add_goal
-    plan = LearningPlan
-      .find(params[:learning_plan_id])
+    plan = LearningPlan.find(params[:learning_plan_id])
 
     existing_goal = plan.learning_plan_goals.find_by_id(params[:id])
+
     if existing_goal
       plan.errors.add(:learning_plan_goals, 'this new learning plan goal will duplicate an existing one')
       raise ActiveRecord::RecordInvalid.new(plan)
@@ -27,7 +27,15 @@ class LearningPlansController < ApplicationController
   end
 
   def remove_goal
+    plan = LearningPlan.find(params[:learning_plan_id])
+  
+    existing_goal = plan.learning_plan_goals.find_by_id(params[:id])
 
+    raise ActiveRecord::RecordNotFound.new unless existing_goal
+    
+    plan.learning_plan_goals.destroy(existing_goal)
+
+    head :no_content
   end
 
   def create
