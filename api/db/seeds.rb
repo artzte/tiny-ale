@@ -16,6 +16,15 @@ Setting.create! name: 'current_year', value: CURRENT_YEAR
 @staff2 = User.create! privilege: User::PRIVILEGE_STAFF, first_name: 'Jake', last_name: 'Fletcher', date_active: Date.new(2013, 2, 1), email: 'tinysis-devtest+jake-staff@tinysis.org', status: User::STATUS_ACTIVE
 @staff3 = User.create! privilege: User::PRIVILEGE_STAFF, first_name: 'Joan', last_name: 'McCusker', status: User::STATUS_INACTIVE, date_active: Date.new(2011, 2, 1), date_inactive: Date.new(2018, 1, 1), email: 'tinysis-devtest+joan-staff@tinysis.org'
 
+coor = [CURRENT_YEAR, LAST_YEAR].map do |year|
+  coor = Term.new name: "COOR - #{year}", school_year: year, credit_date: Date.new(year, 9, 1) + 10.months, active: false
+  coor.set_dates(year, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
+  coor
+end
+
+coor.first.active = true
+coor.first.save!
+
 @term1_last = Term.new name: "#{LAST_YEAR} - Term 1", school_year: LAST_YEAR, credit_date: Date.new(LAST_YEAR + 1, 1, 31)
 @term2_last = Term.new name: "#{LAST_YEAR} - Term 2", school_year: LAST_YEAR, credit_date: Date.new(LAST_YEAR + 1, 6, 15)
 @term1_current = Term.new name: "#{CURRENT_YEAR} - Term 1", school_year: CURRENT_YEAR, credit_date: Date.new(CURRENT_YEAR + 1, 1, 31)
