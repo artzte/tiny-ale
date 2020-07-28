@@ -14,13 +14,14 @@ This project will provide an API server that serves JSON data feeds and basic CR
 
 To run using the docker setup (recommended), you need to install docker and docker-compose.
 
-To run natively, you need Ruby 2.6 and mysql server, and possibly, libmysqlclient-dev
-
 ## General workflow
 
 There is a (hopefully) helpful shell script that offers various choices:
 
     ./tiny
+
+You will need to obtain credentials to access the S3 buckets where various app secrets files are stored.
+To do this, obtain an AWS credentials file from the project owner.
 
 Then run:
 
@@ -45,7 +46,6 @@ To edit/view the credentials file, open a shell on the container using `./tiny s
 
     EDITOR="code -wait" rails credentials:edit
 
-
 # Running the server natively
 
 To run the system on your local machine, you must first install the necessary gems and MYSQL support, init the database,
@@ -57,6 +57,11 @@ and then run the server.
     rake db:seed
     rails s
 
+# Running the client natively
+
+    npm install
+    npm start
+
 ## Running tests
 
     rake db:test:prepare
@@ -66,7 +71,7 @@ Running only some tests (filter by name)
 
     bundle exec rspec --example "Statuses"
 
-## Database notes
+# Database notes
 
     create database nova_test;
     create database nova_development;
