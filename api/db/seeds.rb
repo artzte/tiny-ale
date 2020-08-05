@@ -97,10 +97,10 @@ Ealr.all.each do |ealr|
 end
 @contract1_current.save!
 
-@student1 = User.create! privilege: User::PRIVILEGE_STUDENT, status: User::STATUS_ACTIVE, first_name: 'Riley', last_name: 'Freed', district_id: Random.rand(10**10).to_s, coordinator: @staff1, date_active: Date.new(LAST_YEAR, 8, 1)
-@student2 = User.create! privilege: User::PRIVILEGE_STUDENT, status: User::STATUS_ACTIVE, first_name: 'Cary', last_name: 'Jenkins', district_id: Random.rand(10**10).to_s, coordinator: @staff2, date_active: Date.new(LAST_YEAR, 8, 1)
-@student3 = User.create! privilege: User::PRIVILEGE_STUDENT, status: User::STATUS_ACTIVE, first_name: 'Janey', last_name: 'Edmunds', district_id: Random.rand(10**10).to_s, coordinator: @staff2, date_active: Date.new(LAST_YEAR, 8, 1)
-@student_inactive = User.create! privilege: User::PRIVILEGE_STUDENT, status: User::STATUS_INACTIVE, first_name: 'Grey', last_name: 'Sanderson', district_id: Random.rand(10**10).to_s, coordinator: @staff2, date_active: Date.new(LAST_YEAR, 8, 1), date_inactive: Date.new(CURRENT_YEAR, 10, 1)
+@student1 = User.create! privilege: User::PRIVILEGE_STUDENT, status: User::STATUS_ACTIVE, first_name: 'Riley', last_name: 'Freed', district_id: Random.rand(10**10).to_s, coordinator: @staff1, date_active: Date.new(LAST_YEAR, 8, 1), district_grade: 9
+@student2 = User.create! privilege: User::PRIVILEGE_STUDENT, status: User::STATUS_ACTIVE, first_name: 'Cary', last_name: 'Jenkins', district_id: Random.rand(10**10).to_s, coordinator: @staff2, date_active: Date.new(LAST_YEAR, 8, 1), district_grade: 10
+@student3 = User.create! privilege: User::PRIVILEGE_STUDENT, status: User::STATUS_ACTIVE, first_name: 'Janey', last_name: 'Edmunds', district_id: Random.rand(10**10).to_s, coordinator: @staff2, date_active: Date.new(LAST_YEAR, 8, 1), district_grade: 11
+@student_inactive = User.create! privilege: User::PRIVILEGE_STUDENT, status: User::STATUS_INACTIVE, first_name: 'Grey', last_name: 'Sanderson', district_id: Random.rand(10**10).to_s, coordinator: @staff2, date_active: Date.new(LAST_YEAR, 8, 1), date_inactive: Date.new(CURRENT_YEAR, 10, 1), district_grade: 12
 @students = [@student1, @student2, @student3]
 
 # current contracts should have active enrollments. reporting as if we are three months into
