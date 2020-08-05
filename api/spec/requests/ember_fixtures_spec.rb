@@ -159,9 +159,9 @@ RSpec.describe 'Ember fixtures script', type: :request do
       end
       @contract1_current.save!
 
-      @student1 = create :user, privilege: User::PRIVILEGE_STUDENT, district_id: Random.rand(10**10).to_s, coordinator: @staff1, date_active: Date.new(LAST_YEAR, 8, 1)
-      @student2 = create :user, privilege: User::PRIVILEGE_STUDENT, district_id: Random.rand(10**10).to_s, coordinator: @staff2, date_active: Date.new(LAST_YEAR, 8, 1)
-      @student3 = create :user, privilege: User::PRIVILEGE_STUDENT, district_id: Random.rand(10**10).to_s, coordinator: @staff2, status: User::STATUS_INACTIVE, date_active: Date.new(LAST_YEAR, 8, 1), date_inactive: Date.new(CURRENT_YEAR, 10, 1)
+      @student1 = create :user, privilege: User::PRIVILEGE_STUDENT, district_id: Random.rand(10**10).to_s, coordinator: @staff1, date_active: Date.new(LAST_YEAR, 8, 1), district_grade: 9
+      @student2 = create :user, privilege: User::PRIVILEGE_STUDENT, district_id: Random.rand(10**10).to_s, coordinator: @staff2, date_active: Date.new(LAST_YEAR, 8, 1), district_grade: 10
+      @student3 = create :user, privilege: User::PRIVILEGE_STUDENT, district_id: Random.rand(10**10).to_s, coordinator: @staff2, status: User::STATUS_INACTIVE, date_active: Date.new(LAST_YEAR, 8, 1), date_inactive: Date.new(CURRENT_YEAR, 10, 1), district_grade: 12
       @students = [@student1, @student2, @student3]
 
       # current contracts should have active enrollments. reporting as if we are three months into
