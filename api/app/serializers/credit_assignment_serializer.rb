@@ -21,13 +21,13 @@ class CreditAssignmentSerializer < ApplicationSerializer
   has_one :graduation_plan_mapping
   has_many :notes
 
-  belongs_to :contract_term, record_type: :term, serializer: :term
-  belongs_to :contract_facilitator, record_type: :user, serializer: :user
+  belongs_to :contract_term, serializer: 'Term'
+  belongs_to :contract_facilitator, serializer: 'User'
   belongs_to :contract
   belongs_to :user
   belongs_to :credit_transmittal_batch
   belongs_to :enrollment
 
-  has_many :child_credit_assignments, record_type: :credit_assignment
-  belongs_to :parent_credit_assignment, record_type: :credit_assignment
+  has_many :child_credit_assignments, serializer: 'CreditAssignment'
+  belongs_to :parent_credit_assignment, serializer: 'CreditAssignment'
 end
