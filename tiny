@@ -74,7 +74,7 @@ removeContainers () {
 }
 
 removeImages () {
-  docker rmi ${PROJECT}_web ${PROJECT}_db ${PROJECT}_adminer ${PROJECT}_ux
+  docker rmi ${PROJECT}_web ${PROJECT}_db ${PROJECT}_ux
 }
 
 # if this is not working, you need to get your AWS profile set up in 
@@ -96,6 +96,10 @@ test:api () {
   docker exec -e RAILS_ENV=test $API bundle exec rspec
 }
 
+test:ui () {
+  docker exec -e $UI npm test
+}
+
 usage () {
   echo "tiny <command>"
   echo ""
@@ -110,10 +114,11 @@ usage () {
   echo "log        | tail the production log"
   echo "reset      | deletes the docker images for the API and DB"
   echo "test:api   | runs test suite for API"
+  echo "test:ui    | runs test suite for UI"
 }
 
 case "$COMMAND" in
-  "getSecrets"|"initDb"|"build"|"server"|"shell:ui"|"shell:api"|"log"|"reset"|"test:api")
+  "getSecrets"|"initDb"|"build"|"server"|"shell:ui"|"shell:api"|"log"|"reset"|"test:api"|"test:api")
       $COMMAND
       ;;
   *)
