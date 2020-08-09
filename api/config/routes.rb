@@ -29,6 +29,7 @@ Rails.application.routes.draw do
     get '/enrollments/:id', to: 'enrollments#show'
     patch '/enrollments/:id/:command', to: 'enrollments#update'
     delete '/enrollments/:id', to: 'enrollments#destroy'
+    post '/contracts/:id/enrollments', to: 'enrollments#create'
 
     get '/notes', to: 'notes#index'
     post '/notes/:notable_type/:notable_id', to: 'notes#create'
