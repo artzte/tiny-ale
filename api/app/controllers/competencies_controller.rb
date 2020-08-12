@@ -1,4 +1,4 @@
-class LearningRequirementsController < ApiBaseController
+class CompetenciesController < ApiBaseController
   def categories
     render json: Ealr.categories
   end

@@ -1,4 +1,4 @@
-class AdminLearningRequirementsController < AdminController
+class AdminCompetenciesController < AdminController
   def create
     requirement = Ealr.new requirement_attributes
 

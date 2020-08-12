@@ -19,10 +19,9 @@ class AdminCreditsController < AdminController
 
   def destroy
     credit = Credit.find params[:id]
-    update_attributes credit
-    credit.save!
+    credit.destroy!
 
-    render json: CreditSerializer.new(credit)
+    render nothing: true, status: 204
   end
 
   private
