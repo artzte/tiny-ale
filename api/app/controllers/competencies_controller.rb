@@ -9,6 +9,6 @@ class CompetenciesController < ApiBaseController
       .sort
     count = Ealr.count
     options = { meta: { count: count } }
-    render json: EalrSerializer.new(result, options), status: 200
+    render json: CompetencySerializer.new(result, options), status: 200
   end
 end

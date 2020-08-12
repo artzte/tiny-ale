@@ -4,7 +4,7 @@ class AdminCompetenciesController < AdminController
 
     requirement.save!
 
-    render json: EalrSerializer.new(requirement)
+    render json: CompetencySerializer.new(requirement)
   end
 
   def update
@@ -12,7 +12,7 @@ class AdminCompetenciesController < AdminController
 
     requirement.update_attributes! requirement_attributes
 
-    render json: EalrSerializer.new(requirement)
+    render json: CompetencySerializer.new(requirement)
   end
 
   def destroy
