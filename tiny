@@ -59,22 +59,34 @@ initDb () {
   testPrepare
 }
 
-reset () {
-  stopContainers
-  removeContainers
-  removeImages
+remove () {
+  removeUi
+  removeDb
+  removeWeb
 }
 
-stopContainers () {
+removeUi () {
+  docker rm $UI
+  docker rmi ${PROJECT}_ux
+}
+
+removeApi () {
+  docker rm $API
+  docker rmi ${PROJECT}_web
+}
+
+removeDb () {
+  docker rm $DB
+  docker rmi ${PROJECT}_db
+}
+
+stop () {
   docker stop $API $DB $ADMINER $UI
 }
 
-removeContainers () {
-  docker rm $API $DB $ADMINER $UI
-}
-
-removeImages () {
-  docker rmi ${PROJECT}_web ${PROJECT}_db ${PROJECT}_ux
+reset () {
+  stop
+  remove
 }
 
 # if this is not working, you need to get your AWS profile set up in 
@@ -118,7 +130,7 @@ usage () {
 }
 
 case "$COMMAND" in
-  "getSecrets"|"initDb"|"build"|"server"|"shell:ui"|"shell:api"|"log"|"reset"|"test:api"|"test:api")
+  "getSecrets"|"initDb"|"build"|"server"|"shell:ui"|"shell:api"|"log"|"reset"|"test:api"|"test:ui"|"removeUi")
       $COMMAND
       ;;
   *)
