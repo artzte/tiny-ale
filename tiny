@@ -109,7 +109,7 @@ test:api () {
 }
 
 test:ui () {
-  docker exec -e $UI npm test
+  docker exec $UI npm test
 }
 
 usage () {
@@ -130,7 +130,7 @@ usage () {
 }
 
 case "$COMMAND" in
-  "getSecrets"|"initDb"|"build"|"server"|"shell:ui"|"shell:api"|"log"|"reset"|"test:api"|"test:ui"|"removeUi")
+  "getSecrets"|"initDb"|"build"|"server"|"shell:ui"|"shell:api"|"log"|"reset"|"test:api"|"test:ui"|"removeUi"|"stop")
       $COMMAND
       ;;
   *)
