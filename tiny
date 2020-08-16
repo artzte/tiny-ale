@@ -101,7 +101,7 @@ build () {
 }
 
 log () {
-  docker exec -it $API tail -f log/*
+  docker exec -it tiny-ale_web_1 tail -f "log/development.log"
 }
 
 test:api () {
