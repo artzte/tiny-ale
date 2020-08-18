@@ -1,1 +1,9 @@
-{{outlet}}
+<h2>Edit competency: {{model.attributes.category}} {{model.attributes.seq}}</h2>
+
+<SettingsCompetencyForm
+  @model={{model}}
+  @categories={{categories}}
+  @competencies={{competencies.data}}
+  @save={{action "updateCompetency"}}
+  @reportError={{action "reportError"}}
+/>

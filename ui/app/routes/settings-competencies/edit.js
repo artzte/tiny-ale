@@ -3,37 +3,18 @@ import { inject as service } from '@ember/service';
 
 export default class SettingsCompetenciesEditRoute extends Route {
   @service('tinyData') tinyData;
-  @action
-  async updateCompetency(data) {
-    const { tinyData } = this;
-    
-    if (data.id) {
-      return tinyData.fetch('/api/competencies', {
-        method: 'POST',
-        data,
-      });
-    }
-    
-    return tinyData.fetch(`/api/competencies/${data.id}`, {
-      data,
-      method: 'PUT',
-    });
-  }
 
-  @action
-  reportError(error) {
-    this.flashMessages.alert('error');
-    console.log(error);
-  }
   model(params) {
-    return this.modelFor('settings-competencies').data.find(competency => competency.id === params.id);
+    return this.tinyData.get('competency', params.id);
   }
 
-  async setupController(controller, model) {
-    this._super(controller, model);
+  setupController(controller, model) {
+    const [competencies, categories] = this.modelFor('settings-competencies');
 
     controller.setProperties({
-      categories: await this.tinyData.getCompetencyCategories(),
+      model,
+      competencies,
+      categories,
     });
   }
 }

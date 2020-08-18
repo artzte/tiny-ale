@@ -4,7 +4,7 @@ import Validator from '../utils/validator';
 
 export default class SettingsCompetencyFormComponent extends TForm {
   get validator() {
-    const { competencies } = this;
+    const { competencies, model } = this;
     return new Validator({
       competency: [{
         type: 'required',
@@ -19,7 +19,7 @@ export default class SettingsCompetencyFormComponent extends TForm {
         type: 'valid',
         message: 'duplicates an existing sequence number',
         isValid(key, value, _pojo) {
-          return !competencies.find(competency => competency.attributes.seq === value);
+          return !competencies.find(competency => competency.id !== model.id && competency.attributes.seq === value);
         }
       }],
     });
