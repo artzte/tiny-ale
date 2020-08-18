@@ -1,0 +1,53 @@
+<p>
+  <TSelect
+    @optionsList={{categories}}
+    @onchange={{action (mut category)}}
+    name="category"
+    @value={{category}}
+    @prompt="All categories"
+  />
+</p>
+
+<LinkTo
+  class="btn"
+  @route="settings-competencies.new"
+>
+  Add a competency
+</LinkTo>
+
+{{#check-empty
+  count=categoryCompetencies.length
+  noResultsMessage="No entries in this category"
+}}
+  {{count-paragraph
+    count=categoryCompetencies.length
+    name="competency"
+  }}
+  <table class="t-table w-full" data-test-settings-competencies-list>
+    <thead>
+      <tr>
+        <th>Sequence</th>
+        <th>Competency</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each categoryCompetencies as |competency|}}
+        <tr>
+          <td>
+            {{competency.attributes.seq}}
+          </td>
+          <td>{{competency.attributes.competency}}</td>
+          <th class="text-right">
+            <LinkTo
+              @route="settings-competencies.edit"
+              @model={{competency}}
+            >
+              Edit
+            </LinkTo>
+          </th>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+{{/check-empty}}

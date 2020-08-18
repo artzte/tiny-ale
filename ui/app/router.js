@@ -199,6 +199,10 @@ Router.map(function () {
         this.route('settings-competencies', {
           resetNamespace: true,
           path: '/competencies',
+        }, function () {
+          this.route('index', { path: '/' });
+          this.route('new');
+          this.route('edit', { path: ':id' });
         });
         this.route('settings-learning-plan-goals', {
           resetNamespace: true,

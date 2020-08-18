@@ -1,40 +1,5 @@
 <h2>Competencies</h2>
 
-<p>Back to settings</p>
+<ReturnToSettingsLink />
 
-<p>Categories V</p>
-
-{{#check-empty
-  count=model.meta.count
-  noResultsMessage="No competencies in this category"
-}}
-  {{count-paragraph
-    result=model
-    name="competency"
-  }}
-  <table class="t-table w-full" data-test-settings-competencies-list>
-    <thead>
-      <tr>
-        <th>Sequence</th>
-        <th>Competency</th>
-      </tr>
-    </thead>
-    <tbody>
-      {{#each model.data as |competency|}}
-        <tr>
-          <td>
-            <button
-              class="link-button"
-              type="button"
-              {{action 'editCompetency' competency}}
-            >
-              {{competency.attributes.sequence}}
-            </button>
-          </td>
-          <td>{{competency.attributes.competency}}</td>
-        </tr>
-      {{/each}}
-    </tbody>
-  </table>
-{{/check-empty}}
-
+{{outlet}}

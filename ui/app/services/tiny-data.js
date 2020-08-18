@@ -60,6 +60,13 @@ export const tinyDataService = {
     this._data.reportingBaseMonth = reportingBaseMonth;
   },
 
+  async getCompetencyCategories() {
+    if (!this._data.competencyCategories) {
+      this._data.competencyCategories = await fetch('/api/competencies/categories');
+    }
+    return this._data.competencyCategories;
+  },
+
   flush() {
     this._store = {};
     this._data = {};
@@ -70,11 +77,6 @@ export const tinyDataService = {
       .then((result) => {
         this.addResult(result);
         return result;
-      }, (err) => {
-        if (err instanceof AuthError) {
-          return doSigninRedirect(window.location.href);
-        }
-        throw err;
       });
   },
 
