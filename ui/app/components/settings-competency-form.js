@@ -14,7 +14,7 @@ export default class SettingsCompetencyFormComponent extends TForm {
       }, {
         type: 'format',
         regex: /\d+(\.\d+)?/,
-        message: 'please provide a decimal sequence number e.g. 1.2'
+        message: 'please provide a decimal sequence number e.g. 1.2',
       }, {
         type: 'valid',
         message: 'duplicates an existing sequence number',
