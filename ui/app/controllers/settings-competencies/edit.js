@@ -4,22 +4,37 @@ import { inject as service } from '@ember/service';
 
 export default class SettingsCompetenciesEditController extends Controller {
   @service('tinyData') tinyData;
+  @service('flashMessages') flashMessages;
 
   @action
-  async updateCompetency(data) {
+  async updateCompetency(model) {
     const { tinyData } = this;
+    let promise;
     
-    if (data.id) {
-      return tinyData.fetch(`/api/admin/competencies/${data.id}`, {
+    if (model.id) {
+      promise = tinyData.fetch(`/api/admin/competencies/${model.id}`, {
         method: 'PUT',
-        data,
+        data: {
+          data: model,
+        }
       });
     }
     
-    return tinyData.fetch(`/api/admin/competencies`, {
+    promise = tinyData.fetch(`/api/admin/competencies`, {
       method: 'POST',
-      data,
+      data: {
+        data: model,
+      },
     });
+
+    promise.then(() => {
+      this.flashMessages.info('success');
+      this.transitionToRoute('settings-competencies');
+    }, err => {
+      this.flashMessages.alert('error');
+    });
+  
+    return promise;
   }
 
   @action
