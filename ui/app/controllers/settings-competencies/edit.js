@@ -28,10 +28,10 @@ export default class SettingsCompetenciesEditController extends Controller {
     });
 
     promise.then(() => {
-      this.flashMessages.info('success');
+      this.flashMessages.success(`Competency ${model.attributes.category} ${model.attributes.seq} saved`);
       this.transitionToRoute('settings-competencies');
     }, err => {
-      this.flashMessages.alert('error');
+      this.flashMessages.alert('An error was reported');
     });
   
     return promise;

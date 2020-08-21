@@ -35,7 +35,7 @@ module('Acceptance | contract attendance roll', (hooks) => {
     server.addRequest('get', '/api/enrollments', contractAttendanceRollEnrollments);
     server.addRequest('get', '/api/notes', contractAttendanceRollNotes);
 
-    assert.timeout(200);
+    assert.timeout(500);
   });
 
   hooks.afterEach(() => {

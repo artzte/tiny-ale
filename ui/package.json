@@ -19,11 +19,8 @@
     "lint:hbs": "ember-template-lint .",
     "pr": "npm run lint && npm test"
   },
-  "todo": {
-    "@bigtest/interactor": "^0.14.0"
-  },
   "devDependencies": {
-    "@bigtest/interactor": "^0.14.0",
+    "@bigtest/interactor": "0.9.3",
     "@ember/optional-features": "^1.3.0",
     "@fortawesome/ember-fontawesome": "^0.2.1",
     "@fortawesome/free-regular-svg-icons": "^5.12.0",

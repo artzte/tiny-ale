@@ -120,4 +120,20 @@ module('Unit | Service | tiny-data', (hooks) => {
     service.setToday(today);
     assert.equal(today.toISOString(), service.getToday().toISOString());
   });
+
+  test('deletes a record', function (assert) {
+    const service = this.owner.lookup('service:tiny-data');
+    service.addResult(notesResult);
+
+    const [fixture] = notesResult.data;
+    const note = service.get('note', fixture.id);
+
+    assert.ok(note);
+
+    service.deleteRecord(note);
+    
+    const deletedResult = service.get('note', note.id);
+
+    assert.notOk(deletedResult);
+  });
 });

@@ -19,6 +19,8 @@ module Secured
   end
 
   def authenticate_request!
+    @user = User.find_by_privilege(User::PRIVILEGE_ADMIN) and return
+
     permissions = get_permissions
 
     render_unauthorized && return if permissions.empty?

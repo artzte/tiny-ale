@@ -62,7 +62,7 @@ initDb () {
 remove () {
   removeUi
   removeDb
-  removeWeb
+  removeApi
 }
 
 removeUi () {

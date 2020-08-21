@@ -45,9 +45,24 @@
             >
               Edit
             </LinkTo>
+            <button
+              class="link-button"
+              type="button"
+              onclick={{action 'delete' competency}}
+            >
+              Delete
+            </button>
           </th>
         </tr>
       {{/each}}
     </tbody>
   </table>
 {{/check-empty}}
+
+{{#if showConfirmDialog}}
+  <Dialog>
+    {{confirmDialog}}
+    <button type="submit">OK</button>
+    <button type="button">Cancel</button>
+  </Dialog>
+{{/if}}

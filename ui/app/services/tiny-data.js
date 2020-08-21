@@ -131,7 +131,7 @@ export const tinyDataService = {
         return memo;
       }, {});
 
-    this._store = Object.assign({}, store, mergedAdditions);
+    this._store = { ...store, ...mergedAdditions };
   },
 
   get(type, id) {
@@ -154,6 +154,17 @@ export const tinyDataService = {
   addRecord(data) {
     this.addResult({ data });
   },
+
+  deleteRecord(data) {
+    const store = this._store;
+    this._store = {
+      ...store,
+      [data.type]: {
+        ...store[data.type],
+        [data.id]: null,
+      }
+    };
+  }
 };
 
 export default Service.extend(tinyDataService);
