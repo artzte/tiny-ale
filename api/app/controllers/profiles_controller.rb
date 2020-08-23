@@ -8,6 +8,6 @@ class ProfilesController < ApiBaseController
       }
     }
 
-    render json: UserSerializer.new(@user, options), status: 422
+    render json: UserSerializer.new(@user, options)
   end
 end
