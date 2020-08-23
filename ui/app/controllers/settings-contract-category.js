@@ -7,7 +7,7 @@ export default Controller.extend({
   flashMessages: service(),
   tinyData: service(),
 
-  categoryName: computed('model', function () {
+  categoryName: computed('model.attributes.name', function () {
     return this.model.attributes.name || 'Untitled';
   }),
 

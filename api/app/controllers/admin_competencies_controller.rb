@@ -26,8 +26,14 @@ class AdminCompetenciesController < AdminController
   private
 
   def requirement_attributes
-    params.require(:data)
+    p = params.require(:data)
           .require(:attributes)
-          .permit(:ealr, :seq, :category)
+          .permit(:competency, :seq, :category)
+
+    {
+      seq: p[:seq],
+      ealr: p[:competency],
+      category: p[:category],
+    }.compact
   end
 end

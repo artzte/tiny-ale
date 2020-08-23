@@ -1,16 +1,21 @@
 import Route from '@ember/routing/route';
+import { inject as service } from '@ember/service';
 import { createEntity } from '../../utils/json-api';
 
 export default class SettingsCompetenciesNewRoute extends Route {
+  @service('tinyData') tinyData;
+
   model() {
     return createEntity('competency');
   }
 
   async setupController(controller, model) {
-    this._super(controller, model);
+    const [competencies, categories] = this.modelFor('settings-competencies');
 
     controller.setProperties({
-      categories: await this.tinyData.getCompetencyCategories(),
+      model,
+      categories,
+      competencies: competencies.data,
     });
   }
 }

@@ -1,11 +1,8 @@
-import TinyForm from '../components/t-form';
 import { inject as service } from '@ember/service';
+import TinyForm from './t-form';
 
 export default TinyForm.extend({
   user: service(),
-  save(pojo) {
-    console.log('got', pojo);
-  },
   actions: {
     async onSearchCandidates(name) {
       const result = await this.user.searchStudents({ name, scope: `contract:${this.contract.id}` });
@@ -13,5 +10,8 @@ export default TinyForm.extend({
     },
     onChangeCandidate() {
     },
+  },
+  save(pojo) {
+    console.log('got', pojo);
   },
 });

@@ -37,7 +37,7 @@ export default Component.extend({
 
     return children.map(child => tinyData.get('graduationPlanRequirement', child.id));
   }),
-  hasChildren: computed('requirement', function () {
+  hasChildren: computed('requirement.relationships.children.data.length', function () {
     return Boolean(this.get('requirement.relationships.children.data.length'));
   }),
   isDropTarget: computed('isCredit', 'hasChildren', function () {

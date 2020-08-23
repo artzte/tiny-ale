@@ -8,9 +8,11 @@ export default Route.extend({
   actions: {
     error(err) {
       if (err instanceof AuthError) {
-        return; // doSigninRedirect(window.location.href);
+        doSigninRedirect(window.location.href);
       }
-      throw err;
+
+      // required to allow bubble-through to error routes
+      return true;
     },
     didTransition() {
       document.body.scrollTop = 0;

@@ -5,7 +5,7 @@ import { inject as service } from '@ember/service';
 export default Component.extend({
   tinyData: service(),
   tagName: 'tbody',
-  children: computed('requirement', 'status', function () {
+  children: computed('requirement.relationships.children.data', 'status', function () {
     const { tinyData, status } = this;
     const children = this.get('requirement.relationships.children.data') || [];
 

@@ -1,4 +1,3 @@
-import Controller from '@ember/controller';
+import SettingsCompetenciesEditController from './edit';
 
-export default class SettingsCompetenciesNewController extends Controller {
-}
+export default class SettingsCompetenciesNewController extends SettingsCompetenciesEditController {}

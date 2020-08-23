@@ -5,7 +5,5 @@ export default Component.extend({
   noResultsMessage: 'No results were found',
   count: 0,
   tagName: '',
-  hasResults: computed('count', function () {
-    return this.count > 0;
-  }),
+  hasResults: computed.gt('count', 0),
 });

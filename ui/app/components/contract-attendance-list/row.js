@@ -3,7 +3,7 @@ import { computed } from '@ember/object';
 
 export default Component.extend({
   tagName: '',
-  columnsCount: computed('meetings', function () {
+  columnsCount: computed('meetings.length', function () {
     return this.meetings.length + 4;
   }),
   roll: computed('attendanceHash', 'enrollment', function () {

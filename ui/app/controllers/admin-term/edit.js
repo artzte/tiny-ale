@@ -8,11 +8,11 @@ export default Controller.extend({
     async saveTerm(data) {
       try {
         const result = await this.updateModel(data);
-      
+
         this.flashMessages.success('Term was successfully saved.');
         this.transitionToRoute('admin-terms');
         return result;
-      } catch(e) {
+      } catch (e) {
         this.flashMessages.alert('Server reported error');
         return e;
       }

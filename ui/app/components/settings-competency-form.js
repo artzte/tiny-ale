@@ -20,7 +20,7 @@ export default class SettingsCompetencyFormComponent extends TForm {
         message: 'duplicates an existing sequence number',
         isValid(key, value, _pojo) {
           return !competencies.find(competency => competency.id !== model.id && competency.attributes.seq === value);
-        }
+        },
       }],
     });
   }

@@ -2,6 +2,8 @@ import _fetch from 'fetch';
 import { Promise, reject } from 'rsvp';
 import { getSessionData, AuthError } from './session-utils';
 
+export class ApiError extends Error {}
+
 /* Build error object from a Rails API response.
  * @param {Object} response | response from fetch
  * @returns {Object} Object with fields:
@@ -11,7 +13,7 @@ import { getSessionData, AuthError } from './session-utils';
  * @attribute {Object} body
  */
 export async function buildError(url, response) {
-  const err = new Error(response.statusText);
+  const err = new ApiError(response.statusText);
 
   err.url = url;
   err.status = response.status;

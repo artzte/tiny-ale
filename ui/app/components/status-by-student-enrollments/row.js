@@ -9,7 +9,7 @@ import EnrollmentRelations from '../../mixins/enrollment-relations';
 export default Component.extend(ContractRelations, EnrollmentRelations, {
   tinyData: service(),
   tagName: 'tbody',
-  contract: computed('enrollment', function () {
+  contract: computed('enrollment.relationships.contract.data.id', function () {
     return this.tinyData.get('contract', this.enrollment.relationships.contract.data.id);
   }),
   notes: computed('notablesHash', function () {
@@ -19,7 +19,7 @@ export default Component.extend(ContractRelations, EnrollmentRelations, {
 
     return notablesHash[enrollment.id];
   }),
-  columnsCount: computed('months', function () {
+  columnsCount: computed('months.length', function () {
     return this.months.length + 2;
   }),
 });

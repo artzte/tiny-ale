@@ -3,12 +3,11 @@ import { inject as service } from '@ember/service';
 
 export default Route.extend({
   tinyData: service(),
-  
-  model() {
+
+  model(params) {
     return Promise.all([
       this.tinyData.fetch('/api/competencies'),
       this.tinyData.getCompetencyCategories(),
     ]);
   },
-
 });

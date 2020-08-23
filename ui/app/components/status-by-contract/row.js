@@ -8,7 +8,7 @@ export default Component.extend(EnrollmentRelations, {
 
   tagName: 'tbody',
 
-  columnCount: computed('months', function () {
+  columnCount: computed('months.length', function () {
     return this.months.length + 2;
   }),
 

@@ -8,9 +8,7 @@ export default Component.extend({
 
   // not aliased. this can be overwritten by the caller
   // to just supply a specific count.
-  count: computed('result.meta.count', function () {
-    return this.get('result.meta.count');
-  }),
+  count: computed.reads('result.meta.count'),
 
   countName: computed('count', function () {
     const { count } = this;
