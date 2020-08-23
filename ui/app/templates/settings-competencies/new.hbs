@@ -1,15 +1,9 @@
 <h2>New competency</h2>
 
-<p>
-  <LinkTo @route="settings-competencies">
-    Return to list
-  </LinkTo>
-</p>
-
 <SettingsCompetencyForm
-  @model={{model}}
-  @categories={{categories}}
-  @competencies={{competencies}}
+  @model={{this.model}}
+  @categories={{this.categories}}
+  @competencies={{this.competencies}}
   @save={{action "updateCompetency"}}
   @reportError={{action "reportError"}}
 />

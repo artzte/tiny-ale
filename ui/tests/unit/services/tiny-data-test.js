@@ -131,9 +131,9 @@ module('Unit | Service | tiny-data', (hooks) => {
     assert.ok(note);
 
     service.deleteRecord(note);
-    
-    const deletedResult = service.get('note', note.id);
 
-    assert.notOk(deletedResult);
+    assert.throws(() => {
+      service.get('note', note.id);
+    });
   });
 });

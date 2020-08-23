@@ -10,6 +10,8 @@ export default Component.extend(CreditAssignmentPropsMixin, {
 
   showApproveForTransmittal: computed('creditAssignment', () => true),
 
+  showSplit: computed.reads('hasChildren'),
+
   selectionDisabled: computed('disabled', 'hasChildren', function () {
     if (this.disabled) {
       return true;
@@ -18,11 +20,7 @@ export default Component.extend(CreditAssignmentPropsMixin, {
     return this.hasChildren;
   }),
 
-  showSplit: computed('hasChildren', function () {
-    return this.hasChildren;
-  }),
-
-  notes: computed('creditAssignment', function () {
+  notes: computed('creditAssignment.relationships.notes.data', function () {
     const { tinyData } = this;
     const refs = this.get('creditAssignment.relationships.notes.data') || [];
 

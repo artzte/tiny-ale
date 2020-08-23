@@ -32,7 +32,7 @@ export default Component.extend({
     return isUnacceptable(status);
   }),
 
-  statusAbbreviation: computed('status', function () {
+  statusAbbreviation: computed('status.attributes', function () {
     const statusAttributes = this.get('status.attributes') || {};
     const { academicStatus, fteHours } = statusAttributes;
     const statusText = [];

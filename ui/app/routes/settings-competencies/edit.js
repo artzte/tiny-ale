@@ -13,7 +13,7 @@ export default class SettingsCompetenciesEditRoute extends Route {
 
     controller.setProperties({
       model,
-      competencies,
+      competencies: competencies.data,
       categories,
     });
   }

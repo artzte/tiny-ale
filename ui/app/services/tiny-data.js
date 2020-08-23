@@ -157,14 +157,13 @@ export const tinyDataService = {
 
   deleteRecord(data) {
     const store = this._store;
+    console.log('was', store);
     this._store = {
       ...store,
-      [data.type]: {
-        ...store[data.type],
-        [data.id]: null,
-      }
+      [data.type]: { ...store[data.type] },
     };
-  }
+    delete this._store[data.type][data.id];
+  },
 };
 
 export default Service.extend(tinyDataService);

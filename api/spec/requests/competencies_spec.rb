@@ -39,13 +39,13 @@ RSpec.describe 'Competencies API', type: :request do
     it 'creates a requirement' do
       count = Ealr.count
       seq = '99.9'
-      ealr = 'test'
+      competency = 'test'
 
       body = {
         data: {
           attributes: {
             category: @category,
-            ealr: ealr,
+            competency: competency,
             seq: seq,
           }
         }
@@ -58,8 +58,8 @@ RSpec.describe 'Competencies API', type: :request do
       new_count = Ealr.count
       expect(new_count).to eq(count + 1)
 
-      new_ealr = Ealr.find_by_category_and_ealr_and_seq @category, ealr, seq
-      expect(ealr).not_to be_empty
+      new_ealr = Ealr.find_by_category_and_ealr_and_seq @category, competency, seq
+      expect(new_ealr).not_to be_nil
     end
 
     it 'updates a requirement' do
@@ -79,6 +79,7 @@ RSpec.describe 'Competencies API', type: :request do
 
       expect(response).to have_http_status(200)
       expect(json).not_to be_empty
+
       expect(json['data']['id']).to eq(ealr.id.to_s)
       expect(json['data']['attributes']['seq']).to eq(seq)
       expect(json['data']['attributes']['category']).to eq(ealr.category)

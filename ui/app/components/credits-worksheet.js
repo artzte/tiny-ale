@@ -6,9 +6,7 @@ export default Component.extend({
   tinyData: service(),
   selectedCredits: (() => ([]))(),
   creditAssignments: (() => ([]))(),
-  combineLinkDisabled: computed('selectedCredits', function () {
-    return this.selectedCredits.length < 2;
-  }),
+  combineLinkDisabled: computed.lt('selectedCredits.length', 2),
   unfinalizedCredits: computed('creditAssignments', function () {
     return this.creditAssignments
       .filter(ca => !ca.relationships.creditTransmittalBatch.data)

@@ -11,7 +11,7 @@ export default Mixin.create({
     return tinyData.get('user', enrollment.relationships.participant.data.id);
   }),
 
-  creditAssignments: computed('enrollment.relationships.creditAssignments', function () {
+  creditAssignments: computed('enrollment.relationships.creditAssignments.data', function () {
     const { tinyData } = this;
 
     return this.enrollment.relationships.creditAssignments.data

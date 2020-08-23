@@ -64,7 +64,7 @@ export default Controller.extend({
           data,
         });
 
-        this.flashMessages.info('Settings updates completed');
+        this.flashMessages.success('Settings updates completed');
         this.transitionToRoute('admin-settings.index');
         return resolve();
       } catch (e) {

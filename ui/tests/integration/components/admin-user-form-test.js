@@ -109,7 +109,7 @@ module('Integration | Component | admin-user-form', (hooks) => {
   });
 
   test('it refuses to submit an invalid user', async function (assert) {
-    const noName = this.get('student');
+    const noName = this.student;
     noName.attributes.lastName = null;
     noName.attributes.firstName = null;
     this.set('noName', noName);

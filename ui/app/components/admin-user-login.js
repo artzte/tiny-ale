@@ -16,7 +16,7 @@ export default Component.extend({
   showAccessWarning: computed('user', 'login', function () {
     const userIsActive = isActive(this.user);
     const userIsStaff = isStaff(this.user);
-    const login = this.get('login');
+    const { login } = this;
 
     // An active admin or staff member should have an identity.
     if (userIsActive && userIsStaff && !login) {

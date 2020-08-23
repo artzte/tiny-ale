@@ -64,11 +64,11 @@ module('Integration | Component | status-all-coordinators', (hooks) => {
 
     assert.equal(coorActiveLink.text.trim(), 'C', 'first month is marked as complete');
 
-    const [firstMonth] = this.get('term').attributes.months;
+    const [firstMonth] = this.term.attributes.months;
 
     // drop the first status month for coor1
     //
-    const statuses = this.get('statuses');
+    const { statuses } = this;
     const filteredData = statuses.data.filter(status => status.month !== firstMonth && status.coordinatorId === coor1.id);
 
     this.set('statuses', Object.assign({}, statuses, {

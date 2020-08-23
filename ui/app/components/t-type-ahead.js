@@ -13,9 +13,7 @@ export default Component.extend({
   onSearch,
   onChange() {},
 
-  hasResults: computed('results', function () {
-    return this.results && this.results.length;
-  }),
+  hasResults: computed.and('results', 'results.length'),
 
   didReceiveAttrs() {
     const {
