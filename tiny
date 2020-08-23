@@ -59,22 +59,34 @@ initDb () {
   testPrepare
 }
 
-reset () {
-  stopContainers
-  removeContainers
-  removeImages
+remove () {
+  removeUi
+  removeDb
+  removeApi
 }
 
-stopContainers () {
+removeUi () {
+  docker rm $UI
+  docker rmi ${PROJECT}_ux
+}
+
+removeApi () {
+  docker rm $API
+  docker rmi ${PROJECT}_web
+}
+
+removeDb () {
+  docker rm $DB
+  docker rmi ${PROJECT}_db
+}
+
+stop () {
   docker stop $API $DB $ADMINER $UI
 }
 
-removeContainers () {
-  docker rm $API $DB $ADMINER $UI
-}
-
-removeImages () {
-  docker rmi ${PROJECT}_web ${PROJECT}_db ${PROJECT}_adminer ${PROJECT}_ux
+reset () {
+  stop
+  remove
 }
 
 # if this is not working, you need to get your AWS profile set up in 
@@ -89,11 +101,15 @@ build () {
 }
 
 log () {
-  docker exec -it $API tail -f log/*
+  docker exec -it tiny-ale_web_1 tail -f "log/development.log"
 }
 
 test:api () {
   docker exec -e RAILS_ENV=test $API bundle exec rspec
+}
+
+test:ui () {
+  docker exec $UI npm test
 }
 
 usage () {
@@ -105,14 +121,16 @@ usage () {
   echo "build      | applies docker-compose to start the API stack"
   echo "initDb     | sets up the development database; will delete the existing data if it exists"
   echo "server     | starts the development server"
-  echo "shell      | opens a bash shell on the Rails API container"
+  echo "shell:api  | opens a bash shell on the Rails API container"
+  echo "shell:ui   | opens a bash shell on the EmberJS client container"
   echo "log        | tail the production log"
   echo "reset      | deletes the docker images for the API and DB"
   echo "test:api   | runs test suite for API"
+  echo "test:ui    | runs test suite for UI"
 }
 
 case "$COMMAND" in
-  "getSecrets"|"initDb"|"build"|"server"|"shell:ui"|"shell:api"|"log"|"reset"|"test:api")
+  "getSecrets"|"initDb"|"build"|"server"|"shell:ui"|"shell:api"|"log"|"reset"|"test:api"|"test:ui"|"removeUi"|"stop")
       $COMMAND
       ;;
   *)

@@ -3,6 +3,7 @@
 class EnrollmentsController < ApiBaseController
   before_action :get_enrollment, only: %i[show destroy update]
   before_action :entitle_enrollment, only: %i[destroy update]
+  before_action :entitle_contract, only: %i[create]
 
   def index
     limit = params[:limit] || Rails.configuration.constants[:DEFAULT_LIMIT]
@@ -63,6 +64,16 @@ class EnrollmentsController < ApiBaseController
     render json: EnrollmentSerializer.new(@enrollment, options), status: 200
   end
 
+  def create
+    if Enrollment.where(contract_id: params[:id], participant_id: enrollment_create_params).count > 0
+      raise TinyException, 'Enrollments are already created on this contract'
+    end
+
+    enrollments = enrollment_create_params.map { |participant_id| Enrollment.create! creator: @user, contract_id: params[:id], participant_id: participant_id, enrollment_status: Enrollment::STATUS_ENROLLED }
+
+    render json: EnrollmentSerializer.new(enrollments, { include: [:participant] }), status: 200
+  end
+
   def update
     case params[:command]
     when 'cancel'
@@ -84,7 +95,7 @@ class EnrollmentsController < ApiBaseController
     render nothing: true, status: 204
   end
 
-  protected
+protected
 
   PERMITTED_INCLUDES = %w[contract contract.facilitator contract.term credit_assignments credit_assignments.credit participant turnins turnins.assignment meeting_participants meeting_participants.meeting].freeze
 
@@ -105,4 +116,16 @@ class EnrollmentsController < ApiBaseController
   def entitle_enrollment
     true
   end
+
+  def entitle_contract
+    true
+  end
+
+  def enrollment_create_params
+    params
+      .require(:data)
+      .require(:relationships)
+      .require(:user_ids)
+  end
+
 end

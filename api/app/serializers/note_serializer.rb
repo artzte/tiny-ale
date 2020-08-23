@@ -6,5 +6,5 @@ class NoteSerializer < ApplicationSerializer
   attributes :note, :updated_at
 
   belongs_to :notable, polymorphic: true
-  belongs_to :creator, record_type: 'User'
+  belongs_to :creator, serializer: 'User'
 end

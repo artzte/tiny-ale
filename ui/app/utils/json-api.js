@@ -22,7 +22,7 @@ export function createEntity(type, attributes, ...relationships) {
 
   const entity = {
     type,
-    attributes,
+    attributes: attributes || {},
   };
 
   if (relations) {

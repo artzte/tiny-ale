@@ -60,6 +60,13 @@ export const tinyDataService = {
     this._data.reportingBaseMonth = reportingBaseMonth;
   },
 
+  async getCompetencyCategories() {
+    if (!this._data.competencyCategories) {
+      this._data.competencyCategories = await fetch('/api/competencies/categories');
+    }
+    return this._data.competencyCategories;
+  },
+
   flush() {
     this._store = {};
     this._data = {};
@@ -70,11 +77,6 @@ export const tinyDataService = {
       .then((result) => {
         this.addResult(result);
         return result;
-      }, (err) => {
-        if (err instanceof AuthError) {
-          return doSigninRedirect(window.location.href);
-        }
-        throw err;
       });
   },
 
@@ -129,7 +131,7 @@ export const tinyDataService = {
         return memo;
       }, {});
 
-    this._store = Object.assign({}, store, mergedAdditions);
+    this._store = { ...store, ...mergedAdditions };
   },
 
   get(type, id) {
@@ -152,6 +154,17 @@ export const tinyDataService = {
   addRecord(data) {
     this.addResult({ data });
   },
+
+  deleteRecord(data) {
+    const store = this._store;
+    this._store = {
+      ...store,
+      [data.type]: {
+        ...store[data.type],
+        [data.id]: null,
+      }
+    };
+  }
 };
 
 export default Service.extend(tinyDataService);

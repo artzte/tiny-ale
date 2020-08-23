@@ -47,8 +47,8 @@ export default Route.extend({
     this._super(controller, statuses);
 
     controller.setProperties({
-      statuses: statuses.data,
-      students: this.students.data,
+      statuses,
+      students: this.students,
       term: this.term,
     });
   },

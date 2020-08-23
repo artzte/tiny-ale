@@ -3,6 +3,9 @@ import { inject as service } from '@ember/service';
 
 export default TinyForm.extend({
   user: service(),
+  save(pojo) {
+    console.log('got', pojo);
+  },
   actions: {
     async onSearchCandidates(name) {
       const result = await this.user.searchStudents({ name, scope: `contract:${this.contract.id}` });

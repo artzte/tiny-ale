@@ -4,11 +4,6 @@ Rails.application.routes.draw do
   get '/up', to: 'uptime#index'
   get '/up/db', to: 'uptime#db'
 
-  namespace :admin do
-    get 'credits/create'
-    get 'credits/update'
-    get 'credits/destroy'
-  end
   scope '/api' do
     get '/profile', to: 'profiles#index'
 
@@ -29,6 +24,7 @@ Rails.application.routes.draw do
     get '/enrollments/:id', to: 'enrollments#show'
     patch '/enrollments/:id/:command', to: 'enrollments#update'
     delete '/enrollments/:id', to: 'enrollments#destroy'
+    post '/contracts/:id/enrollments', to: 'enrollments#create'
 
     get '/notes', to: 'notes#index'
     post '/notes/:notable_type/:notable_id', to: 'notes#create'
@@ -56,6 +52,8 @@ Rails.application.routes.draw do
 
     get '/categories', to: 'categories#index'
 
+    get '/competencies', to: 'competencies#index'
+
     get '/terms', to: 'terms#index'
     get '/terms/:id', to: 'terms#show'
 
@@ -64,6 +62,16 @@ Rails.application.routes.draw do
 
     get '/credits', to: 'credits#index'
     get '/credits/:id', to: 'credits#show'
+
+    get '/competencies/categories', to: 'competencies#categories'
+    get '/competencies', to: 'competencies#index'
+
+    get '/learning-plans/:student_id/:year', to: 'learning_plans#show'
+    get '/learning-plans/:student_id', to: 'learning_plans#show'
+    post '/learning-plans/:student_id', to: 'learning_plans#create'
+    put '/learning-plans/:learning_plan_id', to: 'learning_plans#update'
+    post '/learning-plans/:learning_plan_id/goals/:id', to: 'learning_plans#add_goal'
+    delete '/learning-plans/:learning_plan_id/goals/:id', to: 'learning_plans#remove_goal'
 
     resources :staff
     resources :statuses, controller: 'status'
@@ -89,6 +97,10 @@ Rails.application.routes.draw do
       put '/contract-categories/:id', to: 'admin_contract_categories#update'
       delete '/contract-categories/:id', to: 'admin_contract_categories#destroy'
 
+      post '/competencies', to: 'admin_competencies#create'
+      put '/competencies/:id', to: 'admin_competencies#update'
+      delete '/competencies/:id', to: 'admin_competencies#destroy'
+
       put '/graduation-plan-requirements/sort', to: 'admin_graduation_plan_requirements#sort'
       put '/graduation-plan-requirements/:id', to: 'admin_graduation_plan_requirements#update'
       post '/graduation-plan-requirements', to: 'admin_graduation_plan_requirements#create'
@@ -96,6 +108,11 @@ Rails.application.routes.draw do
       post '/credits', to: 'admin_credits#create'
       put '/credits/:id', to: 'admin_credits#update'
       put '/credits/:id', to: 'admin_credits#update'
+
+      get '/learning-plan-goals', to: 'learning_plan_goals#index'
+      post '/learning-plan-goals', to: 'admin_learning_plan_goals#create'
+      put '/learning-plan-goals/:id', to: 'admin_learning_plan_goals#update'
+      delete '/learning-plan-goals/:id', to: 'admin_learning_plan_goals#destroy'
     end
   end
 end

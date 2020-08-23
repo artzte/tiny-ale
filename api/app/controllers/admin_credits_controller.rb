@@ -19,19 +19,15 @@ class AdminCreditsController < AdminController
 
   def destroy
     credit = Credit.find params[:id]
-    update_attributes credit
-    credit.save!
+    credit.destroy!
 
-    render json: CreditSerializer.new(credit)
+    render nothing: true, status: 204
   end
 
   private
 
   def update_attributes(model)
     attrs = credit_attributes
-
-    Rails.logger.info '*************'
-    Rails.logger.info attrs
 
     attrs[:course_type] = case attrs[:course_type]
                           when 'general'
@@ -41,10 +37,6 @@ class AdminCreditsController < AdminController
                           else
                             Credit::TYPE_NONE
       end
-
-    Rails.logger.info '*************'
-    Rails.logger.info attrs
-    Rails.logger.info '*************'
 
     model.update_attributes attrs
   end

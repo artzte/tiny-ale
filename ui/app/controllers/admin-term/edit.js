@@ -5,12 +5,17 @@ export default Controller.extend({
   flashMessages: service(),
   tinyData: service(),
   actions: {
-    saveTerm(data) {
-      return this.updateModel(data).then((result) => {
+    async saveTerm(data) {
+      try {
+        const result = await this.updateModel(data);
+      
         this.flashMessages.success('Term was successfully saved.');
         this.transitionToRoute('admin-terms');
         return result;
-      });
+      } catch(e) {
+        this.flashMessages.alert('Server reported error');
+        return e;
+      }
     },
     reportError() {
       this.flashMessages.alert('Please check the values and correct any errors');

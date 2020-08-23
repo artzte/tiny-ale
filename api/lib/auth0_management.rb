@@ -31,6 +31,8 @@ class AuthManagement
   end
 
   def get_access_token
+    return {}
+  
     url = URI("#{@base_url}/oauth/token")
 
     http = Net::HTTP.new(url.host, url.port)
