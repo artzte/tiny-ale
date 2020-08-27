@@ -4,7 +4,7 @@ import CreditAssignmentItem from '../credit-assignments/item';
 
 export default CreditAssignmentItem.extend({
   tinyData: service(),
-  credit: computed('creditAssignment', function () {
+  credit: computed('creditAssignment.attributes.creditCourseName', 'creditAssignment.relationships.credit.data.id', function () {
     const creditId = this.get('creditAssignment.relationships.credit.data.id');
     if (creditId) {
       return this.tinyData.get('credit', creditId);

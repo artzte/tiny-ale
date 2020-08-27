@@ -20,6 +20,7 @@
           <button
             class="btn"
             onclick={{action (action "updateLogin" user login)}}
+            type="button"
           >
             Click to update login role to {{titleize user.attributes.role}}
           </button>
@@ -34,6 +35,7 @@
           <button
             class="btn"
             onclick={{action (action "updateLogin" user login)}}
+            type="button"
           >
             Click to update now
           </button>
@@ -47,6 +49,7 @@
           <button
             class="btn"
             onclick={{action (action "destroyLogin" user login)}}
+            type="button"
           >
             Click to remove their login now
           </button>
@@ -67,6 +70,7 @@
           <button
             class="btn"
             onclick={{action "createLogin" user}}
+            type="button"
           >
             Click to create a login
           </button>

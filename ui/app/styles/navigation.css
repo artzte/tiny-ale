@@ -48,7 +48,7 @@ a, t-link[enabled] {
   width: 30rem;
   margin-left: -15rem;
 
-  &.alert {
+  &.alert-warning {
     @apply bg-red-500;
   }
 }

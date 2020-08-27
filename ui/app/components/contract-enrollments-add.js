@@ -1,5 +1,5 @@
-import TinyForm from '../components/t-form';
 import { inject as service } from '@ember/service';
+import TinyForm from './t-form';
 
 export default TinyForm.extend({
   user: service(),
@@ -10,5 +10,8 @@ export default TinyForm.extend({
     },
     onChangeCandidate() {
     },
+  },
+  save(pojo) {
+    console.log('got', pojo);
   },
 });

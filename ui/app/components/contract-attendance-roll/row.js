@@ -23,7 +23,7 @@ export default Component.extend({
 
   hasRoll: bool('meetingParticipant.id'),
 
-  meetingParticipant: computed('meetingParticipantHash', 'enrollment', function () {
+  meetingParticipant: computed('enrollment', 'meeting', 'meetingParticipantHash', function () {
     const {
       meetingParticipantHash,
       enrollment,
@@ -38,7 +38,7 @@ export default Component.extend({
     return newMeetingParticipant;
   }),
 
-  notes: computed('notesHash', 'enrollment', function () {
+  notes: computed('enrollment.id', 'notesHash', function () {
     return this.notesHash[this.enrollment.id];
   }),
 

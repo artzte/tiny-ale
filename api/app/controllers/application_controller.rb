@@ -2,6 +2,7 @@
 
 class ApplicationController < ActionController::API
   rescue_from ActionController::RoutingError, with: :render_404
+  rescue_from ActiveRecord::RecordNotFound, with: :render_404_active_record
   rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
   rescue_from ActionController::ParameterMissing, with: :render_parameter_missing_response
   rescue_from TinyException, with: :render_custom_response
@@ -12,8 +13,18 @@ class ApplicationController < ActionController::API
     month.sub(/^\d{4}-\d{2}$/, '\0-01')
   end
 
+  def render_404_active_record(exception)
+    render json: {
+      status: 404,
+      message: exception.message,
+    }, status: :not_found
+  end
+
   def render_404(exception)
-    render json: { error: exception.message }, status: :not_found
+    render json: {
+      status: 404,
+      message: 'Page not found'
+    }, status: :not_found
   end
 
   def render_unprocessable_entity_response(exception)

@@ -25,8 +25,11 @@ module('Integration | Component | contract-attendance-roll/set-all', (hooks) => 
 
     assert.ok(find('t-contract-attendance-roll-set-all'), 'container rendered');
 
-    await new Interactor('select[name="participation"]').select('Absent');
-    await new Interactor('select[name="contactType"]').select('Coor');
+    const participation = new Interactor('select[name="participation"]');
+    await participation.select('Absent');
+
+    const contactType = new Interactor('select[name="contactType"]');
+    await contactType.select('Coor');
 
     await click('button');
 

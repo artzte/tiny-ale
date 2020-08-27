@@ -20,6 +20,7 @@ class AdminTermsController < AdminController
   private
 
   def update_attributes(model)
+    Rails.logger.info term_attributes
     attrs = term_attributes
 
     # will just leave months alone if parsing fails
@@ -40,8 +41,9 @@ class AdminTermsController < AdminController
   end
 
   def term_attributes
-    params.require(:data)
-          .require(:attributes)
-          .permit(:name, :school_year, :status, :credit_date, months: [])
+    params
+      .require(:data)
+      .require(:attributes)
+      .permit(:name, :school_year, :status, :credit_date, :months => [])
   end
 end

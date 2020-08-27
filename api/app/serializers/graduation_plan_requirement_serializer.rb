@@ -5,6 +5,6 @@ class GraduationPlanRequirementSerializer < ApplicationSerializer
 
   attributes :name, :notes, :position, :requirement_type, :status
 
-  has_many :children, record_type: 'GraduationPlanRequirement'
-  belongs_to :parent, record_type: 'GraduationPlanRequirement'
+  has_many :children, serializer: 'GraduationPlanRequirement'
+  belongs_to :parent, serializer: 'GraduationPlanRequirement'
 end

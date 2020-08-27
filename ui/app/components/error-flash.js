@@ -3,7 +3,7 @@ import { computed } from '@ember/object';
 
 export default Component.extend({
   tagName: '',
-  errorSummary: computed('error', function () {
+  errorSummary: computed('defaultMessage', 'error', function () {
     const { error } = this;
 
     if (!error) return null;

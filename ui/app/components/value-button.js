@@ -48,6 +48,6 @@ export default Component.extend({
   },
 
   doOnChange() {
-    this.get('onchange')(this.optionValue, this.name);
+    this.onchange(this.optionValue, this.name);
   },
 });

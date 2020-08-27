@@ -5,6 +5,14 @@ class Ealr < ApplicationRecord
 
   has_and_belongs_to_many :contracts, join_table: 'contract_ealrs'
 
+  def seq_f
+    @seq_f = @seq_f ||= seq.to_f
+  end
+
+  def <=>(other)
+    self.seq_f <=> other.seq_f
+  end
+
   def self.ealrs_for_category(category)
     Ealr.find(:all, order: 'seq', conditions: "category = '#{category}'")
   end

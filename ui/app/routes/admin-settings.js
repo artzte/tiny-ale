@@ -1,7 +1,3 @@
 import Route from '@ember/routing/route';
 
-export default Route.extend({
-  model() {
-    return { boo: 'hiss' };
-  },
-});
+export default Route.extend();

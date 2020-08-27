@@ -83,7 +83,7 @@ class User < ApplicationRecord
   belongs_to :coordinator, class_name: 'User', foreign_key: 'coordinator_id', optional: true
 
   # deprec , :order => 'last_name, first_name'
-  has_many :coordinatees, class_name: 'User', foreign_key: 'coordinator_id'
+  has_many :coordinatees, class_name: 'User', foreign_key: 'coordinator_id', inverse_of: :coordinator
 
   validates_presence_of :status, :privilege
   validates_presence_of :date_inactive, if: proc { |user| user.status == User::STATUS_INACTIVE }, message: 'required if status is INACTIVE'

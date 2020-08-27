@@ -20,9 +20,9 @@ module('Integration | Component | status-by-coordinator', (hooks) => {
     tinyDataServiceMock.addResult(coorTerms);
 
     const props = {
-      students: tinyDataServiceMock.get('user').filter(user => user.attributes.role === 'student'),
+      students: { data: tinyDataServiceMock.get('user').filter(user => user.attributes.role === 'student') },
       term: tinyDataServiceMock.get('term', term.id),
-      statuses: tinyDataServiceMock.get('status'),
+      statuses: { data: tinyDataServiceMock.get('status') },
     };
 
     this.setProperties(props);

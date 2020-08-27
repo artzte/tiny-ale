@@ -95,7 +95,7 @@ export default Controller.extend({
   },
 
   async syncLogin(model, login) {
-    const user = this.get('user');
+    const { user } = this;
     const changedKeys = getChangedKeys(user, model);
     const actionRedirect = { action: 'redirect' };
     const actionPrompt = { action: 'prompt' };

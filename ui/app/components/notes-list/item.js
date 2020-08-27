@@ -6,7 +6,7 @@ export default Component.extend({
   tinyData: service(),
   tagName: 'li',
   classNames: 'notes-list-item',
-  creator: computed('note', function () {
+  creator: computed('note.relationships.creator.data.id', function () {
     return this.tinyData.get('user', this.note.relationships.creator.data.id);
   }),
 });

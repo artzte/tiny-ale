@@ -7,29 +7,14 @@ import { doSigninRedirect } from '../utils/session-utils';
 export default Route.extend({
   tinyData: service(),
 
-  async beforeModel(transition) {
+  async beforeModel() {
     const { tinyData } = this;
 
-    try {
-      const appProfile = await tinyData.fetch('/api/profile');
+    const appProfile = await tinyData.fetch('/api/profile');
 
-      const mergedProfile = { ...appProfile.data, meta: appProfile.meta };
+    const mergedProfile = { ...appProfile.data, meta: appProfile.meta };
 
-      tinyData.setUser(mergedProfile);
-    } catch (e) {
-      // TODO this code does not run any more, as the redirect
-      // is handled in the tinyData service.
-      const { intent } = transition;
-
-      transition.abort();
-
-      if (e.status === 401 || e.message === 'No session') {
-        doSigninRedirect(intent.url);
-        return;
-      }
-
-      throw e;
-    }
+    tinyData.setUser(mergedProfile);
   },
 
   model() {

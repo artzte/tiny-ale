@@ -1,0 +1,37 @@
+<fieldset onchange={{action "onChange" }}>
+  <p>
+    {{#form-input error=errors.category showError=showErrors label="Category"}}
+      <TSelect
+        @optionsList={{categories}}
+        @value={{pojo.category}}
+        @prompt="Select a category"
+        name="category"
+      />
+    {{/form-input}}
+  </p>
+  <p>
+    {{#form-input error=errors.seq showError=showErrors label="Sequence"}}
+      <input
+        value={{pojo.seq}}
+        name="seq"
+        type="text"
+      >
+    {{/form-input}}
+  </p>
+  <p>
+    {{#form-input error=errors.competency showErrors=showErrors for="competency" label="Competency"}}
+      <textarea
+        name="competency"
+      >{{pojo.competency}}</textarea>
+    {{/form-input}}
+  </p>
+</fieldset>
+
+{{#t-form-actions-row
+  disabled=disabled
+}}
+  {{#link-to "settings-competencies" class="btn btn-clear"}}
+    Cancel
+  {{/link-to}}
+{{/t-form-actions-row}}
+

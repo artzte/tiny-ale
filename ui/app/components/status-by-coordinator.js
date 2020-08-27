@@ -13,6 +13,6 @@ export default Component.extend({
   statusHash: computed('statuses', function () {
     const { statuses } = this;
 
-    return hashByStatusableIdAndMonth(statuses);
+    return hashByStatusableIdAndMonth(statuses.data);
   }),
 });

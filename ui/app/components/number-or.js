@@ -3,7 +3,7 @@ import { computed } from '@ember/object';
 
 const NumberOr = Component.extend({
   or: '-',
-  renderedNumber: computed('number', function () {
+  renderedNumber: computed('number', 'or', function () {
     const { number } = this;
     if (Number.isFinite(number) && number > 0) {
       return number;

@@ -16,6 +16,15 @@ Setting.create! name: 'current_year', value: CURRENT_YEAR
 @staff2 = User.create! privilege: User::PRIVILEGE_STAFF, first_name: 'Jake', last_name: 'Fletcher', date_active: Date.new(2013, 2, 1), email: 'tinysis-devtest+jake-staff@tinysis.org', status: User::STATUS_ACTIVE
 @staff3 = User.create! privilege: User::PRIVILEGE_STAFF, first_name: 'Joan', last_name: 'McCusker', status: User::STATUS_INACTIVE, date_active: Date.new(2011, 2, 1), date_inactive: Date.new(2018, 1, 1), email: 'tinysis-devtest+joan-staff@tinysis.org'
 
+coor = [CURRENT_YEAR, LAST_YEAR].map do |year|
+  coor = Term.new name: "COOR - #{year}", school_year: year, credit_date: Date.new(year, 9, 1) + 10.months, active: false
+  coor.set_dates(year, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
+  coor
+end
+
+coor.first.active = true
+coor.first.save!
+
 @term1_last = Term.new name: "#{LAST_YEAR} - Term 1", school_year: LAST_YEAR, credit_date: Date.new(LAST_YEAR + 1, 1, 31)
 @term2_last = Term.new name: "#{LAST_YEAR} - Term 2", school_year: LAST_YEAR, credit_date: Date.new(LAST_YEAR + 1, 6, 15)
 @term1_current = Term.new name: "#{CURRENT_YEAR} - Term 1", school_year: CURRENT_YEAR, credit_date: Date.new(CURRENT_YEAR + 1, 1, 31)
@@ -76,11 +85,10 @@ end
   CreditAssignment.create! credit: @credit2, contract: contract, credit_hours: 2
 end
 
-(1..2).each do |category_num|
-  category_name = "Category #{category_num}"
+Ealr.categories.each_with_index do |category_name, category_num|
   (1..2).each do |ealr_num|
-    seq = "#{category_num}.#{ealr_num}"
-    Ealr.create! category: category_name, seq: seq
+    seq = "#{category_num + 1}.#{ealr_num}"
+    Ealr.create! ealr: "#{category_name} #{ealr_num}", category: category_name, seq: seq
   end
 end
 
@@ -89,10 +97,10 @@ Ealr.all.each do |ealr|
 end
 @contract1_current.save!
 
-@student1 = User.create! privilege: User::PRIVILEGE_STUDENT, status: User::STATUS_ACTIVE, first_name: 'Riley', last_name: 'Freed', district_id: Random.rand(10**10).to_s, coordinator: @staff1, date_active: Date.new(LAST_YEAR, 8, 1)
-@student2 = User.create! privilege: User::PRIVILEGE_STUDENT, status: User::STATUS_ACTIVE, first_name: 'Cary', last_name: 'Jenkins', district_id: Random.rand(10**10).to_s, coordinator: @staff2, date_active: Date.new(LAST_YEAR, 8, 1)
-@student3 = User.create! privilege: User::PRIVILEGE_STUDENT, status: User::STATUS_ACTIVE, first_name: 'Janey', last_name: 'Edmunds', district_id: Random.rand(10**10).to_s, coordinator: @staff2, date_active: Date.new(LAST_YEAR, 8, 1)
-@student_inactive = User.create! privilege: User::PRIVILEGE_STUDENT, status: User::STATUS_INACTIVE, first_name: 'Grey', last_name: 'Sanderson', district_id: Random.rand(10**10).to_s, coordinator: @staff2, date_active: Date.new(LAST_YEAR, 8, 1), date_inactive: Date.new(CURRENT_YEAR, 10, 1)
+@student1 = User.create! privilege: User::PRIVILEGE_STUDENT, status: User::STATUS_ACTIVE, first_name: 'Riley', last_name: 'Freed', district_id: Random.rand(10**10).to_s, coordinator: @staff1, date_active: Date.new(LAST_YEAR, 8, 1), district_grade: 9
+@student2 = User.create! privilege: User::PRIVILEGE_STUDENT, status: User::STATUS_ACTIVE, first_name: 'Cary', last_name: 'Jenkins', district_id: Random.rand(10**10).to_s, coordinator: @staff2, date_active: Date.new(LAST_YEAR, 8, 1), district_grade: 10
+@student3 = User.create! privilege: User::PRIVILEGE_STUDENT, status: User::STATUS_ACTIVE, first_name: 'Janey', last_name: 'Edmunds', district_id: Random.rand(10**10).to_s, coordinator: @staff2, date_active: Date.new(LAST_YEAR, 8, 1), district_grade: 11
+@student_inactive = User.create! privilege: User::PRIVILEGE_STUDENT, status: User::STATUS_INACTIVE, first_name: 'Grey', last_name: 'Sanderson', district_id: Random.rand(10**10).to_s, coordinator: @staff2, date_active: Date.new(LAST_YEAR, 8, 1), date_inactive: Date.new(CURRENT_YEAR, 10, 1), district_grade: 12
 @students = [@student1, @student2, @student3]
 
 # current contracts should have active enrollments. reporting as if we are three months into
@@ -203,3 +211,23 @@ GraduationPlanMapping.create! graduation_plan: graduation_plan, graduation_plan_
 GraduationPlanMapping.create! graduation_plan: graduation_plan, graduation_plan_requirement: gradLang2, credit_assignment: credit_assignments.pop
 GraduationPlanMapping.create! graduation_plan: graduation_plan, graduation_plan_requirement: gradGeneral1, notes: 'It is done', date_completed: '2019-06-15'
 GraduationPlanMapping.create! graduation_plan: graduation_plan, graduation_plan_requirement: gradService1, notes: 'It is serviced', date_completed: '2019-06-15'
+
+(1..4).each do |i|
+  LearningPlanGoal.create! description: "Required learning plan goal #{i}", active: true, required: true
+end
+
+(1..4).each do |i|
+  LearningPlanGoal.create! description: "Optional learning plan goal #{i}", active: true, required: false
+end
+
+(1..4).each do |i|
+  LearningPlanGoal.create! description: "Inactive learning plan goal #{i}", active: false, required: false
+end
+
+[CURRENT_YEAR, LAST_YEAR].each do |year|
+  @students.each do |student|
+    plan = LearningPlan.create user: student, year: year, weekly_hours: 25, user_goals: 'Make friends and achieve success'
+    plan.learning_plan_goals << LearningPlanGoal.where('active = true AND required = true')
+    plan.save!
+  end
+end

@@ -9,5 +9,6 @@ FactoryBot.define do
     status { 1 } # active
     privilege { 1 } # student
     district_grade { 12 } # senior
+    email { Faker::Internet.email }
   end
 end

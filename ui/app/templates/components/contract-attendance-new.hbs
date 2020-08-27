@@ -6,7 +6,11 @@
     onchange=(action "onChangeDate")
   }}
   <footer>
-    <button class="btn" onclick={{action "createMeeting" selectedDate}}>
+    <button
+      class="btn"
+      onclick={{action "createMeeting" selectedDate}}
+      type="submit"
+    >
       Take attendance
     </button>
   </footer>
