@@ -15,11 +15,14 @@ module Secured
   private
 
   def render_unauthorized(message = 'Not authorized')
+    pp 'render_unauthorizeds'
     render json: { errors: [message] }, status: :unauthorized
   end
 
   def authenticate_request!
-    @user = User.find_by_privilege(User::PRIVILEGE_ADMIN) and return
+    pp 'authenticate_request'
+    # for offline
+    @user = User.find_by_last_name "Grey"
 
     permissions = get_permissions
 
@@ -33,16 +36,25 @@ module Secured
   end
 
   def http_token
+    pp 'http_token'
     if request.headers['Authorization'].present?
       request.headers['Authorization'].split(' ').last
     end
   end
 
   def get_permissions
+    pp 'get_permissions'
+    # for offline
+    return ['bleah']
+
     JsonWebToken.extract_permissions(http_token)
   end
 
   def get_user_id
+    pp 'get_user_id'
+    # for offline
+    return User.find_by_last_name('Grey').id
+  
     JsonWebToken.extract_user_id(http_token)
   end
 end
