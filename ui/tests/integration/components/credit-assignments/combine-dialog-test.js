@@ -90,7 +90,7 @@ module('Integration | Component | CreditAssignments::CombineDialog', (hooks) => 
     const [firstCredit] = creditsToCombine;
 
     const expectedTermOption = find(`select[name="contractTerm"] option[value="${firstCredit.relationships.contractTerm.data.id}"]`);
-    const expectedCreditOption = find(`t-type-ahead[name="credit"] t-type-ahead-result[data-test-value="${firstCredit.relationships.credit.data.id}"]`);
+    const expectedCreditOption = find(`t-type-ahead[name="credit"] [data-test-value="${firstCredit.relationships.credit.data.id}"]`);
 
     assert.ok(expectedTermOption, 'found expected term selection');
     assert.ok(expectedCreditOption, 'found expected credit selection');
@@ -147,7 +147,7 @@ module('Integration | Component | CreditAssignments::CombineDialog', (hooks) => 
     const termInteractor = new Interactor('select[name="contractTerm"]');
     await termInteractor.select('Select a term');
 
-    await click('t-type-ahead[name="credit"] [data-test-clear-result]');
+    await click('t-type-ahead[name="credit"] [data-test-clear-selection]');
 
     await click('button[type="submit"]');
 
@@ -158,6 +158,7 @@ module('Integration | Component | CreditAssignments::CombineDialog', (hooks) => 
     assert.matches(request.type, 'error', 'error reported');
 
     assert.ok(request.errors, 'with an error object');
+
     ['creditsOverride', 'contractTerm', 'credit'].forEach((field) => {
       assert.ok(request.errors[field], `${field} was flagged`);
     });

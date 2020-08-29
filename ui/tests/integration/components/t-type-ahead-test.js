@@ -60,16 +60,15 @@ module('Integration | Component | TTypeAhead', (hooks) => {
       />
     `);
 
-    const result = find('t-type-ahead-result');
+    const selectedOption = find('[data-test-value');
 
-    assert.ok(result, 'a result is present');
-    assert.equal(result.textContent.trim(), desiredResult.name);
+    assert.ok(selectedOption, 'a result is present');
+    assert.equal(selectedOption.textContent.trim(), desiredResult.name);
 
     const containerElement = find('t-type-ahead');
     assert.ok(containerElement, 'expected container rendered');
 
-    const resultElement = find('t-type-ahead-result');
-    assert.equal(resultElement.dataset.testValue, desiredResult.value, 'value placed into data-value attribute');
+    assert.equal(selectedOption.dataset.testValue, desiredResult.value, 'value placed into data-value attribute');
   });
 
   test('it renders with no initial value', async function (assert) {
@@ -95,7 +94,7 @@ module('Integration | Component | TTypeAhead', (hooks) => {
 
     await render(hbs`
       <TTypeAhead
-        name="myboo"
+        @name="myboo"
         @value={{value}}
         @onSearch={{onSearch}}
         @onChange={{onChange}}
@@ -127,7 +126,7 @@ module('Integration | Component | TTypeAhead', (hooks) => {
     assert.equal(request.name, 'myboo', 'the name was passed as the second argument');
     assert.equal(request.result, desiredResult, 'the result was passed as third argument');
 
-    const resultOverlay = find('t-type-ahead-result');
+    const resultOverlay = find('[data-test-value]');
 
     assert.ok(resultOverlay, 'a result is present');
     assert.equal(resultOverlay.textContent.trim(), desiredResult.name, 'expected result is displayed');

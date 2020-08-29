@@ -6,7 +6,7 @@
   autofocus={{autofocusInput}}
   placeholder={{prompt}}
 >
-<ul class="flex m-0 p-0">
+<ul class="flex m-0 p-0" data-test-values>
   {{#each selections as |selection i|}}
     <li class="inline-block cursor-text bg-gray-800 text-gray-200 p-2 m-1" data-test-clear-result data-test-value={{selection.value}}>
       {{selection.name}}
