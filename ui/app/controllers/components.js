@@ -36,12 +36,10 @@ export default class ComponentsController extends Controller {
   }
 
   @action selectMountain(mountainId, name, selection) {
-    console.log('selectMountain', arguments)
     this.selections = selection && [selection];
   }
 
   @action selectMountains(mountainIds, name, selections) {
-    console.log('selectMountains', arguments)
     this.selections = selections;
   }
 
