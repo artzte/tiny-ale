@@ -2,7 +2,6 @@ import Route from '@ember/routing/route';
 import Promise from 'rsvp';
 import { inject as service } from '@ember/service';
 import fetch from '../utils/fetch';
-import { doSigninRedirect } from '../utils/session-utils';
 
 export default Route.extend({
   tinyData: service(),

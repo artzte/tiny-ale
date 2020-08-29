@@ -1,21 +1,21 @@
-{{#if result}}
-  <t-type-ahead-result class="field cursor-text" data-test-value={{result.value}}>
-    <span class="bg-gray-800 text-gray-200 p-2">
-      {{result.name}}
-      <span class="cursor-pointer pl-2" data-test-clear-result onclick={{action "doClearResult"}}>
+<input
+  type="text"
+  oninput={{action "doInput" target=this}}
+  onkeydown={{action "doKeyDown"}}
+  disabled={{unless result false}}
+  autofocus={{autofocusInput}}
+  placeholder={{prompt}}
+>
+<ul class="flex m-0 p-0">
+  {{#each selections as |selection i|}}
+    <li class="inline-block cursor-text bg-gray-800 text-gray-200 p-2 m-1" data-test-clear-result data-test-value={{selection.value}}>
+      {{selection.name}}
+      <span class="cursor-pointer pl-2" data-test-clear-selection onclick={{action "doClearSelection" i}}>
         <FaIcon @icon="times" @prefix="fas" @size="1x" class="text-white" />
       </span>
-    </span>
-  </t-type-ahead-result>
-{{else}}
-  <input
-    type="text"
-    oninput={{action "doInput"}}
-    onkeydown={{action "doKeyDown"}}
-    disabled={{unless result false}}
-    autofocus={{autofocusInput}}
-  >
-{{/if}}
+    </li>
+  {{/each}}
+</ul>
 {{#if showResults}}
   <ul
     class="absolute search-results bg-white border border-black-600 list-reset p-0 z-100"

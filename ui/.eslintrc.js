@@ -30,7 +30,6 @@ module.exports = {
     'ember/order-in-models': 1,
     'ember/order-in-routes': 1,
     'ember/no-arrow-function-computed-properties': 0,
-    'ember/no-new-mixins': 0,
 
     'comma-dangle': ['error', {
       arrays: 'always-multiline',
@@ -40,6 +39,15 @@ module.exports = {
       functions: 'ignore',
     }],
 
+    // OCTANE
+    'ember/no-mixins': 0,
+    'ember/no-new-mixins': 0,
+    'ember/no-get': 0,
+    'ember/use-brace-expansion': 0,
+
+    // TODO this seems like false positives, why
+    'import/extensions': 0,
+
     // sometimes named imports are handy
     'import/prefer-default-export': 0,
 
@@ -47,6 +55,7 @@ module.exports = {
     'import/no-unresolved': 0,
     'import/no-extraneous-dependencies': 0,
 
+    // OCTANE
     // ember has lots of anon functions in its computeds,
     // grace here
     'func-names': 0,

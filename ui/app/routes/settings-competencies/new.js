@@ -5,6 +5,7 @@ import { createEntity } from '../../utils/json-api';
 export default class SettingsCompetenciesNewRoute extends Route {
   @service('tinyData') tinyData;
 
+  // eslint-disable-next-line class-methods-use-this
   model() {
     return createEntity('competency');
   }

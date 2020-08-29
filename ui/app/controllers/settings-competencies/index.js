@@ -2,7 +2,6 @@ import Controller from '@ember/controller';
 import { inject as service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
-import { ApiError } from '../../utils/fetch';
 
 export default class SettingsCompetenciesIndexController extends Controller {
   queryParams = ['category', 'refresh'];
