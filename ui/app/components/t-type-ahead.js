@@ -1,5 +1,6 @@
 import Component from '@ember/component';
-import { computed } from '@ember/object';
+import { action } from '@ember/object';
+import { tracked } from '@glimmer/tracking';
 import { schedule } from '@ember/runloop';
 import { resolve } from 'rsvp';
 
@@ -7,13 +8,21 @@ function onSearch() {
   resolve([]);
 }
 
-export default Component.extend({
-  tagName: 't-type-ahead',
+export default class TTypeAhead extends Component {
+  @tracked results;
 
-  onSearch,
-  onChange() {},
+  @tracked showResults = false;
 
-  hasResults: computed.and('results', 'results.length'),
+  @tracked selections = [];
+
+  onChange = () => {};
+
+  tagName = 't-type-ahead'
+
+  get hasResults() {
+    const { results } = this;
+    return results && results.length;
+  }
 
   didReceiveAttrs() {
     const {
@@ -22,96 +31,118 @@ export default Component.extend({
       value,
     } = this;
 
-    if (!(hasResults && value)) return;
+    if (!(hasResults && value !== null && value !== undefined)) return;
 
-    const index = results.findIndex(r => r.value === value);
-    if (index === -1) return;
+    const values = Array.isArray(value) ? value : [value];
+    const selections = values.map(v => results.find(r => r.value === v));
 
-    this.doChange(index, results[index], true);
-  },
+    selections.forEach(selection => this.handleChange(0, selection, true));
+  }
 
-  actions: {
-    async doInput(event) {
-      const searchValue = event.target.value.trim();
-      this.set('searchValue', searchValue);
-      let results;
+  @action
+  async doInput(event) {
+    const searchValue = event.target.value.trim();
+    this.searchValue = searchValue;
+    this.handleSearch(searchValue);
+  }
 
-      if (searchValue) {
-        results = await this.onSearch(searchValue);
-      } else {
-        results = [];
-      }
+  @action
+  doSelect(index, selection) {
+    this.handleChange(index, selection);
+  }
 
-      if (!Array.isArray(results)) throw new Error('Array result required for search');
-
-      this.setResults(results);
-    },
-
-    doSelect(index, result) {
-      this.doChange(index, result);
-    },
-
-    doKeyDown(event) {
-      switch (event.key) {
-        case 'ArrowDown':
+  @action
+  doKeyDown(event) {
+    switch (event.key) {
+      case 'ArrowDown':
+        if (this.showResults) {
           this.incrementSelection();
-          event.preventDefault();
-          break;
-        case 'ArrowUp':
+        } else if (this.searchValue) {
+          this.handleSearch(this.searchValue);
+        }
+
+        event.preventDefault();
+        break;
+      case 'ArrowUp':
+        if (this.showResults) {
           this.decrementSelection();
-          event.preventDefault();
-          break;
-        case 'Enter': {
-          const result = this.results[this.index];
-          this.doChange(this.index, result);
-          break;
         }
-        case 'Escape': {
-          const { clearedResult } = this;
-          if (clearedResult) {
-            this.setProperties({
-              result: clearedResult,
-              clearedResult: null,
-            });
-          }
-          this.set('showResults', false);
-          break;
-        }
-        default:
-          break;
+
+        event.preventDefault();
+        break;
+      case 'Enter': {
+        if (this.index === -1) return;
+
+        const selection = this.results[this.index];
+        this.handleChange(this.index, selection);
+        break;
       }
-    },
+      case 'Escape': {
+        this.set('showResults', false);
+        break;
+      }
+      default:
+        break;
+    }
+  }
 
-    doClearResult() {
-      const { result } = this;
+  @action
+  doClearSelection(index) {
+    const { selections } = this;
 
-      this.setProperties({
-        clearedResult: result,
-        result: null,
-        value: null,
-      });
+    const newSelections = selections.slice(0, index).concat(selections.slice(index + 1));
 
-      schedule('afterRender', this, () => this.element.querySelector('input').focus());
+    schedule('afterRender', this, () => this.element.querySelector('input').focus());
 
-      this.onChange(null, this.name);
-    },
+    this.selections = newSelections;
+    this.notifyChange();
+  }
 
-    doMouseOverSearchResult(index) {
-      this.set('index', index);
-    },
-  },
+  @action
+  doMouseOverSearchResult(index) {
+    this.set('index', index);
+  }
 
-  doChange(index, result, initOnly = false) {
-    this.setProperties({
-      index,
-      result,
-      showResults: false,
-    });
+  async handleSearch(searchValue) {
+    let results;
+
+    if (searchValue) {
+      const handler = this.onSearch || onSearch;
+      results = await handler(searchValue);
+    } else {
+      results = [];
+    }
+
+    if (!Array.isArray(results)) throw new Error('Array result required for search');
+
+    this.setResults(results);
+  }
+
+  notifyChange() {
+    const { selections, multiselect } = this;
+    const values = selections.map(s => s.value);
+
+    this.onChange(multiselect ? values : values[0], this.name, multiselect ? selections : selections[0]);
+  }
+
+  handleChange(index, selection, initOnly = false) {
+    let { selections } = this;
+    const { multiselect } = this;
+
+    if (multiselect) {
+      selections = selections.concat([selection]);
+    } else {
+      selections = [selection];
+    }
+
+    this.index = index;
+    this.selections = selections;
+    this.showResults = false;
 
     if (!initOnly) {
-      this.onChange(result.value, this.element.getAttribute('name'), result);
+      this.notifyChange();
     }
-  },
+  }
 
   incrementSelection() {
     const {
@@ -123,7 +154,7 @@ export default Component.extend({
     } else {
       this.set('index', index + 1);
     }
-  },
+  }
 
   decrementSelection() {
     const {
@@ -134,13 +165,11 @@ export default Component.extend({
     } else {
       this.set('index', index - 1);
     }
-  },
+  }
 
   setResults(results) {
-    this.setProperties({
-      showResults: true,
-      results,
-      index: -1,
-    });
-  },
-});
+    this.showResults = true;
+    this.results = results;
+    this.index = -1;
+  }
+}

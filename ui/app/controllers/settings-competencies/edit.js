@@ -1,6 +1,7 @@
 import Controller from '@ember/controller';
 import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
+import { error } from '../../utils/logger';
 
 export default class SettingsCompetenciesEditController extends Controller {
   @service('tinyData') tinyData;
@@ -33,14 +34,15 @@ export default class SettingsCompetenciesEditController extends Controller {
       this.transitionToRoute('settings-competencies', { queryParams: { refresh: true } });
     }, (err) => {
       this.flashMessages.alert('An error was reported');
+      error(err.message);
     });
 
     return promise;
   }
 
   @action
-  reportError(error) {
+  reportError(err) {
     this.flashMessages.alert('error');
-    console.log(error);
+    error(err);
   }
 }

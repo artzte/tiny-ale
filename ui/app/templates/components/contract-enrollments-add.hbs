@@ -1,3 +1,4 @@
+
 <fieldset>
   <p>
     {{#form-input error=errors.participant showError=showErrors label="Participant"}}
@@ -10,6 +11,11 @@
       />
     {{/form-input}}
   </p>
+  {{#if mountain}}
+    <p>
+      {{mountain.name}}
+    </p>
+  {{/if}}
 </fieldset>
 
 <TFormActionsRow

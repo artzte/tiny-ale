@@ -9,6 +9,7 @@ export default class Router extends EmberRouter {
 
 Router.map(function () {
   this.route('tiny', function () {
+    this.route('components', { resetNamespace: true });
     this.route('status', {
       resetNamespace: true,
     }, function () {

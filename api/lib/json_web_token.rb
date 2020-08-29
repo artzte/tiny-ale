@@ -45,13 +45,15 @@ class JsonWebToken
   end
 
   def self.extract_permissions(http_token)
+    ## Offline usage
     return ['get:config', 'manage:config']
 
     extract_token http_token, 'permissions'
   end
 
   def self.extract_user_id(http_token)
-    return '1'
+    ## Offline usage
+    return User.find_by_last_name 'Grey'
 
     key = "#{Rails.application.secrets.auth0_api_audience.chomp('/')}.databaseId"
     extract_token http_token, key

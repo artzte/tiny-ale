@@ -3,11 +3,6 @@ import dayjs from 'dayjs';
 import { warn } from '../utils/logger';
 import fetch from '../utils/fetch';
 import clone from '../utils/clone';
-import {
-  AuthError,
-  doSigninRedirect,
-} from '../utils/session-utils';
-
 
 export const tinyDataService = {
   init(...args) {
@@ -157,11 +152,14 @@ export const tinyDataService = {
 
   deleteRecord(data) {
     const store = this._store;
-    console.log('was', store);
+
+    // clone root and tree
     this._store = {
       ...store,
       [data.type]: { ...store[data.type] },
     };
+
+    // delete item from cloned tree
     delete this._store[data.type][data.id];
   },
 };
