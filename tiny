@@ -93,7 +93,7 @@ reset () {
 # ~/.aws/credentials. Contact artzt@juniperswordplay.com for access.
 #
 getSecrets () {
-  aws s3 cp --profile=tinysis-devtest s3://tinysis-devtest/api api --recursive
+  aws s3 cp --profile=tinysis-devtest s3://tinysis-devtest . --recursive
 }
 
 build () {
