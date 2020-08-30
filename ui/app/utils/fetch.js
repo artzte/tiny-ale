@@ -1,5 +1,5 @@
 import _fetch from 'fetch';
-import { Promise, reject } from 'rsvp';
+import { Promise } from 'rsvp';
 import { getSessionData, AuthError } from './session-utils';
 
 export class ApiError extends Error {}
@@ -30,7 +30,7 @@ export async function buildError(url, response) {
 
 export default async function fetch(_url, callerOptions = {}) {
   const session = getSessionData();
-  if (!session) return reject(new AuthError());
+  if (!session) return Promise.reject(new AuthError());
 
   const urlObj = new URL(`${window.location.origin}${_url}`);
   const headers = callerOptions.headers || {};
@@ -55,7 +55,7 @@ export default async function fetch(_url, callerOptions = {}) {
   headers['Content-Type'] = 'application/json';
   headers.Authorization = `Bearer ${session.accessToken}`;
 
-  return new Promise(async (resolve, rej) => {
+  return new Promise(async (resolve, reject) => {
     const response = await _fetch(url, options);
 
     if (response.ok) {
@@ -70,6 +70,6 @@ export default async function fetch(_url, callerOptions = {}) {
       return reject(new AuthError());
     }
 
-    return rej(await buildError(url, response));
+    return reject(await buildError(url, response));
   });
 }

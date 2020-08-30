@@ -10,6 +10,7 @@ export class AuthError extends Error {}
 export function getAuth0WebAuth() {
   if (auth0WebAuth) return auth0WebAuth;
 
+  // TODO AUTH VALUES FROM CONFIG
   auth0WebAuth = new Auth0.WebAuth({
     domain: 'dev-ksc8v0d7.auth0.com',
     clientID: '8mPdJ0Fr9cD31vi0n18yCygUOSQURWwZ',
@@ -47,6 +48,7 @@ export function clearIntendedUrl() {
 
 export function signIn() {
   const webAuth = getAuth0WebAuth();
+
   webAuth.authorize();
 }
 

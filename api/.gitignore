@@ -23,15 +23,13 @@
 .byebug_history
 
 # Ignore master key for decrypting credentials and more.
-/config/master.key
-/.project
-/.env
+config/master.key
 
 config/secrets.yml
 
 # terraform
 .terraform
 
-# 
+# rails secrets
 config/production-secrets.yml
 config/credentials.yml.enc

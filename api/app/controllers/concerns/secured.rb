@@ -28,8 +28,17 @@ module Secured
 
     user_id = get_user_id
 
-    @user = User.find user_id
-  rescue JWT::VerificationError, JWT::DecodeError
+    @user = User.find_by_id user_id
+
+    unless @user
+      Rails.logger.error "Auth0: identity user databaseId #{user_id} did not find matching user"
+      render_unauthorized && return
+    end
+
+    return @user
+
+  rescue JWT::VerificationError, JWT::DecodeError => exception
+    Rails.logger.error "Auth0: exception #{exception.message}"
     render_unauthorized
   end
 

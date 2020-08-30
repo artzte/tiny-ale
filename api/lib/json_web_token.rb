@@ -7,19 +7,24 @@ require 'uri'
 
 class JsonWebToken
   def self.verify(token)
-    JWT.decode(token, nil,
+    issuer = Rails.application.credentials.auth0_issuer
+    audience = Rails.application.credentials.auth0_api_audience
+
+    decoded = JWT.decode(token,
+               nil,  # no public key
                true, # Verify the signature of this token
                algorithm: 'RS256',
-               iss: Rails.application.credentials.auth0_issuer,
+               iss: issuer,
                verify_iss: true,
-               aud: Rails.application.credentials.auth0_api_audience,
-               verify_aud: true) do |header|
+    ) do |header|
       jwks_hash[header['kid']]
     end
+
+    decoded
   end
 
   def self.jwks_hash
-    jwks_raw = Net::HTTP.get URI("#{Rails.application.secrets.auth0_issuer}.well-known/jwks.json")
+    jwks_raw = Net::HTTP.get URI("#{Rails.application.credentials.auth0_issuer}.well-known/jwks.json")
     jwks_keys = Array(JSON.parse(jwks_raw)['keys'])
     Hash[
       jwks_keys
@@ -55,7 +60,8 @@ class JsonWebToken
     ## Offline usage
     # return User.find_by_last_name 'Grey'
 
-    key = "#{Rails.application.secrets.auth0_api_audience.chomp('/')}.databaseId"
+    key = "#{Rails.application.credentials.auth0_api_audience.chomp('/')}.databaseId"
+    
     extract_token http_token, key
   end
 end
