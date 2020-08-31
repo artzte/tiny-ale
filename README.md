@@ -20,7 +20,7 @@ There is a (hopefully) helpful shell script that offers various choices:
 
     ./tiny
 
-You will need to obtain credentials to access the S3 buckets where various app secrets files are stored.
+*Note:* You will need to obtain credentials to access the S3 buckets where various app secrets files are stored.
 To do this, obtain an AWS credentials file from the project owner.
 
 Then run:
@@ -35,16 +35,27 @@ Confirm the successful setup by visiting:
 
 If that tests out alright, visit the app by going to:
 
-    http://localhost:3000
+    http://localhost:3001
 
 
 ### Config organization and editing
 
-Set env `RAILS_MASTER_KEY` to the contents of the `config/master.key` file downloaded from S3.
+Set env `RAILS_MASTER_KEY` to the contents of the `api/config/master.key` file downloaded from S3. This is actually
+done for the Docker Compose stack via the `.env` file in the root of the project.
 
 To edit/view the credentials file, open a shell on the container using `./tiny shell:api` and then run:
 
     EDITOR="code -wait" rails credentials:edit
+
+There is a `credentials-template.yml` file located in `api/config` that outlines the necessary information for this
+credentials file.
+
+To summarize, the following files are required by the API/Compose stack. All should be available via the 
+`getSecrets` command outlined in the previous section.
+
+        .env
+        api/config/master.key
+        api/config/credentials.yml.enc
 
 # Running the server natively
 
