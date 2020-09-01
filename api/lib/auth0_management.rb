@@ -27,12 +27,10 @@ class AuthManagement
       raise AuthManagementError, "Expected #{setting} to be passed in config" unless @config[setting]
     end
 
-    @base_url = "https://#{@config[:domain]}"
+    @base_url = @config[:domain]
   end
 
   def get_access_token
-    return {}
-  
     url = URI("#{@base_url}/oauth/token")
 
     http = Net::HTTP.new(url.host, url.port)

@@ -65,12 +65,12 @@ remove () {
   removeApi
 }
 
-removeUi () {
+reset:ui () {
   docker rm $UI
   docker rmi ${PROJECT}_ux
 }
 
-removeApi () {
+reset:api () {
   docker rm $API
   docker rmi ${PROJECT}_web
 }
@@ -131,7 +131,7 @@ usage () {
 }
 
 case "$COMMAND" in
-  "getSecrets"|"initDb"|"build"|"server"|"shell:ui"|"shell:api"|"log"|"reset"|"test:api"|"test:ui"|"removeUi"|"removeApi"|"stop")
+  "getSecrets"|"initDb"|"build"|"server"|"shell:ui"|"shell:api"|"log"|"reset"|"test:api"|"test:ui"|"reset:ui"|"reset:api"|"stop")
       $COMMAND
       ;;
   *)
