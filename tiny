@@ -60,9 +60,9 @@ initDb () {
 }
 
 remove () {
-  removeUi
-  removeDb
-  removeApi
+  reset:ui
+  reset:db
+  reset:api
 }
 
 reset:ui () {
@@ -75,7 +75,7 @@ reset:api () {
   docker rmi ${PROJECT}_web
 }
 
-removeDb () {
+reset:db () {
   docker rm $DB
   docker rmi ${PROJECT}_db
 }
@@ -113,6 +113,10 @@ test:ui () {
   docker exec $UI npm test
 }
 
+build:api () {
+  docker build api --tag name:TINYSIS_PROD --tag sha:$(git rev-parse HEAD)
+}
+
 usage () {
   echo "tiny <command>"
   echo ""
@@ -131,7 +135,7 @@ usage () {
 }
 
 case "$COMMAND" in
-  "getSecrets"|"initDb"|"build"|"server"|"shell:ui"|"shell:api"|"log"|"reset"|"test:api"|"test:ui"|"reset:ui"|"reset:api"|"stop")
+  "getSecrets"|"initDb"|"build"|"server"|"shell:ui"|"shell:api"|"log"|"reset"|"test:api"|"test:ui"|"reset:ui"|"reset:api"|"stop"|"build:api")
       $COMMAND
       ;;
   *)
