@@ -44,7 +44,7 @@ export default Component.extend(EnrollmentRelations, {
     },
     async update(command) {
       this.set('loading', true);
-      await this.updateEnrollment(this.enrollment, command);
+      await this.updateEnrollment(command);
       this.set('loading', false);
     },
   },

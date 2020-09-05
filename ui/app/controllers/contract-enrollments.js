@@ -19,10 +19,6 @@ export default Controller.extend({
   }),
 
   actions: {
-    showAddEnrollment(show = true) {
-      this.set('showAddEnrollment', show);
-    },
-
     addEnrollment(/* enrollment */) {
       throw new Error('todo');
     },
