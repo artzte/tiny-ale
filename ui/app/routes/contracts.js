@@ -1,7 +1,6 @@
 import Route from '@ember/routing/route';
 import { inject as service } from '@ember/service';
 import { all } from 'rsvp';
-import fetch from 'fetch';
 import {
   sortedCategories,
   sortedPeople,
@@ -14,7 +13,6 @@ export default Route.extend({
   //
   model() {
     return all([
-      fetch('/api/settings/years').then(r => r.json()),
       this.tinyData.fetch('/api/categories'),
       this.tinyData.fetch('/api/staff', {
         data: {
@@ -27,7 +25,6 @@ export default Route.extend({
 
   setupController(controller, result) {
     const [
-      schoolYears,
       categories,
       staff,
     ] = result;
@@ -35,7 +32,7 @@ export default Route.extend({
     this._super(controller, result);
 
     controller.setProperties({
-      schoolYears: schoolYears.sort((y1, y2) => y2 - y1),
+      schoolYears: this.tinyData.getYears().sort((y1, y2) => y2 - y1),
       categories: sortedCategories(categories.data),
       facilitators: sortedPeople(staff.data),
     });

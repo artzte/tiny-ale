@@ -9,26 +9,28 @@ export default Route.extend({
   async beforeModel() {
     const { tinyData } = this;
 
-    const appProfile = await tinyData.fetch('/api/profile');
-
+    const [
+      appProfile,
+      schoolYears,
+    ] = await Promise.all([
+      tinyData.fetch('/api/profile'),
+      fetch('/api/settings/years'),
+    ]);
     const mergedProfile = { ...appProfile.data, meta: appProfile.meta };
 
     tinyData.setUser(mergedProfile);
+    tinyData.setYears(schoolYears);
   },
 
   model() {
     const { tinyData } = this;
 
-    return Promise.all([
-      tinyData.fetch('/api/settings'),
-      fetch('/api/settings/years'),
-    ]).then(([settings, years]) => {
+    tinyData.fetch('/api/settings').then((settings) => {
       const currentYearSetting = settings.data.find(setting => setting.attributes.name === 'current_year');
       const reportingBaseMonthSetting = settings.data.find(setting => setting.attributes.name === 'reporting_base_month');
 
       tinyData.setSchoolYear(currentYearSetting.attributes.value);
       tinyData.setReportingBaseMonth(reportingBaseMonthSetting.attributes.value);
-      tinyData.setYears(years);
     });
   },
 
