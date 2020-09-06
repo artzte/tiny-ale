@@ -75,6 +75,9 @@ export default class TTypeAhead extends Component {
 
         const selection = this.results[this.index];
         this.handleChange(this.index, selection);
+
+        event.preventDefault();
+
         break;
       }
       case 'Escape': {
