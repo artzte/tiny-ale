@@ -37,8 +37,13 @@ module Secured
 
     return @user
 
-  rescue JWT::VerificationError, JWT::DecodeError => exception
-    Rails.logger.error "Auth0: exception #{exception.message}"
+  # DecodeError is the JWT base error
+  rescue JWT::DecodeError => error
+    Rails.logger.error "JWT: exception #{error.message}"
+    render_unauthorized
+
+  rescue Exception => error
+    Rails.logger.error "Auth: exception #{error.message}"
     render_unauthorized
   end
 
