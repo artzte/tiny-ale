@@ -5,9 +5,9 @@
   @disabled={{disabled}}
 />
 
-<TLink @action={{action "showAddEnrollment"}}>
+<button type="button" class="btn" {{action "showAddEnrollment"}}>
   Add enrollment
-</TLink>
+</button>
 
 <CheckEmpty
   @count={{model.meta.count}}
@@ -31,13 +31,13 @@
 {{#if showAddEnrollment}}
   <ModalDialog
     @containerClass="pointer-events-auto"
-    @onClose={{action "showAddEnrollment" false}}
+    @onClose={{action (mut showAddEnrollment) false}}
     @translucentOverlay={{true}}
   >
     <ContractEnrollmentsAdd
       @createEnrollment={{action "addEnrollment"}}
       @contract={{contract}}
-      @close={{action (mut showAddEnrollment) false}}
+      @onClose={{action (mut showAddEnrollment) false}}
     />
   </ModalDialog>
 {{/if}}
