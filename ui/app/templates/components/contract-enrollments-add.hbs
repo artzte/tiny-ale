@@ -3,8 +3,9 @@
   <p>
     {{#form-input error=errors.participant showError=showErrors label="Participant"}}
       <TTypeAhead
-        name="participant"
+        @name="participant"
         prompt="Search for a student to enroll"
+        @multiselect={{true}}
         @autofocusInput={{true}}
         @onSearch={{action "onSearchCandidates"}}
         @onChange={{action "onChangeCandidate"}}
