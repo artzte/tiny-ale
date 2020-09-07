@@ -21,4 +21,24 @@ module('Integration | Component | check-empty', (hooks) => {
 
     assert.dom(this.element).hasText('Something here to see');
   });
+
+  test('it renders with result', async function (assert) {
+    let count = 0;
+
+    this.set('result', { meta: { count } });
+
+    await render(hbs`
+      {{#check-empty result=result noResultsMessage="Nothing here to see"}}
+        Something here to see
+      {{/check-empty}}
+    `);
+
+    assert.dom(this.element).hasText('Nothing here to see');
+
+    count = 20;
+
+    this.set('result', { meta: { count } });
+
+    assert.dom(this.element).hasText('Something here to see');
+  });
 });
