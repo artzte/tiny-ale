@@ -1,16 +1,30 @@
+import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
-import TinyForm from './t-form';
+import { tracked } from '@glimmer/tracking';
 
-export default class ContractEnrollmentAddForm extends TinyForm {
+export default class ContractEnrollmentAddForm extends Component {
+  @tracked selectedUserIds = [];
+
+  @tracked loading = false;
+
   @service('user') user;
 
   @action async onSearchCandidates(name) {
-    const result = await this.user.searchStudents({ name, scope: `contract:${this.contract.id}` });
+    const result = await this.user.searchStudents({ name, scope: `contract:${this.args.contract.id}` });
     return result.data.map(user => ({ name: user.attributes.name, value: user.id }));
   }
 
-  @action onChangeCandidate() {}
+  @action onChangeCandidate(values) {
+    this.selectedUserIds = values;
+  }
 
-  save = pojo => console.log('got', pojo)
+  @action
+  async handleSubmit() {
+    const { selectedUserIds } = this;
+    this.loading = true;
+    const newEnrollments = await this.args.addEnrollments(selectedUserIds);
+    this.loading = false;
+    this.args.onClose();
+  }
 }

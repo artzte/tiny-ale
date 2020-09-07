@@ -5,6 +5,7 @@ import { replaceModel } from '../utils/json-api';
 import { STATUS_CLOSED } from '../utils/contract-utils';
 
 export default Controller.extend({
+  flashMessages: service(),
   tinyData: service(),
   user: service(),
 
@@ -19,8 +20,23 @@ export default Controller.extend({
   }),
 
   actions: {
-    addEnrollment(/* enrollment */) {
-      throw new Error('todo');
+    async addEnrollments(userIds) {
+      const { contract, tinyData } = this;
+
+      await tinyData.fetch(`/api/contracts/${contract.id}/enrollments`, {
+        method: 'POST',
+        data: {
+          data: {
+            relationships: {
+              user_ids: userIds,
+            },
+          },
+        },
+      });
+
+      this.model = await tinyData.fetch(`/api/enrollments?contractIds=${this.contract.id}&include=credit_assignments,credit_assignments.credit,participant`);
+
+      this.flashMessages.success(`Enrolled ${userIds.length} students`);
     },
 
     async updateEnrollment(enrollment, command) {
@@ -28,7 +44,7 @@ export default Controller.extend({
         method: 'PATCH',
       });
 
-      this.set('enrollments', replaceModel(this.enrollments, response.data));
+      this.set('model', { ...this.model, data: replaceModel(this.model.data, response.data) });
     },
 
     async deleteEnrollment(enrollment) {
@@ -36,7 +52,7 @@ export default Controller.extend({
         method: 'DELETE',
       });
 
-      this.set('enrollments', this.enrollments.filter(e => e.id !== enrollment.id));
+      this.set('model', { data: this.model.data.filter(e => e.id !== enrollment.id), meta: { count: this.model.meta.count - 1 } });
     },
   },
 });

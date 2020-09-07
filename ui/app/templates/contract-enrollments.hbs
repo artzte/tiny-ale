@@ -5,25 +5,25 @@
   @disabled={{disabled}}
 />
 
-<button type="button" class="btn" {{action "showAddEnrollment"}}>
+<button type="button" class="btn" {{action (mut showAddEnrollment) true}}>
   Add enrollment
 </button>
 
 <CheckEmpty
-  @count={{model.meta.count}}
+  @result={{this.model}}
   @noResultsMessage="No enrollments as of yet"
 >
   <CountParagraph
-    @result={{model}}
+    @result={{this.model}}
     @name="enrollment"
   />
 
   <ContractEnrollmentsList
-    @enrollments={{enrollments}}
+    @enrollments={{this.model.data}}
     @contractIsDisabled={{contractIsDisabled}}
     @deleteEnrollment={{action "deleteEnrollment"}}
     @updateEnrollment={{action "updateEnrollment"}}
-    @getNotes={{route-action "getNotes" enrollments}}
+    @getNotes={{route-action "getNotes" this.model.data}}
   />
 
 </CheckEmpty>
@@ -35,9 +35,9 @@
     @translucentOverlay={{true}}
   >
     <ContractEnrollmentsAdd
-      @createEnrollment={{action "addEnrollment"}}
-      @contract={{contract}}
-      @onClose={{action (mut showAddEnrollment) false}}
+      @addEnrollments={{action "addEnrollments"}}
+      @contract={{this.contract}}
+      @onClose={{action (mut this.showAddEnrollment) false}}
     />
   </ModalDialog>
 {{/if}}
