@@ -19,11 +19,10 @@ export default class ContractEnrollmentAddForm extends Component {
     this.selectedUserIds = values;
   }
 
-  @action
-  async handleSubmit() {
+  @action async handleSubmit() {
     const { selectedUserIds } = this;
     this.loading = true;
-    const newEnrollments = await this.args.addEnrollments(selectedUserIds);
+    await this.args.addEnrollments(selectedUserIds);
     this.loading = false;
     this.args.onClose();
   }
