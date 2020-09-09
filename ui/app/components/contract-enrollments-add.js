@@ -10,6 +10,10 @@ export default class ContractEnrollmentAddForm extends Component {
 
   @service('user') user;
 
+  get isDisabled() {
+    return this.selectedUserIds.length === 0 || this.loading;
+  }
+
   @action async onSearchCandidates(name) {
     const result = await this.user.searchStudents({ name, scope: `contract:${this.args.contract.id}` });
     return result.data.map(user => ({ name: user.attributes.name, value: user.id }));
@@ -21,6 +25,7 @@ export default class ContractEnrollmentAddForm extends Component {
 
   @action async handleSubmit() {
     const { selectedUserIds } = this;
+
     this.loading = true;
     await this.args.addEnrollments(selectedUserIds);
     this.loading = false;
