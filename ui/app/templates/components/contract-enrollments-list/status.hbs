@@ -36,6 +36,8 @@
         Fulfill
       </TLink>
     </li>
+  {{/if}}
+  {{#if canCancel}}
     <li>
       <TLink
         @action={{action "update" "cancel"}}

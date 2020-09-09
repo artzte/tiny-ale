@@ -7,6 +7,7 @@ import {
   isCanceled,
   isEnrolled,
   isFulfilled,
+  isPending,
 } from '../../utils/enrollment-utils';
 
 export default Component.extend(EnrollmentRelations, {
@@ -37,6 +38,13 @@ export default Component.extend(EnrollmentRelations, {
   }),
   isEditable: computed('isFulfilled', 'canEdit', function () {
     return !this.isFulfilled && this.canEdit;
+  }),
+  isPending: computed('enrollment.attributes.enrollmentStatus', function () {
+    return isPending(this.enrollment);
+  }),
+  // eslint-disable-next-line ember/require-computed-macros
+  canCancel: computed('isPending', 'isEnrolled', function () {
+    return this.isPending || this.isEnrolled;
   }),
   actions: {
     delete() {

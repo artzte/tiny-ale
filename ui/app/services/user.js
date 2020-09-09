@@ -1,4 +1,5 @@
 import Service, { inject as service } from '@ember/service';
+import { Promise } from 'rsvp';
 import clone from '../utils/clone';
 
 const UserServiceMembers = {
@@ -53,8 +54,7 @@ export function stubUserService(fixtures) {
   return Service.extend({
     ...UserServiceMembers,
     searchStudents() {
-      debugger
-      return fixtures.searchStudents;
+      return Promise.resolve(fixtures.searchStudents);
     },
   });
 }
