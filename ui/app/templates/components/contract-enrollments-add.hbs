@@ -4,9 +4,9 @@
 >
   <fieldset>
     <p>
-      {{#form-input error=errors.participant showError=showErrors label="Participant"}}
+      {{#form-input error=errors.enrollees showError=isInvalid label="Enrollees"}}
         <TTypeAhead
-          @name="participant"
+          @name="enrollees"
           prompt="Search for a student to enroll"
           @multiselect={{true}}
           @autofocusInput={{true}}
@@ -22,7 +22,7 @@
     @disabled={{this.isDisabled}}
   >
     <button
-      type="submit"
+      type="button"
       class="btn btn-clear"
       onclick={{this.onClose}}
       disabled={{this.loading}}
