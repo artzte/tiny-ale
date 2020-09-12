@@ -79,6 +79,10 @@ class Enrollment < ApplicationRecord
 
   # status methods
 
+  def can_cancel?
+    [STATUS_ENROLLED, STATUS_PROPOSED].include? enrollment_status
+  end
+
   def enrolled?
     enrollment_status == STATUS_ENROLLED
   end
@@ -146,7 +150,7 @@ class Enrollment < ApplicationRecord
   def set_closed(completion_status, user, date = Time.now.gmtime)
     privs = privileges(user)
 
-    unless enrollment_status == STATUS_ENROLLED && privs[:edit]
+    unless can_cancel? && privs[:edit]
       raise TinyException, 'Insufficient privileges'
     end
 
