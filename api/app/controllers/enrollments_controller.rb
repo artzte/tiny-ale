@@ -84,7 +84,7 @@ class EnrollmentsController < ApiBaseController
       @enrollment.set_closed Enrollment::COMPLETION_CANCELED, @user
     when 'fulfill'
       @enrollment.set_closed Enrollment::COMPLETION_FULFILLED, @user
-    when 'reinstate'
+    when 'approve'
       @enrollment.set_active @user
     else
       raise TinyException, 'Invalid update command'

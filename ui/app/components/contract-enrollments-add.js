@@ -5,7 +5,6 @@ import { tracked } from '@glimmer/tracking';
 import Validator from '../utils/validator';
 
 export default class ContractEnrollmentAddForm extends Component {
-
   validator = new Validator({
     enrollees: [{ type: 'required', message: 'Please pick one or more enrollees' }],
   });

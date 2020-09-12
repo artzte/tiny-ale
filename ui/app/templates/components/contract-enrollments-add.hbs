@@ -4,7 +4,7 @@
 >
   <fieldset>
     <p>
-      {{#form-input error=errors.enrollees showError=isInvalid label="Enrollees"}}
+      {{#form-input error=errors.enrollees showError=showErrors label="Enrollees"}}
         <TTypeAhead
           @name="enrollees"
           prompt="Search for a student to enroll"
@@ -24,7 +24,7 @@
     <button
       type="button"
       class="btn btn-clear"
-      onclick={{this.onClose}}
+      onclick={{@onClose}}
       disabled={{this.loading}}
     >
       Close

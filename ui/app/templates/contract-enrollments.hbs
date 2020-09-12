@@ -5,7 +5,7 @@
   @disabled={{disabled}}
 />
 
-<button type="button" class="btn" {{action (mut showAddEnrollment) true}}>
+<button type="button" class="btn" {{on "click" (fn this.showAddEnrollment true)}}>
   Add enrollment
 </button>
 
@@ -28,16 +28,15 @@
 
 </CheckEmpty>
 
-{{#if showAddEnrollment}}
+{{#if this.showAddEnrollmentDialog}}
   <ModalDialog
     @containerClass="pointer-events-auto"
-    @onClose={{action (mut showAddEnrollment) false}}
     @translucentOverlay={{true}}
   >
     <ContractEnrollmentsAdd
       @addEnrollments={{action "addEnrollments"}}
       @contract={{this.contract}}
-      @onClose={{action (mut this.showAddEnrollment) false}}
+      @onClose={{fn this.showAddEnrollment false}}
     />
   </ModalDialog>
 {{/if}}

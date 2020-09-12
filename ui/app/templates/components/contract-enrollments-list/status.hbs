@@ -6,9 +6,9 @@
   {{#if isClosed}}
     <li>
       <TLink
-        @action={{action "update" "reinstate"}}
+        @action={{action "update" "approve"}}
         disabled={{disabled}}
-        data-test-command="reinstate"
+        data-test-command="approve"
       >
         Reinstate
       </TLink>
@@ -26,6 +26,18 @@
     {{/if}}
   {{/if}}
 
+  {{#if isPending}}
+    <li>
+      <TLink
+        @action={{action "update" "approve"}}
+        disabled={{disabled}}
+        data-test-command="approve"
+      >
+        Approve
+      </TLink>
+    </li>
+  {{/if}}
+
   {{#if isEnrolled}}
     <li>
       <TLink
@@ -37,6 +49,7 @@
       </TLink>
     </li>
   {{/if}}
+
   {{#if canCancel}}
     <li>
       <TLink
@@ -53,9 +66,9 @@
     {{#if isCanceled}}
       <li>
         <TLink
-          @action={{action "update" "reinstate"}}
+          @action={{action "update" "approve"}}
           disabled={{disabled}}
-          data-test-command="reinstate"
+          data-test-command="approve"
         >
           Reinstate
         </TLink>
