@@ -71,9 +71,9 @@ credentials file.
 To summarize, the following files are required by the API/Compose stack. All should be available via the 
 `getSecrets` command outlined in the previous section.
 
-        .env
-        api/config/master.key
-        api/config/credentials.yml.enc
+    .env
+    api/config/master.key
+    api/config/credentials.yml.enc
 
 ## Running the server natively
 
