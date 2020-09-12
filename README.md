@@ -39,20 +39,22 @@ If that tests out alright, visit the app by going to:
 
 ## Tests etc:
 
-tiny <command>
+    ➜  tiny-ale git:develop) ./tiny
+    
+    tiny <command>
 
-Commands:
----------
-getSecrets | generally one-time S3 download of any dev secrets files - requires AWS profile and access key
-build      | applies docker-compose to start the API stack
-initDb     | sets up the development database; will delete the existing data if it exists
-server     | starts the development server
-shell:api  | opens a bash shell on the Rails API container
-shell:ui   | opens a bash shell on the EmberJS client container
-log        | tail the production log
-reset      | deletes the docker images for the API and DB
-test:api   | runs test suite for API
-test:ui    | runs test suite for UI
+    Commands:
+    ---------
+    getSecrets | generally one-time S3 download of any dev secrets files - requires AWS profile and access key
+    build      | applies docker-compose to start the API stack
+    initDb     | sets up the development database; will delete the existing data if it exists
+    server     | starts the development server
+    shell:api  | opens a bash shell on the Rails API container
+    shell:ui   | opens a bash shell on the EmberJS client container
+    log        | tail the production log
+    reset      | deletes the docker images for the API and DB
+    test:api   | runs test suite for API
+    test:ui    | runs test suite for UI
 
 ## Config organization and editing
 
