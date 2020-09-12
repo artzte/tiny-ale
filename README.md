@@ -39,7 +39,7 @@ If that tests out alright, visit the app by going to:
 
 ## Tests etc:
 
-    ➜  tiny-ale git:develop) ./tiny
+    ➜  tiny-ale git:(develop) ./tiny
     
     tiny <command>
 
