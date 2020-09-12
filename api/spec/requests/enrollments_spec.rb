@@ -60,5 +60,15 @@ RSpec.describe 'Enrollments API', type: :request do
       
       expect(enrollment['relationships']['creditAssignments']['data'].length).to eq(1)
     end
+
+    it 'creates first enrollment on a contract' do
+      contract = create :contract, term: @term1_2008, facilitator: @staff1, category: @category1, creator: @staff1, contract_status: Contract::STATUS_ACTIVE
+      post "/api/contracts/#{contract.id}/enrollments",
+        params: { data: { relationships: { user_ids: [@student1.id] } } }.to_json,
+        headers: json_request_headers
+      
+      expect(response).to have_http_status(200)
+      expect(contract.enrollments.count).to eq(1)
+    end
   end
 end
