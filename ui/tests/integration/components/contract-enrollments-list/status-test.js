@@ -16,8 +16,8 @@ module('Integration | Component | contract-enrollments-list/status', (hooks) => 
     tinyData.addResult(contractEnrollments);
 
     requests = [];
-    this.updateFn = (enrollment, command) => {
-      requests.push({ enrollment, command });
+    this.updateFn = (command) => {
+      requests.push({ command });
     };
 
     [this.enrollment] = tinyData.get('enrollment');
@@ -45,7 +45,6 @@ module('Integration | Component | contract-enrollments-list/status', (hooks) => 
     assert.equal(requests.length, 1, 'outbound request occurred with click');
     const [request] = requests;
 
-    assert.equal(request.enrollment, this.enrollment, 'enrollment was sent up');
     assert.equal(request.command, 'fulfill', 'expected command issued');
   });
 });

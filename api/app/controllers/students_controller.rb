@@ -33,6 +33,10 @@ class StudentsController < ApiBaseController
 
     return {} unless scope_params
 
-    return ["id NOT in (?)", Enrollment.where(contract_id: scope_params[1]).map(&:participant_id)]
+    current_participant_ids = Enrollment.where(contract_id: scope_params[1]).map(&:participant_id)
+
+    return {} if current_participant_ids.empty?
+
+    return ["id NOT in (?)", current_participant_ids]
   end
 end

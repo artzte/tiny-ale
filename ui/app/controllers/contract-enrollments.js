@@ -1,14 +1,17 @@
 import Controller from '@ember/controller';
 import { inject as service } from '@ember/service';
-import { computed } from '@ember/object';
+import { action } from '@ember/object';
 import { replaceModel } from '../utils/json-api';
 import { STATUS_CLOSED } from '../utils/contract-utils';
 
-export default Controller.extend({
-  tinyData: service(),
-  user: service(),
+export default class ContractEnrollmentController extends Controller {
+  @service('flashMessages') flashMessages;
 
-  contractIsDisabled: computed('contract', function () {
+  @service('tinyData') tinyData;
+
+  @service('user') user;
+
+  get contractIsDisabled() {
     const { contract } = this;
 
     if (contract.attributes.status === STATUS_CLOSED) {
@@ -16,31 +19,48 @@ export default Controller.extend({
     }
 
     return !this.user.canEdit(contract);
-  }),
+  }
 
-  actions: {
-    showAddEnrollment(show = true) {
-      this.set('showAddEnrollment', show);
-    },
+  @action
+  showAddEnrollment(show) {
+    this.set('showAddEnrollmentDialog', show);
+  }
 
-    addEnrollment(/* enrollment */) {
-      throw new Error('todo');
-    },
+  @action
+  async addEnrollments(userIds) {
+    const { contract, tinyData } = this;
 
-    async updateEnrollment(enrollment, command) {
-      const response = await this.tinyData.fetch(`/api/enrollments/${enrollment.id}/${command}`, {
-        method: 'PATCH',
-      });
+    await tinyData.fetch(`/api/contracts/${contract.id}/enrollments`, {
+      method: 'POST',
+      data: {
+        data: {
+          relationships: {
+            user_ids: userIds,
+          },
+        },
+      },
+    });
 
-      this.set('enrollments', replaceModel(this.enrollments, response.data));
-    },
+    this.model = await tinyData.fetch(`/api/enrollments?contractIds=${this.contract.id}&include=credit_assignments,credit_assignments.credit,participant`);
 
-    async deleteEnrollment(enrollment) {
-      await this.tinyData.fetch(`/api/enrollments/${enrollment.id}`, {
-        method: 'DELETE',
-      });
+    this.flashMessages.success(`Enrolled ${userIds.length} students`);
+  }
 
-      this.set('enrollments', this.enrollments.filter(e => e.id !== enrollment.id));
-    },
-  },
-});
+  @action
+  async updateEnrollment(enrollment, command) {
+    const response = await this.tinyData.fetch(`/api/enrollments/${enrollment.id}/${command}`, {
+      method: 'PATCH',
+    });
+
+    this.set('model', { ...this.model, data: replaceModel(this.model.data, response.data) });
+  }
+
+  @action
+  async deleteEnrollment(enrollment) {
+    await this.tinyData.fetch(`/api/enrollments/${enrollment.id}`, {
+      method: 'DELETE',
+    });
+
+    this.set('model', { data: this.model.data.filter(e => e.id !== enrollment.id), meta: { count: this.model.meta.count - 1 } });
+  }
+}

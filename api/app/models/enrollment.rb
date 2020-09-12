@@ -79,6 +79,10 @@ class Enrollment < ApplicationRecord
 
   # status methods
 
+  def can_cancel?
+    [STATUS_ENROLLED, STATUS_PROPOSED].include? enrollment_status
+  end
+
   def enrolled?
     enrollment_status == STATUS_ENROLLED
   end
@@ -146,7 +150,7 @@ class Enrollment < ApplicationRecord
   def set_closed(completion_status, user, date = Time.now.gmtime)
     privs = privileges(user)
 
-    unless enrollment_status == STATUS_ENROLLED && privs[:edit]
+    unless can_cancel? && privs[:edit]
       raise TinyException, 'Insufficient privileges'
     end
 
@@ -184,7 +188,7 @@ class Enrollment < ApplicationRecord
     TinyException.raise_exception(TinyException::SECURITYHACK) if user.nil?
 
     # Bail out if the user is already enrolled
-    if student.enrollments.find(:first, conditions: "contract_id = #{contract.id}") != nil
+    if student.enrollments.where(contract_id: contract.id).count > 0
       TinyException.raise_exception(TinyException::ENROLL_DUPLICATE, user)
     end
 
@@ -218,7 +222,7 @@ class Enrollment < ApplicationRecord
   # This helper function performs the actual enrollment function. All the
   # error checking is already done.
 
-  def self.enroll_user(contract, participant, user, options)
+  def self.enroll_user(contract, participant, user, options = {})
     e = Enrollment.new(participant: participant,
                        creator: user,
                        completion_status: COMPLETION_UNKNOWN)

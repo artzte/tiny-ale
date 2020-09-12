@@ -69,9 +69,13 @@ class EnrollmentsController < ApiBaseController
       raise TinyException, 'Enrollments are already created on this contract'
     end
 
-    enrollments = enrollment_create_params.map { |participant_id| Enrollment.create! creator: @user, contract_id: params[:id], participant_id: participant_id, enrollment_status: Enrollment::STATUS_ENROLLED }
+    contract = Contract.find(params[:id])
 
-    render json: EnrollmentSerializer.new(enrollments, { include: [:participant] }), status: 200
+    enrollments = enrollment_create_params.map do |participant_id|
+      Enrollment.enroll_student contract, User.find(participant_id), @user
+    end
+
+    render json: EnrollmentSerializer.new(enrollments, { include: [:participant, :credit_assignments] }), status: 200
   end
 
   def update
@@ -80,7 +84,7 @@ class EnrollmentsController < ApiBaseController
       @enrollment.set_closed Enrollment::COMPLETION_CANCELED, @user
     when 'fulfill'
       @enrollment.set_closed Enrollment::COMPLETION_FULFILLED, @user
-    when 'reinstate'
+    when 'approve'
       @enrollment.set_active @user
     else
       raise TinyException, 'Invalid update command'

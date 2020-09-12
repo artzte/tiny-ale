@@ -1,7 +1,8 @@
 import Service, { inject as service } from '@ember/service';
+import { Promise } from 'rsvp';
 import clone from '../utils/clone';
 
-export default Service.extend({
+const UserServiceMembers = {
   tinyData: service(),
 
   setUser(user) {
@@ -45,4 +46,15 @@ export default Service.extend({
       },
     });
   },
-});
+};
+
+export default Service.extend(UserServiceMembers);
+
+export function stubUserService(fixtures) {
+  return Service.extend({
+    ...UserServiceMembers,
+    searchStudents() {
+      return Promise.resolve(fixtures.searchStudents);
+    },
+  });
+}

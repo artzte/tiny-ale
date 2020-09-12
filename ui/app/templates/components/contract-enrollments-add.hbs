@@ -1,29 +1,33 @@
-
-<fieldset>
-  <p>
-    {{#form-input error=errors.participant showError=showErrors label="Participant"}}
-      <TTypeAhead
-        name="participant"
-        prompt="Search for a student to enroll"
-        @autofocusInput={{true}}
-        @onSearch={{action "onSearchCandidates"}}
-        @onChange={{action "onChangeCandidate"}}
-      />
-    {{/form-input}}
-  </p>
-  {{#if mountain}}
-    <p>
-      {{mountain.name}}
-    </p>
-  {{/if}}
-</fieldset>
-
-<TFormActionsRow
-  @submitCaption="Add enrollment"
+<form
+  {{action 'handleSubmit' on='submit'}}
+  class="t-form"
 >
-  <TLink
-    @onclick={{onClose}}
+  <fieldset>
+    <p>
+      {{#form-input error=errors.enrollees showError=showErrors label="Enrollees"}}
+        <TTypeAhead
+          @name="enrollees"
+          prompt="Search for a student to enroll"
+          @multiselect={{true}}
+          @autofocusInput={{true}}
+          @onSearch={{action "onSearchCandidates"}}
+          @onChange={{action "onChangeCandidate"}}
+        />
+      {{/form-input}}
+    </p>
+  </fieldset>
+
+  <TFormActionsRow
+    @submitCaption="Add enrollment"
+    @disabled={{this.isDisabled}}
   >
-    Close
-  </TLink>
-</TFormActionsRow>
+    <button
+      type="button"
+      class="btn btn-clear"
+      onclick={{@onClose}}
+      disabled={{this.loading}}
+    >
+      Close
+    </button>
+  </TFormActionsRow>
+</form>

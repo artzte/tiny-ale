@@ -1,6 +1,7 @@
 export const ENROLLMENT_STATUS_ENROLLED = 'enrolled';
 export const ENROLLMENT_STATUS_CLOSED = 'closed';
 export const ENROLLMENT_STATUS_FINALIZED = 'finalized';
+export const ENROLLMENT_STATUS_PENDING = 'pending';
 
 export const ENROLLMENT_COMPLETION_CANCELED = 'canceled';
 export const ENROLLMENT_COMPLETION_FULFILLED = 'fulfilled';
@@ -9,6 +10,8 @@ export function getEnrollmentStatusString(enrollment) {
   const { enrollmentStatus, completionStatus } = enrollment.attributes;
   const upcased = enrollmentStatus.charAt(0).toUpperCase() + enrollmentStatus.substr(1);
   switch (enrollmentStatus) {
+    case ENROLLMENT_STATUS_PENDING:
+      return upcased;
     case ENROLLMENT_STATUS_ENROLLED:
       return 'Active';
     case ENROLLMENT_STATUS_CLOSED:
@@ -25,6 +28,10 @@ export function isClosed(enrollment) {
 
 export function isEnrolled(enrollment) {
   return enrollment.attributes.enrollmentStatus === ENROLLMENT_STATUS_ENROLLED;
+}
+
+export function isPending(enrollment) {
+  return enrollment.attributes.enrollmentStatus === ENROLLMENT_STATUS_PENDING;
 }
 
 export function isCanceled(enrollment) {

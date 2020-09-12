@@ -5,39 +5,38 @@
   @disabled={{disabled}}
 />
 
-<TLink @action={{action "showAddEnrollment"}}>
+<button type="button" class="btn" {{on "click" (fn this.showAddEnrollment true)}}>
   Add enrollment
-</TLink>
+</button>
 
 <CheckEmpty
-  @count={{model.meta.count}}
+  @result={{this.model}}
   @noResultsMessage="No enrollments as of yet"
 >
   <CountParagraph
-    @result={{model}}
+    @result={{this.model}}
     @name="enrollment"
   />
 
   <ContractEnrollmentsList
-    @enrollments={{enrollments}}
+    @enrollments={{this.model.data}}
     @contractIsDisabled={{contractIsDisabled}}
     @deleteEnrollment={{action "deleteEnrollment"}}
     @updateEnrollment={{action "updateEnrollment"}}
-    @getNotes={{route-action "getNotes" enrollments}}
+    @getNotes={{route-action "getNotes" this.model.data}}
   />
 
 </CheckEmpty>
 
-{{#if showAddEnrollment}}
+{{#if this.showAddEnrollmentDialog}}
   <ModalDialog
     @containerClass="pointer-events-auto"
-    @onClose={{action "showAddEnrollment" false}}
     @translucentOverlay={{true}}
   >
     <ContractEnrollmentsAdd
-      @createEnrollment={{action "addEnrollment"}}
-      @contract={{contract}}
-      @close={{action (mut showAddEnrollment) false}}
+      @addEnrollments={{action "addEnrollments"}}
+      @contract={{this.contract}}
+      @onClose={{fn this.showAddEnrollment false}}
     />
   </ModalDialog>
 {{/if}}
