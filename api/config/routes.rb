@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get '/', to: 'uptime#homepage'
   get '/up', to: 'uptime#index'
   get '/up/db', to: 'uptime#db'
 
