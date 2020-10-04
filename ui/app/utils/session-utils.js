@@ -65,7 +65,7 @@ function clearSessionData() {
 
 export function signOut() {
   const webAuth = getAuth0WebAuth();
-  const returnTo = `${window.location.protocol}//${window.location.host}/welcome`;
+  const returnTo = `${window.location.protocol}//${window.location.host}`;
 
   webAuth.logout({
     returnTo,
