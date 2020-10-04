@@ -31,6 +31,10 @@ services:
       - TINYSIS_PASSWORD=root
       - RAILS_MASTER_KEY=${RAILS_MASTER_KEY}
       - RAILS_ENV=development
+      - AWS_REGION=${AWS_REGION}
+      - AWS_CONFIG_BUCKET=${AWS_CONFIG_BUCKET}
+      - SUBDOMAIN=${SUBDOMAIN}
+      
       # prod
       # - RAILS_ENV=production
   adminer:

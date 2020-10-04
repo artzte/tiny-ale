@@ -23,18 +23,18 @@ class UptimeController < ApplicationController
 
     script = "window._tinyALE = { config: #{config} }"
 
-    pp script
-
     render js: script
   end
 
-  private
+private
   def read_config_local
     path = Pathname.new(Rails.application.root).join("config", "local-config.json")
     File.read path
   end
 
   def read_config_s3
-    "{}"
+    s3 = Aws::S3::Client.new region: ENV['AWS_REGION']
+    resp = s3.get_object(bucket: ENV['AWS_CONFIG_BUCKET'], key: "environments/#{ENV['SUBDOMAIN']}/config.json")
+    resp.body.read
   end
 end
