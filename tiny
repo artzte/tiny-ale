@@ -8,6 +8,10 @@ set -e
 
 COMMAND=$1
 
+shift
+
+REST_ARGS=$*
+
 PROJECT=tiny-ale
 API=${PROJECT}_web_1
 UI=${PROJECT}_ux_1
@@ -17,7 +21,6 @@ ADMINER=${PROJECT}_adminer_1
 createDb () {
   docker exec $API rake db:create
 }
-
 
 migrateDb () {
   docker exec $API rake db:migrate
@@ -40,11 +43,14 @@ deleteDbVolume () {
 }
 
 shell:api () {
-  docker exec -it $API bash
+  ARGS=${REST_ARGS:-bash}
+  docker exec -it $API $ARGS
 } 
 
 shell:ui () {
-  docker exec -it $UI bash
+  ARGS=${REST_ARGS:-bash}
+  echo $ARGS
+  docker exec -it $UI $ARGS
 }
 
 server () {
@@ -117,6 +123,10 @@ build:api () {
   docker build api --tag name:TINYSIS_PROD --tag sha:$(git rev-parse HEAD)
 }
 
+build:ui () {
+  docker exec $UI ember build --environment=production
+}
+
 usage () {
   echo "tiny <command>"
   echo ""
@@ -135,7 +145,7 @@ usage () {
 }
 
 case "$COMMAND" in
-  "getSecrets"|"initDb"|"build"|"server"|"shell:ui"|"shell:api"|"log"|"reset"|"test:api"|"test:ui"|"reset:ui"|"reset:api"|"stop"|"build:api")
+  "getSecrets"|"initDb"|"build"|"server"|"shell:ui"|"shell:api"|"log"|"reset"|"test:api"|"test:ui"|"reset:ui"|"reset:api"|"stop"|"build:api"|"build:ui")
       $COMMAND
       ;;
   *)

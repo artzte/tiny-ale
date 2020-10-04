@@ -10,15 +10,7 @@ export class AuthError extends Error {}
 export function getAuth0WebAuth() {
   if (auth0WebAuth) return auth0WebAuth;
 
-  // TODO AUTH VALUES FROM CONFIG
-  auth0WebAuth = new Auth0.WebAuth({
-    domain: 'dev-ksc8v0d7.auth0.com',
-    clientID: '8mPdJ0Fr9cD31vi0n18yCygUOSQURWwZ',
-    responseType: 'token id_token',
-    audience: 'https://nova.tinysis.org',
-    scope: 'openid profile',
-    redirectUri: 'http://localhost:3001/session',
-  });
+  auth0WebAuth = new Auth0.WebAuth(window._tinyALE.config.identity);
 
   return auth0WebAuth;
 }
@@ -73,7 +65,7 @@ function clearSessionData() {
 
 export function signOut() {
   const webAuth = getAuth0WebAuth();
-  const returnTo = `${window.location.protocol}//${window.location.host}/welcome`;
+  const returnTo = `${window.location.protocol}//${window.location.host}`;
 
   webAuth.logout({
     returnTo,

@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get '/', to: 'uptime#homepage'
   get '/up', to: 'uptime#index'
   get '/up/db', to: 'uptime#db'
+  get '/up/config.js', to: 'uptime#config_script'
 
   scope '/api' do
     get '/profile', to: 'profiles#index'

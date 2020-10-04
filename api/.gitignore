@@ -33,3 +33,5 @@ config/secrets.yml
 # rails secrets
 config/production-secrets.yml
 config/credentials.yml.enc
+config/local-config.json
+
