@@ -1,9 +1,7 @@
 import { computed } from '@ember/object';
 import TSelect from './t-select';
-import layout from '../templates/components/t-select';
 
 export default TSelect.extend({
-  layout,
   optionsList: computed('terms', function () {
     return this.terms
       .sort((t1, t2) => {
