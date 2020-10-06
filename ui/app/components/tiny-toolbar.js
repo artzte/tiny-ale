@@ -16,10 +16,12 @@ export default Component.extend({
   }),
 
   actions: {
-    signIn() {
+    signIn(event) {
+      event.preventDefault();
       this.signIn();
     },
-    signOut() {
+    signOut(event) {
+      event.preventDefault();
       this.signOut();
     },
   },

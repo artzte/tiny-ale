@@ -8,30 +8,28 @@ export default Route.extend({
 
   async beforeModel() {
     const { tinyData } = this;
+    const results = await Promise.all([
+      tinyData.fetch('/api/profile'),
+      fetch('/api/settings/years'),
+      tinyData.fetch('/api/settings'),
+    ]);
 
     const [
       appProfile,
       schoolYears,
-    ] = await Promise.all([
-      tinyData.fetch('/api/profile'),
-      fetch('/api/settings/years'),
-    ]);
-    const mergedProfile = { ...appProfile.data, meta: appProfile.meta };
+      settings,
+    ] = results;
 
+    const mergedProfile = { ...appProfile.data, meta: appProfile.meta };
+    const currentYearSetting = settings.data.find(setting => setting.attributes.name === 'current_year');
+    const reportingBaseMonthSetting = settings.data.find(setting => setting.attributes.name === 'reporting_base_month');
+
+    tinyData.setSchoolYear(currentYearSetting.attributes.value);
     tinyData.setUser(mergedProfile);
     tinyData.setYears(schoolYears);
-  },
+    tinyData.setReportingBaseMonth(reportingBaseMonthSetting.attributes.value);
 
-  model() {
-    const { tinyData } = this;
-
-    tinyData.fetch('/api/settings').then((settings) => {
-      const currentYearSetting = settings.data.find(setting => setting.attributes.name === 'current_year');
-      const reportingBaseMonthSetting = settings.data.find(setting => setting.attributes.name === 'reporting_base_month');
-
-      tinyData.setSchoolYear(currentYearSetting.attributes.value);
-      tinyData.setReportingBaseMonth(reportingBaseMonthSetting.attributes.value);
-    });
+    return results;
   },
 
   setupController(...args) {
