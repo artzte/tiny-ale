@@ -4,7 +4,7 @@ This is an API server meant to provide the foundation of a V2 of TinySIS.
 
 TinyALE (once TinySIS) is a feature-rich application that was developed around 2008 to serve the needs of the [Nova Project](http://novaknows.com/), a public high school in Seattle. TinySIS is still in active use today, despite its dated implementation.
 
-TinyALE provides status tracking features for staff members in this unique educational community, based on Washington State [ALE (Alternative Learning Experience)](http://www.k12.wa.us/ALD/AlternativeLearning) regulations.
+TinyALE provides status tracking features for staff members in this unique educational community, based on Washington State [ALE (Alternative Learning Experience)](https://www.k12.wa.us/student-success/learning-alternatives/alternative-learning-experience) regulations.
 
 TinyALE is a Rails 2 api server running with MySQL. An EmberJS client provides the website.
 
