@@ -1,7 +1,7 @@
-// GET /api/enrollments/5?include=participant,turnins,meetingParticipants,creditAssignments,creditAssignments.credit
+// GET /api/enrollments/50?include=participant,turnins,meetingParticipants,creditAssignments,creditAssignments.credit
 export default {
   data: {
-    id: '5',
+    id: '50',
     type: 'enrollment',
     attributes: {
       finalizedOn: null,
@@ -11,20 +11,20 @@ export default {
     relationships: {
       contract: {
         data: {
-          id: '9',
+          id: '32',
           type: 'contract',
         },
       },
       participant: {
         data: {
-          id: '11',
-          type: 'participant',
+          id: '323',
+          type: 'user',
         },
       },
       creditAssignments: {
         data: [
           {
-            id: '7',
+            id: '89',
             type: 'creditAssignment',
           },
         ],
@@ -81,7 +81,7 @@ export default {
   },
   included: [
     {
-      id: '7',
+      id: '89',
       type: 'creditAssignment',
       attributes: {
         creditHours: 1.0,
@@ -89,12 +89,17 @@ export default {
       relationships: {
         credit: {
           data: {
-            id: '1',
+            id: '75',
             type: 'credit',
           },
         },
         graduationPlanMapping: {
           data: null,
+        },
+        notes: {
+          data: [
+
+          ],
         },
         contractTerm: {
           data: null,
@@ -111,6 +116,12 @@ export default {
         creditTransmittalBatch: {
           data: null,
         },
+        enrollment: {
+          data: {
+            id: '50',
+            type: 'enrollment',
+          },
+        },
         childCreditAssignments: {
           data: [
 
@@ -122,7 +133,7 @@ export default {
       },
     },
     {
-      id: '1',
+      id: '75',
       type: 'credit',
       attributes: {
         courseId: '0',
@@ -147,7 +158,7 @@ export default {
         },
         enrollment: {
           data: {
-            id: '5',
+            id: '50',
             type: 'enrollment',
           },
         },
@@ -169,7 +180,7 @@ export default {
         },
         enrollment: {
           data: {
-            id: '5',
+            id: '50',
             type: 'enrollment',
           },
         },
@@ -191,7 +202,7 @@ export default {
         },
         enrollment: {
           data: {
-            id: '5',
+            id: '50',
             type: 'enrollment',
           },
         },
@@ -213,7 +224,7 @@ export default {
         },
         enrollment: {
           data: {
-            id: '5',
+            id: '50',
             type: 'enrollment',
           },
         },
@@ -235,31 +246,32 @@ export default {
         },
         enrollment: {
           data: {
-            id: '5',
+            id: '50',
             type: 'enrollment',
           },
         },
       },
     },
     {
-      id: '11',
+      id: '323',
       type: 'user',
       attributes: {
-        firstName: 'Leatrice',
-        lastName: 'Bednar',
+        firstName: 'Barbera',
+        lastName: 'Oberbrunner',
         nickname: null,
         dateActive: '2018-08-01',
         dateInactive: null,
-        districtId: '2870279804',
-        districtGrade: 12,
-        email: null,
+        districtId: '5340139563',
+        districtGrade: 9,
+        email: 'kentontorphy@gislason.com',
+        name: 'Barbera Oberbrunner',
         status: 'active',
         role: 'student',
       },
       relationships: {
         coordinator: {
           data: {
-            id: '7',
+            id: '319',
             type: 'user',
           },
         },
@@ -280,7 +292,7 @@ export default {
         },
         enrollment: {
           data: {
-            id: '5',
+            id: '50',
             type: 'enrollment',
           },
         },
@@ -301,7 +313,7 @@ export default {
         },
         enrollment: {
           data: {
-            id: '5',
+            id: '50',
             type: 'enrollment',
           },
         },
@@ -322,7 +334,7 @@ export default {
         },
         enrollment: {
           data: {
-            id: '5',
+            id: '50',
             type: 'enrollment',
           },
         },
@@ -343,7 +355,7 @@ export default {
         },
         enrollment: {
           data: {
-            id: '5',
+            id: '50',
             type: 'enrollment',
           },
         },
@@ -364,7 +376,7 @@ export default {
         },
         enrollment: {
           data: {
-            id: '5',
+            id: '50',
             type: 'enrollment',
           },
         },

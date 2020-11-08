@@ -1,23 +1,23 @@
-// auth for user 10
+// auth for user 322
 export default {
   data: {
-    email: 'simon@watermith.name',
+    email: 'eleonoramurphy@kautzer.io',
     email_verified: false,
     updated_at: '2019-06-23T23:44:29.877Z',
-    user_id: 'auth0|47cb004b7739e905cc2c43f591c25071',
-    name: 'Cleotilde Kohler',
+    user_id: 'auth0|35a45ba56e0bf044171b090d4d3f688d',
+    name: 'Glenda Marquardt',
     identities: [
       {
         connection: 'Username-Password-Authentication',
         provider: 'auth0',
-        user_id: '47cb004b7739e905cc2c43f591c25071',
+        user_id: '35a45ba56e0bf044171b090d4d3f688d',
         isSocial: false,
       },
     ],
     created_at: '2019-05-25T00:24:18.815Z',
     last_password_reset: '2019-06-10T04:09:05.883Z',
-    given_name: 'Cleotilde',
-    family_name: 'Kohler',
+    given_name: 'Glenda',
+    family_name: 'Marquardt',
     nickname: null,
     last_login: '2019-06-23T23:44:29.877Z',
     last_ip: '208.100.155.216',

@@ -2,7 +2,7 @@
 export default {
   data: [
     {
-      id: '3',
+      id: '24',
       type: 'category',
       attributes: {
         name: 'Category 1',
@@ -16,11 +16,11 @@ export default {
         contracts: {
           data: [
             {
-              id: '5',
+              id: '28',
               type: 'contract',
             },
             {
-              id: '9',
+              id: '32',
               type: 'contract',
             },
           ],
@@ -28,7 +28,7 @@ export default {
       },
     },
     {
-      id: '4',
+      id: '25',
       type: 'category',
       attributes: {
         name: 'Category 2',
@@ -42,19 +42,19 @@ export default {
         contracts: {
           data: [
             {
-              id: '6',
+              id: '29',
               type: 'contract',
             },
             {
-              id: '7',
+              id: '30',
               type: 'contract',
             },
             {
-              id: '8',
+              id: '31',
               type: 'contract',
             },
             {
-              id: '10',
+              id: '33',
               type: 'contract',
             },
           ],

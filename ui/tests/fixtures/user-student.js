@@ -1,24 +1,24 @@
-// GET /api/admin/users/11
+// GET /api/admin/users/323
 export default {
   data: {
-    id: '11',
+    id: '323',
     type: 'user',
     attributes: {
-      firstName: 'Leatrice',
-      lastName: 'Bednar',
+      firstName: 'Barbera',
+      lastName: 'Oberbrunner',
       nickname: null,
       dateActive: '2018-08-01',
       dateInactive: null,
-      districtId: '2870279804',
-      districtGrade: 12,
+      districtId: '5340139563',
+      districtGrade: 9,
       status: 'active',
       role: 'student',
-      email: null,
+      email: 'kentontorphy@gislason.com',
     },
     relationships: {
       coordinator: {
         data: {
-          id: '7',
+          id: '319',
           type: 'user',
         },
       },

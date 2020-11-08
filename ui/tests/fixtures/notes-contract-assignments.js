@@ -2,10 +2,10 @@
 export default {
   data: [
     {
-      id: '67',
+      id: '75',
       type: 'note',
       attributes: {
-        note: 'Note by Collier for student Bednar / assignment 1',
+        note: 'Note by Heaney for student Oberbrunner / assignment 1',
         updatedAt: '2019-11-15T00:00:00.000Z',
       },
       relationships: {
@@ -17,96 +17,8 @@ export default {
         },
         creator: {
           data: {
-            id: '7',
-            type: 'User',
-          },
-        },
-      },
-    },
-    {
-      id: '68',
-      type: 'note',
-      attributes: {
-        note: 'Note by Collier for student Bednar / assignment 2',
-        updatedAt: '2019-11-15T00:00:00.000Z',
-      },
-      relationships: {
-        notable: {
-          data: {
-            id: '2',
-            type: 'turnin',
-          },
-        },
-        creator: {
-          data: {
-            id: '7',
-            type: 'User',
-          },
-        },
-      },
-    },
-    {
-      id: '69',
-      type: 'note',
-      attributes: {
-        note: 'Note by Collier for student Bednar / assignment 3',
-        updatedAt: '2019-11-15T00:00:00.000Z',
-      },
-      relationships: {
-        notable: {
-          data: {
-            id: '3',
-            type: 'turnin',
-          },
-        },
-        creator: {
-          data: {
-            id: '7',
-            type: 'User',
-          },
-        },
-      },
-    },
-    {
-      id: '70',
-      type: 'note',
-      attributes: {
-        note: 'Note by Collier for student Bednar / assignment 4',
-        updatedAt: '2019-11-15T00:00:00.000Z',
-      },
-      relationships: {
-        notable: {
-          data: {
-            id: '4',
-            type: 'turnin',
-          },
-        },
-        creator: {
-          data: {
-            id: '7',
-            type: 'User',
-          },
-        },
-      },
-    },
-    {
-      id: '71',
-      type: 'note',
-      attributes: {
-        note: 'Note by Collier for student Bednar / assignment 5',
-        updatedAt: '2019-11-15T00:00:00.000Z',
-      },
-      relationships: {
-        notable: {
-          data: {
-            id: '5',
-            type: 'turnin',
-          },
-        },
-        creator: {
-          data: {
-            id: '7',
-            type: 'User',
+            id: '319',
+            type: 'user',
           },
         },
       },
@@ -114,17 +26,18 @@ export default {
   ],
   included: [
     {
-      id: '7',
+      id: '319',
       type: 'user',
       attributes: {
-        firstName: 'Dominic',
-        lastName: 'Collier',
+        firstName: 'Armanda',
+        lastName: 'Heaney',
         nickname: null,
         dateActive: '2012-09-01',
         dateInactive: null,
         districtId: null,
         districtGrade: 12,
-        email: 'janelle@rathskiles.net',
+        email: 'cyrilkuhic@stoltenbergstehr.org',
+        name: 'Armanda Heaney',
         status: 'active',
         role: 'staff',
       },
@@ -132,7 +45,7 @@ export default {
         coordinatees: {
           data: [
             {
-              id: '11',
+              id: '323',
               type: 'user',
             },
           ],
@@ -141,6 +54,6 @@ export default {
     },
   ],
   meta: {
-    count: 5,
+    count: 1,
   },
 };

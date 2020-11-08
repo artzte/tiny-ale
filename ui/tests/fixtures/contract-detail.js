@@ -1,16 +1,16 @@
-// GET /api/contracts/9?include=category,facilitator,assignments,meetings,creditAssignments,creditAssignments.credit,term,ealrs
+// GET /api/contracts/32?include=category,facilitator,assignments,meetings,creditAssignments,creditAssignments.credit,term,ealrs
 export default {
   data: {
-    id: '9',
+    id: '32',
     type: 'contract',
     attributes: {
-      name: 'Demergo somnus denuncio tamen solitudo.',
+      name: 'Angulus comedo damnatio attonbitus ceno.',
       status: 'approved',
-      learningObjectives: 'Capillus terga certo viscus texo.',
-      competencies: 'Armarium carmen ambitus cerno vero.',
-      evaluationMethods: 'Et amor vinco articulus cohibeo.',
-      instructionalMaterials: 'Inflammatio venustas tracto vix verus.',
-      location: 'Molestiae acidus vis sed nihil.',
+      learningObjectives: 'Sonitus theatrum circumvenio desidero acervus.',
+      competencies: 'Peccatus curo sunt consequatur cilicium.',
+      evaluationMethods: 'Ipsam currus apto neque qui.',
+      instructionalMaterials: 'Tamquam aut culpa cupio fugit.',
+      location: 'Abeo venio depraedor auxilium crux.',
       timeslots: [
         {
           start: '8:45',
@@ -23,34 +23,34 @@ export default {
       enrollments: {
         data: [
           {
-            id: '5',
+            id: '50',
             type: 'enrollment',
           },
           {
-            id: '6',
+            id: '51',
             type: 'enrollment',
           },
           {
-            id: '7',
+            id: '52',
             type: 'enrollment',
           },
         ],
       },
       facilitator: {
         data: {
-          id: '7',
-          type: 'User',
+          id: '319',
+          type: 'user',
         },
       },
       term: {
         data: {
-          id: '7',
+          id: '69',
           type: 'term',
         },
       },
       category: {
         data: {
-          id: '3',
+          id: '24',
           type: 'category',
         },
       },
@@ -81,7 +81,7 @@ export default {
       creditAssignments: {
         data: [
           {
-            id: '2',
+            id: '84',
             type: 'creditAssignment',
           },
         ],
@@ -110,22 +110,22 @@ export default {
           },
         ],
       },
-      ealrs: {
+      learningRequirements: {
         data: [
           {
-            id: '1',
+            id: '12',
             type: 'ealr',
           },
           {
-            id: '2',
+            id: '13',
             type: 'ealr',
           },
           {
-            id: '3',
+            id: '14',
             type: 'ealr',
           },
           {
-            id: '4',
+            id: '15',
             type: 'ealr',
           },
         ],
@@ -229,7 +229,7 @@ export default {
       },
     },
     {
-      id: '3',
+      id: '24',
       type: 'category',
       attributes: {
         name: 'Category 1',
@@ -243,11 +243,11 @@ export default {
         contracts: {
           data: [
             {
-              id: '5',
+              id: '28',
               type: 'contract',
             },
             {
-              id: '9',
+              id: '32',
               type: 'contract',
             },
           ],
@@ -255,7 +255,7 @@ export default {
       },
     },
     {
-      id: '2',
+      id: '84',
       type: 'creditAssignment',
       attributes: {
         creditHours: 1.0,
@@ -263,12 +263,17 @@ export default {
       relationships: {
         credit: {
           data: {
-            id: '1',
+            id: '75',
             type: 'credit',
           },
         },
         graduationPlanMapping: {
           data: null,
+        },
+        notes: {
+          data: [
+
+          ],
         },
         contractTerm: {
           data: null,
@@ -278,7 +283,7 @@ export default {
         },
         contract: {
           data: {
-            id: '9',
+            id: '32',
             type: 'contract',
           },
         },
@@ -286,6 +291,9 @@ export default {
           data: null,
         },
         creditTransmittalBatch: {
+          data: null,
+        },
+        enrollment: {
           data: null,
         },
         childCreditAssignments: {
@@ -299,7 +307,7 @@ export default {
       },
     },
     {
-      id: '1',
+      id: '75',
       type: 'credit',
       attributes: {
         courseId: '0',
@@ -309,53 +317,18 @@ export default {
       },
     },
     {
-      id: '1',
-      type: 'ealr',
-      attributes: {
-        ealr: 'Pectus cubo adsuesco armarium currus.',
-        seq: '1.1',
-        category: 'Category 1',
-      },
-    },
-    {
-      id: '2',
-      type: 'ealr',
-      attributes: {
-        ealr: 'Triginta omnis creptio aequus vomer.',
-        seq: '1.2',
-        category: 'Category 1',
-      },
-    },
-    {
-      id: '3',
-      type: 'ealr',
-      attributes: {
-        ealr: 'Vos ad consequatur ubi aranea.',
-        seq: '2.1',
-        category: 'Category 2',
-      },
-    },
-    {
-      id: '4',
-      type: 'ealr',
-      attributes: {
-        ealr: 'Demo nesciunt cohibeo aveho facere.',
-        seq: '2.2',
-        category: 'Category 2',
-      },
-    },
-    {
-      id: '7',
+      id: '319',
       type: 'user',
       attributes: {
-        firstName: 'Dominic',
-        lastName: 'Collier',
+        firstName: 'Armanda',
+        lastName: 'Heaney',
         nickname: null,
         dateActive: '2012-09-01',
         dateInactive: null,
         districtId: null,
         districtGrade: 12,
-        email: 'janelle@rathskiles.net',
+        email: 'cyrilkuhic@stoltenbergstehr.org',
+        name: 'Armanda Heaney',
         status: 'active',
         role: 'staff',
       },
@@ -363,7 +336,7 @@ export default {
         coordinatees: {
           data: [
             {
-              id: '11',
+              id: '323',
               type: 'user',
             },
           ],
@@ -501,10 +474,10 @@ export default {
       },
     },
     {
-      id: '7',
+      id: '69',
       type: 'term',
       attributes: {
-        name: 'Seamless contextually-based encoding',
+        name: 'Optional modular implementation',
         schoolYear: 2019,
         creditDate: '2020-01-31',
         months: [

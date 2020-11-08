@@ -1,10 +1,10 @@
-// GET /api/terms/7
+// GET /api/terms/69
 export default {
   data: {
-    id: '7',
+    id: '69',
     type: 'term',
     attributes: {
-      name: 'Seamless contextually-based encoding',
+      name: 'Optional modular implementation',
       schoolYear: 2019,
       creditDate: '2020-01-31',
       months: [
