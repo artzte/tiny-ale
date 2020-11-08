@@ -10,51 +10,51 @@
 
 <LinkTo
   class="btn"
-  @route="settings-competencies.new"
+  @route="settings-learning-requirements.new"
 >
-  Add a competency
+  Add a learning requirement
 </LinkTo>
 
 {{#check-empty
-  count=categoryCompetencies.length
+  count=categoryLearningRequirements.length
   noResultsMessage="No entries in this category"
 }}
   {{count-paragraph
-    count=categoryCompetencies.length
-    name="competency"
+    count=categoryLearningRequirements.length
+    name="learning requirement"
   }}
-  <table class="t-table w-full" data-test-settings-competencies-list>
+  <table class="t-table w-full" data-test-settings-learning-requirement-list>
     <thead>
       <tr>
         <th>Sequence</th>
         <th>Category</th>
-        <th>Competency</th>
+        <th>Description</th>
         <th></th>
       </tr>
     </thead>
     <tbody>
-      {{#each categoryCompetencies as |competency|}}
+      {{#each categoryLearningRequirements as |learningRequirement|}}
         <tr>
           <td>
-            {{competency.attributes.seq}}
+            {{learningRequirement.attributes.seq}}
           </td>
           <td>
-            {{competency.attributes.category}}
+            {{learningRequirement.attributes.category}}
           </td>
           <td>
-            {{competency.attributes.competency}}
+            {{learningRequirement.attributes.learningRequirement}}
           </td>
           <th class="text-right">
             <LinkTo
-              @route="settings-competencies.edit"
-              @model={{competency}}
+              @route="settings-learning-requirements.edit"
+              @model={{learningRequirement}}
             >
               Edit
             </LinkTo>
             <button
               class="link-button"
               type="button"
-              onclick={{action 'deleteCompetency' competency}}
+              onclick={{action 'deleteLearningRequirement' learningRequirement}}
             >
               Delete
             </button>
@@ -67,12 +67,12 @@
 
 {{#if showDialog}}
   <ModalDialog>
-    <h3>Delete {{competency.attributes.category}} {{competency.attributes.seq}}</h3>
+    <h3>Delete {{learningRequirement.attributes.category}} {{learningRequirement.attributes.seq}}</h3>
     <p>Are you sure you want to delete this?</p>
     <footer>
       <button
         class="btn"
-        onclick={{action "confirmDelete" competency}}
+        onclick={{action "confirmDelete" learningRequirement}}
         type="submit"
       >
         Delete

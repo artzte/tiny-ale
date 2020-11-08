@@ -55,9 +55,9 @@ export const tinyDataService = {
     this._data.reportingBaseMonth = reportingBaseMonth;
   },
 
-  async getCompetencyCategories() {
+  async getLearningRequirementCategories() {
     if (!this._data.competencyCategories) {
-      this._data.competencyCategories = await fetch('/api/competencies/categories');
+      this._data.competencyCategories = await fetch('/api/learning-requirements/categories');
     }
     return this._data.competencyCategories;
   },

@@ -6,8 +6,8 @@ export default Route.extend({
 
   model() {
     return Promise.all([
-      this.tinyData.fetch('/api/competencies'),
-      this.tinyData.getCompetencyCategories(),
+      this.tinyData.fetch('/api/learning-requirements'),
+      this.tinyData.getLearningRequirementCategories(),
     ]);
   },
 });

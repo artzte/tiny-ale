@@ -1,0 +1,9 @@
+<h2>Edit learning requirement: {{model.attributes.category}} {{model.attributes.seq}}</h2>
+
+<SettingsLearningRequirementForm
+  @model={{model}}
+  @categories={{categories}}
+  @learningRequirements={{learningRequirements}}
+  @save={{action "updateRequirement"}}
+  @reportError={{action "reportError"}}
+/>

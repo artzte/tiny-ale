@@ -197,9 +197,9 @@ Router.map(function () {
             path: ':id',
           });
         });
-        this.route('settings-competencies', {
+        this.route('settings-learning-requirements', {
           resetNamespace: true,
-          path: '/competencies',
+          path: '/learning-requirements',
         }, function () {
           this.route('index', { path: '/' });
           this.route('new');
