@@ -50,4 +50,41 @@ RSpec.describe 'Contracts API', type: :request do
       expect(json['meta']['count']).to eq(2)
     end
   end
+
+  describe 'GET /contract/:id' do
+    it 'returns a detailed contract record' do
+      get "/api/contracts/#{@contract1_2008.id}"
+
+      expect(response).to have_http_status(200)
+      expect(json).not_to be_empty
+      expect(json['data']).not_to be_empty
+      
+      data = json['data']
+      expect(data['attributes']['name']).to eq(@contract1_2008.name)
+      expect(data['relationships']['enrollments'].size).to eq(@contract1_2008.enrollments.size)
+    end
+  end
+
+  describe 'PUT /contract/:id' do
+    it 'updates learning requirements and returns updates' do
+      learning_requirement = create :learning_requirement
+      post_body = {
+        data: {
+          relationships: {
+            learningRequirements: {
+              data: [{
+                id: learning_requirement.id
+              }]
+            }
+          }
+        }
+      }
+      
+      put "/api/contracts/#{@contract1_2008.id}", params: post_body.to_json, headers: json_request_headers
+
+      expect(@contract1_2008.learning_requirements.length).to eq(1)
+
+      expect(json['data']['relationships']['learningRequirements']['data'][0]['id']).to eq(learning_requirement.id.to_s)
+    end
+  end
 end

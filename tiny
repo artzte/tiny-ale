@@ -49,7 +49,6 @@ shell:api () {
 
 shell:ui () {
   ARGS=${REST_ARGS:-bash}
-  echo $ARGS
   docker exec -it $UI $ARGS
 }
 

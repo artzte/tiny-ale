@@ -33,6 +33,9 @@ Rails.application.routes.draw do
 
     get '/contracts', to: 'contracts#index'
     get '/contracts/:id', to: 'contracts#show'
+    post '/contracts', to: 'contracts#create'
+    put '/contracts/:id', to: 'contracts#update'
+    delete '/contracts/:id', to: 'contracts#destroy'
 
     get '/meetings', to: 'meetings#index'
     get '/meetings/:id', to: 'meetings#show'
@@ -54,8 +57,6 @@ Rails.application.routes.draw do
 
     get '/categories', to: 'categories#index'
 
-    get '/competencies', to: 'competencies#index'
-
     get '/terms', to: 'terms#index'
     get '/terms/:id', to: 'terms#show'
 
@@ -65,8 +66,8 @@ Rails.application.routes.draw do
     get '/credits', to: 'credits#index'
     get '/credits/:id', to: 'credits#show'
 
-    get '/competencies/categories', to: 'competencies#categories'
-    get '/competencies', to: 'competencies#index'
+    get '/learning-requirements/categories', to: 'learning_requirements#categories'
+    get '/learning-requirements', to: 'learning_requirements#index'
 
     get '/learning-plans/:student_id/:year', to: 'learning_plans#show'
     get '/learning-plans/:student_id', to: 'learning_plans#show'
@@ -99,9 +100,9 @@ Rails.application.routes.draw do
       put '/contract-categories/:id', to: 'admin_contract_categories#update'
       delete '/contract-categories/:id', to: 'admin_contract_categories#destroy'
 
-      post '/competencies', to: 'admin_competencies#create'
-      put '/competencies/:id', to: 'admin_competencies#update'
-      delete '/competencies/:id', to: 'admin_competencies#destroy'
+      post '/learning-requirements', to: 'admin_learning_requirements#create'
+      put '/learning-requirements/:id', to: 'admin_learning_requirements#update'
+      delete '/learning-requirements/:id', to: 'admin_learning_requirements#destroy'
 
       put '/graduation-plan-requirements/sort', to: 'admin_graduation_plan_requirements#sort'
       put '/graduation-plan-requirements/:id', to: 'admin_graduation_plan_requirements#update'

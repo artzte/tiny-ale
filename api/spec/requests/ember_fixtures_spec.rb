@@ -148,14 +148,14 @@ RSpec.describe 'Ember fixtures script', type: :request do
 
       (1..2).each do |category_num|
         category_name = "Category #{category_num}"
-        (1..2).each do |ealr_num|
-          seq = "#{category_num}.#{ealr_num}"
-          create :ealr, category: category_name, seq: seq
+        (1..2).each do |num|
+          seq = "#{category_num}.#{num}"
+          create :learning_requirement, category: category_name, seq: seq
         end
       end
 
-      Ealr.all.each do |ealr|
-        @contract1_current.ealrs << ealr
+      LearningRequirement.all.each do |req|
+        @contract1_current.learning_requirements << req
       end
       @contract1_current.save!
 
