@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-# spec/factories/ealr.rb
+# spec/factories/learning_requirement.rb
 
 FactoryBot.define do
-  factory :ealr do
+  factory :learning_requirement do
     ealr { Faker::Lorem.sentence(5, 0) }
   end
 end

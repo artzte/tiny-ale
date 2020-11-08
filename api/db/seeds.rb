@@ -85,15 +85,15 @@ end
   CreditAssignment.create! credit: @credit2, contract: contract, credit_hours: 2
 end
 
-Ealr.categories.each_with_index do |category_name, category_num|
-  (1..2).each do |ealr_num|
-    seq = "#{category_num + 1}.#{ealr_num}"
-    Ealr.create! ealr: "#{category_name} #{ealr_num}", category: category_name, seq: seq
+LearningRequirement.categories.each_with_index do |category_name, category_num|
+  (1..2).each do |num|
+    seq = "#{category_num + 1}.#{num}"
+    LearningRequirement.create! ealr: "#{category_name} #{num}", category: category_name, seq: seq
   end
 end
 
-Ealr.all.each do |ealr|
-  @contract1_current.ealrs << ealr
+LearningRequirement.all.each do |req|
+  @contract1_current.learning_requirements << req
 end
 @contract1_current.save!
 

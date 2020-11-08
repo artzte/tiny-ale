@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 class ContractsController < ApiBaseController
-  PERMITTED_INCLUDES = %w[category facilitator assignments meetings credit_assignments credit_assignments.credit term ealrs].freeze
+  PERMITTED_INCLUDES = %w[category facilitator assignments meetings credit_assignments credit_assignments.credit term learning_requirements].freeze
+
+  before_action :get_contract, only: [:destroy, :update]
 
   def index
     limit = params[:limit] || Rails.configuration.constants[:DEFAULT_LIMIT]
@@ -52,8 +54,7 @@ class ContractsController < ApiBaseController
       meta: {
         count: count
       },
-      include: %i[category facilitator term],
-      fields: { contract: %i[name status category facilitator term enrollments] }
+      include: included_models
     }
 
     render json: ContractSerializer.new(result, options)
@@ -62,13 +63,78 @@ class ContractsController < ApiBaseController
   def show
     contract = Contract.find params[:id]
 
-    included_models = nil
+    options = {
+      include: included_models,
+      params: {
+        details: true,
+      },
+    }
 
-    if params[:include]
-      included_models = params[:include].split(',').map(&:underscore) & ContractsController::PERMITTED_INCLUDES
+    render json: ContractSerializer.new(contract, options)
+  end
+
+  def create
+    facilitator_params = new_contract_facilitator
+
+    @contract = Contract.create
+    @contract.creator = current_user
+
+    update_contract
+
+    render json: ContractSerializer.new(contract, include: [:facilitator, :category, :learning_requirements, :term])
+  end
+
+  def update
+    update_contract
+
+    render json: ContractSerializer.new(@contract, include: [:facilitator, :category, :learning_requirements, :term])
+  end
+
+  def destroy
+
+  end
+
+protected
+  def get_contract
+    @contract = Contract.find params[:id]
+  end
+
+  def contract_attributes
+    attributes = params.dig(:data, :attributes)
+
+
+    attributes.permit(:name, :learning_objectives, :competencies, :evaluation_methods, :instructional_materials) if attributes
+  end
+
+  [:facilitator, :category, :term].each do |relation|
+    self.define_method("contract_#{relation}") do
+      params
+        .dig(:data, :relationships, relation, :data, :id)
     end
+  end
 
-    render json: ContractSerializer.new(contract,
-                                        include: included_models)
+  def update_contract
+    @contract.facilitator = User.find contract_facilitator if contract_facilitator
+    @contract.category = Category.find contract_category if contract_category
+    @contract.term = Term.find contract_term if contract_term
+    @contract.update_status contract_attributes[:status] if contract_attributes and contract_attributes[:status]
+
+    learning_requirements = params.dig(:data, :relationships, :learning_requirements, :data)
+    if learning_requirements
+      @contract.learning_requirements.clear
+      new_learning_requirements = LearningRequirement.where(id: learning_requirements.map{|c| c[:id]})
+      @contract.learning_requirements << new_learning_requirements
+    end
+    
+    @contract.update_attributes contract_attributes if contract_attributes
+
+    @contract.save!
+  end
+
+  def included_models
+    if params[:include]
+      return params[:include].split(',').map(&:underscore) & ContractsController::PERMITTED_INCLUDES
+    end
+    nil
   end
 end

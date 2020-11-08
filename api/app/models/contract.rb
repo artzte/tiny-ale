@@ -36,7 +36,8 @@ class Contract < ApplicationRecord
   has_many :statuses, through: :enrollments
   belongs_to :facilitator, foreign_key: 'facilitator_id', class_name: 'User'
 
-  has_and_belongs_to_many :ealrs, join_table: 'contract_ealrs'
+  has_many :contract_learning_requirements
+  has_many :learning_requirements, through: 'contract_learning_requirements'
 
   belongs_to :category
   belongs_to :term
@@ -235,8 +236,8 @@ class Contract < ApplicationRecord
           c.assignments << Assignment.new(name: a.name, description: a.description, due_date: c.term.months[0], weighting: a.weighting, creator_id: c.facilitator_id)
         end
       end
-      ealrs.each do |e|
-        c.ealrs << e
+      learning_requirements.each do |req|
+        c.learning_requirements << req
       end
       credit_assignments.each do |ca|
         c.credit_assignments << CreditAssignment.new(credit_id: ca.credit_id, credit_hours: ca.credit_hours)
