@@ -22,6 +22,10 @@ export default Component.extend({
     });
 
     this.validate();
+
+    if (this.onUpdatePojo) {
+      this.onUpdatePojo(pojo);
+    }
   },
 
   didInsertElement() {
@@ -130,6 +134,10 @@ export default Component.extend({
     };
 
     this.set(updatePath, newPojo);
+
+    if (this.onUpdatePojo) {
+      this.onUpdatePojo(newPojo);
+    }
 
     this.validate();
   },
