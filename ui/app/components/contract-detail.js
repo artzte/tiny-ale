@@ -1,23 +1,95 @@
-import Component from '@ember/component';
-import { inject } from '@ember/service';
-import { computed } from '@ember/object';
-import ContractRelations from '../mixins/contract-relations';
+import Component from '@glimmer/component';
+import { inject as service } from '@ember/service';
+import { tracked } from '@glimmer/tracking';
+import { action } from '@ember/object';
+import { compareUsers } from '../utils/user-utils';
+import { ENROLLMENT_STATUS_ENROLLED } from '../utils/enrollment-utils';
 
-export default Component.extend(ContractRelations, {
-  tinyData: inject(),
+export default class ContractDetail extends Component {
+  @service('tinyData') tinyData;
 
-  classNames: ['contract-detail'],
+  @tracked loading = false;
 
-  detailSections: computed('contract', function () {
-    const { contract } = this;
-    return ['learningObjectives', 'competencies', 'evaluationMethods', 'instructionalMaterials']
-      .map(section => ({
-        name: section,
-        contents: contract.attributes[section],
-      }));
-  }),
+  @tracked contract;
 
-  hasDetails: computed('detailSections', function () {
-    return this.detailSections.any(section => section.content && section.content.trim());
-  }),
-});
+  @action async updateContract(payload) {
+    this.loading = true;
+    const result = await this.tinyData.fetch(`/api/contracts/${this.contract.id}`, {
+      method: 'put',
+      body: JSON.stringify(payload),
+    });
+    this.loading = false;
+    this.contract = result.data;
+  }
+
+  constructor(...args) {
+    super(...args);
+    this.contract = this.args.contract;
+  }
+
+  get facilitator() {
+    const { tinyData, args } = this;
+    const { contract } = args;
+
+    return tinyData.get('user', contract.relationships.facilitator.data.id);
+  }
+
+  get participants() {
+    const { enrollments, tinyData } = this;
+
+    return enrollments
+      .map(enrollment => ({
+        enrollment,
+        student: tinyData.get('user', enrollment.relationships.participant.data.id),
+      }))
+      .sort((e1, e2) => compareUsers(e1.student, e2.student));
+  }
+
+  get activeParticipants() {
+    return this.participants.filter(participant => participant.enrollment.attributes.enrollmentStatus === ENROLLMENT_STATUS_ENROLLED);
+  }
+
+  get assignments() {
+    const { tinyData, args } = this;
+    const { contract } = args;
+
+    return contract.relationships.assignments.data
+      .map(ref => tinyData.get('assignment', ref.id));
+  }
+
+  get meetings() {
+    const { tinyData, args } = this;
+    const { contract } = args;
+
+    return contract.relationships.meetings.data
+      .map(ref => tinyData.get('meeting', ref.id));
+  }
+
+  get term() {
+    const { tinyData, args } = this;
+    const { contract } = args;
+
+    return tinyData.get('term', contract.relationships.term.data.id);
+  }
+
+  get category() {
+    const { tinyData, args } = this;
+    const { contract } = args;
+
+    return tinyData.get('category', contract.relationships.category.data.id);
+  }
+
+  get creditAssignments() {
+    const { tinyData, args } = this;
+    const { contract } = args;
+
+    return contract.relationships.creditAssignments.data.map(creditAssignment => tinyData.get('creditAssignment', creditAssignment.id));
+  }
+
+  get enrollments() {
+    const { tinyData, args } = this;
+    const { contract } = args;
+
+    return contract.relationships.enrollments.data.map(relation => tinyData.get('enrollment', relation.id));
+  }
+}

@@ -38,6 +38,7 @@ export default Route.extend({
     const requestParams = {
       limit: 20,
       order: 'name',
+      include: 'term,category,facilitator',
     };
 
     requestParams.schoolYear = schoolYear || tinyData.getSchoolYear();

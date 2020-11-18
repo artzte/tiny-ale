@@ -1,2 +1,25 @@
-<dt class={{if subordinate "indented"}}>{{ealr.attributes.seq}}</dt>
-<dd class={{if subordinate "indented"}}>{{ealr.attributes.ealr}}</dd>
+{{#if showRow}}
+  <tr>
+    <td class="text-center">
+      {{#if @isEditing}}
+        <Input
+          type="checkbox"
+          value={{learningRequirement.id}}
+          checked={{isChecked}}
+          onclick={{@onSelect}}
+          id={{id}}
+        />
+      {{/if}}
+    </td>
+    <td class="pr-4 text-right w-16">
+      <label for={{id}}>
+        {{@learningRequirement.attributes.seq}}
+      </label>
+    </td>
+    <td>
+      <label for={{id}}>
+        {{@learningRequirement.attributes.ealr}}
+      </label>
+    </td>
+  </tr>
+{{/if}}

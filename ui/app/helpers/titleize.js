@@ -10,7 +10,9 @@ export function titleize(params/* , hash */) {
 
   if (!title) return title;
 
-  return capitalize(title);
+  const uncamelized = title.replace(/[A-Z]/, match => ` ${match.toLowerCase()}`);
+
+  return capitalize(uncamelized);
 }
 
 export default helper(titleize);

@@ -135,7 +135,7 @@ export const tinyDataService = {
     try {
       const records = this._store[type];
 
-      if (!records) throw new Error('unknown or unfetched');
+      if (!records) throw new Error(`Cannot find records of type ${type}`);
 
       if (id) return clone(records[id]);
 

@@ -1,10 +1,31 @@
-{{#each groupedEalrs as |category|}}
-  <h4>{{category.categoryName}}</h4>
-  <dl data-test-ealrs>
-    {{#each category.ealrs as |ealr|}}
-      {{contract-learning-requirements/item ealr=ealr}}
-    {{/each}}
-  </dl>
-{{else}}
-  <p>No learning requirements specified.</p>
-{{/each}}
+<h3>
+  Learning Requirements
+  <EditSaveCancel
+    @edit={{fn this.setEdit true}}
+    @save={{fn this.save}}
+    @cancel={{fn this.setEdit false}}
+    @disabled={{@disabled}}
+    @loading={{@loading}}
+    @isEditing={{this.isEditing}}
+  />
+</h3>
+
+<div class="contract-learning-requirements">
+  {{#each requirementsByCategory as |category|}}
+    <h4>{{category.category}}</h4>
+    <table class="learning-requirements">
+      {{#each category.learningRequirements as |learningRequirement|}}
+        <ContractLearningRequirements::Item
+          @learningRequirement={{learningRequirement}}
+          @selections={{this.selections}}
+          @isEditing={{this.isEditing}}
+          @onSelect={{action 'onSelect' learningRequirement}}
+        />
+      {{/each}}
+    </table>
+  {{else}}
+    <p>
+      No learning requirements selected.
+    </p>
+  {{/each}}
+</div>

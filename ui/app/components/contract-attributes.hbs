@@ -1,0 +1,149 @@
+<TForm
+  @model={{@contract}}
+  @save={{action "save"}}
+  @reportError={{action "reportError"}}
+  @onUpdatePojo={{action "didUpdatePojo"}}
+  as |form|
+>
+  <h3>
+    Details
+    <EditSaveCancel
+      @edit={{fn this.setEdit true}}
+      @save={{fn this.save}}
+      @cancel={{fn this.setEdit false}}
+      @disabled={{@disabled}}
+      @loading={{@loading}}
+      @isEditing={{this.isEditing}}
+    />  
+  </h3>
+  
+  {{#if isEditing}}
+    <fieldset>
+      <p>
+        <FormInput
+          @label="Contract name"
+          @showErrors={{form.showErrors}}
+          @error={{form.errors.name}}
+        >
+          <input
+            type="text"
+            value={{form.pojo.name}}
+            name="name"
+            onchange={{fn form.handleChange}}
+          />
+        </FormInput>
+      </p>
+      <p>
+        <FormInput
+          @error={{form.errors.status}}
+          @showError={{form.showErrors}}
+          @label="Status" 
+        >
+          <div class="inputs-horizontal">
+            <label>
+              <input
+                type="radio"
+                value="proposed"
+                checked={{this.isProposed}}
+                name="status"
+                onchange={{fn form.handleChange}}
+              >
+              Proposed
+            </label>
+            <label>
+              <input
+                type="radio"
+                value="approved"
+                checked={{this.isApproved}}
+                name="status"
+                onchange={{fn form.handleChange}}
+              >
+              Approved
+            </label>
+            <label>
+              <input
+                type="radio"
+                value="closed"
+                checked={{this.isClosed}}
+                name="status"
+                onchange={{fn form.handleChange}}
+              >
+              Closed
+            </label>
+          </div>
+        </FormInput>
+      </p>
+      <p>
+        <FormInput
+          @error={{errors.term}}
+          @showError={{showErrors}}
+          @label="Term" 
+        >
+          <TermSelect
+            name="term"
+            @terms={{this.terms}}
+            @value={{form.relationships.term.id}}
+            @onchange={{fn form.handleChange}}
+          />
+        </FormInput>
+      </p>
+    </fieldset>
+    <fieldset>
+      <p>
+        <FormInput
+          @label="Learning objectives" 
+        >
+          <MarkdownBox
+            name="learningObjectives"
+            value={{form.pojo.learningObjectives}}
+            onchange={{fn form.handleChange}}
+          />
+        </FormInput>
+      </p>
+      <p>
+        <FormInput
+          @label="Competencies" 
+        >
+          <MarkdownBox
+            name="competencies"
+            value={{form.pojo.competencies}}
+            onchange={{fn form.handleChange}}
+          />
+        </FormInput>
+      </p>
+      <p>
+        <FormInput
+          @label="Evaluation methods" 
+        >
+          <MarkdownBox
+            name="evaluationMethods"
+            value={{form.pojo.evaluationMethods}}
+            onchange={{fn form.handleChange}}
+          />
+        </FormInput>
+      </p>
+      <p>
+        <FormInput
+          @label="Instructional materials" 
+        >
+          <MarkdownBox
+            name="instructionalMaterials"
+            value={{form.pojo.instructionalMaterials}}
+            onchange={{fn form.handleChange}}
+          />
+        </FormInput>
+      </p>
+    </fieldset>
+  {{else}}
+    {{#if this.hasDetails}}
+      {{#each detailSections as |section|}}
+        <h4>{{titleize section.name}}</h4>
+        <p>
+          {{section.content}}
+        </p>
+      {{/each}}
+    {{else}}
+      <p>No details specified.</p>
+    {{/if}}
+  {{/if}}
+</TForm>
