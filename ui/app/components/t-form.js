@@ -19,12 +19,14 @@ export default Component.extend({
     this.setProperties({
       pojo,
       relationships,
+      'updates-pojo': {},
+      'updates-relationships': {},
     });
 
     this.validate();
 
     if (this.onUpdatePojo) {
-      this.onUpdatePojo(pojo);
+      this.onUpdatePojo(this.serializeModel(this.pojo, this.model, this.relationships));
     }
   },
 
@@ -49,6 +51,10 @@ export default Component.extend({
      */
     onChange(value, name) {
       this.handleChange(name, value, 'pojo');
+    },
+
+    onChangeRelationship(value, name) {
+      this.handleChange(name, value, 'relationships');
     },
   },
 
@@ -119,7 +125,9 @@ export default Component.extend({
     return Object.keys(relationships)
       .reduce((memo, key) => {
         memo[key] = {
-          data: relationships[key],
+          data: {
+            id: relationships[key],
+          },
         };
         return memo;
       }, {});
@@ -136,7 +144,7 @@ export default Component.extend({
     this.set(updatePath, newPojo);
 
     if (this.onUpdatePojo) {
-      this.onUpdatePojo(newPojo);
+      this.onUpdatePojo(this.serializeModel(this.pojo, this.model, this.relationships));
     }
 
     this.validate();
@@ -157,7 +165,7 @@ export default Component.extend({
       [name]: value,
     };
 
-    this.updatePojo(updates, updatePath);
+    this.updatePojo(updates, `updates-${updatePath}`);
   },
 
   validate() {
@@ -182,9 +190,9 @@ export default Component.extend({
     }
 
     const {
-      pojo,
+      'updates-pojo': pojo,
       model,
-      relationships,
+      'updates-relationships': relationships,
     } = this;
 
     this.set('disabled', true);

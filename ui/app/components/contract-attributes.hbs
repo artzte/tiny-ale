@@ -5,17 +5,16 @@
   @onUpdatePojo={{action "didUpdatePojo"}}
   as |form|
 >
-  <h3>
+  <h2>
     Details
     <EditSaveCancel
       @edit={{fn this.setEdit true}}
-      @save={{fn this.save}}
       @cancel={{fn this.setEdit false}}
       @disabled={{@disabled}}
       @loading={{@loading}}
       @isEditing={{this.isEditing}}
     />  
-  </h3>
+  </h2>
   
   {{#if isEditing}}
     <fieldset>
@@ -29,48 +28,36 @@
             type="text"
             value={{form.pojo.name}}
             name="name"
-            onchange={{fn form.handleChange}}
+            onchange={{action 'onChange' target=form}}
           />
         </FormInput>
       </p>
       <p>
         <FormInput
-          @error={{form.errors.status}}
-          @showError={{form.showErrors}}
-          @label="Status" 
+          @error={{errors.category}}
+          @showError={{showErrors}}
+          @label="Category" 
         >
-          <div class="inputs-horizontal">
-            <label>
-              <input
-                type="radio"
-                value="proposed"
-                checked={{this.isProposed}}
-                name="status"
-                onchange={{fn form.handleChange}}
-              >
-              Proposed
-            </label>
-            <label>
-              <input
-                type="radio"
-                value="approved"
-                checked={{this.isApproved}}
-                name="status"
-                onchange={{fn form.handleChange}}
-              >
-              Approved
-            </label>
-            <label>
-              <input
-                type="radio"
-                value="closed"
-                checked={{this.isClosed}}
-                name="status"
-                onchange={{fn form.handleChange}}
-              >
-              Closed
-            </label>
-          </div>
+          <TSelect
+            name="category"
+            @optionsList={{this.categoryOptions}}
+            @value={{form.relationships.category.id}}
+            @onchange={{action 'onChangeRelationship' target=form}}
+          />
+        </FormInput>
+      </p>
+      <p>
+        <FormInput
+          @error={{errors.term}}
+          @showError={{showErrors}}
+          @label="Facilitator" 
+        >
+          <TSelect
+            name="facilitator"
+            @optionsList={{this.staffOptions}}
+            @value={{form.relationships.facilitator.id}}
+            @onchange={{action 'onChangeRelationship' target=form}}
+          />
         </FormInput>
       </p>
       <p>
@@ -83,7 +70,23 @@
             name="term"
             @terms={{this.terms}}
             @value={{form.relationships.term.id}}
-            @onchange={{fn form.handleChange}}
+            @onchange={{action 'onChangeRelationship' target=form}}
+          />
+        </FormInput>
+      </p>
+    </fieldset>
+    <fieldset>
+      <p>
+        <FormInput
+          @error={{errors.location}}
+          @showError={{showErrors}}
+          @label="Location" 
+        >
+          <input
+            type="text"
+            name="location"
+            value={{form.pojo.location}}
+            onchange={{action 'onChange' target=form}}
           />
         </FormInput>
       </p>
@@ -96,7 +99,7 @@
           <MarkdownBox
             name="learningObjectives"
             value={{form.pojo.learningObjectives}}
-            onchange={{fn form.handleChange}}
+            onchange={{action 'onChange' target=form}}
           />
         </FormInput>
       </p>
@@ -107,7 +110,7 @@
           <MarkdownBox
             name="competencies"
             value={{form.pojo.competencies}}
-            onchange={{fn form.handleChange}}
+            onchange={{action 'onChange' target=form}}
           />
         </FormInput>
       </p>
@@ -118,7 +121,7 @@
           <MarkdownBox
             name="evaluationMethods"
             value={{form.pojo.evaluationMethods}}
-            onchange={{fn form.handleChange}}
+            onchange={{action 'onChange' target=form}}
           />
         </FormInput>
       </p>
@@ -129,7 +132,7 @@
           <MarkdownBox
             name="instructionalMaterials"
             value={{form.pojo.instructionalMaterials}}
-            onchange={{fn form.handleChange}}
+            onchange={{action 'onChange' target=form}}
           />
         </FormInput>
       </p>
@@ -137,7 +140,7 @@
   {{else}}
     {{#if this.hasDetails}}
       {{#each detailSections as |section|}}
-        <h4>{{titleize section.name}}</h4>
+        <h3>{{titleize section.name}}</h3>
         <p>
           {{section.content}}
         </p>

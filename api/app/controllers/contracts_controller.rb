@@ -63,14 +63,7 @@ class ContractsController < ApiBaseController
   def show
     contract = Contract.find params[:id]
 
-    options = {
-      include: included_models,
-      params: {
-        details: true,
-      },
-    }
-
-    render json: ContractSerializer.new(contract, options)
+    render json: ContractSerializer.new(contract, detail_options)
   end
 
   def create
@@ -81,13 +74,13 @@ class ContractsController < ApiBaseController
 
     update_contract
 
-    render json: ContractSerializer.new(contract, include: [:facilitator, :category, :learning_requirements, :term])
+    render json: ContractSerializer.new(@contract, detail_options)
   end
 
   def update
     update_contract
 
-    render json: ContractSerializer.new(@contract, include: [:facilitator, :category, :learning_requirements, :term])
+    render json: ContractSerializer.new(@contract, detail_options)
   end
 
   def destroy
@@ -102,14 +95,16 @@ protected
   def contract_attributes
     attributes = params.dig(:data, :attributes)
 
+    return nil unless attributes
 
-    attributes.permit(:name, :learning_objectives, :competencies, :evaluation_methods, :instructional_materials) if attributes
+    attributes.permit(:name, :learning_objectives, :competencies, :evaluation_methods, :instructional_materials)
   end
 
   [:facilitator, :category, :term].each do |relation|
     self.define_method("contract_#{relation}") do
-      params
-        .dig(:data, :relationships, relation, :data, :id)
+      params.require(:data)
+        .permit(relationships: {})
+        .dig(:relationships, relation, :data, :id)
     end
   end
 
@@ -131,10 +126,24 @@ protected
     @contract.save!
   end
 
-  def included_models
+  def included_models(options = {})
+    if options[:all]
+      return PERMITTED_INCLUDES
+    end
+    
     if params[:include]
       return params[:include].split(',').map(&:underscore) & ContractsController::PERMITTED_INCLUDES
     end
+
     nil
+  end
+
+  def detail_options
+    {
+      include: included_models(all: true),
+      params: {
+        details: true,
+      },
+    }
   end
 end

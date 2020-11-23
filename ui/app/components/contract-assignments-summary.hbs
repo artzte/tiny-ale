@@ -1,3 +1,8 @@
-{{#each assignments as |assignment|}}
-  {{contract-assignments-summary/row assignment=assignment}}
-{{/each}}
+<h2>Assignments</h2>
+<ul class="assignments-summary">
+  {{#each @assignments as |assignment|}}
+    <ContractAssignmentsSummary::Row
+      @assignment={{assignment}}
+    />
+  {{/each}}
+</ul>

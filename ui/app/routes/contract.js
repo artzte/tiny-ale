@@ -10,6 +10,8 @@ export default Route.extend({
     return all([
       tinyData.fetch('/api/learning-requirements'),
       tinyData.fetch('/api/terms?status=active'),
+      tinyData.fetch('/api/staff'),
+      tinyData.fetch('/api/categories'),
     ]);
   },
   model(params) {

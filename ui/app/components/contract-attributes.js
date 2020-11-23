@@ -8,6 +8,7 @@ import {
   STATUS_PROPOSED,
   STATUS_CLOSED,
 } from '../utils/contract-utils';
+import { ROLE_ADMIN, ROLE_STAFF } from '../utils/user-utils';
 
 export default class ContractAttributes extends Component {
   @service('tinyData') tinyData;
@@ -18,33 +19,21 @@ export default class ContractAttributes extends Component {
 
   @tracked selections = null;
 
-  @tracked pojo = {};
+  @tracked pojo = {
+    attributes: {},
+    relationships: {},
+  };
 
   @action setEdit(isEditing) {
     this.isEditing = isEditing;
   }
 
-  @action async save(pojo) {
+  @action async save(model) {
     const {
       args,
     } = this;
 
-    const payload = {
-      data: {
-        term: {
-          data: {
-            id: pojo.termId,
-          },
-        },
-        facilitator: {
-          data: {
-            id: pojo.facilitatorId,
-          },
-        },
-      },
-    };
-
-    await args.updateContract(payload);
+    await args.updateContract(model);
 
     this.setEdit(false);
   }
@@ -53,13 +42,29 @@ export default class ContractAttributes extends Component {
     console.error(err);
   }
 
-  @action
-  didUpdatePojo(pojo) {
+  @action didUpdatePojo(pojo) {
     this.pojo = pojo;
   }
 
-  get terms() {
-    return this.tinyData.get('term').filter(term => term.attributes.status === STATUS_ACTIVE);
+  constructor(...args) {
+    super(...args);
+    this.terms = this.tinyData.get('term').filter(term => term.attributes.status === STATUS_ACTIVE);
+    this.staff = this.tinyData.get('user').filter(user => [ROLE_STAFF, ROLE_ADMIN].includes(user.attributes.role));
+    this.categories = this.tinyData.get('category');
+  }
+
+  get staffOptions() {
+    return this.staff.map(staff => ({
+      value: staff.id,
+      name: staff.attributes.lastName,
+    }));
+  }
+
+  get categoryOptions() {
+    return this.categories.map(category => ({
+      value: category.id,
+      name: category.attributes.name,
+    }));
   }
 
   get detailSections() {
@@ -75,17 +80,5 @@ export default class ContractAttributes extends Component {
 
   get hasDetails() {
     return this.detailSections.any(section => section.content && section.content.trim());
-  }
-
-  get isApproved() {
-    return this.pojo.status === STATUS_APPROVED;
-  }
-
-  get isProposed() {
-    return this.pojo.status === STATUS_PROPOSED;
-  }
-
-  get isClosed() {
-    return this.pojo.status === STATUS_CLOSED;
   }
 }

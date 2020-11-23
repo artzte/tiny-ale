@@ -22,9 +22,9 @@
 </TTiles>
 
 <h2>Credits</h2>
-
 <CreditAssignments
   @creditAssignments={{this.creditAssignments}}
+  @creditable={{this.contract}}
 />
 
 <ContractAttributes
@@ -34,16 +34,12 @@
 />
 
 <ContractLearningRequirements
-  @learningRequirements={{@learningRequirements}}
+  @learningRequirements={{this.learningRequirements}}
   @contract={{this.contract}}
   @updateContract={{action 'updateContract'}}
   @loading={{loading}}
 />
 
-<h2>Assignments</h2>
-
 <ContractAssignmentsSummary
   @assignments={{this.assignments}}
 />
-
-

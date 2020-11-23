@@ -12,11 +12,11 @@ export default class ContractDetail extends Component {
 
   @tracked contract;
 
-  @action async updateContract(payload) {
+  @action async updateContract(data) {
     this.loading = true;
     const result = await this.tinyData.fetch(`/api/contracts/${this.contract.id}`, {
       method: 'put',
-      body: JSON.stringify(payload),
+      body: JSON.stringify({ data }),
     });
     this.loading = false;
     this.contract = result.data;
@@ -28,8 +28,7 @@ export default class ContractDetail extends Component {
   }
 
   get facilitator() {
-    const { tinyData, args } = this;
-    const { contract } = args;
+    const { tinyData, contract } = this;
 
     return tinyData.get('user', contract.relationships.facilitator.data.id);
   }
@@ -50,46 +49,46 @@ export default class ContractDetail extends Component {
   }
 
   get assignments() {
-    const { tinyData, args } = this;
-    const { contract } = args;
+    const { tinyData, contract } = this;
 
     return contract.relationships.assignments.data
       .map(ref => tinyData.get('assignment', ref.id));
   }
 
   get meetings() {
-    const { tinyData, args } = this;
-    const { contract } = args;
+    const { tinyData, contract } = this;
 
     return contract.relationships.meetings.data
       .map(ref => tinyData.get('meeting', ref.id));
   }
 
   get term() {
-    const { tinyData, args } = this;
-    const { contract } = args;
+    const { tinyData, contract } = this;
 
     return tinyData.get('term', contract.relationships.term.data.id);
   }
 
   get category() {
-    const { tinyData, args } = this;
-    const { contract } = args;
+    const { tinyData, contract } = this;
 
     return tinyData.get('category', contract.relationships.category.data.id);
   }
 
   get creditAssignments() {
-    const { tinyData, args } = this;
-    const { contract } = args;
+    const { tinyData, contract } = this;
 
     return contract.relationships.creditAssignments.data.map(creditAssignment => tinyData.get('creditAssignment', creditAssignment.id));
   }
 
   get enrollments() {
-    const { tinyData, args } = this;
-    const { contract } = args;
+    const { tinyData, contract } = this;
 
     return contract.relationships.enrollments.data.map(relation => tinyData.get('enrollment', relation.id));
+  }
+
+  get learningRequirements() {
+    const { tinyData } = this;
+
+    return tinyData.get('learningRequirement');
   }
 }
