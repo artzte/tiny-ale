@@ -1,12 +1,6 @@
 import Component from '@glimmer/component';
-import { action } from '@ember/object';
 
 export default class ContractLearningRequirementsItem extends Component {
-  @action
-  toggle(event) {
-    console.log(event);
-  }
-
   get id() {
     return `sel-${this.args.learningRequirement.id}`;
   }
