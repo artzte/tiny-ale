@@ -1,31 +1,32 @@
-<h2>
-  Learning Requirements
-  <EditSaveCancel
-    @edit={{fn this.setEdit true}}
-    @save={{fn this.save}}
-    @cancel={{fn this.setEdit false}}
-    @disabled={{@disabled}}
-    @loading={{@loading}}
-    @isEditing={{this.isEditing}}
-  />
-</h2>
+<form {{action this.save on="submit"}} class="t-form">
+  <h2>
+    Learning Requirements
+    <EditSaveCancel
+      @edit={{fn this.setEdit true}}
+      @cancel={{fn this.setEdit false}}
+      @disabled={{@disabled}}
+      @loading={{@loading}}
+      @isEditing={{this.isEditing}}
+    />
+  </h2>
 
-<div class="contract-learning-requirements">
-  {{#each requirementsByCategory as |category|}}
-    <h4>{{category.category}}</h4>
-    <table class="learning-requirements">
-      {{#each category.learningRequirements as |learningRequirement|}}
-        <ContractLearningRequirements::Item
-          @learningRequirement={{learningRequirement}}
-          @selections={{this.selections}}
-          @isEditing={{this.isEditing}}
-          @onSelect={{action 'onSelect' learningRequirement}}
-        />
-      {{/each}}
-    </table>
-  {{else}}
-    <p>
-      No learning requirements selected.
-    </p>
-  {{/each}}
-</div>
+  <div class="contract-learning-requirements">
+    {{#each requirementsByCategory as |category|}}
+      <h4>{{category.category}}</h4>
+      <table class="learning-requirements">
+        {{#each category.learningRequirements as |learningRequirement|}}
+          <ContractLearningRequirements::Item
+            @learningRequirement={{learningRequirement}}
+            @selections={{this.selections}}
+            @isEditing={{this.isEditing}}
+            @onSelect={{action 'onSelect' learningRequirement}}
+          />
+        {{/each}}
+      </table>
+    {{else}}
+      <p>
+        No learning requirements selected.
+      </p>
+    {{/each}}
+  </div>
+</form>

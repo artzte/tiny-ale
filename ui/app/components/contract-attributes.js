@@ -3,15 +3,12 @@ import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import { STATUS_ACTIVE } from '../utils/term-utils';
-import {
-  STATUS_APPROVED,
-  STATUS_PROPOSED,
-  STATUS_CLOSED,
-} from '../utils/contract-utils';
 import { ROLE_ADMIN, ROLE_STAFF } from '../utils/user-utils';
 
 export default class ContractAttributes extends Component {
   @service('tinyData') tinyData;
+
+  @service('flashMessages') flashMessages;
 
   sections = ['learningObjectives', 'competencies', 'evaluationMethods', 'instructionalMaterials'];
 
@@ -29,17 +26,13 @@ export default class ContractAttributes extends Component {
   }
 
   @action async save(model) {
-    const {
-      args,
-    } = this;
-
-    await args.updateContract(model);
+    await this.args.updateContract({ data: model });
 
     this.setEdit(false);
   }
 
   @action reportError(err) {
-    console.error(err);
+    this.flashMessages.alert(err);
   }
 
   @action didUpdatePojo(pojo) {

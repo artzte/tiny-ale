@@ -12,11 +12,11 @@ export default class ContractDetail extends Component {
 
   @tracked contract;
 
-  @action async updateContract(data) {
+  @action async updateContract(updates) {
     this.loading = true;
     const result = await this.tinyData.fetch(`/api/contracts/${this.contract.id}`, {
       method: 'put',
-      body: JSON.stringify({ data }),
+      body: JSON.stringify(updates),
     });
     this.loading = false;
     this.contract = result.data;
