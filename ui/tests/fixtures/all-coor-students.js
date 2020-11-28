@@ -2,64 +2,16 @@
 export default {
   data: [
     {
-      id: '324',
+      id: '121',
       type: 'user',
       attributes: {
-        firstName: 'Leisa',
-        lastName: 'McDermott',
+        firstName: 'Stacia',
+        lastName: 'Berge',
         nickname: null,
-        name: 'Leisa McDermott',
-        dateActive: '2018-08-01',
-        dateInactive: null,
-        districtId: '2527013728',
-        districtGrade: 10,
-        status: 'active',
-        role: 'student',
-      },
-      relationships: {
-        coordinator: {
-          data: {
-            id: '320',
-            type: 'user',
-          },
-        },
-      },
-    },
-    {
-      id: '323',
-      type: 'user',
-      attributes: {
-        firstName: 'Barbera',
-        lastName: 'Oberbrunner',
-        nickname: null,
-        name: 'Barbera Oberbrunner',
-        dateActive: '2018-08-01',
-        dateInactive: null,
-        districtId: '5340139563',
-        districtGrade: 9,
-        status: 'active',
-        role: 'student',
-      },
-      relationships: {
-        coordinator: {
-          data: {
-            id: '319',
-            type: 'user',
-          },
-        },
-      },
-    },
-    {
-      id: '325',
-      type: 'user',
-      attributes: {
-        firstName: 'Launa',
-        lastName: 'Pfannerstill',
-        nickname: null,
-        name: 'Launa Pfannerstill',
+        name: 'Stacia Berge',
         dateActive: '2018-08-01',
         dateInactive: '2019-10-01',
-        districtId: '4940633776',
+        districtId: '588825634',
         districtGrade: 12,
         status: 'inactive',
         role: 'student',
@@ -67,7 +19,55 @@ export default {
       relationships: {
         coordinator: {
           data: {
-            id: '320',
+            id: '116',
+            type: 'user',
+          },
+        },
+      },
+    },
+    {
+      id: '119',
+      type: 'user',
+      attributes: {
+        firstName: 'Alona',
+        lastName: 'Cormier',
+        nickname: null,
+        name: 'Alona Cormier',
+        dateActive: '2018-08-01',
+        dateInactive: null,
+        districtId: '2054848287',
+        districtGrade: 9,
+        status: 'active',
+        role: 'student',
+      },
+      relationships: {
+        coordinator: {
+          data: {
+            id: '115',
+            type: 'user',
+          },
+        },
+      },
+    },
+    {
+      id: '120',
+      type: 'user',
+      attributes: {
+        firstName: 'Frank',
+        lastName: 'Price',
+        nickname: null,
+        name: 'Frank Price',
+        dateActive: '2018-08-01',
+        dateInactive: null,
+        districtId: '6752258661',
+        districtGrade: 10,
+        status: 'active',
+        role: 'student',
+      },
+      relationships: {
+        coordinator: {
+          data: {
+            id: '116',
             type: 'user',
           },
         },

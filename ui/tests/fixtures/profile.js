@@ -1,18 +1,18 @@
 // GET /api/profile
 export default {
   data: {
-    id: '322',
+    id: '118',
     type: 'user',
     attributes: {
-      firstName: 'Glenda',
-      lastName: 'Marquardt',
+      firstName: 'Kyra',
+      lastName: 'Hammes',
       nickname: null,
       dateActive: '2011-07-01',
       dateInactive: null,
       districtId: null,
       districtGrade: 12,
-      email: 'eleonoramurphy@kautzer.io',
-      name: 'Glenda Marquardt',
+      email: 'ria@kuphal.com',
+      name: 'Kyra Hammes',
       status: 'active',
       role: 'administrator',
     },

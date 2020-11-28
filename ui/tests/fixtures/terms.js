@@ -2,10 +2,10 @@
 export default {
   data: [
     {
-      id: '67',
+      id: '17',
       type: 'term',
       attributes: {
-        name: 'Progressive 24 hour structure',
+        name: 'Decentralized explicit implementation',
         schoolYear: 2018,
         creditDate: '2019-01-31',
         months: [
@@ -20,10 +20,10 @@ export default {
       meta: null,
     },
     {
-      id: '68',
+      id: '18',
       type: 'term',
       attributes: {
-        name: 'Future-proofed 3rd generation instruction set',
+        name: 'Decentralized disintermediate framework',
         schoolYear: 2018,
         creditDate: '2019-06-15',
         months: [
@@ -38,10 +38,10 @@ export default {
       meta: null,
     },
     {
-      id: '69',
+      id: '19',
       type: 'term',
       attributes: {
-        name: 'Optional modular implementation',
+        name: 'Stand-alone full-range hub',
         schoolYear: 2019,
         creditDate: '2020-01-31',
         months: [
@@ -56,10 +56,10 @@ export default {
       meta: null,
     },
     {
-      id: '70',
+      id: '20',
       type: 'term',
       attributes: {
-        name: 'Synergistic zero tolerance circuit',
+        name: 'Stand-alone demand-driven local area network',
         schoolYear: 2019,
         creditDate: '2020-06-15',
         months: [
@@ -74,7 +74,7 @@ export default {
       meta: null,
     },
     {
-      id: '71',
+      id: '21',
       type: 'term',
       attributes: {
         name: 'COOR Last',
@@ -97,7 +97,7 @@ export default {
       meta: null,
     },
     {
-      id: '72',
+      id: '22',
       type: 'term',
       attributes: {
         name: 'COOR Current',

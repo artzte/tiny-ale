@@ -43,7 +43,7 @@ export default {
         },
         enrollment: {
           data: {
-            id: '50',
+            id: '19',
             type: 'enrollment',
           },
         },
@@ -65,7 +65,7 @@ export default {
         },
         enrollment: {
           data: {
-            id: '51',
+            id: '20',
             type: 'enrollment',
           },
         },
@@ -87,7 +87,7 @@ export default {
         },
         enrollment: {
           data: {
-            id: '52',
+            id: '21',
             type: 'enrollment',
           },
         },

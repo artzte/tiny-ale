@@ -304,6 +304,9 @@ RSpec.describe 'Ember fixtures script', type: :request do
         # active coor terms
         write_fixture '/api/terms?type=coor&status=active', 'coor-terms.js'
 
+        # contract list
+        write_fixture "/api/contracts?limit=20&order=name&include=term,category,facilitator&schoolYear=#{CURRENT_YEAR}", "contracts-list.js"
+
         # contract detail
         write_fixture "/api/contracts/#{@contract1_current.id}?include=category,facilitator,assignments,meetings,creditAssignments,creditAssignments.credit,term,ealrs", 'contract-detail.js'
 
@@ -424,6 +427,9 @@ RSpec.describe 'Ember fixtures script', type: :request do
 
         # credits
         write_fixture '/api/credits', 'credits-index.js'
+
+        # learning requirements
+        write_fixture '/api/learning-requirements', 'learning-requirements.js'
 
         # credit
         credit = Credit.first

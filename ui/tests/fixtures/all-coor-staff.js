@@ -2,18 +2,24 @@
 export default {
   data: [
     {
-      id: '319',
+      id: '116',
       type: 'user',
       attributes: {
-        firstName: 'Armanda',
-        lastName: 'Heaney',
+        firstName: 'Brittanie',
+        lastName: 'Daniel',
         nickname: null,
+        status: 'active',
+        role: 'staff',
       },
       relationships: {
         coordinatees: {
           data: [
             {
-              id: '323',
+              id: '120',
+              type: 'user',
+            },
+            {
+              id: '121',
               type: 'user',
             },
           ],
@@ -21,35 +27,14 @@ export default {
       },
     },
     {
-      id: '320',
+      id: '118',
       type: 'user',
       attributes: {
-        firstName: 'Debbi',
-        lastName: 'Leffler',
+        firstName: 'Kyra',
+        lastName: 'Hammes',
         nickname: null,
-      },
-      relationships: {
-        coordinatees: {
-          data: [
-            {
-              id: '324',
-              type: 'user',
-            },
-            {
-              id: '325',
-              type: 'user',
-            },
-          ],
-        },
-      },
-    },
-    {
-      id: '322',
-      type: 'user',
-      attributes: {
-        firstName: 'Glenda',
-        lastName: 'Marquardt',
-        nickname: null,
+        status: 'active',
+        role: 'administrator',
       },
       relationships: {
         coordinatees: {
@@ -60,12 +45,35 @@ export default {
       },
     },
     {
-      id: '318',
+      id: '115',
       type: 'user',
       attributes: {
-        firstName: 'Delmer',
-        lastName: 'Windler',
+        firstName: 'Coy',
+        lastName: 'Morissette',
         nickname: null,
+        status: 'active',
+        role: 'staff',
+      },
+      relationships: {
+        coordinatees: {
+          data: [
+            {
+              id: '119',
+              type: 'user',
+            },
+          ],
+        },
+      },
+    },
+    {
+      id: '114',
+      type: 'user',
+      attributes: {
+        firstName: 'Chuck',
+        lastName: 'Ryan',
+        nickname: null,
+        status: 'active',
+        role: 'administrator',
       },
       relationships: {
         coordinatees: {

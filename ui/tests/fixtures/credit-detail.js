@@ -1,7 +1,7 @@
-// GET /api/credits/75
+// GET /api/credits/49
 export default {
   data: {
-    id: '75',
+    id: '49',
     type: 'credit',
     attributes: {
       courseId: '0',

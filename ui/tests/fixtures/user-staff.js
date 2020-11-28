@@ -1,11 +1,11 @@
-// GET /api/admin/users/319
+// GET /api/admin/users/115
 export default {
   data: {
-    id: '319',
+    id: '115',
     type: 'user',
     attributes: {
-      firstName: 'Armanda',
-      lastName: 'Heaney',
+      firstName: 'Coy',
+      lastName: 'Morissette',
       nickname: null,
       dateActive: '2012-09-01',
       dateInactive: null,
@@ -13,7 +13,7 @@ export default {
       districtGrade: 12,
       status: 'active',
       role: 'staff',
-      email: 'cyrilkuhic@stoltenbergstehr.org',
+      email: 'leif@heaney.info',
     },
     relationships: {
     },

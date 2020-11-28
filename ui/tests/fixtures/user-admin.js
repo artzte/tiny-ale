@@ -1,11 +1,11 @@
-// GET /api/admin/users/322
+// GET /api/admin/users/118
 export default {
   data: {
-    id: '322',
+    id: '118',
     type: 'user',
     attributes: {
-      firstName: 'Glenda',
-      lastName: 'Marquardt',
+      firstName: 'Kyra',
+      lastName: 'Hammes',
       nickname: null,
       dateActive: '2011-07-01',
       dateInactive: null,
@@ -13,7 +13,7 @@ export default {
       districtGrade: 12,
       status: 'active',
       role: 'administrator',
-      email: 'eleonoramurphy@kautzer.io',
+      email: 'ria@kuphal.com',
     },
     relationships: {
     },

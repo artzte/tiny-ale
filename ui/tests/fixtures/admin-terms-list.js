@@ -2,7 +2,7 @@
 export default {
   data: [
     {
-      id: '72',
+      id: '22',
       type: 'term',
       attributes: {
         name: 'COOR Current',
@@ -29,7 +29,7 @@ export default {
       },
     },
     {
-      id: '71',
+      id: '21',
       type: 'term',
       attributes: {
         name: 'COOR Last',
@@ -56,10 +56,10 @@ export default {
       },
     },
     {
-      id: '68',
+      id: '18',
       type: 'term',
       attributes: {
-        name: 'Future-proofed 3rd generation instruction set',
+        name: 'Decentralized disintermediate framework',
         schoolYear: 2018,
         creditDate: '2019-06-15',
         months: [
@@ -78,32 +78,10 @@ export default {
       },
     },
     {
-      id: '69',
+      id: '17',
       type: 'term',
       attributes: {
-        name: 'Optional modular implementation',
-        schoolYear: 2019,
-        creditDate: '2020-01-31',
-        months: [
-          '2019-09-01',
-          '2019-10-01',
-          '2019-11-01',
-          '2019-12-01',
-          '2020-01-01',
-        ],
-        status: 'active',
-      },
-      meta: {
-        contractsCount: 2,
-        enrollmentsCount: 6,
-        enrollmentsOpenCount: 6,
-      },
-    },
-    {
-      id: '67',
-      type: 'term',
-      attributes: {
-        name: 'Progressive 24 hour structure',
+        name: 'Decentralized explicit implementation',
         schoolYear: 2018,
         creditDate: '2019-01-31',
         months: [
@@ -122,10 +100,10 @@ export default {
       },
     },
     {
-      id: '70',
+      id: '20',
       type: 'term',
       attributes: {
-        name: 'Synergistic zero tolerance circuit',
+        name: 'Stand-alone demand-driven local area network',
         schoolYear: 2019,
         creditDate: '2020-06-15',
         months: [
@@ -141,6 +119,28 @@ export default {
         contractsCount: 0,
         enrollmentsCount: 0,
         enrollmentsOpenCount: 0,
+      },
+    },
+    {
+      id: '19',
+      type: 'term',
+      attributes: {
+        name: 'Stand-alone full-range hub',
+        schoolYear: 2019,
+        creditDate: '2020-01-31',
+        months: [
+          '2019-09-01',
+          '2019-10-01',
+          '2019-11-01',
+          '2019-12-01',
+          '2020-01-01',
+        ],
+        status: 'active',
+      },
+      meta: {
+        contractsCount: 2,
+        enrollmentsCount: 6,
+        enrollmentsOpenCount: 6,
       },
     },
   ],

@@ -1,16 +1,16 @@
-// GET /api/contracts/32?include=category,facilitator,assignments,meetings,creditAssignments,creditAssignments.credit,term,ealrs
+// GET /api/contracts/14?include=category,facilitator,assignments,meetings,creditAssignments,creditAssignments.credit,term,ealrs
 export default {
   data: {
-    id: '32',
+    id: '14',
     type: 'contract',
     attributes: {
-      name: 'Angulus comedo damnatio attonbitus ceno.',
+      name: 'Omnis administratio ciminatio damnatio tergum.',
       status: 'approved',
-      learningObjectives: 'Sonitus theatrum circumvenio desidero acervus.',
-      competencies: 'Peccatus curo sunt consequatur cilicium.',
-      evaluationMethods: 'Ipsam currus apto neque qui.',
-      instructionalMaterials: 'Tamquam aut culpa cupio fugit.',
-      location: 'Abeo venio depraedor auxilium crux.',
+      learningObjectives: 'Learning objectives Cometes aliqua adduco amaritudo traho.',
+      competencies: 'Competencies Ustulo adipiscor cinis pecto doloribus.',
+      evaluationMethods: 'Evaluation methods Iure ratione uberrime suscipio vulnero.',
+      instructionalMaterials: 'Instructional materials Vehemens carmen correptius congregatio corrupti.',
+      location: 'Location Adultus patior architecto modi beatus.',
       timeslots: [
         {
           start: '8:45',
@@ -23,34 +23,34 @@ export default {
       enrollments: {
         data: [
           {
-            id: '50',
+            id: '19',
             type: 'enrollment',
           },
           {
-            id: '51',
+            id: '20',
             type: 'enrollment',
           },
           {
-            id: '52',
+            id: '21',
             type: 'enrollment',
           },
         ],
       },
       facilitator: {
         data: {
-          id: '319',
+          id: '115',
           type: 'user',
         },
       },
       term: {
         data: {
-          id: '69',
+          id: '19',
           type: 'term',
         },
       },
       category: {
         data: {
-          id: '24',
+          id: '10',
           type: 'category',
         },
       },
@@ -81,7 +81,7 @@ export default {
       creditAssignments: {
         data: [
           {
-            id: '84',
+            id: '25',
             type: 'creditAssignment',
           },
         ],
@@ -113,20 +113,20 @@ export default {
       learningRequirements: {
         data: [
           {
-            id: '12',
-            type: 'ealr',
+            id: '1',
+            type: 'learningRequirement',
           },
           {
-            id: '13',
-            type: 'ealr',
+            id: '2',
+            type: 'learningRequirement',
           },
           {
-            id: '14',
-            type: 'ealr',
+            id: '3',
+            type: 'learningRequirement',
           },
           {
-            id: '15',
-            type: 'ealr',
+            id: '4',
+            type: 'learningRequirement',
           },
         ],
       },
@@ -229,7 +229,7 @@ export default {
       },
     },
     {
-      id: '24',
+      id: '10',
       type: 'category',
       attributes: {
         name: 'Category 1',
@@ -243,11 +243,11 @@ export default {
         contracts: {
           data: [
             {
-              id: '28',
+              id: '10',
               type: 'contract',
             },
             {
-              id: '32',
+              id: '14',
               type: 'contract',
             },
           ],
@@ -255,7 +255,7 @@ export default {
       },
     },
     {
-      id: '84',
+      id: '25',
       type: 'creditAssignment',
       attributes: {
         creditHours: 1.0,
@@ -263,7 +263,7 @@ export default {
       relationships: {
         credit: {
           data: {
-            id: '75',
+            id: '49',
             type: 'credit',
           },
         },
@@ -283,7 +283,7 @@ export default {
         },
         contract: {
           data: {
-            id: '32',
+            id: '14',
             type: 'contract',
           },
         },
@@ -307,7 +307,7 @@ export default {
       },
     },
     {
-      id: '75',
+      id: '49',
       type: 'credit',
       attributes: {
         courseId: '0',
@@ -317,18 +317,18 @@ export default {
       },
     },
     {
-      id: '319',
+      id: '115',
       type: 'user',
       attributes: {
-        firstName: 'Armanda',
-        lastName: 'Heaney',
+        firstName: 'Coy',
+        lastName: 'Morissette',
         nickname: null,
         dateActive: '2012-09-01',
         dateInactive: null,
         districtId: null,
         districtGrade: 12,
-        email: 'cyrilkuhic@stoltenbergstehr.org',
-        name: 'Armanda Heaney',
+        email: 'leif@heaney.info',
+        name: 'Coy Morissette',
         status: 'active',
         role: 'staff',
       },
@@ -336,11 +336,47 @@ export default {
         coordinatees: {
           data: [
             {
-              id: '323',
+              id: '119',
               type: 'user',
             },
           ],
         },
+      },
+    },
+    {
+      id: '1',
+      type: 'learningRequirement',
+      attributes: {
+        ealr: 'Acquiro cena coruscus versus utrum.',
+        seq: '1.1',
+        category: 'Category 1',
+      },
+    },
+    {
+      id: '2',
+      type: 'learningRequirement',
+      attributes: {
+        ealr: 'Allatus subseco beatus voluptate voveo.',
+        seq: '1.2',
+        category: 'Category 1',
+      },
+    },
+    {
+      id: '3',
+      type: 'learningRequirement',
+      attributes: {
+        ealr: 'Vulariter trado totus cibo vulgivagus.',
+        seq: '2.1',
+        category: 'Category 2',
+      },
+    },
+    {
+      id: '4',
+      type: 'learningRequirement',
+      attributes: {
+        ealr: 'Cresco vaco curso curis aut.',
+        seq: '2.2',
+        category: 'Category 2',
       },
     },
     {
@@ -474,10 +510,10 @@ export default {
       },
     },
     {
-      id: '69',
+      id: '19',
       type: 'term',
       attributes: {
-        name: 'Optional modular implementation',
+        name: 'Stand-alone full-range hub',
         schoolYear: 2019,
         creditDate: '2020-01-31',
         months: [
