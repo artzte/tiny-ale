@@ -39,46 +39,44 @@ Router.map(function () {
       resetNamespace: true,
     }, function () {
       this.route('index', { path: '/' });
-    });
-
-    this.route('contract', {
-      path: 'contract/:id',
-      resetNamespace: true,
-    }, function () {
-      this.route('index', {
-        path: '/',
-      });
-      this.route('edit');
-      this.route('contract-enrollments', {
-        path: '/enrollments',
-        resetNamespace: true,
-      });
-      this.route('contract-assignments', {
-        path: '/assignments',
-        resetNamespace: true,
-      });
-      this.route('contract-attendance', {
-        path: '/attendance',
+      this.route('contract', {
+        path: ':id',
         resetNamespace: true,
       }, function () {
         this.route('index', {
           path: '/',
         });
-        this.route('contract-attendance-roll', {
-          path: '/:meeting_id',
+        this.route('contract-enrollments', {
+          path: '/enrollments',
           resetNamespace: true,
         });
-      });
-      this.route('status-by-contract', {
-        path: '/status',
-        resetNamespace: true,
-      }, function () {
-        this.route('index', {
-          path: '/',
-        });
-        this.route('status-by-enrollment', {
-          path: '/:enrollment_id',
+        this.route('contract-assignments', {
+          path: '/assignments',
           resetNamespace: true,
+        });
+        this.route('contract-attendance', {
+          path: '/attendance',
+          resetNamespace: true,
+        }, function () {
+          this.route('index', {
+            path: '/',
+          });
+          this.route('contract-attendance-roll', {
+            path: '/:meeting_id',
+            resetNamespace: true,
+          });
+        });
+        this.route('status-by-contract', {
+          path: '/status',
+          resetNamespace: true,
+        }, function () {
+          this.route('index', {
+            path: '/',
+          });
+          this.route('status-by-enrollment', {
+            path: '/:enrollment_id',
+            resetNamespace: true,
+          });
         });
       });
     });

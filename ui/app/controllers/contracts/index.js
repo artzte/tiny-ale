@@ -8,4 +8,10 @@ export default Controller.extend({
   facilitator: '',
   category: '',
   status: '',
+
+  actions: {
+    filterContracts(queryParams) {
+      this.setProperties(queryParams);
+    },
+  },
 });
