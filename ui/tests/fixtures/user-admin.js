@@ -1,11 +1,11 @@
-// GET /api/admin/users/118
+// GET /api/admin/users/226
 export default {
   data: {
-    id: '118',
+    id: '226',
     type: 'user',
     attributes: {
-      firstName: 'Kyra',
-      lastName: 'Hammes',
+      firstName: 'Beula',
+      lastName: 'Metz',
       nickname: null,
       dateActive: '2011-07-01',
       dateInactive: null,
@@ -13,7 +13,7 @@ export default {
       districtGrade: 12,
       status: 'active',
       role: 'administrator',
-      email: 'ria@kuphal.com',
+      email: 'jerrold@torphyreichel.io',
     },
     relationships: {
     },

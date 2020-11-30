@@ -1,11 +1,11 @@
-// GET /api/admin/users/115
+// GET /api/admin/users/223
 export default {
   data: {
-    id: '115',
+    id: '223',
     type: 'user',
     attributes: {
-      firstName: 'Coy',
-      lastName: 'Morissette',
+      firstName: 'Jeremiah',
+      lastName: 'Rippin',
       nickname: null,
       dateActive: '2012-09-01',
       dateInactive: null,
@@ -13,7 +13,7 @@ export default {
       districtGrade: 12,
       status: 'active',
       role: 'staff',
-      email: 'leif@heaney.info',
+      email: 'gabriel@gleason.info',
     },
     relationships: {
     },

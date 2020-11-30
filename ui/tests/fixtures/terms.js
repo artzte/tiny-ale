@@ -2,10 +2,10 @@
 export default {
   data: [
     {
-      id: '17',
+      id: '66',
       type: 'term',
       attributes: {
-        name: 'Decentralized explicit implementation',
+        name: 'Multi-tiered non-volatile migration',
         schoolYear: 2018,
         creditDate: '2019-01-31',
         months: [
@@ -20,10 +20,10 @@ export default {
       meta: null,
     },
     {
-      id: '18',
+      id: '67',
       type: 'term',
       attributes: {
-        name: 'Decentralized disintermediate framework',
+        name: 'Persevering zero tolerance emulation',
         schoolYear: 2018,
         creditDate: '2019-06-15',
         months: [
@@ -38,10 +38,10 @@ export default {
       meta: null,
     },
     {
-      id: '19',
+      id: '68',
       type: 'term',
       attributes: {
-        name: 'Stand-alone full-range hub',
+        name: 'Digitized bi-directional artificial intelligence',
         schoolYear: 2019,
         creditDate: '2020-01-31',
         months: [
@@ -56,10 +56,10 @@ export default {
       meta: null,
     },
     {
-      id: '20',
+      id: '69',
       type: 'term',
       attributes: {
-        name: 'Stand-alone demand-driven local area network',
+        name: 'Front-line global algorithm',
         schoolYear: 2019,
         creditDate: '2020-06-15',
         months: [
@@ -74,7 +74,7 @@ export default {
       meta: null,
     },
     {
-      id: '21',
+      id: '70',
       type: 'term',
       attributes: {
         name: 'COOR Last',
@@ -97,7 +97,7 @@ export default {
       meta: null,
     },
     {
-      id: '22',
+      id: '71',
       type: 'term',
       attributes: {
         name: 'COOR Current',

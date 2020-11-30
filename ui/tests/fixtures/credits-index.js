@@ -2,7 +2,7 @@
 export default {
   data: [
     {
-      id: '49',
+      id: '73',
       type: 'credit',
       attributes: {
         courseId: '0',
@@ -12,7 +12,7 @@ export default {
       },
     },
     {
-      id: '50',
+      id: '74',
       type: 'credit',
       attributes: {
         courseId: '0',

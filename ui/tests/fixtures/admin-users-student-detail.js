@@ -1,24 +1,24 @@
-// GET /api/admin/users/119
+// GET /api/admin/users/227
 export default {
   data: {
-    id: '119',
+    id: '227',
     type: 'user',
     attributes: {
-      firstName: 'Alona',
-      lastName: 'Cormier',
+      firstName: 'Bradly',
+      lastName: 'Tromp',
       nickname: null,
       dateActive: '2018-08-01',
       dateInactive: null,
-      districtId: '2054848287',
+      districtId: '7164254458',
       districtGrade: 9,
       status: 'active',
       role: 'student',
-      email: 'albina@jacobson.biz',
+      email: 'bill@kunzeledner.co',
     },
     relationships: {
       coordinator: {
         data: {
-          id: '115',
+          id: '223',
           type: 'user',
         },
       },

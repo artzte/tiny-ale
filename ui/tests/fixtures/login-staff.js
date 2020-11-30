@@ -1,23 +1,23 @@
-// auth for user 115
+// auth for user 223
 export default {
   data: {
-    email: 'leif@heaney.info',
+    email: 'gabriel@gleason.info',
     email_verified: false,
     updated_at: '2019-06-23T23:44:29.877Z',
-    user_id: 'auth0|a1496d62c48e8d4f793d37796f30e048',
-    name: 'Coy Morissette',
+    user_id: 'auth0|69f375fdd5462140393533ec6fe26f34',
+    name: 'Jeremiah Rippin',
     identities: [
       {
         connection: 'Username-Password-Authentication',
         provider: 'auth0',
-        user_id: 'a1496d62c48e8d4f793d37796f30e048',
+        user_id: '69f375fdd5462140393533ec6fe26f34',
         isSocial: false,
       },
     ],
     created_at: '2019-05-25T00:24:18.815Z',
     last_password_reset: '2019-06-10T04:09:05.883Z',
-    given_name: 'Coy',
-    family_name: 'Morissette',
+    given_name: 'Jeremiah',
+    family_name: 'Rippin',
     nickname: null,
     last_login: '2019-06-23T23:44:29.877Z',
     last_ip: '208.100.155.216',

@@ -1,18 +1,18 @@
 // GET /api/profile
 export default {
   data: {
-    id: '118',
+    id: '226',
     type: 'user',
     attributes: {
-      firstName: 'Kyra',
-      lastName: 'Hammes',
+      firstName: 'Beula',
+      lastName: 'Metz',
       nickname: null,
       dateActive: '2011-07-01',
       dateInactive: null,
       districtId: null,
       districtGrade: 12,
-      email: 'ria@kuphal.com',
-      name: 'Kyra Hammes',
+      email: 'jerrold@torphyreichel.io',
+      name: 'Beula Metz',
       status: 'active',
       role: 'administrator',
     },

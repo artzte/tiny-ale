@@ -2,7 +2,7 @@
 export default {
   data: [
     {
-      id: '22',
+      id: '71',
       type: 'term',
       attributes: {
         name: 'COOR Current',
@@ -29,7 +29,7 @@ export default {
       },
     },
     {
-      id: '21',
+      id: '70',
       type: 'term',
       attributes: {
         name: 'COOR Last',
@@ -56,54 +56,32 @@ export default {
       },
     },
     {
-      id: '18',
+      id: '68',
       type: 'term',
       attributes: {
-        name: 'Decentralized disintermediate framework',
-        schoolYear: 2018,
-        creditDate: '2019-06-15',
+        name: 'Digitized bi-directional artificial intelligence',
+        schoolYear: 2019,
+        creditDate: '2020-01-31',
         months: [
-          '2019-02-01',
-          '2019-03-01',
-          '2019-04-01',
-          '2019-05-01',
-          '2019-06-01',
+          '2019-09-01',
+          '2019-10-01',
+          '2019-11-01',
+          '2019-12-01',
+          '2020-01-01',
         ],
         status: 'active',
       },
       meta: {
-        contractsCount: 3,
-        enrollmentsCount: 4,
-        enrollmentsOpenCount: 0,
+        contractsCount: 2,
+        enrollmentsCount: 6,
+        enrollmentsOpenCount: 6,
       },
     },
     {
-      id: '17',
+      id: '69',
       type: 'term',
       attributes: {
-        name: 'Decentralized explicit implementation',
-        schoolYear: 2018,
-        creditDate: '2019-01-31',
-        months: [
-          '2018-09-01',
-          '2018-10-01',
-          '2018-11-01',
-          '2018-12-01',
-          '2019-01-01',
-        ],
-        status: 'active',
-      },
-      meta: {
-        contractsCount: 1,
-        enrollmentsCount: 2,
-        enrollmentsOpenCount: 0,
-      },
-    },
-    {
-      id: '20',
-      type: 'term',
-      attributes: {
-        name: 'Stand-alone demand-driven local area network',
+        name: 'Front-line global algorithm',
         schoolYear: 2019,
         creditDate: '2020-06-15',
         months: [
@@ -122,25 +100,47 @@ export default {
       },
     },
     {
-      id: '19',
+      id: '66',
       type: 'term',
       attributes: {
-        name: 'Stand-alone full-range hub',
-        schoolYear: 2019,
-        creditDate: '2020-01-31',
+        name: 'Multi-tiered non-volatile migration',
+        schoolYear: 2018,
+        creditDate: '2019-01-31',
         months: [
-          '2019-09-01',
-          '2019-10-01',
-          '2019-11-01',
-          '2019-12-01',
-          '2020-01-01',
+          '2018-09-01',
+          '2018-10-01',
+          '2018-11-01',
+          '2018-12-01',
+          '2019-01-01',
         ],
         status: 'active',
       },
       meta: {
-        contractsCount: 2,
-        enrollmentsCount: 6,
-        enrollmentsOpenCount: 6,
+        contractsCount: 1,
+        enrollmentsCount: 2,
+        enrollmentsOpenCount: 0,
+      },
+    },
+    {
+      id: '67',
+      type: 'term',
+      attributes: {
+        name: 'Persevering zero tolerance emulation',
+        schoolYear: 2018,
+        creditDate: '2019-06-15',
+        months: [
+          '2019-02-01',
+          '2019-03-01',
+          '2019-04-01',
+          '2019-05-01',
+          '2019-06-01',
+        ],
+        status: 'active',
+      },
+      meta: {
+        contractsCount: 3,
+        enrollmentsCount: 4,
+        enrollmentsOpenCount: 0,
       },
     },
   ],

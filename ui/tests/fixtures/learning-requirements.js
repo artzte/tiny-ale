@@ -2,37 +2,37 @@
 export default {
   data: [
     {
-      id: '1',
+      id: '13',
       type: 'learningRequirement',
       attributes: {
-        ealr: 'Acquiro cena coruscus versus utrum.',
+        ealr: 'Eius talus et summopere ventosus.',
         seq: '1.1',
         category: 'Category 1',
       },
     },
     {
-      id: '2',
+      id: '14',
       type: 'learningRequirement',
       attributes: {
-        ealr: 'Allatus subseco beatus voluptate voveo.',
+        ealr: 'Correptius testimonium compello tres maiores.',
         seq: '1.2',
         category: 'Category 1',
       },
     },
     {
-      id: '3',
+      id: '15',
       type: 'learningRequirement',
       attributes: {
-        ealr: 'Vulariter trado totus cibo vulgivagus.',
+        ealr: 'Despecto dolores accedo sit adflicto.',
         seq: '2.1',
         category: 'Category 2',
       },
     },
     {
-      id: '4',
+      id: '16',
       type: 'learningRequirement',
       attributes: {
-        ealr: 'Cresco vaco curso curis aut.',
+        ealr: 'Damnatio ratione concido universe et.',
         seq: '2.2',
         category: 'Category 2',
       },

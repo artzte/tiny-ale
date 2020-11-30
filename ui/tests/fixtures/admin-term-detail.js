@@ -1,10 +1,10 @@
-// GET /api/terms/19
+// GET /api/terms/68
 export default {
   data: {
-    id: '19',
+    id: '68',
     type: 'term',
     attributes: {
-      name: 'Stand-alone full-range hub',
+      name: 'Digitized bi-directional artificial intelligence',
       schoolYear: 2019,
       creditDate: '2020-01-31',
       months: [

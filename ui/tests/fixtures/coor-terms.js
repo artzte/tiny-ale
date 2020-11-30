@@ -2,7 +2,7 @@
 export default {
   data: [
     {
-      id: '22',
+      id: '71',
       type: 'term',
       attributes: {
         name: 'COOR Current',

@@ -1,15 +1,15 @@
-// GET /api/credit-assignments?studentIds=120&includeFulfilledAttributes=true&include=credit,contractTerm,contractFacilitator,contract
+// GET /api/credit-assignments?studentIds=228&includeFulfilledAttributes=true&include=credit,contractTerm,contractFacilitator,contract
 export default {
   data: [
     {
-      id: '36',
+      id: '93',
       type: 'creditAssignment',
       attributes: {
         creditHours: 0.25,
         enrollmentFinalizedOn: '2019-11-15',
-        contractName: 'Adduco harum accommodo acidus concedo.',
-        contractFacilitatorName: 'Coy Morissette',
-        districtFinalizeApprovedBy: 'Hammes, Kyra',
+        contractName: 'Reprehenderit clamo amplexus curto vitae.',
+        contractFacilitatorName: 'Jeremiah Rippin',
+        districtFinalizeApprovedBy: 'Metz, Beula',
         districtFinalizeApprovedOn: '2019-11-15',
         districtTransmittedOn: null,
         overrideHours: null,
@@ -18,7 +18,7 @@ export default {
       relationships: {
         credit: {
           data: {
-            id: '49',
+            id: '73',
             type: 'credit',
           },
         },
@@ -32,25 +32,25 @@ export default {
         },
         contractTerm: {
           data: {
-            id: '17',
+            id: '66',
             type: 'term',
           },
         },
         contractFacilitator: {
           data: {
-            id: '115',
+            id: '223',
             type: 'user',
           },
         },
         contract: {
           data: {
-            id: '10',
+            id: '38',
             type: 'contract',
           },
         },
         user: {
           data: {
-            id: '120',
+            id: '228',
             type: 'user',
           },
         },
@@ -62,7 +62,7 @@ export default {
         },
         enrollment: {
           data: {
-            id: '25',
+            id: '64',
             type: 'enrollment',
           },
         },
@@ -73,21 +73,21 @@ export default {
         },
         parentCreditAssignment: {
           data: {
-            id: '54',
+            id: '111',
             type: 'creditAssignment',
           },
         },
       },
     },
     {
-      id: '37',
+      id: '94',
       type: 'creditAssignment',
       attributes: {
         creditHours: 0.5,
         enrollmentFinalizedOn: '2019-11-15',
-        contractName: 'Adduco harum accommodo acidus concedo.',
-        contractFacilitatorName: 'Coy Morissette',
-        districtFinalizeApprovedBy: 'Hammes, Kyra',
+        contractName: 'Reprehenderit clamo amplexus curto vitae.',
+        contractFacilitatorName: 'Jeremiah Rippin',
+        districtFinalizeApprovedBy: 'Metz, Beula',
         districtFinalizeApprovedOn: '2019-11-15',
         districtTransmittedOn: null,
         overrideHours: null,
@@ -96,7 +96,7 @@ export default {
       relationships: {
         credit: {
           data: {
-            id: '50',
+            id: '74',
             type: 'credit',
           },
         },
@@ -110,25 +110,25 @@ export default {
         },
         contractTerm: {
           data: {
-            id: '17',
+            id: '66',
             type: 'term',
           },
         },
         contractFacilitator: {
           data: {
-            id: '115',
+            id: '223',
             type: 'user',
           },
         },
         contract: {
           data: {
-            id: '10',
+            id: '38',
             type: 'contract',
           },
         },
         user: {
           data: {
-            id: '120',
+            id: '228',
             type: 'user',
           },
         },
@@ -137,7 +137,7 @@ export default {
         },
         enrollment: {
           data: {
-            id: '25',
+            id: '64',
             type: 'enrollment',
           },
         },
@@ -148,20 +148,20 @@ export default {
         },
         parentCreditAssignment: {
           data: {
-            id: '54',
+            id: '111',
             type: 'creditAssignment',
           },
         },
       },
     },
     {
-      id: '38',
+      id: '95',
       type: 'creditAssignment',
       attributes: {
         creditHours: 0.5,
         enrollmentFinalizedOn: '2019-11-15',
-        contractName: 'Adduco harum accommodo acidus concedo.',
-        contractFacilitatorName: 'Coy Morissette',
+        contractName: 'Reprehenderit clamo amplexus curto vitae.',
+        contractFacilitatorName: 'Jeremiah Rippin',
         districtFinalizeApprovedBy: null,
         districtFinalizeApprovedOn: null,
         districtTransmittedOn: null,
@@ -171,7 +171,7 @@ export default {
       relationships: {
         credit: {
           data: {
-            id: '50',
+            id: '74',
             type: 'credit',
           },
         },
@@ -185,25 +185,25 @@ export default {
         },
         contractTerm: {
           data: {
-            id: '17',
+            id: '66',
             type: 'term',
           },
         },
         contractFacilitator: {
           data: {
-            id: '115',
+            id: '223',
             type: 'user',
           },
         },
         contract: {
           data: {
-            id: '10',
+            id: '38',
             type: 'contract',
           },
         },
         user: {
           data: {
-            id: '120',
+            id: '228',
             type: 'user',
           },
         },
@@ -212,7 +212,7 @@ export default {
         },
         enrollment: {
           data: {
-            id: '25',
+            id: '64',
             type: 'enrollment',
           },
         },
@@ -227,14 +227,14 @@ export default {
       },
     },
     {
-      id: '42',
+      id: '99',
       type: 'creditAssignment',
       attributes: {
         creditHours: 0.25,
         enrollmentFinalizedOn: '2019-11-15',
-        contractName: 'Amo aut solitudo et vapulus.',
-        contractFacilitatorName: 'Brittanie Daniel',
-        districtFinalizeApprovedBy: 'Hammes, Kyra',
+        contractName: 'Aut desolo una veritatis vox.',
+        contractFacilitatorName: 'Clelia Barton',
+        districtFinalizeApprovedBy: 'Metz, Beula',
         districtFinalizeApprovedOn: '2019-11-15',
         districtTransmittedOn: null,
         overrideHours: null,
@@ -243,7 +243,7 @@ export default {
       relationships: {
         credit: {
           data: {
-            id: '49',
+            id: '73',
             type: 'credit',
           },
         },
@@ -257,25 +257,25 @@ export default {
         },
         contractTerm: {
           data: {
-            id: '18',
+            id: '67',
             type: 'term',
           },
         },
         contractFacilitator: {
           data: {
-            id: '116',
+            id: '224',
             type: 'user',
           },
         },
         contract: {
           data: {
-            id: '11',
+            id: '39',
             type: 'contract',
           },
         },
         user: {
           data: {
-            id: '120',
+            id: '228',
             type: 'user',
           },
         },
@@ -287,7 +287,7 @@ export default {
         },
         enrollment: {
           data: {
-            id: '27',
+            id: '66',
             type: 'enrollment',
           },
         },
@@ -302,14 +302,14 @@ export default {
       },
     },
     {
-      id: '43',
+      id: '100',
       type: 'creditAssignment',
       attributes: {
         creditHours: 0.5,
         enrollmentFinalizedOn: '2019-11-15',
-        contractName: 'Amo aut solitudo et vapulus.',
-        contractFacilitatorName: 'Brittanie Daniel',
-        districtFinalizeApprovedBy: 'Hammes, Kyra',
+        contractName: 'Aut desolo una veritatis vox.',
+        contractFacilitatorName: 'Clelia Barton',
+        districtFinalizeApprovedBy: 'Metz, Beula',
         districtFinalizeApprovedOn: '2019-11-15',
         districtTransmittedOn: null,
         overrideHours: null,
@@ -318,7 +318,7 @@ export default {
       relationships: {
         credit: {
           data: {
-            id: '50',
+            id: '74',
             type: 'credit',
           },
         },
@@ -332,25 +332,25 @@ export default {
         },
         contractTerm: {
           data: {
-            id: '18',
+            id: '67',
             type: 'term',
           },
         },
         contractFacilitator: {
           data: {
-            id: '116',
+            id: '224',
             type: 'user',
           },
         },
         contract: {
           data: {
-            id: '11',
+            id: '39',
             type: 'contract',
           },
         },
         user: {
           data: {
-            id: '120',
+            id: '228',
             type: 'user',
           },
         },
@@ -359,7 +359,7 @@ export default {
         },
         enrollment: {
           data: {
-            id: '27',
+            id: '66',
             type: 'enrollment',
           },
         },
@@ -374,13 +374,13 @@ export default {
       },
     },
     {
-      id: '44',
+      id: '101',
       type: 'creditAssignment',
       attributes: {
         creditHours: 0.5,
         enrollmentFinalizedOn: '2019-11-15',
-        contractName: 'Amo aut solitudo et vapulus.',
-        contractFacilitatorName: 'Brittanie Daniel',
+        contractName: 'Aut desolo una veritatis vox.',
+        contractFacilitatorName: 'Clelia Barton',
         districtFinalizeApprovedBy: null,
         districtFinalizeApprovedOn: null,
         districtTransmittedOn: null,
@@ -390,7 +390,7 @@ export default {
       relationships: {
         credit: {
           data: {
-            id: '50',
+            id: '74',
             type: 'credit',
           },
         },
@@ -404,25 +404,25 @@ export default {
         },
         contractTerm: {
           data: {
-            id: '18',
+            id: '67',
             type: 'term',
           },
         },
         contractFacilitator: {
           data: {
-            id: '116',
+            id: '224',
             type: 'user',
           },
         },
         contract: {
           data: {
-            id: '11',
+            id: '39',
             type: 'contract',
           },
         },
         user: {
           data: {
-            id: '120',
+            id: '228',
             type: 'user',
           },
         },
@@ -431,7 +431,7 @@ export default {
         },
         enrollment: {
           data: {
-            id: '27',
+            id: '66',
             type: 'enrollment',
           },
         },
@@ -446,14 +446,14 @@ export default {
       },
     },
     {
-      id: '48',
+      id: '105',
       type: 'creditAssignment',
       attributes: {
         creditHours: 0.25,
         enrollmentFinalizedOn: '2019-11-15',
-        contractName: 'Non deleniti statua armo xiphias.',
-        contractFacilitatorName: 'Brittanie Daniel',
-        districtFinalizeApprovedBy: 'Hammes, Kyra',
+        contractName: 'Assentator subvenio vergo vultuosus vilicus.',
+        contractFacilitatorName: 'Clelia Barton',
+        districtFinalizeApprovedBy: 'Metz, Beula',
         districtFinalizeApprovedOn: '2019-11-15',
         districtTransmittedOn: null,
         overrideHours: null,
@@ -462,7 +462,7 @@ export default {
       relationships: {
         credit: {
           data: {
-            id: '49',
+            id: '73',
             type: 'credit',
           },
         },
@@ -479,25 +479,25 @@ export default {
         },
         contractTerm: {
           data: {
-            id: '18',
+            id: '67',
             type: 'term',
           },
         },
         contractFacilitator: {
           data: {
-            id: '116',
+            id: '224',
             type: 'user',
           },
         },
         contract: {
           data: {
-            id: '12',
+            id: '40',
             type: 'contract',
           },
         },
         user: {
           data: {
-            id: '120',
+            id: '228',
             type: 'user',
           },
         },
@@ -509,7 +509,7 @@ export default {
         },
         enrollment: {
           data: {
-            id: '29',
+            id: '68',
             type: 'enrollment',
           },
         },
@@ -524,14 +524,14 @@ export default {
       },
     },
     {
-      id: '49',
+      id: '106',
       type: 'creditAssignment',
       attributes: {
         creditHours: 0.5,
         enrollmentFinalizedOn: '2019-11-15',
-        contractName: 'Non deleniti statua armo xiphias.',
-        contractFacilitatorName: 'Brittanie Daniel',
-        districtFinalizeApprovedBy: 'Hammes, Kyra',
+        contractName: 'Assentator subvenio vergo vultuosus vilicus.',
+        contractFacilitatorName: 'Clelia Barton',
+        districtFinalizeApprovedBy: 'Metz, Beula',
         districtFinalizeApprovedOn: '2019-11-15',
         districtTransmittedOn: null,
         overrideHours: null,
@@ -540,7 +540,7 @@ export default {
       relationships: {
         credit: {
           data: {
-            id: '50',
+            id: '74',
             type: 'credit',
           },
         },
@@ -557,25 +557,25 @@ export default {
         },
         contractTerm: {
           data: {
-            id: '18',
+            id: '67',
             type: 'term',
           },
         },
         contractFacilitator: {
           data: {
-            id: '116',
+            id: '224',
             type: 'user',
           },
         },
         contract: {
           data: {
-            id: '12',
+            id: '40',
             type: 'contract',
           },
         },
         user: {
           data: {
-            id: '120',
+            id: '228',
             type: 'user',
           },
         },
@@ -584,7 +584,7 @@ export default {
         },
         enrollment: {
           data: {
-            id: '29',
+            id: '68',
             type: 'enrollment',
           },
         },
@@ -599,13 +599,13 @@ export default {
       },
     },
     {
-      id: '50',
+      id: '107',
       type: 'creditAssignment',
       attributes: {
         creditHours: 0.5,
         enrollmentFinalizedOn: '2019-11-15',
-        contractName: 'Non deleniti statua armo xiphias.',
-        contractFacilitatorName: 'Brittanie Daniel',
+        contractName: 'Assentator subvenio vergo vultuosus vilicus.',
+        contractFacilitatorName: 'Clelia Barton',
         districtFinalizeApprovedBy: null,
         districtFinalizeApprovedOn: null,
         districtTransmittedOn: null,
@@ -615,7 +615,7 @@ export default {
       relationships: {
         credit: {
           data: {
-            id: '50',
+            id: '74',
             type: 'credit',
           },
         },
@@ -632,25 +632,25 @@ export default {
         },
         contractTerm: {
           data: {
-            id: '18',
+            id: '67',
             type: 'term',
           },
         },
         contractFacilitator: {
           data: {
-            id: '116',
+            id: '224',
             type: 'user',
           },
         },
         contract: {
           data: {
-            id: '12',
+            id: '40',
             type: 'contract',
           },
         },
         user: {
           data: {
-            id: '120',
+            id: '228',
             type: 'user',
           },
         },
@@ -659,7 +659,7 @@ export default {
         },
         enrollment: {
           data: {
-            id: '29',
+            id: '68',
             type: 'enrollment',
           },
         },
@@ -674,13 +674,13 @@ export default {
       },
     },
     {
-      id: '54',
+      id: '111',
       type: 'creditAssignment',
       attributes: {
         creditHours: 0.75,
         enrollmentFinalizedOn: '2019-11-15',
         contractName: 'Combined',
-        contractFacilitatorName: 'Ryan, Chuck',
+        contractFacilitatorName: 'Metz, Brittanie',
         districtFinalizeApprovedBy: null,
         districtFinalizeApprovedOn: null,
         districtTransmittedOn: null,
@@ -690,7 +690,7 @@ export default {
       relationships: {
         credit: {
           data: {
-            id: '49',
+            id: '73',
             type: 'credit',
           },
         },
@@ -704,13 +704,13 @@ export default {
         },
         contractTerm: {
           data: {
-            id: '17',
+            id: '66',
             type: 'term',
           },
         },
         contractFacilitator: {
           data: {
-            id: '114',
+            id: '222',
             type: 'user',
           },
         },
@@ -719,7 +719,7 @@ export default {
         },
         user: {
           data: {
-            id: '120',
+            id: '228',
             type: 'user',
           },
         },
@@ -732,11 +732,11 @@ export default {
         childCreditAssignments: {
           data: [
             {
-              id: '36',
+              id: '93',
               type: 'creditAssignment',
             },
             {
-              id: '37',
+              id: '94',
               type: 'creditAssignment',
             },
           ],
@@ -749,40 +749,40 @@ export default {
   ],
   included: [
     {
-      id: '10',
+      id: '38',
       type: 'contract',
       attributes: {
-        name: 'Adduco harum accommodo acidus concedo.',
+        name: 'Reprehenderit clamo amplexus curto vitae.',
         status: 'closed',
       },
       relationships: {
         enrollments: {
           data: [
             {
-              id: '25',
+              id: '64',
               type: 'enrollment',
             },
             {
-              id: '26',
+              id: '65',
               type: 'enrollment',
             },
           ],
         },
         facilitator: {
           data: {
-            id: '115',
+            id: '223',
             type: 'user',
           },
         },
         term: {
           data: {
-            id: '17',
+            id: '66',
             type: 'term',
           },
         },
         category: {
           data: {
-            id: '10',
+            id: '28',
             type: 'category',
           },
         },
@@ -794,31 +794,31 @@ export default {
         creditAssignments: {
           data: [
             {
-              id: '24',
+              id: '81',
               type: 'creditAssignment',
             },
             {
-              id: '36',
+              id: '93',
               type: 'creditAssignment',
             },
             {
-              id: '37',
+              id: '94',
               type: 'creditAssignment',
             },
             {
-              id: '38',
+              id: '95',
               type: 'creditAssignment',
             },
             {
-              id: '39',
+              id: '96',
               type: 'creditAssignment',
             },
             {
-              id: '40',
+              id: '97',
               type: 'creditAssignment',
             },
             {
-              id: '41',
+              id: '98',
               type: 'creditAssignment',
             },
           ],
@@ -836,18 +836,18 @@ export default {
       },
     },
     {
-      id: '115',
+      id: '223',
       type: 'user',
       attributes: {
-        firstName: 'Coy',
-        lastName: 'Morissette',
+        firstName: 'Jeremiah',
+        lastName: 'Rippin',
         nickname: null,
         dateActive: '2012-09-01',
         dateInactive: null,
         districtId: null,
         districtGrade: 12,
-        email: 'leif@heaney.info',
-        name: 'Coy Morissette',
+        email: 'gabriel@gleason.info',
+        name: 'Jeremiah Rippin',
         status: 'active',
         role: 'staff',
       },
@@ -855,7 +855,7 @@ export default {
         coordinatees: {
           data: [
             {
-              id: '119',
+              id: '227',
               type: 'user',
             },
           ],
@@ -863,10 +863,10 @@ export default {
       },
     },
     {
-      id: '17',
+      id: '66',
       type: 'term',
       attributes: {
-        name: 'Decentralized explicit implementation',
+        name: 'Multi-tiered non-volatile migration',
         schoolYear: 2018,
         creditDate: '2019-01-31',
         months: [
@@ -881,7 +881,7 @@ export default {
       meta: null,
     },
     {
-      id: '49',
+      id: '73',
       type: 'credit',
       attributes: {
         courseId: '0',
@@ -891,7 +891,7 @@ export default {
       },
     },
     {
-      id: '50',
+      id: '74',
       type: 'credit',
       attributes: {
         courseId: '0',
@@ -901,40 +901,40 @@ export default {
       },
     },
     {
-      id: '11',
+      id: '39',
       type: 'contract',
       attributes: {
-        name: 'Amo aut solitudo et vapulus.',
+        name: 'Aut desolo una veritatis vox.',
         status: 'closed',
       },
       relationships: {
         enrollments: {
           data: [
             {
-              id: '27',
+              id: '66',
               type: 'enrollment',
             },
             {
-              id: '28',
+              id: '67',
               type: 'enrollment',
             },
           ],
         },
         facilitator: {
           data: {
-            id: '116',
+            id: '224',
             type: 'user',
           },
         },
         term: {
           data: {
-            id: '18',
+            id: '67',
             type: 'term',
           },
         },
         category: {
           data: {
-            id: '11',
+            id: '29',
             type: 'category',
           },
         },
@@ -946,31 +946,31 @@ export default {
         creditAssignments: {
           data: [
             {
-              id: '26',
+              id: '83',
               type: 'creditAssignment',
             },
             {
-              id: '42',
+              id: '99',
               type: 'creditAssignment',
             },
             {
-              id: '43',
+              id: '100',
               type: 'creditAssignment',
             },
             {
-              id: '44',
+              id: '101',
               type: 'creditAssignment',
             },
             {
-              id: '45',
+              id: '102',
               type: 'creditAssignment',
             },
             {
-              id: '46',
+              id: '103',
               type: 'creditAssignment',
             },
             {
-              id: '47',
+              id: '104',
               type: 'creditAssignment',
             },
           ],
@@ -988,18 +988,18 @@ export default {
       },
     },
     {
-      id: '116',
+      id: '224',
       type: 'user',
       attributes: {
-        firstName: 'Brittanie',
-        lastName: 'Daniel',
+        firstName: 'Clelia',
+        lastName: 'Barton',
         nickname: null,
         dateActive: '2013-02-01',
         dateInactive: null,
         districtId: null,
         districtGrade: 12,
-        email: 'sharda@okeefe.biz',
-        name: 'Brittanie Daniel',
+        email: 'orlandoschinner@waelchikautzer.io',
+        name: 'Clelia Barton',
         status: 'active',
         role: 'staff',
       },
@@ -1007,11 +1007,11 @@ export default {
         coordinatees: {
           data: [
             {
-              id: '120',
+              id: '228',
               type: 'user',
             },
             {
-              id: '121',
+              id: '229',
               type: 'user',
             },
           ],
@@ -1019,10 +1019,10 @@ export default {
       },
     },
     {
-      id: '18',
+      id: '67',
       type: 'term',
       attributes: {
-        name: 'Decentralized disintermediate framework',
+        name: 'Persevering zero tolerance emulation',
         schoolYear: 2018,
         creditDate: '2019-06-15',
         months: [
@@ -1037,40 +1037,40 @@ export default {
       meta: null,
     },
     {
-      id: '12',
+      id: '40',
       type: 'contract',
       attributes: {
-        name: 'Non deleniti statua armo xiphias.',
+        name: 'Assentator subvenio vergo vultuosus vilicus.',
         status: 'closed',
       },
       relationships: {
         enrollments: {
           data: [
             {
-              id: '29',
+              id: '68',
               type: 'enrollment',
             },
             {
-              id: '30',
+              id: '69',
               type: 'enrollment',
             },
           ],
         },
         facilitator: {
           data: {
-            id: '116',
+            id: '224',
             type: 'user',
           },
         },
         term: {
           data: {
-            id: '18',
+            id: '67',
             type: 'term',
           },
         },
         category: {
           data: {
-            id: '11',
+            id: '29',
             type: 'category',
           },
         },
@@ -1082,31 +1082,31 @@ export default {
         creditAssignments: {
           data: [
             {
-              id: '28',
+              id: '85',
               type: 'creditAssignment',
             },
             {
-              id: '48',
+              id: '105',
               type: 'creditAssignment',
             },
             {
-              id: '49',
+              id: '106',
               type: 'creditAssignment',
             },
             {
-              id: '50',
+              id: '107',
               type: 'creditAssignment',
             },
             {
-              id: '51',
+              id: '108',
               type: 'creditAssignment',
             },
             {
-              id: '52',
+              id: '109',
               type: 'creditAssignment',
             },
             {
-              id: '53',
+              id: '110',
               type: 'creditAssignment',
             },
           ],
@@ -1124,18 +1124,18 @@ export default {
       },
     },
     {
-      id: '114',
+      id: '222',
       type: 'user',
       attributes: {
-        firstName: 'Chuck',
-        lastName: 'Ryan',
+        firstName: 'Brittanie',
+        lastName: 'Metz',
         nickname: null,
         dateActive: '2011-07-01',
         dateInactive: null,
         districtId: null,
         districtGrade: 12,
-        email: 'modestobogisich@aufderhar.biz',
-        name: 'Chuck Ryan',
+        email: 'darnell@shanahan.net',
+        name: 'Brittanie Metz',
         status: 'active',
         role: 'administrator',
       },
