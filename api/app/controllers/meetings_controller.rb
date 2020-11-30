@@ -28,10 +28,6 @@ class MeetingsController < ApiBaseController
   end
 
   def index
-    limit = params[:limit] || Rails.configuration.constants[:DEFAULT_LIMIT]
-
-    limit = nil if limit == '-1'
-
     conditions = {}
 
     if params[:contractIds]
@@ -40,7 +36,7 @@ class MeetingsController < ApiBaseController
 
     result = Meeting
              .where(conditions)
-             .limit(limit)
+             .limit(@limit)
 
     count = Meeting.where(conditions).count
 

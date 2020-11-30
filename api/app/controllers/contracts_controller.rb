@@ -6,8 +6,6 @@ class ContractsController < ApiBaseController
   before_action :get_contract, only: [:destroy, :update]
 
   def index
-    limit = params[:limit] || Rails.configuration.constants[:DEFAULT_LIMIT]
-
     order = (params[:order] || '').split(',').map(&:underscore).join(',')
 
     conditions = {}
@@ -47,7 +45,7 @@ class ContractsController < ApiBaseController
     result = Contract
              .where(conditions)
              .order(Arel.sql(order))
-             .limit(limit)
+             .limit(@limit)
     count = Contract.where(conditions).count
 
     options = {

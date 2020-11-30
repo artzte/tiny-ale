@@ -2,16 +2,12 @@
 
 class GraduationPlanRequirementsController < ApiBaseController
   def index
-    limit = params[:limit] || Rails.configuration.constants[:DEFAULT_LIMIT]
-
-    limit = nil if limit == '-1'
-
     order = 'position,name'
 
     result = GraduationPlanRequirement
              .includes(:children)
              .order(Arel.sql(order))
-             .limit(limit)
+             .limit(@limit)
 
     count = GraduationPlanRequirement.count
 
