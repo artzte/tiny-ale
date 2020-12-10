@@ -80,8 +80,8 @@ export default CreditAssignmentsCreateEditDialog.extend({
         });
       }
     },
-    updateTerm(term) {
-      this.updateRelationship('contractTerm', term);
+    updateTerm(termId) {
+      this.updateRelationship('contractTerm', { id: termId, type: 'term' });
     },
   },
   serializeModel(pojo, _model, relationships) {

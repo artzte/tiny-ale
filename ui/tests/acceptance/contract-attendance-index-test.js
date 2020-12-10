@@ -13,6 +13,10 @@ import contractDetailFixture from '../fixtures/contract-detail';
 import contractAttendanceMeetingFixture from '../fixtures/contract-attendance';
 import contractAttendanceEnrollmentsFixture from '../fixtures/contract-attendance-enrollments';
 import contractAttendanceNotesFixture from '../fixtures/contract-attendance-notes';
+import learningRequirements from '../fixtures/learning-requirements';
+import staff from '../fixtures/staff';
+import terms from '../fixtures/terms';
+import categories from '../fixtures/categories';
 
 let server;
 let localStorage;
@@ -31,6 +35,10 @@ module('Acceptance | contract attendance index', (hooks) => {
     server.addRequest('get', '/api/meetings', contractAttendanceMeetingFixture);
     server.addRequest('get', '/api/enrollments', contractAttendanceEnrollmentsFixture);
     server.addRequest('get', '/api/notes', contractAttendanceNotesFixture);
+    server.addRequest('get', '/api/learning-requirements', learningRequirements);
+    server.addRequest('get', '/api/staff', staff);
+    server.addRequest('get', '/api/terms', terms);
+    server.addRequest('get', '/api/categories', categories);
 
     enrollments = server.getFixture('/api/enrollments');
     meetings = server.getFixture('/api/meetings');
@@ -43,7 +51,7 @@ module('Acceptance | contract attendance index', (hooks) => {
     localStorage.unmock();
   });
 
-  const attendanceListRoute = '/tiny/contract/123/attendance';
+  const attendanceListRoute = '/tiny/contracts/123/attendance';
   test(`visiting ${attendanceListRoute}`, async (assert) => {
     await visit(attendanceListRoute);
 

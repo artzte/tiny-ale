@@ -42,9 +42,7 @@ export default TForm.extend({
       this.close();
     },
     onChangeCredit(id) {
-      this.updateRelationship('credit', id, {
-        type: 'credit',
-      });
+      this.updateRelationship('credit', { id, type: 'credit' });
     },
     async searchCredits(search) {
       const credits = await this.creditAssignment.searchCredits({ search });

@@ -11,11 +11,11 @@ import {
 export default Component.extend({
   tagName: 'form',
 
+  queryParams: null,
+
   classNames: 'form',
 
   onQuery: () => {},
-
-  queryParams: computed(() => {}),
 
   grades: computed(() => ([
     { name: 'Freshmen', value: '9' },

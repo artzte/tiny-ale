@@ -15,11 +15,14 @@ import contractDetailFixture from '../fixtures/contract-detail';
 import contractAttendanceRollMeetingFixture from '../fixtures/contract-attendance-roll-meeting';
 import contractAttendanceRollEnrollments from '../fixtures/contract-attendance-roll-enrollments';
 import contractAttendanceRollNotes from '../fixtures/contract-attendance-roll-notes';
+import learningRequirements from '../fixtures/learning-requirements';
+import terms from '../fixtures/terms';
+import staff from '../fixtures/staff';
 
 let server;
 let localStorage;
 
-const contractAttendanceRollUrl = `/tiny/contract/${contractDetailFixture.data.id}/attendance/${contractAttendanceRollMeetingFixture.data.id}`;
+const contractAttendanceRollUrl = `/tiny/contracts/${contractDetailFixture.data.id}/attendance/${contractAttendanceRollMeetingFixture.data.id}`;
 
 module('Acceptance | contract attendance roll', (hooks) => {
   setupApplicationTest(hooks);
@@ -34,6 +37,9 @@ module('Acceptance | contract attendance roll', (hooks) => {
     server.addRequest('get', '/api/meetings/:id', contractAttendanceRollMeetingFixture);
     server.addRequest('get', '/api/enrollments', contractAttendanceRollEnrollments);
     server.addRequest('get', '/api/notes', contractAttendanceRollNotes);
+    server.addRequest('get', '/api/learning-requirements', learningRequirements);
+    server.addRequest('get', '/api/terms', terms);
+    server.addRequest('get', '/api/staff', staff);
 
     assert.timeout(500);
   });

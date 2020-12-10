@@ -12,7 +12,8 @@ import { MockLocalStorage } from '../helpers/test-utils';
 import termsFixture from '../fixtures/terms';
 import categoriesFixture from '../fixtures/categories';
 import staffFixture from '../fixtures/staff';
-import contractsFixture from '../fixtures/contracts';
+import contractsFixture from '../fixtures/contracts-list';
+import learningRequirementsFixture from '../fixtures/learning-requirements';
 
 let server;
 let localStorage;
@@ -29,10 +30,11 @@ module('Acceptance | contracts list', (hooks) => {
     server.addRequest('get', '/api/categories', categoriesFixture);
     server.addRequest('get', '/api/staff', staffFixture);
     server.addRequest('get', '/api/contracts', contractsFixture);
+    server.addRequest('get', '/api/learning-requirements', learningRequirementsFixture);
 
     // this should always be done with mocks.
     // prevents test from hanging for minutes when Pretender crashes.
-    assert.timeout(200);
+    assert.timeout(500);
   });
 
   hooks.afterEach(() => {
@@ -45,6 +47,7 @@ module('Acceptance | contracts list', (hooks) => {
 
     assert.equal(currentURL(), '/tiny/contracts?schoolYear=2018', 'page navigated to successfully');
     assert.ok(find('[data-test-contracts-list]'), 'contract list component rendered');
+
     assert.equal(findAll('[data-test-contracts-list-row]').length, contractsFixture.data.length, 'expected count of contract rows rendered');
   });
 

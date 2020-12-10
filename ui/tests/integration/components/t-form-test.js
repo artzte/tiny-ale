@@ -86,7 +86,7 @@ module('Integration | Component | t-form', (hooks) => {
 
     assert.equal(requests.length, 1, 'another call present after button click');
     [request] = requests;
-    assert.equal(request.type, 'error', 'still an age error witth invalid number');
+    assert.equal(request.type, 'error', 'still an age error with invalid number');
     assert.ok(request.errors.age, 'age error reported');
     assert.notOk(request.errors.name, 'name was present and valid');
 
@@ -96,6 +96,7 @@ module('Integration | Component | t-form', (hooks) => {
     await click('button');
 
     assert.equal(requests.length, 1, 'another outbound call occurred');
+
     [request] = requests;
     assert.equal(request.type, 'submit', 'this time a submit occurred');
     assert.equal(request.outbound.attributes.name, this.model.attributes.name, 'name is present outbound');

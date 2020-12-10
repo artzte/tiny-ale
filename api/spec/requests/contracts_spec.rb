@@ -51,7 +51,7 @@ RSpec.describe 'Contracts API', type: :request do
     end
   end
 
-  describe 'GET /contract/:id' do
+  describe 'GET /contracts/:id' do
     it 'returns a detailed contract record' do
       get "/api/contracts/#{@contract1_2008.id}"
 
@@ -65,7 +65,7 @@ RSpec.describe 'Contracts API', type: :request do
     end
   end
 
-  describe 'PUT /contract/:id' do
+  describe 'PUT /contracts/:id' do
     it 'updates learning requirements and returns updates' do
       learning_requirement = create :learning_requirement
       post_body = {

@@ -1,3 +1,9 @@
+/*
+- just log updates as a parallel process; the pojo is still the source of truth for the form
+- updates should be the only things pushed on submit
+*/
+
+
 import Component from '@ember/component';
 import clone from '../utils/clone';
 
@@ -64,14 +70,10 @@ export default Component.extend({
 
   /* Helper function callable by forms to update a relationship
    */
-  updateRelationship(key, id, dataObjectExtensions = {}) {
+  updateRelationship(key, relation) {
     if (typeof key !== 'string') throw new Error('Requires relationship key for first argument');
 
-    if (id) {
-      return this.handleChange(key, { id, ...dataObjectExtensions }, 'relationships');
-    }
-
-    return this.handleChange(key, null, 'relationships');
+    return this.handleChange(key, relation, 'relationships');
   },
 
   /*
@@ -165,13 +167,14 @@ export default Component.extend({
       [name]: value,
     };
 
+    this.updatePojo(updates, updatePath);
     this.updatePojo(updates, `updates-${updatePath}`);
   },
 
   validate() {
     if (!this.validator) return { isValid: true, errors: {} };
 
-    const validationResult = this.validator.validate(this.pojo);
+    const validationResult = this.validator.validate({ ...this.pojo, ...this['updates-pojo'] });
 
     this.setProperties(validationResult);
 
@@ -190,13 +193,22 @@ export default Component.extend({
     }
 
     const {
-      'updates-pojo': pojo,
+      pojo,
+      'updates-pojo': pojoUpdates,
+      relationships,
+      'updates-relationships': relationshipsUpdates,
       model,
-      'updates-relationships': relationships,
     } = this;
 
     this.set('disabled', true);
-    const result = this.save(this.serializeModel(pojo, model, relationships));
+
+    // submit both a full model, which is the original pojo with all updates,
+    // and an updates model, which only has the touches to the attributes and
+    // relationships groups.
+    //
+    const fullModel = this.serializeModel(pojo, model, relationships);
+    const hasUpdates = Boolean(Object.keys(pojoUpdates).length && Object.keys(relationshipsUpdates).length);
+    const result = this.save(fullModel, hasUpdates && this.serializeModel(pojoUpdates, { id: model.id }, relationshipsUpdates));
 
     result.finally(() => {
       if (this.isDestroyed) return;

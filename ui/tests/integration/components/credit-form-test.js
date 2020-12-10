@@ -40,7 +40,6 @@ module('Integration | Component | credit-form', (hooks) => {
     let [request] = requests;
 
     assert.deepEqual(request, creditDetail.data, 'existing model was sent with no changes');
-
     const select = new Interactor('select[name="courseType"]');
 
     await select.select('General');

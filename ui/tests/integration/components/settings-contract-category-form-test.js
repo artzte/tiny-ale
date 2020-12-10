@@ -43,6 +43,6 @@ module('Integration | Component | settings-contract-category-form', (hooks) => {
     const request = requests.pop();
     assert.ok(request, 'outbound request triggered');
 
-    assert.equal(category.attributes.name, request.model.attributes.name);
+    assert.deepEqual(category.attributes, {});
   });
 });
