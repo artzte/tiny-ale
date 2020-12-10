@@ -1,59 +1,104 @@
-// GET /api/notes?notableType=Enrollment&notableIds=59,60,58
+// GET /api/notes?notableType=Enrollment&notableIds=64,65,66
 export default {
-  data: [
+  "data": [
     {
-      id: '3',
-      type: 'note',
-      attributes: {
-        note: 'Note for Altenwerth for enrollment in Incidunt xiphias adamo pauci abeo.',
-        updatedAt: '2019-11-15T00:00:00.000Z',
+      "id": "15",
+      "type": "note",
+      "attributes": {
+        "note": "Note for Jones for enrollment in Est illum bellum adflicto accommodo.",
+        "updatedAt": "2019-11-15T00:00:00.000Z"
       },
-      relationships: {
-        notable: {
-          data: {
-            id: '59',
-            type: 'enrollment',
-          },
+      "relationships": {
+        "notable": {
+          "data": {
+            "id": "64",
+            "type": "enrollment"
+          }
         },
-        creator: {
-          data: {
-            id: '223',
-            type: 'user',
-          },
-        },
-      },
+        "creator": {
+          "data": {
+            "id": "343",
+            "type": "user"
+          }
+        }
+      }
     },
-  ],
-  included: [
     {
-      id: '223',
-      type: 'user',
-      attributes: {
-        firstName: 'Jeremiah',
-        lastName: 'Rippin',
-        nickname: null,
-        dateActive: '2012-09-01',
-        dateInactive: null,
-        districtId: null,
-        districtGrade: 12,
-        email: 'gabriel@gleason.info',
-        name: 'Jeremiah Rippin',
-        status: 'active',
-        role: 'staff',
+      "id": "16",
+      "type": "note",
+      "attributes": {
+        "note": "Note for Mueller for enrollment in Est illum bellum adflicto accommodo.",
+        "updatedAt": "2019-11-15T00:00:00.000Z"
       },
-      relationships: {
-        coordinatees: {
-          data: [
+      "relationships": {
+        "notable": {
+          "data": {
+            "id": "65",
+            "type": "enrollment"
+          }
+        },
+        "creator": {
+          "data": {
+            "id": "343",
+            "type": "user"
+          }
+        }
+      }
+    },
+    {
+      "id": "17",
+      "type": "note",
+      "attributes": {
+        "note": "Note for Walker for enrollment in Est illum bellum adflicto accommodo.",
+        "updatedAt": "2019-11-15T00:00:00.000Z"
+      },
+      "relationships": {
+        "notable": {
+          "data": {
+            "id": "66",
+            "type": "enrollment"
+          }
+        },
+        "creator": {
+          "data": {
+            "id": "343",
+            "type": "user"
+          }
+        }
+      }
+    }
+  ],
+  "included": [
+    {
+      "id": "343",
+      "type": "user",
+      "attributes": {
+        "firstName": "Coleman",
+        "lastName": "Gerhold",
+        "nickname": null,
+        "dateActive": "2012-09-01",
+        "dateInactive": null,
+        "districtId": null,
+        "districtGrade": 12,
+        "email": "bridgetrath@brown.net",
+        "name": "Coleman Gerhold",
+        "status": "active",
+        "role": "staff",
+        "isStaff": true
+      },
+      "relationships": {
+        "coordinatees": {
+          "data": [
             {
-              id: '227',
-              type: 'user',
-            },
-          ],
-        },
-      },
-    },
+              "id": "347",
+              "type": "user"
+            }
+          ]
+        }
+      }
+    }
   ],
-  meta: {
-    count: 1,
-  },
+  "meta": {
+    "count": 3
+  }
 };

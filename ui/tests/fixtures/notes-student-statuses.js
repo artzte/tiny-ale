@@ -1,59 +1,82 @@
-// GET /api/notes?notableType=Status&notableIds=109,112
+// GET /api/notes?notableType=Status&notableIds=145,148
 export default {
-  data: [
+  "data": [
     {
-      id: '62',
-      type: 'note',
-      attributes: {
-        note: 'Note by Rippin for Tromp on 2019-09-01',
-        updatedAt: '2019-11-15T00:00:00.000Z',
+      "id": "75",
+      "type": "note",
+      "attributes": {
+        "note": "Note by Gerhold for Jones on 2019-09-01",
+        "updatedAt": "2019-11-15T00:00:00.000Z"
       },
-      relationships: {
-        notable: {
-          data: {
-            id: '109',
-            type: 'status',
-          },
+      "relationships": {
+        "notable": {
+          "data": {
+            "id": "145",
+            "type": "status"
+          }
         },
-        creator: {
-          data: {
-            id: '223',
-            type: 'user',
-          },
-        },
-      },
+        "creator": {
+          "data": {
+            "id": "343",
+            "type": "user"
+          }
+        }
+      }
     },
-  ],
-  included: [
     {
-      id: '223',
-      type: 'user',
-      attributes: {
-        firstName: 'Jeremiah',
-        lastName: 'Rippin',
-        nickname: null,
-        dateActive: '2012-09-01',
-        dateInactive: null,
-        districtId: null,
-        districtGrade: 12,
-        email: 'gabriel@gleason.info',
-        name: 'Jeremiah Rippin',
-        status: 'active',
-        role: 'staff',
+      "id": "78",
+      "type": "note",
+      "attributes": {
+        "note": "Note by Gerhold for Jones on 2019-10-01",
+        "updatedAt": "2019-11-15T00:00:00.000Z"
       },
-      relationships: {
-        coordinatees: {
-          data: [
+      "relationships": {
+        "notable": {
+          "data": {
+            "id": "148",
+            "type": "status"
+          }
+        },
+        "creator": {
+          "data": {
+            "id": "343",
+            "type": "user"
+          }
+        }
+      }
+    }
+  ],
+  "included": [
+    {
+      "id": "343",
+      "type": "user",
+      "attributes": {
+        "firstName": "Coleman",
+        "lastName": "Gerhold",
+        "nickname": null,
+        "dateActive": "2012-09-01",
+        "dateInactive": null,
+        "districtId": null,
+        "districtGrade": 12,
+        "email": "bridgetrath@brown.net",
+        "name": "Coleman Gerhold",
+        "status": "active",
+        "role": "staff",
+        "isStaff": true
+      },
+      "relationships": {
+        "coordinatees": {
+          "data": [
             {
-              id: '227',
-              type: 'user',
-            },
-          ],
-        },
-      },
-    },
+              "id": "347",
+              "type": "user"
+            }
+          ]
+        }
+      }
+    }
   ],
-  meta: {
-    count: 1,
-  },
+  "meta": {
+    "count": 2
+  }
 };

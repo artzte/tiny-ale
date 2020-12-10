@@ -1,531 +1,532 @@
-// GET /api/contracts/42?include=category,facilitator,assignments,meetings,creditAssignments,creditAssignments.credit,term,ealrs
+// GET /api/contracts/45?include=category,facilitator,assignments,meetings,creditAssignments,creditAssignments.credit,term,ealrs
 export default {
-  data: {
-    id: '42',
-    type: 'contract',
-    attributes: {
-      name: 'Incidunt xiphias adamo pauci abeo.',
-      status: 'active',
-      learningObjectives: 'Learning objectives Suggero ipsa nostrum quis tribuo.',
-      competencies: 'Competencies Ratione atavus qui cattus magnam.',
-      evaluationMethods: 'Evaluation methods Cupressus conculco deprecator adhaero animus.',
-      instructionalMaterials: 'Instructional materials Turba aestus abbas in cuius.',
-      location: 'Location Victus repellendus tui cauda arguo.',
-      timeslots: [
+  "data": {
+    "id": "45",
+    "type": "contract",
+    "attributes": {
+      "name": "Est illum bellum adflicto accommodo.",
+      "status": "active",
+      "learningObjectives": "Learning objectives Tersus ea verto tubineus acer.",
+      "competencies": "Competencies Denique corporis aggero constans autus.",
+      "evaluationMethods": "Evaluation methods Suadeo audentia laboriosam tollo ascisco.",
+      "instructionalMaterials": "Instructional materials Creo causa adulatio dedecor cupiditate.",
+      "location": "Location Tamquam triduana censura color atrocitas.",
+      "timeslots": [
         {
-          start: '8:45',
-          end: '10:30',
-          weekdays: '01234',
-        },
-      ],
+          "start": "8:45",
+          "end": "10:30",
+          "weekdays": "01234"
+        }
+      ]
     },
-    relationships: {
-      enrollments: {
-        data: [
+    "relationships": {
+      "enrollments": {
+        "data": [
           {
-            id: '58',
-            type: 'enrollment',
+            "id": "64",
+            "type": "enrollment"
           },
           {
-            id: '59',
-            type: 'enrollment',
+            "id": "65",
+            "type": "enrollment"
           },
           {
-            id: '60',
-            type: 'enrollment',
-          },
-        ],
+            "id": "66",
+            "type": "enrollment"
+          }
+        ]
       },
-      facilitator: {
-        data: {
-          id: '223',
-          type: 'user',
-        },
+      "facilitator": {
+        "data": {
+          "id": "343",
+          "type": "user"
+        }
       },
-      term: {
-        data: {
-          id: '68',
-          type: 'term',
-        },
+      "term": {
+        "data": {
+          "id": "89",
+          "type": "term"
+        }
       },
-      category: {
-        data: {
-          id: '28',
-          type: 'category',
-        },
+      "category": {
+        "data": {
+          "id": "31",
+          "type": "category"
+        }
       },
-      assignments: {
-        data: [
+      "assignments": {
+        "data": [
           {
-            id: '1',
-            type: 'assignment',
+            "id": "1",
+            "type": "assignment"
           },
           {
-            id: '2',
-            type: 'assignment',
+            "id": "2",
+            "type": "assignment"
           },
           {
-            id: '3',
-            type: 'assignment',
+            "id": "3",
+            "type": "assignment"
           },
           {
-            id: '4',
-            type: 'assignment',
+            "id": "4",
+            "type": "assignment"
           },
           {
-            id: '5',
-            type: 'assignment',
-          },
-        ],
+            "id": "5",
+            "type": "assignment"
+          }
+        ]
       },
-      creditAssignments: {
-        data: [
+      "creditAssignments": {
+        "data": [
           {
-            id: '82',
-            type: 'creditAssignment',
-          },
-        ],
+            "id": "85",
+            "type": "creditAssignment"
+          }
+        ]
       },
-      meetings: {
-        data: [
+      "meetings": {
+        "data": [
           {
-            id: '1',
-            type: 'meeting',
+            "id": "1",
+            "type": "meeting"
           },
           {
-            id: '2',
-            type: 'meeting',
+            "id": "2",
+            "type": "meeting"
           },
           {
-            id: '3',
-            type: 'meeting',
+            "id": "3",
+            "type": "meeting"
           },
           {
-            id: '4',
-            type: 'meeting',
+            "id": "4",
+            "type": "meeting"
           },
           {
-            id: '5',
-            type: 'meeting',
-          },
-        ],
+            "id": "5",
+            "type": "meeting"
+          }
+        ]
       },
-      learningRequirements: {
-        data: [
+      "learningRequirements": {
+        "data": [
           {
-            id: '13',
-            type: 'learningRequirement',
+            "id": "13",
+            "type": "learningRequirement"
           },
           {
-            id: '14',
-            type: 'learningRequirement',
+            "id": "14",
+            "type": "learningRequirement"
           },
           {
-            id: '15',
-            type: 'learningRequirement',
+            "id": "15",
+            "type": "learningRequirement"
           },
           {
-            id: '16',
-            type: 'learningRequirement',
-          },
-        ],
-      },
-    },
+            "id": "16",
+            "type": "learningRequirement"
+          }
+        ]
+      }
+    }
   },
-  included: [
+  "included": [
     {
-      id: '1',
-      type: 'assignment',
-      attributes: {
-        name: 'Assignment 1',
-        description: 'Here is assignment number 1',
-        dueDate: '2019-09-02',
+      "id": "1",
+      "type": "assignment",
+      "attributes": {
+        "name": "Assignment 1",
+        "description": "Here is assignment number 1",
+        "dueDate": "2019-09-02"
       },
-      relationships: {
-        turnins: {
-          data: [
+      "relationships": {
+        "turnins": {
+          "data": [
             {
-              id: '1',
-              type: 'turnin',
-            },
-          ],
-        },
-      },
+              "id": "1",
+              "type": "turnin"
+            }
+          ]
+        }
+      }
     },
     {
-      id: '2',
-      type: 'assignment',
-      attributes: {
-        name: 'Assignment 2',
-        description: 'Here is assignment number 2',
-        dueDate: '2019-09-03',
+      "id": "2",
+      "type": "assignment",
+      "attributes": {
+        "name": "Assignment 2",
+        "description": "Here is assignment number 2",
+        "dueDate": "2019-09-03"
       },
-      relationships: {
-        turnins: {
-          data: [
+      "relationships": {
+        "turnins": {
+          "data": [
             {
-              id: '2',
-              type: 'turnin',
-            },
-          ],
-        },
-      },
+              "id": "2",
+              "type": "turnin"
+            }
+          ]
+        }
+      }
     },
     {
-      id: '3',
-      type: 'assignment',
-      attributes: {
-        name: 'Assignment 3',
-        description: 'Here is assignment number 3',
-        dueDate: '2019-09-04',
+      "id": "3",
+      "type": "assignment",
+      "attributes": {
+        "name": "Assignment 3",
+        "description": "Here is assignment number 3",
+        "dueDate": "2019-09-04"
       },
-      relationships: {
-        turnins: {
-          data: [
+      "relationships": {
+        "turnins": {
+          "data": [
             {
-              id: '3',
-              type: 'turnin',
-            },
-          ],
-        },
-      },
+              "id": "3",
+              "type": "turnin"
+            }
+          ]
+        }
+      }
     },
     {
-      id: '4',
-      type: 'assignment',
-      attributes: {
-        name: 'Assignment 4',
-        description: 'Here is assignment number 4',
-        dueDate: '2019-09-05',
+      "id": "4",
+      "type": "assignment",
+      "attributes": {
+        "name": "Assignment 4",
+        "description": "Here is assignment number 4",
+        "dueDate": "2019-09-05"
       },
-      relationships: {
-        turnins: {
-          data: [
+      "relationships": {
+        "turnins": {
+          "data": [
             {
-              id: '4',
-              type: 'turnin',
-            },
-          ],
-        },
-      },
+              "id": "4",
+              "type": "turnin"
+            }
+          ]
+        }
+      }
     },
     {
-      id: '5',
-      type: 'assignment',
-      attributes: {
-        name: 'Assignment 5',
-        description: 'Here is assignment number 5',
-        dueDate: '2019-09-06',
+      "id": "5",
+      "type": "assignment",
+      "attributes": {
+        "name": "Assignment 5",
+        "description": "Here is assignment number 5",
+        "dueDate": "2019-09-06"
       },
-      relationships: {
-        turnins: {
-          data: [
+      "relationships": {
+        "turnins": {
+          "data": [
             {
-              id: '5',
-              type: 'turnin',
-            },
-          ],
-        },
-      },
+              "id": "5",
+              "type": "turnin"
+            }
+          ]
+        }
+      }
     },
     {
-      id: '28',
-      type: 'category',
-      attributes: {
-        name: 'Category 1',
-        sequence: 0,
-        public: false,
-        reporting: 'none',
-        activeContractsCount: 1,
-        homeroom: false,
+      "id": "31",
+      "type": "category",
+      "attributes": {
+        "name": "Category 1",
+        "sequence": 0,
+        "public": false,
+        "reporting": "none",
+        "activeContractsCount": 1,
+        "homeroom": false
       },
-      relationships: {
-        contracts: {
-          data: [
+      "relationships": {
+        "contracts": {
+          "data": [
             {
-              id: '38',
-              type: 'contract',
+              "id": "41",
+              "type": "contract"
             },
             {
-              id: '42',
-              type: 'contract',
-            },
-          ],
-        },
-      },
+              "id": "45",
+              "type": "contract"
+            }
+          ]
+        }
+      }
     },
     {
-      id: '82',
-      type: 'creditAssignment',
-      attributes: {
-        creditHours: 1.0,
+      "id": "85",
+      "type": "creditAssignment",
+      "attributes": {
+        "creditHours": 1.0
       },
-      relationships: {
-        credit: {
-          data: {
-            id: '73',
-            type: 'credit',
-          },
+      "relationships": {
+        "credit": {
+          "data": {
+            "id": "76",
+            "type": "credit"
+          }
         },
-        graduationPlanMapping: {
-          data: null,
+        "graduationPlanMapping": {
+          "data": null
         },
-        notes: {
-          data: [
+        "notes": {
+          "data": [
 
-          ],
+          ]
         },
-        contractTerm: {
-          data: null,
+        "contractTerm": {
+          "data": null
         },
-        contractFacilitator: {
-          data: null,
+        "contractFacilitator": {
+          "data": null
         },
-        contract: {
-          data: {
-            id: '42',
-            type: 'contract',
-          },
+        "contract": {
+          "data": {
+            "id": "45",
+            "type": "contract"
+          }
         },
-        user: {
-          data: null,
+        "user": {
+          "data": null
         },
-        creditTransmittalBatch: {
-          data: null,
+        "creditTransmittalBatch": {
+          "data": null
         },
-        enrollment: {
-          data: null,
+        "enrollment": {
+          "data": null
         },
-        childCreditAssignments: {
-          data: [
+        "childCreditAssignments": {
+          "data": [
 
-          ],
+          ]
         },
-        parentCreditAssignment: {
-          data: null,
-        },
-      },
+        "parentCreditAssignment": {
+          "data": null
+        }
+      }
     },
     {
-      id: '73',
-      type: 'credit',
-      attributes: {
-        courseId: '0',
-        courseName: 'Course 1',
-        status: 'active',
-        courseType: 'none',
-      },
+      "id": "76",
+      "type": "credit",
+      "attributes": {
+        "courseId": "0",
+        "courseName": "Course 1",
+        "status": "active",
+        "courseType": "none"
+      }
     },
     {
-      id: '223',
-      type: 'user',
-      attributes: {
-        firstName: 'Jeremiah',
-        lastName: 'Rippin',
-        nickname: null,
-        dateActive: '2012-09-01',
-        dateInactive: null,
-        districtId: null,
-        districtGrade: 12,
-        email: 'gabriel@gleason.info',
-        name: 'Jeremiah Rippin',
-        status: 'active',
-        role: 'staff',
+      "id": "343",
+      "type": "user",
+      "attributes": {
+        "firstName": "Coleman",
+        "lastName": "Gerhold",
+        "nickname": null,
+        "dateActive": "2012-09-01",
+        "dateInactive": null,
+        "districtId": null,
+        "districtGrade": 12,
+        "email": "bridgetrath@brown.net",
+        "name": "Coleman Gerhold",
+        "status": "active",
+        "role": "staff",
+        "isStaff": true
       },
-      relationships: {
-        coordinatees: {
-          data: [
+      "relationships": {
+        "coordinatees": {
+          "data": [
             {
-              id: '227',
-              type: 'user',
-            },
-          ],
-        },
-      },
+              "id": "347",
+              "type": "user"
+            }
+          ]
+        }
+      }
     },
     {
-      id: '13',
-      type: 'learningRequirement',
-      attributes: {
-        ealr: 'Eius talus et summopere ventosus.',
-        seq: '1.1',
-        category: 'Category 1',
-      },
+      "id": "13",
+      "type": "learningRequirement",
+      "attributes": {
+        "ealr": "Tertius sit corrupti veritatis decumbo.",
+        "seq": "1.1",
+        "category": "Category 1"
+      }
     },
     {
-      id: '14',
-      type: 'learningRequirement',
-      attributes: {
-        ealr: 'Correptius testimonium compello tres maiores.',
-        seq: '1.2',
-        category: 'Category 1',
-      },
+      "id": "14",
+      "type": "learningRequirement",
+      "attributes": {
+        "ealr": "Crastinus fuga decimus unus aperio.",
+        "seq": "1.2",
+        "category": "Category 1"
+      }
     },
     {
-      id: '15',
-      type: 'learningRequirement',
-      attributes: {
-        ealr: 'Despecto dolores accedo sit adflicto.',
-        seq: '2.1',
-        category: 'Category 2',
-      },
+      "id": "15",
+      "type": "learningRequirement",
+      "attributes": {
+        "ealr": "Video cum tamdiu qui et.",
+        "seq": "2.1",
+        "category": "Category 2"
+      }
     },
     {
-      id: '16',
-      type: 'learningRequirement',
-      attributes: {
-        ealr: 'Damnatio ratione concido universe et.',
-        seq: '2.2',
-        category: 'Category 2',
-      },
+      "id": "16",
+      "type": "learningRequirement",
+      "attributes": {
+        "ealr": "Cruentus pax qui nam clamo.",
+        "seq": "2.2",
+        "category": "Category 2"
+      }
     },
     {
-      id: '1',
-      type: 'meeting',
-      attributes: {
-        title: 'Attendance for Monday, 02 September 2019',
-        meetingDate: '2019-09-02',
+      "id": "1",
+      "type": "meeting",
+      "attributes": {
+        "title": "Attendance for Monday, 02 September 2019",
+        "meetingDate": "2019-09-02"
       },
-      relationships: {
-        meetingParticipants: {
-          data: [
+      "relationships": {
+        "meetingParticipants": {
+          "data": [
             {
-              id: '1',
-              type: 'meetingParticipant',
+              "id": "1",
+              "type": "meetingParticipant"
             },
             {
-              id: '2',
-              type: 'meetingParticipant',
+              "id": "2",
+              "type": "meetingParticipant"
             },
             {
-              id: '3',
-              type: 'meetingParticipant',
-            },
-          ],
-        },
-      },
+              "id": "3",
+              "type": "meetingParticipant"
+            }
+          ]
+        }
+      }
     },
     {
-      id: '2',
-      type: 'meeting',
-      attributes: {
-        title: 'Attendance for Tuesday, 03 September 2019',
-        meetingDate: '2019-09-03',
+      "id": "2",
+      "type": "meeting",
+      "attributes": {
+        "title": "Attendance for Tuesday, 03 September 2019",
+        "meetingDate": "2019-09-03"
       },
-      relationships: {
-        meetingParticipants: {
-          data: [
+      "relationships": {
+        "meetingParticipants": {
+          "data": [
             {
-              id: '4',
-              type: 'meetingParticipant',
+              "id": "4",
+              "type": "meetingParticipant"
             },
             {
-              id: '5',
-              type: 'meetingParticipant',
+              "id": "5",
+              "type": "meetingParticipant"
             },
             {
-              id: '6',
-              type: 'meetingParticipant',
-            },
-          ],
-        },
-      },
+              "id": "6",
+              "type": "meetingParticipant"
+            }
+          ]
+        }
+      }
     },
     {
-      id: '3',
-      type: 'meeting',
-      attributes: {
-        title: 'Attendance for Wednesday, 04 September 2019',
-        meetingDate: '2019-09-04',
+      "id": "3",
+      "type": "meeting",
+      "attributes": {
+        "title": "Attendance for Wednesday, 04 September 2019",
+        "meetingDate": "2019-09-04"
       },
-      relationships: {
-        meetingParticipants: {
-          data: [
+      "relationships": {
+        "meetingParticipants": {
+          "data": [
             {
-              id: '7',
-              type: 'meetingParticipant',
+              "id": "7",
+              "type": "meetingParticipant"
             },
             {
-              id: '8',
-              type: 'meetingParticipant',
+              "id": "8",
+              "type": "meetingParticipant"
             },
             {
-              id: '9',
-              type: 'meetingParticipant',
-            },
-          ],
-        },
-      },
+              "id": "9",
+              "type": "meetingParticipant"
+            }
+          ]
+        }
+      }
     },
     {
-      id: '4',
-      type: 'meeting',
-      attributes: {
-        title: 'Attendance for Thursday, 05 September 2019',
-        meetingDate: '2019-09-05',
+      "id": "4",
+      "type": "meeting",
+      "attributes": {
+        "title": "Attendance for Thursday, 05 September 2019",
+        "meetingDate": "2019-09-05"
       },
-      relationships: {
-        meetingParticipants: {
-          data: [
+      "relationships": {
+        "meetingParticipants": {
+          "data": [
             {
-              id: '10',
-              type: 'meetingParticipant',
+              "id": "10",
+              "type": "meetingParticipant"
             },
             {
-              id: '11',
-              type: 'meetingParticipant',
+              "id": "11",
+              "type": "meetingParticipant"
             },
             {
-              id: '12',
-              type: 'meetingParticipant',
-            },
-          ],
-        },
-      },
+              "id": "12",
+              "type": "meetingParticipant"
+            }
+          ]
+        }
+      }
     },
     {
-      id: '5',
-      type: 'meeting',
-      attributes: {
-        title: 'Attendance for Friday, 06 September 2019',
-        meetingDate: '2019-09-06',
+      "id": "5",
+      "type": "meeting",
+      "attributes": {
+        "title": "Attendance for Friday, 06 September 2019",
+        "meetingDate": "2019-09-06"
       },
-      relationships: {
-        meetingParticipants: {
-          data: [
+      "relationships": {
+        "meetingParticipants": {
+          "data": [
             {
-              id: '13',
-              type: 'meetingParticipant',
+              "id": "13",
+              "type": "meetingParticipant"
             },
             {
-              id: '14',
-              type: 'meetingParticipant',
+              "id": "14",
+              "type": "meetingParticipant"
             },
             {
-              id: '15',
-              type: 'meetingParticipant',
-            },
-          ],
-        },
-      },
+              "id": "15",
+              "type": "meetingParticipant"
+            }
+          ]
+        }
+      }
     },
     {
-      id: '68',
-      type: 'term',
-      attributes: {
-        name: 'Digitized bi-directional artificial intelligence',
-        schoolYear: 2019,
-        creditDate: '2020-01-31',
-        months: [
-          '2019-09-01',
-          '2019-10-01',
-          '2019-11-01',
-          '2019-12-01',
-          '2020-01-01',
+      "id": "89",
+      "type": "term",
+      "attributes": {
+        "name": "Stand-alone systemic time-frame",
+        "schoolYear": 2019,
+        "creditDate": "2020-01-31",
+        "months": [
+          "2019-09-01",
+          "2019-10-01",
+          "2019-11-01",
+          "2019-12-01",
+          "2020-01-01"
         ],
-        status: 'active',
+        "status": "active"
       },
-      meta: null,
-    },
-  ],
+      "meta": null
+    }
+  ]
 };

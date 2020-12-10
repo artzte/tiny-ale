@@ -1,108 +1,113 @@
 // GET /api/staff
 export default {
-  data: [
+  "data": [
     {
-      id: '222',
-      type: 'user',
-      attributes: {
-        firstName: 'Brittanie',
-        lastName: 'Metz',
-        nickname: null,
-        status: 'active',
-        role: 'administrator',
+      "id": "342",
+      "type": "user",
+      "attributes": {
+        "firstName": "Ayanna",
+        "lastName": "Larson",
+        "nickname": null,
+        "status": "active",
+        "role": "administrator",
+        "isStaff": true
       },
-      relationships: {
-        coordinatees: {
-          data: [
+      "relationships": {
+        "coordinatees": {
+          "data": [
 
-          ],
-        },
-      },
+          ]
+        }
+      }
     },
     {
-      id: '223',
-      type: 'user',
-      attributes: {
-        firstName: 'Jeremiah',
-        lastName: 'Rippin',
-        nickname: null,
-        status: 'active',
-        role: 'staff',
+      "id": "343",
+      "type": "user",
+      "attributes": {
+        "firstName": "Coleman",
+        "lastName": "Gerhold",
+        "nickname": null,
+        "status": "active",
+        "role": "staff",
+        "isStaff": true
       },
-      relationships: {
-        coordinatees: {
-          data: [
+      "relationships": {
+        "coordinatees": {
+          "data": [
             {
-              id: '227',
-              type: 'user',
-            },
-          ],
-        },
-      },
+              "id": "347",
+              "type": "user"
+            }
+          ]
+        }
+      }
     },
     {
-      id: '224',
-      type: 'user',
-      attributes: {
-        firstName: 'Clelia',
-        lastName: 'Barton',
-        nickname: null,
-        status: 'active',
-        role: 'staff',
+      "id": "344",
+      "type": "user",
+      "attributes": {
+        "firstName": "Hildegard",
+        "lastName": "Yost",
+        "nickname": null,
+        "status": "active",
+        "role": "staff",
+        "isStaff": true
       },
-      relationships: {
-        coordinatees: {
-          data: [
+      "relationships": {
+        "coordinatees": {
+          "data": [
             {
-              id: '228',
-              type: 'user',
+              "id": "348",
+              "type": "user"
             },
             {
-              id: '229',
-              type: 'user',
-            },
-          ],
-        },
-      },
+              "id": "349",
+              "type": "user"
+            }
+          ]
+        }
+      }
     },
     {
-      id: '225',
-      type: 'user',
-      attributes: {
-        firstName: 'Buford',
-        lastName: 'Mante',
-        nickname: null,
-        status: 'inactive',
-        role: 'staff',
+      "id": "345",
+      "type": "user",
+      "attributes": {
+        "firstName": "Keith",
+        "lastName": "Kuvalis",
+        "nickname": null,
+        "status": "inactive",
+        "role": "staff",
+        "isStaff": true
       },
-      relationships: {
-        coordinatees: {
-          data: [
+      "relationships": {
+        "coordinatees": {
+          "data": [
 
-          ],
-        },
-      },
+          ]
+        }
+      }
     },
     {
-      id: '226',
-      type: 'user',
-      attributes: {
-        firstName: 'Beula',
-        lastName: 'Metz',
-        nickname: null,
-        status: 'active',
-        role: 'administrator',
+      "id": "346",
+      "type": "user",
+      "attributes": {
+        "firstName": "Donald",
+        "lastName": "Sauer",
+        "nickname": null,
+        "status": "active",
+        "role": "administrator",
+        "isStaff": true
       },
-      relationships: {
-        coordinatees: {
-          data: [
+      "relationships": {
+        "coordinatees": {
+          "data": [
 
-          ],
-        },
-      },
-    },
+          ]
+        }
+      }
+    }
   ],
-  meta: {
-    count: 5,
-  },
+  "meta": {
+    "count": 5
+  }
 };

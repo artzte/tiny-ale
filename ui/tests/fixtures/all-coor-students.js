@@ -1,80 +1,80 @@
 // GET /api/students?status=reportable&order=lastName,firstName&limit=-1
 export default {
-  data: [
+  "data": [
     {
-      id: '228',
-      type: 'user',
-      attributes: {
-        firstName: 'Suk',
-        lastName: 'Altenwerth',
-        nickname: null,
-        name: 'Suk Altenwerth',
-        dateActive: '2018-08-01',
-        dateInactive: null,
-        districtId: '4801996158',
-        districtGrade: 10,
-        status: 'active',
-        role: 'student',
+      "id": "347",
+      "type": "user",
+      "attributes": {
+        "firstName": "Claudio",
+        "lastName": "Jones",
+        "nickname": null,
+        "name": "Claudio Jones",
+        "dateActive": "2018-08-01",
+        "dateInactive": null,
+        "districtId": "806551517",
+        "districtGrade": 9,
+        "status": "active",
+        "role": "student"
       },
-      relationships: {
-        coordinator: {
-          data: {
-            id: '224',
-            type: 'user',
-          },
-        },
-      },
+      "relationships": {
+        "coordinator": {
+          "data": {
+            "id": "343",
+            "type": "user"
+          }
+        }
+      }
     },
     {
-      id: '229',
-      type: 'user',
-      attributes: {
-        firstName: 'Thuy',
-        lastName: 'Koss',
-        nickname: null,
-        name: 'Thuy Koss',
-        dateActive: '2018-08-01',
-        dateInactive: '2019-10-01',
-        districtId: '2734166982',
-        districtGrade: 12,
-        status: 'inactive',
-        role: 'student',
+      "id": "348",
+      "type": "user",
+      "attributes": {
+        "firstName": "Tawnya",
+        "lastName": "Mueller",
+        "nickname": null,
+        "name": "Tawnya Mueller",
+        "dateActive": "2018-08-01",
+        "dateInactive": null,
+        "districtId": "2034068301",
+        "districtGrade": 10,
+        "status": "active",
+        "role": "student"
       },
-      relationships: {
-        coordinator: {
-          data: {
-            id: '224',
-            type: 'user',
-          },
-        },
-      },
+      "relationships": {
+        "coordinator": {
+          "data": {
+            "id": "344",
+            "type": "user"
+          }
+        }
+      }
     },
     {
-      id: '227',
-      type: 'user',
-      attributes: {
-        firstName: 'Bradly',
-        lastName: 'Tromp',
-        nickname: null,
-        name: 'Bradly Tromp',
-        dateActive: '2018-08-01',
-        dateInactive: null,
-        districtId: '7164254458',
-        districtGrade: 9,
-        status: 'active',
-        role: 'student',
+      "id": "349",
+      "type": "user",
+      "attributes": {
+        "firstName": "Bruno",
+        "lastName": "Walker",
+        "nickname": null,
+        "name": "Bruno Walker",
+        "dateActive": "2018-08-01",
+        "dateInactive": "2019-10-01",
+        "districtId": "664959487",
+        "districtGrade": 12,
+        "status": "inactive",
+        "role": "student"
       },
-      relationships: {
-        coordinator: {
-          data: {
-            id: '223',
-            type: 'user',
-          },
-        },
-      },
-    },
+      "relationships": {
+        "coordinator": {
+          "data": {
+            "id": "344",
+            "type": "user"
+          }
+        }
+      }
+    }
   ],
-  meta: {
-    count: 3,
-  },
+  "meta": {
+    "count": 3
+  }
 };

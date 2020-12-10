@@ -1,21 +1,21 @@
-// GET /api/admin/users/226
+// GET /api/admin/users/346
 export default {
-  data: {
-    id: '226',
-    type: 'user',
-    attributes: {
-      firstName: 'Beula',
-      lastName: 'Metz',
-      nickname: null,
-      dateActive: '2011-07-01',
-      dateInactive: null,
-      districtId: null,
-      districtGrade: 12,
-      status: 'active',
-      role: 'administrator',
-      email: 'jerrold@torphyreichel.io',
+  "data": {
+    "id": "346",
+    "type": "user",
+    "attributes": {
+      "firstName": "Donald",
+      "lastName": "Sauer",
+      "nickname": null,
+      "dateActive": "2011-07-01",
+      "dateInactive": null,
+      "districtId": null,
+      "districtGrade": 12,
+      "status": "active",
+      "role": "administrator",
+      "email": "elwoodaltenwerth@kautzerjones.com"
     },
-    relationships: {
-    },
-  },
+    "relationships": {
+    }
+  }
 };

@@ -1,284 +1,287 @@
-// GET /api/enrollments?contractIds=42&include=participant
+// GET /api/enrollments?contractIds=45&include=participant
 export default {
-  data: [
+  "data": [
     {
-      id: '59',
-      type: 'enrollment',
-      attributes: {
-        finalizedOn: null,
-        enrollmentStatus: 'enrolled',
-        completionStatus: 'incomplete',
+      "id": "64",
+      "type": "enrollment",
+      "attributes": {
+        "finalizedOn": null,
+        "enrollmentStatus": "enrolled",
+        "completionStatus": "incomplete"
       },
-      relationships: {
-        contract: {
-          data: {
-            id: '42',
-            type: 'contract',
-          },
+      "relationships": {
+        "contract": {
+          "data": {
+            "id": "45",
+            "type": "contract"
+          }
         },
-        participant: {
-          data: {
-            id: '228',
-            type: 'user',
-          },
+        "participant": {
+          "data": {
+            "id": "347",
+            "type": "user"
+          }
         },
-        creditAssignments: {
-          data: [
+        "creditAssignments": {
+          "data": [
             {
-              id: '88',
-              type: 'creditAssignment',
-            },
-          ],
+              "id": "90",
+              "type": "creditAssignment"
+            }
+          ]
         },
-        turnins: {
-          data: [
+        "turnins": {
+          "data": [
+            {
+              "id": "1",
+              "type": "turnin"
+            },
+            {
+              "id": "2",
+              "type": "turnin"
+            },
+            {
+              "id": "3",
+              "type": "turnin"
+            },
+            {
+              "id": "4",
+              "type": "turnin"
+            },
+            {
+              "id": "5",
+              "type": "turnin"
+            }
+          ]
+        },
+        "meetingParticipants": {
+          "data": [
+            {
+              "id": "1",
+              "type": "meetingParticipant"
+            },
+            {
+              "id": "4",
+              "type": "meetingParticipant"
+            },
+            {
+              "id": "7",
+              "type": "meetingParticipant"
+            },
+            {
+              "id": "10",
+              "type": "meetingParticipant"
+            },
+            {
+              "id": "13",
+              "type": "meetingParticipant"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "65",
+      "type": "enrollment",
+      "attributes": {
+        "finalizedOn": null,
+        "enrollmentStatus": "enrolled",
+        "completionStatus": "incomplete"
+      },
+      "relationships": {
+        "contract": {
+          "data": {
+            "id": "45",
+            "type": "contract"
+          }
+        },
+        "participant": {
+          "data": {
+            "id": "348",
+            "type": "user"
+          }
+        },
+        "creditAssignments": {
+          "data": [
+            {
+              "id": "91",
+              "type": "creditAssignment"
+            }
+          ]
+        },
+        "turnins": {
+          "data": [
 
-          ],
+          ]
         },
-        meetingParticipants: {
-          data: [
+        "meetingParticipants": {
+          "data": [
             {
-              id: '2',
-              type: 'meetingParticipant',
+              "id": "2",
+              "type": "meetingParticipant"
             },
             {
-              id: '5',
-              type: 'meetingParticipant',
+              "id": "5",
+              "type": "meetingParticipant"
             },
             {
-              id: '8',
-              type: 'meetingParticipant',
+              "id": "8",
+              "type": "meetingParticipant"
             },
             {
-              id: '11',
-              type: 'meetingParticipant',
+              "id": "11",
+              "type": "meetingParticipant"
             },
             {
-              id: '14',
-              type: 'meetingParticipant',
-            },
-          ],
-        },
-      },
+              "id": "14",
+              "type": "meetingParticipant"
+            }
+          ]
+        }
+      }
     },
     {
-      id: '60',
-      type: 'enrollment',
-      attributes: {
-        finalizedOn: null,
-        enrollmentStatus: 'enrolled',
-        completionStatus: 'incomplete',
+      "id": "66",
+      "type": "enrollment",
+      "attributes": {
+        "finalizedOn": null,
+        "enrollmentStatus": "enrolled",
+        "completionStatus": "incomplete"
       },
-      relationships: {
-        contract: {
-          data: {
-            id: '42',
-            type: 'contract',
-          },
+      "relationships": {
+        "contract": {
+          "data": {
+            "id": "45",
+            "type": "contract"
+          }
         },
-        participant: {
-          data: {
-            id: '229',
-            type: 'user',
-          },
+        "participant": {
+          "data": {
+            "id": "349",
+            "type": "user"
+          }
         },
-        creditAssignments: {
-          data: [
+        "creditAssignments": {
+          "data": [
             {
-              id: '89',
-              type: 'creditAssignment',
-            },
-          ],
+              "id": "92",
+              "type": "creditAssignment"
+            }
+          ]
         },
-        turnins: {
-          data: [
+        "turnins": {
+          "data": [
 
-          ],
+          ]
         },
-        meetingParticipants: {
-          data: [
+        "meetingParticipants": {
+          "data": [
             {
-              id: '3',
-              type: 'meetingParticipant',
+              "id": "3",
+              "type": "meetingParticipant"
             },
             {
-              id: '6',
-              type: 'meetingParticipant',
+              "id": "6",
+              "type": "meetingParticipant"
             },
             {
-              id: '9',
-              type: 'meetingParticipant',
+              "id": "9",
+              "type": "meetingParticipant"
             },
             {
-              id: '12',
-              type: 'meetingParticipant',
+              "id": "12",
+              "type": "meetingParticipant"
             },
             {
-              id: '15',
-              type: 'meetingParticipant',
-            },
-          ],
-        },
-      },
-    },
-    {
-      id: '58',
-      type: 'enrollment',
-      attributes: {
-        finalizedOn: null,
-        enrollmentStatus: 'enrolled',
-        completionStatus: 'incomplete',
-      },
-      relationships: {
-        contract: {
-          data: {
-            id: '42',
-            type: 'contract',
-          },
-        },
-        participant: {
-          data: {
-            id: '227',
-            type: 'user',
-          },
-        },
-        creditAssignments: {
-          data: [
-            {
-              id: '87',
-              type: 'creditAssignment',
-            },
-          ],
-        },
-        turnins: {
-          data: [
-            {
-              id: '1',
-              type: 'turnin',
-            },
-            {
-              id: '2',
-              type: 'turnin',
-            },
-            {
-              id: '3',
-              type: 'turnin',
-            },
-            {
-              id: '4',
-              type: 'turnin',
-            },
-            {
-              id: '5',
-              type: 'turnin',
-            },
-          ],
-        },
-        meetingParticipants: {
-          data: [
-            {
-              id: '1',
-              type: 'meetingParticipant',
-            },
-            {
-              id: '4',
-              type: 'meetingParticipant',
-            },
-            {
-              id: '7',
-              type: 'meetingParticipant',
-            },
-            {
-              id: '10',
-              type: 'meetingParticipant',
-            },
-            {
-              id: '13',
-              type: 'meetingParticipant',
-            },
-          ],
-        },
-      },
-    },
+              "id": "15",
+              "type": "meetingParticipant"
+            }
+          ]
+        }
+      }
+    }
   ],
-  included: [
+  "included": [
     {
-      id: '228',
-      type: 'user',
-      attributes: {
-        firstName: 'Suk',
-        lastName: 'Altenwerth',
-        nickname: null,
-        dateActive: '2018-08-01',
-        dateInactive: null,
-        districtId: '4801996158',
-        districtGrade: 10,
-        email: 'jackterry@ohara.info',
-        name: 'Suk Altenwerth',
-        status: 'active',
-        role: 'student',
+      "id": "347",
+      "type": "user",
+      "attributes": {
+        "firstName": "Claudio",
+        "lastName": "Jones",
+        "nickname": null,
+        "dateActive": "2018-08-01",
+        "dateInactive": null,
+        "districtId": "806551517",
+        "districtGrade": 9,
+        "email": "rashad@hyatt.org",
+        "name": "Claudio Jones",
+        "status": "active",
+        "role": "student",
+        "isStaff": false
       },
-      relationships: {
-        coordinator: {
-          data: {
-            id: '224',
-            type: 'user',
-          },
-        },
-      },
+      "relationships": {
+        "coordinator": {
+          "data": {
+            "id": "343",
+            "type": "user"
+          }
+        }
+      }
     },
     {
-      id: '229',
-      type: 'user',
-      attributes: {
-        firstName: 'Thuy',
-        lastName: 'Koss',
-        nickname: null,
-        dateActive: '2018-08-01',
-        dateInactive: '2019-10-01',
-        districtId: '2734166982',
-        districtGrade: 12,
-        email: 'cicelykozey@stehrdenesik.name',
-        name: 'Thuy Koss',
-        status: 'inactive',
-        role: 'student',
+      "id": "348",
+      "type": "user",
+      "attributes": {
+        "firstName": "Tawnya",
+        "lastName": "Mueller",
+        "nickname": null,
+        "dateActive": "2018-08-01",
+        "dateInactive": null,
+        "districtId": "2034068301",
+        "districtGrade": 10,
+        "email": "terencekunze@rau.name",
+        "name": "Tawnya Mueller",
+        "status": "active",
+        "role": "student",
+        "isStaff": false
       },
-      relationships: {
-        coordinator: {
-          data: {
-            id: '224',
-            type: 'user',
-          },
-        },
-      },
+      "relationships": {
+        "coordinator": {
+          "data": {
+            "id": "344",
+            "type": "user"
+          }
+        }
+      }
     },
     {
-      id: '227',
-      type: 'user',
-      attributes: {
-        firstName: 'Bradly',
-        lastName: 'Tromp',
-        nickname: null,
-        dateActive: '2018-08-01',
-        dateInactive: null,
-        districtId: '7164254458',
-        districtGrade: 9,
-        email: 'bill@kunzeledner.co',
-        name: 'Bradly Tromp',
-        status: 'active',
-        role: 'student',
+      "id": "349",
+      "type": "user",
+      "attributes": {
+        "firstName": "Bruno",
+        "lastName": "Walker",
+        "nickname": null,
+        "dateActive": "2018-08-01",
+        "dateInactive": "2019-10-01",
+        "districtId": "664959487",
+        "districtGrade": 12,
+        "email": "iris@veum.co",
+        "name": "Bruno Walker",
+        "status": "inactive",
+        "role": "student",
+        "isStaff": false
       },
-      relationships: {
-        coordinator: {
-          data: {
-            id: '223',
-            type: 'user',
-          },
-        },
-      },
-    },
+      "relationships": {
+        "coordinator": {
+          "data": {
+            "id": "344",
+            "type": "user"
+          }
+        }
+      }
+    }
   ],
-  meta: {
-    count: 3,
-  },
+  "meta": {
+    "count": 3
+  }
 };

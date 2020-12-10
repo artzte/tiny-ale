@@ -1,21 +1,21 @@
-// GET /api/admin/users/223
+// GET /api/admin/users/343
 export default {
-  data: {
-    id: '223',
-    type: 'user',
-    attributes: {
-      firstName: 'Jeremiah',
-      lastName: 'Rippin',
-      nickname: null,
-      dateActive: '2012-09-01',
-      dateInactive: null,
-      districtId: null,
-      districtGrade: 12,
-      status: 'active',
-      role: 'staff',
-      email: 'gabriel@gleason.info',
+  "data": {
+    "id": "343",
+    "type": "user",
+    "attributes": {
+      "firstName": "Coleman",
+      "lastName": "Gerhold",
+      "nickname": null,
+      "dateActive": "2012-09-01",
+      "dateInactive": null,
+      "districtId": null,
+      "districtGrade": 12,
+      "status": "active",
+      "role": "staff",
+      "email": "bridgetrath@brown.net"
     },
-    relationships: {
-    },
-  },
+    "relationships": {
+    }
+  }
 };
