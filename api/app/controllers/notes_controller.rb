@@ -6,7 +6,7 @@ class NotesController < ApiBaseController
 
     conditions[:notable_type] = params[:notableType] if params[:notableType]
 
-    conditions[:notable_id] = params[:notableIds] if params[:notableIds]
+    conditions[:notable_id] = params[:notableIds].split(',') if params[:notableIds]
 
     result = Note
              .where(conditions)

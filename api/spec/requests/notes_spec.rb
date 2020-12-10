@@ -12,6 +12,7 @@ RSpec.describe 'Notes API', type: :request do
 
     @note_for_credit_assignment_1 = create :note, notable: @credit_assignment_1, note: Faker::Lorem.paragraph, creator: @staff1
     @note_for_enrollment_1 = create :note, notable: @enrollment1, note: Faker::Lorem.paragraph, creator: @staff1
+    @note_for_enrollment_2 = create :note, notable: @enrollment2, note: Faker::Lorem.paragraph, creator: @staff1
 
     @note_for_statusCoor01Jan = create :note, notable: @statusCoor01Jan, note: Faker::Lorem.paragraph, creator: @staff1
   end
@@ -23,8 +24,20 @@ RSpec.describe 'Notes API', type: :request do
       expect(response).to have_http_status(200)
 
       expect(json).not_to be_empty
-      expect(json['meta']['count']).to eq(3)
-      expect(json['data'].length).to eq(3)
+      expect(json['meta']['count']).to eq(Note.count)
+      expect(json['data'].length).to eq(Note.count)
+    end
+
+    it 'returns a 200 with notes for both enrollments' do
+      get "/api/notes?notableType=Enrollment&notableIds=#{[@enrollment1, @enrollment2].map(&:id).join(',')}", headers: json_request_headers
+
+      expect(response).to have_http_status(200)
+
+      expect(json).not_to be_empty
+
+      expected_count = @enrollment1.notes.count + @enrollment2.notes.count
+      expect(json['meta']['count']).to eq(expected_count)
+      expect(json['data'].length).to eq(expected_count)
     end
   end
 
