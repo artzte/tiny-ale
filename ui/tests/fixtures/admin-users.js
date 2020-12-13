@@ -1,208 +1,208 @@
 // GET /api/admin/users?include=coordinator&limit=20&order=lastName,firstName,nickname
 export default {
-  "data": [
+  data: [
     {
-      "id": "343",
-      "type": "user",
-      "attributes": {
-        "firstName": "Coleman",
-        "lastName": "Gerhold",
-        "nickname": null,
-        "dateActive": "2012-09-01",
-        "dateInactive": null,
-        "districtId": null,
-        "districtGrade": 12,
-        "status": "active",
-        "role": "staff",
-        "email": "bridgetrath@brown.net"
+      id: '106',
+      type: 'user',
+      attributes: {
+        firstName: 'Joseph',
+        lastName: 'Bartell',
+        nickname: null,
+        dateActive: '2011-07-01',
+        dateInactive: null,
+        districtId: null,
+        districtGrade: 12,
+        status: 'active',
+        role: 'administrator',
+        email: 'logan@okeefe.name',
       },
-      "relationships": {
-      }
+      relationships: {
+      },
     },
     {
-      "id": "347",
-      "type": "user",
-      "attributes": {
-        "firstName": "Claudio",
-        "lastName": "Jones",
-        "nickname": null,
-        "dateActive": "2018-08-01",
-        "dateInactive": null,
-        "districtId": "806551517",
-        "districtGrade": 9,
-        "status": "active",
-        "role": "student",
-        "email": "rashad@hyatt.org"
+      id: '108',
+      type: 'user',
+      attributes: {
+        firstName: 'Loren',
+        lastName: 'Bernhard',
+        nickname: null,
+        dateActive: '2013-02-01',
+        dateInactive: null,
+        districtId: null,
+        districtGrade: 12,
+        status: 'active',
+        role: 'staff',
+        email: 'otha@leuschke.name',
       },
-      "relationships": {
-        "coordinator": {
-          "data": {
-            "id": "343",
-            "type": "user"
-          }
-        }
-      }
+      relationships: {
+      },
     },
     {
-      "id": "345",
-      "type": "user",
-      "attributes": {
-        "firstName": "Keith",
-        "lastName": "Kuvalis",
-        "nickname": null,
-        "dateActive": "2011-02-01",
-        "dateInactive": "2018-01-01",
-        "districtId": null,
-        "districtGrade": 12,
-        "status": "inactive",
-        "role": "staff",
-        "email": "bo@wehner.org"
+      id: '110',
+      type: 'user',
+      attributes: {
+        firstName: 'Bianca',
+        lastName: 'Boyle',
+        nickname: null,
+        dateActive: '2011-07-01',
+        dateInactive: null,
+        districtId: null,
+        districtGrade: 12,
+        status: 'active',
+        role: 'administrator',
+        email: 'clarinebogan@senger.net',
       },
-      "relationships": {
-      }
+      relationships: {
+      },
     },
     {
-      "id": "342",
-      "type": "user",
-      "attributes": {
-        "firstName": "Ayanna",
-        "lastName": "Larson",
-        "nickname": null,
-        "dateActive": "2011-07-01",
-        "dateInactive": null,
-        "districtId": null,
-        "districtGrade": 12,
-        "status": "active",
-        "role": "administrator",
-        "email": "ewa@wildermanmonahan.org"
+      id: '112',
+      type: 'user',
+      attributes: {
+        firstName: 'Dalton',
+        lastName: 'Gaylord',
+        nickname: null,
+        dateActive: '2018-08-01',
+        dateInactive: null,
+        districtId: '6707935524',
+        districtGrade: 10,
+        status: 'active',
+        role: 'student',
+        email: 'christin@rosenbaumstrosin.org',
       },
-      "relationships": {
-      }
+      relationships: {
+        coordinator: {
+          data: {
+            id: '108',
+            type: 'user',
+          },
+        },
+      },
     },
     {
-      "id": "348",
-      "type": "user",
-      "attributes": {
-        "firstName": "Tawnya",
-        "lastName": "Mueller",
-        "nickname": null,
-        "dateActive": "2018-08-01",
-        "dateInactive": null,
-        "districtId": "2034068301",
-        "districtGrade": 10,
-        "status": "active",
-        "role": "student",
-        "email": "terencekunze@rau.name"
+      id: '107',
+      type: 'user',
+      attributes: {
+        firstName: 'Tommie',
+        lastName: 'Keebler',
+        nickname: null,
+        dateActive: '2012-09-01',
+        dateInactive: null,
+        districtId: null,
+        districtGrade: 12,
+        status: 'active',
+        role: 'staff',
+        email: 'lupebernier@blockspencer.biz',
       },
-      "relationships": {
-        "coordinator": {
-          "data": {
-            "id": "344",
-            "type": "user"
-          }
-        }
-      }
+      relationships: {
+      },
     },
     {
-      "id": "346",
-      "type": "user",
-      "attributes": {
-        "firstName": "Donald",
-        "lastName": "Sauer",
-        "nickname": null,
-        "dateActive": "2011-07-01",
-        "dateInactive": null,
-        "districtId": null,
-        "districtGrade": 12,
-        "status": "active",
-        "role": "administrator",
-        "email": "elwoodaltenwerth@kautzerjones.com"
+      id: '113',
+      type: 'user',
+      attributes: {
+        firstName: 'Dewayne',
+        lastName: 'Murphy',
+        nickname: null,
+        dateActive: '2018-08-01',
+        dateInactive: '2019-10-01',
+        districtId: '7449769727',
+        districtGrade: 12,
+        status: 'inactive',
+        role: 'student',
+        email: 'bert@zieme.org',
       },
-      "relationships": {
-      }
+      relationships: {
+        coordinator: {
+          data: {
+            id: '108',
+            type: 'user',
+          },
+        },
+      },
     },
     {
-      "id": "349",
-      "type": "user",
-      "attributes": {
-        "firstName": "Bruno",
-        "lastName": "Walker",
-        "nickname": null,
-        "dateActive": "2018-08-01",
-        "dateInactive": "2019-10-01",
-        "districtId": "664959487",
-        "districtGrade": 12,
-        "status": "inactive",
-        "role": "student",
-        "email": "iris@veum.co"
+      id: '111',
+      type: 'user',
+      attributes: {
+        firstName: 'Austin',
+        lastName: 'Will',
+        nickname: null,
+        dateActive: '2018-08-01',
+        dateInactive: null,
+        districtId: '1880173925',
+        districtGrade: 9,
+        status: 'active',
+        role: 'student',
+        email: 'tammy@homenicklubowitz.net',
       },
-      "relationships": {
-        "coordinator": {
-          "data": {
-            "id": "344",
-            "type": "user"
-          }
-        }
-      }
+      relationships: {
+        coordinator: {
+          data: {
+            id: '107',
+            type: 'user',
+          },
+        },
+      },
     },
     {
-      "id": "344",
-      "type": "user",
-      "attributes": {
-        "firstName": "Hildegard",
-        "lastName": "Yost",
-        "nickname": null,
-        "dateActive": "2013-02-01",
-        "dateInactive": null,
-        "districtId": null,
-        "districtGrade": 12,
-        "status": "active",
-        "role": "staff",
-        "email": "griseldasporer@walsh.info"
+      id: '109',
+      type: 'user',
+      attributes: {
+        firstName: 'Jonathan',
+        lastName: 'Witting',
+        nickname: null,
+        dateActive: '2011-02-01',
+        dateInactive: '2018-01-01',
+        districtId: null,
+        districtGrade: 12,
+        status: 'inactive',
+        role: 'staff',
+        email: 'lezlie@waelchi.info',
       },
-      "relationships": {
-      }
-    }
+      relationships: {
+      },
+    },
   ],
-  "included": [
+  included: [
     {
-      "id": "343",
-      "type": "user",
-      "attributes": {
-        "firstName": "Coleman",
-        "lastName": "Gerhold",
-        "nickname": null,
-        "dateActive": "2012-09-01",
-        "dateInactive": null,
-        "districtId": null,
-        "districtGrade": 12,
-        "status": "active",
-        "role": "staff",
-        "email": "bridgetrath@brown.net"
+      id: '108',
+      type: 'user',
+      attributes: {
+        firstName: 'Loren',
+        lastName: 'Bernhard',
+        nickname: null,
+        dateActive: '2013-02-01',
+        dateInactive: null,
+        districtId: null,
+        districtGrade: 12,
+        status: 'active',
+        role: 'staff',
+        email: 'otha@leuschke.name',
       },
-      "relationships": {
-      }
+      relationships: {
+      },
     },
     {
-      "id": "344",
-      "type": "user",
-      "attributes": {
-        "firstName": "Hildegard",
-        "lastName": "Yost",
-        "nickname": null,
-        "dateActive": "2013-02-01",
-        "dateInactive": null,
-        "districtId": null,
-        "districtGrade": 12,
-        "status": "active",
-        "role": "staff",
-        "email": "griseldasporer@walsh.info"
+      id: '107',
+      type: 'user',
+      attributes: {
+        firstName: 'Tommie',
+        lastName: 'Keebler',
+        nickname: null,
+        dateActive: '2012-09-01',
+        dateInactive: null,
+        districtId: null,
+        districtGrade: 12,
+        status: 'active',
+        role: 'staff',
+        email: 'lupebernier@blockspencer.biz',
       },
-      "relationships": {
-      }
-    }
+      relationships: {
+      },
+    },
   ],
-  "meta": {
-    "count": 8
-  }
+  meta: {
+    count: 8,
+  },
 };

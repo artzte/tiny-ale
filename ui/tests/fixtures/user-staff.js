@@ -1,21 +1,21 @@
-// GET /api/admin/users/343
+// GET /api/admin/users/107
 export default {
-  "data": {
-    "id": "343",
-    "type": "user",
-    "attributes": {
-      "firstName": "Coleman",
-      "lastName": "Gerhold",
-      "nickname": null,
-      "dateActive": "2012-09-01",
-      "dateInactive": null,
-      "districtId": null,
-      "districtGrade": 12,
-      "status": "active",
-      "role": "staff",
-      "email": "bridgetrath@brown.net"
+  data: {
+    id: '107',
+    type: 'user',
+    attributes: {
+      firstName: 'Tommie',
+      lastName: 'Keebler',
+      nickname: null,
+      dateActive: '2012-09-01',
+      dateInactive: null,
+      districtId: null,
+      districtGrade: 12,
+      status: 'active',
+      role: 'staff',
+      email: 'lupebernier@blockspencer.biz',
     },
-    "relationships": {
-    }
-  }
+    relationships: {
+    },
+  },
 };

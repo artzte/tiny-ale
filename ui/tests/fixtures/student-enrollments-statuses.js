@@ -1,238 +1,238 @@
-// GET /api/statuses?enrollmentIds=67,64
+// GET /api/statuses?enrollmentIds=35,32
 export default {
-  "data": [
+  data: [
     {
-      "id": "97",
-      "type": "status",
-      "attributes": {
-        "month": "2019-09-01",
-        "createdAt": "2019-11-15T00:00:00.000Z",
-        "updatedAt": "2019-11-15T00:00:00.000Z",
-        "fteHours": 25,
-        "metFteRequirements": true,
-        "heldPeriodicCheckins": true,
-        "academicStatus": "satisfactory",
-        "attendanceStatus": "satisfactory"
+      id: '61',
+      type: 'status',
+      attributes: {
+        month: '2019-09-01',
+        createdAt: '2019-11-15T00:00:00.000Z',
+        updatedAt: '2019-11-15T00:00:00.000Z',
+        fteHours: 25,
+        metFteRequirements: true,
+        heldPeriodicCheckins: true,
+        academicStatus: 'satisfactory',
+        attendanceStatus: 'satisfactory',
       },
-      "relationships": {
-        "creator": {
-          "data": {
-            "id": "343",
-            "type": "user"
-          }
+      relationships: {
+        creator: {
+          data: {
+            id: '107',
+            type: 'user',
+          },
         },
-        "statusable": {
-          "data": {
-            "id": "64",
-            "type": "enrollment"
-          }
-        }
-      }
+        statusable: {
+          data: {
+            id: '32',
+            type: 'enrollment',
+          },
+        },
+      },
     },
     {
-      "id": "98",
-      "type": "status",
-      "attributes": {
-        "month": "2019-10-01",
-        "createdAt": "2019-11-15T00:00:00.000Z",
-        "updatedAt": "2019-11-15T00:00:00.000Z",
-        "fteHours": 25,
-        "metFteRequirements": true,
-        "heldPeriodicCheckins": true,
-        "academicStatus": "satisfactory",
-        "attendanceStatus": "satisfactory"
+      id: '62',
+      type: 'status',
+      attributes: {
+        month: '2019-10-01',
+        createdAt: '2019-11-15T00:00:00.000Z',
+        updatedAt: '2019-11-15T00:00:00.000Z',
+        fteHours: 25,
+        metFteRequirements: true,
+        heldPeriodicCheckins: true,
+        academicStatus: 'satisfactory',
+        attendanceStatus: 'satisfactory',
       },
-      "relationships": {
-        "creator": {
-          "data": {
-            "id": "343",
-            "type": "user"
-          }
+      relationships: {
+        creator: {
+          data: {
+            id: '107',
+            type: 'user',
+          },
         },
-        "statusable": {
-          "data": {
-            "id": "64",
-            "type": "enrollment"
-          }
-        }
-      }
+        statusable: {
+          data: {
+            id: '32',
+            type: 'enrollment',
+          },
+        },
+      },
     },
     {
-      "id": "99",
-      "type": "status",
-      "attributes": {
-        "month": "2019-11-01",
-        "createdAt": "2019-11-15T00:00:00.000Z",
-        "updatedAt": "2019-11-15T00:00:00.000Z",
-        "fteHours": 25,
-        "metFteRequirements": true,
-        "heldPeriodicCheckins": true,
-        "academicStatus": "satisfactory",
-        "attendanceStatus": "satisfactory"
+      id: '63',
+      type: 'status',
+      attributes: {
+        month: '2019-11-01',
+        createdAt: '2019-11-15T00:00:00.000Z',
+        updatedAt: '2019-11-15T00:00:00.000Z',
+        fteHours: 25,
+        metFteRequirements: true,
+        heldPeriodicCheckins: true,
+        academicStatus: 'satisfactory',
+        attendanceStatus: 'satisfactory',
       },
-      "relationships": {
-        "creator": {
-          "data": {
-            "id": "343",
-            "type": "user"
-          }
+      relationships: {
+        creator: {
+          data: {
+            id: '107',
+            type: 'user',
+          },
         },
-        "statusable": {
-          "data": {
-            "id": "64",
-            "type": "enrollment"
-          }
-        }
-      }
+        statusable: {
+          data: {
+            id: '32',
+            type: 'enrollment',
+          },
+        },
+      },
     },
     {
-      "id": "106",
-      "type": "status",
-      "attributes": {
-        "month": "2019-09-01",
-        "createdAt": "2019-11-15T00:00:00.000Z",
-        "updatedAt": "2019-11-15T00:00:00.000Z",
-        "fteHours": 25,
-        "metFteRequirements": true,
-        "heldPeriodicCheckins": true,
-        "academicStatus": "satisfactory",
-        "attendanceStatus": "satisfactory"
+      id: '70',
+      type: 'status',
+      attributes: {
+        month: '2019-09-01',
+        createdAt: '2019-11-15T00:00:00.000Z',
+        updatedAt: '2019-11-15T00:00:00.000Z',
+        fteHours: 25,
+        metFteRequirements: true,
+        heldPeriodicCheckins: true,
+        academicStatus: 'satisfactory',
+        attendanceStatus: 'satisfactory',
       },
-      "relationships": {
-        "creator": {
-          "data": {
-            "id": "344",
-            "type": "user"
-          }
+      relationships: {
+        creator: {
+          data: {
+            id: '108',
+            type: 'user',
+          },
         },
-        "statusable": {
-          "data": {
-            "id": "67",
-            "type": "enrollment"
-          }
-        }
-      }
+        statusable: {
+          data: {
+            id: '35',
+            type: 'enrollment',
+          },
+        },
+      },
     },
     {
-      "id": "107",
-      "type": "status",
-      "attributes": {
-        "month": "2019-10-01",
-        "createdAt": "2019-11-15T00:00:00.000Z",
-        "updatedAt": "2019-11-15T00:00:00.000Z",
-        "fteHours": 25,
-        "metFteRequirements": true,
-        "heldPeriodicCheckins": true,
-        "academicStatus": "satisfactory",
-        "attendanceStatus": "satisfactory"
+      id: '71',
+      type: 'status',
+      attributes: {
+        month: '2019-10-01',
+        createdAt: '2019-11-15T00:00:00.000Z',
+        updatedAt: '2019-11-15T00:00:00.000Z',
+        fteHours: 25,
+        metFteRequirements: true,
+        heldPeriodicCheckins: true,
+        academicStatus: 'satisfactory',
+        attendanceStatus: 'satisfactory',
       },
-      "relationships": {
-        "creator": {
-          "data": {
-            "id": "344",
-            "type": "user"
-          }
+      relationships: {
+        creator: {
+          data: {
+            id: '108',
+            type: 'user',
+          },
         },
-        "statusable": {
-          "data": {
-            "id": "67",
-            "type": "enrollment"
-          }
-        }
-      }
+        statusable: {
+          data: {
+            id: '35',
+            type: 'enrollment',
+          },
+        },
+      },
     },
     {
-      "id": "108",
-      "type": "status",
-      "attributes": {
-        "month": "2019-11-01",
-        "createdAt": "2019-11-15T00:00:00.000Z",
-        "updatedAt": "2019-11-15T00:00:00.000Z",
-        "fteHours": 25,
-        "metFteRequirements": true,
-        "heldPeriodicCheckins": true,
-        "academicStatus": "satisfactory",
-        "attendanceStatus": "satisfactory"
+      id: '72',
+      type: 'status',
+      attributes: {
+        month: '2019-11-01',
+        createdAt: '2019-11-15T00:00:00.000Z',
+        updatedAt: '2019-11-15T00:00:00.000Z',
+        fteHours: 25,
+        metFteRequirements: true,
+        heldPeriodicCheckins: true,
+        academicStatus: 'satisfactory',
+        attendanceStatus: 'satisfactory',
       },
-      "relationships": {
-        "creator": {
-          "data": {
-            "id": "344",
-            "type": "user"
-          }
+      relationships: {
+        creator: {
+          data: {
+            id: '108',
+            type: 'user',
+          },
         },
-        "statusable": {
-          "data": {
-            "id": "67",
-            "type": "enrollment"
-          }
-        }
-      }
-    }
+        statusable: {
+          data: {
+            id: '35',
+            type: 'enrollment',
+          },
+        },
+      },
+    },
   ],
-  "included": [
+  included: [
     {
-      "id": "343",
-      "type": "user",
-      "attributes": {
-        "firstName": "Coleman",
-        "lastName": "Gerhold",
-        "nickname": null,
-        "dateActive": "2012-09-01",
-        "dateInactive": null,
-        "districtId": null,
-        "districtGrade": 12,
-        "email": "bridgetrath@brown.net",
-        "name": "Coleman Gerhold",
-        "status": "active",
-        "role": "staff",
-        "isStaff": true
+      id: '107',
+      type: 'user',
+      attributes: {
+        firstName: 'Tommie',
+        lastName: 'Keebler',
+        nickname: null,
+        dateActive: '2012-09-01',
+        dateInactive: null,
+        districtId: null,
+        districtGrade: 12,
+        email: 'lupebernier@blockspencer.biz',
+        name: 'Tommie Keebler',
+        status: 'active',
+        role: 'staff',
+        isStaff: true,
       },
-      "relationships": {
-        "coordinatees": {
-          "data": [
+      relationships: {
+        coordinatees: {
+          data: [
             {
-              "id": "347",
-              "type": "user"
-            }
-          ]
-        }
-      }
+              id: '111',
+              type: 'user',
+            },
+          ],
+        },
+      },
     },
     {
-      "id": "344",
-      "type": "user",
-      "attributes": {
-        "firstName": "Hildegard",
-        "lastName": "Yost",
-        "nickname": null,
-        "dateActive": "2013-02-01",
-        "dateInactive": null,
-        "districtId": null,
-        "districtGrade": 12,
-        "email": "griseldasporer@walsh.info",
-        "name": "Hildegard Yost",
-        "status": "active",
-        "role": "staff",
-        "isStaff": true
+      id: '108',
+      type: 'user',
+      attributes: {
+        firstName: 'Loren',
+        lastName: 'Bernhard',
+        nickname: null,
+        dateActive: '2013-02-01',
+        dateInactive: null,
+        districtId: null,
+        districtGrade: 12,
+        email: 'otha@leuschke.name',
+        name: 'Loren Bernhard',
+        status: 'active',
+        role: 'staff',
+        isStaff: true,
       },
-      "relationships": {
-        "coordinatees": {
-          "data": [
+      relationships: {
+        coordinatees: {
+          data: [
             {
-              "id": "348",
-              "type": "user"
+              id: '112',
+              type: 'user',
             },
             {
-              "id": "349",
-              "type": "user"
-            }
-          ]
-        }
-      }
-    }
+              id: '113',
+              type: 'user',
+            },
+          ],
+        },
+      },
+    },
   ],
-  "meta": {
-    "count": 6
-  }
+  meta: {
+    count: 6,
+  },
 };

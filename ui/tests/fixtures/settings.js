@@ -1,32 +1,32 @@
 // GET /api/settings
 export default {
-  "data": [
+  data: [
     {
-      "id": "280",
-      "type": "setting",
-      "attributes": {
-        "name": "reporting_base_month",
-        "value": "9"
-      }
+      id: '70',
+      type: 'setting',
+      attributes: {
+        name: 'reporting_base_month',
+        value: '9',
+      },
     },
     {
-      "id": "281",
-      "type": "setting",
-      "attributes": {
-        "name": "reporting_end_month",
-        "value": "6"
-      }
+      id: '71',
+      type: 'setting',
+      attributes: {
+        name: 'reporting_end_month',
+        value: '6',
+      },
     },
     {
-      "id": "282",
-      "type": "setting",
-      "attributes": {
-        "name": "current_year",
-        "value": "2019"
-      }
-    }
+      id: '72',
+      type: 'setting',
+      attributes: {
+        name: 'current_year',
+        value: '2019',
+      },
+    },
   ],
-  "meta": {
-    "count": 3
-  }
+  meta: {
+    count: 3,
+  },
 };

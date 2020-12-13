@@ -1,27 +1,27 @@
-// GET /api/students/347
+// GET /api/students/111
 export default {
-  "data": {
-    "id": "347",
-    "type": "user",
-    "attributes": {
-      "firstName": "Claudio",
-      "lastName": "Jones",
-      "nickname": null,
-      "name": "Claudio Jones",
-      "dateActive": "2018-08-01",
-      "dateInactive": null,
-      "districtId": "806551517",
-      "districtGrade": 9,
-      "status": "active",
-      "role": "student"
+  data: {
+    id: '111',
+    type: 'user',
+    attributes: {
+      firstName: 'Austin',
+      lastName: 'Will',
+      nickname: null,
+      name: 'Austin Will',
+      dateActive: '2018-08-01',
+      dateInactive: null,
+      districtId: '1880173925',
+      districtGrade: 9,
+      status: 'active',
+      role: 'student',
     },
-    "relationships": {
-      "coordinator": {
-        "data": {
-          "id": "343",
-          "type": "user"
-        }
-      }
-    }
-  }
+    relationships: {
+      coordinator: {
+        data: {
+          id: '107',
+          type: 'user',
+        },
+      },
+    },
+  },
 };

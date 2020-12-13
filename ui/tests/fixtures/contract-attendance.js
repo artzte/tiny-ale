@@ -1,138 +1,138 @@
-// GET /api/meetings?contractIds=45
+// GET /api/meetings?contractIds=29
 export default {
-  "data": [
+  data: [
     {
-      "id": "1",
-      "type": "meeting",
-      "attributes": {
-        "title": "Attendance for Monday, 02 September 2019",
-        "meetingDate": "2019-09-02"
+      id: '1',
+      type: 'meeting',
+      attributes: {
+        title: 'Attendance for Monday, 02 September 2019',
+        meetingDate: '2019-09-02',
       },
-      "relationships": {
-        "meetingParticipants": {
-          "data": [
+      relationships: {
+        meetingParticipants: {
+          data: [
             {
-              "id": "1",
-              "type": "meetingParticipant"
+              id: '1',
+              type: 'meetingParticipant',
             },
             {
-              "id": "2",
-              "type": "meetingParticipant"
+              id: '2',
+              type: 'meetingParticipant',
             },
             {
-              "id": "3",
-              "type": "meetingParticipant"
-            }
-          ]
-        }
-      }
+              id: '3',
+              type: 'meetingParticipant',
+            },
+          ],
+        },
+      },
     },
     {
-      "id": "2",
-      "type": "meeting",
-      "attributes": {
-        "title": "Attendance for Tuesday, 03 September 2019",
-        "meetingDate": "2019-09-03"
+      id: '2',
+      type: 'meeting',
+      attributes: {
+        title: 'Attendance for Tuesday, 03 September 2019',
+        meetingDate: '2019-09-03',
       },
-      "relationships": {
-        "meetingParticipants": {
-          "data": [
+      relationships: {
+        meetingParticipants: {
+          data: [
             {
-              "id": "4",
-              "type": "meetingParticipant"
+              id: '4',
+              type: 'meetingParticipant',
             },
             {
-              "id": "5",
-              "type": "meetingParticipant"
+              id: '5',
+              type: 'meetingParticipant',
             },
             {
-              "id": "6",
-              "type": "meetingParticipant"
-            }
-          ]
-        }
-      }
+              id: '6',
+              type: 'meetingParticipant',
+            },
+          ],
+        },
+      },
     },
     {
-      "id": "3",
-      "type": "meeting",
-      "attributes": {
-        "title": "Attendance for Wednesday, 04 September 2019",
-        "meetingDate": "2019-09-04"
+      id: '3',
+      type: 'meeting',
+      attributes: {
+        title: 'Attendance for Wednesday, 04 September 2019',
+        meetingDate: '2019-09-04',
       },
-      "relationships": {
-        "meetingParticipants": {
-          "data": [
+      relationships: {
+        meetingParticipants: {
+          data: [
             {
-              "id": "7",
-              "type": "meetingParticipant"
+              id: '7',
+              type: 'meetingParticipant',
             },
             {
-              "id": "8",
-              "type": "meetingParticipant"
+              id: '8',
+              type: 'meetingParticipant',
             },
             {
-              "id": "9",
-              "type": "meetingParticipant"
-            }
-          ]
-        }
-      }
+              id: '9',
+              type: 'meetingParticipant',
+            },
+          ],
+        },
+      },
     },
     {
-      "id": "4",
-      "type": "meeting",
-      "attributes": {
-        "title": "Attendance for Thursday, 05 September 2019",
-        "meetingDate": "2019-09-05"
+      id: '4',
+      type: 'meeting',
+      attributes: {
+        title: 'Attendance for Thursday, 05 September 2019',
+        meetingDate: '2019-09-05',
       },
-      "relationships": {
-        "meetingParticipants": {
-          "data": [
+      relationships: {
+        meetingParticipants: {
+          data: [
             {
-              "id": "10",
-              "type": "meetingParticipant"
+              id: '10',
+              type: 'meetingParticipant',
             },
             {
-              "id": "11",
-              "type": "meetingParticipant"
+              id: '11',
+              type: 'meetingParticipant',
             },
             {
-              "id": "12",
-              "type": "meetingParticipant"
-            }
-          ]
-        }
-      }
+              id: '12',
+              type: 'meetingParticipant',
+            },
+          ],
+        },
+      },
     },
     {
-      "id": "5",
-      "type": "meeting",
-      "attributes": {
-        "title": "Attendance for Friday, 06 September 2019",
-        "meetingDate": "2019-09-06"
+      id: '5',
+      type: 'meeting',
+      attributes: {
+        title: 'Attendance for Friday, 06 September 2019',
+        meetingDate: '2019-09-06',
       },
-      "relationships": {
-        "meetingParticipants": {
-          "data": [
+      relationships: {
+        meetingParticipants: {
+          data: [
             {
-              "id": "13",
-              "type": "meetingParticipant"
+              id: '13',
+              type: 'meetingParticipant',
             },
             {
-              "id": "14",
-              "type": "meetingParticipant"
+              id: '14',
+              type: 'meetingParticipant',
             },
             {
-              "id": "15",
-              "type": "meetingParticipant"
-            }
-          ]
-        }
-      }
-    }
+              id: '15',
+              type: 'meetingParticipant',
+            },
+          ],
+        },
+      },
+    },
   ],
-  "meta": {
-    "count": 5
-  }
+  meta: {
+    count: 5,
+  },
 };

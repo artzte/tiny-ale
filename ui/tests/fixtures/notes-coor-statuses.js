@@ -1,202 +1,202 @@
-// GET /api/notes?notableType=Status&notableIds=145,148,146,149,147,150
+// GET /api/notes?notableType=Status&notableIds=109,112,110,113,111,114
 export default {
-  "data": [
+  data: [
     {
-      "id": "75",
-      "type": "note",
-      "attributes": {
-        "note": "Note by Gerhold for Jones on 2019-09-01",
-        "updatedAt": "2019-11-15T00:00:00.000Z"
+      id: '61',
+      type: 'note',
+      attributes: {
+        note: 'Note by Keebler for Will on 2019-09-01',
+        updatedAt: '2019-11-15T00:00:00.000Z',
       },
-      "relationships": {
-        "notable": {
-          "data": {
-            "id": "145",
-            "type": "status"
-          }
+      relationships: {
+        notable: {
+          data: {
+            id: '109',
+            type: 'status',
+          },
         },
-        "creator": {
-          "data": {
-            "id": "343",
-            "type": "user"
-          }
-        }
-      }
+        creator: {
+          data: {
+            id: '107',
+            type: 'user',
+          },
+        },
+      },
     },
     {
-      "id": "76",
-      "type": "note",
-      "attributes": {
-        "note": "Note by Yost for Mueller on 2019-09-01",
-        "updatedAt": "2019-11-15T00:00:00.000Z"
+      id: '62',
+      type: 'note',
+      attributes: {
+        note: 'Note by Bernhard for Gaylord on 2019-09-01',
+        updatedAt: '2019-11-15T00:00:00.000Z',
       },
-      "relationships": {
-        "notable": {
-          "data": {
-            "id": "146",
-            "type": "status"
-          }
+      relationships: {
+        notable: {
+          data: {
+            id: '110',
+            type: 'status',
+          },
         },
-        "creator": {
-          "data": {
-            "id": "344",
-            "type": "user"
-          }
-        }
-      }
+        creator: {
+          data: {
+            id: '108',
+            type: 'user',
+          },
+        },
+      },
     },
     {
-      "id": "77",
-      "type": "note",
-      "attributes": {
-        "note": "Note by Yost for Walker on 2019-09-01",
-        "updatedAt": "2019-11-15T00:00:00.000Z"
+      id: '63',
+      type: 'note',
+      attributes: {
+        note: 'Note by Bernhard for Murphy on 2019-09-01',
+        updatedAt: '2019-11-15T00:00:00.000Z',
       },
-      "relationships": {
-        "notable": {
-          "data": {
-            "id": "147",
-            "type": "status"
-          }
+      relationships: {
+        notable: {
+          data: {
+            id: '111',
+            type: 'status',
+          },
         },
-        "creator": {
-          "data": {
-            "id": "344",
-            "type": "user"
-          }
-        }
-      }
+        creator: {
+          data: {
+            id: '108',
+            type: 'user',
+          },
+        },
+      },
     },
     {
-      "id": "78",
-      "type": "note",
-      "attributes": {
-        "note": "Note by Gerhold for Jones on 2019-10-01",
-        "updatedAt": "2019-11-15T00:00:00.000Z"
+      id: '64',
+      type: 'note',
+      attributes: {
+        note: 'Note by Keebler for Will on 2019-10-01',
+        updatedAt: '2019-11-15T00:00:00.000Z',
       },
-      "relationships": {
-        "notable": {
-          "data": {
-            "id": "148",
-            "type": "status"
-          }
+      relationships: {
+        notable: {
+          data: {
+            id: '112',
+            type: 'status',
+          },
         },
-        "creator": {
-          "data": {
-            "id": "343",
-            "type": "user"
-          }
-        }
-      }
+        creator: {
+          data: {
+            id: '107',
+            type: 'user',
+          },
+        },
+      },
     },
     {
-      "id": "79",
-      "type": "note",
-      "attributes": {
-        "note": "Note by Yost for Mueller on 2019-10-01",
-        "updatedAt": "2019-11-15T00:00:00.000Z"
+      id: '65',
+      type: 'note',
+      attributes: {
+        note: 'Note by Bernhard for Gaylord on 2019-10-01',
+        updatedAt: '2019-11-15T00:00:00.000Z',
       },
-      "relationships": {
-        "notable": {
-          "data": {
-            "id": "149",
-            "type": "status"
-          }
+      relationships: {
+        notable: {
+          data: {
+            id: '113',
+            type: 'status',
+          },
         },
-        "creator": {
-          "data": {
-            "id": "344",
-            "type": "user"
-          }
-        }
-      }
+        creator: {
+          data: {
+            id: '108',
+            type: 'user',
+          },
+        },
+      },
     },
     {
-      "id": "80",
-      "type": "note",
-      "attributes": {
-        "note": "Note by Yost for Walker on 2019-10-01",
-        "updatedAt": "2019-11-15T00:00:00.000Z"
+      id: '66',
+      type: 'note',
+      attributes: {
+        note: 'Note by Bernhard for Murphy on 2019-10-01',
+        updatedAt: '2019-11-15T00:00:00.000Z',
       },
-      "relationships": {
-        "notable": {
-          "data": {
-            "id": "150",
-            "type": "status"
-          }
+      relationships: {
+        notable: {
+          data: {
+            id: '114',
+            type: 'status',
+          },
         },
-        "creator": {
-          "data": {
-            "id": "344",
-            "type": "user"
-          }
-        }
-      }
-    }
+        creator: {
+          data: {
+            id: '108',
+            type: 'user',
+          },
+        },
+      },
+    },
   ],
-  "included": [
+  included: [
     {
-      "id": "343",
-      "type": "user",
-      "attributes": {
-        "firstName": "Coleman",
-        "lastName": "Gerhold",
-        "nickname": null,
-        "dateActive": "2012-09-01",
-        "dateInactive": null,
-        "districtId": null,
-        "districtGrade": 12,
-        "email": "bridgetrath@brown.net",
-        "name": "Coleman Gerhold",
-        "status": "active",
-        "role": "staff",
-        "isStaff": true
+      id: '107',
+      type: 'user',
+      attributes: {
+        firstName: 'Tommie',
+        lastName: 'Keebler',
+        nickname: null,
+        dateActive: '2012-09-01',
+        dateInactive: null,
+        districtId: null,
+        districtGrade: 12,
+        email: 'lupebernier@blockspencer.biz',
+        name: 'Tommie Keebler',
+        status: 'active',
+        role: 'staff',
+        isStaff: true,
       },
-      "relationships": {
-        "coordinatees": {
-          "data": [
+      relationships: {
+        coordinatees: {
+          data: [
             {
-              "id": "347",
-              "type": "user"
-            }
-          ]
-        }
-      }
+              id: '111',
+              type: 'user',
+            },
+          ],
+        },
+      },
     },
     {
-      "id": "344",
-      "type": "user",
-      "attributes": {
-        "firstName": "Hildegard",
-        "lastName": "Yost",
-        "nickname": null,
-        "dateActive": "2013-02-01",
-        "dateInactive": null,
-        "districtId": null,
-        "districtGrade": 12,
-        "email": "griseldasporer@walsh.info",
-        "name": "Hildegard Yost",
-        "status": "active",
-        "role": "staff",
-        "isStaff": true
+      id: '108',
+      type: 'user',
+      attributes: {
+        firstName: 'Loren',
+        lastName: 'Bernhard',
+        nickname: null,
+        dateActive: '2013-02-01',
+        dateInactive: null,
+        districtId: null,
+        districtGrade: 12,
+        email: 'otha@leuschke.name',
+        name: 'Loren Bernhard',
+        status: 'active',
+        role: 'staff',
+        isStaff: true,
       },
-      "relationships": {
-        "coordinatees": {
-          "data": [
+      relationships: {
+        coordinatees: {
+          data: [
             {
-              "id": "348",
-              "type": "user"
+              id: '112',
+              type: 'user',
             },
             {
-              "id": "349",
-              "type": "user"
-            }
-          ]
-        }
-      }
-    }
+              id: '113',
+              type: 'user',
+            },
+          ],
+        },
+      },
+    },
   ],
-  "meta": {
-    "count": 6
-  }
+  meta: {
+    count: 6,
+  },
 };

@@ -1,512 +1,512 @@
 // GET /api/contracts
 export default {
-  "data": [
+  data: [
     {
-      "id": "41",
-      "type": "contract",
-      "attributes": {
-        "name": "Solitudo decipio corona annus ars.",
-        "status": "closed"
+      id: '25',
+      type: 'contract',
+      attributes: {
+        name: 'Super curto usus facere barba.',
+        status: 'closed',
       },
-      "relationships": {
-        "enrollments": {
-          "data": [
+      relationships: {
+        enrollments: {
+          data: [
             {
-              "id": "70",
-              "type": "enrollment"
+              id: '38',
+              type: 'enrollment',
             },
             {
-              "id": "71",
-              "type": "enrollment"
-            }
-          ]
+              id: '39',
+              type: 'enrollment',
+            },
+          ],
         },
-        "facilitator": {
-          "data": {
-            "id": "343",
-            "type": "user"
-          }
+        facilitator: {
+          data: {
+            id: '107',
+            type: 'user',
+          },
         },
-        "term": {
-          "data": {
-            "id": "87",
-            "type": "term"
-          }
+        term: {
+          data: {
+            id: '28',
+            type: 'term',
+          },
         },
-        "category": {
-          "data": {
-            "id": "31",
-            "type": "category"
-          }
+        category: {
+          data: {
+            id: '15',
+            type: 'category',
+          },
         },
-        "assignments": {
-          "data": [
+        assignments: {
+          data: [
 
-          ]
+          ],
         },
-        "creditAssignments": {
-          "data": [
+        creditAssignments: {
+          data: [
             {
-              "id": "84",
-              "type": "creditAssignment"
+              id: '15',
+              type: 'creditAssignment',
             },
             {
-              "id": "96",
-              "type": "creditAssignment"
+              id: '27',
+              type: 'creditAssignment',
             },
             {
-              "id": "97",
-              "type": "creditAssignment"
+              id: '28',
+              type: 'creditAssignment',
             },
             {
-              "id": "98",
-              "type": "creditAssignment"
+              id: '29',
+              type: 'creditAssignment',
             },
             {
-              "id": "99",
-              "type": "creditAssignment"
+              id: '30',
+              type: 'creditAssignment',
             },
             {
-              "id": "100",
-              "type": "creditAssignment"
+              id: '31',
+              type: 'creditAssignment',
             },
             {
-              "id": "101",
-              "type": "creditAssignment"
-            }
-          ]
+              id: '32',
+              type: 'creditAssignment',
+            },
+          ],
         },
-        "meetings": {
-          "data": [
+        meetings: {
+          data: [
 
-          ]
+          ],
         },
-        "learningRequirements": {
-          "data": [
+        learningRequirements: {
+          data: [
 
-          ]
-        }
-      }
+          ],
+        },
+      },
     },
     {
-      "id": "42",
-      "type": "contract",
-      "attributes": {
-        "name": "Celer animus damno teneo abstergo.",
-        "status": "closed"
+      id: '26',
+      type: 'contract',
+      attributes: {
+        name: 'Tego praesentium vetus iure aut.',
+        status: 'closed',
       },
-      "relationships": {
-        "enrollments": {
-          "data": [
+      relationships: {
+        enrollments: {
+          data: [
             {
-              "id": "72",
-              "type": "enrollment"
+              id: '40',
+              type: 'enrollment',
             },
             {
-              "id": "73",
-              "type": "enrollment"
-            }
-          ]
+              id: '41',
+              type: 'enrollment',
+            },
+          ],
         },
-        "facilitator": {
-          "data": {
-            "id": "344",
-            "type": "user"
-          }
+        facilitator: {
+          data: {
+            id: '108',
+            type: 'user',
+          },
         },
-        "term": {
-          "data": {
-            "id": "88",
-            "type": "term"
-          }
+        term: {
+          data: {
+            id: '29',
+            type: 'term',
+          },
         },
-        "category": {
-          "data": {
-            "id": "32",
-            "type": "category"
-          }
+        category: {
+          data: {
+            id: '16',
+            type: 'category',
+          },
         },
-        "assignments": {
-          "data": [
+        assignments: {
+          data: [
 
-          ]
+          ],
         },
-        "creditAssignments": {
-          "data": [
+        creditAssignments: {
+          data: [
             {
-              "id": "86",
-              "type": "creditAssignment"
+              id: '17',
+              type: 'creditAssignment',
             },
             {
-              "id": "102",
-              "type": "creditAssignment"
+              id: '33',
+              type: 'creditAssignment',
             },
             {
-              "id": "103",
-              "type": "creditAssignment"
+              id: '34',
+              type: 'creditAssignment',
             },
             {
-              "id": "104",
-              "type": "creditAssignment"
+              id: '35',
+              type: 'creditAssignment',
             },
             {
-              "id": "105",
-              "type": "creditAssignment"
+              id: '36',
+              type: 'creditAssignment',
             },
             {
-              "id": "106",
-              "type": "creditAssignment"
+              id: '37',
+              type: 'creditAssignment',
             },
             {
-              "id": "107",
-              "type": "creditAssignment"
-            }
-          ]
+              id: '38',
+              type: 'creditAssignment',
+            },
+          ],
         },
-        "meetings": {
-          "data": [
+        meetings: {
+          data: [
 
-          ]
+          ],
         },
-        "learningRequirements": {
-          "data": [
+        learningRequirements: {
+          data: [
 
-          ]
-        }
-      }
+          ],
+        },
+      },
     },
     {
-      "id": "43",
-      "type": "contract",
-      "attributes": {
-        "name": "Capillus autem amicitia vulgus qui.",
-        "status": "closed"
+      id: '27',
+      type: 'contract',
+      attributes: {
+        name: 'Crux denego saepe consequatur verbera.',
+        status: 'closed',
       },
-      "relationships": {
-        "enrollments": {
-          "data": [
+      relationships: {
+        enrollments: {
+          data: [
             {
-              "id": "74",
-              "type": "enrollment"
+              id: '42',
+              type: 'enrollment',
             },
             {
-              "id": "75",
-              "type": "enrollment"
-            }
-          ]
+              id: '43',
+              type: 'enrollment',
+            },
+          ],
         },
-        "facilitator": {
-          "data": {
-            "id": "344",
-            "type": "user"
-          }
+        facilitator: {
+          data: {
+            id: '108',
+            type: 'user',
+          },
         },
-        "term": {
-          "data": {
-            "id": "88",
-            "type": "term"
-          }
+        term: {
+          data: {
+            id: '29',
+            type: 'term',
+          },
         },
-        "category": {
-          "data": {
-            "id": "32",
-            "type": "category"
-          }
+        category: {
+          data: {
+            id: '16',
+            type: 'category',
+          },
         },
-        "assignments": {
-          "data": [
+        assignments: {
+          data: [
 
-          ]
+          ],
         },
-        "creditAssignments": {
-          "data": [
+        creditAssignments: {
+          data: [
             {
-              "id": "88",
-              "type": "creditAssignment"
+              id: '19',
+              type: 'creditAssignment',
             },
             {
-              "id": "108",
-              "type": "creditAssignment"
+              id: '39',
+              type: 'creditAssignment',
             },
             {
-              "id": "109",
-              "type": "creditAssignment"
+              id: '40',
+              type: 'creditAssignment',
             },
             {
-              "id": "110",
-              "type": "creditAssignment"
+              id: '41',
+              type: 'creditAssignment',
             },
             {
-              "id": "111",
-              "type": "creditAssignment"
+              id: '42',
+              type: 'creditAssignment',
             },
             {
-              "id": "112",
-              "type": "creditAssignment"
+              id: '43',
+              type: 'creditAssignment',
             },
             {
-              "id": "113",
-              "type": "creditAssignment"
-            }
-          ]
+              id: '44',
+              type: 'creditAssignment',
+            },
+          ],
         },
-        "meetings": {
-          "data": [
+        meetings: {
+          data: [
 
-          ]
+          ],
         },
-        "learningRequirements": {
-          "data": [
+        learningRequirements: {
+          data: [
 
-          ]
-        }
-      }
+          ],
+        },
+      },
     },
     {
-      "id": "44",
-      "type": "contract",
-      "attributes": {
-        "name": "Cognomen dolorem trepide coniuratio veniam.",
-        "status": "closed"
+      id: '28',
+      type: 'contract',
+      attributes: {
+        name: 'Unde temporibus aut statua templum.',
+        status: 'closed',
       },
-      "relationships": {
-        "enrollments": {
-          "data": [
+      relationships: {
+        enrollments: {
+          data: [
 
-          ]
+          ],
         },
-        "facilitator": {
-          "data": {
-            "id": "344",
-            "type": "user"
-          }
+        facilitator: {
+          data: {
+            id: '108',
+            type: 'user',
+          },
         },
-        "term": {
-          "data": {
-            "id": "88",
-            "type": "term"
-          }
+        term: {
+          data: {
+            id: '29',
+            type: 'term',
+          },
         },
-        "category": {
-          "data": {
-            "id": "32",
-            "type": "category"
-          }
+        category: {
+          data: {
+            id: '16',
+            type: 'category',
+          },
         },
-        "assignments": {
-          "data": [
+        assignments: {
+          data: [
 
-          ]
+          ],
         },
-        "creditAssignments": {
-          "data": [
+        creditAssignments: {
+          data: [
             {
-              "id": "89",
-              "type": "creditAssignment"
-            }
-          ]
+              id: '20',
+              type: 'creditAssignment',
+            },
+          ],
         },
-        "meetings": {
-          "data": [
+        meetings: {
+          data: [
 
-          ]
+          ],
         },
-        "learningRequirements": {
-          "data": [
+        learningRequirements: {
+          data: [
 
-          ]
-        }
-      }
+          ],
+        },
+      },
     },
     {
-      "id": "45",
-      "type": "contract",
-      "attributes": {
-        "name": "Est illum bellum adflicto accommodo.",
-        "status": "active"
+      id: '29',
+      type: 'contract',
+      attributes: {
+        name: 'Error accedo clibanus aduro astrum.',
+        status: 'active',
       },
-      "relationships": {
-        "enrollments": {
-          "data": [
+      relationships: {
+        enrollments: {
+          data: [
             {
-              "id": "64",
-              "type": "enrollment"
+              id: '32',
+              type: 'enrollment',
             },
             {
-              "id": "65",
-              "type": "enrollment"
+              id: '33',
+              type: 'enrollment',
             },
             {
-              "id": "66",
-              "type": "enrollment"
-            }
-          ]
+              id: '34',
+              type: 'enrollment',
+            },
+          ],
         },
-        "facilitator": {
-          "data": {
-            "id": "343",
-            "type": "user"
-          }
+        facilitator: {
+          data: {
+            id: '107',
+            type: 'user',
+          },
         },
-        "term": {
-          "data": {
-            "id": "89",
-            "type": "term"
-          }
+        term: {
+          data: {
+            id: '30',
+            type: 'term',
+          },
         },
-        "category": {
-          "data": {
-            "id": "31",
-            "type": "category"
-          }
+        category: {
+          data: {
+            id: '15',
+            type: 'category',
+          },
         },
-        "assignments": {
-          "data": [
+        assignments: {
+          data: [
             {
-              "id": "1",
-              "type": "assignment"
+              id: '1',
+              type: 'assignment',
             },
             {
-              "id": "2",
-              "type": "assignment"
+              id: '2',
+              type: 'assignment',
             },
             {
-              "id": "3",
-              "type": "assignment"
+              id: '3',
+              type: 'assignment',
             },
             {
-              "id": "4",
-              "type": "assignment"
+              id: '4',
+              type: 'assignment',
             },
             {
-              "id": "5",
-              "type": "assignment"
-            }
-          ]
+              id: '5',
+              type: 'assignment',
+            },
+          ],
         },
-        "creditAssignments": {
-          "data": [
+        creditAssignments: {
+          data: [
             {
-              "id": "85",
-              "type": "creditAssignment"
-            }
-          ]
+              id: '16',
+              type: 'creditAssignment',
+            },
+          ],
         },
-        "meetings": {
-          "data": [
+        meetings: {
+          data: [
             {
-              "id": "1",
-              "type": "meeting"
+              id: '1',
+              type: 'meeting',
             },
             {
-              "id": "2",
-              "type": "meeting"
+              id: '2',
+              type: 'meeting',
             },
             {
-              "id": "3",
-              "type": "meeting"
+              id: '3',
+              type: 'meeting',
             },
             {
-              "id": "4",
-              "type": "meeting"
+              id: '4',
+              type: 'meeting',
             },
             {
-              "id": "5",
-              "type": "meeting"
-            }
-          ]
+              id: '5',
+              type: 'meeting',
+            },
+          ],
         },
-        "learningRequirements": {
-          "data": [
+        learningRequirements: {
+          data: [
             {
-              "id": "13",
-              "type": "learningRequirement"
+              id: '2',
+              type: 'learningRequirement',
             },
             {
-              "id": "14",
-              "type": "learningRequirement"
+              id: '3',
+              type: 'learningRequirement',
             },
             {
-              "id": "15",
-              "type": "learningRequirement"
+              id: '4',
+              type: 'learningRequirement',
             },
             {
-              "id": "16",
-              "type": "learningRequirement"
-            }
-          ]
-        }
-      }
+              id: '5',
+              type: 'learningRequirement',
+            },
+          ],
+        },
+      },
     },
     {
-      "id": "46",
-      "type": "contract",
-      "attributes": {
-        "name": "Subito suasoria volup amplexus quibusdam.",
-        "status": "active"
+      id: '30',
+      type: 'contract',
+      attributes: {
+        name: 'Vinco stultus patria provident xiphias.',
+        status: 'active',
       },
-      "relationships": {
-        "enrollments": {
-          "data": [
+      relationships: {
+        enrollments: {
+          data: [
             {
-              "id": "67",
-              "type": "enrollment"
+              id: '35',
+              type: 'enrollment',
             },
             {
-              "id": "68",
-              "type": "enrollment"
+              id: '36',
+              type: 'enrollment',
             },
             {
-              "id": "69",
-              "type": "enrollment"
-            }
-          ]
+              id: '37',
+              type: 'enrollment',
+            },
+          ],
         },
-        "facilitator": {
-          "data": {
-            "id": "344",
-            "type": "user"
-          }
+        facilitator: {
+          data: {
+            id: '108',
+            type: 'user',
+          },
         },
-        "term": {
-          "data": {
-            "id": "89",
-            "type": "term"
-          }
+        term: {
+          data: {
+            id: '30',
+            type: 'term',
+          },
         },
-        "category": {
-          "data": {
-            "id": "32",
-            "type": "category"
-          }
+        category: {
+          data: {
+            id: '16',
+            type: 'category',
+          },
         },
-        "assignments": {
-          "data": [
+        assignments: {
+          data: [
 
-          ]
+          ],
         },
-        "creditAssignments": {
-          "data": [
+        creditAssignments: {
+          data: [
             {
-              "id": "87",
-              "type": "creditAssignment"
-            }
-          ]
+              id: '18',
+              type: 'creditAssignment',
+            },
+          ],
         },
-        "meetings": {
-          "data": [
+        meetings: {
+          data: [
 
-          ]
+          ],
         },
-        "learningRequirements": {
-          "data": [
+        learningRequirements: {
+          data: [
 
-          ]
-        }
-      }
-    }
+          ],
+        },
+      },
+    },
   ],
-  "meta": {
-    "count": 6
-  }
+  meta: {
+    count: 6,
+  },
 };
