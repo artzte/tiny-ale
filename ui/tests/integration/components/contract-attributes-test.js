@@ -15,12 +15,11 @@ module('Integration | Component | contract-attributes', (hooks) => {
     tinyDataServiceMock = stubTinyData();
     tinyDataServiceMock.addResult(contractDetails);
     this.contract = tinyDataServiceMock.get('contract', contractDetails.data.id);
-    console.log('finished init');
   });
 
   test('it renders', async function (assert) {
-    await render(hbs`<ContractAttributes contract={{contract}} />`);
+    await render(hbs`<ContractAttributes @contract={{contract}} />`);
 
-    assert.equal(this.element.textContent.trim(), '');
+    assert.matches(this.element.textContent.trim(), this.contract.attributes.learningObjectives);
   });
 });
