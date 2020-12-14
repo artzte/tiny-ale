@@ -4,7 +4,7 @@ import { tinyDataService } from 'tinysis-ui/services/tiny-data';
 
 export function getTinyData() {
   const { owner } = getContext();
-  return owner.lookup('service:tiny-service-mock');
+  return owner.lookup('service:tiny-data');
 }
 
 export function buildTinyData(overrides = {}) {
@@ -16,7 +16,7 @@ export function stubTinyData(overrides = {}) {
 
   const tinyDataServiceMock = buildTinyData(overrides);
 
-  owner.register('service:tiny-service-mock', Service.extend(tinyDataServiceMock));
-  owner.inject('component', 'tinyData', 'service:tiny-service-mock');
+  owner.register('service:tiny-data', Service.extend(tinyDataServiceMock));
+
   return getTinyData();
 }
