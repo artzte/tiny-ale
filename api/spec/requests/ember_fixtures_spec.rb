@@ -308,7 +308,7 @@ RSpec.describe 'Ember fixtures script', type: :request do
         write_fixture "/api/contracts?limit=20&order=name&include=term,category,facilitator&schoolYear=#{CURRENT_YEAR}", "contracts-list.js"
 
         # contract detail
-        write_fixture "/api/contracts/#{@contract1_current.id}?include=category,facilitator,assignments,meetings,creditAssignments,creditAssignments.credit,term,ealrs", 'contract-detail.js'
+        write_fixture "/api/contracts/#{@contract1_current.id}?include=category,facilitator,assignments,meetings,creditAssignments,creditAssignments.credit,term,learningRequirements", 'contract-detail.js'
 
         # contract assignments
         write_fixture "/api/assignments?contractIds=#{@contract1_current.id}", 'contract-assignments.js'

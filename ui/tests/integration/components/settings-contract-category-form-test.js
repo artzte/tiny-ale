@@ -1,6 +1,11 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render, find, click } from '@ember/test-helpers';
+import {
+  render,
+  find,
+  click,
+  fillIn,
+} from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 import { resolve } from 'rsvp';
 
@@ -18,8 +23,8 @@ module('Integration | Component | settings-contract-category-form', (hooks) => {
     category = clone(fixture.data[0]);
     this.setProperties({
       category,
-      save(model) {
-        requests.push({ type: 'save', model });
+      save(model, changeset) {
+        requests.push({ type: 'save', model, changeset });
         return resolve();
       },
       reportError(error) {
@@ -43,6 +48,15 @@ module('Integration | Component | settings-contract-category-form', (hooks) => {
     const request = requests.pop();
     assert.ok(request, 'outbound request triggered');
 
-    assert.deepEqual(category.attributes, {});
+    assert.deepEqual(request.model, category);
+
+    await fillIn('input[name="name"]', 'fred');
+
+    await click('button[type="submit"]');
+
+    const requestWithName = requests.pop();
+    assert.ok(requestWithName, 'outbound request triggered');
+
+    assert.deepEqual(requestWithName.changeset.attributes, { name: 'fred' }, 'changeset with name was sent');
   });
 });

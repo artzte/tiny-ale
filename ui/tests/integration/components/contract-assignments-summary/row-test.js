@@ -41,6 +41,7 @@ module('Integration | Component | contract-assignments-summary/row', (hooks) => 
 
     const dueDate = renderedLi.querySelector('span.summary-date');
     assert.ok(dueDate, 'due date block was rendered');
-    assert.matches(dueDate.textContent.trim(), dayjs(assignment.attributes.dueDate).format('L'), 'due date matches');
+
+    assert.matches(dueDate.textContent, dayjs(assignment.attributes.dueDate).format('ddd MMM D YYYY'), 'due date matches');
   });
 });

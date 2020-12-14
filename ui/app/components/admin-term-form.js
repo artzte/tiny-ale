@@ -5,7 +5,7 @@ import Validator from '../utils/validator';
 import TForm from './t-form';
 
 export default TForm.extend({
-  schoolYears: computed(() => []),
+  schoolYears: (() => ([]))(),
   isActive: equal('pojo.status', 'active'),
   isInactive: not('isActive'),
 

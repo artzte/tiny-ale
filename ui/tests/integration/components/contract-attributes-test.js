@@ -1,26 +1,26 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
+
 import { render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
+import contractDetails from '../../fixtures/contract-detail';
+import { stubTinyData } from '../../helpers/stub-tiny-data';
+
+let tinyDataServiceMock;
 
 module('Integration | Component | contract-attributes', (hooks) => {
   setupRenderingTest(hooks);
 
-  test('it renders', async function (assert) {
-    // Set any properties with this.set('myProperty', 'value');
-    // Handle any actions with this.set('myAction', function(val) { ... });
+  hooks.beforeEach(function () {
+    tinyDataServiceMock = stubTinyData();
+    tinyDataServiceMock.addResult(contractDetails);
+    this.contract = tinyDataServiceMock.get('contract', contractDetails.data.id);
+    console.log('finished init');
+  });
 
-    await render(hbs`<ContractAttributes />`);
+  test('it renders', async function (assert) {
+    await render(hbs`<ContractAttributes contract={{contract}} />`);
 
     assert.equal(this.element.textContent.trim(), '');
-
-    // Template block usage:
-    await render(hbs`
-      <ContractAttributes>
-        template block text
-      </ContractAttributes>
-    `);
-
-    assert.equal(this.element.textContent.trim(), 'template block text');
   });
 });

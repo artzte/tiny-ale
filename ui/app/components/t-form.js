@@ -127,9 +127,7 @@ export default Component.extend({
     return Object.keys(relationships)
       .reduce((memo, key) => {
         memo[key] = {
-          data: {
-            id: relationships[key],
-          },
+          data: relationships[key],
         };
         return memo;
       }, {});
@@ -207,7 +205,7 @@ export default Component.extend({
     // relationships groups.
     //
     const fullModel = this.serializeModel(pojo, model, relationships);
-    const hasUpdates = Boolean(Object.keys(pojoUpdates).length && Object.keys(relationshipsUpdates).length);
+    const hasUpdates = Boolean(Object.keys(pojoUpdates).length || Object.keys(relationshipsUpdates).length);
     const result = this.save(fullModel, hasUpdates && this.serializeModel(pojoUpdates, { id: model.id }, relationshipsUpdates));
 
     result.finally(() => {

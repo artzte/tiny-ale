@@ -35,7 +35,7 @@ module('Integration | Component | contract-attendance-list', (hooks) => {
   test('it renders', async (assert) => {
     await render(hbs`
       {{contract-attendance-list
-        meetings=meetings
+        contract=contract
         enrollments=enrollments
         getNotes=getNotes
       }}

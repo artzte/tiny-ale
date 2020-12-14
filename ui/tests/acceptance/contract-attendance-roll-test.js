@@ -16,6 +16,8 @@ import contractAttendanceRollMeetingFixture from '../fixtures/contract-attendanc
 import contractAttendanceRollEnrollments from '../fixtures/contract-attendance-roll-enrollments';
 import contractAttendanceRollNotes from '../fixtures/contract-attendance-roll-notes';
 import learningRequirements from '../fixtures/learning-requirements';
+import categories from '../fixtures/categories';
+
 import terms from '../fixtures/terms';
 import staff from '../fixtures/staff';
 
@@ -40,8 +42,9 @@ module('Acceptance | contract attendance roll', (hooks) => {
     server.addRequest('get', '/api/learning-requirements', learningRequirements);
     server.addRequest('get', '/api/terms', terms);
     server.addRequest('get', '/api/staff', staff);
+    server.addRequest('get', '/api/categories', categories);
 
-    assert.timeout(500);
+    assert.timeout(1000);
   });
 
   hooks.afterEach(() => {

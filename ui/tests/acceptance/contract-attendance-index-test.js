@@ -43,7 +43,7 @@ module('Acceptance | contract attendance index', (hooks) => {
     enrollments = server.getFixture('/api/enrollments');
     meetings = server.getFixture('/api/meetings');
 
-    assert.timeout(200);
+    assert.timeout(500);
   });
 
   hooks.afterEach(() => {

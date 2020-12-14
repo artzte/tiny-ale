@@ -1,5 +1,6 @@
 import { helper } from '@ember/component/helper';
 import dayjs from 'dayjs';
+import 'dayjs/locale/en';
 
 export function tDate([date, _format], options) {
   let format;
