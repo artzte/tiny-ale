@@ -47,7 +47,7 @@ module('Integration | Component | settings-graduation-plan-requirement-form', (h
     const [request] = requests;
     assert.ok(request, 'an outbound action occurred');
 
-    assert.deepEqual(request.model.attributes, {});
+    assert.deepEqual(request.model.attributes, requirement.attributes);
 
     await fillIn('input[name="name"]', 'harry');
 
