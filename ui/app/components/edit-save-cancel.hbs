@@ -1,4 +1,5 @@
   <button
+    data-button="edit"
     type="button"
     class="ml-12 btn btn-small"
     {{on 'click' (fn @edit)}}
@@ -8,6 +9,7 @@
   </button>
   {{#if @isEditing}}
     <button
+      data-button="save"
       type="submit"
       class="btn btn-small"
       disabled={{@disabled}}
@@ -15,6 +17,7 @@
       Save
     </button>
     <button
+      data-button="cancel"
       type="button"
       class="btn btn-small"
       {{on 'click' (fn @cancel)}}

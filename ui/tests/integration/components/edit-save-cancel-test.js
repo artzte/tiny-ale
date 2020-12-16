@@ -1,26 +1,62 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render } from '@ember/test-helpers';
+import { render, click } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 
+let requests;
 module('Integration | Component | edit-save-cancel', (hooks) => {
   setupRenderingTest(hooks);
 
-  test('it renders', async function (assert) {
-    // Set any properties with this.set('myProperty', 'value');
-    // Handle any actions with this.set('myAction', function(val) { ... });
+  hooks.beforeEach(function () {
+    requests = [];
+    this.disabled = false;
+    this.loading = false;
+    this.editing = false;
+    this.setEdit = isEditMode => requests.push(isEditMode);
+  });
 
-    await render(hbs`<EditSaveCancel />`);
-
-    assert.equal(this.element.textContent.trim(), '');
-
-    // Template block usage:
+  test('it renders in non-form mode', async function (assert) {
     await render(hbs`
-      <EditSaveCancel>
-        template block text
-      </EditSaveCancel>
+      <EditSaveCancel
+        @edit={{fn this.setEdit true}}
+        @cancel={{fn this.setEdit false}}
+        @disabled={{this.disabled}}
+        @loading={{this.loading}}
+        @isEditing={{this.editing}}
+      />  
     `);
 
-    assert.equal(this.element.textContent.trim(), 'template block text');
+    assert.equal(this.element.textContent.trim(), 'Edit');
+    assert.equal(requests.length, 0, 'no action called at this point');
+
+    await click('button[data-button="edit"]');
+
+    assert.equal(requests.length, 1, 'one action called at this point');
+
+    assert.ok(requests[0] === true, 'edit mode was called');
+  });
+
+
+  test('it renders in form mode', async function (assert) {
+    this.editing = true;
+
+    await render(hbs`
+      <EditSaveCancel
+        @edit={{fn this.setEdit true}}
+        @cancel={{fn this.setEdit false}}
+        @disabled={{this.disabled}}
+        @loading={{this.loading}}
+        @isEditing={{this.editing}}
+      />  
+    `);
+
+    assert.matches(this.element.textContent, /Edit\s+Save\s+Cancel/);
+    assert.equal(requests.length, 0, 'no action called at this point');
+
+    await click('button[data-button="cancel"]');
+
+    assert.equal(requests.length, 1, 'one action called at this point');
+
+    assert.ok(requests[0] === false, 'cancel was called');
   });
 });
