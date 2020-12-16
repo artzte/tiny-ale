@@ -32,7 +32,6 @@
       {{#each viewModels as |viewModel|}}
         {{credits-worksheet/item
           creditAssignment=viewModel.creditAssignment
-          credit=viewModel.credit
           splitCredit=(action "splitCredit")
           selectCredit=(action "selectCredit")
           approveCredit=(action "approveCredit")
