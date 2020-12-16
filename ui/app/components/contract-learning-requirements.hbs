@@ -14,14 +14,16 @@
     {{#each requirementsByCategory as |category|}}
       <h4>{{category.category}}</h4>
       <table class="learning-requirements">
-        {{#each category.learningRequirements as |learningRequirement|}}
-          <ContractLearningRequirements::Item
-            @learningRequirement={{learningRequirement}}
-            @selections={{this.selections}}
-            @isEditing={{this.isEditing}}
-            @onSelect={{action 'onSelect' learningRequirement}}
-          />
-        {{/each}}
+        <tbody>
+          {{#each category.learningRequirements as |learningRequirement|}}
+            <ContractLearningRequirements::Item
+              @learningRequirement={{learningRequirement}}
+              @selections={{this.selections}}
+              @isEditing={{this.isEditing}}
+              @onSelect={{action 'onSelect' learningRequirement}}
+            />
+          {{/each}}
+        </tbody>
       </table>
     {{else}}
       <p>

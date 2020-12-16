@@ -3,6 +3,7 @@ import { setupRenderingTest } from 'ember-qunit';
 import { render, find, findAll } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 import { stubTinyData } from '../../helpers/stub-tiny-data';
+import contractDetail from '../../fixtures/contract-detail';
 import contractAttendanceFixture from '../../fixtures/contract-attendance';
 import contractAttendanceEnrollmentsFixture from '../../fixtures/contract-attendance-enrollments';
 import contractAttendanceNotesFixture from '../../fixtures/contract-attendance-notes';
@@ -17,6 +18,7 @@ module('Integration | Component | contract-attendance-list', (hooks) => {
 
   hooks.beforeEach(function () {
     tinyData = stubTinyData();
+    tinyData.addResult(contractDetail);
     tinyData.addResult(contractAttendanceFixture);
     tinyData.addResult(contractAttendanceEnrollmentsFixture);
     tinyData.addResult(contractAttendanceNotesFixture);
@@ -28,6 +30,7 @@ module('Integration | Component | contract-attendance-list', (hooks) => {
     this.setProperties({
       meetings,
       enrollments,
+      contract: tinyData.get('contract', contractDetail.data.id),
       getNotes() { return tinyData.get('note'); },
     });
   });

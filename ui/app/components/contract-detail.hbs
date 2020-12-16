@@ -1,45 +1,48 @@
-<TTiles>
-  <TTiles::Tile>
-    <h3>Status</h3>
-    <p>{{titleize this.contract.attributes.status}}</p>
-  </TTiles::Tile>
-  <TTiles::Tile>
-    <h3>Facilitator</h3>
-    <p>{{full-name this.facilitator "first-last"}}</p>
-  </TTiles::Tile>
-  <TTiles::Tile>
-    <h3>Category</h3>
-    <p>{{this.category.attributes.name}}</p>
-  </TTiles::Tile>
-  <TTiles::Tile>
-    <h3>Term</h3>
-    <p>{{this.term.attributes.name}}</p>
-  </TTiles::Tile>
-  <TTiles::Tile>
-    <h3>Location</h3>
-    <p>{{this.contract.attributes.location}}</p>
-  </TTiles::Tile>
-</TTiles>
+<div class="contract-detail">
+  <TTiles>
+    <TTiles::Tile>
+      <h3>Status</h3>
+      <p>{{titleize this.contract.attributes.status}}</p>
+    </TTiles::Tile>
+    <TTiles::Tile>
+      <h3>Facilitator</h3>
+      <p>{{full-name this.facilitator "first-last"}}</p>
+    </TTiles::Tile>
+    <TTiles::Tile>
+      <h3>Category</h3>
+      <p>{{this.category.attributes.name}}</p>
+    </TTiles::Tile>
+    <TTiles::Tile>
+      <h3>Term</h3>
+      <p>{{this.term.attributes.name}}</p>
+    </TTiles::Tile>
+    <TTiles::Tile>
+      <h3>Location</h3>
+      <p>{{this.contract.attributes.location}}</p>
+    </TTiles::Tile>
+  </TTiles>
 
-<h2>Credits</h2>
-<CreditAssignments
-  @creditAssignments={{this.creditAssignments}}
-  @creditable={{this.contract}}
-/>
+  <h2>Credits</h2>
+  <CreditAssignments
+    @creditAssignments={{this.creditAssignments}}
+    @creditable={{this.contract}}
+  />
 
-<ContractAttributes
-  @contract={{this.contract}}
-  @updateContract={{action 'updateContract'}}
-  @loading={{loading}}
-/>
+  <ContractAttributes
+    @contract={{this.contract}}
+    @updateContract={{action 'updateContract'}}
+    @loading={{loading}}
+  />
 
-<ContractLearningRequirements
-  @learningRequirements={{this.learningRequirements}}
-  @contract={{this.contract}}
-  @updateContract={{action 'updateContract'}}
-  @loading={{loading}}
-/>
+  <ContractLearningRequirements
+    @learningRequirements={{this.learningRequirements}}
+    @contract={{this.contract}}
+    @updateContract={{action 'updateContract'}}
+    @loading={{loading}}
+  />
 
-<ContractAssignmentsSummary
-  @assignments={{this.assignments}}
-/>
+  <ContractAssignmentsSummary
+    @assignments={{this.assignments}}
+  />
+
+</div>
