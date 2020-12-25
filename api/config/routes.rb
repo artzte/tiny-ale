@@ -40,7 +40,7 @@ Rails.application.routes.draw do
     get '/meetings', to: 'meetings#index'
     get '/meetings/:id', to: 'meetings#show'
     post '/meetings', to: 'meetings#create'
-    patch '/meetings/:id/update_roll', to: 'meetings#update_roll'
+    patch '/meetings/:id/update-roll', to: 'meetings#update_roll'
 
     post '/meeting_participants', to: 'meeting_participants#create'
     put '/meeting_participants/:id', to: 'meeting_participants#update'

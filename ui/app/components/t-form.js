@@ -3,7 +3,6 @@
 - updates should be the only things pushed on submit
 */
 
-
 import Component from '@ember/component';
 import clone from '../utils/clone';
 
@@ -55,12 +54,32 @@ export default Component.extend({
        controls that send along the value, name signature, along with
        generic DOM inputs that send an event
      */
-    onChange(value, name) {
+    onChange(_value, _name) {
+      const { name, value } = this.extractNameValue(_name, _value);
+
       this.handleChange(name, value, 'pojo');
     },
 
-    onChangeRelationship(value, name) {
-      this.handleChange(name, value, 'relationships');
+    // Set up to handle simple one-of relationships to allow a control
+    // to just send a simple value which should be an ID. In this case
+    // the value is changed to an object reference. If the control
+    // sends a change event with an object, that object becomes the
+    // value sent.
+    onChangeRelationship(_value, _name) {
+      const { name, value } = this.extractNameValue(_name, _value);
+      let reference;
+
+      if (typeof value === 'object') {
+        // an object is assumed to be a fully-fledged reference
+        reference = value;
+      } else if (value) {
+        // a non-empty string was passed (i.e., an id)
+        reference = { id: value };
+      } else {
+        // a blank was passed (i.e., a prompt value)
+        reference = null;
+      }
+      this.handleChange(name, reference, 'relationships');
     },
   },
 
@@ -146,11 +165,9 @@ export default Component.extend({
     if (this.onUpdatePojo) {
       this.onUpdatePojo(this.serializeModel(this.pojo, this.model, this.relationships));
     }
-
-    this.validate();
   },
 
-  handleChange(_name, _value, updatePath) {
+  extractNameValue(_name, _value) {
     let value;
     let name;
 
@@ -160,23 +177,59 @@ export default Component.extend({
       value = _value;
       name = _name;
     }
+    return { name, value };
+  },
 
+  handleChange(name, value, updatePath) {
     const updates = {
       [name]: value,
     };
 
     this.updatePojo(updates, updatePath);
     this.updatePojo(updates, `updates-${updatePath}`);
+
+    this.validate();
   },
 
   validate() {
-    if (!this.validator) return { isValid: true, errors: {} };
+    let results = { isInvalid: false, errors: {} };
 
-    const validationResult = this.validator.validate({ ...this.pojo, ...this['updates-pojo'] });
+    if (this.validator) {
+      const { isInvalid, errors } = this.validator.validate({ ...this.pojo, ...this['updates-pojo'] });
+      results = { isInvalid, errors };
+    }
 
-    this.setProperties(validationResult);
+    if (this.validateRelationships) {
+      const { isInvalid, errors } = this.validateRelationships.validate({ ...this.relationships, ...this['updates-relationships'] });
+      results = { isInvalid: isInvalid || results.isInvalid, errors: { ...results.errors, ...errors } };
+    }
 
-    return validationResult;
+    this.setProperties(results);
+
+    return results;
+  },
+
+  // Builds output models - a full model with updates, a boolean indicating
+  // whether any updates happened, and a lightweight updates model with changes only.
+  //
+  serialize() {
+    const {
+      pojo,
+      'updates-pojo': pojoUpdates,
+      relationships,
+      'updates-relationships': relationshipsUpdates,
+      model: _model,
+    } = this;
+
+    const model = this.serializeModel(pojo, _model, relationships);
+    const hasUpdates = Boolean(Object.keys(pojoUpdates).length || Object.keys(relationshipsUpdates).length);
+    const updates = this.serializeModel(pojoUpdates, { id: model.id }, relationshipsUpdates);
+
+    return {
+      model,
+      updates,
+      hasUpdates,
+    };
   },
 
   submit(event) {
@@ -190,23 +243,10 @@ export default Component.extend({
       return;
     }
 
-    const {
-      pojo,
-      'updates-pojo': pojoUpdates,
-      relationships,
-      'updates-relationships': relationshipsUpdates,
-      model,
-    } = this;
-
     this.set('disabled', true);
 
-    // submit both a full model, which is the original pojo with all updates,
-    // and an updates model, which only has the touches to the attributes and
-    // relationships groups.
-    //
-    const fullModel = this.serializeModel(pojo, model, relationships);
-    const hasUpdates = Boolean(Object.keys(pojoUpdates).length || Object.keys(relationshipsUpdates).length);
-    const result = this.save(fullModel, hasUpdates && this.serializeModel(pojoUpdates, { id: model.id }, relationshipsUpdates));
+    const { model, hasUpdates, updates } = this.serialize();
+    const result = this.save(model, hasUpdates && updates);
 
     result.finally(() => {
       if (this.isDestroyed) return;

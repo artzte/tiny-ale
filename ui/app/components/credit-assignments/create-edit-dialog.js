@@ -7,14 +7,14 @@ import Validator from '../../utils/validator';
 // or a decimal with no whole number
 //
 export const creditsRegex = /(^\d+(\.(75|5|25))?$)|(^\.(75|5|25)$)/;
-const validateAttributes = new Validator({
+const validator = new Validator({
   creditHours: {
     type: 'format',
     regex: creditsRegex,
     message: 'Invalid credit value - please override with a value having a 0.25 multiple',
   },
 });
-const validateRelationships = new Validator({
+const relationshipsValidator = new Validator({
   credit: { type: 'required' },
 });
 
@@ -25,8 +25,8 @@ export default TForm.extend({
   tinyData: service(),
   creditAssignment: service(),
   classNames: ['w-128'],
-  validator: validateAttributes,
-  validateRelationships,
+  validator,
+  relationshipsValidator,
   didReceiveAttrs() {
     const { model } = this;
     const creditId = get(model, 'relationships.credit.data.id');
@@ -51,25 +51,5 @@ export default TForm.extend({
         value: c.id,
       }));
     },
-  },
-  validate() {
-    const {
-      relationships,
-      validateRelationships: validator,
-    } = this;
-
-    const attributesResult = this._super();
-
-    const relationshipsResult = validator.validate(relationships);
-
-    const result = {
-      isInvalid: attributesResult.isInvalid || relationshipsResult.isInvalid,
-      errors: {
-        ...relationshipsResult.errors,
-        ...attributesResult.errors,
-      },
-    };
-
-    this.setProperties(result);
   },
 });

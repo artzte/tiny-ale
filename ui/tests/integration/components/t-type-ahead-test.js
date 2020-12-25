@@ -52,7 +52,7 @@ module('Integration | Component | TTypeAhead', (hooks) => {
   test('it renders and displays a value', async (assert) => {
     await render(hbs`
       <TTypeAhead
-        name="myboo"
+        @name="myboo"
         @value={{value}}
         @onSearch={{onSearch}}
         @onChange={{onChange}}
@@ -76,7 +76,7 @@ module('Integration | Component | TTypeAhead', (hooks) => {
 
     await render(hbs`
       <TTypeAhead
-        name="myboo"
+        @name="myboo"
         @value={{value}}
         @onSearch={{onSearch}}
         @onChange={{onChange}}

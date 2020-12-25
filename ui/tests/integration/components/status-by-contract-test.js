@@ -25,17 +25,15 @@ module('Integration | Component | status-by-contract', (hooks) => {
     this.getNotes = () => resolve(tinyDataServiceMock.get('note'));
 
     this.setProperties({
-      enrollments: tinyDataServiceMock.get('enrollment'),
       statuses: tinyDataServiceMock.get('status'),
       contract: tinyDataServiceMock.get('contract', contractDetail.data.id),
       getNotes: () => resolve(clone(notesContractStatuses)),
     });
   });
 
-  test('it renders', async function (assert) {
+  test('it renders', async (assert) => {
     await render(hbs`
       {{status-by-contract
-        enrollments=enrollments
         statuses=statuses
         contract=contract
         getNotes=getNotes
@@ -45,13 +43,12 @@ module('Integration | Component | status-by-contract', (hooks) => {
     assert.ok(find('table'), 'component rendered');
     const term = tinyDataServiceMock.get('term', contractDetail.data.relationships.term.data.id);
     assert.equal(findAll('th[data-test-term-month]').length, term.attributes.months.length, 'expected number of months columns were rendered');
-    assert.equal(findAll('tbody').length, this.enrollments.length, 'expected count of table bodies given enrollments');
+    assert.equal(findAll('tbody').length, contractDetail.data.relationships.enrollments.data.length, 'expected count of table bodies given enrollments');
   });
 
   test('row renders as expected', async function (assert) {
     await render(hbs`
       {{status-by-contract
-        enrollments=enrollments
         statuses=statuses
         contract=contract
         getNotes=getNotes
@@ -59,11 +56,10 @@ module('Integration | Component | status-by-contract', (hooks) => {
     `);
 
     const {
-      enrollments,
       statuses,
     } = this;
 
-    const [enrollment] = enrollments;
+    const [enrollment] = contractDetail.data.relationships.enrollments.data;
     const rowStatuses = statuses.filter(status => status.relationships.statusable.data.id === enrollment.id);
 
     rowStatuses.forEach((status) => {

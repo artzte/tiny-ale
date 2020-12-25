@@ -74,8 +74,6 @@ class MeetingsController < ApiBaseController
               .includes(:meeting_participants)
               .find(params[:id])
 
-    updates = []
-
     meeting.contract.enrollments.each do |enrollment|
       next unless enrollment.enrolled?
 
@@ -83,10 +81,13 @@ class MeetingsController < ApiBaseController
       meeting_participant ||= MeetingParticipant.new enrollment: enrollment, meeting: meeting
 
       meeting_participant.update_attributes! update_roll_attributes
-      updates.push meeting_participant
     end
 
-    render json: MeetingParticipantSerializer.new(updates), status: :ok
+    options = {
+      include: PERMITTED_INCLUDES
+    }
+
+    render json: MeetingSerializer.new(meeting, options), status: :ok
   end
 
   private

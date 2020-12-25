@@ -88,8 +88,10 @@ export default Component.extend({
       updateRoll,
     } = this;
 
-    const result = await updateRoll(meetingParticipant);
+    this.set('loading', true);
 
-    this.set('meetingParticipant', clone(result.data));
+    await updateRoll(meetingParticipant);
+
+    this.set('loading', false);
   },
 });

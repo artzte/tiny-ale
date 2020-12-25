@@ -12,8 +12,8 @@
       @label="Course"
     >
       <TTypeAhead
-        name="credit"
-        prompt="Type a course name or course code to match"
+        @name="credit"
+        @prompt="Type a course name or course code to match"
         @autofocusInput={{true}}
         @value={{relationships.credit.id}}
         @results={{creditResult}}

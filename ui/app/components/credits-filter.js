@@ -3,7 +3,7 @@ import { computed } from '@ember/object';
 
 export default Component.extend({
   // intended to be overwritten by caller
-  queryParams: computed(() => ({})),
+  queryParams: (() => ({}))(),
   statusOptions: computed(() => ['Active', 'Inactive']
     .map(name => ({
       name,

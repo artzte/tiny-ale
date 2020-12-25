@@ -5,6 +5,7 @@ import ContractRelations from '../mixins/contract-relations';
 import Notes from '../mixins/notes';
 import { generateNotableHash } from '../utils/note-utils';
 import clone from '../utils/clone';
+import { replaceModel, s } from '../utils/json-api';
 
 export default Component.extend(ContractRelations, Notes, {
   tinyData: service(),
@@ -12,12 +13,14 @@ export default Component.extend(ContractRelations, Notes, {
 
   meetingParticipants: computed('meeting', function () {
     const { tinyData, meeting } = this;
+    console.log('computing meetingParticipants', meeting);
     return meeting.relationships.meetingParticipants.data
       .map(relation => tinyData.get('meetingParticipant', relation.id));
   }),
 
   meetingParticipantHash: computed('meetingParticipants', function () {
     const { tinyData, meetingParticipants } = this;
+    console.log('computing meetingParticipantHash', meetingParticipants);
     return meetingParticipants
       .reduce((memo, relation) => {
         const meetingParticipant = tinyData.get('meetingParticipant', relation.id);
@@ -46,7 +49,17 @@ export default Component.extend(ContractRelations, Notes, {
     async updateAllRolls(contactType, participation) {
       const result = await this.updateAllRolls(contactType, participation);
 
-      this.set('meetingParticipants', clone(result.data));
+      this.set('meeting', clone(result.data));
+    },
+
+    async updateRoll(...args) {
+      const result = await this.updateRoll(...args);
+      const { meeting } = this;
+
+      this.set('meeting', {
+        ...meeting,
+        included: replaceModel(meeting.included, result.data),
+      });
     },
   },
 });

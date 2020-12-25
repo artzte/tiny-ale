@@ -11,13 +11,14 @@
       @label="Course"
     >
       <TTypeAhead
-        name="credit"
-        prompt="Type a course name or course code to match"t
+        data-test-name="credit"
+        @name="credit"
+        @prompt="Type a course name or course code to match"
         @autofocusInput={{true}}
         @value={{relationships.credit.id}}
         @results={{creditResult}}
         @onSearch={{action "searchCredits"}}
-        @onChange={{action "onChangeCredit"}}
+        @onChange={{action "onChangeRelationship"}}
       />
     </FormInput>
   </p>
@@ -68,7 +69,7 @@
         @value={{relationships.contractTerm.id}}
         @prompt="Select a term"
         @terms={{terms}}
-        @onchange={{action "updateTerm"}}
+        @onchange={{action "onChangeRelationship"}}
       />
     {{/form-input}}
   </p>

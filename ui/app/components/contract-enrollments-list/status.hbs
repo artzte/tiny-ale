@@ -1,13 +1,11 @@
-{{#unless canEdit}}
+{{#if disabled}}
   {{titleize enrollmentStatus}}
-{{/unless}}
-
-{{#if canEdit}}
+{{else}}
   {{#if isClosed}}
     <li>
       <TLink
         @action={{action "update" "approve"}}
-        disabled={{disabled}}
+        disabled={{loading}}
         data-test-command="approve"
       >
         Reinstate
@@ -17,7 +15,7 @@
       <li>
         <TLink
           @action={{action "delete"}}
-          disabled={{disabled}}
+          disabled={{loading}}
           data-test-command="delete"
         >
           Delete
@@ -30,7 +28,7 @@
     <li>
       <TLink
         @action={{action "update" "approve"}}
-        disabled={{disabled}}
+        disabled={{loading}}
         data-test-command="approve"
       >
         Approve
@@ -42,7 +40,7 @@
     <li>
       <TLink
         @action={{action "update" "fulfill"}}
-        disabled={{disabled}}
+        disabled={{loading}}
         data-test-command="fulfill"
       >
         Fulfill
@@ -54,7 +52,7 @@
     <li>
       <TLink
         @action={{action "update" "cancel"}}
-        disabled={{disabled}}
+        disabled={{loading}}
         data-test-command="cancel"
       >
         Cancel
@@ -67,7 +65,7 @@
       <li>
         <TLink
           @action={{action "update" "approve"}}
-          disabled={{disabled}}
+          disabled={{loading}}
           data-test-command="approve"
         >
           Reinstate

@@ -39,7 +39,6 @@ module('Integration | Component | contract-attendance-list', (hooks) => {
     await render(hbs`
       {{contract-attendance-list
         contract=contract
-        enrollments=enrollments
         getNotes=getNotes
       }}
     `);
