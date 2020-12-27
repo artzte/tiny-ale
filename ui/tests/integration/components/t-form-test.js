@@ -173,7 +173,7 @@ module('Integration | Component | t-form', (hooks) => {
     requests = [];
     await fillIn("input[name='age']", '55');
     await new Interactor(find('select[name="club"]')).select('Art Club');
-    
+
     await click('button');
 
     assert.equal(requests.length, 1, 'another outbound call occurred');

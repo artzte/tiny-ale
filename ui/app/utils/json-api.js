@@ -82,3 +82,11 @@ export function getChangedKeys(origModel, alteredModel) {
       return memo;
     }, []);
 }
+
+/* Gets an object relation, or returns null if its data path
+ * is falsy.
+ */
+export function getRelated(source, relation) {
+  const { relationships } = source;
+  return relationships && relationships[relation] && relationships[relation].data;
+}

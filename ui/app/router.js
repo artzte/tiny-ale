@@ -39,6 +39,7 @@ Router.map(function () {
       resetNamespace: true,
     }, function () {
       this.route('index', { path: '/' });
+      this.route('new');
       this.route('contract', {
         path: ':id',
         resetNamespace: true,

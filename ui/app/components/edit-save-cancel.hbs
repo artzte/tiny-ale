@@ -1,3 +1,4 @@
+{{#if @edit}}
   <button
     data-button="edit"
     type="button"
@@ -7,15 +8,17 @@
   >
     Edit
   </button>
-  {{#if @isEditing}}
-    <button
-      data-button="save"
-      type="submit"
-      class="btn btn-small"
-      disabled={{@disabled}}
-    >
-      Save
-    </button>
+{{/if}}
+{{#if @isEditing}}
+  <button
+    data-button="save"
+    type="submit"
+    class="btn btn-small"
+    disabled={{@disabled}}
+  >
+    Save
+  </button>
+  {{#if @cancel}}
     <button
       data-button="cancel"
       type="button"
@@ -26,3 +29,4 @@
       Cancel
     </button>
   {{/if}}
+{{/if}}

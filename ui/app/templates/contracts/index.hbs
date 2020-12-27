@@ -7,15 +7,22 @@
   @onchange={{action 'filterContracts'}}
 />
 
-{{#check-empty
-  count=model.meta.count
-  noResultsMessage="No contracts were found with these filters"
+<CheckEmpty
+  @count={{model.meta.count}}
+  @noResultsMessage="No contracts were found with these filters"
+  class="m-h-2"
+>
+  <CountParagraph
+    @result={{model}}
+    @name="contract"
+  />
+</CheckEmpty>
+<p>
+  <LinkTo @route="contracts.new" class="btn">
+    Add contract
+  </LinkTo>
+</p>
+
+{{contracts-list
+  contracts=model.data
 }}
-  {{count-paragraph
-    result=model
-    name="contract"
-  }}
-  {{contracts-list
-    contracts=model.data
-  }}
-{{/check-empty}}

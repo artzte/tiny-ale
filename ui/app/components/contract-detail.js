@@ -2,8 +2,7 @@ import Component from '@glimmer/component';
 import { inject as service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
-import { compareUsers } from '../utils/user-utils';
-import { ENROLLMENT_STATUS_ENROLLED } from '../utils/enrollment-utils';
+import { getRelated } from '../utils/json-api';
 
 export default class ContractDetail extends Component {
   @service('tinyData') tinyData;
@@ -29,61 +28,46 @@ export default class ContractDetail extends Component {
 
   get facilitator() {
     const { tinyData, contract } = this;
+    const relation = getRelated(contract, 'facilitator');
 
-    return tinyData.get('user', contract.relationships.facilitator.data.id);
-  }
-
-  get participants() {
-    const { enrollments, tinyData } = this;
-
-    return enrollments
-      .map(enrollment => ({
-        enrollment,
-        student: tinyData.get('user', enrollment.relationships.participant.data.id),
-      }))
-      .sort((e1, e2) => compareUsers(e1.student, e2.student));
-  }
-
-  get activeParticipants() {
-    return this.participants.filter(participant => participant.enrollment.attributes.enrollmentStatus === ENROLLMENT_STATUS_ENROLLED);
+    return relation && tinyData.get('user', relation.id);
   }
 
   get assignments() {
     const { tinyData, contract } = this;
+    const relation = getRelated(contract, 'assignments') || [];
 
-    return contract.relationships.assignments.data
+    return relation
       .map(ref => tinyData.get('assignment', ref.id));
   }
 
   get meetings() {
     const { tinyData, contract } = this;
+    const relation = getRelated(contract, 'meetings') || [];
 
-    return contract.relationships.meetings.data
+    return relation
       .map(ref => tinyData.get('meeting', ref.id));
   }
 
   get term() {
     const { tinyData, contract } = this;
+    const relation = getRelated(contract, 'term');
 
-    return tinyData.get('term', contract.relationships.term.data.id);
+    return relation && tinyData.get('term', contract.relationships.term.data.id);
   }
 
   get category() {
     const { tinyData, contract } = this;
+    const relation = getRelated(contract, 'category');
 
-    return tinyData.get('category', contract.relationships.category.data.id);
+    return relation && tinyData.get('category', contract.relationships.category.data.id);
   }
 
   get creditAssignments() {
     const { tinyData, contract } = this;
+    const relation = getRelated(contract, 'creditAssignments') || [];
 
-    return contract.relationships.creditAssignments.data.map(creditAssignment => tinyData.get('creditAssignment', creditAssignment.id));
-  }
-
-  get enrollments() {
-    const { tinyData, contract } = this;
-
-    return contract.relationships.enrollments.data.map(relation => tinyData.get('enrollment', relation.id));
+    return relation.map(creditAssignment => tinyData.get('creditAssignment', creditAssignment.id));
   }
 
   get learningRequirements() {

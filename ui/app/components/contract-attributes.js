@@ -2,17 +2,30 @@ import Component from '@glimmer/component';
 import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
+import Validator from '../utils/validator';
 import { STATUS_ACTIVE } from '../utils/term-utils';
 import { ROLE_ADMIN, ROLE_STAFF } from '../utils/user-utils';
 
 export default class ContractAttributes extends Component {
+  validator = new Validator({
+    name: { type: 'required' },
+    learningObjectives: { type: 'required' },
+    location: { type: 'required' },
+  });
+
+  validateRelationships = new Validator({
+    term: { type: 'required' },
+    facilitator: { type: 'required' },
+    category: { type: 'required' },
+  });
+
   @service('tinyData') tinyData;
 
   @service('flashMessages') flashMessages;
 
   sections = ['learningObjectives', 'competencies', 'evaluationMethods', 'instructionalMaterials'];
 
-  @tracked isEditing = false;
+  @tracked isEditing = null;
 
   @tracked selections = null;
 
@@ -31,8 +44,8 @@ export default class ContractAttributes extends Component {
     this.setEdit(false);
   }
 
-  @action reportError(err) {
-    this.flashMessages.alert(err);
+  @action reportError(/* errors */) {
+    this.flashMessages.alert('Fix the validation messages and try again');
   }
 
   @action didUpdatePojo(pojo) {
@@ -44,6 +57,7 @@ export default class ContractAttributes extends Component {
     this.terms = this.tinyData.get('term').filter(term => term.attributes.status === STATUS_ACTIVE);
     this.staff = this.tinyData.get('user').filter(user => [ROLE_STAFF, ROLE_ADMIN].includes(user.attributes.role));
     this.categories = this.tinyData.get('category');
+    this.isEditing = this.args.isEditing || false;
   }
 
   get staffOptions() {
@@ -72,6 +86,7 @@ export default class ContractAttributes extends Component {
   }
 
   get hasDetails() {
-    return this.detailSections.any(section => section.content && section.content.trim());
+    return this.detailSections
+      .any(section => section.content && section.content.trim());
   }
 }
