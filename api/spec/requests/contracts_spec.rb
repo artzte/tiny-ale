@@ -87,4 +87,43 @@ RSpec.describe 'Contracts API', type: :request do
       expect(json['data']['relationships']['learningRequirements']['data'][0]['id']).to eq(learning_requirement.id.to_s)
     end
   end
+
+  describe 'POST /contracts' do
+    it 'creates a new contract' do
+      sizzleana = 'Sizzleanda subterfuge'
+      post_body = {
+        data: {
+          attributes: {
+            name: sizzleana,
+            location: 'Zoom 1234',
+            learningObjectives: 'This and that'
+          },
+          relationships: {
+            term: {
+              data: {
+                id: @term2_2009.id
+              }
+            },
+            category: {
+              data: {
+                id: @category1.id,
+              }
+            },
+            facilitator: {
+              data: {
+                id: @staff2.id,
+              }
+            }
+          }
+        }
+      }
+      
+      post "/api/contracts", params: post_body.to_json, headers: json_request_headers
+
+      expect(json['data']['relationships']['term']['data']['id']).to eq(@term2_2009.id.to_s)
+      expect(json['data']['relationships']['facilitator']['data']['id']).to eq(@staff2.id.to_s)
+      expect(json['data']['relationships']['category']['data']['id']).to eq(@category1.id.to_s)
+      expect(json['data']['attributes']['name']).to eq(sizzleana)
+    end
+  end
 end

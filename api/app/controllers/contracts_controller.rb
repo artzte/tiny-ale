@@ -65,10 +65,8 @@ class ContractsController < ApiBaseController
   end
 
   def create
-    facilitator_params = new_contract_facilitator
-
     @contract = Contract.create
-    @contract.creator = current_user
+    @contract.creator = @user
 
     update_contract
 
@@ -95,7 +93,7 @@ protected
 
     return nil unless attributes
 
-    attributes.permit(:name, :learning_objectives, :competencies, :evaluation_methods, :instructional_materials)
+    attributes.permit(:name, :location, :learning_objectives, :competencies, :evaluation_methods, :instructional_materials)
   end
 
   [:facilitator, :category, :term].each do |relation|
