@@ -5,7 +5,7 @@ import ContractRelations from '../mixins/contract-relations';
 import Notes from '../mixins/notes';
 import { generateNotableHash } from '../utils/note-utils';
 import clone from '../utils/clone';
-import { replaceModel, s } from '../utils/json-api';
+import { replaceModel } from '../utils/json-api';
 
 export default Component.extend(ContractRelations, Notes, {
   tinyData: service(),

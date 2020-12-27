@@ -62,20 +62,18 @@ module('Acceptance | contract attendance roll', (hooks) => {
 
 
   test(`exercising set-all on ${contractAttendanceRollUrl}`, async (assert) => {
-    const updatedParticipants = server.getFixture('/api/meetings/:id')
+    const meetingFixture = server.getFixture('/api/meetings/:id');
+
+    meetingFixture
       .included
       .filter(record => record.type === 'meetingParticipant')
-      .map(mp => ({
-        ...mp,
-        attributes: {
-          ...mp.attributes,
-          contactType: 'coor',
-          participation: 'absent',
-        },
-      }));
-    const patchPath = '/api/meetings/1/update_roll';
+      .forEach((mp) => {
+        mp.attributes.contactType = 'coor';
+        mp.attributes.participation = 'absent';
+      });
+    const patchPath = `/api/meetings/${meetingFixture.data.id}/update-roll`;
 
-    server.addRequest('patch', patchPath, { data: updatedParticipants });
+    server.addRequest('patch', patchPath, meetingFixture);
     await visit(contractAttendanceRollUrl);
 
     await new Interactor('t-contract-attendance-roll-set-all select[name="participation"]').select('Absent');
