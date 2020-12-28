@@ -11,7 +11,6 @@ import coorTerms from '../../fixtures/coor-terms';
 
 const [term] = coorTerms.data;
 let tinyDataServiceMock;
-let staff;
 let coordinator;
 
 module('Integration | Component | status-all-coordinators', (hooks) => {
@@ -29,7 +28,6 @@ module('Integration | Component | status-all-coordinators', (hooks) => {
     });
 
     coordinator = coorStatus.included.find(user => user.type === 'user');
-    staff = coorStaff.data.find(user => user.relationships.coordinatees.data.length > 0);
   });
 
   test('it renders expected markup with two staff on 9/15/2019', async function (assert) {

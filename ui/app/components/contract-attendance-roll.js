@@ -13,14 +13,14 @@ export default Component.extend(ContractRelations, Notes, {
 
   meetingParticipants: computed('meeting', function () {
     const { tinyData, meeting } = this;
-    console.log('computing meetingParticipants', meeting);
+
     return meeting.relationships.meetingParticipants.data
       .map(relation => tinyData.get('meetingParticipant', relation.id));
   }),
 
   meetingParticipantHash: computed('meetingParticipants', function () {
     const { tinyData, meetingParticipants } = this;
-    console.log('computing meetingParticipantHash', meetingParticipants);
+
     return meetingParticipants
       .reduce((memo, relation) => {
         const meetingParticipant = tinyData.get('meetingParticipant', relation.id);

@@ -7,7 +7,7 @@ export default class ContractsNewController extends Controller {
 
   @action async updateContract(updates) {
     this.loading = true;
-    const result = await this.tinyData.fetch(`/api/contracts`, {
+    const result = await this.tinyData.fetch('/api/contracts', {
       method: 'post',
       body: JSON.stringify(updates),
     });

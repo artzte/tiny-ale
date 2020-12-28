@@ -1,3 +1,9 @@
+<p>
+  <LinkTo @route="contracts.new" class="btn">
+    Add contract
+  </LinkTo>
+</p>
+
 <ContractsListFilter
   @queryParams={{this.queryParams}}
   @terms={{this.terms}}
@@ -16,13 +22,8 @@
     @result={{model}}
     @name="contract"
   />
-</CheckEmpty>
-<p>
-  <LinkTo @route="contracts.new" class="btn">
-    Add contract
-  </LinkTo>
-</p>
 
-{{contracts-list
-  contracts=model.data
-}}
+  <ContractsList
+    @contracts={{model.data}}
+  />
+</CheckEmpty>
