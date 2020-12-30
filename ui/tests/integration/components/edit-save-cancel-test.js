@@ -18,11 +18,9 @@ module('Integration | Component | edit-save-cancel', (hooks) => {
   test('it renders in non-form mode', async function (assert) {
     await render(hbs`
       <EditSaveCancel
-        @edit={{fn this.setEdit true}}
-        @cancel={{fn this.setEdit false}}
-        @disabled={{this.disabled}}
-        @loading={{this.loading}}
-        @isEditing={{this.editing}}
+        @onEdit={{fn this.setEdit true}}
+        @disabled{{this.disabled}}
+        @editing={{this.editing}}
       />  
     `);
 
@@ -42,11 +40,10 @@ module('Integration | Component | edit-save-cancel', (hooks) => {
 
     await render(hbs`
       <EditSaveCancel
-        @edit={{fn this.setEdit true}}
-        @cancel={{fn this.setEdit false}}
+        @onEdit={{fn this.setEdit true}}
+        @onCancel={{fn this.setEdit false}}
         @disabled={{this.disabled}}
-        @loading={{this.loading}}
-        @isEditing={{this.editing}}
+        @editing={{this.editing}}
       />  
     `);
 

@@ -1,15 +1,15 @@
-{{#if @edit}}
+{{#if @onEdit}}
   <button
     data-button="edit"
     type="button"
     class="ml-12 btn btn-small"
-    {{on 'click' (fn @edit)}}
-    disabled={{@isEditing}}
+    {{on 'click' (fn @onEdit)}}
+    disabled={{@editing}}
   >
     Edit
   </button>
 {{/if}}
-{{#if @isEditing}}
+{{#if @editing}}
   <button
     data-button="save"
     type="submit"
@@ -18,12 +18,12 @@
   >
     Save
   </button>
-  {{#if @cancel}}
+  {{#if @onCancel}}
     <button
       data-button="cancel"
       type="button"
       class="btn btn-small"
-      {{on 'click' (fn @cancel)}}
+      {{on 'click' (fn @onCancel)}}
       disabled={{@disabled}}
     >
       Cancel

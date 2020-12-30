@@ -11,6 +11,9 @@ export default class ContractDetail extends Component {
 
   @tracked contract;
 
+  // eslint-disable-next-line class-methods-use-this
+  @action cancelEditing() {}
+
   @action async updateContract(updates) {
     this.loading = true;
     const result = await this.tinyData.fetch(`/api/contracts/${this.contract.id}`, {

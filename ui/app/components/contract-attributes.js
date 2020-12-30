@@ -34,14 +34,25 @@ export default class ContractAttributes extends Component {
     relationships: {},
   };
 
-  @action setEdit(isEditing) {
-    this.isEditing = isEditing;
+  @action showEdit() {
+    this.isEditing = true;
   }
 
-  @action async save(model) {
-    await this.args.updateContract({ data: model });
+  @action showDetails() {
+    this.isEditing = false;
+    this.args.cancelEditing();
+  }
 
-    this.setEdit(false);
+  @action async save(_model, hasUpdates, updates) {
+    if (!hasUpdates) {
+      this.isLoading = true;
+      await this.args.updateContract({ data: updates });
+      this.isLoading = false;
+    }
+
+    if (this.args.isNew) return;
+
+    this.showDetails();
   }
 
   @action reportError(/* errors */) {
