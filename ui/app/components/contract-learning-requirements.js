@@ -94,4 +94,17 @@ export default class ContractLearningRequirements extends Component {
       .sort()
       .map(category => requirementsMap[category]);
   }
+
+  get displayRequirementsByCategory() {
+    const {
+      requirementsByCategory,
+      isEditing,
+    } = this;
+
+    if (isEditing) return requirementsByCategory;
+
+    // for view-display, remove nonpopulated categories
+    return requirementsByCategory
+      .filter(category => category.count > 0);
+  }
 }

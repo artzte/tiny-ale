@@ -1,24 +1,24 @@
-// GET /api/admin/users/111
+// GET /api/admin/users/56
 export default {
   data: {
-    id: '111',
+    id: '56',
     type: 'user',
     attributes: {
-      firstName: 'Austin',
-      lastName: 'Will',
+      firstName: 'Jerold',
+      lastName: 'Klein',
       nickname: null,
       dateActive: '2018-08-01',
       dateInactive: null,
-      districtId: '1880173925',
+      districtId: '4809648277',
       districtGrade: 9,
       status: 'active',
       role: 'student',
-      email: 'tammy@homenicklubowitz.net',
+      email: 'catricegislason@gottlieb.net',
     },
     relationships: {
       coordinator: {
         data: {
-          id: '107',
+          id: '52',
           type: 'user',
         },
       },

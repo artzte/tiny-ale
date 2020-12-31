@@ -1,11 +1,11 @@
-// GET /api/admin/users/110
+// GET /api/admin/users/55
 export default {
   data: {
-    id: '110',
+    id: '55',
     type: 'user',
     attributes: {
-      firstName: 'Bianca',
-      lastName: 'Boyle',
+      firstName: 'Rashad',
+      lastName: 'Ziemann',
       nickname: null,
       dateActive: '2011-07-01',
       dateInactive: null,
@@ -13,7 +13,7 @@ export default {
       districtGrade: 12,
       status: 'active',
       role: 'administrator',
-      email: 'clarinebogan@senger.net',
+      email: 'garret@kirlin.io',
     },
     relationships: {
     },

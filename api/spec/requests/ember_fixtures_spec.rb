@@ -146,7 +146,7 @@ RSpec.describe 'Ember fixtures script', type: :request do
         create :credit_assignment, credit: @credit2, contract: contract, credit_hours: 2
       end
 
-      (1..2).each do |category_num|
+      (1..3).each do |category_num|
         category_name = "Category #{category_num}"
         (1..2).each do |num|
           seq = "#{category_num}.#{num}"
@@ -154,7 +154,7 @@ RSpec.describe 'Ember fixtures script', type: :request do
         end
       end
 
-      LearningRequirement.all.each do |req|
+      LearningRequirement.where(category: ['Category 1', 'Category 2']).each do |req|
         @contract1_current.learning_requirements << req
       end
       @contract1_current.save!

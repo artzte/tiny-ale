@@ -1,18 +1,18 @@
 // GET /api/profile
 export default {
   data: {
-    id: '110',
+    id: '55',
     type: 'user',
     attributes: {
-      firstName: 'Bianca',
-      lastName: 'Boyle',
+      firstName: 'Rashad',
+      lastName: 'Ziemann',
       nickname: null,
       dateActive: '2011-07-01',
       dateInactive: null,
       districtId: null,
       districtGrade: 12,
-      email: 'clarinebogan@senger.net',
-      name: 'Bianca Boyle',
+      email: 'garret@kirlin.io',
+      name: 'Rashad Ziemann',
       status: 'active',
       role: 'administrator',
       isStaff: true,

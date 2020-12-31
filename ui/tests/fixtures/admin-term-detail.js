@@ -1,10 +1,10 @@
-// GET /api/terms/30
+// GET /api/terms/12
 export default {
   data: {
-    id: '30',
+    id: '12',
     type: 'term',
     attributes: {
-      name: 'Realigned discrete challenge',
+      name: 'Mandatory 24/7 moratorium',
       schoolYear: 2019,
       creditDate: '2020-01-31',
       months: [

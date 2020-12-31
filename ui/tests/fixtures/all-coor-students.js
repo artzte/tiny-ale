@@ -2,64 +2,16 @@
 export default {
   data: [
     {
-      id: '112',
+      id: '56',
       type: 'user',
       attributes: {
-        firstName: 'Dalton',
-        lastName: 'Gaylord',
+        firstName: 'Jerold',
+        lastName: 'Klein',
         nickname: null,
-        name: 'Dalton Gaylord',
+        name: 'Jerold Klein',
         dateActive: '2018-08-01',
         dateInactive: null,
-        districtId: '6707935524',
-        districtGrade: 10,
-        status: 'active',
-        role: 'student',
-      },
-      relationships: {
-        coordinator: {
-          data: {
-            id: '108',
-            type: 'user',
-          },
-        },
-      },
-    },
-    {
-      id: '113',
-      type: 'user',
-      attributes: {
-        firstName: 'Dewayne',
-        lastName: 'Murphy',
-        nickname: null,
-        name: 'Dewayne Murphy',
-        dateActive: '2018-08-01',
-        dateInactive: '2019-10-01',
-        districtId: '7449769727',
-        districtGrade: 12,
-        status: 'inactive',
-        role: 'student',
-      },
-      relationships: {
-        coordinator: {
-          data: {
-            id: '108',
-            type: 'user',
-          },
-        },
-      },
-    },
-    {
-      id: '111',
-      type: 'user',
-      attributes: {
-        firstName: 'Austin',
-        lastName: 'Will',
-        nickname: null,
-        name: 'Austin Will',
-        dateActive: '2018-08-01',
-        dateInactive: null,
-        districtId: '1880173925',
+        districtId: '4809648277',
         districtGrade: 9,
         status: 'active',
         role: 'student',
@@ -67,7 +19,55 @@ export default {
       relationships: {
         coordinator: {
           data: {
-            id: '107',
+            id: '52',
+            type: 'user',
+          },
+        },
+      },
+    },
+    {
+      id: '57',
+      type: 'user',
+      attributes: {
+        firstName: 'Marlin',
+        lastName: 'Tremblay',
+        nickname: null,
+        name: 'Marlin Tremblay',
+        dateActive: '2018-08-01',
+        dateInactive: null,
+        districtId: '9616779893',
+        districtGrade: 10,
+        status: 'active',
+        role: 'student',
+      },
+      relationships: {
+        coordinator: {
+          data: {
+            id: '53',
+            type: 'user',
+          },
+        },
+      },
+    },
+    {
+      id: '58',
+      type: 'user',
+      attributes: {
+        firstName: 'Milly',
+        lastName: 'Tromp',
+        nickname: null,
+        name: 'Milly Tromp',
+        dateActive: '2018-08-01',
+        dateInactive: '2019-10-01',
+        districtId: '1998684872',
+        districtGrade: 12,
+        status: 'inactive',
+        role: 'student',
+      },
+      relationships: {
+        coordinator: {
+          data: {
+            id: '53',
             type: 'user',
           },
         },
