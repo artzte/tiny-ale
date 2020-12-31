@@ -6,6 +6,29 @@ set -e
 # to echo
 # set -x
 
+usage () {
+  echo "tiny <command>"
+  echo ""
+  echo "Commands:"
+  echo "---------"
+  echo "getSecrets | generally one-time S3 download of any dev secrets files - requires AWS profile and access key"
+  echo "build      | applies docker-compose to start the API stack"
+  echo "initDb     | sets up the development database; will delete the existing data if it exists"
+  echo "server     | starts the development server"
+  echo "shell:api  | opens a bash shell on the Rails API container"
+  echo "shell:ui   | opens a bash shell on the EmberJS client container"
+  echo "log        | tail the production log"
+  echo "reset      | deletes the docker images for the API and DB"
+  echo "test:api   | runs test suite for API"
+  echo "test:ui    | runs test suite for UI"
+}
+
+if [ -z $1 ]
+then
+  usage
+  exit 0
+fi
+
 COMMAND=$1
 
 shift
@@ -126,27 +149,10 @@ build:ui () {
   docker exec $UI ember build --environment=production
 }
 
-usage () {
-  echo "tiny <command>"
-  echo ""
-  echo "Commands:"
-  echo "---------"
-  echo "getSecrets | generally one-time S3 download of any dev secrets files - requires AWS profile and access key"
-  echo "build      | applies docker-compose to start the API stack"
-  echo "initDb     | sets up the development database; will delete the existing data if it exists"
-  echo "server     | starts the development server"
-  echo "shell:api  | opens a bash shell on the Rails API container"
-  echo "shell:ui   | opens a bash shell on the EmberJS client container"
-  echo "log        | tail the production log"
-  echo "reset      | deletes the docker images for the API and DB"
-  echo "test:api   | runs test suite for API"
-  echo "test:ui    | runs test suite for UI"
-}
-
-case "$COMMAND" in
-  "getSecrets"|"initDb"|"build"|"server"|"shell:ui"|"shell:api"|"log"|"reset"|"test:api"|"test:ui"|"reset:ui"|"reset:api"|"stop"|"build:api"|"build:ui")
-      $COMMAND
-      ;;
+case $COMMAND in
+  getSecrets|initDb|build|server|shell:ui|shell:api|log|reset|test:api|test:ui|reset:ui|reset:api|stop|build:api|build:ui)
+      $COMMAND;;
   *)
       usage
+      exit 1;;
 esac
