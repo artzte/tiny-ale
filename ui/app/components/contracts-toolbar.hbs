@@ -1,29 +1,33 @@
-<nav class="toolbar flex items-center mb-4">
-  <ul class="flex list-reset">
-    {{tiny-toolbar/item
-      currentRoute=currentRoute
-      route="contract.index"
-      label="Syllabus"
-    }}
-    {{tiny-toolbar/item
-      currentRoute=currentRoute
-      route="contract-enrollments"
-      label="Enrollments"
-    }}
-    {{tiny-toolbar/item
-      currentRoute=currentRoute
-      route="status-by-contract"
-      label="Status"
-    }}
-    {{tiny-toolbar/item
-      currentRoute=currentRoute
-      route="contract-assignments"
-      label="Assignments"
-    }}
-    {{tiny-toolbar/item
-      currentRoute=currentRoute
-      route="contract-attendance"
-      label="Attendance"
-    }}
-  </ul>
-</nav>
+<h1>{{this.contract.attributes.name}}</h1>
+
+<TinyToolbar as |tb|>
+  <nav class="toolbar flex items-center mb-4">
+    <ul class="flex list-reset">
+      <TinyToolbar::Item
+        @currentRoute={{tb.currentRoute}}
+        @route="contract.index"
+        @label="Syllabus"
+      />
+      <TinyToolbar::Item
+        @currentRoute={{tb.currentRoute}}
+        @route="contract-enrollments"
+        @label="Enrollments"
+      />
+      <TinyToolbar::Item
+        @currentRoute={{tb.currentRoute}}
+        @route="status-by-contract"
+        @label="Status"
+      />
+      <TinyToolbar::Item
+        @currentRoute={{tb.currentRoute}}
+        @route="contract-assignments"
+        @label="Assignments"
+      />
+      <TinyToolbar::Item
+        @currentRoute={{tb.currentRoute}}
+        @route="contract-attendance"
+        @label="Attendance"
+      />
+    </ul>
+  </nav>
+</TinyToolbar>

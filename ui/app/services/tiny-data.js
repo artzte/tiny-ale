@@ -4,6 +4,8 @@ import { warn } from '../utils/logger';
 import fetch from '../utils/fetch';
 import clone from '../utils/clone';
 
+let stateCallbacks = [];
+
 export const tinyDataService = {
   init(...args) {
     this._super(...args);
@@ -127,6 +129,7 @@ export const tinyDataService = {
       }, {});
 
     this._store = { ...store, ...mergedAdditions };
+    this._reportUpdatedState();
   },
 
   get(type, id) {
@@ -148,6 +151,7 @@ export const tinyDataService = {
 
   addRecord(data) {
     this.addResult({ data });
+    this._reportUpdatedState();
   },
 
   deleteRecord(data) {
@@ -161,6 +165,20 @@ export const tinyDataService = {
 
     // delete item from cloned tree
     delete this._store[data.type][data.id];
+
+    this._reportUpdatedState();
+  },
+
+  registerForUpdates(callback) {
+    stateCallbacks = stateCallbacks.concat([callback]);
+  },
+
+  unregisterForUpdates(callback) {
+    stateCallbacks = stateCallbacks.filter(cb => cb !== callback);
+  },
+
+  _reportUpdatedState() {
+    stateCallbacks.forEach(callback => callback());
   },
 };
 

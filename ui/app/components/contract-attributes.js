@@ -43,8 +43,8 @@ export default class ContractAttributes extends Component {
     this.args.cancelEditing();
   }
 
-  @action async save(_model, hasUpdates, updates) {
-    if (!hasUpdates) {
+  @action async save(_model, updates) {
+    if (updates) {
       this.isLoading = true;
       await this.args.updateContract({ data: updates });
       this.isLoading = false;

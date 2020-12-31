@@ -30,7 +30,7 @@
 
   <ContractAttributes
     @contract={{this.contract}}
-    @updateContract={{action 'updateContract'}}
+    @updateContract={{fn this.updateContract}}
     @loading={{loading}}
     @cancelEditing={{fn this.cancelEditing}}
   />
@@ -38,7 +38,7 @@
   <ContractLearningRequirements
     @learningRequirements={{this.learningRequirements}}
     @contract={{this.contract}}
-    @updateContract={{action 'updateContract'}}
+    @updateContract={{fn this.updateContract}}
     @loading={{loading}}
   />
 
