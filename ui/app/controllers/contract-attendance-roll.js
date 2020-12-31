@@ -32,7 +32,8 @@ export default Controller.extend({
           },
         },
       };
-      return tinyData.fetch(`/api/meetings/${meeting.id}/update_roll`, {
+
+      return tinyData.fetch(`/api/meetings/${meeting.id}/update-roll`, {
         method: 'PATCH',
         data,
       });

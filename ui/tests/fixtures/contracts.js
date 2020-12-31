@@ -2,152 +2,86 @@
 export default {
   data: [
     {
-      id: '5',
+      id: '10',
       type: 'contract',
       attributes: {
-        name: 'Quae talio baiulus agnosco voluptas.',
+        name: 'Deserunt vehemens speculum abstergo vapulus.',
         status: 'closed',
       },
       relationships: {
-        category: {
-          data: {
-            id: '3',
-            type: 'category',
-          },
-        },
-        facilitator: {
-          data: {
-            id: '7',
-            type: 'User',
-          },
-        },
-        term: {
-          data: {
-            id: '5',
-            type: 'term',
-          },
-        },
         enrollments: {
           data: [
             {
-              id: '11',
+              id: '25',
               type: 'enrollment',
             },
             {
-              id: '12',
+              id: '26',
               type: 'enrollment',
             },
           ],
         },
-      },
-    },
-    {
-      id: '6',
-      type: 'contract',
-      attributes: {
-        name: 'Suppono ater concido decerno validus.',
-        status: 'closed',
-      },
-      relationships: {
-        category: {
-          data: {
-            id: '4',
-            type: 'category',
-          },
-        },
         facilitator: {
           data: {
-            id: '8',
-            type: 'User',
+            id: '52',
+            type: 'user',
           },
         },
         term: {
           data: {
-            id: '6',
+            id: '10',
             type: 'term',
           },
         },
-        enrollments: {
+        category: {
+          data: {
+            id: '10',
+            type: 'category',
+          },
+        },
+        assignments: {
+          data: [
+
+          ],
+        },
+        creditAssignments: {
           data: [
             {
-              id: '13',
-              type: 'enrollment',
+              id: '49',
+              type: 'creditAssignment',
             },
             {
-              id: '14',
-              type: 'enrollment',
+              id: '61',
+              type: 'creditAssignment',
+            },
+            {
+              id: '62',
+              type: 'creditAssignment',
+            },
+            {
+              id: '63',
+              type: 'creditAssignment',
+            },
+            {
+              id: '64',
+              type: 'creditAssignment',
+            },
+            {
+              id: '65',
+              type: 'creditAssignment',
+            },
+            {
+              id: '66',
+              type: 'creditAssignment',
             },
           ],
         },
-      },
-    },
-    {
-      id: '7',
-      type: 'contract',
-      attributes: {
-        name: 'Coaegresco ulterius creator eligendi apparatus.',
-        status: 'closed',
-      },
-      relationships: {
-        category: {
-          data: {
-            id: '4',
-            type: 'category',
-          },
-        },
-        facilitator: {
-          data: {
-            id: '8',
-            type: 'User',
-          },
-        },
-        term: {
-          data: {
-            id: '6',
-            type: 'term',
-          },
-        },
-        enrollments: {
+        meetings: {
           data: [
-            {
-              id: '15',
-              type: 'enrollment',
-            },
-            {
-              id: '16',
-              type: 'enrollment',
-            },
+
           ],
         },
-      },
-    },
-    {
-      id: '8',
-      type: 'contract',
-      attributes: {
-        name: 'Aduro careo degero exercitationem summisse.',
-        status: 'closed',
-      },
-      relationships: {
-        category: {
-          data: {
-            id: '4',
-            type: 'category',
-          },
-        },
-        facilitator: {
-          data: {
-            id: '8',
-            type: 'User',
-          },
-        },
-        term: {
-          data: {
-            id: '6',
-            type: 'term',
-          },
-        },
-        enrollments: {
+        learningRequirements: {
           data: [
 
           ],
@@ -155,264 +89,421 @@ export default {
       },
     },
     {
-      id: '9',
+      id: '11',
       type: 'contract',
       attributes: {
-        name: 'Demergo somnus denuncio tamen solitudo.',
-        status: 'approved',
+        name: 'Molestias beneficium sunt aedificium decumbo.',
+        status: 'closed',
       },
       relationships: {
-        category: {
-          data: {
-            id: '3',
-            type: 'category',
-          },
+        enrollments: {
+          data: [
+            {
+              id: '27',
+              type: 'enrollment',
+            },
+            {
+              id: '28',
+              type: 'enrollment',
+            },
+          ],
         },
         facilitator: {
           data: {
-            id: '7',
-            type: 'User',
+            id: '53',
+            type: 'user',
           },
         },
         term: {
           data: {
-            id: '7',
+            id: '11',
             type: 'term',
           },
         },
-        enrollments: {
+        category: {
+          data: {
+            id: '11',
+            type: 'category',
+          },
+        },
+        assignments: {
+          data: [
+
+          ],
+        },
+        creditAssignments: {
           data: [
             {
-              id: '5',
-              type: 'enrollment',
+              id: '51',
+              type: 'creditAssignment',
             },
             {
-              id: '6',
-              type: 'enrollment',
+              id: '67',
+              type: 'creditAssignment',
             },
             {
-              id: '7',
-              type: 'enrollment',
+              id: '68',
+              type: 'creditAssignment',
             },
+            {
+              id: '69',
+              type: 'creditAssignment',
+            },
+            {
+              id: '70',
+              type: 'creditAssignment',
+            },
+            {
+              id: '71',
+              type: 'creditAssignment',
+            },
+            {
+              id: '72',
+              type: 'creditAssignment',
+            },
+          ],
+        },
+        meetings: {
+          data: [
+
+          ],
+        },
+        learningRequirements: {
+          data: [
+
           ],
         },
       },
     },
     {
-      id: '10',
+      id: '12',
       type: 'contract',
       attributes: {
-        name: 'Tenus iusto coadunatio vicinus deorsum.',
-        status: 'approved',
+        name: 'Curto sub tracto paulatim pax.',
+        status: 'closed',
       },
       relationships: {
-        category: {
-          data: {
-            id: '4',
-            type: 'category',
-          },
+        enrollments: {
+          data: [
+            {
+              id: '29',
+              type: 'enrollment',
+            },
+            {
+              id: '30',
+              type: 'enrollment',
+            },
+          ],
         },
         facilitator: {
           data: {
-            id: '8',
-            type: 'User',
+            id: '53',
+            type: 'user',
           },
         },
         term: {
           data: {
-            id: '7',
+            id: '11',
             type: 'term',
           },
         },
+        category: {
+          data: {
+            id: '11',
+            type: 'category',
+          },
+        },
+        assignments: {
+          data: [
+
+          ],
+        },
+        creditAssignments: {
+          data: [
+            {
+              id: '53',
+              type: 'creditAssignment',
+            },
+            {
+              id: '73',
+              type: 'creditAssignment',
+            },
+            {
+              id: '74',
+              type: 'creditAssignment',
+            },
+            {
+              id: '75',
+              type: 'creditAssignment',
+            },
+            {
+              id: '76',
+              type: 'creditAssignment',
+            },
+            {
+              id: '77',
+              type: 'creditAssignment',
+            },
+            {
+              id: '78',
+              type: 'creditAssignment',
+            },
+          ],
+        },
+        meetings: {
+          data: [
+
+          ],
+        },
+        learningRequirements: {
+          data: [
+
+          ],
+        },
+      },
+    },
+    {
+      id: '13',
+      type: 'contract',
+      attributes: {
+        name: 'Infit quis asperiores conduco auxilium.',
+        status: 'closed',
+      },
+      relationships: {
+        enrollments: {
+          data: [
+
+          ],
+        },
+        facilitator: {
+          data: {
+            id: '53',
+            type: 'user',
+          },
+        },
+        term: {
+          data: {
+            id: '11',
+            type: 'term',
+          },
+        },
+        category: {
+          data: {
+            id: '11',
+            type: 'category',
+          },
+        },
+        assignments: {
+          data: [
+
+          ],
+        },
+        creditAssignments: {
+          data: [
+            {
+              id: '54',
+              type: 'creditAssignment',
+            },
+          ],
+        },
+        meetings: {
+          data: [
+
+          ],
+        },
+        learningRequirements: {
+          data: [
+
+          ],
+        },
+      },
+    },
+    {
+      id: '14',
+      type: 'contract',
+      attributes: {
+        name: 'Acidus copiose peior coruscus utpote.',
+        status: 'active',
+      },
+      relationships: {
         enrollments: {
           data: [
             {
-              id: '8',
+              id: '19',
               type: 'enrollment',
             },
             {
-              id: '9',
+              id: '20',
               type: 'enrollment',
             },
             {
-              id: '10',
+              id: '21',
               type: 'enrollment',
             },
           ],
         },
-      },
-    },
-  ],
-  included: [
-    {
-      id: '3',
-      type: 'category',
-      attributes: {
-        name: 'Category 1',
-        sequence: 0,
-        public: false,
-        reporting: 'none',
-        activeContractsCount: 1,
-        homeroom: false,
-      },
-      relationships: {
-        contracts: {
+        facilitator: {
+          data: {
+            id: '52',
+            type: 'user',
+          },
+        },
+        term: {
+          data: {
+            id: '12',
+            type: 'term',
+          },
+        },
+        category: {
+          data: {
+            id: '10',
+            type: 'category',
+          },
+        },
+        assignments: {
           data: [
+            {
+              id: '1',
+              type: 'assignment',
+            },
+            {
+              id: '2',
+              type: 'assignment',
+            },
+            {
+              id: '3',
+              type: 'assignment',
+            },
+            {
+              id: '4',
+              type: 'assignment',
+            },
             {
               id: '5',
-              type: 'contract',
-            },
-            {
-              id: '9',
-              type: 'contract',
+              type: 'assignment',
             },
           ],
         },
-      },
-    },
-    {
-      id: '7',
-      type: 'user',
-      attributes: {
-        firstName: 'Dominic',
-        lastName: 'Collier',
-        nickname: null,
-        dateActive: '2012-09-01',
-        dateInactive: null,
-        districtId: null,
-        districtGrade: 12,
-        email: 'janelle@rathskiles.net',
-        status: 'active',
-        role: 'staff',
-      },
-      relationships: {
-        coordinatees: {
+        creditAssignments: {
           data: [
             {
-              id: '11',
-              type: 'user',
+              id: '50',
+              type: 'creditAssignment',
             },
           ],
         },
-      },
-    },
-    {
-      id: '5',
-      type: 'term',
-      attributes: {
-        name: 'Fundamental actuating local area network',
-        schoolYear: 2018,
-        creditDate: '2019-01-31',
-        months: [
-          '2018-09-01',
-          '2018-10-01',
-          '2018-11-01',
-          '2018-12-01',
-          '2019-01-01',
-        ],
-        status: 'active',
-      },
-      meta: null,
-    },
-    {
-      id: '4',
-      type: 'category',
-      attributes: {
-        name: 'Category 2',
-        sequence: 0,
-        public: false,
-        reporting: 'none',
-        activeContractsCount: 1,
-        homeroom: false,
-      },
-      relationships: {
-        contracts: {
+        meetings: {
           data: [
             {
-              id: '6',
-              type: 'contract',
+              id: '1',
+              type: 'meeting',
             },
             {
-              id: '7',
-              type: 'contract',
+              id: '2',
+              type: 'meeting',
             },
             {
-              id: '8',
-              type: 'contract',
+              id: '3',
+              type: 'meeting',
             },
             {
-              id: '10',
-              type: 'contract',
+              id: '4',
+              type: 'meeting',
+            },
+            {
+              id: '5',
+              type: 'meeting',
             },
           ],
         },
-      },
-    },
-    {
-      id: '8',
-      type: 'user',
-      attributes: {
-        firstName: 'Weston',
-        lastName: 'Rempel',
-        nickname: null,
-        dateActive: '2013-02-01',
-        dateInactive: null,
-        districtId: null,
-        districtGrade: 12,
-        email: 'judsonparker@upton.info',
-        status: 'active',
-        role: 'staff',
-      },
-      relationships: {
-        coordinatees: {
+        learningRequirements: {
           data: [
             {
               id: '12',
-              type: 'user',
+              type: 'learningRequirement',
             },
             {
               id: '13',
-              type: 'user',
+              type: 'learningRequirement',
+            },
+            {
+              id: '14',
+              type: 'learningRequirement',
+            },
+            {
+              id: '15',
+              type: 'learningRequirement',
             },
           ],
         },
       },
     },
     {
-      id: '6',
-      type: 'term',
+      id: '15',
+      type: 'contract',
       attributes: {
-        name: 'Re-engineered intermediate extranet',
-        schoolYear: 2018,
-        creditDate: '2019-06-15',
-        months: [
-          '2019-02-01',
-          '2019-03-01',
-          '2019-04-01',
-          '2019-05-01',
-          '2019-06-01',
-        ],
+        name: 'Demum verus sed sit valens.',
         status: 'active',
       },
-      meta: null,
-    },
-    {
-      id: '7',
-      type: 'term',
-      attributes: {
-        name: 'Seamless contextually-based encoding',
-        schoolYear: 2019,
-        creditDate: '2020-01-31',
-        months: [
-          '2019-09-01',
-          '2019-10-01',
-          '2019-11-01',
-          '2019-12-01',
-          '2020-01-01',
-        ],
-        status: 'active',
+      relationships: {
+        enrollments: {
+          data: [
+            {
+              id: '22',
+              type: 'enrollment',
+            },
+            {
+              id: '23',
+              type: 'enrollment',
+            },
+            {
+              id: '24',
+              type: 'enrollment',
+            },
+          ],
+        },
+        facilitator: {
+          data: {
+            id: '53',
+            type: 'user',
+          },
+        },
+        term: {
+          data: {
+            id: '12',
+            type: 'term',
+          },
+        },
+        category: {
+          data: {
+            id: '11',
+            type: 'category',
+          },
+        },
+        assignments: {
+          data: [
+
+          ],
+        },
+        creditAssignments: {
+          data: [
+            {
+              id: '52',
+              type: 'creditAssignment',
+            },
+          ],
+        },
+        meetings: {
+          data: [
+
+          ],
+        },
+        learningRequirements: {
+          data: [
+
+          ],
+        },
       },
-      meta: null,
     },
   ],
   meta: {

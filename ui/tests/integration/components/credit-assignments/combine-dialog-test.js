@@ -80,7 +80,7 @@ module('Integration | Component | CreditAssignments::CombineDialog', (hooks) => 
     assert.ok(find('form'), 'the form rendered');
 
     const termSelect = find('select[name="contractTerm"]');
-    const creditSelect = find('t-type-ahead[name="credit"]');
+    const creditSelect = find('t-type-ahead[data-test-name="credit"]');
     const hoursSpan = find('span[data-test-credit-hours]');
 
     assert.ok(termSelect, 'rendered term input');
@@ -90,7 +90,7 @@ module('Integration | Component | CreditAssignments::CombineDialog', (hooks) => 
     const [firstCredit] = creditsToCombine;
 
     const expectedTermOption = find(`select[name="contractTerm"] option[value="${firstCredit.relationships.contractTerm.data.id}"]`);
-    const expectedCreditOption = find(`t-type-ahead[name="credit"] [data-test-value="${firstCredit.relationships.credit.data.id}"]`);
+    const expectedCreditOption = find(`t-type-ahead[data-test-name="credit"] [data-test-value="${firstCredit.relationships.credit.data.id}"]`);
 
     assert.ok(expectedTermOption, 'found expected term selection');
     assert.ok(expectedCreditOption, 'found expected credit selection');
@@ -147,7 +147,7 @@ module('Integration | Component | CreditAssignments::CombineDialog', (hooks) => 
     const termInteractor = new Interactor('select[name="contractTerm"]');
     await termInteractor.select('Select a term');
 
-    await click('t-type-ahead[name="credit"] [data-test-clear-selection]');
+    await click('t-type-ahead[data-test-name="credit"] [data-test-clear-selection]');
 
     await click('button[type="submit"]');
 

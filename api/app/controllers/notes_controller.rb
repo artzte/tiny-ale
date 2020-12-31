@@ -2,19 +2,15 @@
 
 class NotesController < ApiBaseController
   def index
-    limit = params[:limit] || Rails.configuration.constants[:DEFAULT_LIMIT]
-
-    limit = nil if limit == '-1'
-
     conditions = {}
 
     conditions[:notable_type] = params[:notableType] if params[:notableType]
 
-    conditions[:notable_id] = params[:notableIds] if params[:notableIds]
+    conditions[:notable_id] = params[:notableIds].split(',') if params[:notableIds]
 
     result = Note
              .where(conditions)
-             .limit(limit)
+             .limit(@limit)
     count = Note
             .where(conditions)
             .count

@@ -1,16 +1,16 @@
-// GET /api/contracts/9?include=category,facilitator,assignments,meetings,creditAssignments,creditAssignments.credit,term,ealrs
+// GET /api/contracts/14?include=category,facilitator,assignments,meetings,creditAssignments,creditAssignments.credit,term,learningRequirements
 export default {
   data: {
-    id: '9',
+    id: '14',
     type: 'contract',
     attributes: {
-      name: 'Demergo somnus denuncio tamen solitudo.',
-      status: 'approved',
-      learningObjectives: 'Capillus terga certo viscus texo.',
-      competencies: 'Armarium carmen ambitus cerno vero.',
-      evaluationMethods: 'Et amor vinco articulus cohibeo.',
-      instructionalMaterials: 'Inflammatio venustas tracto vix verus.',
-      location: 'Molestiae acidus vis sed nihil.',
+      name: 'Acidus copiose peior coruscus utpote.',
+      status: 'active',
+      learningObjectives: 'Learning objectives Depereo conitor celebrer reprehenderit atqui.',
+      competencies: 'Competencies Teneo vita apostolus acceptus vulgivagus.',
+      evaluationMethods: 'Evaluation methods Architecto modi terminatio stella sollers.',
+      instructionalMaterials: 'Instructional materials Custodia vespillo quo mollitia ver.',
+      location: 'Location Amor voveo curriculum carcer suadeo.',
       timeslots: [
         {
           start: '8:45',
@@ -23,34 +23,34 @@ export default {
       enrollments: {
         data: [
           {
-            id: '5',
+            id: '19',
             type: 'enrollment',
           },
           {
-            id: '6',
+            id: '20',
             type: 'enrollment',
           },
           {
-            id: '7',
+            id: '21',
             type: 'enrollment',
           },
         ],
       },
       facilitator: {
         data: {
-          id: '7',
-          type: 'User',
+          id: '52',
+          type: 'user',
         },
       },
       term: {
         data: {
-          id: '7',
+          id: '12',
           type: 'term',
         },
       },
       category: {
         data: {
-          id: '3',
+          id: '10',
           type: 'category',
         },
       },
@@ -81,7 +81,7 @@ export default {
       creditAssignments: {
         data: [
           {
-            id: '2',
+            id: '50',
             type: 'creditAssignment',
           },
         ],
@@ -110,23 +110,23 @@ export default {
           },
         ],
       },
-      ealrs: {
+      learningRequirements: {
         data: [
           {
-            id: '1',
-            type: 'ealr',
+            id: '12',
+            type: 'learningRequirement',
           },
           {
-            id: '2',
-            type: 'ealr',
+            id: '13',
+            type: 'learningRequirement',
           },
           {
-            id: '3',
-            type: 'ealr',
+            id: '14',
+            type: 'learningRequirement',
           },
           {
-            id: '4',
-            type: 'ealr',
+            id: '15',
+            type: 'learningRequirement',
           },
         ],
       },
@@ -229,7 +229,7 @@ export default {
       },
     },
     {
-      id: '3',
+      id: '10',
       type: 'category',
       attributes: {
         name: 'Category 1',
@@ -243,11 +243,11 @@ export default {
         contracts: {
           data: [
             {
-              id: '5',
+              id: '10',
               type: 'contract',
             },
             {
-              id: '9',
+              id: '14',
               type: 'contract',
             },
           ],
@@ -255,7 +255,7 @@ export default {
       },
     },
     {
-      id: '2',
+      id: '50',
       type: 'creditAssignment',
       attributes: {
         creditHours: 1.0,
@@ -263,12 +263,17 @@ export default {
       relationships: {
         credit: {
           data: {
-            id: '1',
+            id: '22',
             type: 'credit',
           },
         },
         graduationPlanMapping: {
           data: null,
+        },
+        notes: {
+          data: [
+
+          ],
         },
         contractTerm: {
           data: null,
@@ -278,7 +283,7 @@ export default {
         },
         contract: {
           data: {
-            id: '9',
+            id: '14',
             type: 'contract',
           },
         },
@@ -286,6 +291,9 @@ export default {
           data: null,
         },
         creditTransmittalBatch: {
+          data: null,
+        },
+        enrollment: {
           data: null,
         },
         childCreditAssignments: {
@@ -299,7 +307,7 @@ export default {
       },
     },
     {
-      id: '1',
+      id: '22',
       type: 'credit',
       attributes: {
         courseId: '0',
@@ -309,65 +317,67 @@ export default {
       },
     },
     {
-      id: '1',
-      type: 'ealr',
-      attributes: {
-        ealr: 'Pectus cubo adsuesco armarium currus.',
-        seq: '1.1',
-        category: 'Category 1',
-      },
-    },
-    {
-      id: '2',
-      type: 'ealr',
-      attributes: {
-        ealr: 'Triginta omnis creptio aequus vomer.',
-        seq: '1.2',
-        category: 'Category 1',
-      },
-    },
-    {
-      id: '3',
-      type: 'ealr',
-      attributes: {
-        ealr: 'Vos ad consequatur ubi aranea.',
-        seq: '2.1',
-        category: 'Category 2',
-      },
-    },
-    {
-      id: '4',
-      type: 'ealr',
-      attributes: {
-        ealr: 'Demo nesciunt cohibeo aveho facere.',
-        seq: '2.2',
-        category: 'Category 2',
-      },
-    },
-    {
-      id: '7',
+      id: '52',
       type: 'user',
       attributes: {
-        firstName: 'Dominic',
-        lastName: 'Collier',
+        firstName: 'Shayla',
+        lastName: 'Torp',
         nickname: null,
         dateActive: '2012-09-01',
         dateInactive: null,
         districtId: null,
         districtGrade: 12,
-        email: 'janelle@rathskiles.net',
+        email: 'solomon@hills.name',
+        name: 'Shayla Torp',
         status: 'active',
         role: 'staff',
+        isStaff: true,
       },
       relationships: {
         coordinatees: {
           data: [
             {
-              id: '11',
+              id: '56',
               type: 'user',
             },
           ],
         },
+      },
+    },
+    {
+      id: '12',
+      type: 'learningRequirement',
+      attributes: {
+        ealr: 'Adnuo taedium bos et eum.',
+        seq: '1.1',
+        category: 'Category 1',
+      },
+    },
+    {
+      id: '13',
+      type: 'learningRequirement',
+      attributes: {
+        ealr: 'Cariosus blandior solum animadverto acsi.',
+        seq: '1.2',
+        category: 'Category 1',
+      },
+    },
+    {
+      id: '14',
+      type: 'learningRequirement',
+      attributes: {
+        ealr: 'Tergo ulterius dapifer vicissitudo commodi.',
+        seq: '2.1',
+        category: 'Category 2',
+      },
+    },
+    {
+      id: '15',
+      type: 'learningRequirement',
+      attributes: {
+        ealr: 'Causa claustrum argentum condico thalassinus.',
+        seq: '2.2',
+        category: 'Category 2',
       },
     },
     {
@@ -501,10 +511,10 @@ export default {
       },
     },
     {
-      id: '7',
+      id: '12',
       type: 'term',
       attributes: {
-        name: 'Seamless contextually-based encoding',
+        name: 'Mandatory 24/7 moratorium',
         schoolYear: 2019,
         creditDate: '2020-01-31',
         months: [

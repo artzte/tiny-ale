@@ -2,9 +2,6 @@
 
 class CreditsController < ApiBaseController
   def index
-    limit = params[:limit] || Rails.configuration.constants[:DEFAULT_LIMIT]
-    limit = nil if limit == '-1'
-
     order = (params[:order] || '').split(',').map(&:underscore).join(',')
 
     conditions = {}
@@ -22,7 +19,7 @@ class CreditsController < ApiBaseController
              .where(conditions)
              .where(search)
              .order(Arel.sql(order))
-             .limit(limit)
+             .limit(@limit)
     count = Credit
             .where(conditions)
             .where(search)

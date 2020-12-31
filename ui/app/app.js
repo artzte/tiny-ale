@@ -9,6 +9,15 @@ export default class App extends Application {
   podModulePrefix = config.podModulePrefix;
 
   Resolver = Resolver;
+
+  constructor(...args) {
+    super(...args);
+
+    const localSession = localStorage.getItem('_tinySisSession');
+    if (localSession) {
+      window._tinyALE.session = JSON.parse(localSession);
+    }
+  }
 }
 
 loadInitializers(App, config.modulePrefix);

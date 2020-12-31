@@ -3,7 +3,7 @@ import { computed } from '@ember/object';
 
 export default Component.extend({
   tagName: '',
-  hasErrorToShow: computed('error', 'showError', function () {
-    return Boolean(this.error && this.showError);
+  hasErrorToShow: computed('error', 'showErrors', function () {
+    return Boolean(this.error && this.showErrors);
   }),
 });

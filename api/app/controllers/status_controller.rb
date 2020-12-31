@@ -2,10 +2,6 @@
 
 class StatusController < ApiBaseController
   def index
-    limit = params[:limit] || Rails.configuration.constants[:DEFAULT_LIMIT]
-
-    limit = nil if limit == '-1'
-
     joins = []
 
     conditions = {}
@@ -65,7 +61,7 @@ class StatusController < ApiBaseController
              .where(conditions)
              .joins(joins.join(' '))
              .select(selects.join(','))
-             .limit(limit)
+             .limit(@limit)
     count = Status.where(conditions).count
 
     options = {

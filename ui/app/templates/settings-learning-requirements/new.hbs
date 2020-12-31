@@ -1,0 +1,9 @@
+<h2>New learning requirement</h2>
+
+<SettingsLearningRequirementForm
+  @model={{this.model}}
+  @categories={{this.categories}}
+  @learningRequirements={{this.learningRequirements}}
+  @save={{action "updateRequirement"}}
+  @reportError={{action "reportError"}}
+/>

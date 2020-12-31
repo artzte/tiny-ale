@@ -1,9 +1,26 @@
-import Component from '@ember/component';
-import { computed } from '@ember/object';
+import Component from '@glimmer/component';
 
-export default Component.extend({
-  tagName: '',
-  subordinate: computed('ealr.attributes.seq', function () {
-    return /\.\d+/.test(this.ealr.attributes.seq);
-  }),
-});
+export default class ContractLearningRequirementsItem extends Component {
+  get id() {
+    return `sel-${this.args.learningRequirement.id}`;
+  }
+
+  get isChecked() {
+    const {
+      learningRequirement,
+      selections,
+    } = this.args;
+
+    return Boolean(selections[learningRequirement.id]);
+  }
+
+  get showRow() {
+    const {
+      isEditing,
+      learningRequirement,
+      selections,
+    } = this.args;
+
+    return isEditing || selections[learningRequirement.id];
+  }
+}

@@ -2,7 +2,13 @@ import Route from '@ember/routing/route';
 import { inject as service } from '@ember/service';
 import {
   schoolYearTerms,
+  sortedCategories,
+  sortedPeople,
 } from '../../utils/contract-utils';
+
+import {
+  STATUS_ACTIVE,
+} from '../../utils/user-utils';
 
 export default Route.extend({
   tinyData: service(),
@@ -38,6 +44,7 @@ export default Route.extend({
     const requestParams = {
       limit: 20,
       order: 'name',
+      include: 'term,category,facilitator',
     };
 
     requestParams.schoolYear = schoolYear || tinyData.getSchoolYear();
@@ -73,17 +80,19 @@ export default Route.extend({
       qp: queryParams,
     } = this;
 
-    const terms = tinyData.get('term');
-    const filteredTerms = schoolYearTerms(queryParams.schoolYear, terms);
+    const terms = schoolYearTerms(queryParams.schoolYear, tinyData.get('term'));
+    const categories = tinyData.get('category');
+    const facilitators = tinyData.get('user').filter(user => user.attributes.status === STATUS_ACTIVE && user.attributes.isStaff);
 
-    const contractsController = this.controllerFor('contracts');
-    contractsController.setProperties({
-      terms: filteredTerms,
+    controller.setProperties({
+      categories: sortedCategories(categories),
+      facilitators: sortedPeople(facilitators),
       queryParams,
+      schoolYears: this.tinyData.getYears().sort((y1, y2) => y2 - y1),
+      terms,
+      ...queryParams,
     });
 
     this._super(controller, contracts);
-
-    controller.setProperties(Object.assign({}, queryParams));
   },
 });

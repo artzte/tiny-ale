@@ -11,6 +11,9 @@ class StaffController < ApiBaseController
       lastName
       nickname
       coordinatees
+      status
+      role
+      isStaff
     ]
   end
 

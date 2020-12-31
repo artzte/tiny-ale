@@ -1,8 +1,8 @@
-// GET /api/enrollments?contractIds=9&include=participant
+// GET /api/enrollments?contractIds=14&include=participant
 export default {
   data: [
     {
-      id: '5',
+      id: '19',
       type: 'enrollment',
       attributes: {
         finalizedOn: null,
@@ -12,20 +12,20 @@ export default {
       relationships: {
         contract: {
           data: {
-            id: '9',
+            id: '14',
             type: 'contract',
           },
         },
         participant: {
           data: {
-            id: '11',
-            type: 'participant',
+            id: '56',
+            type: 'user',
           },
         },
         creditAssignments: {
           data: [
             {
-              id: '7',
+              id: '55',
               type: 'creditAssignment',
             },
           ],
@@ -81,7 +81,7 @@ export default {
       },
     },
     {
-      id: '6',
+      id: '20',
       type: 'enrollment',
       attributes: {
         finalizedOn: null,
@@ -91,20 +91,20 @@ export default {
       relationships: {
         contract: {
           data: {
-            id: '9',
+            id: '14',
             type: 'contract',
           },
         },
         participant: {
           data: {
-            id: '12',
-            type: 'participant',
+            id: '57',
+            type: 'user',
           },
         },
         creditAssignments: {
           data: [
             {
-              id: '8',
+              id: '56',
               type: 'creditAssignment',
             },
           ],
@@ -141,7 +141,7 @@ export default {
       },
     },
     {
-      id: '7',
+      id: '21',
       type: 'enrollment',
       attributes: {
         finalizedOn: null,
@@ -151,20 +151,20 @@ export default {
       relationships: {
         contract: {
           data: {
-            id: '9',
+            id: '14',
             type: 'contract',
           },
         },
         participant: {
           data: {
-            id: '13',
-            type: 'participant',
+            id: '58',
+            type: 'user',
           },
         },
         creditAssignments: {
           data: [
             {
-              id: '9',
+              id: '57',
               type: 'creditAssignment',
             },
           ],
@@ -203,72 +203,78 @@ export default {
   ],
   included: [
     {
-      id: '11',
+      id: '56',
       type: 'user',
       attributes: {
-        firstName: 'Leatrice',
-        lastName: 'Bednar',
+        firstName: 'Jerold',
+        lastName: 'Klein',
         nickname: null,
         dateActive: '2018-08-01',
         dateInactive: null,
-        districtId: '2870279804',
-        districtGrade: 12,
-        email: null,
+        districtId: '4809648277',
+        districtGrade: 9,
+        email: 'catricegislason@gottlieb.net',
+        name: 'Jerold Klein',
         status: 'active',
         role: 'student',
+        isStaff: false,
       },
       relationships: {
         coordinator: {
           data: {
-            id: '7',
+            id: '52',
             type: 'user',
           },
         },
       },
     },
     {
-      id: '12',
+      id: '57',
       type: 'user',
       attributes: {
-        firstName: 'Garry',
-        lastName: 'Pollich',
+        firstName: 'Marlin',
+        lastName: 'Tremblay',
         nickname: null,
         dateActive: '2018-08-01',
         dateInactive: null,
-        districtId: '1780983772',
-        districtGrade: 12,
-        email: null,
+        districtId: '9616779893',
+        districtGrade: 10,
+        email: 'reginald@jacobs.co',
+        name: 'Marlin Tremblay',
         status: 'active',
         role: 'student',
+        isStaff: false,
       },
       relationships: {
         coordinator: {
           data: {
-            id: '8',
+            id: '53',
             type: 'user',
           },
         },
       },
     },
     {
-      id: '13',
+      id: '58',
       type: 'user',
       attributes: {
-        firstName: 'Bernice',
-        lastName: 'Yundt',
+        firstName: 'Milly',
+        lastName: 'Tromp',
         nickname: null,
         dateActive: '2018-08-01',
         dateInactive: '2019-10-01',
-        districtId: '5621269128',
+        districtId: '1998684872',
         districtGrade: 12,
-        email: null,
+        email: 'kemberlyreichel@lubowitzgerhold.info',
+        name: 'Milly Tromp',
         status: 'inactive',
         role: 'student',
+        isStaff: false,
       },
       relationships: {
         coordinator: {
           data: {
-            id: '8',
+            id: '53',
             type: 'user',
           },
         },

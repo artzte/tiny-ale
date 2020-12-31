@@ -5,10 +5,6 @@ class CreditAssignmentsController < ApiBaseController
   before_action :entitle_student, only: %i[destroy create_for_student]
 
   def index
-    limit = params[:limit] || Rails.configuration.constants[:DEFAULT_LIMIT]
-
-    limit = nil if limit == '-1'
-
     conditions = {}
 
     if params[:enrollmentIds]
@@ -24,7 +20,7 @@ class CreditAssignmentsController < ApiBaseController
     result = CreditAssignment
              .where(conditions)
              .includes(:credit)
-             .limit(limit)
+             .limit(@limit)
     count = CreditAssignment
             .where(conditions)
             .count

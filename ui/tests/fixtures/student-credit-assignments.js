@@ -1,15 +1,15 @@
-// GET /api/credit-assignments?studentIds=12&includeFulfilledAttributes=true&include=credit,contractTerm,contractFacilitator,contract
+// GET /api/credit-assignments?studentIds=57&includeFulfilledAttributes=true&include=credit,contractTerm,contractFacilitator,contract
 export default {
   data: [
     {
-      id: '13',
+      id: '61',
       type: 'creditAssignment',
       attributes: {
         creditHours: 0.25,
         enrollmentFinalizedOn: '2019-11-15',
-        contractName: 'Quae talio baiulus agnosco voluptas.',
-        contractFacilitatorName: 'Dominic Collier',
-        districtFinalizeApprovedBy: 'Kohler, Cleotilde',
+        contractName: 'Deserunt vehemens speculum abstergo vapulus.',
+        contractFacilitatorName: 'Shayla Torp',
+        districtFinalizeApprovedBy: 'Ziemann, Rashad',
         districtFinalizeApprovedOn: '2019-11-15',
         districtTransmittedOn: null,
         overrideHours: null,
@@ -18,34 +18,39 @@ export default {
       relationships: {
         credit: {
           data: {
-            id: '1',
+            id: '22',
             type: 'credit',
           },
         },
         graduationPlanMapping: {
           data: null,
         },
+        notes: {
+          data: [
+
+          ],
+        },
         contractTerm: {
           data: {
-            id: '5',
+            id: '10',
             type: 'term',
           },
         },
         contractFacilitator: {
           data: {
-            id: '7',
+            id: '52',
             type: 'user',
           },
         },
         contract: {
           data: {
-            id: '5',
+            id: '10',
             type: 'contract',
           },
         },
         user: {
           data: {
-            id: '12',
+            id: '57',
             type: 'user',
           },
         },
@@ -55,6 +60,12 @@ export default {
             type: 'creditTransmittalBatch',
           },
         },
+        enrollment: {
+          data: {
+            id: '25',
+            type: 'enrollment',
+          },
+        },
         childCreditAssignments: {
           data: [
 
@@ -66,14 +77,14 @@ export default {
       },
     },
     {
-      id: '14',
+      id: '62',
       type: 'creditAssignment',
       attributes: {
         creditHours: 0.5,
         enrollmentFinalizedOn: '2019-11-15',
-        contractName: 'Quae talio baiulus agnosco voluptas.',
-        contractFacilitatorName: 'Dominic Collier',
-        districtFinalizeApprovedBy: 'Kohler, Cleotilde',
+        contractName: 'Deserunt vehemens speculum abstergo vapulus.',
+        contractFacilitatorName: 'Shayla Torp',
+        districtFinalizeApprovedBy: 'Ziemann, Rashad',
         districtFinalizeApprovedOn: '2019-11-15',
         districtTransmittedOn: null,
         overrideHours: null,
@@ -82,39 +93,50 @@ export default {
       relationships: {
         credit: {
           data: {
-            id: '2',
+            id: '23',
             type: 'credit',
           },
         },
         graduationPlanMapping: {
           data: null,
         },
+        notes: {
+          data: [
+
+          ],
+        },
         contractTerm: {
           data: {
-            id: '5',
+            id: '10',
             type: 'term',
           },
         },
         contractFacilitator: {
           data: {
-            id: '7',
+            id: '52',
             type: 'user',
           },
         },
         contract: {
           data: {
-            id: '5',
+            id: '10',
             type: 'contract',
           },
         },
         user: {
           data: {
-            id: '12',
+            id: '57',
             type: 'user',
           },
         },
         creditTransmittalBatch: {
           data: null,
+        },
+        enrollment: {
+          data: {
+            id: '25',
+            type: 'enrollment',
+          },
         },
         childCreditAssignments: {
           data: [
@@ -127,13 +149,13 @@ export default {
       },
     },
     {
-      id: '15',
+      id: '63',
       type: 'creditAssignment',
       attributes: {
         creditHours: 0.5,
         enrollmentFinalizedOn: '2019-11-15',
-        contractName: 'Quae talio baiulus agnosco voluptas.',
-        contractFacilitatorName: 'Dominic Collier',
+        contractName: 'Deserunt vehemens speculum abstergo vapulus.',
+        contractFacilitatorName: 'Shayla Torp',
         districtFinalizeApprovedBy: null,
         districtFinalizeApprovedOn: null,
         districtTransmittedOn: null,
@@ -143,39 +165,50 @@ export default {
       relationships: {
         credit: {
           data: {
-            id: '2',
+            id: '23',
             type: 'credit',
           },
         },
         graduationPlanMapping: {
           data: null,
         },
+        notes: {
+          data: [
+
+          ],
+        },
         contractTerm: {
           data: {
-            id: '5',
+            id: '10',
             type: 'term',
           },
         },
         contractFacilitator: {
           data: {
-            id: '7',
+            id: '52',
             type: 'user',
           },
         },
         contract: {
           data: {
-            id: '5',
+            id: '10',
             type: 'contract',
           },
         },
         user: {
           data: {
-            id: '12',
+            id: '57',
             type: 'user',
           },
         },
         creditTransmittalBatch: {
           data: null,
+        },
+        enrollment: {
+          data: {
+            id: '25',
+            type: 'enrollment',
+          },
         },
         childCreditAssignments: {
           data: [
@@ -188,14 +221,14 @@ export default {
       },
     },
     {
-      id: '19',
+      id: '67',
       type: 'creditAssignment',
       attributes: {
         creditHours: 0.25,
         enrollmentFinalizedOn: '2019-11-15',
-        contractName: 'Suppono ater concido decerno validus.',
-        contractFacilitatorName: 'Weston Rempel',
-        districtFinalizeApprovedBy: 'Kohler, Cleotilde',
+        contractName: 'Molestias beneficium sunt aedificium decumbo.',
+        contractFacilitatorName: 'Connie Hilpert',
+        districtFinalizeApprovedBy: 'Ziemann, Rashad',
         districtFinalizeApprovedOn: '2019-11-15',
         districtTransmittedOn: null,
         overrideHours: null,
@@ -204,34 +237,39 @@ export default {
       relationships: {
         credit: {
           data: {
-            id: '1',
+            id: '22',
             type: 'credit',
           },
         },
         graduationPlanMapping: {
           data: null,
         },
+        notes: {
+          data: [
+
+          ],
+        },
         contractTerm: {
           data: {
-            id: '6',
+            id: '11',
             type: 'term',
           },
         },
         contractFacilitator: {
           data: {
-            id: '8',
+            id: '53',
             type: 'user',
           },
         },
         contract: {
           data: {
-            id: '6',
+            id: '11',
             type: 'contract',
           },
         },
         user: {
           data: {
-            id: '12',
+            id: '57',
             type: 'user',
           },
         },
@@ -241,6 +279,12 @@ export default {
             type: 'creditTransmittalBatch',
           },
         },
+        enrollment: {
+          data: {
+            id: '27',
+            type: 'enrollment',
+          },
+        },
         childCreditAssignments: {
           data: [
 
@@ -252,14 +296,14 @@ export default {
       },
     },
     {
-      id: '20',
+      id: '68',
       type: 'creditAssignment',
       attributes: {
         creditHours: 0.5,
         enrollmentFinalizedOn: '2019-11-15',
-        contractName: 'Suppono ater concido decerno validus.',
-        contractFacilitatorName: 'Weston Rempel',
-        districtFinalizeApprovedBy: 'Kohler, Cleotilde',
+        contractName: 'Molestias beneficium sunt aedificium decumbo.',
+        contractFacilitatorName: 'Connie Hilpert',
+        districtFinalizeApprovedBy: 'Ziemann, Rashad',
         districtFinalizeApprovedOn: '2019-11-15',
         districtTransmittedOn: null,
         overrideHours: null,
@@ -268,39 +312,50 @@ export default {
       relationships: {
         credit: {
           data: {
-            id: '2',
+            id: '23',
             type: 'credit',
           },
         },
         graduationPlanMapping: {
           data: null,
         },
+        notes: {
+          data: [
+
+          ],
+        },
         contractTerm: {
           data: {
-            id: '6',
+            id: '11',
             type: 'term',
           },
         },
         contractFacilitator: {
           data: {
-            id: '8',
+            id: '53',
             type: 'user',
           },
         },
         contract: {
           data: {
-            id: '6',
+            id: '11',
             type: 'contract',
           },
         },
         user: {
           data: {
-            id: '12',
+            id: '57',
             type: 'user',
           },
         },
         creditTransmittalBatch: {
           data: null,
+        },
+        enrollment: {
+          data: {
+            id: '27',
+            type: 'enrollment',
+          },
         },
         childCreditAssignments: {
           data: [
@@ -313,13 +368,13 @@ export default {
       },
     },
     {
-      id: '21',
+      id: '69',
       type: 'creditAssignment',
       attributes: {
         creditHours: 0.5,
         enrollmentFinalizedOn: '2019-11-15',
-        contractName: 'Suppono ater concido decerno validus.',
-        contractFacilitatorName: 'Weston Rempel',
+        contractName: 'Molestias beneficium sunt aedificium decumbo.',
+        contractFacilitatorName: 'Connie Hilpert',
         districtFinalizeApprovedBy: null,
         districtFinalizeApprovedOn: null,
         districtTransmittedOn: null,
@@ -329,39 +384,50 @@ export default {
       relationships: {
         credit: {
           data: {
-            id: '2',
+            id: '23',
             type: 'credit',
           },
         },
         graduationPlanMapping: {
           data: null,
         },
+        notes: {
+          data: [
+
+          ],
+        },
         contractTerm: {
           data: {
-            id: '6',
+            id: '11',
             type: 'term',
           },
         },
         contractFacilitator: {
           data: {
-            id: '8',
+            id: '53',
             type: 'user',
           },
         },
         contract: {
           data: {
-            id: '6',
+            id: '11',
             type: 'contract',
           },
         },
         user: {
           data: {
-            id: '12',
+            id: '57',
             type: 'user',
           },
         },
         creditTransmittalBatch: {
           data: null,
+        },
+        enrollment: {
+          data: {
+            id: '27',
+            type: 'enrollment',
+          },
         },
         childCreditAssignments: {
           data: [
@@ -374,14 +440,14 @@ export default {
       },
     },
     {
-      id: '25',
+      id: '73',
       type: 'creditAssignment',
       attributes: {
         creditHours: 0.25,
         enrollmentFinalizedOn: '2019-11-15',
-        contractName: 'Coaegresco ulterius creator eligendi apparatus.',
-        contractFacilitatorName: 'Weston Rempel',
-        districtFinalizeApprovedBy: 'Kohler, Cleotilde',
+        contractName: 'Curto sub tracto paulatim pax.',
+        contractFacilitatorName: 'Connie Hilpert',
+        districtFinalizeApprovedBy: 'Ziemann, Rashad',
         districtFinalizeApprovedOn: '2019-11-15',
         districtTransmittedOn: null,
         overrideHours: null,
@@ -390,7 +456,7 @@ export default {
       relationships: {
         credit: {
           data: {
-            id: '1',
+            id: '22',
             type: 'credit',
           },
         },
@@ -400,27 +466,32 @@ export default {
             type: 'graduationPlanMapping',
           },
         },
+        notes: {
+          data: [
+
+          ],
+        },
         contractTerm: {
           data: {
-            id: '6',
+            id: '11',
             type: 'term',
           },
         },
         contractFacilitator: {
           data: {
-            id: '8',
+            id: '53',
             type: 'user',
           },
         },
         contract: {
           data: {
-            id: '7',
+            id: '12',
             type: 'contract',
           },
         },
         user: {
           data: {
-            id: '12',
+            id: '57',
             type: 'user',
           },
         },
@@ -430,6 +501,12 @@ export default {
             type: 'creditTransmittalBatch',
           },
         },
+        enrollment: {
+          data: {
+            id: '29',
+            type: 'enrollment',
+          },
+        },
         childCreditAssignments: {
           data: [
 
@@ -441,14 +518,14 @@ export default {
       },
     },
     {
-      id: '26',
+      id: '74',
       type: 'creditAssignment',
       attributes: {
         creditHours: 0.5,
         enrollmentFinalizedOn: '2019-11-15',
-        contractName: 'Coaegresco ulterius creator eligendi apparatus.',
-        contractFacilitatorName: 'Weston Rempel',
-        districtFinalizeApprovedBy: 'Kohler, Cleotilde',
+        contractName: 'Curto sub tracto paulatim pax.',
+        contractFacilitatorName: 'Connie Hilpert',
+        districtFinalizeApprovedBy: 'Ziemann, Rashad',
         districtFinalizeApprovedOn: '2019-11-15',
         districtTransmittedOn: null,
         overrideHours: null,
@@ -457,7 +534,7 @@ export default {
       relationships: {
         credit: {
           data: {
-            id: '2',
+            id: '23',
             type: 'credit',
           },
         },
@@ -467,32 +544,43 @@ export default {
             type: 'graduationPlanMapping',
           },
         },
+        notes: {
+          data: [
+
+          ],
+        },
         contractTerm: {
           data: {
-            id: '6',
+            id: '11',
             type: 'term',
           },
         },
         contractFacilitator: {
           data: {
-            id: '8',
+            id: '53',
             type: 'user',
           },
         },
         contract: {
           data: {
-            id: '7',
+            id: '12',
             type: 'contract',
           },
         },
         user: {
           data: {
-            id: '12',
+            id: '57',
             type: 'user',
           },
         },
         creditTransmittalBatch: {
           data: null,
+        },
+        enrollment: {
+          data: {
+            id: '29',
+            type: 'enrollment',
+          },
         },
         childCreditAssignments: {
           data: [
@@ -505,13 +593,13 @@ export default {
       },
     },
     {
-      id: '27',
+      id: '75',
       type: 'creditAssignment',
       attributes: {
         creditHours: 0.5,
         enrollmentFinalizedOn: '2019-11-15',
-        contractName: 'Coaegresco ulterius creator eligendi apparatus.',
-        contractFacilitatorName: 'Weston Rempel',
+        contractName: 'Curto sub tracto paulatim pax.',
+        contractFacilitatorName: 'Connie Hilpert',
         districtFinalizeApprovedBy: null,
         districtFinalizeApprovedOn: null,
         districtTransmittedOn: null,
@@ -521,7 +609,7 @@ export default {
       relationships: {
         credit: {
           data: {
-            id: '2',
+            id: '23',
             type: 'credit',
           },
         },
@@ -531,32 +619,43 @@ export default {
             type: 'graduationPlanMapping',
           },
         },
+        notes: {
+          data: [
+
+          ],
+        },
         contractTerm: {
           data: {
-            id: '6',
+            id: '11',
             type: 'term',
           },
         },
         contractFacilitator: {
           data: {
-            id: '8',
+            id: '53',
             type: 'user',
           },
         },
         contract: {
           data: {
-            id: '7',
+            id: '12',
             type: 'contract',
           },
         },
         user: {
           data: {
-            id: '12',
+            id: '57',
             type: 'user',
           },
         },
         creditTransmittalBatch: {
           data: null,
+        },
+        enrollment: {
+          data: {
+            id: '29',
+            type: 'enrollment',
+          },
         },
         childCreditAssignments: {
           data: [
@@ -571,52 +670,40 @@ export default {
   ],
   included: [
     {
-      id: '5',
+      id: '10',
       type: 'contract',
       attributes: {
-        name: 'Quae talio baiulus agnosco voluptas.',
+        name: 'Deserunt vehemens speculum abstergo vapulus.',
         status: 'closed',
-        learningObjectives: 'Tepesco nesciunt aliqua aureus casus.',
-        competencies: 'Vultuosus caveo varietas vix capio.',
-        evaluationMethods: 'Defungo volup vesper eius terreo.',
-        instructionalMaterials: 'Ulciscor animus possimus callide approbo.',
-        location: 'Accusamus canonicus sopor armarium animadverto.',
-        timeslots: [
-          {
-            start: '8:45',
-            end: '10:30',
-            weekdays: '01234',
-          },
-        ],
       },
       relationships: {
         enrollments: {
           data: [
             {
-              id: '11',
+              id: '25',
               type: 'enrollment',
             },
             {
-              id: '12',
+              id: '26',
               type: 'enrollment',
             },
           ],
         },
         facilitator: {
           data: {
-            id: '7',
-            type: 'User',
+            id: '52',
+            type: 'user',
           },
         },
         term: {
           data: {
-            id: '5',
+            id: '10',
             type: 'term',
           },
         },
         category: {
           data: {
-            id: '3',
+            id: '10',
             type: 'category',
           },
         },
@@ -628,31 +715,31 @@ export default {
         creditAssignments: {
           data: [
             {
-              id: '1',
+              id: '49',
               type: 'creditAssignment',
             },
             {
-              id: '13',
+              id: '61',
               type: 'creditAssignment',
             },
             {
-              id: '14',
+              id: '62',
               type: 'creditAssignment',
             },
             {
-              id: '15',
+              id: '63',
               type: 'creditAssignment',
             },
             {
-              id: '16',
+              id: '64',
               type: 'creditAssignment',
             },
             {
-              id: '17',
+              id: '65',
               type: 'creditAssignment',
             },
             {
-              id: '18',
+              id: '66',
               type: 'creditAssignment',
             },
           ],
@@ -662,7 +749,7 @@ export default {
 
           ],
         },
-        ealrs: {
+        learningRequirements: {
           data: [
 
           ],
@@ -670,25 +757,27 @@ export default {
       },
     },
     {
-      id: '7',
+      id: '52',
       type: 'user',
       attributes: {
-        firstName: 'Dominic',
-        lastName: 'Collier',
+        firstName: 'Shayla',
+        lastName: 'Torp',
         nickname: null,
         dateActive: '2012-09-01',
         dateInactive: null,
         districtId: null,
         districtGrade: 12,
-        email: 'janelle@rathskiles.net',
+        email: 'solomon@hills.name',
+        name: 'Shayla Torp',
         status: 'active',
         role: 'staff',
+        isStaff: true,
       },
       relationships: {
         coordinatees: {
           data: [
             {
-              id: '11',
+              id: '56',
               type: 'user',
             },
           ],
@@ -696,10 +785,10 @@ export default {
       },
     },
     {
-      id: '5',
+      id: '10',
       type: 'term',
       attributes: {
-        name: 'Fundamental actuating local area network',
+        name: 'Exclusive maximized interface',
         schoolYear: 2018,
         creditDate: '2019-01-31',
         months: [
@@ -714,7 +803,7 @@ export default {
       meta: null,
     },
     {
-      id: '1',
+      id: '22',
       type: 'credit',
       attributes: {
         courseId: '0',
@@ -724,7 +813,7 @@ export default {
       },
     },
     {
-      id: '2',
+      id: '23',
       type: 'credit',
       attributes: {
         courseId: '0',
@@ -734,52 +823,40 @@ export default {
       },
     },
     {
-      id: '6',
+      id: '11',
       type: 'contract',
       attributes: {
-        name: 'Suppono ater concido decerno validus.',
+        name: 'Molestias beneficium sunt aedificium decumbo.',
         status: 'closed',
-        learningObjectives: 'Cribro adamo consuasor deprimo explicabo.',
-        competencies: 'Usus necessitatibus vulpes terebro vulgivagus.',
-        evaluationMethods: 'Tero unus tabernus stips numquam.',
-        instructionalMaterials: 'Tergiversatio amo ante soluta et.',
-        location: 'Sumptus ancilla vetus vomito terebro.',
-        timeslots: [
-          {
-            start: '8:45',
-            end: '10:30',
-            weekdays: '01234',
-          },
-        ],
       },
       relationships: {
         enrollments: {
           data: [
             {
-              id: '13',
+              id: '27',
               type: 'enrollment',
             },
             {
-              id: '14',
+              id: '28',
               type: 'enrollment',
             },
           ],
         },
         facilitator: {
           data: {
-            id: '8',
-            type: 'User',
+            id: '53',
+            type: 'user',
           },
         },
         term: {
           data: {
-            id: '6',
+            id: '11',
             type: 'term',
           },
         },
         category: {
           data: {
-            id: '4',
+            id: '11',
             type: 'category',
           },
         },
@@ -791,31 +868,31 @@ export default {
         creditAssignments: {
           data: [
             {
-              id: '3',
+              id: '51',
               type: 'creditAssignment',
             },
             {
-              id: '19',
+              id: '67',
               type: 'creditAssignment',
             },
             {
-              id: '20',
+              id: '68',
               type: 'creditAssignment',
             },
             {
-              id: '21',
+              id: '69',
               type: 'creditAssignment',
             },
             {
-              id: '22',
+              id: '70',
               type: 'creditAssignment',
             },
             {
-              id: '23',
+              id: '71',
               type: 'creditAssignment',
             },
             {
-              id: '24',
+              id: '72',
               type: 'creditAssignment',
             },
           ],
@@ -825,7 +902,7 @@ export default {
 
           ],
         },
-        ealrs: {
+        learningRequirements: {
           data: [
 
           ],
@@ -833,29 +910,31 @@ export default {
       },
     },
     {
-      id: '8',
+      id: '53',
       type: 'user',
       attributes: {
-        firstName: 'Weston',
-        lastName: 'Rempel',
+        firstName: 'Connie',
+        lastName: 'Hilpert',
         nickname: null,
         dateActive: '2013-02-01',
         dateInactive: null,
         districtId: null,
         districtGrade: 12,
-        email: 'judsonparker@upton.info',
+        email: 'rico@reichel.com',
+        name: 'Connie Hilpert',
         status: 'active',
         role: 'staff',
+        isStaff: true,
       },
       relationships: {
         coordinatees: {
           data: [
             {
-              id: '12',
+              id: '57',
               type: 'user',
             },
             {
-              id: '13',
+              id: '58',
               type: 'user',
             },
           ],
@@ -863,10 +942,10 @@ export default {
       },
     },
     {
-      id: '6',
+      id: '11',
       type: 'term',
       attributes: {
-        name: 'Re-engineered intermediate extranet',
+        name: 'Balanced object-oriented infrastructure',
         schoolYear: 2018,
         creditDate: '2019-06-15',
         months: [
@@ -881,52 +960,40 @@ export default {
       meta: null,
     },
     {
-      id: '7',
+      id: '12',
       type: 'contract',
       attributes: {
-        name: 'Coaegresco ulterius creator eligendi apparatus.',
+        name: 'Curto sub tracto paulatim pax.',
         status: 'closed',
-        learningObjectives: 'Adulescens altus rem laudantium tondeo.',
-        competencies: 'Molestias rerum esse pax comparo.',
-        evaluationMethods: 'Fugit contra tunc autem defaeco.',
-        instructionalMaterials: 'Tempus cilicium et tenax ubi.',
-        location: 'Valetudo usitas arx deorsum quos.',
-        timeslots: [
-          {
-            start: '8:45',
-            end: '10:30',
-            weekdays: '01234',
-          },
-        ],
       },
       relationships: {
         enrollments: {
           data: [
             {
-              id: '15',
+              id: '29',
               type: 'enrollment',
             },
             {
-              id: '16',
+              id: '30',
               type: 'enrollment',
             },
           ],
         },
         facilitator: {
           data: {
-            id: '8',
-            type: 'User',
+            id: '53',
+            type: 'user',
           },
         },
         term: {
           data: {
-            id: '6',
+            id: '11',
             type: 'term',
           },
         },
         category: {
           data: {
-            id: '4',
+            id: '11',
             type: 'category',
           },
         },
@@ -938,31 +1005,31 @@ export default {
         creditAssignments: {
           data: [
             {
-              id: '5',
+              id: '53',
               type: 'creditAssignment',
             },
             {
-              id: '25',
+              id: '73',
               type: 'creditAssignment',
             },
             {
-              id: '26',
+              id: '74',
               type: 'creditAssignment',
             },
             {
-              id: '27',
+              id: '75',
               type: 'creditAssignment',
             },
             {
-              id: '28',
+              id: '76',
               type: 'creditAssignment',
             },
             {
-              id: '29',
+              id: '77',
               type: 'creditAssignment',
             },
             {
-              id: '30',
+              id: '78',
               type: 'creditAssignment',
             },
           ],
@@ -972,7 +1039,7 @@ export default {
 
           ],
         },
-        ealrs: {
+        learningRequirements: {
           data: [
 
           ],

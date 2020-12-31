@@ -1,12 +1,11 @@
 import Controller, { inject } from '@ember/controller';
-import { computed } from '@ember/object';
 
 export default Controller.extend({
   'admin-users.index': inject(),
 
-  queryParams: computed(() => {}),
-  terms: computed(() => []),
-  staff: computed(() => []),
+  queryParams: (() => ({}))(),
+  terms: (() => ([]))(),
+  staff: (() => ([]))(),
 
   actions: {
     filterUsers(queryParams) {

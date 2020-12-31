@@ -27,6 +27,6 @@ module('Integration | Component | contract-detail', (hooks) => {
 
     assert.ok(find('.contract-detail'), 'the containing div rendered');
 
-    assert.equal(findAll('dl[data-test-ealrs] dt').length, contract.relationships.ealrs.data.length, 'expected EALR entries rendered');
+    assert.equal(findAll('.learning-requirements tbody tr').length, contract.relationships.learningRequirements.data.length, 'expected learning requirements entries rendered');
   });
 });

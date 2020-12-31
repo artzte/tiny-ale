@@ -62,7 +62,7 @@ class Contract < ApplicationRecord
   STATUS_ACTIVE = 1
   STATUS_CLOSED = 2
   STATUS_NAMES = { STATUS_PROPOSED => 'Proposed',
-                   STATUS_ACTIVE => 'Approved',
+                   STATUS_ACTIVE => 'Active',
                    STATUS_CLOSED => 'Closed' }.freeze
 
   def status_name

@@ -2,21 +2,21 @@ import Route from '@ember/routing/route';
 import { inject as service } from '@ember/service';
 import { createEntity } from '../../utils/json-api';
 
-export default class SettingsCompetenciesNewRoute extends Route {
+export default class SettingsLearningRequirementsNewRoute extends Route {
   @service('tinyData') tinyData;
 
   // eslint-disable-next-line class-methods-use-this
   model() {
-    return createEntity('competency');
+    return createEntity('learningRequirement');
   }
 
   async setupController(controller, model) {
-    const [competencies, categories] = this.modelFor('settings-competencies');
+    const [learningRequirements, categories] = this.modelFor('settings-learning-requirements');
 
     controller.setProperties({
       model,
       categories,
-      competencies: competencies.data,
+      learningRequirements: learningRequirements.data,
     });
   }
 }

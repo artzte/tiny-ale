@@ -15,11 +15,16 @@ import contractDetailFixture from '../fixtures/contract-detail';
 import contractAttendanceRollMeetingFixture from '../fixtures/contract-attendance-roll-meeting';
 import contractAttendanceRollEnrollments from '../fixtures/contract-attendance-roll-enrollments';
 import contractAttendanceRollNotes from '../fixtures/contract-attendance-roll-notes';
+import learningRequirements from '../fixtures/learning-requirements';
+import categories from '../fixtures/categories';
+
+import terms from '../fixtures/terms';
+import staff from '../fixtures/staff';
 
 let server;
 let localStorage;
 
-const contractAttendanceRollUrl = `/tiny/contract/${contractDetailFixture.data.id}/attendance/${contractAttendanceRollMeetingFixture.data.id}`;
+const contractAttendanceRollUrl = `/tiny/contracts/${contractDetailFixture.data.id}/attendance/${contractAttendanceRollMeetingFixture.data.id}`;
 
 module('Acceptance | contract attendance roll', (hooks) => {
   setupApplicationTest(hooks);
@@ -34,8 +39,12 @@ module('Acceptance | contract attendance roll', (hooks) => {
     server.addRequest('get', '/api/meetings/:id', contractAttendanceRollMeetingFixture);
     server.addRequest('get', '/api/enrollments', contractAttendanceRollEnrollments);
     server.addRequest('get', '/api/notes', contractAttendanceRollNotes);
+    server.addRequest('get', '/api/learning-requirements', learningRequirements);
+    server.addRequest('get', '/api/terms', terms);
+    server.addRequest('get', '/api/staff', staff);
+    server.addRequest('get', '/api/categories', categories);
 
-    assert.timeout(500);
+    assert.timeout(1000);
   });
 
   hooks.afterEach(() => {
@@ -53,20 +62,18 @@ module('Acceptance | contract attendance roll', (hooks) => {
 
 
   test(`exercising set-all on ${contractAttendanceRollUrl}`, async (assert) => {
-    const updatedParticipants = server.getFixture('/api/meetings/:id')
+    const meetingFixture = server.getFixture('/api/meetings/:id');
+
+    meetingFixture
       .included
       .filter(record => record.type === 'meetingParticipant')
-      .map(mp => ({
-        ...mp,
-        attributes: {
-          ...mp.attributes,
-          contactType: 'coor',
-          participation: 'absent',
-        },
-      }));
-    const patchPath = '/api/meetings/1/update_roll';
+      .forEach((mp) => {
+        mp.attributes.contactType = 'coor';
+        mp.attributes.participation = 'absent';
+      });
+    const patchPath = `/api/meetings/${meetingFixture.data.id}/update-roll`;
 
-    server.addRequest('patch', patchPath, { data: updatedParticipants });
+    server.addRequest('patch', patchPath, meetingFixture);
     await visit(contractAttendanceRollUrl);
 
     await new Interactor('t-contract-attendance-roll-set-all select[name="participation"]').select('Absent');

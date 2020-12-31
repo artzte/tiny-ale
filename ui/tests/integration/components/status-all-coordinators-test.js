@@ -11,6 +11,7 @@ import coorTerms from '../../fixtures/coor-terms';
 
 const [term] = coorTerms.data;
 let tinyDataServiceMock;
+let coordinator;
 
 module('Integration | Component | status-all-coordinators', (hooks) => {
   setupRenderingTest(hooks);
@@ -25,6 +26,8 @@ module('Integration | Component | status-all-coordinators', (hooks) => {
       term: clone(term),
       statuses: clone(coorStatus),
     });
+
+    coordinator = coorStatus.included.find(user => user.type === 'user');
   });
 
   test('it renders expected markup with two staff on 9/15/2019', async function (assert) {
@@ -45,38 +48,37 @@ module('Integration | Component | status-all-coordinators', (hooks) => {
     const rows = findAll('tbody tr');
     assert.equal(rows.length, coorStaff.data.length, 'expected number of staff rows were rendered');
 
-    const [coor1] = coorStaff.data;
-    const coorRow = find(`tr[data-test-coordinator-id="${coor1.id}"]`);
+    const coorRow = find(`tr[data-test-coordinator-id="${coordinator.id}"]`);
 
     assert.ok(coorRow, 'expected coordinator row was rendered');
 
-    const coorColumns = findAll(`tr[data-test-coordinator-id="${coor1.id}"] td`);
+    const coorColumns = findAll(`tr[data-test-coordinator-id="${coordinator.id}"] td`);
     assert.equal(coorColumns.length, term.attributes.months.length + 1, 'expected number of columns rendered');
 
-    const coorActiveColumns = findAll(`tr[data-test-coordinator-id="${coor1.id}"] td.active`);
+    const coorActiveColumns = findAll(`tr[data-test-coordinator-id="${coordinator.id}"] td.active`);
     assert.equal(coorActiveColumns.length, 1, 'expected number of active columns rendered');
 
-    const coorActiveColumn = find(`tr[data-test-coordinator-id="${coor1.id}"] td.active`);
+    const coorActiveColumn = find(`tr[data-test-coordinator-id="${coordinator.id}"] td.active`);
     assert.ok(coorActiveColumn, 'active column selection successful');
 
-    const coorActiveLink = find(`tr[data-test-coordinator-id="${coor1.id}"] td.active a`);
+    const coorActiveLink = find(`tr[data-test-coordinator-id="${coordinator.id}"] td.active a`);
     assert.equal(coorActiveLink.title, 'Complete', 'expected title rendered for active');
 
     assert.equal(coorActiveLink.text.trim(), 'C', 'first month is marked as complete');
 
     const [firstMonth] = this.term.attributes.months;
 
-    // drop the first status month for coor1
+    // drop the first status month for coordinator
     //
     const { statuses } = this;
-    const filteredData = statuses.data.filter(status => status.month !== firstMonth && status.coordinatorId === coor1.id);
+    const filteredData = statuses.data.filter(status => status.month !== firstMonth && status.coordinatorId === coordinator.id);
 
     this.set('statuses', Object.assign({}, statuses, {
       data: filteredData,
     }));
 
-    const coorActiveIncompleteLink = find(`tr[data-test-coordinator-id="${coor1.id}"] td.active a`);
-    assert.equal(coorActiveIncompleteLink.title, 'Incomplete', 'expected title rendered for active');
+    const coorActiveIncompleteLink = find(`tr[data-test-coordinator-id="${coordinator.id}"] td.active a`);
+    assert.equal(coorActiveIncompleteLink.title, 'Incomplete', 'expected title rendered for incomplete');
     assert.equal(coorActiveIncompleteLink.text.trim(), 'I', 'first month is now marked as incomplete');
   });
 
@@ -99,28 +101,27 @@ module('Integration | Component | status-all-coordinators', (hooks) => {
     const rows = findAll('tbody tr');
     assert.equal(rows.length, coorStaff.data.length, 'expected number of staff rows were rendered');
 
-    const [coor1] = coorStaff.data;
-    const coorRow = find(`tr[data-test-coordinator-id="${coor1.id}"]`);
+    const coorRow = find(`tr[data-test-coordinator-id="${coordinator.id}"]`);
 
     assert.ok(coorRow, 'expected coordinator row was rendered');
 
-    const coorColumns = findAll(`tr[data-test-coordinator-id="${coor1.id}"] td`);
+    const coorColumns = findAll(`tr[data-test-coordinator-id="${coordinator.id}"] td`);
     assert.equal(coorColumns.length, term.attributes.months.length + 1, 'expected number of columns rendered');
 
-    const coorActiveColumns = findAll(`tr[data-test-coordinator-id="${coor1.id}"] td.active`);
+    const coorActiveColumns = findAll(`tr[data-test-coordinator-id="${coordinator.id}"] td.active`);
     assert.equal(coorActiveColumns.length, 4, 'expected number of active columns rendered');
 
-    const coorActiveColumn = find(`tr[data-test-coordinator-id="${coor1.id}"] td.active`);
+    const coorActiveColumn = find(`tr[data-test-coordinator-id="${coordinator.id}"] td.active`);
     assert.ok(coorActiveColumn, 'active column selection successful');
 
-    const coorActiveLink = find(`tr[data-test-coordinator-id="${coor1.id}"] td.active a`);
+    const coorActiveLink = find(`tr[data-test-coordinator-id="${coordinator.id}"] td.active a`);
     assert.equal(coorActiveLink.title, 'Complete', 'expected title rendered for active');
     assert.equal(coorActiveLink.text.trim(), 'C', 'first month is marked as complete');
 
-    const coorActiveIncompleteColumns = findAll(`tr[data-test-coordinator-id="${coor1.id}"] td.active.incomplete`);
+    const coorActiveIncompleteColumns = findAll(`tr[data-test-coordinator-id="${coordinator.id}"] td.active.incomplete`);
     assert.equal(coorActiveIncompleteColumns.length, 2, 'expected number of active, incomplete columns rendered');
 
-    const coorActiveInvalidLink = find(`tr[data-test-coordinator-id="${coor1.id}"] td.active.incomplete a`);
+    const coorActiveInvalidLink = find(`tr[data-test-coordinator-id="${coordinator.id}"] td.active.incomplete a`);
     assert.equal(coorActiveInvalidLink.title, 'Incomplete', 'expected title rendered for active incomplete');
     assert.equal(coorActiveInvalidLink.text.trim(), 'I', 'month is marked as incomplete');
   });

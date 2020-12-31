@@ -1,8 +1,8 @@
-// GET /api/statuses?enrollmentIds=5,6,7
+// GET /api/statuses?enrollmentIds=19,20,21
 export default {
   data: [
     {
-      id: '1',
+      id: '37',
       type: 'status',
       attributes: {
         month: '2019-09-01',
@@ -17,20 +17,20 @@ export default {
       relationships: {
         creator: {
           data: {
-            id: '7',
-            type: 'creator',
+            id: '52',
+            type: 'user',
           },
         },
         statusable: {
           data: {
-            id: '5',
+            id: '19',
             type: 'enrollment',
           },
         },
       },
     },
     {
-      id: '2',
+      id: '38',
       type: 'status',
       attributes: {
         month: '2019-10-01',
@@ -45,20 +45,20 @@ export default {
       relationships: {
         creator: {
           data: {
-            id: '7',
-            type: 'creator',
+            id: '52',
+            type: 'user',
           },
         },
         statusable: {
           data: {
-            id: '5',
+            id: '19',
             type: 'enrollment',
           },
         },
       },
     },
     {
-      id: '3',
+      id: '39',
       type: 'status',
       attributes: {
         month: '2019-11-01',
@@ -73,20 +73,20 @@ export default {
       relationships: {
         creator: {
           data: {
-            id: '7',
-            type: 'creator',
+            id: '52',
+            type: 'user',
           },
         },
         statusable: {
           data: {
-            id: '5',
+            id: '19',
             type: 'enrollment',
           },
         },
       },
     },
     {
-      id: '4',
+      id: '40',
       type: 'status',
       attributes: {
         month: '2019-09-01',
@@ -101,20 +101,20 @@ export default {
       relationships: {
         creator: {
           data: {
-            id: '7',
-            type: 'creator',
+            id: '52',
+            type: 'user',
           },
         },
         statusable: {
           data: {
-            id: '6',
+            id: '20',
             type: 'enrollment',
           },
         },
       },
     },
     {
-      id: '5',
+      id: '41',
       type: 'status',
       attributes: {
         month: '2019-10-01',
@@ -129,20 +129,20 @@ export default {
       relationships: {
         creator: {
           data: {
-            id: '7',
-            type: 'creator',
+            id: '52',
+            type: 'user',
           },
         },
         statusable: {
           data: {
-            id: '6',
+            id: '20',
             type: 'enrollment',
           },
         },
       },
     },
     {
-      id: '6',
+      id: '42',
       type: 'status',
       attributes: {
         month: '2019-11-01',
@@ -157,20 +157,20 @@ export default {
       relationships: {
         creator: {
           data: {
-            id: '7',
-            type: 'creator',
+            id: '52',
+            type: 'user',
           },
         },
         statusable: {
           data: {
-            id: '6',
+            id: '20',
             type: 'enrollment',
           },
         },
       },
     },
     {
-      id: '7',
+      id: '43',
       type: 'status',
       attributes: {
         month: '2019-09-01',
@@ -185,20 +185,20 @@ export default {
       relationships: {
         creator: {
           data: {
-            id: '7',
-            type: 'creator',
+            id: '52',
+            type: 'user',
           },
         },
         statusable: {
           data: {
-            id: '7',
+            id: '21',
             type: 'enrollment',
           },
         },
       },
     },
     {
-      id: '8',
+      id: '44',
       type: 'status',
       attributes: {
         month: '2019-10-01',
@@ -213,20 +213,20 @@ export default {
       relationships: {
         creator: {
           data: {
-            id: '7',
-            type: 'creator',
+            id: '52',
+            type: 'user',
           },
         },
         statusable: {
           data: {
-            id: '7',
+            id: '21',
             type: 'enrollment',
           },
         },
       },
     },
     {
-      id: '9',
+      id: '45',
       type: 'status',
       attributes: {
         month: '2019-11-01',
@@ -241,13 +241,13 @@ export default {
       relationships: {
         creator: {
           data: {
-            id: '7',
-            type: 'creator',
+            id: '52',
+            type: 'user',
           },
         },
         statusable: {
           data: {
-            id: '7',
+            id: '21',
             type: 'enrollment',
           },
         },
@@ -256,25 +256,27 @@ export default {
   ],
   included: [
     {
-      id: '7',
+      id: '52',
       type: 'user',
       attributes: {
-        firstName: 'Dominic',
-        lastName: 'Collier',
+        firstName: 'Shayla',
+        lastName: 'Torp',
         nickname: null,
         dateActive: '2012-09-01',
         dateInactive: null,
         districtId: null,
         districtGrade: 12,
-        email: 'janelle@rathskiles.net',
+        email: 'solomon@hills.name',
+        name: 'Shayla Torp',
         status: 'active',
         role: 'staff',
+        isStaff: true,
       },
       relationships: {
         coordinatees: {
           data: [
             {
-              id: '11',
+              id: '56',
               type: 'user',
             },
           ],

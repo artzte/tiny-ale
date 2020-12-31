@@ -1,6 +1,8 @@
-.t-form {
+TBox {
   @apply px-8 py-4 bg-gray-100 shadow-inner w-full rounded-sm;
+}
 
+.t-form {
   .submit-row {
     hrule {
       @apply block border-t border-gray-300 mt-10 mb-2;
@@ -103,6 +105,18 @@ value-button {
 
     &:visited {
       @apply text-black;
+    }
+  }
+
+  &.btn-small {
+    background: inherit;
+    text-transform: uppercase;
+    @apply text-gray-900;
+    padding: 2px 6px;
+    font-size: small;
+
+    &:disabled {
+      @apply text-gray-600;
     }
   }
 

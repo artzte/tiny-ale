@@ -19,10 +19,12 @@
     {{/form-input}}
   </p>
   <p>
-    {{#form-input error=errors.competency showErrors=showErrors for="competency" label="Competency"}}
+    {{#form-input error=errors.ealr showErrors=showErrors for="ealr" label="Description"}}
       <textarea
-        name="competency"
-      >{{pojo.competency}}</textarea>
+        name="ealr"
+      >
+        {{pojo.ealr}}
+      </textarea>
     {{/form-input}}
   </p>
 </fieldset>
@@ -30,7 +32,7 @@
 {{#t-form-actions-row
   disabled=disabled
 }}
-  {{#link-to "settings-competencies" class="btn btn-clear"}}
+  {{#link-to "settings-learning-requirements" class="btn btn-clear"}}
     Cancel
   {{/link-to}}
 {{/t-form-actions-row}}

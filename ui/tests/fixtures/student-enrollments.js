@@ -1,8 +1,8 @@
-// GET /api/enrollments?participantIds=11&status=enrolled&include=contract,contract.facilitator,contract.term,credit_assignments,credit_assignments.credit,participant
+// GET /api/enrollments?participantIds=56&status=enrolled&include=contract,contract.facilitator,contract.term,credit_assignments,credit_assignments.credit,participant
 export default {
   data: [
     {
-      id: '5',
+      id: '19',
       type: 'enrollment',
       attributes: {
         finalizedOn: null,
@@ -12,20 +12,20 @@ export default {
       relationships: {
         contract: {
           data: {
-            id: '9',
+            id: '14',
             type: 'contract',
           },
         },
         participant: {
           data: {
-            id: '11',
-            type: 'participant',
+            id: '56',
+            type: 'user',
           },
         },
         creditAssignments: {
           data: [
             {
-              id: '7',
+              id: '55',
               type: 'creditAssignment',
             },
           ],
@@ -81,7 +81,7 @@ export default {
       },
     },
     {
-      id: '8',
+      id: '22',
       type: 'enrollment',
       attributes: {
         finalizedOn: null,
@@ -91,20 +91,20 @@ export default {
       relationships: {
         contract: {
           data: {
-            id: '10',
+            id: '15',
             type: 'contract',
           },
         },
         participant: {
           data: {
-            id: '11',
-            type: 'participant',
+            id: '56',
+            type: 'user',
           },
         },
         creditAssignments: {
           data: [
             {
-              id: '10',
+              id: '58',
               type: 'creditAssignment',
             },
           ],
@@ -124,56 +124,44 @@ export default {
   ],
   included: [
     {
-      id: '9',
+      id: '14',
       type: 'contract',
       attributes: {
-        name: 'Demergo somnus denuncio tamen solitudo.',
-        status: 'approved',
-        learningObjectives: 'Capillus terga certo viscus texo.',
-        competencies: 'Armarium carmen ambitus cerno vero.',
-        evaluationMethods: 'Et amor vinco articulus cohibeo.',
-        instructionalMaterials: 'Inflammatio venustas tracto vix verus.',
-        location: 'Molestiae acidus vis sed nihil.',
-        timeslots: [
-          {
-            start: '8:45',
-            end: '10:30',
-            weekdays: '01234',
-          },
-        ],
+        name: 'Acidus copiose peior coruscus utpote.',
+        status: 'active',
       },
       relationships: {
         enrollments: {
           data: [
             {
-              id: '5',
+              id: '19',
               type: 'enrollment',
             },
             {
-              id: '6',
+              id: '20',
               type: 'enrollment',
             },
             {
-              id: '7',
+              id: '21',
               type: 'enrollment',
             },
           ],
         },
         facilitator: {
           data: {
-            id: '7',
-            type: 'User',
+            id: '52',
+            type: 'user',
           },
         },
         term: {
           data: {
-            id: '7',
+            id: '12',
             type: 'term',
           },
         },
         category: {
           data: {
-            id: '3',
+            id: '10',
             type: 'category',
           },
         },
@@ -204,7 +192,7 @@ export default {
         creditAssignments: {
           data: [
             {
-              id: '2',
+              id: '50',
               type: 'creditAssignment',
             },
           ],
@@ -233,48 +221,50 @@ export default {
             },
           ],
         },
-        ealrs: {
+        learningRequirements: {
           data: [
             {
-              id: '1',
-              type: 'ealr',
+              id: '12',
+              type: 'learningRequirement',
             },
             {
-              id: '2',
-              type: 'ealr',
+              id: '13',
+              type: 'learningRequirement',
             },
             {
-              id: '3',
-              type: 'ealr',
+              id: '14',
+              type: 'learningRequirement',
             },
             {
-              id: '4',
-              type: 'ealr',
+              id: '15',
+              type: 'learningRequirement',
             },
           ],
         },
       },
     },
     {
-      id: '7',
+      id: '52',
       type: 'user',
       attributes: {
-        firstName: 'Dominic',
-        lastName: 'Collier',
+        firstName: 'Shayla',
+        lastName: 'Torp',
         nickname: null,
         dateActive: '2012-09-01',
         dateInactive: null,
         districtId: null,
         districtGrade: 12,
-        email: 'janelle@rathskiles.net',
+        email: 'solomon@hills.name',
+        name: 'Shayla Torp',
         status: 'active',
         role: 'staff',
+        isStaff: true,
       },
       relationships: {
         coordinatees: {
           data: [
             {
-              id: '11',
+              id: '56',
               type: 'user',
             },
           ],
@@ -282,10 +272,10 @@ export default {
       },
     },
     {
-      id: '7',
+      id: '12',
       type: 'term',
       attributes: {
-        name: 'Seamless contextually-based encoding',
+        name: 'Mandatory 24/7 moratorium',
         schoolYear: 2019,
         creditDate: '2020-01-31',
         months: [
@@ -300,7 +290,7 @@ export default {
       meta: null,
     },
     {
-      id: '7',
+      id: '55',
       type: 'creditAssignment',
       attributes: {
         creditHours: 1.0,
@@ -308,12 +298,17 @@ export default {
       relationships: {
         credit: {
           data: {
-            id: '1',
+            id: '22',
             type: 'credit',
           },
         },
         graduationPlanMapping: {
           data: null,
+        },
+        notes: {
+          data: [
+
+          ],
         },
         contractTerm: {
           data: null,
@@ -329,6 +324,12 @@ export default {
         },
         creditTransmittalBatch: {
           data: null,
+        },
+        enrollment: {
+          data: {
+            id: '19',
+            type: 'enrollment',
+          },
         },
         childCreditAssignments: {
           data: [
@@ -341,7 +342,7 @@ export default {
       },
     },
     {
-      id: '1',
+      id: '22',
       type: 'credit',
       attributes: {
         courseId: '0',
@@ -351,80 +352,70 @@ export default {
       },
     },
     {
-      id: '11',
+      id: '56',
       type: 'user',
       attributes: {
-        firstName: 'Leatrice',
-        lastName: 'Bednar',
+        firstName: 'Jerold',
+        lastName: 'Klein',
         nickname: null,
         dateActive: '2018-08-01',
         dateInactive: null,
-        districtId: '2870279804',
-        districtGrade: 12,
-        email: null,
+        districtId: '4809648277',
+        districtGrade: 9,
+        email: 'catricegislason@gottlieb.net',
+        name: 'Jerold Klein',
         status: 'active',
         role: 'student',
+        isStaff: false,
       },
       relationships: {
         coordinator: {
           data: {
-            id: '7',
+            id: '52',
             type: 'user',
           },
         },
       },
     },
     {
-      id: '10',
+      id: '15',
       type: 'contract',
       attributes: {
-        name: 'Tenus iusto coadunatio vicinus deorsum.',
-        status: 'approved',
-        learningObjectives: 'Adultus cultura bibo tubineus caste.',
-        competencies: 'Cauda dedico tertius venustas subiungo.',
-        evaluationMethods: 'Arma attonbitus arbor strues perspiciatis.',
-        instructionalMaterials: 'Aut adhuc ab vinco traho.',
-        location: 'Patria sunt triduana statua et.',
-        timeslots: [
-          {
-            start: '8:45',
-            end: '10:30',
-            weekdays: '01234',
-          },
-        ],
+        name: 'Demum verus sed sit valens.',
+        status: 'active',
       },
       relationships: {
         enrollments: {
           data: [
             {
-              id: '8',
+              id: '22',
               type: 'enrollment',
             },
             {
-              id: '9',
+              id: '23',
               type: 'enrollment',
             },
             {
-              id: '10',
+              id: '24',
               type: 'enrollment',
             },
           ],
         },
         facilitator: {
           data: {
-            id: '8',
-            type: 'User',
+            id: '53',
+            type: 'user',
           },
         },
         term: {
           data: {
-            id: '7',
+            id: '12',
             type: 'term',
           },
         },
         category: {
           data: {
-            id: '4',
+            id: '11',
             type: 'category',
           },
         },
@@ -436,7 +427,7 @@ export default {
         creditAssignments: {
           data: [
             {
-              id: '4',
+              id: '52',
               type: 'creditAssignment',
             },
           ],
@@ -446,7 +437,7 @@ export default {
 
           ],
         },
-        ealrs: {
+        learningRequirements: {
           data: [
 
           ],
@@ -454,29 +445,31 @@ export default {
       },
     },
     {
-      id: '8',
+      id: '53',
       type: 'user',
       attributes: {
-        firstName: 'Weston',
-        lastName: 'Rempel',
+        firstName: 'Connie',
+        lastName: 'Hilpert',
         nickname: null,
         dateActive: '2013-02-01',
         dateInactive: null,
         districtId: null,
         districtGrade: 12,
-        email: 'judsonparker@upton.info',
+        email: 'rico@reichel.com',
+        name: 'Connie Hilpert',
         status: 'active',
         role: 'staff',
+        isStaff: true,
       },
       relationships: {
         coordinatees: {
           data: [
             {
-              id: '12',
+              id: '57',
               type: 'user',
             },
             {
-              id: '13',
+              id: '58',
               type: 'user',
             },
           ],
@@ -484,7 +477,7 @@ export default {
       },
     },
     {
-      id: '10',
+      id: '58',
       type: 'creditAssignment',
       attributes: {
         creditHours: 1.0,
@@ -492,12 +485,17 @@ export default {
       relationships: {
         credit: {
           data: {
-            id: '1',
+            id: '22',
             type: 'credit',
           },
         },
         graduationPlanMapping: {
           data: null,
+        },
+        notes: {
+          data: [
+
+          ],
         },
         contractTerm: {
           data: null,
@@ -513,6 +511,12 @@ export default {
         },
         creditTransmittalBatch: {
           data: null,
+        },
+        enrollment: {
+          data: {
+            id: '22',
+            type: 'enrollment',
+          },
         },
         childCreditAssignments: {
           data: [

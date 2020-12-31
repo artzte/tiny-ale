@@ -1,0 +1,10 @@
+<h2>New contract</h2>
+
+<ContractAttributes
+  @contract={{this.contract}}
+  @updateContract={{action 'updateContract'}}
+  @loading={{loading}}
+  @isEditing={{true}}
+  @cancelEditing={{fn this.redirectToIndex}}
+  @isNew={{true}}
+/>

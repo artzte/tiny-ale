@@ -8,5 +8,7 @@
 @import "./forms";
 @import "./tables";
 @import "./navigation";
+@import "./typography";
+
 
 @import "../../vendor/tailwindcss/utilities";

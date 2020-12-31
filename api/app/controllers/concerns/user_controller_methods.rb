@@ -11,10 +11,6 @@ module UserControllerMethods
   end
 
   def index
-    limit = search_conditions[:limit] || Rails.configuration.constants[:DEFAULT_LIMIT]
-
-    limit = nil if limit == '-1'
-
     order = (search_conditions[:order] || '')
             .split(',')
             .map(&:strip)
@@ -103,7 +99,7 @@ module UserControllerMethods
              .where(scope_conditions)
              .includes(:coordinator)
              .joins(coordinators_join)
-             .limit(limit)
+             .limit(@limit)
              .order(Arel.sql(order))
 
     count = User
@@ -168,6 +164,6 @@ module UserControllerMethods
   end
 
   def search_conditions
-    params.permit(:name, :status, :limit, :order, :grade, :role, :coordinatorIds, :schoolYear, :scope)
+    params.permit(:name, :status, :order, :grade, :role, :coordinatorIds, :schoolYear, :scope, :limit)
   end
 end

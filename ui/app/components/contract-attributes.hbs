@@ -1,0 +1,167 @@
+<TForm
+  @model={{@contract}}
+  @save={{action "save"}}
+
+  @reportError={{action "reportError"}}
+  @onUpdatePojo={{action "didUpdatePojo"}}
+  @validator={{this.validator}}
+  @validateRelationships={{this.validateRelationships}}
+  as |form|
+>
+  <h2>
+    Details
+    {{#if @isNew}}
+      <EditSaveCancel
+        @disabled={{@disabled}}
+        @editing={{true}}
+      />
+    {{else}}
+      <EditSaveCancel
+        @onEdit={{action 'showEdit'}}
+        @onCancel={{action 'showDetails'}}
+        @disabled={{@disabled}}
+        @editing={{this.isEditing}}
+      />
+    {{/if}}
+  </h2>
+  
+  {{#if this.isEditing}}
+    <fieldset>
+      <p>
+        <FormInput
+          @label="Contract name"
+          @showErrors={{form.showErrors}}
+          @error={{form.errors.name}}
+        >
+          <input
+            autofocus
+            type="text"
+            value={{form.pojo.name}}
+            name="name"
+            onchange={{action 'onChange' target=form}}
+          />
+        </FormInput>
+      </p>
+      <p>
+        <FormInput
+          @error={{form.errors.facilitator}}
+          @showErrors={{form.showErrors}}
+          @label="Facilitator" 
+        >
+          <TSelect
+            name="facilitator"
+            @prompt="Pick a facilitator"
+            @optionsList={{this.staffOptions}}
+            @value={{form.relationships.facilitator.id}}
+            @onchange={{action 'onChangeRelationship' target=form}}
+          />
+        </FormInput>
+      </p>
+      <p>
+        <FormInput
+          @error={{form.errors.category}}
+          @showErrors={{form.showErrors}}
+          @label="Category" 
+        >
+          <TSelect
+            name="category"
+            @prompt="Pick a category"
+            @optionsList={{this.categoryOptions}}
+            @value={{form.relationships.category.id}}
+            @onchange={{action 'onChangeRelationship' target=form}}
+          />
+        </FormInput>
+      </p>
+      <p>
+        <FormInput
+          @error={{form.errors.term}}
+          @showErrors={{form.showErrors}}
+          @label="Term" 
+        >
+          <TermSelect
+            name="term"
+            @prompt="Pick a term"
+            @terms={{this.terms}}
+            @value={{form.relationships.term.id}}
+            @onchange={{action 'onChangeRelationship' target=form}}
+          />
+        </FormInput>
+      </p>
+    </fieldset>
+    <fieldset>
+      <p>
+        <FormInput
+          @error={{form.errors.location}}
+          @showErrors={{form.showErrors}}
+          @label="Location" 
+        >
+          <input
+            type="text"
+            name="location"
+            value={{form.pojo.location}}
+            onchange={{action 'onChange' target=form}}
+          />
+        </FormInput>
+      </p>
+    </fieldset>
+    <fieldset>
+      <p>
+        <FormInput
+          @label="Learning objectives" 
+          @showErrors={{form.showErrors}}
+          @error={{form.errors.learningObjectives}}
+        >
+          <MarkdownBox
+            name="learningObjectives"
+            value={{form.pojo.learningObjectives}}
+            onchange={{action 'onChange' target=form}}
+          />
+        </FormInput>
+      </p>
+      <p>
+        <FormInput
+          @label="Competencies" 
+        >
+          <MarkdownBox
+            name="competencies"
+            value={{form.pojo.competencies}}
+            onchange={{action 'onChange' target=form}}
+          />
+        </FormInput>
+      </p>
+      <p>
+        <FormInput
+          @label="Evaluation methods" 
+        >
+          <MarkdownBox
+            name="evaluationMethods"
+            value={{form.pojo.evaluationMethods}}
+            onchange={{action 'onChange' target=form}}
+          />
+        </FormInput>
+      </p>
+      <p>
+        <FormInput
+          @label="Instructional materials" 
+        >
+          <MarkdownBox
+            name="instructionalMaterials"
+            value={{form.pojo.instructionalMaterials}}
+            onchange={{action 'onChange' target=form}}
+          />
+        </FormInput>
+      </p>
+    </fieldset>
+  {{else}}  {{!-- is not editing at the moment --}}
+    {{#if this.hasDetails}}
+      {{#each detailSections as |section|}}
+        <h3>{{titleize section.name}}</h3>
+        <p>
+          {{section.content}}
+        </p>
+      {{/each}}
+    {{else}}
+      <p>No details specified.</p>
+    {{/if}}
+  {{/if}}
+</TForm>

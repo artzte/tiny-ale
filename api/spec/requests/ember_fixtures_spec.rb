@@ -146,7 +146,7 @@ RSpec.describe 'Ember fixtures script', type: :request do
         create :credit_assignment, credit: @credit2, contract: contract, credit_hours: 2
       end
 
-      (1..2).each do |category_num|
+      (1..3).each do |category_num|
         category_name = "Category #{category_num}"
         (1..2).each do |num|
           seq = "#{category_num}.#{num}"
@@ -154,7 +154,7 @@ RSpec.describe 'Ember fixtures script', type: :request do
         end
       end
 
-      LearningRequirement.all.each do |req|
+      LearningRequirement.where(category: ['Category 1', 'Category 2']).each do |req|
         @contract1_current.learning_requirements << req
       end
       @contract1_current.save!
@@ -304,8 +304,11 @@ RSpec.describe 'Ember fixtures script', type: :request do
         # active coor terms
         write_fixture '/api/terms?type=coor&status=active', 'coor-terms.js'
 
+        # contract list
+        write_fixture "/api/contracts?limit=20&order=name&include=term,category,facilitator&schoolYear=#{CURRENT_YEAR}", "contracts-list.js"
+
         # contract detail
-        write_fixture "/api/contracts/#{@contract1_current.id}?include=category,facilitator,assignments,meetings,creditAssignments,creditAssignments.credit,term,ealrs", 'contract-detail.js'
+        write_fixture "/api/contracts/#{@contract1_current.id}?include=category,facilitator,assignments,meetings,creditAssignments,creditAssignments.credit,term,learningRequirements", 'contract-detail.js'
 
         # contract assignments
         write_fixture "/api/assignments?contractIds=#{@contract1_current.id}", 'contract-assignments.js'
@@ -424,6 +427,9 @@ RSpec.describe 'Ember fixtures script', type: :request do
 
         # credits
         write_fixture '/api/credits', 'credits-index.js'
+
+        # learning requirements
+        write_fixture '/api/learning-requirements', 'learning-requirements.js'
 
         # credit
         credit = Credit.first

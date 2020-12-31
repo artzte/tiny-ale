@@ -4,8 +4,6 @@ class TermsController < ApiBaseController
   ALLOWED_ORDER_BY = %w[name schoolYear].freeze
 
   def index
-    limit = params[:limit] || Rails.configuration.constants[:DEFAULT_LIMIT]
-
     conditions = {}
 
     conditions[:school_year] = params[:schoolYear] if params[:schoolYear]
@@ -36,7 +34,7 @@ class TermsController < ApiBaseController
              .where(conditions)
              .where(type_conditions)
              .order(orderBy.join(','))
-             .limit(limit)
+             .limit(@limit)
     count = Term
             .where(conditions)
             .where(type_conditions)

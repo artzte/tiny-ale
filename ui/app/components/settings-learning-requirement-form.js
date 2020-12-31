@@ -2,11 +2,11 @@ import { action } from '@ember/object';
 import TForm from './t-form';
 import Validator from '../utils/validator';
 
-export default class SettingsCompetencyFormComponent extends TForm {
+export default class SettingsLearningRequirementFormComponent extends TForm {
   get validator() {
-    const { competencies, model } = this;
+    const { learningRequirements, model } = this;
     return new Validator({
-      competency: [{
+      ealr: [{
         type: 'required',
       }],
       seq: [{
@@ -19,7 +19,7 @@ export default class SettingsCompetencyFormComponent extends TForm {
         type: 'valid',
         message: 'duplicates an existing sequence number',
         isValid(key, value) {
-          return !competencies.find(competency => competency.id !== model.id && competency.attributes.seq === value);
+          return !learningRequirements.find(req => req.id !== model.id && req.attributes.seq === value);
         },
       }],
     });

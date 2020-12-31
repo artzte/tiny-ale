@@ -6,10 +6,6 @@ class EnrollmentsController < ApiBaseController
   before_action :entitle_contract, only: %i[create]
 
   def index
-    limit = params[:limit] || Rails.configuration.constants[:DEFAULT_LIMIT]
-
-    limit = nil if limit == '-1'
-
     conditions = {}
 
     if params[:participantIds]
@@ -38,7 +34,7 @@ class EnrollmentsController < ApiBaseController
 
     result = Enrollment
              .where(conditions)
-             .limit(limit)
+             .limit(@limit)
              .joins('LEFT OUTER JOIN users AS participants ON participants.id = enrollments.participant_id')
              .order('participants.last_name, participants.first_name')
 

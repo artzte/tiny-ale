@@ -1,43 +1,49 @@
-<hr>
-<dl class="summary">
-  <dt>Status</dt>
-  <dd>{{contract.attributes.status}}</dd>
-  <dt>Facilitator</dt>
-  <dd>{{full-name facilitator "first-last"}}</dd>
-  <dt>Category</dt>
-  <dd>{{category.attributes.name}}</dd>
-  <dt>Credits</dt>
-  <dd class="credit-assignments">
-    {{credit-assignments creditAssignments=creditAssignments}}
-  </dd>
-  <dt>Term</dt>
-  <dd>{{term.attributes.name}}</dd>
-  <dt>Location</dt>
-  <dd>{{contract.attributes.location}}</dd>
-</dl>
-<hr>
+<div class="contract-detail">
+  <TTiles>
+    <TTiles::Tile>
+      <h3>Status</h3>
+      <p>{{titleize this.contract.attributes.status}}</p>
+    </TTiles::Tile>
+    <TTiles::Tile>
+      <h3>Facilitator</h3>
+      <p>{{full-name this.facilitator "first-last"}}</p>
+    </TTiles::Tile>
+    <TTiles::Tile>
+      <h3>Category</h3>
+      <p>{{this.category.attributes.name}}</p>
+    </TTiles::Tile>
+    <TTiles::Tile>
+      <h3>Term</h3>
+      <p>{{this.term.attributes.name}}</p>
+    </TTiles::Tile>
+    <TTiles::Tile>
+      <h3>Location</h3>
+      <p>{{this.contract.attributes.location}}</p>
+    </TTiles::Tile>
+  </TTiles>
 
-<h2>Details</h2>
+  <h2>Credits</h2>
+  <CreditAssignments
+    @creditAssignments={{this.creditAssignments}}
+    @creditable={{this.contract}}
+  />
 
-{{#if hasDetails}}
-  {{#each detailSections as |section|}}
-    <h3>{{titleize section.name}}</h3>
-    <p>
-      {{section.content}}
-    </p>
-  {{/each}}
-{{else}}
-  <p>No details specified.</p>
-{{/if}}
+  <ContractAttributes
+    @contract={{this.contract}}
+    @updateContract={{fn this.updateContract}}
+    @loading={{loading}}
+    @cancelEditing={{fn this.cancelEditing}}
+  />
 
-<h3>Learning Requirements</h3>
+  <ContractLearningRequirements
+    @learningRequirements={{this.learningRequirements}}
+    @contract={{this.contract}}
+    @updateContract={{fn this.updateContract}}
+    @loading={{loading}}
+  />
 
-{{contract-learning-requirements ealrs=contract.relationships.ealrs.data}}
+  <ContractAssignmentsSummary
+    @assignments={{this.assignments}}
+  />
 
-<h2>Assignments</h2>
-
-{{contract-assignments-summary
-  assignments=assignments
-}}
-
-
+</div>

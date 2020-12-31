@@ -2,10 +2,6 @@
 
 class AssignmentsController < ApiBaseController
   def index
-    limit = params[:limit] || Rails.configuration.constants[:DEFAULT_LIMIT]
-
-    limit = nil if limit == '-1'
-
     conditions = {}
 
     if params[:contractIds]
@@ -14,7 +10,7 @@ class AssignmentsController < ApiBaseController
 
     result = Assignment
              .where(conditions)
-             .limit(limit)
+             .limit(@limit)
 
     count = Assignment.where(conditions).count
 

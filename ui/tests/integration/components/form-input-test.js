@@ -22,7 +22,7 @@ module('Integration | Component | form-input', (hooks) => {
     await render(hbs`
       {{#form-input
         error=validations.firstName.error
-        showError=showErrors
+        showErrors=showErrors
         label="First name"
       }}
         <input

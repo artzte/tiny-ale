@@ -1,6 +1,6 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render, click } from '@ember/test-helpers';
+import { render, click, fillIn } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 import { resolve } from 'rsvp';
 import fixture from '../../fixtures/admin-graduation-plan-requirements-list-all';
@@ -47,10 +47,13 @@ module('Integration | Component | settings-graduation-plan-requirement-form', (h
     const [request] = requests;
     assert.ok(request, 'an outbound action occurred');
 
-    assert.matches(request.model.attributes.name, requirement.attributes.name);
-    assert.matches(request.model.attributes.requirementType, requirement.attributes.requirementType);
-    assert.matches(request.model.attributes.notes, requirement.attributes.notes);
-    assert.matches(request.model.attributes.position, requirement.attributes.position);
-    assert.matches(request.model.attributes.status, requirement.attributes.status);
+    assert.deepEqual(request.model.attributes, requirement.attributes);
+
+    await fillIn('input[name="name"]', 'harry');
+
+    await click('.submit-row button');
+
+    const [, request2] = requests;
+    assert.matches(request2.model.attributes.name, 'harry');
   });
 });

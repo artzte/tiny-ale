@@ -28,7 +28,7 @@ coor.first.save!
 @term1_last = Term.new name: "#{LAST_YEAR} - Term 1", school_year: LAST_YEAR, credit_date: Date.new(LAST_YEAR + 1, 1, 31)
 @term2_last = Term.new name: "#{LAST_YEAR} - Term 2", school_year: LAST_YEAR, credit_date: Date.new(LAST_YEAR + 1, 6, 15)
 @term1_current = Term.new name: "#{CURRENT_YEAR} - Term 1", school_year: CURRENT_YEAR, credit_date: Date.new(CURRENT_YEAR + 1, 1, 31)
-@term2_current = Term.new name: "#{CURRENT_YEAR} - Term 1", school_year: CURRENT_YEAR, credit_date: Date.new(CURRENT_YEAR + 1, 6, 15)
+@term2_current = Term.new name: "#{CURRENT_YEAR} - Term 2", school_year: CURRENT_YEAR, credit_date: Date.new(CURRENT_YEAR + 1, 6, 15)
 
 @term1_last.set_dates(LAST_YEAR, [0, 1, 2, 3, 4])
 @term2_last.set_dates(LAST_YEAR, [5, 6, 7, 8, 9])

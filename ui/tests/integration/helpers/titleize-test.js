@@ -12,6 +12,14 @@ module('Integration | Helper | titleize', (hooks) => {
 
     await render(hbs`{{titleize inputValue}}`);
 
-    assert.equal(this.element.textContent.trim(), '1234');
+    assert.equal(this.element.textContent, '1234', '1234');
+
+    this.set('inputValue', 'hellaNiceCelery');
+
+    assert.equal(this.element.textContent, 'Hella nice celery', 'hellaNiceCelery');
+
+    this.set('inputValue', 'Active');
+
+    assert.equal(this.element.textContent, 'Active', 'Active');
   });
 });

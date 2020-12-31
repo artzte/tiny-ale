@@ -3,18 +3,18 @@ import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
 import { error } from '../../utils/logger';
 
-export default class SettingsCompetenciesEditController extends Controller {
+export default class SettingsLearningRequirementsEditController extends Controller {
   @service('tinyData') tinyData;
 
   @service('flashMessages') flashMessages;
 
   @action
-  async updateCompetency(model) {
+  async updateRequirement(model) {
     const { tinyData } = this;
     let promise;
 
     if (model.id) {
-      promise = tinyData.fetch(`/api/admin/competencies/${model.id}`, {
+      promise = tinyData.fetch(`/api/admin/learning-requirements/${model.id}`, {
         method: 'PUT',
         data: {
           data: model,
@@ -22,7 +22,7 @@ export default class SettingsCompetenciesEditController extends Controller {
       });
     }
 
-    promise = tinyData.fetch('/api/admin/competencies', {
+    promise = tinyData.fetch('/api/admin/learning-requirements', {
       method: 'POST',
       data: {
         data: model,
@@ -30,8 +30,8 @@ export default class SettingsCompetenciesEditController extends Controller {
     });
 
     promise.then(() => {
-      this.flashMessages.success(`Competency ${model.attributes.category} ${model.attributes.seq} saved`);
-      this.transitionToRoute('settings-competencies', { queryParams: { refresh: true } });
+      this.flashMessages.success(`Learning requirement ${model.attributes.category} ${model.attributes.seq} saved`);
+      this.transitionToRoute('settings-learning-requirements', { queryParams: { refresh: true } });
     }, (err) => {
       this.flashMessages.alert('An error was reported');
       error(err.message);

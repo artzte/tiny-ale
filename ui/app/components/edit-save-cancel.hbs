@@ -1,0 +1,32 @@
+{{#if @onEdit}}
+  <button
+    data-button="edit"
+    type="button"
+    class="ml-12 btn btn-small"
+    {{on 'click' (fn @onEdit)}}
+    disabled={{@editing}}
+  >
+    Edit
+  </button>
+{{/if}}
+{{#if @editing}}
+  <button
+    data-button="save"
+    type="submit"
+    class="btn btn-small"
+    disabled={{@disabled}}
+  >
+    Save
+  </button>
+  {{#if @onCancel}}
+    <button
+      data-button="cancel"
+      type="button"
+      class="btn btn-small"
+      {{on 'click' (fn @onCancel)}}
+      disabled={{@disabled}}
+    >
+      Cancel
+    </button>
+  {{/if}}
+{{/if}}

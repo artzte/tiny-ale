@@ -1,10 +1,33 @@
-{{#each groupedEalrs as |category|}}
-  <h4>{{category.categoryName}}</h4>
-  <dl data-test-ealrs>
-    {{#each category.ealrs as |ealr|}}
-      {{contract-learning-requirements/item ealr=ealr}}
+<form {{action this.save on="submit"}} class="t-form">
+  <h2>
+    Learning Requirements
+    <EditSaveCancel
+      @onEdit={{fn this.setEdit true}}
+      @onCancel={{fn this.setEdit false}}
+      @disabled={{this.isDisabled}}
+      @editing={{this.isEditing}}
+    />
+  </h2>
+
+  <div class="contract-learning-requirements">
+    {{#each displayRequirementsByCategory as |category|}}
+      <h4>{{category.category}}</h4>
+      <table class="learning-requirements">
+        <tbody>
+          {{#each category.learningRequirements as |learningRequirement|}}
+            <ContractLearningRequirements::Item
+              @learningRequirement={{learningRequirement}}
+              @selections={{this.selections}}
+              @isEditing={{this.isEditing}}
+              @onSelect={{action 'onSelect' learningRequirement}}
+            />
+          {{/each}}
+        </tbody>
+      </table>
+    {{else}}
+      <p>
+        No learning requirements selected.
+      </p>
     {{/each}}
-  </dl>
-{{else}}
-  <p>No learning requirements specified.</p>
-{{/each}}
+  </div>
+</form>

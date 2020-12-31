@@ -1,0 +1,9 @@
+t-tile {
+  h3 {
+    @apply mb-2 text-sm font-medium text-gray-600; 
+  }
+
+  p {
+    @apply text-lg font-semibold text-gray-700;
+  }
+}

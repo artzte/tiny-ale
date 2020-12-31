@@ -1,19 +1,21 @@
 // GET /api/profile
 export default {
   data: {
-    id: '10',
+    id: '55',
     type: 'user',
     attributes: {
-      firstName: 'Cleotilde',
-      lastName: 'Kohler',
+      firstName: 'Rashad',
+      lastName: 'Ziemann',
       nickname: null,
       dateActive: '2011-07-01',
       dateInactive: null,
       districtId: null,
       districtGrade: 12,
-      email: 'simon@watermith.name',
+      email: 'garret@kirlin.io',
+      name: 'Rashad Ziemann',
       status: 'active',
       role: 'administrator',
+      isStaff: true,
     },
     relationships: {
       coordinatees: {

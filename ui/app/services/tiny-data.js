@@ -4,6 +4,8 @@ import { warn } from '../utils/logger';
 import fetch from '../utils/fetch';
 import clone from '../utils/clone';
 
+let stateCallbacks = [];
+
 export const tinyDataService = {
   init(...args) {
     this._super(...args);
@@ -55,9 +57,9 @@ export const tinyDataService = {
     this._data.reportingBaseMonth = reportingBaseMonth;
   },
 
-  async getCompetencyCategories() {
+  async getLearningRequirementCategories() {
     if (!this._data.competencyCategories) {
-      this._data.competencyCategories = await fetch('/api/competencies/categories');
+      this._data.competencyCategories = await fetch('/api/learning-requirements/categories');
     }
     return this._data.competencyCategories;
   },
@@ -127,6 +129,7 @@ export const tinyDataService = {
       }, {});
 
     this._store = { ...store, ...mergedAdditions };
+    this._reportUpdatedState();
   },
 
   get(type, id) {
@@ -135,7 +138,7 @@ export const tinyDataService = {
     try {
       const records = this._store[type];
 
-      if (!records) throw new Error('unknown or unfetched');
+      if (!records) throw new Error(`Cannot find records of type ${type}`);
 
       if (id) return clone(records[id]);
 
@@ -148,6 +151,7 @@ export const tinyDataService = {
 
   addRecord(data) {
     this.addResult({ data });
+    this._reportUpdatedState();
   },
 
   deleteRecord(data) {
@@ -161,6 +165,20 @@ export const tinyDataService = {
 
     // delete item from cloned tree
     delete this._store[data.type][data.id];
+
+    this._reportUpdatedState();
+  },
+
+  registerForUpdates(callback) {
+    stateCallbacks = stateCallbacks.concat([callback]);
+  },
+
+  unregisterForUpdates(callback) {
+    stateCallbacks = stateCallbacks.filter(cb => cb !== callback);
+  },
+
+  _reportUpdatedState() {
+    stateCallbacks.forEach(callback => callback());
   },
 };
 

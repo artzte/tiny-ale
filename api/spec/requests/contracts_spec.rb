@@ -51,7 +51,7 @@ RSpec.describe 'Contracts API', type: :request do
     end
   end
 
-  describe 'GET /contract/:id' do
+  describe 'GET /contracts/:id' do
     it 'returns a detailed contract record' do
       get "/api/contracts/#{@contract1_2008.id}"
 
@@ -65,7 +65,7 @@ RSpec.describe 'Contracts API', type: :request do
     end
   end
 
-  describe 'PUT /contract/:id' do
+  describe 'PUT /contracts/:id' do
     it 'updates learning requirements and returns updates' do
       learning_requirement = create :learning_requirement
       post_body = {
@@ -85,6 +85,45 @@ RSpec.describe 'Contracts API', type: :request do
       expect(@contract1_2008.learning_requirements.length).to eq(1)
 
       expect(json['data']['relationships']['learningRequirements']['data'][0]['id']).to eq(learning_requirement.id.to_s)
+    end
+  end
+
+  describe 'POST /contracts' do
+    it 'creates a new contract' do
+      sizzleana = 'Sizzleanda subterfuge'
+      post_body = {
+        data: {
+          attributes: {
+            name: sizzleana,
+            location: 'Zoom 1234',
+            learningObjectives: 'This and that'
+          },
+          relationships: {
+            term: {
+              data: {
+                id: @term2_2009.id
+              }
+            },
+            category: {
+              data: {
+                id: @category1.id,
+              }
+            },
+            facilitator: {
+              data: {
+                id: @staff2.id,
+              }
+            }
+          }
+        }
+      }
+      
+      post "/api/contracts", params: post_body.to_json, headers: json_request_headers
+
+      expect(json['data']['relationships']['term']['data']['id']).to eq(@term2_2009.id.to_s)
+      expect(json['data']['relationships']['facilitator']['data']['id']).to eq(@staff2.id.to_s)
+      expect(json['data']['relationships']['category']['data']['id']).to eq(@category1.id.to_s)
+      expect(json['data']['attributes']['name']).to eq(sizzleana)
     end
   end
 end

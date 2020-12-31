@@ -1,10 +1,10 @@
-// GET /api/terms/7
+// GET /api/terms/12
 export default {
   data: {
-    id: '7',
+    id: '12',
     type: 'term',
     attributes: {
-      name: 'Seamless contextually-based encoding',
+      name: 'Mandatory 24/7 moratorium',
       schoolYear: 2019,
       creditDate: '2020-01-31',
       months: [

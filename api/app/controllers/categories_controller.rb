@@ -2,10 +2,6 @@
 
 class CategoriesController < ApiBaseController
   def index
-    limit = params[:limit] || Rails.configuration.constants[:DEFAULT_LIMIT]
-
-    limit = nil if limit == '-1'
-
     order = (params[:order] || '')
             .split(',')
             .map(&:underscore)
@@ -13,7 +9,7 @@ class CategoriesController < ApiBaseController
 
     result = Category
              .order(Arel.sql(order))
-             .limit(limit)
+             .limit(@limit)
 
     count = Category.count
 

@@ -15,15 +15,6 @@ export default Component.extend(EnrollmentRelations, {
   canEdit: computed('enrollment', function () {
     return this.userService.canEdit(this.enrollment);
   }),
-  disabled: computed('canEdit', 'loading', function () {
-    const {
-      canEdit,
-      loading,
-    } = this;
-
-    if (!canEdit) return true;
-    return loading;
-  }),
   isClosed: computed('enrollment.attributes.enrollmentStatus', function () {
     return isClosed(this.enrollment);
   }),

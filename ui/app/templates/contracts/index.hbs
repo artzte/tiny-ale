@@ -1,12 +1,29 @@
-{{#check-empty
-  count=model.meta.count
-  noResultsMessage="No contracts were found with these filters"
-}}
-  {{count-paragraph
-    result=model
-    name="contract"
-  }}
-  {{contracts-list
-    contracts=model.data
-  }}
-{{/check-empty}}
+<p>
+  <LinkTo @route="contracts.new" class="btn">
+    Add contract
+  </LinkTo>
+</p>
+
+<ContractsListFilter
+  @queryParams={{this.queryParams}}
+  @terms={{this.terms}}
+  @schoolYears={{this.schoolYears}}
+  @facilitators={{this.facilitators}}
+  @categories={{this.categories}}
+  @onchange={{action 'filterContracts'}}
+/>
+
+<CheckEmpty
+  @count={{model.meta.count}}
+  @noResultsMessage="No contracts were found with these filters"
+  class="m-h-2"
+>
+  <CountParagraph
+    @result={{model}}
+    @name="contract"
+  />
+
+  <ContractsList
+    @contracts={{model.data}}
+  />
+</CheckEmpty>

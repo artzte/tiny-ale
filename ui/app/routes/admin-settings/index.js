@@ -13,8 +13,8 @@ const settingsRoutes = [{
   route: 'settings-periods',
   title: 'Class periods',
 }, {
-  route: 'settings-competencies',
-  title: 'Competencies (EALRs)',
+  route: 'settings-learning-requirements',
+  title: 'Learning Requirements (EALRs)',
 }, {
   route: 'settings-graduation-plan-requirements',
   title: 'Graduation plan requirements',

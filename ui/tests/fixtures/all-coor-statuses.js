@@ -1,8 +1,8 @@
-// GET /api/statuses?limit=-1&months=2019-09-01%2C2019-10-01%2C2019-11-01%2C2019-12-01%2C2020-01-01%2C2020-02-01%2C2020-03-01%2C2020-04-01%2C2020-05-01%2C2020-06-01&studentIds=11%2C12%2C13&type=student
+// GET /api/statuses?limit=-1&months=2019-09-01%2C2019-10-01%2C2019-11-01%2C2019-12-01%2C2020-01-01%2C2020-02-01%2C2020-03-01%2C2020-04-01%2C2020-05-01%2C2020-06-01&studentIds=56%2C57%2C58&type=student
 export default {
   data: [
     {
-      id: '49',
+      id: '85',
       type: 'status',
       attributes: {
         month: '2019-09-01',
@@ -17,20 +17,20 @@ export default {
       relationships: {
         creator: {
           data: {
-            id: '7',
-            type: 'creator',
+            id: '52',
+            type: 'user',
           },
         },
         statusable: {
           data: {
-            id: '11',
+            id: '56',
             type: 'user',
           },
         },
       },
     },
     {
-      id: '52',
+      id: '88',
       type: 'status',
       attributes: {
         month: '2019-10-01',
@@ -45,20 +45,20 @@ export default {
       relationships: {
         creator: {
           data: {
-            id: '7',
-            type: 'creator',
+            id: '52',
+            type: 'user',
           },
         },
         statusable: {
           data: {
-            id: '11',
+            id: '56',
             type: 'user',
           },
         },
       },
     },
     {
-      id: '50',
+      id: '86',
       type: 'status',
       attributes: {
         month: '2019-09-01',
@@ -73,20 +73,20 @@ export default {
       relationships: {
         creator: {
           data: {
-            id: '8',
-            type: 'creator',
+            id: '53',
+            type: 'user',
           },
         },
         statusable: {
           data: {
-            id: '12',
+            id: '57',
             type: 'user',
           },
         },
       },
     },
     {
-      id: '53',
+      id: '89',
       type: 'status',
       attributes: {
         month: '2019-10-01',
@@ -101,20 +101,20 @@ export default {
       relationships: {
         creator: {
           data: {
-            id: '8',
-            type: 'creator',
+            id: '53',
+            type: 'user',
           },
         },
         statusable: {
           data: {
-            id: '12',
+            id: '57',
             type: 'user',
           },
         },
       },
     },
     {
-      id: '51',
+      id: '87',
       type: 'status',
       attributes: {
         month: '2019-09-01',
@@ -129,20 +129,20 @@ export default {
       relationships: {
         creator: {
           data: {
-            id: '8',
-            type: 'creator',
+            id: '53',
+            type: 'user',
           },
         },
         statusable: {
           data: {
-            id: '13',
+            id: '58',
             type: 'user',
           },
         },
       },
     },
     {
-      id: '54',
+      id: '90',
       type: 'status',
       attributes: {
         month: '2019-10-01',
@@ -157,13 +157,13 @@ export default {
       relationships: {
         creator: {
           data: {
-            id: '8',
-            type: 'creator',
+            id: '53',
+            type: 'user',
           },
         },
         statusable: {
           data: {
-            id: '13',
+            id: '58',
             type: 'user',
           },
         },
@@ -172,25 +172,27 @@ export default {
   ],
   included: [
     {
-      id: '7',
+      id: '52',
       type: 'user',
       attributes: {
-        firstName: 'Dominic',
-        lastName: 'Collier',
+        firstName: 'Shayla',
+        lastName: 'Torp',
         nickname: null,
         dateActive: '2012-09-01',
         dateInactive: null,
         districtId: null,
         districtGrade: 12,
-        email: 'janelle@rathskiles.net',
+        email: 'solomon@hills.name',
+        name: 'Shayla Torp',
         status: 'active',
         role: 'staff',
+        isStaff: true,
       },
       relationships: {
         coordinatees: {
           data: [
             {
-              id: '11',
+              id: '56',
               type: 'user',
             },
           ],
@@ -198,29 +200,31 @@ export default {
       },
     },
     {
-      id: '8',
+      id: '53',
       type: 'user',
       attributes: {
-        firstName: 'Weston',
-        lastName: 'Rempel',
+        firstName: 'Connie',
+        lastName: 'Hilpert',
         nickname: null,
         dateActive: '2013-02-01',
         dateInactive: null,
         districtId: null,
         districtGrade: 12,
-        email: 'judsonparker@upton.info',
+        email: 'rico@reichel.com',
+        name: 'Connie Hilpert',
         status: 'active',
         role: 'staff',
+        isStaff: true,
       },
       relationships: {
         coordinatees: {
           data: [
             {
-              id: '12',
+              id: '57',
               type: 'user',
             },
             {
-              id: '13',
+              id: '58',
               type: 'user',
             },
           ],

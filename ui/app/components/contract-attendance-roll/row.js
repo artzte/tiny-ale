@@ -19,7 +19,7 @@ export default Component.extend({
   participationOptions,
   contactTypeOptions,
 
-  notesHash: computed(() => ({})),
+  notesHash: null,
 
   hasRoll: bool('meetingParticipant.id'),
 
@@ -39,7 +39,8 @@ export default Component.extend({
   }),
 
   notes: computed('enrollment.id', 'notesHash', function () {
-    return this.notesHash[this.enrollment.id];
+    const { notesHash } = this;
+    return notesHash && notesHash[this.enrollment.id];
   }),
 
   didReceiveAttrs() {
@@ -87,8 +88,10 @@ export default Component.extend({
       updateRoll,
     } = this;
 
-    const result = await updateRoll(meetingParticipant);
+    this.set('loading', true);
 
-    this.set('meetingParticipant', clone(result.data));
+    await updateRoll(meetingParticipant);
+
+    this.set('loading', false);
   },
 });

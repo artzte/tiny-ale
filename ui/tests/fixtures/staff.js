@@ -2,54 +2,15 @@
 export default {
   data: [
     {
-      id: '7',
+      id: '51',
       type: 'user',
       attributes: {
-        firstName: 'Dominic',
-        lastName: 'Collier',
+        firstName: 'Christopher',
+        lastName: 'Lueilwitz',
         nickname: null,
-      },
-      relationships: {
-        coordinatees: {
-          data: [
-            {
-              id: '11',
-              type: 'user',
-            },
-          ],
-        },
-      },
-    },
-    {
-      id: '8',
-      type: 'user',
-      attributes: {
-        firstName: 'Weston',
-        lastName: 'Rempel',
-        nickname: null,
-      },
-      relationships: {
-        coordinatees: {
-          data: [
-            {
-              id: '12',
-              type: 'user',
-            },
-            {
-              id: '13',
-              type: 'user',
-            },
-          ],
-        },
-      },
-    },
-    {
-      id: '9',
-      type: 'user',
-      attributes: {
-        firstName: 'Lillie',
-        lastName: 'Treutel',
-        nickname: null,
+        status: 'active',
+        role: 'administrator',
+        isStaff: true,
       },
       relationships: {
         coordinatees: {
@@ -60,12 +21,63 @@ export default {
       },
     },
     {
-      id: '6',
+      id: '52',
       type: 'user',
       attributes: {
-        firstName: 'Antonio',
-        lastName: 'Fahey',
+        firstName: 'Shayla',
+        lastName: 'Torp',
         nickname: null,
+        status: 'active',
+        role: 'staff',
+        isStaff: true,
+      },
+      relationships: {
+        coordinatees: {
+          data: [
+            {
+              id: '56',
+              type: 'user',
+            },
+          ],
+        },
+      },
+    },
+    {
+      id: '53',
+      type: 'user',
+      attributes: {
+        firstName: 'Connie',
+        lastName: 'Hilpert',
+        nickname: null,
+        status: 'active',
+        role: 'staff',
+        isStaff: true,
+      },
+      relationships: {
+        coordinatees: {
+          data: [
+            {
+              id: '57',
+              type: 'user',
+            },
+            {
+              id: '58',
+              type: 'user',
+            },
+          ],
+        },
+      },
+    },
+    {
+      id: '54',
+      type: 'user',
+      attributes: {
+        firstName: 'Gonzalo',
+        lastName: 'Brekke',
+        nickname: null,
+        status: 'inactive',
+        role: 'staff',
+        isStaff: true,
       },
       relationships: {
         coordinatees: {
@@ -76,12 +88,15 @@ export default {
       },
     },
     {
-      id: '10',
+      id: '55',
       type: 'user',
       attributes: {
-        firstName: 'Cleotilde',
-        lastName: 'Kohler',
+        firstName: 'Rashad',
+        lastName: 'Ziemann',
         nickname: null,
+        status: 'active',
+        role: 'administrator',
+        isStaff: true,
       },
       relationships: {
         coordinatees: {

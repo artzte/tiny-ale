@@ -1,6 +1,8 @@
-<span class="summary-title">
-  {{assignment.attributes.name}}
-</span>
-<span class="summary-date">
-  {{t-date assignment.attributes.dueDate "L"}}
-</span>
+<li>
+  <span class="summary-title">
+    {{@assignment.attributes.name}}
+  </span>
+  <span class="summary-date">
+    {{t-date @assignment.attributes.dueDate "ddd MMM D YYYY"}}
+  </span>
+</li>

@@ -28,6 +28,10 @@ class UserSerializer < ApplicationSerializer
     User::PRIVILEGE_NAMES[object.privilege].downcase
   end
 
+  attribute :is_staff do |object|
+    [User::PRIVILEGE_STAFF, User::PRIVILEGE_ADMIN].include? object.privilege
+  end
+
   has_many :coordinatees, if: proc { |record| record.staff? }, serializer: 'User'
   belongs_to :coordinator, if: proc { |record| record.student? }, serializer: 'User'
 end

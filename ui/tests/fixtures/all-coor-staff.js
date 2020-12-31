@@ -2,18 +2,25 @@
 export default {
   data: [
     {
-      id: '7',
+      id: '53',
       type: 'user',
       attributes: {
-        firstName: 'Dominic',
-        lastName: 'Collier',
+        firstName: 'Connie',
+        lastName: 'Hilpert',
         nickname: null,
+        status: 'active',
+        role: 'staff',
+        isStaff: true,
       },
       relationships: {
         coordinatees: {
           data: [
             {
-              id: '11',
+              id: '57',
+              type: 'user',
+            },
+            {
+              id: '58',
               type: 'user',
             },
           ],
@@ -21,30 +28,67 @@ export default {
       },
     },
     {
-      id: '8',
+      id: '51',
       type: 'user',
       attributes: {
-        firstName: 'Weston',
-        lastName: 'Rempel',
+        firstName: 'Christopher',
+        lastName: 'Lueilwitz',
         nickname: null,
+        status: 'active',
+        role: 'administrator',
+        isStaff: true,
+      },
+      relationships: {
+        coordinatees: {
+          data: [
+
+          ],
+        },
+      },
+    },
+    {
+      id: '52',
+      type: 'user',
+      attributes: {
+        firstName: 'Shayla',
+        lastName: 'Torp',
+        nickname: null,
+        status: 'active',
+        role: 'staff',
+        isStaff: true,
       },
       relationships: {
         coordinatees: {
           data: [
             {
-              id: '12',
-              type: 'user',
-            },
-            {
-              id: '13',
+              id: '56',
               type: 'user',
             },
           ],
         },
       },
     },
+    {
+      id: '55',
+      type: 'user',
+      attributes: {
+        firstName: 'Rashad',
+        lastName: 'Ziemann',
+        nickname: null,
+        status: 'active',
+        role: 'administrator',
+        isStaff: true,
+      },
+      relationships: {
+        coordinatees: {
+          data: [
+
+          ],
+        },
+      },
+    },
   ],
   meta: {
-    count: 2,
+    count: 4,
   },
 };
