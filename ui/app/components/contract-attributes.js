@@ -43,10 +43,10 @@ export default class ContractAttributes extends Component {
     this.args.cancelEditing();
   }
 
-  @action async save(_model, updates) {
+  @action async save(model, updates) {
     if (updates) {
       this.isLoading = true;
-      await this.args.updateContract({ data: updates });
+      await this.args.updateContract(model, updates);
       this.isLoading = false;
     }
 
@@ -56,7 +56,7 @@ export default class ContractAttributes extends Component {
   }
 
   @action reportError(/* errors */) {
-    this.flashMessages.alert('Fix the validation messages and try again');
+    this.flashMessages.alert('Please fill in the required values, and try again.');
   }
 
   @action didUpdatePojo(pojo) {

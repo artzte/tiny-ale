@@ -9,11 +9,12 @@ export default class ContractsNewController extends Controller {
     this.transitionToRoute('contracts.index');
   }
 
-  @action async updateContract(updates) {
+  @action async updateContract(model) {
     this.loading = true;
+
     const result = await this.tinyData.fetch('/api/contracts', {
       method: 'post',
-      body: JSON.stringify(updates),
+      body: JSON.stringify({ data: model }),
     });
     this.loading = false;
     this.contract = result.data;

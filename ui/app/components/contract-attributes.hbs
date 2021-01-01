@@ -1,4 +1,5 @@
 <TForm
+  data-test-form="contract-attributes"
   @model={{@contract}}
   @save={{action "save"}}
 
@@ -14,6 +15,7 @@
       <EditSaveCancel
         @disabled={{@disabled}}
         @editing={{true}}
+        @onCancel={{action 'showDetails'}}
       />
     {{else}}
       <EditSaveCancel

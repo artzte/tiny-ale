@@ -14,11 +14,11 @@ export default class ContractDetail extends Component {
   // eslint-disable-next-line class-methods-use-this
   @action cancelEditing() {}
 
-  @action async updateContract(updates) {
+  @action async updateContract(_model, updates) {
     this.loading = true;
     const result = await this.tinyData.fetch(`/api/contracts/${this.contract.id}`, {
       method: 'put',
-      body: JSON.stringify(updates),
+      body: JSON.stringify({ data: updates }),
     });
     this.loading = false;
     this.contract = result.data;
