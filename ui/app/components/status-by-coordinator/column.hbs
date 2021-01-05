@@ -5,7 +5,7 @@
   data-test-has-exception={{isException}}
 >
   {{#if showStatus}}
-    {{#link-to "status-by-student" student.id
+    {{#link-to "status-by-student-for-coordinator" student.id
       (query-params schoolYear=schoolYear)
       title=academicStatusName
     }}

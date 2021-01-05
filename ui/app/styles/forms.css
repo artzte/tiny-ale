@@ -78,6 +78,13 @@ value-button {
   cursor: pointer;
 }
 
+button[disabled] {
+  @apply text-gray-500 cursor-auto;
+  * {
+    color: inherit;
+  }
+}
+
 .btn {
   @apply text-center py-2 px-4 rounded bg-gray-900 text-white border mt-2 no-underline cursor-pointer;
 

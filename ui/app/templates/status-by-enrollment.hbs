@@ -1,11 +1,18 @@
-<h2>{{full-name participant}}</h2>
+<section>
+  <Status::StatusPageNavigator
+    @student={{this.participant}}
+    @current={{this.enrollment}}
+    @navigationList={{this.enrollmentNavigationMap}}
+    @onSelect={{action 'navigate'}}
+  />
+</section>
 
 <section>
   {{status-by-enrollment-summary
     enrollment=enrollment
     contract=contract
   }}
-</section>
+</section>  
 
 <section>
   {{status-by-enrollment

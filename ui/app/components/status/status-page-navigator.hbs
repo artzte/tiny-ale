@@ -1,0 +1,31 @@
+<h2>
+  {{full-name @student "first-last"}}
+</h2>
+
+<div class="flex w-1/4">
+  <button
+    type="button"
+    title="Previous"
+    disabled={{this.noPreviousParticipant}}
+    onclick={{fn @onSelect this.previousParticipant.value}}
+  >
+    <FaIcon @icon="caret-left" @size="2x" />
+  </button>
+
+  <TSelect
+    @optionsList={{@navigationList}}
+    @onchange={{@onSelect}}
+    @value={{@current.id}}
+  />
+
+  <button
+    type="button"
+    title="Next"
+    disabled={{this.noNextParticipant}}
+    onclick={{fn @onSelect this.nextParticipant.value}}
+  >
+    <FaIcon @icon="caret-right" @size="2x" />
+  </button>
+</div>
+
+
