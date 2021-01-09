@@ -4,6 +4,8 @@ import { get } from '@ember/object';
 
 export default Route.extend({
   tinyData: service(),
+  templateName: 'status-by-student/index',
+  parentController: 'status-by-student',
 
   model(params, transition) {
     const studentId = get(transition, 'to.parent.params.student_id');
@@ -17,7 +19,7 @@ export default Route.extend({
   },
 
   setupController(controller, model) {
-    const statusByStudentController = this.controllerFor('status-by-student');
+    const statusByStudentController = this.controllerFor(this.parentController);
     const currentTab = statusByStudentController.get('currentTab');
 
     this._super(controller, model);

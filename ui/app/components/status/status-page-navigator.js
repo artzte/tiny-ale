@@ -12,8 +12,8 @@ export default class StatusPageNavigatorComponent extends Component {
     return navigationList[indexOfPrevious];
   }
 
-  get noPreviousParticipant() {
-    return Boolean(!this.previousParticipant);
+  get disablePrevious() {
+    return Boolean(this.args.disabled || !this.previousParticipant);
   }
 
   get nextParticipant() {
@@ -27,7 +27,7 @@ export default class StatusPageNavigatorComponent extends Component {
     return navigationList[indexOfNext];
   }
 
-  get noNextParticipant() {
-    return Boolean(!this.nextParticipant);
+  get disableNext() {
+    return Boolean(this.args.disabled || !this.nextParticipant);
   }
 }

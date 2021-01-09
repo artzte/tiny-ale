@@ -32,6 +32,12 @@ Router.map(function () {
         resetNamespace: true,
       }, function () {
         this.route('index', { path: '/' });
+        this.route('status-by-student-for-coordinator', {
+          path: '/student/:student_id',
+          resetNamespace: true,
+        }, function () {
+          this.route('index', { path: '/' });
+        });
       });
     });
 

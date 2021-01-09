@@ -4,6 +4,7 @@ import { inject as service } from '@ember/service';
 
 export default Route.extend({
   tinyData: service(),
+  templateName: 'status-by-student',
 
   beforeModel(params) {
     const { tinyData } = this;

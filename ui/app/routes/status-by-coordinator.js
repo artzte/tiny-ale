@@ -5,7 +5,7 @@ export default Route.extend({
   tinyData: service(),
 
   model(params) {
-    return this.tinyData.fetch(`/api/staff/${params.coordinator_id}`);
+    return this.tinyData.fetch(`/api/staff/${params.coordinator_id}?include=coordinatees`);
   },
 
   setupController(controller, model) {

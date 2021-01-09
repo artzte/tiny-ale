@@ -1,12 +1,8 @@
-<h2>
-  {{full-name @student "first-last"}}
-</h2>
-
-<div class="flex w-1/4">
+<div class="flex">
   <button
     type="button"
     title="Previous"
-    disabled={{this.noPreviousParticipant}}
+    disabled={{this.disablePrevious}}
     onclick={{fn @onSelect this.previousParticipant.value}}
   >
     <FaIcon @icon="caret-left" @size="2x" />
@@ -16,12 +12,13 @@
     @optionsList={{@navigationList}}
     @onchange={{@onSelect}}
     @value={{@current.id}}
+    disabled={{this.disabled}}
   />
 
   <button
     type="button"
     title="Next"
-    disabled={{this.noNextParticipant}}
+    disabled={{this.disableNext}}
     onclick={{fn @onSelect this.nextParticipant.value}}
   >
     <FaIcon @icon="caret-right" @size="2x" />

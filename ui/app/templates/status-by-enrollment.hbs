@@ -1,11 +1,14 @@
-<section>
+<div class="flex justify-between">
+  <h2>
+    {{full-name this.participant "first-last"}}
+  </h2>
+
   <Status::StatusPageNavigator
-    @student={{this.participant}}
     @current={{this.enrollment}}
     @navigationList={{this.enrollmentNavigationMap}}
     @onSelect={{action 'navigate'}}
   />
-</section>
+</div>
 
 <section>
   {{status-by-enrollment-summary
@@ -31,4 +34,5 @@
     getNotes=(route-action "getNotes")
   }}
 </section>
+
 
