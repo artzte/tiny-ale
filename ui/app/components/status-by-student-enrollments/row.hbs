@@ -2,16 +2,16 @@
   <td class="contract">  
     <div>
       <p>
-        {{#link-to "status-by-enrollment" contract.id enrollment.id}}
+        <LinkTo @route="status-by-enrollment" @models={{array contract.id enrollment.id}}>
           {{contract.attributes.name}}
-        {{/link-to}}
+        </LinkTo>
       </p>
       <p>
         {{full-name facilitator "first-last"}}
         /
         {{term.attributes.name}}
       </p>
-      {{credit-assignments creditAssignments=creditAssignments}}
+      <CreditAssignments @creditAssignments={{creditAssignments}} />
     </div>
   </td>
 
@@ -20,20 +20,13 @@
   </td>
 
   {{#each months as |month|}}
-    {{status-by-student-enrollments/status-column
-      month=month
-      statusHash=statusHash
-      enrollment=enrollment
-    }}
+    <StatusByStudentEnrollments::StatusColumn @month={{month}} @statusHash={{statusHash}} @enrollment={{enrollment}} />
   {{/each}}
   
 </tr>
 
 <tr class="notes-row {{loadingNotes}}">
   <td colspan={{columnsCount}}>
-    {{notes-list
-      notes=notes
-      notable=enrollment
-    }}
+    <NotesList @notes={{notes}} @notable={{enrollment}} />
   </td>
 </tr>

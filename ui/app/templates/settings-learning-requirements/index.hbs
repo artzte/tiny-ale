@@ -19,10 +19,7 @@
   count=categoryLearningRequirements.length
   noResultsMessage="No entries in this category"
 }}
-  {{count-paragraph
-    count=categoryLearningRequirements.length
-    name="learning requirement"
-  }}
+  <CountParagraph @count={{categoryLearningRequirements.length}} @name="learning requirement" />
   <table class="t-table w-full" data-test-settings-learning-requirement-list>
     <thead>
       <tr>

@@ -1,10 +1,7 @@
 <h2>Credit: {{credit.attributes.courseName}}</h2>
 <p>
-  {{#link-to "settings-credits.index" class="btn btn-clear"}}
+  <LinkTo @route="settings-credits.index" class="btn btn-clear">
     Return to list of credits
-  {{/link-to}}
+  </LinkTo>
 </p>
-{{credit-form
-  model=credit
-  save=(action "saveCredit")
-}}
+<CreditForm @model={{credit}} @save={{action "saveCredit"}} />

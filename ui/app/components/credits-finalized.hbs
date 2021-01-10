@@ -2,10 +2,7 @@
   count=viewModels.length
   noResultsMessage="There are no finalized credits."
 }}
-  {{count-paragraph
-    count=viewModels.length
-    name="credit"
-  }}
+  <CountParagraph @count={{viewModels.length}} @name="credit" />
   <table class="t-table w-full" data-test-settings-credits-list>
     <thead>
       <tr>
@@ -19,9 +16,7 @@
     </thead>
     <tbody>
       {{#each viewModels as |viewModel|}}
-        {{credits-finalized/item
-          creditAssignment=viewModel.creditAssignment
-        }}
+        <CreditsFinalized::Item @creditAssignment={{viewModel.creditAssignment}} />
       {{/each}}
     </tbody>
   </table>

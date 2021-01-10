@@ -48,10 +48,7 @@
   {{/if}}
 
   {{#if isCredit}}
-    {{#credit-assignments
-      creditAssignments=requirementHash.creditAssignments
-      as |params|
-    }}
+    <CreditAssignments @creditAssignments={{requirementHash.creditAssignments}} as |params|>
       <a
         {{action "removeMapping" params.creditAssignment}}
         title="Remove"
@@ -60,20 +57,11 @@
       >
         <FaIcon @icon="circle"/>
       </a>
-    {{/credit-assignments}}
+    </CreditAssignments>
   {{/if}}
 
   {{#if childRequirements}}
-    {{graduation-plan/requirements-map
-      requirementType=requirementType
-      mappings=mappings
-      showChildren=true
-      requirements=childRequirements
-      mappingsHash=mappingsHash
-      draggedCreditAssignment=draggedCreditAssignment
-      addMapping=addMapping
-      removeMapping=removeMapping
-    }}
+    <GraduationPlan::RequirementsMap @requirementType={{requirementType}} @mappings={{mappings}} @showChildren={{true}} @requirements={{childRequirements}} @mappingsHash={{mappingsHash}} @draggedCreditAssignment={{draggedCreditAssignment}} @addMapping={{addMapping}} @removeMapping={{removeMapping}} />
   {{/if}}
 
   {{#if requirementHash.mapping.attributes.notes}}

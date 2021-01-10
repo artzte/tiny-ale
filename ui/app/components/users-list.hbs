@@ -14,10 +14,7 @@
   </thead>
   <tbody>
     {{#each users as |user|}}
-      {{users-list/row
-        user=user
-        usersWithLogin=usersWithLogin
-      }}
+      <UsersList::Row @user={{user}} @usersWithLogin={{usersWithLogin}} />
     {{/each}}
   </tbody>
 </table>

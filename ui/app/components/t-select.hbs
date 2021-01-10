@@ -10,18 +10,10 @@
     }}
   {{else}}
     {{#if prompt}}
-      {{t-select/option
-        name=prompt
-        value=""
-        currentValue=value
-      }}
+      <TSelect::Option @name={{prompt}} @value="" @currentValue={{value}} />
     {{/if}}
     {{#each optionSelections as |opt|}}
-      {{t-select/option
-        name=opt.name
-        value=opt.value
-        currentValue=value
-      }}
+      <TSelect::Option @name={{opt.name}} @value={{opt.value}} @currentValue={{value}} />
     {{/each}}
   {{/if}}
 </select>

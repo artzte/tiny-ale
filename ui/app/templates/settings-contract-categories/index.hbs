@@ -1,17 +1,14 @@
 <p>
-  {{#link-to "settings-contract-categories.new" class="btn"}}
+  <LinkTo @route="settings-contract-categories.new" class="btn">
     Add a category
-  {{/link-to}}
+  </LinkTo>
 </p>
 
 {{#check-empty
   count=model.meta.count
   noResultsMessage="No categories were found"
 }}
-  {{count-paragraph
-    result=model
-    name="contract category"
-  }}
+  <CountParagraph @result={{model}} @name="contract category" />
   <table class="t-table t-table-bordered" data-test-categories-list>
     <thead>
       <tr>
@@ -24,15 +21,12 @@
     </thead>
     <tbody>
       {{#each categoriesList as |category|}}
-        {{#settings-contract-categories/row
-          category=category
-          as |row|
-        }}
+        <SettingsContractCategories::Row @category={{category}} as |row|>
           <tr>
             <td>
-              {{#link-to "settings-contract-category" category}}
+              <LinkTo @route="settings-contract-category" @model={{category}}>
                 {{row.name}}
-              {{/link-to}}
+              </LinkTo>
             </td>
             <td>
               {{t-number category.attributes.activeContractsCount}}
@@ -49,7 +43,7 @@
               {{category.attributes.sequence}}
             </td>
           </tr>
-        {{/settings-contract-categories/row}}
+        </SettingsContractCategories::Row>
       {{/each}}
     </tbody>
   </table>

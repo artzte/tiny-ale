@@ -3,18 +3,11 @@
     {{full-name student}}
   </td>
   {{#each assignments as |assignment|}}
-    {{contract-assignments-list/column
-      enrollment=enrollment
-      assignment=assignment
-      turninsHashedByAssignment=turninsHashedByAssignment
-    }}
+    <ContractAssignmentsList::Column @enrollment={{enrollment}} @assignment={{assignment}} @turninsHashedByAssignment={{turninsHashedByAssignment}} />
   {{/each}}
 </tr>
 <tr class="notes-row {{loadingNotes}}">
   <td colspan="3">
-    {{notes-list
-      notes=notes
-      expanded=notesExpanded
-    }}
+    <NotesList @notes={{notes}} @expanded={{notesExpanded}} />
   </td>
 </tr>

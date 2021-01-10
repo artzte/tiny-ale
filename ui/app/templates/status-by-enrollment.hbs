@@ -11,28 +11,16 @@
 </div>
 
 <section>
-  {{status-by-enrollment-summary
-    enrollment=enrollment
-    contract=contract
-  }}
+  <StatusByEnrollmentSummary @enrollment={{enrollment}} @contract={{contract}} />
 </section>  
 
 <section>
-  {{status-by-enrollment
-    contract=contract
-    enrollment=enrollment
-    statuses=statuses
-    getNotes=(route-action "getNotes")
-  }}
+  <StatusByEnrollment @contract={{contract}} @enrollment={{enrollment}} @statuses={{statuses}} @getNotes={{route-action "getNotes"}} />
 </section>
 
 <section>
   <h3>Assignments</h3>
-  {{status-by-enrollment-assignments
-    contract=contract
-    enrollment=enrollment
-    getNotes=(route-action "getNotes")
-  }}
+  <StatusByEnrollmentAssignments @contract={{contract}} @enrollment={{enrollment}} @getNotes={{route-action "getNotes"}} />
 </section>
 
 

@@ -1,18 +1,11 @@
 <h2>Users</h2>
 
-{{students-filter
-  queryParams=queryParams
-  schoolYears=schoolYears
-  coordinators=staff
-  showRole=true
-  showStatus=true
-  onQuery=(action "filterUsers")
-}}
+<StudentsFilter @queryParams={{queryParams}} @schoolYears={{schoolYears}} @coordinators={{staff}} @showRole={{true}} @showStatus={{true}} @onQuery={{action "filterUsers"}} />
 
 <p>
-  {{#link-to "admin-user.new" class="btn"}}
+  <LinkTo @route="admin-user.new" class="btn">
     Add a user
-  {{/link-to}}
+  </LinkTo>
 </p>
 
 {{outlet}}

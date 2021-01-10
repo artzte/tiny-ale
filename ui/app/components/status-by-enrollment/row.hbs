@@ -22,10 +22,6 @@
     {{status-missing isActiveMonth}}
   {{/if}}
   <td data-test-notes>
-    {{notes-list
-      notes=notes
-      notable=status
-      expanded=true
-    }}
+    <NotesList @notes={{notes}} @notable={{status}} @expanded={{true}} />
   </td>
 </tr>

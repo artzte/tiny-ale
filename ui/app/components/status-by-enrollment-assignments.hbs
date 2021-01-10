@@ -10,12 +10,7 @@
     </thead>
     <tbody>
       {{#each sortedAssignments as |assignment|}}
-        {{status-by-enrollment-assignments/row
-          enrollment=enrollment
-          assignment=assignment
-          notesHash=notesHash
-          turninsByAssignment=turninsByAssignment
-        }}
+        <StatusByEnrollmentAssignments::Row @enrollment={{enrollment}} @assignment={{assignment}} @notesHash={{notesHash}} @turninsByAssignment={{turninsByAssignment}} />
       {{/each}}
     </tbody>
   </table>

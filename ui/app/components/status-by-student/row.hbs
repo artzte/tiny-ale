@@ -6,9 +6,6 @@
 </tr>
 <tr class="notes-row {{loadingNotes}}">
   <td colspan="4">
-    {{notes-list
-      notes=notes
-      notable=status
-    }}
+    <NotesList @notes={{notes}} @notable={{status}} />
   </td>
 </tr>

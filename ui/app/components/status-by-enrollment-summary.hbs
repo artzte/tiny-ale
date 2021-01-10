@@ -2,10 +2,7 @@
 <dd data-test-enrollment-status>{{enrollmentStatus}}</dd>
 <dt>Credits</dt>
 <dd>
-  {{credit-assignments
-    creditAssignments=creditAssignments
-    creditable=enrollment
-  }}
+  <CreditAssignments @creditAssignments={{creditAssignments}} @creditable={{enrollment}} />
 </dd>
 <dt>Assignments</dt>
 <dd data-test-assignments-status>

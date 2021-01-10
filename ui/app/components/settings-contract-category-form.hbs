@@ -1,18 +1,18 @@
 <fieldset>
   <p>
-    {{#form-input error=errors.name showError=showErrors label="Category name"}}
+    <FormInput @error={{errors.name}} @showError={{showErrors}} @label="Category name">
       <input
         value={{pojo.name}}
         name="name"
         type="text"
         onchange={{action "onChange"}}
       >
-    {{/form-input}}
+    </FormInput>
   </p>
 </fieldset>
 <fieldset>
   <p>
-    {{#form-input for="category-public"}}
+    <FormInput @for="category-public">
       <input
         id="category-public"
         type="checkbox"
@@ -21,20 +21,20 @@
         onchange={{action "toggleValue" "public"}}
       >
       Show in catalog?
-    {{/form-input}}
+    </FormInput>
   </p>
   <p>
-    {{#form-input error=errors.name showError=showErrors label="Reporting"}}
+    <FormInput @error={{errors.name}} @showError={{showErrors}} @label="Reporting">
       <TSelect
         name="reporting"
         @value={{pojo.reporting}}
         @optionsList={{reportingOptions}}
         @onchange={{action "onChange"}}
       />
-    {{/form-input}}
+    </FormInput>
   </p>
   <p>
-    {{#form-input for="homeroom"}}
+    <FormInput @for="homeroom">
       <input
         id="homeroom"
         type="checkbox"
@@ -43,10 +43,10 @@
         onchange={{action "toggleValue" "homeroom"}}
       >
       Homeroom?
-    {{/form-input}}
+    </FormInput>
   </p>
   <p>
-    {{#form-input error=errors.sequence showError=showErrors label="Sequence group"}}
+    <FormInput @error={{errors.sequence}} @showError={{showErrors}} @label="Sequence group">
       <t-help>Use this number to group related categories together</t-help>
       <input
         type="number"
@@ -54,13 +54,11 @@
         value={{pojo.sequence}}
         onchange={{action "onChange"}}
       >
-    {{/form-input}}
+    </FormInput>
   </p>
 </fieldset>
-{{#t-form-actions-row
-  disabled=disabled
-}}
-  {{#link-to "settings-contract-categories.index" class="btn btn-clear"}}
+<TFormActionsRow @disabled={{disabled}}>
+  <LinkTo @route="settings-contract-categories.index" class="btn btn-clear">
     Cancel
-  {{/link-to}}
-{{/t-form-actions-row}}
+  </LinkTo>
+</TFormActionsRow>

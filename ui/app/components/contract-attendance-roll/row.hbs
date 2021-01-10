@@ -12,20 +12,10 @@
   </td>
   {{#each participationOptions as |option|}}
     <td class="center" data-test-participation={{option.value}}>
-      {{value-button
-        name="participation"
-        optionValue=option.value
-        value=meetingParticipant.attributes.participation
-        onchange=(action "setParticipation" option.value)
-        onkeydown=(action "setParticipationByKey" option.value)
-      }}
+      <ValueButton @name="participation" @optionValue={{option.value}} @value={{meetingParticipant.attributes.participation}} @onchange={{action "setParticipation" option.value}} @onkeydown={{action "setParticipationByKey" option.value}} />
     </td>
   {{/each}}
   <td>
-    {{notes-list
-      notes=notes
-      notable=meetingParticipant
-      expanded=true
-    }}
+    <NotesList @notes={{notes}} @notable={{meetingParticipant}} @expanded={{true}} />
   </td>
 </tr>

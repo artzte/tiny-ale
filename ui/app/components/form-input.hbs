@@ -5,9 +5,5 @@
     </span>
   {{/if}}
   {{yield}}
-  {{t-form-error-message
-    message=error
-    show=showErrors
-    className="static absolute -mt-px"
-  }}
+  <TFormErrorMessage @message={{error}} @show={{showErrors}} @className="static absolute -mt-px" />
 </label>

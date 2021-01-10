@@ -5,11 +5,8 @@
   data-test-has-exception={{isException}}
 >
   {{#if showStatus}}
-    {{#link-to "status-by-student-for-coordinator" student.id
-      (query-params schoolYear=schoolYear)
-      title=academicStatusName
-    }}
+    <LinkTo @route="status-by-student-for-coordinator" @model={{student.id}} @query={{hash schoolYear=schoolYear}} @title={{academicStatusName}}>
       {{statusAbbreviation}}
-    {{/link-to}}
+    </LinkTo>
   {{/if}}
 </td>

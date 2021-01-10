@@ -8,9 +8,5 @@
   </tr>
 </thead>
 {{#each months as |month|}}
-  {{status-by-enrollment/row
-    month=month
-    statusHash=statusHash
-    notesHash=notesHash
-  }}
+  <StatusByEnrollment::Row @month={{month}} @statusHash={{statusHash}} @notesHash={{notesHash}} />
 {{/each}}

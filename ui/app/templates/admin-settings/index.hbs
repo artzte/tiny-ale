@@ -3,9 +3,9 @@
 <ul class="reset-list">
   {{#each settingsRoutes as |settingRoute|}}
     <li>
-      {{#link-to settingRoute.route}}
+      <LinkTo @route={{settingRoute.route}}>
         {{settingRoute.title}}
-      {{/link-to}}
+      </LinkTo>
     </li>
   {{/each}}
 </ul>

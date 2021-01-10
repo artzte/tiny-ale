@@ -3,14 +3,9 @@
 </h3>
 
 <p>
-  {{#link-to "contract-attendance" contract.id}}
+  <LinkTo @route="contract-attendance" @model={{contract.id}}>
     Return to all meetings
-  {{/link-to}}
+  </LinkTo>
 </p>
 
-{{contract-attendance-roll
-  contract=contract
-  meeting=meeting
-  updateRoll=(action "updateRoll")
-  updateAllRolls=(action "updateAllRolls")
-}}
+<ContractAttendanceRoll @contract={{contract}} @meeting={{meeting}} @updateRoll={{action "updateRoll"}} @updateAllRolls={{action "updateAllRolls"}} />

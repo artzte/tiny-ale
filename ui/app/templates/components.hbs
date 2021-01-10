@@ -1,7 +1,7 @@
 <h2>Components</h2>
 <form onsubmit={{this.submit}}>
   <fieldset>
-    {{#form-input label="Typeahead single select"}}
+    <FormInput @label="Typeahead single select">
       <TTypeAhead
         @name="typeahead-single"
         @prompt="Search for a mountain"
@@ -11,11 +11,11 @@
         @onChange={{selectMountain}}
         @results={{searchMountainsResults}}
       />
-    {{/form-input}}
+    </FormInput>
   </fieldset>
 
   <fieldset>
-    {{#form-input label="Typeahead multi select"}}
+    <FormInput @label="Typeahead multi select">
       <TTypeAhead
         @name="typeahead-multiple"
         @prompt="Search for mountains"
@@ -25,7 +25,7 @@
         @onChange={{selectMountains}}
         @results={{searchMountainsResults}}
       />
-    {{/form-input}}
+    </FormInput>
   </fieldset>
 
   <p>Mountains: {{mountainNames}}</p>

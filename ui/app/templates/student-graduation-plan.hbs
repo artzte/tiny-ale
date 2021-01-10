@@ -1,11 +1,3 @@
 <h2>Graduation Plan</h2>
 
-{{graduation-plan
-  student=student
-  mappings=mappings
-  requirements=activeRequirements
-  creditAssignments=creditAssignments
-  saveMapping=(action "saveMapping")
-  addMapping=(action "addMapping")
-  removeMapping=(action "removeMapping")
-}}
+<GraduationPlan @student={{student}} @mappings={{mappings}} @requirements={{activeRequirements}} @creditAssignments={{creditAssignments}} @saveMapping={{action "saveMapping"}} @addMapping={{action "addMapping"}} @removeMapping={{action "removeMapping"}} />
