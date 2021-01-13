@@ -74,18 +74,24 @@
     "morgan": "^1.10.0",
     "pikaday": "^1.8.0",
     "postcss-easy-import": "^3.0.0",
+    "postcss-import": "^14.0.0",
     "postcss-nested": "^4.2.1",
     "postcss-preset-env": "^6.7.0",
     "pretender": "3.4.0",
     "qunit-dom": "~1.2.0",
     "showdown": "^1.9.1",
-    "svg-to-dataurl": "^1.0.0",
-    "tailwindcss": "^1.1.4"
+    "svg-to-dataurl": "^1.0.0"
   },
   "engines": {
     "node": "6.* || 8.* || >= 10.*"
   },
   "ember": {
     "edition": "octane"
+  },
+  "dependencies": {
+    "@tailwindcss/postcss7-compat": "^2.0.2",
+    "autoprefixer": "^9.8.6",
+    "postcss": "^7.0.35",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.2"
   }
 }

@@ -61,7 +61,7 @@
 }
 
 .req-map-item {
-  @apply border p-2 my-4;
+  @apply border-2 p-2 my-4;
 }
 
 .req-map-item .credit-assignments li {

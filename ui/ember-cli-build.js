@@ -1,22 +1,27 @@
+/* eslint-disable global-require */
 'use strict';
 
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
-
-const postcssImport = require('postcss-easy-import');
-const postcssPresetEnv = require('postcss-preset-env');
-const postcssNested = require('postcss-nested');
-const tailwindcss = require('tailwindcss');
 
 module.exports = function (defaults) {
   const app = new EmberApp(defaults, {
     postcssOptions: {
       compile: {
-        enabled: true,
         plugins: [
-          { module: postcssPresetEnv },
-          { module: postcssImport },
-          { module: postcssNested },
-          { module: tailwindcss, options: './config/tailwind.js' },
+          {
+            module: require('postcss-import'),
+            options: {
+              path: ['vendor', 'node_modules'],
+            },
+          },
+          {
+            module: require('tailwindcss'),
+            options: {
+              config: './config/tailwind.js',
+            },
+          },
+          require('postcss-preset-env'),
+          require('postcss-nested'),
         ],
       },
     },

@@ -5,7 +5,7 @@ TBox {
 .t-form {
   .submit-row {
     hrule {
-      @apply block border-t border-gray-300 mt-10 mb-2;
+      @apply block border-t-2 border-gray-300 mt-10 mb-2;
     }
   
     .submit-row-inner {
@@ -44,7 +44,7 @@ t-help {
 }
 
 input[type="text"], input[type="email"], input[type="number"], select, textarea, .field {
-  @apply block border border-gray-200 bg-white w-full p-2 mt-2 rounded;
+  @apply block border-2 border-gray-200 bg-white w-full p-2 mt-2 rounded-sm;
 
   &:focus {
     @apply border-gray-900;
@@ -86,7 +86,7 @@ button[disabled] {
 }
 
 .btn {
-  @apply text-center py-2 px-4 rounded bg-gray-900 text-white border mt-2 no-underline cursor-pointer;
+  @apply text-center py-2 px-4 rounded-sm bg-gray-900 text-white border-2 mt-2 no-underline cursor-pointer;
 
   &:visited {
     @apply text-white;
