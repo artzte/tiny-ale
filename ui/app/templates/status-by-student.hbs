@@ -2,14 +2,12 @@
   {{full-name this.student "first-last"}}
 </h2>
 
-<section>
-  <StatusByStudent
-    @student={{this.student}}
-    @statuses={{this.statuses}}
-    @term={{this.term}}
-    @getNotes={{route-action "getNotes"}}
-  />
-</section>
+<StatusByStudent
+  @student={{this.student}}
+  @statuses={{this.statuses}}
+  @term={{this.term}}
+  @getNotes={{route-action "getNotes"}}
+/>
 
 
 {{#if this.showCoordinatorNav}}

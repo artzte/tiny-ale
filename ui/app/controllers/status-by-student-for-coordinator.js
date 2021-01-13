@@ -25,7 +25,7 @@ export default Controller.extend({
       const { student } = this;
       this.set('loading', true);
       await this.transitionToRoute('status-by-student-for-coordinator', student.relationships.coordinator.data.id, studentId);
-      this.set('loading', false)
+      this.set('loading', false);
     },
   },
 });

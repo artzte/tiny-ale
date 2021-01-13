@@ -1,11 +1,17 @@
-<tr>
-  <td>{{t-date month "termMonth"}}</td>
-  <td>{{academic}}</td>
-  <td>{{status.attributes.fteHours}}</td>
-  <td>{{heldPeriodicCheckins}}</td>
-</tr>
-<tr class="notes-row {{loadingNotes}}">
-  <td colspan="4">
+<status-by-student-row class="flex w-full">
+  <div class="flex w-1/2 md:w-full sm:w-full">
+    <h4 class="bg-red-400">{{t-date @month "termMonth"}}</h4>
+    <div class="w-32 border-red-400 border-2">
+      {{this.academic}}
+    </div>
+    <div class="w-32 border-red-400 border-2">
+      {{this.status.attributes.fteHours}}
+    </div>
+    <div class="w-32 border-red-400 border-2">
+      {{this.heldPeriodicCheckins}}
+    </div>
+  </div>
+  <div class="notes-row w-1/2 md:w-full border-red-400 border-2 {{loadingNotes}}">
     <NotesList @notes={{notes}} @notable={{status}} />
-  </td>
-</tr>
+  </div>
+</status-by-student-row>
