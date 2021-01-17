@@ -1,4 +1,5 @@
 /* eslint-disable global-require */
+
 'use strict';
 
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
@@ -23,14 +24,6 @@ module.exports = function (defaults) {
           require('postcss-preset-env'),
           require('postcss-nested'),
         ],
-      },
-    },
-    nodeAssets: {
-      pikaday: {
-        vendor: ['css/pikaday.css'],
-      },
-      tailwindcss: {
-        vendor: ['utilities.css', 'base.css', 'components.css'],
       },
     },
   });

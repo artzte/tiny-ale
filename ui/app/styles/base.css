@@ -66,7 +66,6 @@ section {
 }
 
 a, a:visited {
-  color: inherit;
   @apply cursor-pointer;
 }
 

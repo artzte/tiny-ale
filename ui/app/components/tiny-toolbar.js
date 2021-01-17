@@ -1,28 +1,31 @@
-import Component from '@ember/component';
-import { computed } from '@ember/object';
+import Component from '@glimmer/component';
+import { tracked } from '@glimmer/tracking';
+import { action } from '@ember/object';
+
 import { ROLE_ADMIN } from '../utils/user-utils';
 
-export default Component.extend({
-  tagName: '',
-  signIn: () => {},
-  signOut: () => {},
+export default class TinyToolbar extends Component {
+  @tracked menuIsOpen;
 
-  userIsAdmin: computed('user', function () {
-    const { user } = this;
+  get userIsAdmin() {
+    const { user } = this.args;
 
     if (!user) return false;
 
     return user.attributes.role === ROLE_ADMIN;
-  }),
+  }
 
-  actions: {
-    signIn(event) {
-      event.preventDefault();
-      this.signIn();
-    },
-    signOut(event) {
-      event.preventDefault();
-      this.signOut();
-    },
-  },
-});
+  @action toggleMenu() {
+    this.menuIsOpen = !this.menuIsOpen;
+  }
+
+  @action signIn(event) {
+    event.preventDefault();
+    this.args.signIn();
+  }
+
+  @action signOut(event) {
+    event.preventDefault();
+    this.args.signOut();
+  }
+}
