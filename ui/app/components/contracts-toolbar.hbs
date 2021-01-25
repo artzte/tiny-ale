@@ -1,33 +1,48 @@
 <h1>{{this.contract.attributes.name}}</h1>
 
-<TinyToolbar as |tb|>
-  <nav class="toolbar flex items-center mb-4">
-    <ul class="flex list-reset">
-      <TinyToolbar::Item
-        @currentRoute={{tb.currentRoute}}
-        @route="contract.index"
-        @label="Syllabus"
-      />
-      <TinyToolbar::Item
-        @currentRoute={{tb.currentRoute}}
-        @route="contract-enrollments"
-        @label="Enrollments"
-      />
-      <TinyToolbar::Item
-        @currentRoute={{tb.currentRoute}}
-        @route="status-by-contract"
-        @label="Status"
-      />
-      <TinyToolbar::Item
-        @currentRoute={{tb.currentRoute}}
-        @route="contract-assignments"
-        @label="Assignments"
-      />
-      <TinyToolbar::Item
-        @currentRoute={{tb.currentRoute}}
-        @route="contract-attendance"
-        @label="Attendance"
-      />
-    </ul>
-  </nav>
-</TinyToolbar>
+<nav>
+  <div class="max-w-7xl">
+    <div class="flex items-center justify-between h-16">
+      <div class="flex items-center">
+        <tiny-nav class="flex items-baseline space-x-4">
+          <LinkTo
+            class="text-gray-800 hover:bg-gray-100 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
+            @route="contracts.index"
+          >
+            All contracts
+          </LinkTo>
+          <LinkTo
+            class="text-gray-800 hover:bg-gray-100 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
+            @route="contract.index"
+          >
+            Syllabus
+          </LinkTo>
+          <LinkTo
+            class="text-gray-800 hover:bg-gray-100 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
+            @route="contract-enrollments"
+          >
+            Enrollments
+          </LinkTo>
+          <LinkTo
+            class="text-gray-800 hover:bg-gray-100 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
+            @route="status-by-contract"
+          >
+            Status
+          </LinkTo>
+          <LinkTo
+            class="text-gray-800 hover:bg-gray-100 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
+            @route="contract-assignments"
+          >
+            Assignments
+          </LinkTo>
+          <LinkTo
+            class="text-gray-800 hover:bg-gray-100 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
+            @route="contract-attendance"
+          >
+            Attendance
+          </LinkTo>
+        </tiny-nav>
+      </div>
+    </div>
+  </div>
+</nav>

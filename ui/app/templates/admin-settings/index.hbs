@@ -1,6 +1,18 @@
+<h2>Admin pages</h2>
+
+<ul class="list-none">
+  {{#each adminRoutes as |adminRoute|}}
+    <li>
+      <LinkTo @route={{adminRoute.route}}>
+        {{adminRoute.title}}
+      </LinkTo>
+    </li>
+  {{/each}}
+</ul>
+
 <h2>Settings</h2>
 
-<ul class="reset-list">
+<ul class="list-none">
   {{#each settingsRoutes as |settingRoute|}}
     <li>
       <LinkTo @route={{settingRoute.route}}>

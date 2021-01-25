@@ -1,10 +1,15 @@
-<nav class="toolbar flex items-center mb-4">
-  <ul class="flex list-reset">
-    <TinyToolbar::Item @currentRoute={{currentRoute}} @route="admin.index" @label="Admin" />
-    <TinyToolbar::Item @currentRoute={{currentRoute}} @route="admin-users" @label="Users" />
-    <TinyToolbar::Item @currentRoute={{currentRoute}} @route="admin-terms" @label="Terms" />
-    <TinyToolbar::Item @currentRoute={{currentRoute}} @route="admin-credit-batches" @label="Credit batches" />
-    <TinyToolbar::Item @currentRoute={{currentRoute}} @route="admin-reports" @label="Reports" />
-    <TinyToolbar::Item @currentRoute={{currentRoute}} @route="admin-settings.index" @label="Settings" @disabled={{disabled}} />
-  </ul>
+<nav>
+  <div class="max-w-7xl">
+    <div class="flex items-center justify-between h-16">
+      <div class="flex items-center">
+        <tiny-nav class="flex items-baseline space-x-4">
+          <AdminToolbar::Item @currentRoute={{currentRoute}} @route="admin-settings.index" @label="Settings" @disabled={{disabled}} />
+          <AdminToolbar::Item @currentRoute={{currentRoute}} @route="admin-users" @label="Users" />
+          <AdminToolbar::Item @currentRoute={{currentRoute}} @route="admin-terms" @label="Terms" />
+          <AdminToolbar::Item @currentRoute={{currentRoute}} @route="admin-credit-batches" @label="Credit batches" />
+          <AdminToolbar::Item @currentRoute={{currentRoute}} @route="admin-reports" @label="Reports" />
+        </tiny-nav>
+      </div>
+    </div>
+  </div>
 </nav>

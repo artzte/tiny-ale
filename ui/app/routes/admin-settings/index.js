@@ -23,10 +23,25 @@ const settingsRoutes = [{
   title: 'Learning plan goals',
 }];
 
+const adminRoutes = [{
+  route: 'admin-users',
+  title: 'Users',
+}, {
+  title: 'Terms',
+  route: 'admin-terms',
+}, {
+  route: 'admin-credit-batches',
+  title: 'Credit batches',
+}, {
+  route: 'admin-reports',
+  title: 'Reports',
+}];
+
 export default Route.extend({
   setupController(controller, model) {
     this._super(controller, model);
     controller.setProperties({
+      adminRoutes,
       settingsRoutes,
     });
   },

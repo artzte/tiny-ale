@@ -17,13 +17,9 @@ export default class StatusByStudentRow extends Component {
 
   get heldPeriodicCheckins() {
     const { status } = this;
-    if (!status) return '';
+    if (!status) return false;
 
-    if (status.attributes.heldPeriodicCheckins) {
-      return 'Y';
-    }
-
-    return 'N';
+    return status.attributes.heldPeriodicCheckins;
   }
 
   get notes() {

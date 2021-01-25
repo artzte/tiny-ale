@@ -161,7 +161,7 @@ end
 months = [@term_coor_current.months[0], @term_coor_current.months[1]]
 months.each do |month|
   @students.each do |student|
-    status = Status.create! statusable: student, month: month, creator: student.coordinator
+    status = Status.create! statusable: student, month: month, creator: student.coordinator, held_periodic_checkins: true, academic_status: Status::STATUS_ACCEPTABLE, attendance_status: Status::STATUS_ACCEPTABLE
     Note.create! creator: student.coordinator, notable: status, note: "Note by #{student.coordinator.last_name} for #{student.last_name} on #{month}"
   end
 end

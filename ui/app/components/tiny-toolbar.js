@@ -5,7 +5,10 @@ import { action } from '@ember/object';
 import { ROLE_ADMIN } from '../utils/user-utils';
 
 export default class TinyToolbar extends Component {
-  @tracked menuIsOpen;
+
+  @tracked menuIsOpen = false;
+
+  @tracked profileMenuIsOpen = false;
 
   get userIsAdmin() {
     const { user } = this.args;
@@ -15,17 +18,36 @@ export default class TinyToolbar extends Component {
     return user.attributes.role === ROLE_ADMIN;
   }
 
+  @action didClickWindow(event, element) {
+    console.log('didClickWindow', event, element)
+    if (!element.contains(event.target)) {
+      this.profileMenuIsOpen = false;
+    }
+  }
+
   @action toggleMenu() {
     this.menuIsOpen = !this.menuIsOpen;
   }
 
-  @action signIn(event) {
-    event.preventDefault();
-    this.args.signIn();
+  @action toggleProfileMenu() {
+    this.profileMenuIsOpen = !this.profileMenuIsOpen;
   }
 
-  @action signOut(event) {
+  @action signinSignout(event) {
     event.preventDefault();
-    this.args.signOut();
+    if (this.args.user) {
+      this.args.signOut();
+    } else {
+      this.args.signIn();
+    }
+  }
+
+  @action addHandlers(element) {
+    this.onClickWindow = event => this.didClickWindow(event, element);
+    document.addEventListener('click', this.onClickWindow);
+  }
+
+  @action removeHandlers() {
+    document.removeEventListener('click', this.onClickWindow);
   }
 }
