@@ -14,7 +14,7 @@ export default class StatusByStudent extends Component {
   get months() {
     const active = activeMonths(this.args.term, this.tinyData.getToday());
 
-    return active.sort();
+    return active.sort((m1, m2) => m2.localeCompare(m1));
   }
 
   get statusHash() {
