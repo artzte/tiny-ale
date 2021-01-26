@@ -10,15 +10,20 @@
   />
 </div>
 
-<section>
+<section class="bg-gray-200 p-5">
   <StatusByEnrollmentSummary @enrollment={{enrollment}} @contract={{contract}} />
 </section>  
 
-<section>
-  <StatusByEnrollment @contract={{contract}} @enrollment={{enrollment}} @statuses={{statuses}} @getNotes={{route-action "getNotes"}} />
+<section class="bg-gray-200 p-5">
+  <StatusByEnrollment
+    @contract={{contract}} 
+    @enrollment={{enrollment}}
+    @statuses={{statuses}}
+    @getNotes={{route-action "getNotes"}}
+   />
 </section>
 
-<section>
+<section class="bg-gray-200 p-5">
   <h3>Assignments</h3>
   <StatusByEnrollmentAssignments @contract={{contract}} @enrollment={{enrollment}} @getNotes={{route-action "getNotes"}} />
 </section>
