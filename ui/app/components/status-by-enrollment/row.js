@@ -1,12 +1,9 @@
 import Component from '@glimmer/component';
-import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
 import { isMonthActiveForStatusReporting } from '../../utils/status-utils';
 
 export default class StatusByStudentRow extends Component {
   @service('tinyData') tinyData;
-
-  @tracked statusHash;
 
   get hasStatus() {
     return this.status;

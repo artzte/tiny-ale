@@ -37,7 +37,7 @@ module('Integration | Component | status-by-student', (hooks) => {
       }}
     `);
 
-    const rows = findAll('tbody');
+    const rows = findAll('[data-test-status-row');
     assert.equal(rows.length, studentStatuses.data.length, 'expected number of months rendered');
 
     assert.equal(findAll('.notes-list').length, 2, 'expected count of populated notes rows rendered');
@@ -56,7 +56,10 @@ module('Integration | Component | status-by-student', (hooks) => {
       }}
     `);
 
-    const rows = findAll('tbody');
+    const rows = findAll('[data-test-status-row');
     assert.equal(rows.length, studentStatuses.data.length + 2, 'expected number of months rendered');
+
+    const unreportedRows = findAll('[data-test-month-has-no-status]');
+    assert.equal(unreportedRows.length, 2, 'expected number of prompts to enter status were rendered');
   });
 });

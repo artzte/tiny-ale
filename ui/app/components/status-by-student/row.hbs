@@ -1,4 +1,4 @@
-<div class="bg-white shadow overflow-hidden sm:rounded-lg mb-5">
+<div class="bg-white shadow overflow-hidden sm:rounded-lg mb-5" data-test-status-row={{@month}}>
   <div class="px-4 my-5 sm:px-6">
     <h3 class="text-lg leading-6 font-bold text-gray-900">
       {{t-date @month "termMonth"}}
@@ -11,7 +11,7 @@
           <dt class="font-bold text-gray-900">
             Academic
           </dt>
-          <dd class="mt-1 text-gray-900 sm:mt-0 sm:col-span-2">
+          <dd class="mt-1 text-gray-900 sm:mt-0 sm:col-span-2" data-test-academic>
             {{this.academic}}
           </dd>
         </div>
@@ -19,7 +19,7 @@
           <dt class="font-bold text-gray-900">
             FTE hours
           </dt>
-          <dd class="mt-1 text-gray-900 sm:mt-0 sm:col-span-2">
+          <dd class="mt-1 text-gray-900 sm:mt-0 sm:col-span-2" data-test-fte>
             {{this.status.attributes.fteHours}}
           </dd>
         </div>
@@ -27,7 +27,7 @@
           <dt class="font-bold text-gray-900">
             Held periodic checkins?
           </dt>
-          <dd class="mt-1 text-gray-900 sm:mt-0 sm:col-span-2">
+          <dd class="mt-1 text-gray-900 sm:mt-0 sm:col-span-2" data-test-checkins>
             {{#if this.heldPeriodicCheckins}}
               Yes
             {{else}}
@@ -55,7 +55,7 @@
           </dd>
         </div>
       {{else}}
-        <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6" data-test-month-has-no-status>
           <dt class="font-medium text-gray-900">
             <button type="button" class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
               Report status for {{t-date @month "termMonth"}}

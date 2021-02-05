@@ -4,6 +4,7 @@
     title="Previous"
     disabled={{this.disablePrevious}}
     onclick={{fn @onSelect this.previousParticipant.value}}
+    data-test-navigator-prev
   >
     <FaIcon @icon="caret-left" @size="2x" />
   </button>
@@ -13,6 +14,7 @@
     @onchange={{@onSelect}}
     @value={{@current.id}}
     disabled={{this.disabled}}
+    data-test-navigator-select
   />
 
   <button
@@ -20,6 +22,7 @@
     title="Next"
     disabled={{this.disableNext}}
     onclick={{fn @onSelect this.nextParticipant.value}}
+    data-test-navigator-next
   >
     <FaIcon @icon="caret-right" @size="2x" />
   </button>

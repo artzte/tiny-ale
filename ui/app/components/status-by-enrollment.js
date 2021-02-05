@@ -10,6 +10,8 @@ export default class StatusByEnrollment extends contractModelFactory(Component) 
 
   @tracked loadingNotes = false;
 
+  @tracked notesHash;
+
   constructor(...args) {
     super(...args);
 

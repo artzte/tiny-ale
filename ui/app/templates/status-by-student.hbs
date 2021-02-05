@@ -13,7 +13,6 @@
 {{#if this.showCoordinatorNav}}
   <EmberWormhole @to="status-page-navigator">
     <Status::StatusPageNavigator
-      @student={{this.student}}
       @current={{this.student}}
       @navigationList={{this.studentNavigationMap}}
       @onSelect={{action 'navigate'}}
