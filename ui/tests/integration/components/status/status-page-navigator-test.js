@@ -1,6 +1,6 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render, find } from '@ember/test-helpers';
+import { render, select } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 
 let requests;
@@ -22,18 +22,18 @@ module('Integration | Component | status/status-page-navigator', (hooks) => {
     requests = [];
     this.studentNavigationMap = [{
       name: 'A',
-      id: 1,
+      value: 1,
     }, {
       name: 'B',
-      id: 2,
+      value: 2,
     }, {
       name: 'C',
-      id: 3,
+      value: 3,
     }, {
       name: 'D',
-      id: 4,
+      value: 4,
     }];
-    [this.current] = this.studentNavigationMap;
+    this.current = { id: '3' };
     this.navigate = student => requests.push(student);
   });
 
@@ -49,10 +49,16 @@ module('Integration | Component | status/status-page-navigator', (hooks) => {
 
   test('it selects the current selection', async function (assert) {
     // make current the second one
-    [, this.current] = this.studentNavigationMap;
+    this.current = { id: '2' };
 
     await renderComponent();
-debugger
-    assert.equal(this.element.querySelector('select[data-test-navigator-select] option[selected').textContent, this.current.name, 'expected option is selected');
+
+    const nav = this.element.querySelector('select');
+
+    assert.matches(nav.value, '2');
+
+    await select(nav, 'C');
+
+    assert.matches(nav.value, '3');
   });
 });

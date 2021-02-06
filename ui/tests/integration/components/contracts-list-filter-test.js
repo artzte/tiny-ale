@@ -1,7 +1,6 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render, find } from '@ember/test-helpers';
-import { Interactor } from '@bigtest/interactor';
 import hbs from 'htmlbars-inline-precompile';
 import termsFixture from '../../fixtures/terms';
 import categoriesFixture from '../../fixtures/categories';

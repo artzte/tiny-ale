@@ -1,5 +1,7 @@
-{{#if hasBlock}}
-  {{yield this}}
-{{else}}
-  {{name}}
-{{/if}}
+<option selected={{this.selected}} value={{@value}}>
+  {{#if (has-block)}}
+    {{yield this}}
+  {{else}}
+    {{@name}}
+  {{/if}}
+</option>

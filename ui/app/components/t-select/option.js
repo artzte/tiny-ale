@@ -1,18 +1,12 @@
-import Component from '@ember/component';
-import { computed } from '@ember/object';
+import Component from '@glimmer/component';
 
-export default Component.extend({
-  tagName: 'option',
-  attributeBindings: ['value', 'selected'],
-  value: null,
-  selected: computed('value', 'currentValue', function () {
+export default class TSelectOption extends Component {
+  get selected() {
     const {
       value,
       currentValue,
-    } = this;
+    } = this.args;
 
-    const isSelected = (currentValue && currentValue.toString()) === (value && value.toString());
-
-    return isSelected;
-  }),
-});
+    return (value || '').toString() === (currentValue || '').toString();
+  }
+}

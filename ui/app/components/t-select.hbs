@@ -1,6 +1,6 @@
 <select
   ...attributes
-  onchange={{action "onChange"}}
+  onchange={{fn this.onChange}}
 >
   {{#if hasBlock}}
     {{yield
@@ -9,11 +9,11 @@
       )
     }}
   {{else}}
-    {{#if prompt}}
-      <TSelect::Option @name={{prompt}} @value="" @currentValue={{value}} />
+    {{#if @prompt}}
+      <TSelect::Option @name={{@prompt}} @value="" @currentValue={{@value}} />
     {{/if}}
     {{#each optionSelections as |opt|}}
-      <TSelect::Option @name={{opt.name}} @value={{opt.value}} @currentValue={{value}} />
+      <TSelect::Option @name={{opt.name}} @value={{opt.value}} @currentValue={{@value}} />
     {{/each}}
   {{/if}}
 </select>
