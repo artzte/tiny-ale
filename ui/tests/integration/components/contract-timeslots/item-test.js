@@ -6,7 +6,7 @@ import contractDetailFixture from '../../../fixtures/contract-detail';
 
 let timeslot;
 
-module('Integration | Component | contract-timeslots/item', (hooks) => {
+module('Integration | Component | contract-timeslots/item', hooks => {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(function () {

@@ -44,6 +44,7 @@ export default Component.extend({
   }),
 
   didReceiveAttrs() {
+    this._super();
     let { meetingParticipant } = this;
     meetingParticipant = meetingParticipant || { attributes: {} };
     this.setProperties({

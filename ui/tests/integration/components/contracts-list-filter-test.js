@@ -10,13 +10,13 @@ let events;
 let queryParams;
 let schoolYears;
 
-module('Integration | Component | contracts-list-filter', (hooks) => {
+module('Integration | Component | contracts-list-filter', hooks => {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(function () {
     events = [];
 
-    this.onChange = (params) => {
+    this.onChange = params => {
       events.push(params);
     };
 
@@ -46,7 +46,7 @@ module('Integration | Component | contracts-list-filter', (hooks) => {
     });
   });
 
-  test('it renders', async (assert) => {
+  test('it renders', async assert => {
     await render(hbs`
       {{contracts-list-filter
         queryParams=queryParams
@@ -59,7 +59,7 @@ module('Integration | Component | contracts-list-filter', (hooks) => {
     `);
 
     const selects = {};
-    ['schoolYear', 'term', 'facilitator', 'category', 'status'].forEach((name) => {
+    ['schoolYear', 'term', 'facilitator', 'category', 'status'].forEach(name => {
       const el = find(`select[name="${name}"]`);
       assert.ok(el, `rendered select for ${name}`);
       selects[name] = el;

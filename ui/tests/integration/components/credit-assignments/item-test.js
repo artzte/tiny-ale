@@ -9,7 +9,7 @@ let tinyData;
 let credit;
 let creditAssignment;
 
-module('Integration | Component | credit-assignments/item', (hooks) => {
+module('Integration | Component | credit-assignments/item', hooks => {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(function () {

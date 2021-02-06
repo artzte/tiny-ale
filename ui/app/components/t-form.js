@@ -12,6 +12,7 @@ export default Component.extend({
   tagName: 'form',
 
   didReceiveAttrs() {
+    this._super();
     if (this.lastModel === this.model) {
       return;
     }
@@ -35,7 +36,8 @@ export default Component.extend({
     }
   },
 
-  didInsertElement() {
+  didInsertElement(...args) {
+    this._super(...args);
     const autofocus = this.element.querySelector('[autofocus]');
 
     if (autofocus) {

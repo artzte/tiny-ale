@@ -8,7 +8,7 @@ import activeRequirementsFixture from '../../fixtures/admin-graduation-plan-requ
 let tinyDataServiceMock;
 let requests;
 
-module('Integration | Component | GraduationPlanRequirementsList', (hooks) => {
+module('Integration | Component | GraduationPlanRequirementsList', hooks => {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(function () {
@@ -25,7 +25,7 @@ module('Integration | Component | GraduationPlanRequirementsList', (hooks) => {
     });
   });
 
-  test('it renders with credit requirements', async (assert) => {
+  test('it renders with credit requirements', async assert => {
     await render(hbs`
       <GraduationPlanRequirementsList
         @graduationPlanRequirements={{graduationPlanRequirements}}

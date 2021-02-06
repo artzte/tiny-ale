@@ -12,7 +12,7 @@ let tinyDataServiceMock;
 let enrollment;
 let contract;
 
-module('Integration | Component | status-by-enrollment-summary', (hooks) => {
+module('Integration | Component | status-by-enrollment-summary', hooks => {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(function () {
@@ -30,7 +30,7 @@ module('Integration | Component | status-by-enrollment-summary', (hooks) => {
     });
   });
 
-  test('it renders', async (assert) => {
+  test('it renders', async assert => {
     await render(hbs`
       {{status-by-enrollment-summary
         enrollment=enrollment
@@ -53,7 +53,7 @@ module('Integration | Component | status-by-enrollment-summary', (hooks) => {
     assert.matches(attendanceStatus.textContent, /5\s+of\s+5/, 'expected count of meeting attendance shown');
   });
 
-  test('it renders with missing assigments and attendance', async (assert) => {
+  test('it renders with missing assigments and attendance', async assert => {
     enrollment.relationships.turnins.data = enrollment.relationships.turnins.data.slice(2);
     enrollment.relationships.meetingParticipants.data = enrollment.relationships.meetingParticipants.data.slice(2);
 
@@ -81,11 +81,11 @@ module('Integration | Component | status-by-enrollment-summary', (hooks) => {
     enrollmentData.included
       .filter(include => include.type === 'turnin')
       .slice(2)
-      .forEach((turnin) => { turnin.attributes.status = 'missing'; });
+      .forEach(turnin => { turnin.attributes.status = 'missing'; });
     enrollmentData.included
       .filter(include => include.type === 'meetingParticipant')
       .slice(2)
-      .forEach((meetingParticipant) => { meetingParticipant.attributes.participation = 'absent'; });
+      .forEach(meetingParticipant => { meetingParticipant.attributes.participation = 'absent'; });
 
     tinyDataServiceMock.addResult(enrollmentData);
 

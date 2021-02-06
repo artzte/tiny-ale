@@ -4,7 +4,7 @@ import { render, click } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 
 let requests;
-module('Integration | Component | edit-save-cancel', (hooks) => {
+module('Integration | Component | edit-save-cancel', hooks => {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(function () {
@@ -33,7 +33,6 @@ module('Integration | Component | edit-save-cancel', (hooks) => {
 
     assert.ok(requests[0] === true, 'edit mode was called');
   });
-
 
   test('it renders in form mode', async function (assert) {
     this.editing = true;

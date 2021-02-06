@@ -15,7 +15,7 @@ import staffFixture from '../../fixtures/staff';
 let notableHash;
 let tinyData;
 
-module('Integration | Component | notes-list', (hooks) => {
+module('Integration | Component | notes-list', hooks => {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(function () {

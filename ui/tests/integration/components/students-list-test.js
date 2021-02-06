@@ -9,7 +9,7 @@ import studentsFixture from '../../fixtures/students';
 
 let tinyDataServiceMock;
 
-module('Integration | Component | students-list', (hooks) => {
+module('Integration | Component | students-list', hooks => {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(function () {

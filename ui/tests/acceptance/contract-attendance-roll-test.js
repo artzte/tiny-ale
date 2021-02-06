@@ -8,7 +8,6 @@ import {
   select,
 } from '@ember/test-helpers';
 import { setupApplicationTest } from 'ember-qunit';
-import { Select } from '@bigtest/interactor';
 import MockServer, { provisionTinySisBootstrapRoutes } from '../helpers/mock-server';
 import { MockLocalStorage } from '../helpers/test-utils';
 
@@ -27,10 +26,10 @@ let localStorage;
 
 const contractAttendanceRollUrl = `/tiny/contracts/${contractDetailFixture.data.id}/attendance/${contractAttendanceRollMeetingFixture.data.id}`;
 
-module('Acceptance | contract attendance roll', (hooks) => {
+module('Acceptance | contract attendance roll', hooks => {
   setupApplicationTest(hooks);
 
-  hooks.beforeEach((assert) => {
+  hooks.beforeEach(assert => {
     server = new MockServer();
     localStorage = new MockLocalStorage();
 
@@ -53,7 +52,7 @@ module('Acceptance | contract attendance roll', (hooks) => {
     localStorage.unmock();
   });
 
-  test(`visiting ${contractAttendanceRollUrl}`, async (assert) => {
+  test(`visiting ${contractAttendanceRollUrl}`, async assert => {
     await visit(contractAttendanceRollUrl);
 
     assert.equal(currentURL(), contractAttendanceRollUrl, 'page navigated to successfully');
@@ -61,14 +60,13 @@ module('Acceptance | contract attendance roll', (hooks) => {
     assert.ok(find('t-contract-attendance-roll-set-all'), 'setall form rendered');
   });
 
-
-  test(`exercising set-all on ${contractAttendanceRollUrl}`, async (assert) => {
+  test(`exercising set-all on ${contractAttendanceRollUrl}`, async assert => {
     const meetingFixture = server.getFixture('/api/meetings/:id');
 
     meetingFixture
       .included
       .filter(record => record.type === 'meetingParticipant')
-      .forEach((mp) => {
+      .forEach(mp => {
         mp.attributes.contactType = 'coor';
         mp.attributes.participation = 'absent';
       });
@@ -90,14 +88,14 @@ module('Acceptance | contract attendance roll', (hooks) => {
     assert.equal(patchLog.body.data.attributes.participation, 'absent', 'expected participation was sent');
 
     findAll('t-contract-attendance-roll tbody tr')
-      .forEach((row) => {
+      .forEach(row => {
         assert.ok(row.querySelector('[data-test-participation="absent"] value-button[data-test-is-checked="checked"]'), 'enrollment row is marked absent now');
         const contactTypeValue = find(row.querySelector('select')).value;
         assert.equal(contactTypeValue, 'coor', 'contactType select is properly set');
       });
   });
 
-  test(`exercising set participation and contact type on ${contractAttendanceRollUrl}`, async (assert) => {
+  test(`exercising set participation and contact type on ${contractAttendanceRollUrl}`, async assert => {
     // debounce requires this
     assert.timeout(3000);
 

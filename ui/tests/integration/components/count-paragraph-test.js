@@ -4,7 +4,7 @@ import { render, find } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 import students from '../../fixtures/coor-students';
 
-module('Integration | Component | count-paragraph', (hooks) => {
+module('Integration | Component | count-paragraph', hooks => {
   setupRenderingTest(hooks);
 
   test('it renders singular and plural variants', async function (assert) {
@@ -26,10 +26,10 @@ module('Integration | Component | count-paragraph', (hooks) => {
     this.set('pluralName', 'squawking blue birds');
     assert.dom(this.element).hasText(`Found ${students.meta.count} squawking blue birds`, 'Found expected squawking blue birds');
 
-    this.set('students', Object.assign({}, students, { meta: { count: 1 } }));
+    this.set('students', { ...students, meta: { count: 1 } });
     assert.dom(this.element).hasText('Found 1 blue jay', 'Found 1 blue jay');
 
-    this.set('students', Object.assign({}, students, { meta: { count: 0 } }));
+    this.set('students', { ...students, meta: { count: 0 } });
     assert.dom(this.element).hasText('Found no squawking blue birds', 'Found no squawking blue birds');
   });
 

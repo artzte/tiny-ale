@@ -12,7 +12,7 @@ export default Controller.extend({
       .relationships
       .coordinatees
       .data
-      .map((relation) => {
+      .map(relation => {
         const participant = tinyData.get('user', relation.id);
         return {
           name: `${participant.attributes.lastName}, ${participant.attributes.firstName}`,

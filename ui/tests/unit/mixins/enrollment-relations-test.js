@@ -9,7 +9,7 @@ import enrollmentDetailFixture from '../../fixtures/contract-enrollment-detail';
 let tinyDataServiceMock;
 let enrollment;
 
-module('Unit | Mixin | enrollment-relations', (hooks) => {
+module('Unit | Mixin | enrollment-relations', hooks => {
   hooks.beforeEach(() => {
     tinyDataServiceMock = buildTinyData();
 
@@ -22,7 +22,7 @@ module('Unit | Mixin | enrollment-relations', (hooks) => {
     enrollment = tinyDataServiceMock.get('enrollment', enrollmentDetailFixture.data.id);
   });
 
-  test('it can be mixed into an object', (assert) => {
+  test('it can be mixed into an object', assert => {
     const EnrollmentRelationsObject = EmberObject.extend(EnrollmentRelationsMixin);
     const subject = EnrollmentRelationsObject.create({
       enrollment,
@@ -31,14 +31,14 @@ module('Unit | Mixin | enrollment-relations', (hooks) => {
     assert.ok(subject);
   });
 
-  test('it can retrieve relations', (assert) => {
+  test('it can retrieve relations', assert => {
     const EnrollmentRelationsObject = EmberObject.extend(EnrollmentRelationsMixin);
     const subject = EnrollmentRelationsObject.create({
       enrollment,
       tinyData: tinyDataServiceMock,
     });
 
-    ['participant', 'creditAssignments', 'turnins', 'meetingParticipants'].forEach((relation) => {
+    ['participant', 'creditAssignments', 'turnins', 'meetingParticipants'].forEach(relation => {
       const relationResult = subject.get(relation);
       assert.ok(relationResult, `relation ${relation} is retrievable and truthy`);
     });

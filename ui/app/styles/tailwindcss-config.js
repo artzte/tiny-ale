@@ -1,4 +1,5 @@
-const defaultConfig = require('tailwindcss/defaultConfig');
+// TODO diff this and only export diff's
+// const defaultConfig = require('tailwindcss/defaultConfig');
 
 module.exports = {
   prefix: '',

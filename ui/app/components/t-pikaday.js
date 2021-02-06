@@ -31,6 +31,7 @@ export default Component.extend({
   }),
 
   async didInsertElement() {
+    this._super();
     const {
       value,
       popup,
@@ -41,7 +42,7 @@ export default Component.extend({
     const [field] = element.getElementsByTagName('input');
     const defaultDate = this.getInitDate(value);
 
-    this.pikaday = await new Promise((resolve) => {
+    this.pikaday = await new Promise(resolve => {
       /* eslint-disable-next-line no-new */
       new Pikaday({
         field,
@@ -66,6 +67,7 @@ export default Component.extend({
   },
 
   willDestroyElement() {
+    this._super();
     if (this.pikaday) this.pikaday.destroy();
   },
 

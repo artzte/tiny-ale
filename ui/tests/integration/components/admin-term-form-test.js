@@ -3,7 +3,6 @@ import { setupRenderingTest } from 'ember-qunit';
 import {
   render,
   click,
-  find,
   fillIn,
   select,
 } from '@ember/test-helpers';
@@ -16,7 +15,7 @@ let term;
 let tinyDataServiceMock;
 let requests;
 
-module('Integration | Component | admin-term-form', (hooks) => {
+module('Integration | Component | admin-term-form', hooks => {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(function () {

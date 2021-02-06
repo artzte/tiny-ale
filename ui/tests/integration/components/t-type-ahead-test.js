@@ -13,7 +13,7 @@ let desiredResult;
 let requests;
 let resultFixture;
 
-module('Integration | Component | TTypeAhead', (hooks) => {
+module('Integration | Component | TTypeAhead', hooks => {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(function () {
@@ -49,7 +49,7 @@ module('Integration | Component | TTypeAhead', (hooks) => {
     });
   });
 
-  test('it renders and displays a value', async (assert) => {
+  test('it renders and displays a value', async assert => {
     await render(hbs`
       <TTypeAhead
         @name="myboo"
@@ -60,7 +60,7 @@ module('Integration | Component | TTypeAhead', (hooks) => {
       />
     `);
 
-    const selectedOption = find('[data-test-value');
+    const selectedOption = find('[data-test-value]');
 
     assert.ok(selectedOption, 'a result is present');
     assert.equal(selectedOption.textContent.trim(), desiredResult.name);

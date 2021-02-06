@@ -5,7 +5,7 @@ import { hbs } from 'ember-cli-htmlbars';
 
 let requests;
 
-module('Integration | Component | status/status-page-navigator', (hooks) => {
+module('Integration | Component | status/status-page-navigator', hooks => {
   setupRenderingTest(hooks);
 
   function renderComponent() {
@@ -36,7 +36,6 @@ module('Integration | Component | status/status-page-navigator', (hooks) => {
     this.current = { id: '3' };
     this.navigate = student => requests.push(student);
   });
-
 
   test('it renders', async function (assert) {
     await renderComponent();

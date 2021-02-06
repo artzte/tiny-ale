@@ -18,6 +18,7 @@ export default Component.extend(ContractRelations, EnrollmentRelations, {
       }, {});
   }),
   async didReceiveAttrs() {
+    this._super();
     const { notesHash, getNotes, turnins } = this;
     if (notesHash) return;
 

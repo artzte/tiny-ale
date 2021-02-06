@@ -23,7 +23,7 @@ let credits;
 let requests;
 let enrollment;
 
-module('Integration | Component | CreditAssignments::CreateEditDialog', (hooks) => {
+module('Integration | Component | CreditAssignments::CreateEditDialog', hooks => {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(function () {
@@ -46,11 +46,11 @@ module('Integration | Component | CreditAssignments::CreateEditDialog', (hooks) 
     this.setProperties({
       terms,
       today: new Date(2019, 8, 1),
-      save: (model) => {
+      save: model => {
         requests.push({ type: 'save', model });
         return resolve(model);
       },
-      reportError: (errors) => {
+      reportError: errors => {
         requests.push({ type: 'error', errors });
       },
       close: () => {

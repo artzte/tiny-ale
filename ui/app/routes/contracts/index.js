@@ -65,9 +65,7 @@ export default Route.extend({
       requestParams.status = status;
     }
 
-    this.qp = Object.assign({}, params, {
-      schoolYear: requestParams.schoolYear,
-    });
+    this.qp = { ...params, schoolYear: requestParams.schoolYear };
 
     return tinyData.fetch('/api/contracts', {
       data: requestParams,

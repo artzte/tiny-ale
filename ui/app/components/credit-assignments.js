@@ -32,7 +32,7 @@ export default Component.extend({
       const results = await this.creditAssignmentService.searchCredits({ search });
       return results
         .data
-        .map((credit) => {
+        .map(credit => {
           const name = credit.attributes.courseId
             ? `${credit.attributes.courseName} (${credit.attributes.courseId})`
             : credit.attributes.courseName;

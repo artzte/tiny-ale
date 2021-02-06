@@ -3,7 +3,7 @@ import { setupRenderingTest } from 'ember-qunit';
 import { render, find } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
-module('Integration | Component | status-missing', (hooks) => {
+module('Integration | Component | status-missing', hooks => {
   setupRenderingTest(hooks);
 
   test('it renders', async function (assert) {

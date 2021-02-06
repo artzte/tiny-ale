@@ -8,7 +8,7 @@ import { stubTinyData } from '../../helpers/stub-tiny-data';
 
 let tinyDataServiceMock;
 
-module('Integration | Component | contract-attributes', (hooks) => {
+module('Integration | Component | contract-attributes', hooks => {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(function () {

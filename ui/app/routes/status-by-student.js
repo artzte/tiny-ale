@@ -17,7 +17,7 @@ export default Route.extend({
         status: 'active',
         schoolYear: this.schoolYear,
       },
-    }).then((terms) => {
+    }).then(terms => {
       this.term = terms.data.shift();
     });
   },
@@ -32,7 +32,7 @@ export default Route.extend({
     return all([
       tinyData.fetch(`/api/students/${studentId}`),
       tinyData.fetch(`/api/statuses?months=${months}&studentIds=${studentId}`),
-    ]).then((results) => {
+    ]).then(results => {
       const [student, statuses] = results;
       this.params = params;
       this.statuses = statuses;
@@ -44,7 +44,7 @@ export default Route.extend({
     const { tinyData } = this;
     return all([
       tinyData.fetch(`/api/staff/${student.relationships.coordinator.data.id}`),
-    ]).then((coordinator) => {
+    ]).then(coordinator => {
       this.coordinator = coordinator;
     });
   },

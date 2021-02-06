@@ -5,7 +5,6 @@ import { action } from '@ember/object';
 import { ROLE_ADMIN } from '../utils/user-utils';
 
 export default class TinyToolbar extends Component {
-
   @tracked menuIsOpen = false;
 
   @tracked profileMenuIsOpen = false;
@@ -19,7 +18,6 @@ export default class TinyToolbar extends Component {
   }
 
   @action didClickWindow(event, element) {
-    console.log('didClickWindow', event, element)
     if (!element.contains(event.target)) {
       this.profileMenuIsOpen = false;
     }

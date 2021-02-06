@@ -20,6 +20,7 @@ export default Component.extend({
   }),
 
   didReceiveAttrs() {
+    this._super();
     if (this.credit) return;
 
     const { creditAssignment } = this;

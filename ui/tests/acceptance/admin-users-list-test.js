@@ -17,10 +17,10 @@ import staffFixture from '../fixtures/staff';
 let server;
 let localStorage;
 
-module('Acceptance | admin users list', (hooks) => {
+module('Acceptance | admin users list', hooks => {
   setupApplicationTest(hooks);
 
-  hooks.beforeEach((assert) => {
+  hooks.beforeEach(assert => {
     server = new MockServer();
     localStorage = new MockLocalStorage();
 
@@ -40,7 +40,7 @@ module('Acceptance | admin users list', (hooks) => {
     localStorage.unmock();
   });
 
-  test('visiting /tiny/admin/users', async (assert) => {
+  test('visiting /tiny/admin/users', async assert => {
     await visit('/tiny/admin/users');
 
     assert.equal(currentURL(), '/tiny/admin/users', 'page navigated to successfully');
@@ -48,7 +48,7 @@ module('Acceptance | admin users list', (hooks) => {
     assert.equal(findAll('[data-test-admin-users-list-row]').length, adminUsersFixtures.data.length, 'expected count of student rows rendered');
   });
 
-  test('visiting /tiny/admin/users with no matching students', async (assert) => {
+  test('visiting /tiny/admin/users with no matching students', async assert => {
     const users = server.getFixture('/api/admin/users');
     users.data = [];
     users.meta.count = 0;

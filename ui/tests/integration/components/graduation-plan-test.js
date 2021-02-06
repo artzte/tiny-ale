@@ -11,7 +11,7 @@ import creditAssignments from '../../fixtures/student-credit-assignments';
 
 let tinyDataServiceMock;
 
-module('Integration | Component | graduation-plan', (hooks) => {
+module('Integration | Component | graduation-plan', hooks => {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(function () {
@@ -44,7 +44,7 @@ module('Integration | Component | graduation-plan', (hooks) => {
     const creditMappings = this.mappings.filter(mapping => mapping.relationships.creditAssignment.data);
     const generalMappings = this.mappings.filter(mapping => !mapping.relationships.creditAssignment.data);
 
-    creditMappings.forEach((mapping) => {
+    creditMappings.forEach(mapping => {
       const el = find(`[data-test-requirement-id="${mapping.relationships.graduationPlanRequirement.data.id}"]`);
       assert.ok(el, 'expected mapping requirement was rendered');
 
@@ -52,7 +52,7 @@ module('Integration | Component | graduation-plan', (hooks) => {
       assert.ok(creditAssignment, 'expected credit assignment mapping was rendered');
     });
 
-    generalMappings.forEach((mapping) => {
+    generalMappings.forEach(mapping => {
       const el = find(`[data-test-requirement-id="${mapping.relationships.graduationPlanRequirement.data.id}"]`);
       assert.ok(el, 'expected mapping requirement was rendered');
     });

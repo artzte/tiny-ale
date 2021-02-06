@@ -15,7 +15,7 @@ import notesStudentEnrollmentStatuses from '../../fixtures/notes-student-enrollm
 let tinyDataServiceMock;
 let enrollment;
 
-module('Integration | Component | status-by-student-enrollments', (hooks) => {
+module('Integration | Component | status-by-student-enrollments', hooks => {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(function () {

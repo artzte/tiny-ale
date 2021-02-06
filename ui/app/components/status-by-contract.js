@@ -18,6 +18,7 @@ export default Component.extend(ContractRelations, {
   }),
 
   didReceiveAttrs() {
+    this._super();
     const { statuses, notesHash } = this;
     if (notesHash) {
       return;
@@ -26,7 +27,7 @@ export default Component.extend(ContractRelations, {
     // hashed by enrollment id, for the rows.
     //
     this.getNotes(statuses)
-      .then((notesResult) => {
+      .then(notesResult => {
         const hash = generateNotableHash(notesResult, statuses, 'relationships.statusable.data.id');
         this.setProperties({
           notesHash: hash,

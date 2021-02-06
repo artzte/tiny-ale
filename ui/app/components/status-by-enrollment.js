@@ -22,7 +22,7 @@ export default class StatusByEnrollment extends contractModelFactory(Component) 
     this.loadingNotes = true;
 
     getNotes(statuses)
-      .then((result) => {
+      .then(result => {
         this.notesHash = generateNotableHash(result, statuses, 'id');
       });
   }

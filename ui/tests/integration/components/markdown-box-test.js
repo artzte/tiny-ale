@@ -3,7 +3,7 @@ import { setupRenderingTest } from 'ember-qunit';
 import { render, find } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 
-module('Integration | Component | markdown-box', (hooks) => {
+module('Integration | Component | markdown-box', hooks => {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(function () {

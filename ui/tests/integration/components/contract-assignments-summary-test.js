@@ -8,7 +8,7 @@ import contractDetailFixture from '../../fixtures/contract-detail';
 let tinyData;
 let assignments;
 
-module('Integration | Component | contract-assignments-summary', (hooks) => {
+module('Integration | Component | contract-assignments-summary', hooks => {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(function () {

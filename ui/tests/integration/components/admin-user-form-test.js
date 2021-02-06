@@ -18,7 +18,7 @@ let student;
 let tinyData;
 let requests;
 
-module('Integration | Component | admin-user-form', (hooks) => {
+module('Integration | Component | admin-user-form', hooks => {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(function () {
@@ -48,7 +48,7 @@ module('Integration | Component | admin-user-form', (hooks) => {
     });
   });
 
-  test('it renders student', async (assert) => {
+  test('it renders student', async assert => {
     await render(hbs`
       {{admin-user-form
         staff=allStaff
@@ -68,7 +68,7 @@ module('Integration | Component | admin-user-form', (hooks) => {
     assert.notEqual(payload.pojo, student, 'round trip object is not the same object as the original');
   });
 
-  test('it renders staff member', async (assert) => {
+  test('it renders staff member', async assert => {
     await render(hbs`
       {{admin-user-form
         staff=allStaff
@@ -88,7 +88,7 @@ module('Integration | Component | admin-user-form', (hooks) => {
     assert.notEqual(payload.pojo, staff, 'round trip object is not the same object as the original');
   });
 
-  test('it renders admin', async (assert) => {
+  test('it renders admin', async assert => {
     await render(hbs`
       {{admin-user-form
         staff=allStaff
@@ -132,7 +132,7 @@ module('Integration | Component | admin-user-form', (hooks) => {
     assert.deepEqual(payload.type, 'error', 'send an error callback');
   });
 
-  test('it renders admin and handles edits', async (assert) => {
+  test('it renders admin and handles edits', async assert => {
     await render(hbs`
       {{admin-user-form
         staff=allStaff

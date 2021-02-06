@@ -6,7 +6,7 @@ import {
 import { module, test } from 'qunit';
 
 module('Unit | Utility | json-api', () => {
-  test('getChangedKeys works as expected', (assert) => {
+  test('getChangedKeys works as expected', assert => {
     const orig = {
       id: '1',
       type: 'contract',
@@ -35,7 +35,7 @@ module('Unit | Utility | json-api', () => {
     assert.notOk(changed.includes('name'), 'name did not falsely detect');
   });
 
-  test('createEntity works as expected', (assert) => {
+  test('createEntity works as expected', assert => {
     const contract = {
       id: '1',
       type: 'contract',
@@ -69,7 +69,7 @@ module('Unit | Utility | json-api', () => {
     assert.equal(entity.relationships.user.data.type, user.type, 'type copied to relationship');
   });
 
-  test('replaceModel works as expected', (assert) => {
+  test('replaceModel works as expected', assert => {
     const list = [{
       id: '1',
     }, {

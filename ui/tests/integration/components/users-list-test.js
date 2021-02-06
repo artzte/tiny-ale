@@ -12,7 +12,7 @@ let users;
 let tinyDataServiceMock;
 let logins;
 
-module('Integration | Component | users list', (hooks) => {
+module('Integration | Component | users list', hooks => {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(function () {

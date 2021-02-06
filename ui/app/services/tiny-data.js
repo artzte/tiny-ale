@@ -71,7 +71,7 @@ export const tinyDataService = {
 
   fetch(...args) {
     return fetch(...args)
-      .then((result) => {
+      .then(result => {
         this.addResult(result);
         return result;
       });
@@ -83,18 +83,18 @@ export const tinyDataService = {
     const additions = {};
 
     function _add(entity) {
-      additions[entity.type] = Object.assign({}, additions[entity.type] || {});
-      additions[entity.type][entity.id] = Object.assign({}, entity);
+      additions[entity.type] = { ...additions[entity.type] || {} };
+      additions[entity.type][entity.id] = { ...entity };
     }
 
     const data = Array.isArray(result.data) ? result.data : [result.data];
 
-    data.forEach((entity) => {
+    data.forEach(entity => {
       _add(entity);
     });
 
     const included = result.included || [];
-    included.forEach((entity) => {
+    included.forEach(entity => {
       _add(entity);
     });
 
@@ -110,7 +110,7 @@ export const tinyDataService = {
         // that merged object as the incoming entity. any relationships
         // are retained from the newest object received.
         //
-        addedIds.forEach((addedId) => {
+        addedIds.forEach(addedId => {
           const existingObject = storeForType[addedId] || {};
           const newObject = additionsForType[addedId];
 

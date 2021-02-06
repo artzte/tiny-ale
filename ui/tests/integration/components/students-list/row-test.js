@@ -10,7 +10,7 @@ import studentsFixture from '../../../fixtures/students';
 
 let tinyDataServiceMock;
 
-module('Integration | Component | students-list/row', (hooks) => {
+module('Integration | Component | students-list/row', hooks => {
   setupRenderingTest(hooks);
 
   let student;
@@ -25,7 +25,7 @@ module('Integration | Component | students-list/row', (hooks) => {
     this.set('student', clone(student));
   });
 
-  test('it renders', async (assert) => {
+  test('it renders', async assert => {
     await render(hbs`
       <table>
         <tbody>
@@ -41,8 +41,8 @@ module('Integration | Component | students-list/row', (hooks) => {
     const coordinator = tinyDataServiceMock.get('user', student.relationships.coordinator.data.id);
     assert.ok(coordinator, 'coordinator retrieved');
 
-    assert.matches(find('td[data-test-student-name').textContent, student.attributes.lastName);
-    assert.matches(find('td[data-test-coordinator-name').textContent, coordinator.attributes.lastName);
-    assert.matches(find('td[data-test-district-grade').textContent, student.attributes.districtGrade);
+    assert.matches(find('td[data-test-student-name]').textContent, student.attributes.lastName);
+    assert.matches(find('td[data-test-coordinator-name]').textContent, coordinator.attributes.lastName);
+    assert.matches(find('td[data-test-district-grade]').textContent, student.attributes.districtGrade);
   });
 });

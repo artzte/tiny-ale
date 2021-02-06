@@ -11,7 +11,7 @@ export default Controller.extend(EnrollmentRelations, {
       .relationships
       .enrollments
       .data
-      .map((relation) => {
+      .map(relation => {
         const enrollment = tinyData.get('enrollment', relation.id);
         const participant = tinyData.get('user', enrollment.relationships.participant.data.id);
         return {

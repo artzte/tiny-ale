@@ -13,7 +13,7 @@ import notesContractStatuses from '../../fixtures/notes-contract-statuses';
 
 let tinyDataServiceMock;
 
-module('Integration | Component | status-by-contract', (hooks) => {
+module('Integration | Component | status-by-contract', hooks => {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(function () {
@@ -31,7 +31,7 @@ module('Integration | Component | status-by-contract', (hooks) => {
     });
   });
 
-  test('it renders', async (assert) => {
+  test('it renders', async assert => {
     await render(hbs`
       {{status-by-contract
         statuses=statuses
@@ -62,7 +62,7 @@ module('Integration | Component | status-by-contract', (hooks) => {
     const [enrollment] = contractDetail.data.relationships.enrollments.data;
     const rowStatuses = statuses.filter(status => status.relationships.statusable.data.id === enrollment.id);
 
-    rowStatuses.forEach((status) => {
+    rowStatuses.forEach(status => {
       const selector = `td[data-test-month="${status.attributes.month}"][data-test-status-id="${status.id}"]`;
       assert.ok(find(selector), `for present status ${status.month}, a populated column is rendered`);
     });

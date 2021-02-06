@@ -40,7 +40,7 @@ export default class StatusByStudent extends Component {
     const { getNotes, statuses } = this.args;
 
     this.loadingNotes = true;
-    getNotes(statuses).then((notes) => {
+    getNotes(statuses).then(notes => {
       this.notes = notes;
       this.loadingNotes = false;
     });

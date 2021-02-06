@@ -10,7 +10,7 @@ import loginAdmin from '../../fixtures/login-admin';
 
 import { clone } from '../../helpers/test-utils';
 
-module('Integration | Component | tiny-toolbar', (hooks) => {
+module('Integration | Component | tiny-toolbar', hooks => {
   setupRenderingTest(hooks);
 
   let requests;

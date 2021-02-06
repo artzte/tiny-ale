@@ -17,7 +17,7 @@ export default class TSelect extends Component {
     } = this.args;
 
     return optionsList
-      .map((option) => {
+      .map(option => {
         let opt;
         if (typeof option !== 'object') {
           opt = {

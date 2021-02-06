@@ -33,9 +33,7 @@ export default Route.extend({
       requestParams.status = status;
     }
 
-    this.qp = Object.assign({}, params, {
-      schoolYear: requestParams.schoolYear,
-    });
+    this.qp = { ...params, schoolYear: requestParams.schoolYear };
 
     return tinyData.fetch('/api/terms', {
       data: requestParams,
@@ -53,9 +51,7 @@ export default Route.extend({
       queryParams,
     });
 
-    controller.setProperties(Object.assign({}, queryParams, {
-      terms: terms.data,
-    }));
+    controller.setProperties({ ...queryParams, terms: terms.data });
 
     const adminTermsController = this.controllerFor('admin-terms');
     adminTermsController.set('queryParams', queryParams);

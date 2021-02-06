@@ -29,7 +29,25 @@ module.exports = {
     'ember/order-in-controllers': 1,
     'ember/order-in-models': 1,
     'ember/order-in-routes': 1,
+
+    // 'ember/no-arrow-function-computed-properties': 0,
+    'ember/no-classic-classes': 0,
+    'ember/no-actions-hash': 0,
+    'ember/no-controller-access-in-routes': 0,
+    'ember/no-component-lifecycle-hooks': 0,
+    'ember/classic-decorator-no-classic-methods': 0,
+    'ember/no-classic-components': 0,
+    'ember/require-tagless-components': 0,
+    'no-async-promise-executor': 0,
+
+    // only a few build functions affected
+    strict: 0,
+
+    // these were getting around another linter rule; use class constant
     'ember/no-arrow-function-computed-properties': 0,
+
+    // can just use template or add to class functionality
+    'ember/no-empty-glimmer-component-classes': 0,
 
     'comma-dangle': ['error', {
       arrays: 'always-multiline',
@@ -73,6 +91,9 @@ module.exports = {
     // I generally don't do this but for reduce operations this is just
     // a painful rule
     'no-param-reassign': 0,
+
+    // if a single argu
+    'arrow-parens': ['error', 'as-needed'],
 
     'prefer-destructuring': ['error', {
       array: true,

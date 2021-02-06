@@ -18,7 +18,7 @@ let notes;
 let contract;
 let notesResult;
 
-module('Integration | Component | status-by-enrollment-assignments', (hooks) => {
+module('Integration | Component | status-by-enrollment-assignments', hooks => {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(function () {
@@ -44,7 +44,7 @@ module('Integration | Component | status-by-enrollment-assignments', (hooks) => 
     tinyDataServiceMock.setToday(dayjs(assignment.attributes.dueDate, 'YYYY-MM-DD', true).add(1, 'day'));
   });
 
-  test('it renders with complete assignments and notes', async (assert) => {
+  test('it renders with complete assignments and notes', async assert => {
     await render(hbs`
       {{status-by-enrollment-assignments
         contract=contract
@@ -62,7 +62,7 @@ module('Integration | Component | status-by-enrollment-assignments', (hooks) => 
     assert.equal(assnRow.querySelectorAll('.notes-list-item').length, notes.length, 'expected number of notes rendered');
   });
 
-  test('it renders with incomplete assignment with assignment due', async (assert) => {
+  test('it renders with incomplete assignment with assignment due', async assert => {
     enrollment.relationships.turnins.data = [];
     notesResult = { data: [] };
 
@@ -83,7 +83,7 @@ module('Integration | Component | status-by-enrollment-assignments', (hooks) => 
     assert.equal(assnRow.querySelectorAll('.notes-list-item').length, 0, 'expected no notes rendered');
   });
 
-  test('it renders with incomplete assignment with assignment not yet due', async (assert) => {
+  test('it renders with incomplete assignment with assignment not yet due', async assert => {
     tinyDataServiceMock.setToday(dayjs(assignment.attributes.dueDate, 'YYYY-MM-DD', true).subtract(1, 'day'));
     enrollment.relationships.turnins.data = [];
     notesResult = { data: [] };

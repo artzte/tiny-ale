@@ -11,7 +11,7 @@ import staffFixture from '../../fixtures/staff';
 
 let tinyDataServiceMock;
 
-module('Integration | Component | contracts-list', (hooks) => {
+module('Integration | Component | contracts-list', hooks => {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(function () {

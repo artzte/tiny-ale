@@ -3,7 +3,7 @@ import { setupRenderingTest } from 'ember-qunit';
 import { render, find } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
-module('Integration | Component | form-input', (hooks) => {
+module('Integration | Component | form-input', hooks => {
   setupRenderingTest(hooks);
 
   test('it renders', async function (assert) {
@@ -42,7 +42,7 @@ module('Integration | Component | form-input', (hooks) => {
     assert.ok(find('.error-message'), 'with showErrors positive, error message should render');
   });
 
-  test('it renders w/o label', async (assert) => {
+  test('it renders w/o label', async assert => {
     await render(hbs`
       {{#form-input}}
         <input

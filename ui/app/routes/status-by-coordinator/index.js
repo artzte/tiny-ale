@@ -22,7 +22,7 @@ export default Route.extend({
           schoolYear: this.tinyData.getSchoolYear(),
         },
       }),
-    ]).then((results) => {
+    ]).then(results => {
       const [students, terms] = results;
 
       Object.assign(this, { students, terms });

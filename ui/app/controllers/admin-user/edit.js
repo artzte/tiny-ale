@@ -16,7 +16,7 @@ export default Controller.extend({
 
     updateLogin(data, login, attributesChanged) {
       return this.saveLogin(data, login, attributesChanged)
-        .then((result) => {
+        .then(result => {
           this.flashMessages.success('Login was successfully updated.');
           return result;
         });
@@ -25,7 +25,7 @@ export default Controller.extend({
     destroyLogin(user, login) {
       return this.tinyData.fetch(`/api/admin/logins/${login.user_id}`, {
         method: 'DELETE',
-      }).then((result) => {
+      }).then(result => {
         this.flashMessages.success(`Successfully removed access for user ${user.attributes.firstName} ${user.attributes.lastName}.`);
         return result;
       });

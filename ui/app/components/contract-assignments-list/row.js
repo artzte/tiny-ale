@@ -50,7 +50,7 @@ export default Component.extend(EnrollmentRelations, {
       .sort((note1, note2) => note1.attributes.updatedAt.localeCompare(note2.attributes.updatedAt));
 
     return notesForEnrollment
-      .map((note) => {
+      .map(note => {
         const turninForNote = tinyData.get('turnin', note.relationships.notable.data.id);
         const assignmentForNote = tinyData.get('assignment', turninForNote.relationships.assignment.data.id);
         const title = assignmentForNote.attributes.name;

@@ -41,7 +41,6 @@ export function schoolYearTerms(schoolYear, terms) {
     .sort((t1, t2) => t1.attributes.name.localeCompare(t2.attributes.name));
 }
 
-
 export function contractModelFactory(Base) {
   return class ContractModel extends Base {
     get facilitator() {

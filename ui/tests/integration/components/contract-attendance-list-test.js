@@ -13,7 +13,7 @@ let meetings;
 let enrollments;
 let meetingParticipants;
 
-module('Integration | Component | contract-attendance-list', (hooks) => {
+module('Integration | Component | contract-attendance-list', hooks => {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(function () {
@@ -35,7 +35,7 @@ module('Integration | Component | contract-attendance-list', (hooks) => {
     });
   });
 
-  test('it renders', async (assert) => {
+  test('it renders', async assert => {
     await render(hbs`
       {{contract-attendance-list
         contract=contract

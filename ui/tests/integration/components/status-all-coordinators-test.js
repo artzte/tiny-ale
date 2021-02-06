@@ -13,7 +13,7 @@ const [term] = coorTerms.data;
 let tinyDataServiceMock;
 let coordinator;
 
-module('Integration | Component | status-all-coordinators', (hooks) => {
+module('Integration | Component | status-all-coordinators', hooks => {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(function () {
@@ -73,17 +73,14 @@ module('Integration | Component | status-all-coordinators', (hooks) => {
     const { statuses } = this;
     const filteredData = statuses.data.filter(status => status.month !== firstMonth && status.coordinatorId === coordinator.id);
 
-    this.set('statuses', Object.assign({}, statuses, {
-      data: filteredData,
-    }));
+    this.set('statuses', { ...statuses, data: filteredData });
 
     const coorActiveIncompleteLink = find(`tr[data-test-coordinator-id="${coordinator.id}"] td.active a`);
     assert.equal(coorActiveIncompleteLink.title, 'Incomplete', 'expected title rendered for incomplete');
     assert.equal(coorActiveIncompleteLink.text.trim(), 'I', 'first month is now marked as incomplete');
   });
 
-
-  test('it renders expected markup with two staff on 12/15/2019', async (assert) => {
+  test('it renders expected markup with two staff on 12/15/2019', async assert => {
     tinyDataServiceMock.setToday(new Date(2019, 11, 15));
 
     await render(hbs`

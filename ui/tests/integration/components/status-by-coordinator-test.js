@@ -10,7 +10,7 @@ import coorTerms from '../../fixtures/coor-terms';
 const [term] = coorTerms.data;
 let tinyDataServiceMock;
 
-module('Integration | Component | status-by-coordinator', (hooks) => {
+module('Integration | Component | status-by-coordinator', hooks => {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(function () {
@@ -28,7 +28,7 @@ module('Integration | Component | status-by-coordinator', (hooks) => {
     this.setProperties(props);
   });
 
-  test('it renders expected markup with two students on 9/15/2019', async (assert) => {
+  test('it renders expected markup with two students on 9/15/2019', async assert => {
     tinyDataServiceMock.setToday(new Date(2019, 8, 15));
 
     await render(hbs`{{status-by-coordinator students=students term=term statuses=statuses}}`);
@@ -56,7 +56,7 @@ module('Integration | Component | status-by-coordinator', (hooks) => {
     assert.equal(inactiveStudentExceptionCels.length, 0, 'expect all status reporting caught up for inactive student');
   });
 
-  test('it renders expected markup with two students on 12/15/2019', async (assert) => {
+  test('it renders expected markup with two students on 12/15/2019', async assert => {
     tinyDataServiceMock.setToday(new Date(2019, 11, 15));
 
     await render(hbs`{{status-by-coordinator students=students term=term statuses=statuses}}`);

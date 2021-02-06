@@ -18,7 +18,7 @@ let contract;
 let statuses;
 let notesResult;
 
-module('Integration | Component | status-by-enrollment', (hooks) => {
+module('Integration | Component | status-by-enrollment', hooks => {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(function () {
@@ -48,7 +48,7 @@ module('Integration | Component | status-by-enrollment', (hooks) => {
     tinyDataServiceMock.setToday(today);
   });
 
-  test('it renders with three status-reported month and one unreported month', async (assert) => {
+  test('it renders with three status-reported month and one unreported month', async assert => {
     await render(hbs`
       <StatusByEnrollment
         @contract={{this.contract}}
@@ -63,7 +63,7 @@ module('Integration | Component | status-by-enrollment', (hooks) => {
     assert.equal(findAll('[data-test-no-status]').length, 1, 'the no-status row was rendered');
   });
 
-  test('it renders correctly formed status rows for satisfactory', async (assert) => {
+  test('it renders correctly formed status rows for satisfactory', async assert => {
     await render(hbs`
       <StatusByEnrollment
         @contract={{this.contract}}
@@ -82,7 +82,7 @@ module('Integration | Component | status-by-enrollment', (hooks) => {
     assert.matches(row.querySelector('[data-test-fte]').textContent, 'Yes', 'SLP marked as met');
   });
 
-  test('it renders correctly formed row for unsatisfactory', async (assert) => {
+  test('it renders correctly formed row for unsatisfactory', async assert => {
     const [status] = statuses;
     status.attributes = {
       ...status.attributes,

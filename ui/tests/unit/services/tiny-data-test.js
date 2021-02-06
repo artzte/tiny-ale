@@ -14,13 +14,13 @@ const apiResult = {
 const api = '/api/bee/bo';
 let fetches;
 
-module('Unit | Service | tiny-data', (hooks) => {
+module('Unit | Service | tiny-data', hooks => {
   hooks.beforeEach(function () {
     this.pretender = new Pretender();
     this.localStorage = new MockLocalStorage();
 
     fetches = [];
-    this.pretender.get(api, (pretenderRequest) => {
+    this.pretender.get(api, pretenderRequest => {
       fetches.push({
         method: pretenderRequest.method,
         url: pretenderRequest.url,

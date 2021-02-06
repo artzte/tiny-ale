@@ -98,10 +98,11 @@ export default Route.extend({
 
     this._super(controller, users);
 
-    controller.setProperties(Object.assign({}, queryParams, {
+    controller.setProperties({
+      ...queryParams,
       users: users.data,
       logins: loginsResult.data,
-    }));
+    });
 
     const usersController = this.controllerFor('admin-users');
 

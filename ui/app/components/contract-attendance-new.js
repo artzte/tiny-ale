@@ -16,6 +16,7 @@ export default Component.extend({
   }),
 
   didReceiveAttrs() {
+    this._super();
     this.set('selectedDate', this.today);
   },
 

@@ -7,7 +7,7 @@ import hbs from 'htmlbars-inline-precompile';
 
 let requests;
 
-module('Integration | Component | credits-filter', (hooks) => {
+module('Integration | Component | credits-filter', hooks => {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(function () {
@@ -25,7 +25,7 @@ module('Integration | Component | credits-filter', (hooks) => {
     });
   });
 
-  test('it renders the credits filter', async (assert) => {
+  test('it renders the credits filter', async assert => {
     await render(hbs`
       {{credits-filter
         queryParams=qp

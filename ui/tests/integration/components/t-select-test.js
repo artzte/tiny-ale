@@ -5,7 +5,7 @@ import hbs from 'htmlbars-inline-precompile';
 
 let events;
 
-module('Integration | Component | t-select', (hooks) => {
+module('Integration | Component | t-select', hooks => {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(function () {

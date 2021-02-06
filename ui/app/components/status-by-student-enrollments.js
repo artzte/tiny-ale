@@ -48,6 +48,7 @@ export default Component.extend({
   }),
 
   async didReceiveAttrs() {
+    this._super();
     const { getNotes, notableHash, enrollmentStatuses } = this;
     if (notableHash) return;
 

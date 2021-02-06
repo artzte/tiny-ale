@@ -8,7 +8,7 @@ import enrollmentsFixture from '../../fixtures/student-enrollments';
 let tinyData;
 let creditAssignments;
 
-module('Integration | Component | credit-assignments', (hooks) => {
+module('Integration | Component | credit-assignments', hooks => {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(function () {

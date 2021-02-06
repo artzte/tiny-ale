@@ -16,7 +16,7 @@ function getGrade(districtGrade) {
   }
 }
 
-export default helper((params) => {
+export default helper(params => {
   const [student] = params;
   const { districtGrade, districtId } = student.attributes;
   const dateFormat = 'MMM YYYY';

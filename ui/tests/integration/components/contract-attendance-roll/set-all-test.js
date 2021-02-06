@@ -1,11 +1,13 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render, find, click, select } from '@ember/test-helpers';
+import {
+  render, find, click, select,
+} from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
 let actions;
 
-module('Integration | Component | contract-attendance-roll/set-all', (hooks) => {
+module('Integration | Component | contract-attendance-roll/set-all', hooks => {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(function () {
@@ -15,7 +17,7 @@ module('Integration | Component | contract-attendance-roll/set-all', (hooks) => 
     });
   });
 
-  test('it renders and emits expected actions', async (assert) => {
+  test('it renders and emits expected actions', async assert => {
     await render(hbs`
       {{contract-attendance-roll/set-all
         updateAllRolls=updateAllRolls

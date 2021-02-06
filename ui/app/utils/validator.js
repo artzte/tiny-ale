@@ -103,7 +103,7 @@ export default class Validator {
     };
 
     Object.keys(validations)
-      .forEach((key) => {
+      .forEach(key => {
         let fieldCollection = validations[key];
         const value = pojo[key];
 

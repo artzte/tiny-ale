@@ -1,6 +1,8 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render, find, fillIn, select } from '@ember/test-helpers';
+import {
+  render, find, fillIn, select,
+} from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
 import { stubTinyData } from '../../helpers/stub-tiny-data';
@@ -11,7 +13,7 @@ import studentsFixture from '../../fixtures/students';
 let tinyDataServiceMock;
 let requests;
 
-module('Integration | Component | students-filter', (hooks) => {
+module('Integration | Component | students-filter', hooks => {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(function () {
@@ -28,7 +30,7 @@ module('Integration | Component | students-filter', (hooks) => {
         schoolYear: 2019,
       },
       coordinators: clone(staffFixture.data),
-      filterStudents: (queryParams) => {
+      filterStudents: queryParams => {
         this.set('queryParams', queryParams);
         requests.push(queryParams);
       },

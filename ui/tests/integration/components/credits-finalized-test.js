@@ -10,7 +10,7 @@ let tinyData;
 let creditAssignments;
 let student;
 
-module('Integration | Component | credits-finalized', (hooks) => {
+module('Integration | Component | credits-finalized', hooks => {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(function () {
@@ -26,7 +26,7 @@ module('Integration | Component | credits-finalized', (hooks) => {
     });
   });
 
-  test('it renders with finalized credits', async (assert) => {
+  test('it renders with finalized credits', async assert => {
     await render(hbs`
       {{credits-finalized
         student=student

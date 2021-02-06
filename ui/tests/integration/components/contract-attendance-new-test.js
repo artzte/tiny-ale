@@ -9,7 +9,7 @@ import contractAttendanceFixture from '../../fixtures/contract-attendance';
 let actions;
 let meetings;
 
-module('Integration | Component | contract-attendance-new', (hooks) => {
+module('Integration | Component | contract-attendance-new', hooks => {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(function () {
@@ -25,7 +25,7 @@ module('Integration | Component | contract-attendance-new', (hooks) => {
     });
   });
 
-  test('it works', async (assert) => {
+  test('it works', async assert => {
     await render(hbs`
       {{contract-attendance-new
         meetings=meetings
@@ -39,7 +39,7 @@ module('Integration | Component | contract-attendance-new', (hooks) => {
     const firstCalendarButton = find('td[data-day="1"] button[data-pika-year="2019"][data-pika-month="8"][data-pika-day="1"]');
     assert.ok(firstCalendarButton, 'calendar rendered with expected first day');
 
-    meetings.forEach((meeting) => {
+    meetings.forEach(meeting => {
       const { meetingDate } = meeting.attributes;
       const day = dayjs(meetingDate, 'YYYY-MM-DD').date();
       const disabledMeetingButton = find(`td.is-disabled button[data-pika-year="2019"][data-pika-month="8"][data-pika-day="${day}"]`);

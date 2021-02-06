@@ -10,7 +10,7 @@ import contractAssignmentsNotes from '../../fixtures/notes-contract-assignments'
 
 let tinyData;
 
-module('Integration | Component | contract-assignments-list', (hooks) => {
+module('Integration | Component | contract-assignments-list', hooks => {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(function () {
@@ -25,7 +25,7 @@ module('Integration | Component | contract-assignments-list', (hooks) => {
     this.getNotes = () => resolve(contractAssignmentsNotes);
   });
 
-  test('it renders', async (assert) => {
+  test('it renders', async assert => {
     await render(hbs`
       {{contract-assignments-list
         assignments=assignments
