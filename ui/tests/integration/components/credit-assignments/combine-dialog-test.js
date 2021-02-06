@@ -6,8 +6,8 @@ import {
   click,
   fillIn,
   waitFor,
+  select,
 } from '@ember/test-helpers';
-import { Interactor } from '@bigtest/interactor';
 import { resolve } from 'rsvp';
 import hbs from 'htmlbars-inline-precompile';
 import { stubCreditAssignment } from 'tinysis-ui/services/credit-assignment';
@@ -144,8 +144,9 @@ module('Integration | Component | CreditAssignments::CombineDialog', (hooks) => 
 
     await click('[data-test-toggle-override]');
     await fillIn('[data-test-credit-hours]', '');
-    const termInteractor = new Interactor('select[name="contractTerm"]');
-    await termInteractor.select('Select a term');
+
+    // select the prompt (no selection)
+    await select('select[name="contractTerm"]', '');
 
     await click('t-type-ahead[data-test-name="credit"] [data-test-clear-selection]');
 
@@ -163,7 +164,7 @@ module('Integration | Component | CreditAssignments::CombineDialog', (hooks) => 
       assert.ok(request.errors[field], `${field} was flagged`);
     });
 
-    await termInteractor.select(terms[0].attributes.name);
+    await select('select[name="contractTerm"]', terms[0].id);
     await fillIn('t-type-ahead input', 'ding');
     await waitFor('ul.search-results');
 

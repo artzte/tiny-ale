@@ -5,9 +5,9 @@ import {
   find,
   fillIn,
   click,
+  select,
 } from '@ember/test-helpers';
 import { setupApplicationTest } from 'ember-qunit';
-import { Interactor } from '@bigtest/interactor';
 import MockServer, { provisionTinySisBootstrapRoutes } from '../helpers/mock-server';
 import { MockLocalStorage } from '../helpers/test-utils';
 
@@ -45,7 +45,7 @@ module('Acceptance | contracts new', (hooks) => {
 
     // this should always be done with mocks.
     // prevents test from hanging for minutes when Pretender crashes.
-    assert.timeout(500);
+    assert.timeout(1000);
   });
 
   hooks.afterEach(() => {
@@ -70,8 +70,8 @@ module('Acceptance | contracts new', (hooks) => {
 
     fillIn('input[name="name"]', 'new contract falderol');
 
-    await new Interactor(find('select[name="term"]')).select(termsFixture.data[0].attributes.name);
-    await new Interactor(find('select[name="category"]')).select(categoriesFixture.data[0].attributes.name);
+    await select('select[name="term"]', termsFixture.data[0].id);
+    await select('select[name="category"]', categoriesFixture.data[0].id);
     await fillIn('textarea[name="learningObjectives"]', 'objective!');
     await fillIn('input[name="location"]', 'location!');
     await click('form button[type="submit"]');

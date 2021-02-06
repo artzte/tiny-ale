@@ -5,9 +5,10 @@ import {
   find,
   findAll,
   click,
+  select,
 } from '@ember/test-helpers';
 import { setupApplicationTest } from 'ember-qunit';
-import { Interactor } from '@bigtest/interactor';
+import { Select } from '@bigtest/interactor';
 import MockServer, { provisionTinySisBootstrapRoutes } from '../helpers/mock-server';
 import { MockLocalStorage } from '../helpers/test-utils';
 
@@ -76,8 +77,8 @@ module('Acceptance | contract attendance roll', (hooks) => {
     server.addRequest('patch', patchPath, meetingFixture);
     await visit(contractAttendanceRollUrl);
 
-    await new Interactor('t-contract-attendance-roll-set-all select[name="participation"]').select('Absent');
-    await new Interactor('t-contract-attendance-roll-set-all select[name="contactType"]').select('Coor');
+    await select('t-contract-attendance-roll-set-all select[name="participation"]', 'absent');
+    await select('t-contract-attendance-roll-set-all select[name="contactType"]', 'coor');
 
     await click('t-contract-attendance-roll-set-all button');
 
@@ -91,7 +92,7 @@ module('Acceptance | contract attendance roll', (hooks) => {
     findAll('t-contract-attendance-roll tbody tr')
       .forEach((row) => {
         assert.ok(row.querySelector('[data-test-participation="absent"] value-button[data-test-is-checked="checked"]'), 'enrollment row is marked absent now');
-        const contactTypeValue = new Interactor(row.querySelector('select')).value;
+        const contactTypeValue = find(row.querySelector('select')).value;
         assert.equal(contactTypeValue, 'coor', 'contactType select is properly set');
       });
   });
@@ -118,7 +119,7 @@ module('Acceptance | contract attendance roll', (hooks) => {
     const row = find(`tr[data-test-enrollment-id="${updatedParticipant.relationships.enrollment.data.id}"]`);
     assert.ok(row, 'found row as expected');
 
-    new Interactor(row.querySelector('select')).select('Coor');
+    await select(row.querySelector('select'), 'coor');
     await click(row.querySelector('[data-test-participation="excused"] value-button'));
 
     const logs = server.getLog();

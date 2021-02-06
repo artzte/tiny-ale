@@ -57,7 +57,7 @@ module('Integration | Component | status/status-page-navigator', (hooks) => {
 
     assert.matches(nav.value, '2');
 
-    await select(nav, 'C');
+    await select(nav, '3');
 
     assert.matches(nav.value, '3');
   });

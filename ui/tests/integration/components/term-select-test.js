@@ -1,8 +1,7 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render, find, findAll } from '@ember/test-helpers';
+import { render, find, findAll, select } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
-import { Interactor } from '@bigtest/interactor';
 import TermsFixture from '../../fixtures/admin-terms-list';
 import { clone } from '../../helpers/test-utils';
 
@@ -45,7 +44,7 @@ module('Integration | Component | term-select', (hooks) => {
 
     const [anotherToSelect] = this.terms;
 
-    await new Interactor('select[name="interminable"]').select(anotherToSelect.attributes.name);
+    await select('select[name="interminable"]', anotherToSelect.id);
 
     option = find(`select[name="interminable"] option[value="${anotherToSelect.id}"]`);
     assert.ok(option, 'found option that should be selected');

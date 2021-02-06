@@ -1,8 +1,7 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render, find, click } from '@ember/test-helpers';
+import { render, find, click, select } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
-import { Interactor } from '@bigtest/interactor';
 
 let actions;
 
@@ -25,11 +24,8 @@ module('Integration | Component | contract-attendance-roll/set-all', (hooks) => 
 
     assert.ok(find('t-contract-attendance-roll-set-all'), 'container rendered');
 
-    const participation = new Interactor('select[name="participation"]');
-    await participation.select('Absent');
-
-    const contactType = new Interactor('select[name="contactType"]');
-    await contactType.select('Coor');
+    await select('select[name="participation"]', 'absent');
+    await select('select[name="contactType"]', 'coor');
 
     await click('button');
 

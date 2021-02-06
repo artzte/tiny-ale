@@ -5,8 +5,8 @@ import {
   click,
   find,
   fillIn,
+  select,
 } from '@ember/test-helpers';
-import { Interactor } from '@bigtest/interactor';
 import { Promise } from 'rsvp';
 import hbs from 'htmlbars-inline-precompile';
 import { stubTinyData } from '../../helpers/stub-tiny-data';
@@ -62,7 +62,7 @@ module('Integration | Component | admin-term-form', (hooks) => {
 
     // Change the school year and resubmit, check the dates
     const previousYear = (term.attributes.schoolYear - 1).toString();
-    await new Interactor(find('select[name="schoolYear"]')).select(previousYear);
+    await select('select[name="schoolYear"]', previousYear);
     await fillIn('input[name="name"]', 'Boo-yah');
 
     await click('button[type="submit"]');

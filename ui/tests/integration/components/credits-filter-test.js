@@ -1,9 +1,8 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import {
-  render, find, findAll, fillIn,
+  render, find, findAll, fillIn, select,
 } from '@ember/test-helpers';
-import { Interactor } from '@bigtest/interactor';
 import hbs from 'htmlbars-inline-precompile';
 
 let requests;
@@ -43,10 +42,9 @@ module('Integration | Component | credits-filter', (hooks) => {
 
     assert.matches('boyd', nameRequest.search);
 
-    const select = new Interactor('select[name="courseType"]');
-    assert.equal(select.value, '', 'any course type is current selection');
+    assert.equal(await find('select[name="courseType"]').value, '', 'any course type is current selection');
 
-    await select.select('general');
+    await select('select[name="courseType"]', 'general');
 
     assert.equal(requests.length, 2, 'now a second request was made');
     const [, courseTypeRequest] = requests;
