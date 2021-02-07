@@ -4,7 +4,7 @@ import { render, find, click } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
 let actions;
-module('Integration | Component | t-pikaday', (hooks) => {
+module('Integration | Component | t-pikaday', hooks => {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(function () {
@@ -19,7 +19,7 @@ module('Integration | Component | t-pikaday', (hooks) => {
     });
   });
 
-  test('it renders', async (assert) => {
+  test('it renders', async assert => {
     await render(hbs`
       {{t-pikaday
         value=value
@@ -97,7 +97,7 @@ module('Integration | Component | t-pikaday', (hooks) => {
     assert.equal('12/15/2020', find('input').value, 'Field shows new date now');
   });
 
-  test('it renders as a popup', async (assert) => {
+  test('it renders as a popup', async assert => {
     await render(hbs`
       {{t-pikaday
         value=value

@@ -6,8 +6,8 @@ import {
   click,
   fillIn,
   waitFor,
+  select,
 } from '@ember/test-helpers';
-import { Interactor } from '@bigtest/interactor';
 import { resolve } from 'rsvp';
 import hbs from 'htmlbars-inline-precompile';
 import { stubCreditAssignment } from 'tinysis-ui/services/credit-assignment';
@@ -24,7 +24,7 @@ let terms;
 let creditsToCombine;
 let requests;
 
-module('Integration | Component | CreditAssignments::CombineDialog', (hooks) => {
+module('Integration | Component | CreditAssignments::CombineDialog', hooks => {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(function () {
@@ -52,11 +52,11 @@ module('Integration | Component | CreditAssignments::CombineDialog', (hooks) => 
       credits,
       terms,
       today: new Date(2019, 8, 1),
-      save: (model) => {
+      save: model => {
         requests.push({ type: 'save', model });
         return resolve(model);
       },
-      reportError: (errors) => {
+      reportError: errors => {
         requests.push({ type: 'error', errors });
       },
       close: () => {
@@ -65,7 +65,7 @@ module('Integration | Component | CreditAssignments::CombineDialog', (hooks) => 
     });
   });
 
-  test('it renders and can post through a default combined credit', async (assert) => {
+  test('it renders and can post through a default combined credit', async assert => {
     await render(hbs`
       <CreditAssignments::CombineDialog
         @creditAssignments={{creditsToCombine}}
@@ -127,7 +127,7 @@ module('Integration | Component | CreditAssignments::CombineDialog', (hooks) => 
     assert.equal(request.model.attributes.creditHours, '1.25', 'correct credit hours');
   });
 
-  test('it renders a combined credit and then reports and recovers from validation failure', async (assert) => {
+  test('it renders a combined credit and then reports and recovers from validation failure', async assert => {
     await render(hbs`
       <CreditAssignments::CombineDialog
         @creditAssignments={{creditsToCombine}}
@@ -144,8 +144,9 @@ module('Integration | Component | CreditAssignments::CombineDialog', (hooks) => 
 
     await click('[data-test-toggle-override]');
     await fillIn('[data-test-credit-hours]', '');
-    const termInteractor = new Interactor('select[name="contractTerm"]');
-    await termInteractor.select('Select a term');
+
+    // select the prompt (no selection)
+    await select('select[name="contractTerm"]', '');
 
     await click('t-type-ahead[data-test-name="credit"] [data-test-clear-selection]');
 
@@ -159,11 +160,11 @@ module('Integration | Component | CreditAssignments::CombineDialog', (hooks) => 
 
     assert.ok(request.errors, 'with an error object');
 
-    ['creditsOverride', 'contractTerm', 'credit'].forEach((field) => {
+    ['creditsOverride', 'contractTerm', 'credit'].forEach(field => {
       assert.ok(request.errors[field], `${field} was flagged`);
     });
 
-    await termInteractor.select(terms[0].attributes.name);
+    await select('select[name="contractTerm"]', terms[0].id);
     await fillIn('t-type-ahead input', 'ding');
     await waitFor('ul.search-results');
 
@@ -180,8 +181,8 @@ module('Integration | Component | CreditAssignments::CombineDialog', (hooks) => 
     assert.equal(request.type, 'save', 'it was a save request');
   });
 
-  test('it does not permit submittal with invalid computed credit, but permits submittal with valid overridden credit', async (assert) => {
-    creditsToCombine.forEach((ca) => {
+  test('it does not permit submittal with invalid computed credit, but permits submittal with valid overridden credit', async assert => {
+    creditsToCombine.forEach(ca => {
       ca.attributes.creditHours = 0.111;
     });
 

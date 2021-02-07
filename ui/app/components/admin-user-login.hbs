@@ -5,7 +5,7 @@
     {{#if login}}
       <h3>Login active for {{full-name user "first-last"}}</h3>
       {{#if showRoleRequiresUpdate}}
-        {{#t-notice type="alert"}}
+        <TNotice @type="alert">
           <p data-test-reason="roles">
             The login role needs to be synced with the application
             role of {{titleize user.attributes.role}}.
@@ -24,10 +24,10 @@
           >
             Click to update login role to {{titleize user.attributes.role}}
           </button>
-        {{/t-notice}}
+        </TNotice>
       {{/if}}
       {{#if showAttributesDontMatch}}
-        {{#t-notice type="alert"}}
+        <TNotice @type="alert">
           <p data-test-reason="attributes">
             User settings for the login, such as names, are out of sync.
             They should be updated to match what is shown here.
@@ -39,10 +39,10 @@
           >
             Click to update now
           </button>
-        {{/t-notice}}
+        </TNotice>
       {{/if}}
       {{#if showRemoveOption}}
-        {{#t-notice type="alert"}}
+        <TNotice @type="alert">
           <p data-test-reason="deactivate">
             {{full-name user "first-last"}} is no longer entitled to have a login.
           </p>
@@ -53,14 +53,14 @@
           >
             Click to remove their login now
           </button>
-        {{/t-notice}}
+        </TNotice>
       {{/if}}
     {{else}}
       {{!-- no login exists --}}
       <h3>No login for {{full-name user "first-last"}}</h3>
 
       {{#if showAccessWarning}}
-        {{#t-notice type="alert"}}
+        <TNotice @type="alert">
           <p data-test-reason="activate">
             {{full-name user "first-last"}} is active and has a role
             of {{titleize user.attributes.role}}. Without
@@ -74,11 +74,11 @@
           >
             Click to create a login
           </button>
-        {{/t-notice}}
+        </TNotice>
       {{else}}
-        {{#t-notice}}
+        <TNotice>
           No login is required due to status and/or role.
-        {{/t-notice}}
+        </TNotice>
       {{/if}}
     {{/if}}
   {{/if}} {{!-- done loading --}}

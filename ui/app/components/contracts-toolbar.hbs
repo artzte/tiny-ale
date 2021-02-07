@@ -1,33 +1,40 @@
 <h1>{{this.contract.attributes.name}}</h1>
 
-<TinyToolbar as |tb|>
-  <nav class="toolbar flex items-center mb-4">
-    <ul class="flex list-reset">
-      <TinyToolbar::Item
-        @currentRoute={{tb.currentRoute}}
+  <nav class="flex items-center items-baseline space-x-4">
+      <LinkTo
+        class="text-gray-800 hover:bg-gray-100 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
+        @route="contracts.index"
+      >
+        All contracts
+      </LinkTo>
+      <LinkTo
+        class="text-gray-800 hover:bg-gray-100 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
         @route="contract.index"
-        @label="Syllabus"
-      />
-      <TinyToolbar::Item
-        @currentRoute={{tb.currentRoute}}
+      >
+        Syllabus
+      </LinkTo>
+      <LinkTo
+        class="text-gray-800 hover:bg-gray-100 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
         @route="contract-enrollments"
-        @label="Enrollments"
-      />
-      <TinyToolbar::Item
-        @currentRoute={{tb.currentRoute}}
+      >
+        Enrollments
+      </LinkTo>
+      <LinkTo
+        class="text-gray-800 hover:bg-gray-100 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
         @route="status-by-contract"
-        @label="Status"
-      />
-      <TinyToolbar::Item
-        @currentRoute={{tb.currentRoute}}
+      >
+        Status
+      </LinkTo>
+      <LinkTo
+        class="text-gray-800 hover:bg-gray-100 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
         @route="contract-assignments"
-        @label="Assignments"
-      />
-      <TinyToolbar::Item
-        @currentRoute={{tb.currentRoute}}
+      >
+        Assignments
+      </LinkTo>
+      <LinkTo
+        class="text-gray-800 hover:bg-gray-100 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
         @route="contract-attendance"
-        @label="Attendance"
-      />
-    </ul>
-  </nav>
-</TinyToolbar>
+      >
+        Attendance
+      </LinkTo>
+</nav>

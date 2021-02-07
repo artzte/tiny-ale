@@ -1,12 +1,11 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render, findAll } from '@ember/test-helpers';
+import { render, findAll, select } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
-import { Interactor } from '@bigtest/interactor';
 
 let events;
 
-module('Integration | Component | t-select', (hooks) => {
+module('Integration | Component | t-select', hooks => {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(function () {
@@ -33,10 +32,10 @@ module('Integration | Component | t-select', (hooks) => {
     await render(hbs`
       <TSelect
         @prompt="select something"
-        @optionsList={{simpleOptions}}
-        @value={{value}}
-        name={{name}}
-        @onchange={{onChange}}
+        @optionsList={{this.simpleOptions}}
+        @value={{this.value}}
+        name={{this.name}}
+        @onchange={{fn this.onChange}}
       />
     `);
 
@@ -56,10 +55,10 @@ module('Integration | Component | t-select', (hooks) => {
     await render(hbs`
       <TSelect
         @prompt="select something"
-        @optionsList={{simpleOptions}}
-        @value={{value}}
-        name={{name}}
-        @onchange={{onChange}}
+        @optionsList={{this.simpleOptions}}
+        @value={{this.value}}
+        name={{this.name}}
+        @onchange={{fn this.onChange}}
       />
     `);
 
@@ -70,7 +69,7 @@ module('Integration | Component | t-select', (hooks) => {
     assert.equal(selectedOptions.pop().value, '1', 'the option valued "1" is expected to be selected');
 
     const selectValue = '3';
-    await new Interactor('select[name="test"]').select(selectValue);
+    await select('select[name="test"]', selectValue);
 
     assert.equal(events.length, 1, 'an onChange event was triggered');
 
@@ -87,12 +86,12 @@ module('Integration | Component | t-select', (hooks) => {
     await render(hbs`
       <TSelect
         @prompt="select something"
-        @optionsList={{objectOptions}}
-        @value={{value}}
-        name={{name}}
+        @optionsList={{this.objectOptions}}
+        @value={{this.value}}
+        name={{this.name}}
         @optionNamePath="name"
         @optionValuePath="id"
-        @onchange={{onChange}}
+        @onchange={{fn this.onChange}}
       />
     `);
 
@@ -112,12 +111,12 @@ module('Integration | Component | t-select', (hooks) => {
     await render(hbs`
       <TSelect
         @prompt="select something"
-        @optionsList={{objectOptions}}
-        @value={{value}}
-        name={{name}}
+        @optionsList={{this.objectOptions}}
+        @value={{this.value}}
+        name={{this.name}}
         @optionNamePath="name"
         @optionValuePath="id"
-        @onchange={{onChange}}
+        @onchange={{fn this.onChange}}
       />
     `);
 
@@ -129,7 +128,7 @@ module('Integration | Component | t-select', (hooks) => {
 
     const [selectValue] = this.objectOptions;
 
-    await new Interactor('select[name="test"]').select(selectValue.name);
+    await select('select[name="test"]', selectValue.id);
 
     assert.equal(events.length, 1, 'an onChange event was triggered');
 

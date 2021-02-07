@@ -37,7 +37,7 @@ export default Component.extend({
     const { academicStatus, attendanceStatus } = status.attributes;
     const statusText = [];
 
-    [academicStatus, attendanceStatus].forEach((attr) => {
+    [academicStatus, attendanceStatus].forEach(attr => {
       statusText.push(attr.charAt(0).toUpperCase());
     });
 

@@ -8,7 +8,7 @@ import { stubTinyData } from '../../../helpers/stub-tiny-data';
 let tinyData;
 let requests;
 
-module('Integration | Component | contract-enrollments-list/status', (hooks) => {
+module('Integration | Component | contract-enrollments-list/status', hooks => {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(function () {
@@ -16,7 +16,7 @@ module('Integration | Component | contract-enrollments-list/status', (hooks) => 
     tinyData.addResult(contractEnrollments);
 
     requests = [];
-    this.updateFn = (command) => {
+    this.updateFn = command => {
       requests.push({ command });
     };
 

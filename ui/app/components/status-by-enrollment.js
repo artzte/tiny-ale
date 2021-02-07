@@ -1,32 +1,38 @@
-import Component from '@ember/component';
+import Component from '@glimmer/component';
 import { inject as service } from '@ember/service';
-import { computed } from '@ember/object';
-import ContractRelations from '../mixins/contract-relations';
+import { tracked } from '@glimmer/tracking';
 import { activeMonths, hashByMonth } from '../utils/status-utils';
 import { generateNotableHash } from '../utils/note-utils';
+import { contractModelFactory } from '../utils/contract-utils';
 
-export default Component.extend(ContractRelations, {
-  tinyData: service(),
+export default class StatusByEnrollment extends contractModelFactory(Component) {
+  @service('tinyData') tinyData;
 
-  tagName: 'table',
-  classNames: ['t-table', 't-table-bordered'],
+  @tracked loadingNotes = false;
 
-  months: computed('term', 'statuses', function () {
-    return activeMonths(this.term, this.tinyData.getToday()).sort();
-  }),
+  @tracked notesHash;
 
-  statusHash: computed('statuses', function () {
-    return hashByMonth(this.statuses);
-  }),
+  constructor(...args) {
+    super(...args);
 
-  async didReceiveAttrs() {
-    const { statuses, notesHash, getNotes } = this;
+    this.contract = this.args.contract;
 
-    if (notesHash) return;
+    const { statuses, getNotes } = this.args;
 
-    this.set('loadingNotes', true);
+    this.loadingNotes = true;
 
-    const result = await getNotes(statuses);
-    this.set('notesHash', generateNotableHash(result, statuses, 'id'));
-  },
-});
+    getNotes(statuses)
+      .then(result => {
+        this.notesHash = generateNotableHash(result, statuses, 'id');
+      });
+  }
+
+  get months() {
+    return activeMonths(this.term, this.tinyData.getToday())
+      .sort((m1, m2) => m2.localeCompare(m1));
+  }
+
+  get statusHash() {
+    return hashByMonth(this.args.statuses);
+  }
+}

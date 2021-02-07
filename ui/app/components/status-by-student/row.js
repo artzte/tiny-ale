@@ -1,34 +1,32 @@
-import Component from '@ember/component';
-import { computed } from '@ember/object';
+import Component from '@glimmer/component';
 import { getAcademicStatusName } from '../../utils/status-utils';
 
-export default Component.extend({
-  tagName: 'tbody',
-  status: computed('month', 'statusHash', function () {
-    const { month, statusHash } = this;
+export default class StatusByStudentRow extends Component {
+  get status() {
+    const { month, statusHash } = this.args;
 
     return statusHash[month];
-  }),
-  academic: computed('status', function () {
+  }
+
+  get academic() {
     const { status } = this;
     if (!status) return '';
 
     return getAcademicStatusName(status);
-  }),
-  heldPeriodicCheckins: computed('status', function () {
+  }
+
+  get heldPeriodicCheckins() {
     const { status } = this;
-    if (!status) return '';
+    if (!status) return false;
 
-    if (status.attributes.heldPeriodicCheckins) {
-      return 'Y';
-    }
+    return status.attributes.heldPeriodicCheckins;
+  }
 
-    return 'N';
-  }),
-  notes: computed('notablesHash', function () {
-    const { notablesHash, status } = this;
+  get notes() {
+    const { status, args } = this;
+    const { notablesHash } = args;
     if (!(notablesHash && status)) return null;
 
     return notablesHash[status.id];
-  }),
-});
+  }
+}

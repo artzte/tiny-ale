@@ -12,9 +12,7 @@
   </thead>
   <tbody>
     {{#each contracts as |contract|}}
-      {{contracts-list/row
-        contract=contract
-      }}
+      <ContractsList::Row @contract={{contract}} />
     {{/each}}
   </tbody>
 </table>

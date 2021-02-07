@@ -9,7 +9,7 @@ export default Component.extend({
   tinyData: service(),
   creditsAvailableToMap: computed('creditAssignments', function () {
     return this.creditAssignments
-      .filter((creditAssignment) => {
+      .filter(creditAssignment => {
         if (get(creditAssignment, 'relationships.parentCreditAssignment.data')) {
           return false;
         }

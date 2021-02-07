@@ -1,6 +1,6 @@
 <fieldset>
   <p>
-    {{#form-input error=errors.firstName showError=showErrors label="First name"}}
+    <FormInput @error={{errors.firstName}} @showError={{showErrors}} @label="First name">
       <input
         type="text"
         name="firstName"
@@ -8,34 +8,34 @@
         autofocus
         onchange={{action "onChange"}}
       >
-    {{/form-input}}
+    </FormInput>
   </p>
   <p>
-    {{#form-input error=errors.lastName showError=showErrors label="Last name"}}
+    <FormInput @error={{errors.lastName}} @showError={{showErrors}} @label="Last name">
       <input
         type="text"
         name="lastName"
         value={{pojo.lastName}}
         onchange={{action "onChange"}}
       >
-    {{/form-input}}
+    </FormInput>
   </p>
   <p>
-    {{#form-input error=errors.nickname showError=showErrors label="Nickname"}}
+    <FormInput @error={{errors.nickname}} @showError={{showErrors}} @label="Nickname">
       <input
         type="text"
         name="nickname"
         value={{pojo.nickname}}
         onchange={{action "onChange"}}
       >
-    {{/form-input}}
+    </FormInput>
   </p>
 </fieldset>
 
 <fieldset>
   <h3>Account Privileges and Status</h3>
   <p>
-    {{#form-input error=errors.role showError=showErrors label="User type"}}
+    <FormInput @error={{errors.role}} @showError={{showErrors}} @label="User type">
       <TSelect
         @value={{pojo.role}}
         @prompt="Select a user type"
@@ -43,21 +43,21 @@
         name="role"
         @onchange={{action "onChange"}}
       />
-    {{/form-input}}
+    </FormInput>
   </p>
 </fieldset>
 
 {{#if isStaff}}
   <fieldset>
     <p>
-      {{#form-input error=errors.email showError=showErrors label="Email"}}
+      <FormInput @error={{errors.email}} @showError={{showErrors}} @label="Email">
         <input
           type="email"
           name="email"
           value={{pojo.email}}
           onchange={{action "onChange"}}
         >
-      {{/form-input}}
+      </FormInput>
     </p>
   </fieldset>
 {{/if}}
@@ -91,32 +91,21 @@
     </div>
   </p>
   <p>
-    {{#form-input error=errors.dateActive showError=showErrors label="Date active"}}
-      {{t-pikaday
-        popup=true
-        name="dateActive"
-        value=pojo.dateActive
-        onchange=(action "updateDate")
-      }}
-    {{/form-input}}
+    <FormInput @error={{errors.dateActive}} @showError={{showErrors}} @label="Date active">
+      <TPikaday @popup={{true}} @name="dateActive" @value={{pojo.dateActive}} @onchange={{action "updateDate"}} />
+    </FormInput>
   </p>
   <p>
-    {{#form-input error=errors.dateInactive showError=showErrors label="Date inactive"}}
-      {{t-pikaday
-        popup=true
-        name="dateInactive"
-        value=pojo.dateInactive
-        onchange=(action "updateDate")
-        showClear=true
-      }}
-    {{/form-input}}
+    <FormInput @error={{errors.dateInactive}} @showError={{showErrors}} @label="Date inactive">
+      <TPikaday @popup={{true}} @name="dateInactive" @value={{pojo.dateInactive}} @onchange={{action "updateDate"}} @showClear={{true}} />
+    </FormInput>
   </p>
 </fieldset>
 {{#if isStudent}}
   <fieldset>
     <h3>Student Settings</h3>
     <p>
-      {{#form-input error=errors.coordinator showError=showErrors label="Coordinator"}}
+      <FormInput @error={{errors.coordinator}} @showError={{showErrors}} @label="Coordinator">
         <TSelect
           @prompt="None assigned"
           @value={{pojo.coordinatorId}}
@@ -125,20 +114,20 @@
           name="coordinator"
           @onchange={{action "handleCoordinatorChange"}}
         />
-      {{/form-input}}
+      </FormInput>
     </p>
     <p>
-      {{#form-input error=errors.districtId showError=showErrors label="District ID"}}
+      <FormInput @error={{errors.districtId}} @showError={{showErrors}} @label="District ID">
         <input
           type="text"
           name="districtId"
           value={{pojo.districtId}}
           onchange={{action "onChange"}}
         >
-      {{/form-input}}
+      </FormInput>
     </p>
     <p>
-      {{#form-input error=errors.districtGrade showError=showErrors label="Grade level"}}
+      <FormInput @error={{errors.districtGrade}} @showError={{showErrors}} @label="Grade level">
         <TSelect
           @prompt="None assigned"
           @value={{pojo.districtGrade}}
@@ -146,14 +135,12 @@
           name="districtGrade"
           @onchange={{action "onChange"}}
         />
-      {{/form-input}}
+      </FormInput>
     </p>
   </fieldset>
 {{/if}}
-{{#t-form-actions-row
-  disabled=disabled
-}}
-  {{#link-to "admin-users" class="btn btn-clear"}}
+<TFormActionsRow @disabled={{disabled}}>
+  <LinkTo @route="admin-users" class="btn btn-clear">
     Cancel
-  {{/link-to}}
-{{/t-form-actions-row}}
+  </LinkTo>
+</TFormActionsRow>

@@ -5,6 +5,7 @@ export default Component.extend({
   tagName: 'table',
   classNames: ['t-table', 't-table-bordered'],
   async didReceiveAttrs() {
+    this._super();
     const { notablesHash, getNotes, enrollments } = this;
     if (notablesHash) return;
 

@@ -10,7 +10,7 @@
   <td>
     {{courseName}}
     {{#if childCreditAssignments}}
-      {{credit-assignments creditAssignments=childCreditAssignments}}
+      <CreditAssignments @creditAssignments={{childCreditAssignments}} />
     {{/if}}
   </td>
   <td>

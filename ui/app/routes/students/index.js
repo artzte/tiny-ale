@@ -49,9 +49,7 @@ export default Route.extend({
       requestParams.grade = grade;
     }
 
-    this.qp = Object.assign({}, params, {
-      schoolYear: requestParams.schoolYear,
-    });
+    this.qp = { ...params, schoolYear: requestParams.schoolYear };
 
     return tinyData.fetch('/api/students', {
       data: requestParams,
@@ -70,8 +68,6 @@ export default Route.extend({
 
     this._super(controller, students);
 
-    controller.setProperties(Object.assign({}, queryParams, {
-      students: students.data,
-    }));
+    controller.setProperties({ ...queryParams, students: students.data });
   },
 });

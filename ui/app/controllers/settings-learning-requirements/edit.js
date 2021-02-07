@@ -32,7 +32,7 @@ export default class SettingsLearningRequirementsEditController extends Controll
     promise.then(() => {
       this.flashMessages.success(`Learning requirement ${model.attributes.category} ${model.attributes.seq} saved`);
       this.transitionToRoute('settings-learning-requirements', { queryParams: { refresh: true } });
-    }, (err) => {
+    }, err => {
       this.flashMessages.alert('An error was reported');
       error(err.message);
     });

@@ -3,20 +3,10 @@
 <ReturnToSettingsLink />
 
 <div class="w-full lg:w-1/2 xl:w-1/2">
-  {{#t-form
-    validator=validator
-    model=settingsModel
-    save=(action "save")
-    reportError=(action "reportError")
-    as |form|
-  }}
+  <TForm @validator={{validator}} @model={{settingsModel}} @save={{action "save"}} @reportError={{action "reportError"}} as |form|>
     <fieldset>
       <p>
-        {{#form-input
-          error=form.errors.current_year
-          showError=form.showErrors
-          label="Current school year"
-        }}
+        <FormInput @error={{form.errors.current_year}} @showError={{form.showErrors}} @label="Current school year">
           <t-help>This is the year in which the Fall term begins. By default, screens show terms for the current year only</t-help>
           <TSelect
             @optionsList={{yearOptions}}
@@ -25,15 +15,11 @@
             @prompt="Choose a school year"
             @onchange={{action "onChange" target=form}}
           />
-        {{/form-input}}
+        </FormInput>
       </p>
 
       <p>
-        {{#form-input
-          error=form.errors.reporting_base_month
-          showError=form.showErrors
-          label="First month of school year"
-        }}
+        <FormInput @error={{form.errors.reporting_base_month}} @showError={{form.showErrors}} @label="First month of school year">
           <t-help>COOR status reporting begins at the starting month</t-help>
           <TSelect
             @optionsList={{monthOptions}}
@@ -42,15 +28,11 @@
             @prompt="Choose a starting month"
             @onchange={{action "onChange" target=form}}
           />
-        {{/form-input}}
+        </FormInput>
       </p>
 
       <p>
-        {{#form-input
-          error=form.errors.reporting_end_month
-          showError=form.showErrors
-          label="Last month of school year"
-        }}
+        <FormInput @error={{form.errors.reporting_end_month}} @showError={{form.showErrors}} @label="Last month of school year">
           <t-help>COOR status reporting ends on the ending month</t-help>
           <TSelect
             @optionsList={{monthOptions}}
@@ -59,15 +41,13 @@
             @prompt="Choose an ending month"
             @onchange={{action "onChange" target=form}}
           />
-        {{/form-input}}
+        </FormInput>
       </p>
     </fieldset>
 
     <fieldset>
       <p>
-        {{#form-input
-          label="Default term for new contracts"
-        }}
+        <FormInput @label="Default term for new contracts">
           <t-help>COOR status reporting ends on the ending month</t-help>
           <TermSelect
             name="new_contract_term_default"
@@ -76,17 +56,15 @@
             @prompt="Choose a default term"
             @onchange={{action "onChange" target=form}}
           />
-        {{/form-input}}
+        </FormInput>
       </p>
     </fieldset>
 
-    {{#t-form-actions-row
-      disabled=disabled
-    }}
-      {{#link-to "admin-settings.index" class="btn btn-clear"}}
+    <TFormActionsRow @disabled={{disabled}}>
+      <LinkTo @route="admin-settings.index" class="btn btn-clear">
         Return to list of settings
-      {{/link-to}}
-    {{/t-form-actions-row}}
+      </LinkTo>
+    </TFormActionsRow>
 
-  {{/t-form}}
+  </TForm>
 </div>

@@ -1,39 +1,37 @@
 <fieldset onchange={{action "onChange" }}>
   <p>
-    {{#form-input error=errors.category showError=showErrors label="Category"}}
+    <FormInput @error={{errors.category}} @showError={{showErrors}} @label="Category">
       <TSelect
         @optionsList={{categories}}
         @value={{pojo.category}}
         @prompt="Select a category"
         name="category"
       />
-    {{/form-input}}
+    </FormInput>
   </p>
   <p>
-    {{#form-input error=errors.seq showError=showErrors label="Sequence"}}
+    <FormInput @error={{errors.seq}} @showError={{showErrors}} @label="Sequence">
       <input
         value={{pojo.seq}}
         name="seq"
         type="text"
       >
-    {{/form-input}}
+    </FormInput>
   </p>
   <p>
-    {{#form-input error=errors.ealr showErrors=showErrors for="ealr" label="Description"}}
+    <FormInput @error={{errors.ealr}} @showErrors={{showErrors}} @for="ealr" @label="Description">
       <textarea
         name="ealr"
       >
         {{pojo.ealr}}
       </textarea>
-    {{/form-input}}
+    </FormInput>
   </p>
 </fieldset>
 
-{{#t-form-actions-row
-  disabled=disabled
-}}
-  {{#link-to "settings-learning-requirements" class="btn btn-clear"}}
+<TFormActionsRow @disabled={{disabled}}>
+  <LinkTo @route="settings-learning-requirements" class="btn btn-clear">
     Cancel
-  {{/link-to}}
-{{/t-form-actions-row}}
+  </LinkTo>
+</TFormActionsRow>
 

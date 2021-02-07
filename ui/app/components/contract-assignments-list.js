@@ -24,6 +24,7 @@ export default Component.extend({
       .sort((a1, a2) => a1.attributes.dueDate.localeCompare(a2.attributes.dueDate));
   }),
   async didReceiveAttrs() {
+    this._super();
     const {
       notablesHash,
       getNotes,

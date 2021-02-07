@@ -5,9 +5,9 @@ import {
   find,
   findAll,
   click,
+  select,
 } from '@ember/test-helpers';
 import { setupApplicationTest } from 'ember-qunit';
-import { Interactor } from '@bigtest/interactor';
 import MockServer, { provisionTinySisBootstrapRoutes } from '../helpers/mock-server';
 import { MockLocalStorage } from '../helpers/test-utils';
 
@@ -26,10 +26,10 @@ let localStorage;
 
 const contractAttendanceRollUrl = `/tiny/contracts/${contractDetailFixture.data.id}/attendance/${contractAttendanceRollMeetingFixture.data.id}`;
 
-module('Acceptance | contract attendance roll', (hooks) => {
+module('Acceptance | contract attendance roll', hooks => {
   setupApplicationTest(hooks);
 
-  hooks.beforeEach((assert) => {
+  hooks.beforeEach(assert => {
     server = new MockServer();
     localStorage = new MockLocalStorage();
 
@@ -52,7 +52,7 @@ module('Acceptance | contract attendance roll', (hooks) => {
     localStorage.unmock();
   });
 
-  test(`visiting ${contractAttendanceRollUrl}`, async (assert) => {
+  test(`visiting ${contractAttendanceRollUrl}`, async assert => {
     await visit(contractAttendanceRollUrl);
 
     assert.equal(currentURL(), contractAttendanceRollUrl, 'page navigated to successfully');
@@ -60,14 +60,13 @@ module('Acceptance | contract attendance roll', (hooks) => {
     assert.ok(find('t-contract-attendance-roll-set-all'), 'setall form rendered');
   });
 
-
-  test(`exercising set-all on ${contractAttendanceRollUrl}`, async (assert) => {
+  test(`exercising set-all on ${contractAttendanceRollUrl}`, async assert => {
     const meetingFixture = server.getFixture('/api/meetings/:id');
 
     meetingFixture
       .included
       .filter(record => record.type === 'meetingParticipant')
-      .forEach((mp) => {
+      .forEach(mp => {
         mp.attributes.contactType = 'coor';
         mp.attributes.participation = 'absent';
       });
@@ -76,8 +75,8 @@ module('Acceptance | contract attendance roll', (hooks) => {
     server.addRequest('patch', patchPath, meetingFixture);
     await visit(contractAttendanceRollUrl);
 
-    await new Interactor('t-contract-attendance-roll-set-all select[name="participation"]').select('Absent');
-    await new Interactor('t-contract-attendance-roll-set-all select[name="contactType"]').select('Coor');
+    await select('t-contract-attendance-roll-set-all select[name="participation"]', 'absent');
+    await select('t-contract-attendance-roll-set-all select[name="contactType"]', 'coor');
 
     await click('t-contract-attendance-roll-set-all button');
 
@@ -89,14 +88,14 @@ module('Acceptance | contract attendance roll', (hooks) => {
     assert.equal(patchLog.body.data.attributes.participation, 'absent', 'expected participation was sent');
 
     findAll('t-contract-attendance-roll tbody tr')
-      .forEach((row) => {
+      .forEach(row => {
         assert.ok(row.querySelector('[data-test-participation="absent"] value-button[data-test-is-checked="checked"]'), 'enrollment row is marked absent now');
-        const contactTypeValue = new Interactor(row.querySelector('select')).value;
+        const contactTypeValue = find(row.querySelector('select')).value;
         assert.equal(contactTypeValue, 'coor', 'contactType select is properly set');
       });
   });
 
-  test(`exercising set participation and contact type on ${contractAttendanceRollUrl}`, async (assert) => {
+  test(`exercising set participation and contact type on ${contractAttendanceRollUrl}`, async assert => {
     // debounce requires this
     assert.timeout(3000);
 
@@ -118,7 +117,7 @@ module('Acceptance | contract attendance roll', (hooks) => {
     const row = find(`tr[data-test-enrollment-id="${updatedParticipant.relationships.enrollment.data.id}"]`);
     assert.ok(row, 'found row as expected');
 
-    new Interactor(row.querySelector('select')).select('Coor');
+    await select(row.querySelector('select'), 'coor');
     await click(row.querySelector('[data-test-participation="excused"] value-button'));
 
     const logs = server.getLog();

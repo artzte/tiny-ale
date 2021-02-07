@@ -23,10 +23,10 @@ let requests;
 let detailApiPath;
 let detailPath;
 
-module('Acceptance | contract detail', (hooks) => {
+module('Acceptance | contract detail', hooks => {
   setupApplicationTest(hooks);
 
-  hooks.beforeEach((assert) => {
+  hooks.beforeEach(assert => {
     server = new MockServer();
     localStorage = new MockLocalStorage();
     requests = [];
@@ -54,7 +54,7 @@ module('Acceptance | contract detail', (hooks) => {
     localStorage.unmock();
   });
 
-  test('visiting /tiny/contracts/:id', async (assert) => {
+  test('visiting /tiny/contracts/:id', async assert => {
     await visit(detailPath);
 
     assert.equal(currentURL(), detailPath, 'page navigated to successfully');
@@ -62,7 +62,7 @@ module('Acceptance | contract detail', (hooks) => {
     assert.ok(find('[data-test-form="contract-attributes"]'), 'contract attributes form rendered');
   });
 
-  test('submit updates to an existing contract', async (assert) => {
+  test('submit updates to an existing contract', async assert => {
     await visit(detailPath);
 
     assert.equal(currentURL(), detailPath, 'page navigated to successfully');

@@ -8,7 +8,7 @@ import contractDetail from '../../fixtures/contract-detail';
 let tinyData;
 let contract;
 
-module('Integration | Component | contract-detail', (hooks) => {
+module('Integration | Component | contract-detail', hooks => {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(function () {
@@ -22,7 +22,7 @@ module('Integration | Component | contract-detail', (hooks) => {
     });
   });
 
-  test('it renders', async (assert) => {
+  test('it renders', async assert => {
     await render(hbs`{{contract-detail contract=contract}}`);
 
     assert.ok(find('.contract-detail'), 'the containing div rendered');

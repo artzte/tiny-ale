@@ -2,11 +2,4 @@
   {{term.attributes.name}} / {{term.attributes.schoolYear}}
 </h2>
 
-{{admin-term-form
-  model=term
-  schoolYear=schoolYear
-  schoolYears=schoolYears
-  reportingBaseMonth=reportingBaseMonth
-  save=(action "saveTerm")
-  reportError=(action "reportError")
-}}
+<AdminTermForm @model={{term}} @schoolYear={{schoolYear}} @schoolYears={{schoolYears}} @reportingBaseMonth={{reportingBaseMonth}} @save={{action "saveTerm"}} @reportError={{action "reportError"}} />

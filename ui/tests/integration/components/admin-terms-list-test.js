@@ -8,7 +8,7 @@ import adminTermsListFixture from '../../fixtures/admin-terms-list';
 let terms;
 let tinyDataServiceMock;
 
-module('Integration | Component | admin-terms-list', (hooks) => {
+module('Integration | Component | admin-terms-list', hooks => {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(function () {
@@ -21,7 +21,7 @@ module('Integration | Component | admin-terms-list', (hooks) => {
     this.set('terms', terms);
   });
 
-  test('it renders', async (assert) => {
+  test('it renders', async assert => {
     await render(hbs`
       {{admin-terms-list
         terms=terms

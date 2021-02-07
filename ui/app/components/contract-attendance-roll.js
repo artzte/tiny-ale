@@ -41,6 +41,7 @@ export default Component.extend(ContractRelations, Notes, {
   }),
 
   async didReceiveAttrs() {
+    this._super();
     const notes = await this.getNotes(this.meetingParticipants);
     if (!this.isDestroyed) this.set('notes', notes);
   },

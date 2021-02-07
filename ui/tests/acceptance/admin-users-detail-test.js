@@ -17,10 +17,10 @@ import adminUsersLoginsFixtures from '../fixtures/admin-users-logins';
 let server;
 let localStorage;
 
-module('Acceptance | admin user detail', (hooks) => {
+module('Acceptance | admin user detail', hooks => {
   setupApplicationTest(hooks);
 
-  hooks.beforeEach((assert) => {
+  hooks.beforeEach(assert => {
     server = new MockServer();
     localStorage = new MockLocalStorage();
 
@@ -44,7 +44,7 @@ module('Acceptance | admin user detail', (hooks) => {
   });
 
   const detailUrl = `/tiny/admin/user/${adminUserStudentDetail.data.id}`;
-  test(`visiting ${detailUrl}`, async (assert) => {
+  test(`visiting ${detailUrl}`, async assert => {
     await visit(detailUrl);
 
     assert.equal(currentURL(), detailUrl, 'page navigated to successfully');

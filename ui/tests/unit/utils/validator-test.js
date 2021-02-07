@@ -1,7 +1,7 @@
 import Validator from 'tinysis-ui/utils/validator';
 import { module, test } from 'qunit';
 
-module('Unit | Utility | validator', (hooks) => {
+module('Unit | Utility | validator', hooks => {
   let validations;
   hooks.beforeEach(() => {
     validations = {
@@ -23,12 +23,12 @@ module('Unit | Utility | validator', (hooks) => {
     };
   });
 
-  test('it can be instantiated', (assert) => {
+  test('it can be instantiated', assert => {
     const validator = new Validator(validations);
     assert.ok(validator);
   });
 
-  test('it can validate a valid object', (assert) => {
+  test('it can validate a valid object', assert => {
     const validator = new Validator(validations);
     const result = validator.validate({
       name: 'Joe',
@@ -42,7 +42,7 @@ module('Unit | Utility | validator', (hooks) => {
     assert.equal(Object.keys(result.errors).length, 0, 'error object is empty');
   });
 
-  test('it can validate an invalid object', (assert) => {
+  test('it can validate an invalid object', assert => {
     const validator = new Validator(validations);
     const result = validator.validate({
       name: '',
@@ -58,7 +58,7 @@ module('Unit | Utility | validator', (hooks) => {
     assert.ok(result.errors.date, /check the value/, 'expected format flagged');
   });
 
-  test('it can validate the simplified relationships used by t-form internally', (assert) => {
+  test('it can validate the simplified relationships used by t-form internally', assert => {
     const validator = new Validator({
       food: [{
         type: 'required',

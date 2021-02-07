@@ -9,12 +9,7 @@
 </thead>
 <tbody>
   {{#each students.data as |student|}}
-    {{status-by-coordinator/row
-      student=student
-      statusHash=statusHash
-      months=months
-      term=term
-    }}
+    <StatusByCoordinator::Row @student={{student}} @statusHash={{statusHash}} @months={{months}} @term={{term}} />
   {{else}}
     <tr class="no-results">
       <td>No coordinatees</td>

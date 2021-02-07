@@ -3,7 +3,6 @@ import { computed } from '@ember/object';
 import { alias } from '@ember/object/computed';
 import { isActive } from '../../utils/user-utils';
 
-
 export default Component.extend({
   tagName: 'tr',
 

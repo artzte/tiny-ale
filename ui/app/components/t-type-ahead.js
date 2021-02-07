@@ -25,6 +25,7 @@ export default class TTypeAhead extends Component {
   }
 
   didReceiveAttrs() {
+    super.didReceiveAttrs();
     const {
       hasResults,
       results,

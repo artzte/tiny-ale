@@ -7,20 +7,14 @@
       <th>Tardy</th>
       {{#each sortedMeetings as |meeting|}}
         <th data-test-meeting data-test-meeting-date={{meeting.attributes.meetingDate}}>
-          {{#link-to "contract-attendance-roll" meeting.id}}
+          <LinkTo @route="contract-attendance-roll" @model={{meeting.id}}>
             {{t-date meeting.attributes.meetingDate "M/D"}}
-          {{/link-to}}
+          </LinkTo>
         </th>
       {{/each}}
     </tr>
   </thead>
   {{#each participants as |participant i|}}
-    {{contract-attendance-list/row
-      meetings=sortedMeetings
-      row=i
-      enrollment=participant.enrollment
-      student=participant.student
-      attendanceHash=attendanceHash
-    }}
+    <ContractAttendanceList::Row @meetings={{sortedMeetings}} @row={{i}} @enrollment={{participant.enrollment}} @student={{participant.student}} @attendanceHash={{attendanceHash}} />
   {{/each}}
 </table>

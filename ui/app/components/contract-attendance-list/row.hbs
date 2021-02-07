@@ -19,19 +19,12 @@
       {{number-or roll.tardy "-"}}
     </td>
     {{#each meetings as |meeting|}}
-      {{contract-attendance-list/column
-        meeting=meeting
-        row=row
-        roll=roll
-      }}
+      <ContractAttendanceList::Column @meeting={{meeting}} @row={{row}} @roll={{roll}} />
     {{/each}}
   </tr>
   <tr class="notes-row {{loadingNotes}}">
     <td colspan={{columnsCount}}>
-      {{notes-list
-        notes=notes
-        expanded=notesExpanded
-      }}
+      <NotesList @notes={{notes}} @expanded={{notesExpanded}} />
     </td>
   </tr>
 </tbody>

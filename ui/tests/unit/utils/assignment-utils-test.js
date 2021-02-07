@@ -6,12 +6,12 @@ import assignmentsFixture from '../../fixtures/contract-assignments';
 
 let assignments;
 
-module('Unit | Utility | assignment-utils', (hooks) => {
+module('Unit | Utility | assignment-utils', hooks => {
   hooks.beforeEach(() => {
     assignments = clone(assignmentsFixture.data);
   });
 
-  test('isAssigmentDue returns expected values', (assert) => {
+  test('isAssigmentDue returns expected values', assert => {
     const [assignment] = assignments;
     const dayAfter = dayjs(assignment.attributes.dueDate).add(1, 'day');
 

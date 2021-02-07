@@ -25,7 +25,7 @@
 </fieldset>
 <fieldset>
   <p>
-    {{#form-input error=errors.creditHours showError=showErrors}}
+    <FormInput @error={{errors.creditHours}} @showError={{showErrors}}>
       <div class="flex justify-between">
         <span class="font-semibold">
           Credit hours
@@ -58,12 +58,12 @@
           {{pojo.creditHours}}
         </span>
       {{/if}}
-    {{/form-input}}
+    </FormInput>
   </p>
 </fieldset>
 <fieldset>
   <p>
-    {{#form-input error=errors.contractTerm showError=showErrors label="Term"}}
+    <FormInput @error={{errors.contractTerm}} @showError={{showErrors}} @label="Term">
       <TermSelect
         name="contractTerm"
         @value={{relationships.contractTerm.id}}
@@ -71,18 +71,18 @@
         @terms={{terms}}
         @onchange={{action "onChangeRelationship"}}
       />
-    {{/form-input}}
+    </FormInput>
   </p>
 </fieldset>
 <fieldset>
   <p>
-    {{#form-input error=errors.note showError=showErrors label="Notes"}}
+    <FormInput @error={{errors.note}} @showError={{showErrors}} @label="Notes">
       <textarea
         value={{pojo.note}}
         name="note"
         onchange={{action "onChange"}}
       />
-    {{/form-input}}
+    </FormInput>
   </p>
 </fieldset>
 <footer>

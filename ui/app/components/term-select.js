@@ -1,9 +1,17 @@
-import { computed } from '@ember/object';
 import TSelect from './t-select';
 
-export default TSelect.extend({
-  optionsList: computed('terms', function () {
-    return this.terms
+export default class TermSelect extends TSelect {
+  constructor(...args) {
+    super(...args);
+
+    this.args = {
+      ...this.args,
+      optionsList: this.termsOptions,
+    };
+  }
+
+  get termsOptions() {
+    return this.args.terms
       .sort((t1, t2) => {
         const year = t2.attributes.schoolYear - t1.attributes.schoolYear;
         if (year) {
@@ -15,5 +23,5 @@ export default TSelect.extend({
         name: term.attributes.name,
         value: term.id,
       }));
-  }),
-});
+  }
+}

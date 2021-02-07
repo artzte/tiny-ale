@@ -1,24 +1,21 @@
 <h2>
-  {{full-name student "first-last"}}
-  &ndash;
-  Status for
-  {{schoolYear}}
+  {{full-name this.student "first-last"}}
 </h2>
-<p>
-  As of
-  {{t-date today "ddd, D MMM YYYY"}}
-</p>
-<p>
-  Grade
-  {{student.attributes.districtGrade}};
-  active since {{t-date student.attributes.dateActive "M/YYYY"}}
-</p>
 
-{{status-by-student
-  student=student
-  statuses=statuses
-  term=term
-  getNotes=(route-action "getNotes")
-}}
+<StatusByStudent
+  @student={{this.student}}
+  @statuses={{this.statuses}}
+  @term={{this.term}}
+  @getNotes={{route-action "getNotes"}}
+/>
 
-{{outlet}}
+
+{{#if this.showCoordinatorNav}}
+  <EmberWormhole @to="status-page-navigator">
+    <Status::StatusPageNavigator
+      @current={{this.student}}
+      @navigationList={{this.studentNavigationMap}}
+      @onSelect={{action 'navigate'}}
+    />
+  </EmberWormhole>
+{{/if}}

@@ -1,38 +1,48 @@
-import Component from '@ember/component';
-import { computed } from '@ember/object';
+import Component from '@glimmer/component';
+import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
 import { activeMonths } from 'tinysis-ui/utils/status-utils';
 import { generateNotableHash } from 'tinysis-ui/utils/note-utils';
 
-export default Component.extend({
-  tinyData: service(),
-  tagName: 'table',
-  classNames: ['t-table', 't-table-bordered'],
+export default class StatusByStudent extends Component {
+  @tracked notes;
 
-  months: computed('term', function () {
-    const active = activeMonths(this.term, this.tinyData.getToday());
+  @tracked loadingNotes;
 
-    return active.sort();
-  }),
-  statusHash: computed('statuses', function () {
-    const { statuses } = this;
+  @service tinyData;
+
+  get months() {
+    const active = activeMonths(this.args.term, this.tinyData.getToday());
+
+    return active.sort((m1, m2) => m2.localeCompare(m1));
+  }
+
+  get statusHash() {
+    const { statuses } = this.args;
 
     return statuses
       .reduce((memo, status) => {
         memo[status.attributes.month] = status;
         return memo;
       }, {});
-  }),
-  async didReceiveAttrs() {
-    const { getNotes, notableHash, statuses } = this;
-    if (notableHash) return;
+  }
 
-    this.set('loadingNotes', 'loading');
-    const notes = await getNotes(statuses);
+  get notablesHash() {
+    const { notes, args } = this;
+    const { statuses } = args;
+    if (!(notes && statuses)) return {};
 
-    this.setProperties({
-      notablesHash: generateNotableHash(notes, statuses, 'id'),
-      loadingNotes: null,
+    return generateNotableHash(notes, statuses, 'id');
+  }
+
+  constructor(...args) {
+    super(...args);
+    const { getNotes, statuses } = this.args;
+
+    this.loadingNotes = true;
+    getNotes(statuses).then(notes => {
+      this.notes = notes;
+      this.loadingNotes = false;
     });
-  },
-});
+  }
+}

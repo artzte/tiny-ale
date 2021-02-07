@@ -6,14 +6,14 @@ import {
   find,
   click,
   fillIn,
+  select,
 } from '@ember/test-helpers';
-import { Interactor } from '@bigtest/interactor';
 import { resolve } from 'rsvp';
 import hbs from 'htmlbars-inline-precompile';
 
 let requests;
 
-module('Integration | Component | t-form', (hooks) => {
+module('Integration | Component | t-form', hooks => {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(function () {
@@ -42,7 +42,6 @@ module('Integration | Component | t-form', (hooks) => {
     });
     requests = [];
   });
-
 
   test('it renders and submits expected calls', async function (assert) {
     await render(hbs`
@@ -172,7 +171,7 @@ module('Integration | Component | t-form', (hooks) => {
 
     requests = [];
     await fillIn("input[name='age']", '55');
-    await new Interactor(find('select[name="club"]')).select('Art Club');
+    await select('select[name="club"]', '1');
 
     await click('button');
 

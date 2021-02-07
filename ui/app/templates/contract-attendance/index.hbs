@@ -9,27 +9,15 @@
 </p>
 
 {{#if showNew}}
-  {{#modal-dialog
-    onClose=(action "toggleNew")  
-    translucentOverlay=true
-  }}
-    {{contract-attendance-new
-      meetings=meetings
-      today=today
-      createMeeting=(action "createMeeting")
-    }}
-  {{/modal-dialog}}
+  <ModalDialog @onClose={{action "toggleNew"}} @translucentOverlay={{true}}>
+    <ContractAttendanceNew @meetings={{meetings}} @today={{today}} @createMeeting={{action "createMeeting"}} />
+  </ModalDialog>
 {{/if}}
 
 {{#check-empty
   count=model.meta.count
   noResultsMessage="No attendance taken as of yet"
 }}
-  {{count-paragraph
-    result=model
-    name="meeting"
-  }}
-  {{contract-attendance-list
-    contract=contract
-  }}
+  <CountParagraph @result={{model}} @name="meeting" />
+  <ContractAttendanceList @contract={{contract}} />
 {{/check-empty}}

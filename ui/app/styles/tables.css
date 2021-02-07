@@ -1,32 +1,20 @@
 .t-table {
-  @apply border border-collapse;
+  @apply border-2 border-collapse;
 
   thead {
-    @apply bg-gray-100 border-t border-b;
+    @apply bg-gray-100 border-t-2 border-b-2;
   }
 
   th {
     @apply text-left py-2 px-4;
-    
-    &.text-center {
-      @apply text-center;
-    }
-
-    &.text-right {
-      @apply text-right;
-    }
   }
 
   td {
     @apply py-2 px-4;
-
-    &.indented {
-      @apply pl-8;
-    }
   }
 
   tbody tr {
-    @apply border-b;
+    @apply border-b-2;
   }
 }
 
@@ -34,6 +22,7 @@
 .actions-list {
   display: inline-block;
 }
+
 .actions-list-item {
   display: inline-block;
   margin: 0 1rem 0 0;

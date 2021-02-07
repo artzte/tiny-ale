@@ -9,7 +9,7 @@ import { clone } from '../../helpers/test-utils';
 let requests;
 let requirement;
 
-module('Integration | Component | settings-graduation-plan-requirement-form', (hooks) => {
+module('Integration | Component | settings-graduation-plan-requirement-form', hooks => {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(function (assert) {
@@ -32,7 +32,7 @@ module('Integration | Component | settings-graduation-plan-requirement-form', (h
     });
   });
 
-  test('it renders and submits round-trip', async (assert) => {
+  test('it renders and submits round-trip', async assert => {
     await render(hbs`
       <SettingsGraduationPlanRequirementForm
         @model={{requirement}}

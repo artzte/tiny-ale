@@ -1,28 +1,23 @@
-import Component from '@ember/component';
-import { get, computed } from '@ember/object';
+import Component from '@glimmer/component';
+import { get, action } from '@ember/object';
 import { capitalize } from '../helpers/titleize';
 
-export default Component.extend({
-  tagName: '',
-  optionValuePath: 'value',
-  optionNamePath: 'name',
-  onchange: () => {},
-
+export default class TSelect extends Component {
   /**
    * Builds the options list with initial selection.
    * Does not list value as a dependency. Internal selection
    * changes are handled by the native control. So we don't
    * recompute this on value changes.
    */
-  optionSelections: computed('optionsList', 'optionValuePath', 'optionNamePath', function () {
+  get optionSelections() {
     const {
-      optionsList,
-      optionValuePath,
-      optionNamePath,
-    } = this;
+      optionsList = [],
+      optionValuePath = 'value',
+      optionNamePath = 'name',
+    } = this.args;
 
     return optionsList
-      .map((option) => {
+      .map(option => {
         let opt;
         if (typeof option !== 'object') {
           opt = {
@@ -38,16 +33,16 @@ export default Component.extend({
 
         return opt;
       });
-  }),
+  }
 
-  actions: {
-    onChange(event) {
-      const select = event.target;
-      const { name } = select;
-      const [option] = select.selectedOptions;
-      const value = option && option.value;
+  @action onChange(event) {
+    if (!this.args.onchange) return;
 
-      this.onchange(value, name, event);
-    },
-  },
-});
+    const select = event.target;
+    const { name } = select;
+    const [option] = select.selectedOptions;
+    const value = option && option.value;
+
+    this.args.onchange(value, name, event);
+  }
+}

@@ -16,10 +16,6 @@
     {{titleize status}}
   </td>
   <td data-test-assignment-notes>
-    {{notes-list
-      notes=notes
-      notable=turnin
-      expanded=true
-    }}
+    <NotesList @notes={{notes}} @notable={{turnin}} @expanded={{true}} />
   </td>
 </tr>

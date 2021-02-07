@@ -2,21 +2,13 @@
   <td>{{full-name participant}}</td>
   <td>{{titleize enrollmentStatus}}</td>
   {{#each months as |month|}}
-    {{status-by-contract/column
-      student=participant
-      enrollment=enrollment
-      month=month
-      term=term
-      enrollmentStatusHash=enrollmentStatusHash
-    }}
+    <StatusByContract::Column @student={{participant}} @enrollment={{enrollment}} @month={{month}} @term={{term}} @enrollmentStatusHash={{enrollmentStatusHash}} />
   {{/each}}
 </tr>
 <tr data-test-status-id={{status.id}} class="notes-row {{loadingNotes}}">
   <td colspan={{columnCount}}>
     {{#unless loadingNotes}}
-      {{notes-list
-        notes=notes
-      }}
+      <NotesList @notes={{notes}} />
     {{/unless}}
   </td>
 </tr>

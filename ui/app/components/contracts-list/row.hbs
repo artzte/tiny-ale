@@ -1,8 +1,8 @@
 <tr data-test-contracts-list-row>
   <td>
-    {{#link-to "contract" contract.id}}
+    <LinkTo @route="contract" @model={{contract.id}}>
       {{contract.attributes.name}}
-    {{/link-to}}
+    </LinkTo>
   </td>
   <td>
     {{number-or contract.relationships.enrollments.data.length}}
@@ -22,24 +22,24 @@
   <td>
     <ul class="actions-list">
       <li class="actions-list-item status">
-        {{#link-to "status-by-contract" contract.id}}
+        <LinkTo @route="status-by-contract" @model={{contract.id}}>
           Status
-        {{/link-to}}
+        </LinkTo>
       </li>
       <li class="actions-list-item enrollments">
-        {{#link-to "contract-enrollments" contract.id}}
+        <LinkTo @route="contract-enrollments" @model={{contract.id}}>
           Enrollments
-        {{/link-to}}
+        </LinkTo>
       </li>
       <li class="actions-list-item assignments">
-        {{#link-to "contract-assignments" contract.id}}
+        <LinkTo @route="contract-assignments" @model={{contract.id}}>
           Assignments
-        {{/link-to}}
+        </LinkTo>
       </li>
       <li class="actions-list-item attendance">
-        {{#link-to "contract-attendance" contract.id}}
+        <LinkTo @route="contract-attendance" @model={{contract.id}}>
           Attendance
-        {{/link-to}}
+        </LinkTo>
       </li>
     </ul>
   </td>

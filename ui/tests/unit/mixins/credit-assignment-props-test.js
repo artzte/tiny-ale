@@ -6,13 +6,13 @@ import { buildTinyData } from '../../helpers/stub-tiny-data';
 
 let creditAssignmentWithChildren;
 
-module('Unit | Mixin | credit-assignment-props', (hooks) => {
+module('Unit | Mixin | credit-assignment-props', hooks => {
   hooks.beforeEach(() => {
     creditAssignmentWithChildren = creditAssignmentsFixture.data.find(ca => ca.relationships.childCreditAssignments.data.length);
   });
 
   // Replace this with your real tests.
-  test('it produces expected values for an approved credit with children', (assert) => {
+  test('it produces expected values for an approved credit with children', assert => {
     const CreditAssignmentPropsObject = EmberObject.extend(CreditAssignmentPropsMixin);
     const subject = CreditAssignmentPropsObject.create({
       creditAssignment: creditAssignmentWithChildren,
@@ -25,7 +25,7 @@ module('Unit | Mixin | credit-assignment-props', (hooks) => {
 
     assert.ok(subject);
 
-    ['term', 'childCreditAssignments', 'hasChildren', 'credit', 'courseName', 'creditHours', 'isApproved'].forEach((key) => {
+    ['term', 'childCreditAssignments', 'hasChildren', 'credit', 'courseName', 'creditHours', 'isApproved'].forEach(key => {
       assert.ok(subject[key], `${key} is present as anticipated`);
     });
   });

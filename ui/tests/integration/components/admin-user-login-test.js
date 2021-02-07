@@ -8,7 +8,7 @@ import { clone } from '../../helpers/test-utils';
 import adminLogin from '../../fixtures/login-admin';
 import adminUser from '../../fixtures/user-admin';
 
-module('Integration | Component | admin-user-login', (hooks) => {
+module('Integration | Component | admin-user-login', hooks => {
   setupRenderingTest(hooks);
 
   let requests;
@@ -24,14 +24,14 @@ module('Integration | Component | admin-user-login', (hooks) => {
       user: user.data,
     });
 
-    this.getLogin = (u) => {
+    this.getLogin = u => {
       requests.push({ type: 'get', user: u });
       if (login) return resolve(login);
 
       return reject();
     };
 
-    this.createLogin = (u) => {
+    this.createLogin = u => {
       requests.push({ type: 'activate', user: u });
       return resolve(login);
     };
@@ -41,7 +41,7 @@ module('Integration | Component | admin-user-login', (hooks) => {
       return resolve(login);
     };
 
-    this.destroyLogin = (l) => {
+    this.destroyLogin = l => {
       requests.push({ type: 'destroy', login: l });
       return resolve(login);
     };
@@ -59,7 +59,7 @@ module('Integration | Component | admin-user-login', (hooks) => {
     `);
   }
 
-  test('synchronized admin user and login', async (assert) => {
+  test('synchronized admin user and login', async assert => {
     await renderComponent();
 
     assert.matches(find('h3').textContent, /login active/i);

@@ -9,7 +9,7 @@ let actions;
 let meetingParticipant;
 let option;
 
-module('Integration | Component | value-button', (hooks) => {
+module('Integration | Component | value-button', hooks => {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(function () {
@@ -33,7 +33,7 @@ module('Integration | Component | value-button', (hooks) => {
     });
   });
 
-  test('it renders with a selected object', async (assert) => {
+  test('it renders with a selected object', async assert => {
     await render(hbs`
       {{value-button
         name="participation"
@@ -50,7 +50,7 @@ module('Integration | Component | value-button', (hooks) => {
     assert.equal(actions.length, 0, 'no actions triggered yet');
   });
 
-  test('it renders with an unselected object', async (assert) => {
+  test('it renders with an unselected object', async assert => {
     meetingParticipant.attributes.participation = 'absent';
 
     await render(hbs`

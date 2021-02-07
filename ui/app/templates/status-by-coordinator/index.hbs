@@ -1,2 +1,14 @@
-{{count-paragraph result=students name="coordinatee"}}
-{{status-by-coordinator students=students term=term statuses=statuses}}
+<CheckEmpty
+  @count={{students.meta.count}}
+  @noResultsMessage="No coordinatees"
+>    
+  <CountParagraph
+    @result={{students}}
+    @name="coordinatee"
+  />
+
+  <StatusByCoordinator
+    @students={{students}}
+    @term={{term}} @statuses={{statuses}}
+  />
+</CheckEmpty>

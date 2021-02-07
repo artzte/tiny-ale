@@ -16,9 +16,9 @@
     {{#each termsList as |term|}}
       <tr>
         <td>
-          {{#link-to "admin-term.edit" term.id}}
+          <LinkTo @route="admin-term.edit" @model={{term.id}}>
             {{term.attributes.name}}
-          {{/link-to}}
+          </LinkTo>
         </td>
         <td class="text-center">{{term.attributes.schoolYear}}</td> 
         <td class="text-center">{{t-date term.attributes.creditDate "MMM d, YYYY"}}</td>

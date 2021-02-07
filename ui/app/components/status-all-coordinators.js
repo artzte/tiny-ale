@@ -53,7 +53,7 @@ export default Component.extend({
     //
     students
       .data
-      .forEach((student) => {
+      .forEach(student => {
         const coordinatorHash = result[student.relationships.coordinator.data.id];
 
         // student may be assigned to an inactive coordinator
@@ -62,7 +62,7 @@ export default Component.extend({
           return;
         }
 
-        months.forEach((month) => {
+        months.forEach(month => {
           if (wasActive(student, month)) {
             const monthEntry = coordinatorHash[month];
             monthEntry.expectedCount += 1;
@@ -73,7 +73,7 @@ export default Component.extend({
 
     // fill in status counts
     //
-    statuses.data.forEach((status) => {
+    statuses.data.forEach(status => {
       // skip inactive student
       //
       const student = tinyData.get('user', status.relationships.statusable.data.id);

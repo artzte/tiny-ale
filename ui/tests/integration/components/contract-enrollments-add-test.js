@@ -11,7 +11,7 @@ let requests;
 let s1;
 let s2;
 
-module('Integration | Component | contract-enrollments-add', (hooks) => {
+module('Integration | Component | contract-enrollments-add', hooks => {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(function () {

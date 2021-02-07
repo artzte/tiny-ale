@@ -9,10 +9,5 @@
 </thead>
 
 {{#each enrollmentsList as |enrollment|}}
-  {{status-by-student-enrollments/row
-    enrollment=enrollment
-    statusHash=statusHash
-    notablesHash=notablesHash
-    months=months
-  }}
+  <StatusByStudentEnrollments::Row @enrollment={{enrollment}} @statusHash={{statusHash}} @notablesHash={{notablesHash}} @months={{months}} />
 {{/each}}

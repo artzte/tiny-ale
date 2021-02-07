@@ -12,7 +12,7 @@ import notesStudentStatuses from '../../fixtures/notes-student-statuses';
 
 let tinyDataServiceMock;
 
-module('Integration | Component | status-by-student', (hooks) => {
+module('Integration | Component | status-by-student', hooks => {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(function () {
@@ -24,7 +24,7 @@ module('Integration | Component | status-by-student', (hooks) => {
     this.student = student.data;
   });
 
-  test('it renders with two current status months', async (assert) => {
+  test('it renders with two current status months', async assert => {
     tinyDataServiceMock.setToday(new Date(2019, 9, 15));
     tinyDataServiceMock.addResult(notesStudentStatuses);
 
@@ -37,13 +37,13 @@ module('Integration | Component | status-by-student', (hooks) => {
       }}
     `);
 
-    const rows = findAll('tbody');
+    const rows = findAll('[data-test-status-row]');
     assert.equal(rows.length, studentStatuses.data.length, 'expected number of months rendered');
 
     assert.equal(findAll('.notes-list').length, 2, 'expected count of populated notes rows rendered');
   });
 
-  test('it renders with two current status months and two pending status months', async (assert) => {
+  test('it renders with two current status months and two pending status months', async assert => {
     tinyDataServiceMock.setToday(new Date(2019, 11, 15));
     tinyDataServiceMock.addResult(notesStudentStatuses);
 
@@ -56,7 +56,10 @@ module('Integration | Component | status-by-student', (hooks) => {
       }}
     `);
 
-    const rows = findAll('tbody');
+    const rows = findAll('[data-test-status-row]');
     assert.equal(rows.length, studentStatuses.data.length + 2, 'expected number of months rendered');
+
+    const unreportedRows = findAll('[data-test-month-has-no-status]');
+    assert.equal(unreportedRows.length, 2, 'expected number of prompts to enter status were rendered');
   });
 });

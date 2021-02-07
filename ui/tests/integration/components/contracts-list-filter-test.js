@@ -1,7 +1,6 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render, find } from '@ember/test-helpers';
-import { Interactor } from '@bigtest/interactor';
+import { render, find, select } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 import termsFixture from '../../fixtures/terms';
 import categoriesFixture from '../../fixtures/categories';
@@ -11,13 +10,13 @@ let events;
 let queryParams;
 let schoolYears;
 
-module('Integration | Component | contracts-list-filter', (hooks) => {
+module('Integration | Component | contracts-list-filter', hooks => {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(function () {
     events = [];
 
-    this.onChange = (params) => {
+    this.onChange = params => {
       events.push(params);
     };
 
@@ -47,7 +46,7 @@ module('Integration | Component | contracts-list-filter', (hooks) => {
     });
   });
 
-  test('it renders', async (assert) => {
+  test('it renders', async assert => {
     await render(hbs`
       {{contracts-list-filter
         queryParams=queryParams
@@ -60,15 +59,15 @@ module('Integration | Component | contracts-list-filter', (hooks) => {
     `);
 
     const selects = {};
-    ['schoolYear', 'term', 'facilitator', 'category', 'status'].forEach((name) => {
-      const select = find(`select[name="${name}"]`);
-      assert.ok(select, `rendered select for ${name}`);
-      selects[name] = select;
+    ['schoolYear', 'term', 'facilitator', 'category', 'status'].forEach(name => {
+      const el = find(`select[name="${name}"]`);
+      assert.ok(el, `rendered select for ${name}`);
+      selects[name] = el;
     });
 
     assert.matches(selects.schoolYear.value, schoolYears[0].toString());
 
-    await new Interactor('select[name="schoolYear"]').select('2018');
+    await select('select[name="schoolYear"]', '2018');
 
     assert.equal(events.length, 1, 'an onChange event was triggered');
 

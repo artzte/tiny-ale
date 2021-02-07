@@ -22,7 +22,7 @@ let enrollments;
 let absentParticipant;
 let presentParticipant;
 
-module('Integration | Component | contract-attendance-roll', (hooks) => {
+module('Integration | Component | contract-attendance-roll', hooks => {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(function () {
@@ -49,7 +49,7 @@ module('Integration | Component | contract-attendance-roll', (hooks) => {
     });
   });
 
-  test('it renders with two participants', async (assert) => {
+  test('it renders with two participants', async assert => {
     await render(hbs`
       {{contract-attendance-roll
         contract=contract
@@ -79,9 +79,9 @@ module('Integration | Component | contract-attendance-roll', (hooks) => {
     assert.ok(absentRow.querySelector('.notes-list-item'), 'note rendered for absent participant');
   });
 
-  test('it renders with four participants, two of whom has no meeting participant', async (assert) => {
+  test('it renders with four participants, two of whom has no meeting participant', async assert => {
     const payload = {
-      data: clone(enrollments).map((enrollment) => {
+      data: clone(enrollments).map(enrollment => {
         enrollment.id = `1${enrollment.id}`;
         enrollment.relationships.meetingParticipants.data = [];
         return enrollment;

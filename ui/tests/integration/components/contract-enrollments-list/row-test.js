@@ -9,7 +9,7 @@ import contractEnrollmentsNotes from '../../../fixtures/notes-contract-enrollmen
 
 let tinyData;
 
-module('Integration | Component | contract-enrollments-list/row', (hooks) => {
+module('Integration | Component | contract-enrollments-list/row', hooks => {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(function () {

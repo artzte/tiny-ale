@@ -4,7 +4,7 @@ import { module, test } from 'qunit';
 
 module('Unit | Mixin | notes', () => {
   // Replace this with your real tests.
-  test('it works', (assert) => {
+  test('it works', assert => {
     const NotesObject = EmberObject.extend(NotesMixin);
     const subject = NotesObject.create();
     assert.ok(subject);

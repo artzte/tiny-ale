@@ -11,7 +11,7 @@ const apiResult = {
 };
 
 const api = '/api/bee/bo';
-module('Unit | Utility | fetch', (hooks) => {
+module('Unit | Utility | fetch', hooks => {
   hooks.beforeEach(function () {
     this.pretender = new Pretender();
     this.localStorage = new MockLocalStorage();
@@ -51,7 +51,7 @@ module('Unit | Utility | fetch', (hooks) => {
 
     let err;
     const result = await fetch(api)
-      .catch((error) => {
+      .catch(error => {
         err = error;
       });
 

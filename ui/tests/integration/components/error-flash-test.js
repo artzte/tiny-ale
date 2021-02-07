@@ -3,7 +3,7 @@ import { setupRenderingTest } from 'ember-qunit';
 import { render, find, click } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 
-module('Integration | Component | error-flash', (hooks) => {
+module('Integration | Component | error-flash', hooks => {
   setupRenderingTest(hooks);
 
   test('it renders without an error', async function (assert) {

@@ -10,7 +10,7 @@ import loginAdmin from '../../fixtures/login-admin';
 
 import { clone } from '../../helpers/test-utils';
 
-module('Integration | Component | tiny-toolbar', (hooks) => {
+module('Integration | Component | tiny-toolbar', hooks => {
   setupRenderingTest(hooks);
 
   let requests;
@@ -50,7 +50,7 @@ module('Integration | Component | tiny-toolbar', (hooks) => {
 
     assert.notOk(find('[data-test-route="admin"]'), 'no admin links are exposed');
 
-    await click('[data-test-signout]');
+    await click('[data-test-signin-signout]');
 
     assert.equal(requests.length, 1, 'expect one outgoing request');
     const request = requests.pop();
@@ -103,7 +103,7 @@ module('Integration | Component | tiny-toolbar', (hooks) => {
     assert.notOk(find('[data-test-route="contracts.index"]'), 'contracts link is hidden');
     assert.notOk(find('[data-test-route="admin"]'), 'admin links are hidden');
 
-    await click('[data-test-signin]');
+    await click('[data-test-signin-signout]');
 
     assert.equal(requests.length, 1, 'expect one outgoing request');
     const request = requests.pop();

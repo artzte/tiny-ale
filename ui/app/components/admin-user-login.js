@@ -47,7 +47,7 @@ export default Component.extend({
     'email',
     ];
 
-    const attributesMismatch = comparitors.filter((comparitor) => {
+    const attributesMismatch = comparitors.filter(comparitor => {
       const userKey = comparitor.user || comparitor;
       const authKey = comparitor.auth || comparitor;
       const result = (user.attributes[userKey] || undefined) !== login[authKey];
@@ -84,6 +84,7 @@ export default Component.extend({
   }),
 
   async didReceiveAttrs() {
+    this._super();
     const { user } = this;
     const { email } = user.attributes;
 

@@ -6,7 +6,7 @@ module UserControllerMethods
   included do
     unless const_defined?(:ALLOWED_ORDER_COLUMNS)
       ALLOWED_ORDER_COLUMNS = %w[first_name last_name nickname].freeze
-      ALLOWED_INCLUDES = %w[coordinator].freeze
+      ALLOWED_INCLUDES = %w[coordinator coordinatees].freeze
     end
   end
 
@@ -130,7 +130,8 @@ module UserControllerMethods
              .where(
                id: params[:id]
              )
-
+             .includes(get_includes)
+             
     raise ActiveRecord::NotFound if result.empty?
 
     options = {

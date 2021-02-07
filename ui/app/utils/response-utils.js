@@ -15,7 +15,7 @@ export function summarizeValidationError(response) {
   }
 
   const fieldMessages = Object.keys(errors)
-    .map((field) => {
+    .map(field => {
       const fieldErrors = errors[field];
       return `${field} ${fieldErrors.join(', ')}`;
     });

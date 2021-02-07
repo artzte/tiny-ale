@@ -16,6 +16,7 @@ export default Route.extend({
     controller.setProperties({
       contract: contract.data,
       statuses: this.statuses.data,
+      enrollments: enrollments.data,
     });
   },
 });

@@ -1,10 +1,5 @@
 <h1>Students</h1>
 
-{{students-filter
-  queryParams=queryParams
-  schoolYears=schoolYears
-  coordinators=staff
-  onQuery=(action "filterStudents")
-}}
+<StudentsFilter @queryParams={{queryParams}} @schoolYears={{schoolYears}} @coordinators={{staff}} @onQuery={{action "filterStudents"}} />
 
 {{outlet}}

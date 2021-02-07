@@ -1,7 +1,5 @@
 {{#if showStatus}}
-  {{#link-to "status-by-coordinator" coordinator.id
-    title=entryStatusText
-  }}
+  <LinkTo @route="status-by-coordinator" @model={{coordinator.id}} @title={{entryStatusText}}>
     {{entryStatusAbbreviation}}
-  {{/link-to}}
+  </LinkTo>
 {{/if}}

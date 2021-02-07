@@ -1,70 +1,136 @@
-<nav class="toolbar flex flex-row items-center mb-4">
-  {{#if hasBlock}}
-    {{yield this}}
-  {{else}}
-    {{#link-to "tiny" class="block no-underline pr-8"}}
-      Nova
-    {{/link-to}}
-    {{#if user}}
-      <ul class="flex list-reset">
-        {{tiny-toolbar/item
-          currentRoute=currentRoute
-          route="status-all-coordinators.index"
-          label="Coordinators"
-          disabled=disabled
-        }}
-        {{tiny-toolbar/item
-          currentRoute=currentRoute
-          route="contracts.index"
-          label="Contracts"
-          disabled=disabled
-        }}
-        {{tiny-toolbar/item
-          currentRoute=currentRoute
-          route="students.index"
-          label="Students"
-          disabled=disabled
-        }}
-        {{#if userIsAdmin}}
-          {{tiny-toolbar/item
-            currentRoute=currentRoute
-            route="admin"
-            label="Admin"
-            disabled=disabled
-          }}
-        {{/if}}    
-      </ul>
-    {{/if}}
-    <ul class="flex list-reset flex-grow flex-row justify-end">
-      {{#if user}}
-        <li>
-          {{#link-to "user-settings"}}
-            {{full-name user "first-last"}}
-          {{/link-to}}
-        </li>
-        <li class="ml-6">
-          <a
-            data-test-signout
-            role="button"
-            onclick={{action "signOut"}}
-            title="Sign out"
-            href="#"
-          >
-            <FaIcon @icon="power-off" @size="1x" />
-          </a>
-        </li>
-      {{else}}
-        <li>
-          <a
-            data-test-signin
-            role="button"
-            onclick={{action "signIn"}}
-            href="#"
-          >
-            Sign in
-          </a>
-        </li>
+<nav class="bg-gray-800">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <div class="flex items-center">
+        <div class="flex-shrink-0">
+          <img class="h-8 w-8" src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg" alt="Workflow">
+        </div>
+        <div class="hidden md:block">
+          <tiny-nav class="ml-10 flex items-baseline space-x-4">
+            {{#if @user}}
+              <TinyToolbar::Item
+                @currentRoute={{currentRoute}}
+                @route="status-all-coordinators.index"
+                @label="Coordinators"
+                @disabled={{disabled}}
+              />
+              <TinyToolbar::Item
+                @currentRoute={{currentRoute}}
+                @route="contracts.index"
+                @label="Contracts"
+                @disabled={{disabled}}
+              />
+              <TinyToolbar::Item
+                @currentRoute={{currentRoute}}
+                @route="students.index"
+                @label="Students"
+                @disabled={{disabled}}
+              />
+              {{#if this.userIsAdmin}}
+                <TinyToolbar::Item
+                  @currentRoute={{currentRoute}}
+                  @route="admin-settings"
+                  @label="Admin"
+                  @disabled={{disabled}}
+                />
+              {{/if}}    
+            {{/if}}
+          </tiny-nav>
+        </div>
+      </div>
+      <div class="hidden sm:block">
+        {{!-- Signin/signout at far right of desktop toolbar --}}
+        <div class="ml-3 relative">
+          <div class="flex items-center">
+            <LinkTo
+              class="text-white mr-8 text-sm"
+              @route="preferences"
+            >
+              {{full-name @user "first-last"}}
+            </LinkTo>
+            <button
+              type="button"
+              class="max-w-xs bg-gray-800 flex items-center text-white text-sm"
+              id="user-menu"
+              aria-haspopup="true"
+              onclick={{fn this.signinSignout}}
+              data-test-signin-signout
+            >
+              {{#if @user}}
+                <span>Sign out</span>
+              {{else}}
+                <span>Sign in</span>
+              {{/if}}
+              <FaIcon class="ml-4" @icon="power-off" @size="2x" />
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="-mr-2 flex md:hidden">
+        {{!-- Mobile menu button --}}
+        <button
+          type="button"
+          onclick={{fn this.toggleMenu}}
+          class="bg-gray-800 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+        >
+          <span class="sr-only">Open main menu</span>
+          {{!--
+            Heroicon name: menu
+
+            Menu open: "hidden", Menu closed: "block"
+          --}}
+          <svg class="{{if this.menuIsOpen "hidden" "block"}} h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          {{!--
+            Heroicon name: x
+
+            Menu open: "block", Menu closed: "hidden"
+          --}}
+          <svg class="{{if this.menuIsOpen "block" "hidden"}} h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  {{!--
+    Mobile menu, toggle classes based on menu state.
+
+    Open: "block", closed: "hidden"
+  --}}
+  <div class="{{if menuIsOpen "block" "hidden"}} md:hidden">
+    <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+      {{#if @user}}
+        <TinyToolbar::Item @currentRoute={{currentRoute}} @route="status-all-coordinators.index" @label="Coordinators" @disabled={{disabled}} />
+        <TinyToolbar::Item @currentRoute={{currentRoute}} @route="contracts.index" @label="Contracts" @disabled={{disabled}} />
+        <TinyToolbar::Item @currentRoute={{currentRoute}} @route="students.index" @label="Students" @disabled={{disabled}} />
+        {{#if this.userIsAdmin}}
+          <TinyToolbar::Item @currentRoute={{currentRoute}} @route="admin" @label="Admin" @disabled={{disabled}} />
+        {{/if}}
       {{/if}}
-    </ul>
-  {{/if}}
+    </div>
+
+
+    <div class="flex justify-between pt-4 pb-3 border-t border-gray-700">
+      <div class="mt-3 px-2">
+        <TinyToolbar::Item
+          @currentRoute={{currentRoute}}
+          @route="preferences"
+          @label="Preferences"
+          @disabled={{disabled}}
+        />  
+      </div>
+      <div class="mt-3 px-2">
+        <a href="#"
+          onclick={{fn this.signinSignout}}
+          class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+        >
+          Sign out
+        </a>
+      </div>
+    </div>
+  </div>
 </nav>

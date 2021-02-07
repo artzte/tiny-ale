@@ -3,7 +3,6 @@ import svgToDataUrl from 'svg-to-dataurl';
 import { inject as service } from '@ember/service';
 import { computed, get } from '@ember/object';
 
-
 export default Component.extend({
   tinyData: service(),
   tagName: 'tr',
@@ -19,6 +18,7 @@ export default Component.extend({
     return this.tinyData.get('graduationPlanRequirement', requirement.id);
   }),
   didInsertElement() {
+    this._super();
     const {
       req,
     } = this;

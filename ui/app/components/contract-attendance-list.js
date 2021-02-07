@@ -88,7 +88,7 @@ export default Component.extend(ContractRelations, Notes, {
     }, {});
 
     const meetingCount = meetings.length;
-    enrollments.forEach((enrollment) => {
+    enrollments.forEach(enrollment => {
       const roll = hashed[enrollment.id] || clone(rollTemplate);
       const sum = roll.absent + roll.present + roll.excused + roll.tardy;
       const difference = meetingCount - sum;
@@ -102,6 +102,7 @@ export default Component.extend(ContractRelations, Notes, {
   }),
 
   async didReceiveAttrs() {
+    this._super();
     const notes = await this.getNotes(this.meetingParticipants);
     if (!this.isDestroyed) this.set('notes', notes);
   },

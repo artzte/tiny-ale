@@ -10,6 +10,7 @@ export default class Router extends EmberRouter {
 Router.map(function () {
   this.route('tiny', function () {
     this.route('components', { resetNamespace: true });
+    this.route('preferences', { resetNamespace: true });
     this.route('status', {
       resetNamespace: true,
     }, function () {
@@ -32,6 +33,12 @@ Router.map(function () {
         resetNamespace: true,
       }, function () {
         this.route('index', { path: '/' });
+        this.route('status-by-student-for-coordinator', {
+          path: '/student/:student_id',
+          resetNamespace: true,
+        }, function () {
+          this.route('index', { path: '/' });
+        });
       });
     });
 

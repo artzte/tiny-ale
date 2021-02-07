@@ -12,7 +12,7 @@ let tinyData;
 let creditAssignments;
 let requests;
 
-module('Integration | Component | credits-worksheet', (hooks) => {
+module('Integration | Component | credits-worksheet', hooks => {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(function () {
@@ -25,20 +25,20 @@ module('Integration | Component | credits-worksheet', (hooks) => {
 
     this.setProperties({
       creditAssignments,
-      splitCredit: (model) => {
+      splitCredit: model => {
         requests.push({ type: 'split', model });
         return resolve(model);
       },
-      combineCredits: (model) => {
+      combineCredits: model => {
         requests.push({ type: 'combine', model });
       },
-      approveCredit: (model) => {
+      approveCredit: model => {
         requests.push({ type: 'approve', model });
       },
     });
   });
 
-  test('it renders with a set of student credits', async (assert) => {
+  test('it renders with a set of student credits', async assert => {
     await render(hbs`
       <CreditsWorksheet
         @student={{student}}

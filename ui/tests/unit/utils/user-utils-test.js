@@ -5,7 +5,7 @@ import { clone } from '../../helpers/test-utils';
 import students from '../../fixtures/coor-students';
 
 module('Unit | Utility | user-utils', () => {
-  test('wasActive yields accurate results', (assert) => {
+  test('wasActive yields accurate results', assert => {
     const student = clone(students.data[0]);
 
     // ensure active

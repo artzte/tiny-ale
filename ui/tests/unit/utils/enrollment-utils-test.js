@@ -4,12 +4,12 @@ import contractEnrollments from '../../fixtures/contract-enrollments';
 import { clone } from '../../helpers/test-utils';
 
 let enrollment;
-module('Unit | Utility | enrollment-utils', (hooks) => {
+module('Unit | Utility | enrollment-utils', hooks => {
   hooks.beforeEach(() => {
     enrollment = clone(contractEnrollments.data[0]);
   });
 
-  test('it returns appropriate enrollment status strings', (assert) => {
+  test('it returns appropriate enrollment status strings', assert => {
     assert.matches(getEnrollmentStatusString(enrollment), 'Active');
 
     enrollment.attributes.enrollmentStatus = 'closed';

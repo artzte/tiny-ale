@@ -2,11 +2,6 @@
   count=model.meta.count
   noResultsMessage="No students were found with these filters"
 }}
-  {{count-paragraph
-    result=model
-    name="student"
-  }}
-  {{students-list
-    students=students
-  }}
+  <CountParagraph @result={{model}} @name="student" />
+  <StudentsList @students={{students}} />
 {{/check-empty}}

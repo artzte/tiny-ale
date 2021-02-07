@@ -2,12 +2,6 @@
   count=model.meta.count
   noResultsMessage="No users were found with these filters"
 }}
-  {{count-paragraph
-    result=model
-    name="user"
-  }}
-  {{users-list
-    users=users
-    logins=logins
-  }}
+  <CountParagraph @result={{model}} @name="user" />
+  <UsersList @users={{users}} @logins={{logins}} />
 {{/check-empty}}

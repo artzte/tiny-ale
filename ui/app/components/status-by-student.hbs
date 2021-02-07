@@ -1,22 +1,9 @@
-<thead>
-  <th>
-    Month
-  </th>
-  <th>
-    Academic
-  </th>
-  <th>
-    FTE
-  </th>
-  <th>
-    SLP Met
-  </th>
-</thead>
-{{#each months as |month|}}
-  {{status-by-student/row
-    month=month
-    statusHash=statusHash
-    notablesHash=notablesHash
-  }}
-{{/each}}
-{{yield}}
+<section class="bg-gray-200 p-5">
+  {{#each months as |month|}}
+    <StatusByStudent::Row
+      @month={{month}}
+      @statusHash={{this.statusHash}}
+      @notablesHash={{this.notablesHash}}
+    />
+  {{/each}}
+</section>

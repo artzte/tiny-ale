@@ -15,7 +15,7 @@ import { clone } from '../../helpers/test-utils';
 let requests;
 let category;
 
-module('Integration | Component | settings-contract-category-form', (hooks) => {
+module('Integration | Component | settings-contract-category-form', hooks => {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(function () {
@@ -33,7 +33,7 @@ module('Integration | Component | settings-contract-category-form', (hooks) => {
     });
   });
 
-  test('it renders and submits the same category without changes', async (assert) => {
+  test('it renders and submits the same category without changes', async assert => {
     await render(hbs`
       {{settings-contract-category-form
         model=category

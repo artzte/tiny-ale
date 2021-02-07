@@ -2,10 +2,7 @@
   count=viewModels.length
   noResultsMessage="There are no credits to approve."
 }}
-  {{count-paragraph
-    count=viewModels.length
-    name="credit"
-  }}
+  <CountParagraph @count={{viewModels.length}} @name="credit" />
   <p class="flex">
     <TLink
       data-test-combine-credits
@@ -30,12 +27,7 @@
     </thead>
     <tbody>
       {{#each viewModels as |viewModel|}}
-        {{credits-worksheet/item
-          creditAssignment=viewModel.creditAssignment
-          splitCredit=(action "splitCredit")
-          selectCredit=(action "selectCredit")
-          approveCredit=(action "approveCredit")
-        }}
+        <CreditsWorksheet::Item @creditAssignment={{viewModel.creditAssignment}} @splitCredit={{action "splitCredit"}} @selectCredit={{action "selectCredit"}} @approveCredit={{action "approveCredit"}} />
       {{/each}}
     </tbody>
   </table>

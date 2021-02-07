@@ -10,7 +10,7 @@ let tinyData;
 let contract;
 let requests;
 
-module('Integration | Component | ContractLearningRequirements', (hooks) => {
+module('Integration | Component | ContractLearningRequirements', hooks => {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(function () {

@@ -23,10 +23,10 @@ let localStorage;
 let meetings;
 let enrollments;
 
-module('Acceptance | contract attendance index', (hooks) => {
+module('Acceptance | contract attendance index', hooks => {
   setupApplicationTest(hooks);
 
-  hooks.beforeEach((assert) => {
+  hooks.beforeEach(assert => {
     server = new MockServer();
     localStorage = new MockLocalStorage();
 
@@ -52,7 +52,7 @@ module('Acceptance | contract attendance index', (hooks) => {
   });
 
   const attendanceListRoute = '/tiny/contracts/123/attendance';
-  test(`visiting ${attendanceListRoute}`, async (assert) => {
+  test(`visiting ${attendanceListRoute}`, async assert => {
     await visit(attendanceListRoute);
 
     assert.equal(currentURL(), attendanceListRoute, 'page navigated to successfully');

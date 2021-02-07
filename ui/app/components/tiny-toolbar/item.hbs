@@ -1,8 +1,8 @@
-<li data-test-route={{route}}>
-  {{#link-to route
-    class="toolbar-btn"
-    disabled=disabled
-  }}
-    {{label}}
-  {{/link-to}}
-</li>
+<LinkTo
+  @route={{route}}
+  class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+  @disabled={{disabled}}
+  data-test-route={{route}}
+>
+  {{label}}
+</LinkTo>

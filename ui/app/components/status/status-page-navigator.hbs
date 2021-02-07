@@ -1,0 +1,31 @@
+<div class="flex">
+  <button
+    type="button"
+    title="Previous"
+    disabled={{this.disablePrevious}}
+    onclick={{fn @onSelect this.previousParticipant.value}}
+    data-test-navigator-prev
+  >
+    <FaIcon @icon="caret-left" @size="2x" />
+  </button>
+
+  <TSelect
+    @optionsList={{@navigationList}}
+    @onchange={{@onSelect}}
+    @value={{@current.id}}
+    disabled={{this.disabled}}
+    data-test-navigator-select
+  />
+
+  <button
+    type="button"
+    title="Next"
+    disabled={{this.disableNext}}
+    onclick={{fn @onSelect this.nextParticipant.value}}
+    data-test-navigator-next
+  >
+    <FaIcon @icon="caret-right" @size="2x" />
+  </button>
+</div>
+
+

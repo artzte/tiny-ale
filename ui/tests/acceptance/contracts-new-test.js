@@ -5,9 +5,9 @@ import {
   find,
   fillIn,
   click,
+  select,
 } from '@ember/test-helpers';
 import { setupApplicationTest } from 'ember-qunit';
-import { Interactor } from '@bigtest/interactor';
 import MockServer, { provisionTinySisBootstrapRoutes } from '../helpers/mock-server';
 import { MockLocalStorage } from '../helpers/test-utils';
 
@@ -22,10 +22,10 @@ let server;
 let localStorage;
 let requests;
 
-module('Acceptance | contracts new', (hooks) => {
+module('Acceptance | contracts new', hooks => {
   setupApplicationTest(hooks);
 
-  hooks.beforeEach((assert) => {
+  hooks.beforeEach(assert => {
     server = new MockServer();
     localStorage = new MockLocalStorage();
     requests = [];
@@ -45,7 +45,7 @@ module('Acceptance | contracts new', (hooks) => {
 
     // this should always be done with mocks.
     // prevents test from hanging for minutes when Pretender crashes.
-    assert.timeout(500);
+    assert.timeout(1000);
   });
 
   hooks.afterEach(() => {
@@ -53,7 +53,7 @@ module('Acceptance | contracts new', (hooks) => {
     localStorage.unmock();
   });
 
-  test('visiting /tiny/contracts/new', async (assert) => {
+  test('visiting /tiny/contracts/new', async assert => {
     const newPath = '/tiny/contracts/new';
     await visit(newPath);
 
@@ -62,7 +62,7 @@ module('Acceptance | contracts new', (hooks) => {
     assert.ok(find('form button[data-button="cancel"]'), 'form rendered with cancel button');
   });
 
-  test('submit a new contract', async (assert) => {
+  test('submit a new contract', async assert => {
     const newPath = '/tiny/contracts/new';
     await visit(newPath);
 
@@ -70,8 +70,8 @@ module('Acceptance | contracts new', (hooks) => {
 
     fillIn('input[name="name"]', 'new contract falderol');
 
-    await new Interactor(find('select[name="term"]')).select(termsFixture.data[0].attributes.name);
-    await new Interactor(find('select[name="category"]')).select(categoriesFixture.data[0].attributes.name);
+    await select('select[name="term"]', termsFixture.data[0].id);
+    await select('select[name="category"]', categoriesFixture.data[0].id);
     await fillIn('textarea[name="learningObjectives"]', 'objective!');
     await fillIn('input[name="location"]', 'location!');
     await click('form button[type="submit"]');

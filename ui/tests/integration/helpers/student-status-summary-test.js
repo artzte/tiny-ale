@@ -23,7 +23,7 @@ const studentFixture = {
 
 let student;
 
-module('Integration | Helper | student-status-summary', (hooks) => {
+module('Integration | Helper | student-status-summary', hooks => {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(() => {

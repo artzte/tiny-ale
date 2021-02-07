@@ -1,7 +1,8 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render, find, fillIn } from '@ember/test-helpers';
-import { Interactor } from '@bigtest/interactor';
+import {
+  render, find, fillIn, select,
+} from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
 import { stubTinyData } from '../../helpers/stub-tiny-data';
@@ -12,7 +13,7 @@ import studentsFixture from '../../fixtures/students';
 let tinyDataServiceMock;
 let requests;
 
-module('Integration | Component | students-filter', (hooks) => {
+module('Integration | Component | students-filter', hooks => {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(function () {
@@ -29,7 +30,7 @@ module('Integration | Component | students-filter', (hooks) => {
         schoolYear: 2019,
       },
       coordinators: clone(staffFixture.data),
-      filterStudents: (queryParams) => {
+      filterStudents: queryParams => {
         this.set('queryParams', queryParams);
         requests.push(queryParams);
       },
@@ -50,16 +51,16 @@ module('Integration | Component | students-filter', (hooks) => {
 
     assert.equal(0, requests.length, 'no change request sent on render');
 
-    const select = new Interactor('select[name="schoolYear"]');
-    assert.equal(select.value, '2019', 'school year selector is set to 2018 per attributes');
+    const el = find('select[name="schoolYear"]');
+    assert.equal(el.value, '2019', 'school year selector is set to 2018 per attributes');
 
-    await select.select('2017');
+    await select(el, '2017');
 
     assert.equal(requests.length, 1, 'now one request was made');
     const [schoolYearRequest] = requests;
 
     assert.equal(schoolYearRequest.schoolYear, '2017', 'expected year was requested');
-    assert.equal(select.value, '2017', 'school year selector is set to 2017 now');
+    assert.equal(el.value, '2017', 'school year selector is set to 2017 now');
 
     this.set('queryParams', { ...this.queryParams, name: 'boyd' });
 

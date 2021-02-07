@@ -1,15 +1,16 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render, find, click } from '@ember/test-helpers';
+import {
+  render, find, click, select,
+} from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
-import { Interactor } from '@bigtest/interactor';
 import { resolve } from 'rsvp';
 import creditDetail from '../../fixtures/credit-detail';
 import { clone } from '../../helpers/test-utils';
 
 let requests;
 
-module('Integration | Component | credit-form', (hooks) => {
+module('Integration | Component | credit-form', hooks => {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(function () {
@@ -24,7 +25,7 @@ module('Integration | Component | credit-form', (hooks) => {
     });
   });
 
-  test('the credits form renders', async (assert) => {
+  test('the credits form renders', async assert => {
     await render(hbs`
       {{credit-form
         model=credit
@@ -40,9 +41,7 @@ module('Integration | Component | credit-form', (hooks) => {
     let [request] = requests;
 
     assert.deepEqual(request, creditDetail.data, 'existing model was sent with no changes');
-    const select = new Interactor('select[name="courseType"]');
-
-    await select.select('General');
+    select('select[name="courseType"]', 'general');
 
     await click('button[type="submit"]');
 

@@ -2,7 +2,7 @@ import clone from 'tinysis-ui/utils/clone';
 import { module, test } from 'qunit';
 
 module('Unit | Utility | clone', () => {
-  test('it clones!', (assert) => {
+  test('it clones!', assert => {
     const obj = {
       bee: {
         bop: {

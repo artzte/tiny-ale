@@ -1,6 +1,6 @@
 <fieldset>
   <p>
-    {{#form-input error=errors.name showError=showErrors label="Name"}}
+    <FormInput @error={{errors.name}} @showError={{showErrors}} @label="Name">
       <input
         type="text"
         name="name"
@@ -8,42 +8,42 @@
         autofocus
         onchange={{action "onChange"}}
       >
-    {{/form-input}}
+    </FormInput>
   </p>
   <p>
-    {{#form-input label="Status"}}
+    <FormInput @label="Status">
       <TSelect
         @optionsList={{statusOptions}}
         @value={{pojo.status}}
         name="status"
         @onchange={{action "onChange"}}
       />
-    {{/form-input}}
+    </FormInput>
   </p>
   <p>
-    {{#form-input error=errors.notes showError=showErrors label="Notes"}}
+    <FormInput @error={{errors.notes}} @showError={{showErrors}} @label="Notes">
       <textarea
         name="notes"
         value={{pojo.notes}}
         onchange={{action "onChange"}}
       />
-    {{/form-input}}
+    </FormInput>
   </p>
   <p>
-    {{#form-input label="Requirement type"}}
+    <FormInput @label="Requirement type">
       <TSelect
         @optionsList={{requirementTypeOptions}}
         @value={{requirementType}}
         name="requirementType"
         @onchange={{action (mut pojo.requirementType)}}
       />
-    {{/form-input}}
+    </FormInput>
   </p>
 </fieldset>
 
 <fieldset>
   <p>
-    {{#form-input error=errors.parent showError=showErrors label="Parent requirement"}}
+    <FormInput @error={{errors.parent}} @showError={{showErrors}} @label="Parent requirement">
       <TSelect
         @value={{parentId}}
         @prompt="Select a requirement"
@@ -51,14 +51,12 @@
         name="parentId"
         @onchange={{action (mut parentId)}}
       />
-    {{/form-input}}
+    </FormInput>
   </p>
 </fieldset>
 
-{{#t-form-actions-row
-  disabled=disabled
-}}
-  {{#link-to "settings-graduation-plan-requirements" class="btn btn-clear"}}
+<TFormActionsRow @disabled={{disabled}}>
+  <LinkTo @route="settings-graduation-plan-requirements" class="btn btn-clear">
     Cancel
-  {{/link-to}}
-{{/t-form-actions-row}}
+  </LinkTo>
+</TFormActionsRow>

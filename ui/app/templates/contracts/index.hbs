@@ -1,8 +1,12 @@
-<p>
-  <LinkTo @route="contracts.new" class="btn">
-    Add contract
-  </LinkTo>
-</p>
+<div class="w-full flex justify-between">
+  <h1>Contracts</h1>
+
+  <p>
+    <LinkTo @route="contracts.new" class="btn">
+      Add contract
+    </LinkTo>
+  </p>
+</div>
 
 <ContractsListFilter
   @queryParams={{this.queryParams}}

@@ -3,7 +3,7 @@ import { module, test } from 'qunit';
 
 module('Unit | Utility | response-utils', () => {
   // Replace this with your real tests.
-  test('summarizeValidationError works', (assert) => {
+  test('summarizeValidationError works', assert => {
     const result = summarizeValidationError({
       errors: {
         boo: ['scared me'],

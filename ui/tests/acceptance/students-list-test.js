@@ -14,10 +14,10 @@ import staffFixture from '../fixtures/staff';
 let server;
 let localStorage;
 
-module('Acceptance | students list', (hooks) => {
+module('Acceptance | students list', hooks => {
   setupApplicationTest(hooks);
 
-  hooks.beforeEach((assert) => {
+  hooks.beforeEach(assert => {
     server = new MockServer();
     localStorage = new MockLocalStorage();
 
@@ -36,7 +36,7 @@ module('Acceptance | students list', (hooks) => {
     localStorage.unmock();
   });
 
-  test('visiting /tiny/students?schoolYear=2018 with matching students', async (assert) => {
+  test('visiting /tiny/students?schoolYear=2018 with matching students', async assert => {
     await visit('/tiny/students?schoolYear=2018');
 
     assert.equal(currentURL(), '/tiny/students?schoolYear=2018', 'page navigated to successfully');
@@ -44,7 +44,7 @@ module('Acceptance | students list', (hooks) => {
     assert.equal(findAll('[data-test-students-list-row]').length, studentsFixture.data.length, 'expected count of student rows rendered');
   });
 
-  test('visiting /tiny/students?schoolYear=2018 with no matching students', async (assert) => {
+  test('visiting /tiny/students?schoolYear=2018 with no matching students', async assert => {
     const students = server.getFixture('/api/students');
     students.data = [];
     students.meta.count = 0;

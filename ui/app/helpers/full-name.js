@@ -4,7 +4,7 @@ export function fullName(params/* , hash */) {
   const [user, style] = params;
   let name;
 
-  if (!user) throw new Error('User model is required here');
+  if (!user) return '';
 
   if (style === 'first-last') {
     name = `${user.attributes.firstName} ${user.attributes.lastName}`;

@@ -2,17 +2,21 @@ import Controller from '@ember/controller';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 
-const mountains = [
-  'Brokentop',
-  'Middle Sister',
-  'Mt. Bachelor',
-  'North Sister',
-  'South Sister',
-  'Tumalo Butte',
-].map((name, value) => ({ name, value }));
-
 export default class ComponentsController extends Controller {
   @tracked selections = [];
+
+  oregonMountains = [
+    'Brokentop',
+    'Middle Sister',
+    'Mt. Bachelor',
+    'North Sister',
+    'South Sister',
+    'Tumalo Butte',
+  ]
+
+  get mountains() {
+    return this.oregonMountains.map((name, value) => ({ name, value }));
+  }
 
   get mountainNames() {
     const { selections } = this;
@@ -28,11 +32,11 @@ export default class ComponentsController extends Controller {
 
   sistersAndBachelor = [1, 2, 3, 4];
 
-  searchMountainsResults = mountains;
+  searchMountainsResults = this.mountains;
 
   // eslint-disable-next-line class-methods-use-this
   @action searchMountains() {
-    return Promise.resolve(mountains);
+    return Promise.resolve(this.mountains);
   }
 
   @action selectMountain(mountainId, name, selection) {

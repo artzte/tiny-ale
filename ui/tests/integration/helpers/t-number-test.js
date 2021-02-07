@@ -3,7 +3,7 @@ import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
-module('Integration | Helper | t-number', (hooks) => {
+module('Integration | Helper | t-number', hooks => {
   setupRenderingTest(hooks);
 
   test('it renders', async function (assert) {

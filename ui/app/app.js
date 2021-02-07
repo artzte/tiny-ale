@@ -15,6 +15,7 @@ export default class App extends Application {
 
     const localSession = localStorage.getItem('_tinySisSession');
     if (localSession) {
+      window._tinyALE = window._tinyALE || {};
       window._tinyALE.session = JSON.parse(localSession);
     }
   }

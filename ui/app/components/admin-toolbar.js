@@ -1,3 +1,3 @@
 import TinyToolbar from './tiny-toolbar';
 
-export default TinyToolbar.extend();
+export default class AdminToolbar extends TinyToolbar {}

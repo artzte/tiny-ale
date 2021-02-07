@@ -1,9 +1,12 @@
-<h2>Coordinator Status</h2>
-<h3>{{full-name coordinator "first-last"}}</h3>
+<div class="flex justify-between">
+  <h2>{{full-name coordinator "first-last"}} COOR</h2>
+  <div id="status-page-navigator"></div>  
+</div>
+
 <p>
   Return to
-  {{#link-to "status-all-coordinators"}}
+  <LinkTo @route="status-all-coordinators">
     COOR list
-  {{/link-to}}
+  </LinkTo>
 </p>
 {{outlet}}

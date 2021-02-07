@@ -8,12 +8,7 @@
 </thead>
 <tbody>
   {{#each coordinators.data as |coordinator|}}
-    {{status-all-coordinators/row
-      coordinator=coordinator
-      coordinatorsHash=coordinatorsHash
-      months=months
-      term=term
-    }}
+    <StatusAllCoordinators::Row @coordinator={{coordinator}} @coordinatorsHash={{coordinatorsHash}} @months={{months}} @term={{term}} />
   {{else}}
     <tr class="no-results">
       <td>No coordinators</td>

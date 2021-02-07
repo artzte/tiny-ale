@@ -1,14 +1,11 @@
-@import "./tinysis";
-@import "../../vendor/pikaday/css/pikaday";
+@import "tailwindcss/base";
+@import "tailwindcss/utilities";
 
-@import "../../vendor/tailwindcss/base";
-@import "../../vendor/tailwindcss/components";
+@import "./tinysis.css";
 
-@import "./base";
-@import "./forms";
-@import "./tables";
-@import "./navigation";
-@import "./typography";
+@import "pikaday/css/pikaday";
 
-
-@import "../../vendor/tailwindcss/utilities";
+@import "./base.css";
+@import "./forms.css";
+@import "./tables.css";
+@import "./navigation.css";

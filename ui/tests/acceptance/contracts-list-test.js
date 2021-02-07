@@ -18,10 +18,10 @@ import learningRequirementsFixture from '../fixtures/learning-requirements';
 let server;
 let localStorage;
 
-module('Acceptance | contracts list', (hooks) => {
+module('Acceptance | contracts list', hooks => {
   setupApplicationTest(hooks);
 
-  hooks.beforeEach((assert) => {
+  hooks.beforeEach(assert => {
     server = new MockServer();
     localStorage = new MockLocalStorage();
 
@@ -42,7 +42,7 @@ module('Acceptance | contracts list', (hooks) => {
     localStorage.unmock();
   });
 
-  test('visiting /tiny/contracts?schoolYear=2018 with matching contracts', async (assert) => {
+  test('visiting /tiny/contracts?schoolYear=2018 with matching contracts', async assert => {
     await visit('/tiny/contracts?schoolYear=2018');
 
     assert.equal(currentURL(), '/tiny/contracts?schoolYear=2018', 'page navigated to successfully');
@@ -51,7 +51,7 @@ module('Acceptance | contracts list', (hooks) => {
     assert.equal(findAll('[data-test-contracts-list-row]').length, contractsFixture.data.length, 'expected count of contract rows rendered');
   });
 
-  test('visiting /tiny/contracts?schoolYear=2018 with no matching contracts', async (assert) => {
+  test('visiting /tiny/contracts?schoolYear=2018 with no matching contracts', async assert => {
     const contracts = server.getFixture('/api/contracts');
     contracts.data = [];
     contracts.meta.count = 0;

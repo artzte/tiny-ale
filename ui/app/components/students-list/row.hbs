@@ -1,8 +1,8 @@
 <tr data-test-student-id={{student.attributes.id}} data-test-students-list-row>
   <td data-test-student-name>
-    {{#link-to "status-by-student" student.id}}
+    <LinkTo @route="status-by-student" @model={{student.id}}>
       {{full-name student}}
-    {{/link-to}}
+    </LinkTo>
   </td>
   <td data-test-coordinator-name>
     {{full-name coordinator "first-last"}}
@@ -13,19 +13,19 @@
   <td>
     <ul class="actions-list">
       <li class="actions-list-item">
-        {{#link-to "status-by-student" student.id}}COOR report{{/link-to}}
+        <LinkTo @route="status-by-student" @model={{student.id}}>COOR report</LinkTo>
       </li>
       <li class="actions-list-item">
-        {{#link-to "student-transcript" student.id}}Status{{/link-to}}
+        <LinkTo @route="student-transcript" @model={{student.id}}>Status</LinkTo>
       </li>
       <li class="actions-list-item">
-        {{#link-to "student-learning-plan" student.id}}Learning plan{{/link-to}}
+        <LinkTo @route="student-learning-plan" @model={{student.id}}>Learning plan</LinkTo>
       </li>
       <li class="actions-list-item">
-        {{#link-to "student-credits" student.id}}Credits{{/link-to}}
+        <LinkTo @route="student-credits" @model={{student.id}}>Credits</LinkTo>
       </li>
       <li class="actions-list-item">
-        {{#link-to "student-graduation-plan" student.id}}Graduation plan{{/link-to}}
+        <LinkTo @route="student-graduation-plan" @model={{student.id}}>Graduation plan</LinkTo>
       </li>
     </ul>
   </td>

@@ -1,4 +1,4 @@
-const defaultConfig = require('tailwindcss/defaultConfig');
+/* eslint-disable strict */
 
 module.exports = {
   prefix: '',

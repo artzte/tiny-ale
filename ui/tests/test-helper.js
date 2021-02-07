@@ -1,9 +1,9 @@
-import QUnit from 'qunit';
+import * as QUnit from 'qunit';
 import { setApplication } from '@ember/test-helpers';
-import { get } from '@ember/object';
+import { setup } from 'qunit-dom';
 import { start } from 'ember-qunit';
+import { get } from '@ember/object';
 import './helpers/flash-message';
-
 import Application from '../app';
 import config from '../config/environment';
 
@@ -45,5 +45,7 @@ QUnit.extend(QUnit.assert, {
     });
   },
 });
+
+setup(QUnit.assert);
 
 start();

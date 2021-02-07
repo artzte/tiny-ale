@@ -1,26 +1,29 @@
-import Component from '@ember/component';
-import { bool } from '@ember/object/computed';
-import { computed } from '@ember/object';
+import Component from '@glimmer/component';
 import { inject as service } from '@ember/service';
 import { isMonthActiveForStatusReporting } from '../../utils/status-utils';
 
-export default Component.extend({
-  tinyData: service(),
-  tagName: '',
-  hasStatus: bool('status'),
+export default class StatusByStudentRow extends Component {
+  @service('tinyData') tinyData;
 
-  status: computed('statusHash', 'month', function () {
-    return this.statusHash[this.month];
-  }),
+  get hasStatus() {
+    return this.status;
+  }
 
-  isActiveMonth: computed('month', function () {
-    return isMonthActiveForStatusReporting(this.month, this.tinyData.getToday());
-  }),
+  get status() {
+    const { statusHash, month } = this.args;
+    return statusHash[month];
+  }
 
-  notes: computed('notesHash', function () {
-    const { notesHash, status } = this;
+  get isActiveMonth() {
+    return isMonthActiveForStatusReporting(this.args.month, this.tinyData.getToday());
+  }
+
+  get notes() {
+    const { notesHash } = this.args;
+    const { status } = this;
+
     if (!(notesHash && status)) return null;
 
     return notesHash[status.id] || [];
-  }),
-});
+  }
+}

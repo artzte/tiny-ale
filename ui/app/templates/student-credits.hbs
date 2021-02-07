@@ -23,10 +23,7 @@
 />
 
 {{#if showCombineDialog}}
-  {{#modal-dialog
-    onClose=(action "hideCombine")  
-    translucentOverlay=true
-  }}
+  <ModalDialog @onClose={{action "hideCombine"}} @translucentOverlay={{true}}>
     <CreditAssignments::CombineDialog
       @creditAssignments={{creditsToCombine}}
       @today={{today}}
@@ -34,5 +31,5 @@
       @save={{action "combineCredits"}}
       @close={{action (mut showCombineDialog) false}}
     />
-  {{/modal-dialog}}
+  </ModalDialog>
 {{/if}}

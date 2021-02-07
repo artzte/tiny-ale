@@ -4,7 +4,7 @@ import {
 import { module, test } from 'qunit';
 
 module('Unit | Utility | credit-utils', () => {
-  test('getHours returns expected results', (assert) => {
+  test('getHours returns expected results', assert => {
     const regularCredit = {
       id: 1,
       attributes: {

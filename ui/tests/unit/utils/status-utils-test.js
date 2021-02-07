@@ -8,13 +8,13 @@ import { clone } from '../../helpers/test-utils';
 let coorStatus;
 let enrollmentStatus;
 
-module('Unit | Utility | status-utils', (hooks) => {
+module('Unit | Utility | status-utils', hooks => {
   hooks.beforeEach(() => {
     coorStatus = clone(coorStatusFixtures.data[0]);
     enrollmentStatus = clone(studentEnrollmentsStatuses.data[0]);
   });
 
-  test('getAcademicStatusName functions acceptably', (assert) => {
+  test('getAcademicStatusName functions acceptably', assert => {
     assert.equal('satisfactory', coorStatus.attributes.academicStatus, 'fixture has expected acceptable status');
 
     assert.equal('Satisfactory', getAcademicStatusName(coorStatus), 'expected status name of Satisfactory');
@@ -24,21 +24,21 @@ module('Unit | Utility | status-utils', (hooks) => {
     assert.equal('Unsatisfactory', getAcademicStatusName(coorStatus), 'expected status of Unsatisfactory');
   });
 
-  test('isUnacceptable functions acceptably for coor status', (assert) => {
+  test('isUnacceptable functions acceptably for coor status', assert => {
     assert.notOk(isUnacceptable(coorStatus), 'expect an acceptable status');
 
     coorStatus.attributes.academicStatus = 'unsatisfactory';
     assert.ok(isUnacceptable(coorStatus), 'expect an unacceptable status');
   });
 
-  test('isUnacceptable functions acceptably for enrollment status', (assert) => {
+  test('isUnacceptable functions acceptably for enrollment status', assert => {
     assert.notOk(isUnacceptable(enrollmentStatus), 'expect an acceptable status');
 
     enrollmentStatus.attributes.academicStatus = 'unsatisfactory';
     assert.ok(isUnacceptable(enrollmentStatus), 'expect an unacceptable status');
   });
 
-  test('isMonthActiveForStatusReporting reports accurately', (assert) => {
+  test('isMonthActiveForStatusReporting reports accurately', assert => {
     const reportsFalse = dayjs('2001-02-12');
     assert.equal(isMonthActiveForStatusReporting('2001-03-01', reportsFalse), false, 'the next month is not yet active for coorStatus reporting');
 

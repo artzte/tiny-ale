@@ -11,7 +11,7 @@ import { generateNotableHash } from '../../../../utils/note-utils';
 let tinyData;
 let turnins;
 
-module('Integration | Component | contract-assignments-list/row', (hooks) => {
+module('Integration | Component | contract-assignments-list/row', hooks => {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(function () {
@@ -42,7 +42,7 @@ module('Integration | Component | contract-assignments-list/row', (hooks) => {
     `);
   }
 
-  test('it renders with complete assignment', async (assert) => {
+  test('it renders with complete assignment', async assert => {
     const assignments = tinyData.get('assignment');
 
     await renderComponent();
@@ -67,7 +67,7 @@ module('Integration | Component | contract-assignments-list/row', (hooks) => {
     assert.equal(contractAssignmentsNotes.data.length, notesLi.length, 'expected number of notes rendered');
   });
 
-  test('it renders a missing assignment with turnin record', async (assert) => {
+  test('it renders a missing assignment with turnin record', async assert => {
     const [turnin] = turnins;
 
     turnin.attributes.status = 'missing';
@@ -92,7 +92,7 @@ module('Integration | Component | contract-assignments-list/row', (hooks) => {
     assert.equal(statusSpan.innerText.trim(), '-', 'should be marked as missing');
   });
 
-  test('it renders an incomplete assignment', async (assert) => {
+  test('it renders an incomplete assignment', async assert => {
     const [turnin] = turnins;
 
     turnin.attributes.status = 'incomplete';

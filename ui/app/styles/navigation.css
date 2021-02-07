@@ -20,6 +20,10 @@ nav.toolbar {
   }
 }
 
+tiny-nav a.active {
+  @apply bg-gray-900;
+  @apply text-white;
+}
 
 ul.filter {
   @apply flex list-reset my-4;

@@ -4,7 +4,7 @@
 >
   <fieldset>
     <p>
-      {{#form-input error=errors.enrollees showError=showErrors label="Enrollees"}}
+      <FormInput @error={{errors.enrollees}} @showError={{showErrors}} @label="Enrollees">
         <TTypeAhead
           @name="enrollees"
           prompt="Search for a student to enroll"
@@ -13,7 +13,7 @@
           @onSearch={{action "onSearchCandidates"}}
           @onChange={{action "onChangeCandidate"}}
         />
-      {{/form-input}}
+      </FormInput>
     </p>
   </fieldset>
 
