@@ -1,7 +1,12 @@
 <h2>Status</h2>
 {{#check-empty
-  count=contract.relationships.enrollments.data.length
+  count=enrollments.length
   noResultsMessage="No enrollments"
 }}
-  <StatusByContract @statuses={{statuses}} @contract={{contract}} @getNotes={{route-action "getNotes"}} />
+  <StatusByContract
+    @statuses={{statuses}}
+    @contract={{contract}}
+    @enrollments={{enrollments}}
+    @getNotes={{route-action "getNotes"}}
+  />
 {{/check-empty}}
