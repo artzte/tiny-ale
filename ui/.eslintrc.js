@@ -92,6 +92,9 @@ module.exports = {
     // a painful rule
     'no-param-reassign': 0,
 
+    // eslint is trying to be helpful here but due to how Ember constructs tests
+    'prefer-arrow-callback': 0,
+
     // if a single argu
     'arrow-parens': ['error', 'as-needed'],
 
