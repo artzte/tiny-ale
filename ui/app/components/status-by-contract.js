@@ -6,8 +6,7 @@ import { hashByStatusableIdAndMonth } from '../utils/status-utils';
 import { generateNotableHash } from '../utils/note-utils';
 
 export default Component.extend(ContractRelations, {
-  tagName: 'table',
-  classNames: ['t-table', 't-table-bordered'],
+  tagName: '',
 
   months: alias('term.attributes.months'),
 

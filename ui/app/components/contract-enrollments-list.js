@@ -2,8 +2,7 @@ import Component from '@ember/component';
 import { generateNotableHash } from 'tinysis-ui/utils/note-utils';
 
 export default Component.extend({
-  tagName: 'table',
-  classNames: ['t-table', 't-table-bordered'],
+  tagName: '',
   async didReceiveAttrs() {
     this._super();
     const { notablesHash, getNotes, enrollments } = this;

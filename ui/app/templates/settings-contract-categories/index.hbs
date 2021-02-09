@@ -9,7 +9,7 @@
   noResultsMessage="No categories were found"
 }}
   <CountParagraph @result={{model}} @name="contract category" />
-  <table class="t-table t-table-bordered" data-test-categories-list>
+  <Table data-test-categories-list>
     <thead>
       <tr>
         <th>Category</th>
@@ -46,5 +46,5 @@
         </SettingsContractCategories::Row>
       {{/each}}
     </tbody>
-  </table>
+  </Table>
 {{/check-empty}}

@@ -8,9 +8,7 @@ import { wasActive } from 'tinysis-ui/utils/user-utils';
 export default Component.extend({
   tinyData: service(),
 
-  classNames: ['t-table', 't-table-bordered'],
-
-  tagName: 'table',
+  tagName: '',
 
   months: computed('term', function () {
     const { term } = this;

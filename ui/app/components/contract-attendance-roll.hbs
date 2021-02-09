@@ -1,5 +1,5 @@
 <ContractAttendanceRoll::SetAll @updateAllRolls={{action "updateAllRolls"}} />
-<table class="t-table t-table-bordered">
+<Table>
   <thead>
     <th>Student</th>
     <th>Meeting type</th>
@@ -14,4 +14,4 @@
       <ContractAttendanceRoll::Row @enrollment={{participant.enrollment}} @meeting={{meeting}} @notesHash={{notesHash}} @meetingParticipantHash={{meetingParticipantHash}} @student={{participant.student}} @updateRoll={{updateRoll}} />
     {{/each}}
   </tbody>
-</table>
+</Table>

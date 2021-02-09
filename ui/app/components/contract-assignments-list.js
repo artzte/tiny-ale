@@ -6,8 +6,7 @@ import { generateNotableHash } from '../utils/note-utils';
 
 export default Component.extend({
   tinyData: service(),
-  tagName: 'table',
-  classNames: ['t-table', 't-table-border', 't-table-collapsed', 'assignments-list'],
+  tagName: '',
   participants: computed('enrollments', function () {
     const { enrollments, tinyData } = this;
 
