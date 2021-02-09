@@ -27,6 +27,7 @@
     "@fortawesome/free-regular-svg-icons": "^5.12.0",
     "@fortawesome/free-solid-svg-icons": "^5.12.0",
     "@fortawesome/pro-light-svg-icons": "^5.15.2",
+    "@fullhuman/postcss-purgecss": "^4.0.0",
     "@glimmer/component": "^1.0.3",
     "@glimmer/tracking": "^1.0.3",
     "accounting": "^0.4.1",
@@ -73,33 +74,28 @@
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-react-hooks": "^1.7.0",
-    "glob": "^4.5.3",
+    "glob": "^7.1.6",
     "http-proxy": "^1.18.1",
     "loader.js": "~4.7.0",
     "morgan": "^1.10.0",
     "npm-run-all": "^4.1.5",
     "pikaday": "^1.8.0",
+    "postcss": "^8.2.5",
     "postcss-easy-import": "^3.0.0",
     "postcss-import": "^14.0.0",
-    "postcss-nested": "^4.2.1",
-    "postcss-preset-env": "^6.7.0",
+    "postcss-nested": "^5.0.3",
     "pretender": "3.4.0",
     "prettier": "^2.2.1",
     "qunit": "^2.13.0",
     "qunit-dom": "^1.6.0",
     "showdown": "^1.9.1",
-    "svg-to-dataurl": "^1.0.0"
+    "svg-to-dataurl": "^1.0.0",
+    "tailwindcss": "^2.0.2"
   },
   "engines": {
     "node": "6.* || 8.* || >= 10.*"
   },
   "ember": {
     "edition": "octane"
-  },
-  "dependencies": {
-    "@tailwindcss/postcss7-compat": "^2.0.2",
-    "autoprefixer": "^9.8.6",
-    "postcss": "^7.0.35",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.2"
   }
 }
