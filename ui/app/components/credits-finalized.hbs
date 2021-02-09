@@ -3,7 +3,7 @@
   noResultsMessage="There are no finalized credits."
 }}
   <CountParagraph @count={{viewModels.length}} @name="credit" />
-  <table class="t-table w-full" data-test-settings-credits-list>
+  <Table data-test-settings-credits-list>
     <thead>
       <tr>
         <th></th>
@@ -19,5 +19,5 @@
         <CreditsFinalized::Item @creditAssignment={{viewModel.creditAssignment}} />
       {{/each}}
     </tbody>
-  </table>
+  </Table>
 {{/check-empty}}

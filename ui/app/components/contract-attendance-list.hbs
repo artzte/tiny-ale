@@ -1,4 +1,4 @@
-<table class="t-table t-table-border t-table-collapsed" data-test-attendance-list>
+<Table data-test-attendance-list>
   <thead>
     <tr>
       <th>Student</th>
@@ -17,4 +17,4 @@
   {{#each participants as |participant i|}}
     <ContractAttendanceList::Row @meetings={{sortedMeetings}} @row={{i}} @enrollment={{participant.enrollment}} @student={{participant.student}} @attendanceHash={{attendanceHash}} />
   {{/each}}
-</table>
+</Table>

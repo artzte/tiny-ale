@@ -1,18 +1,20 @@
-<thead>
-  <th>Participant</th>
-  <th>Enrollment status</th>
-  <th>Credit assignments</th>
-  <th>Notes</th>
-  <th>Actions</th>
-</thead>
-<tbody>
-  {{#each enrollments as |enrollment|}}
-    <ContractEnrollmentsList::Row
-      @enrollment={{enrollment}}
-      @notablesHash={{notablesHash}}
-      @contractIsDisabled={{contractIsDisabled}}
-      @deleteEnrollment={{this.deleteEnrollment}}
-      @updateEnrollment={{this.updateEnrollment}}
-    />
-  {{/each}}
-</tbody>
+<Table>
+  <thead>
+    <th>Participant</th>
+    <th>Enrollment status</th>
+    <th>Credit assignments</th>
+    <th>Notes</th>
+    <th>Actions</th>
+  </thead>
+  <tbody>
+    {{#each enrollments as |enrollment|}}
+      <ContractEnrollmentsList::Row
+        @enrollment={{enrollment}}
+        @notablesHash={{notablesHash}}
+        @contractIsDisabled={{contractIsDisabled}}
+        @deleteEnrollment={{this.deleteEnrollment}}
+        @updateEnrollment={{this.updateEnrollment}}
+      />
+    {{/each}}
+  </tbody>
+</Table>

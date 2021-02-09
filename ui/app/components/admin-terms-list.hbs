@@ -1,14 +1,14 @@
-<table class="t-table w-full" data-test-admin-users-list>
+<Table data-test-admin-terms-list>
   <thead>
     <tr>
       <th>Term</th>
-      <th class="text-center">School year</th>
-      <th class="text-center">Credit date</th>
-      <th class="text-center">Active?</th>
+      <th>School year</th>
+      <th>Credit date</th>
+      <th>Active?</th>
       <th>Reporting months</th>
-      <th class="text-right">Contracts</th>
-      <th class="text-right">Enrollments</th>
-      <th class="text-right">Active</th>
+      <th>Contracts</th>
+      <th>Enrollments</th>
+      <th>Active enrollments</th>
       <th>Actions</th>
     </tr>
   </thead>
@@ -20,9 +20,9 @@
             {{term.attributes.name}}
           </LinkTo>
         </td>
-        <td class="text-center">{{term.attributes.schoolYear}}</td> 
-        <td class="text-center">{{t-date term.attributes.creditDate "MMM d, YYYY"}}</td>
-        <td class="text-center">
+        <td>{{term.attributes.schoolYear}}</td> 
+        <td>{{t-date term.attributes.creditDate "MMM d, YYYY"}}</td>
+        <td>
           {{#if term.isActive}}
             A
           {{/if}}
@@ -30,13 +30,13 @@
         <td>
           {{term.months}}
         </td>
-        <td class="text-right">
+        <td>
           {{t-number term.meta.contractsCount}}
         </td>
-        <td class="text-right">
+        <td>
           {{t-number term.meta.enrollmentsCount}}
         </td>
-        <td class="text-right">
+        <td>
           {{t-number term.meta.enrollmentsOpenCount}}
         </td>
         <td>
@@ -47,4 +47,4 @@
       </tr>
     {{/each}}
   </tbody>
-</table>
+</Table>

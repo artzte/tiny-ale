@@ -2,7 +2,7 @@
   count=requirementsList.length
   noResultsMessage="None of this type matching current filters"
 }}
-  <table class="t-table w-full" data-graduation-plan-requirements-list>
+  <Table data-graduation-plan-requirements-list>
     <thead>
       <tr>
         <th></th>
@@ -14,5 +14,5 @@
     {{#each requirementsList as |requirement|}}
       <GraduationPlanRequirementsList::PrimaryItem @requirement={{requirement}} @status={{status}} @dropTarget={{dropTarget}} @setDrop={{action (mut dropTarget)}} @onDrop={{action "onDrop"}} />
     {{/each}}
-  </table>
+  </Table>
 {{/check-empty}}

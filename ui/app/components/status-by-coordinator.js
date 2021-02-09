@@ -4,9 +4,7 @@ import { alias } from '@ember/object/computed';
 import { hashByStatusableIdAndMonth } from '../utils/status-utils';
 
 export default Component.extend({
-  tagName: 'table',
-
-  classNames: ['t-table', 't-table-bordered'],
+  tagName: '',
 
   months: alias('term.attributes.months'),
 

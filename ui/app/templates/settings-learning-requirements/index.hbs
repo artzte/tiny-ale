@@ -20,7 +20,7 @@
   noResultsMessage="No entries in this category"
 }}
   <CountParagraph @count={{categoryLearningRequirements.length}} @name="learning requirement" />
-  <table class="t-table w-full" data-test-settings-learning-requirement-list>
+  <Table data-test-settings-learning-requirement-list>
     <thead>
       <tr>
         <th>Sequence</th>
@@ -59,7 +59,7 @@
         </tr>
       {{/each}}
     </tbody>
-  </table>
+  </Table>
 {{/check-empty}}
 
 {{#if showDialog}}

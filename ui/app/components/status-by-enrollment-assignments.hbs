@@ -1,5 +1,5 @@
 {{#check-empty count=assignments.length noResultsMessage="No assignments defined for this contract."}}
-  <table class="t-table t-table-bordered">
+  <Table>
     <thead>
       <tr>
         <th>Assignment</th>
@@ -13,6 +13,6 @@
         <StatusByEnrollmentAssignments::Row @enrollment={{enrollment}} @assignment={{assignment}} @notesHash={{notesHash}} @turninsByAssignment={{turninsByAssignment}} />
       {{/each}}
     </tbody>
-  </table>
+  </Table>
 {{/check-empty}}
 

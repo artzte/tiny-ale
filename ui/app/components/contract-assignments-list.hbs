@@ -1,13 +1,15 @@
-<thead class="rotated-headings">
-  <tr>
-    <th>
-      Participant
-    </th>
-    {{#each sortedAssignments as |assignment|}}
-      <ContractAssignmentsList::AssignmentHeader @assignment={{assignment}} />
-    {{/each}}
-  </tr>
-</thead>
-{{#each participants as |participant|}}
-  <ContractAssignmentsList::Row @student={{participant.student}} @enrollment={{participant.enrollment}} @assignments={{sortedAssignments}} @notablesHash={{notablesHash}} @notesExpanded={{notesExpanded}} />
+<Table class="assignments-list">
+  <thead class="rotated-headings">
+    <tr>
+      <th>
+        Participant
+      </th>
+      {{#each sortedAssignments as |assignment|}}
+        <ContractAssignmentsList::AssignmentHeader @assignment={{assignment}} />
+      {{/each}}
+    </tr>
+  </thead>
+  {{#each participants as |participant|}}
+    <ContractAssignmentsList::Row @student={{participant.student}} @enrollment={{participant.enrollment}} @assignments={{sortedAssignments}} @notablesHash={{notablesHash}} @notesExpanded={{notesExpanded}} />
 {{/each}}
+</Table>

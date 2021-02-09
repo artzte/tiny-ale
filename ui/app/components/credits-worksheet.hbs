@@ -13,7 +13,7 @@
       Combine selected credits
     </TLink>
   </p>
-  <table class="t-table w-full" data-test-credits-worksheet>
+  <Table data-test-credits-worksheet>
     <thead>
       <tr>
         <th></th>
@@ -30,5 +30,5 @@
         <CreditsWorksheet::Item @creditAssignment={{viewModel.creditAssignment}} @splitCredit={{action "splitCredit"}} @selectCredit={{action "selectCredit"}} @approveCredit={{action "approveCredit"}} />
       {{/each}}
     </tbody>
-  </table>
+  </Table>
 {{/check-empty}}
