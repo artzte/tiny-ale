@@ -1,9 +1,9 @@
 import { helper } from '@ember/component/helper';
 import { formatNumber } from 'accounting';
 
-export function tNumber(params) {
+export function numeric(params) {
   const [number] = params;
   return formatNumber(number);
 }
 
-export default helper(tNumber);
+export default helper(numeric);
