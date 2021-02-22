@@ -7,6 +7,7 @@ class ContractsController < ApiBaseController
 
   def index
     order = (params[:order] || '').split(',').map(&:underscore).join(',')
+    offset = Integer(params[:offset] || '0')
 
     conditions = {}
 
@@ -45,12 +46,15 @@ class ContractsController < ApiBaseController
     result = Contract
              .where(conditions)
              .order(Arel.sql(order))
+             .offset(offset)
              .limit(@limit)
     count = Contract.where(conditions).count
 
     options = {
       meta: {
-        count: count
+        count: count,
+        rangeStart: offset,
+        rangeEnd: offset + @limit,
       },
       include: included_models
     }

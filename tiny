@@ -80,6 +80,10 @@ shell:db () {
   docker run -it --network tiny-ale_default --rm --mount src="$(pwd)",target=/src,type=bind mariadb mysql -h db -u root -proot
 }
 
+db:import () {
+  docker run --network tiny-ale_default --rm --mount src="$(pwd)",target=/src,type=bind mariadb mysql -h db -u root -proot -D nova_production < ./import/mysql_tinysis_210210.sql
+}
+
 server () {
   docker exec -it $API rm -rf /api/tmp/pids/server.pid && rails s
 }

@@ -18,16 +18,22 @@
 />
 
 <CheckEmpty
-  @count={{model.meta.count}}
+  @count={{this.model.meta.count}}
   @noResultsMessage="No contracts were found with these filters"
   class="m-h-2"
 >
   <CountParagraph
-    @result={{model}}
+    @result={{this.model}}
     @name="contract"
   />
 
   <ContractsList
-    @contracts={{model.data}}
+    @contracts={{this.model.data}}
+  />
+
+  <Pagination
+    @totalCount={{this.model.meta.count}}
+    @offset={{this.offset}}
+    @limit={{this.limit}}
   />
 </CheckEmpty>
