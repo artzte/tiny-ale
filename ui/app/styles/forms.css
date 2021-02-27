@@ -85,49 +85,14 @@ button[disabled] {
   }
 }
 
-.btn {
-  @apply text-center py-2 px-4 rounded-sm bg-gray-900 text-white border-2 mt-2 no-underline cursor-pointer;
+.button {
+  @apply ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50;
 
-  &:visited {
-    @apply text-white;
+  &.button-primary {
+    @apply bg-blue-800 text-white font-semibold border border-blue-900;
   }
 
-  &:focus {
-    @apply outline-none;
-  }
-
-  &:hover {
-    @apply bg-gray-700;
-  }
-
-  &.btn-clear {
-    border-color: transparent;
-    background: inherit;
-    text-decoration: none;
-    @apply text-gray-900;
-
-    &:hover {
-      text-decoration: underline;
-    }
-
-    &:visited {
-      @apply text-black;
-    }
-  }
-
-  &.btn-small {
-    background: inherit;
-    text-transform: uppercase;
-    @apply text-gray-900;
-    padding: 2px 6px;
-    font-size: small;
-
-    &:disabled {
-      @apply text-gray-600;
-    }
-  }
-
-  &[disabled] {
-    @apply text-gray-100 cursor-auto bg-gray-500;
+  &[disabled], &.disabled {
+    @apply bg-gray-200 hover:bg-gray-200;
   }
 }

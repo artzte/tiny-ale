@@ -18,7 +18,7 @@
             role of {{titleize user.attributes.role}}?
           </p>
           <button
-            class="btn"
+            class="button"
             onclick={{action (action "updateLogin" user login)}}
             type="button"
           >
@@ -33,7 +33,7 @@
             They should be updated to match what is shown here.
           </p>
           <button
-            class="btn"
+            class="button"
             onclick={{action (action "updateLogin" user login)}}
             type="button"
           >
@@ -47,7 +47,7 @@
             {{full-name user "first-last"}} is no longer entitled to have a login.
           </p>
           <button
-            class="btn"
+            class="button"
             onclick={{action (action "destroyLogin" user login)}}
             type="button"
           >
@@ -68,7 +68,7 @@
             Shall we create a login?
           </p>
           <button
-            class="btn"
+            class="button"
             onclick={{action "createLogin" user}}
             type="button"
           >

@@ -2,7 +2,7 @@
   <button
     data-button="edit"
     type="button"
-    class="ml-12 btn btn-small"
+    class="button"
     {{on 'click' (fn @onEdit)}}
     disabled={{@editing}}
   >
@@ -13,7 +13,7 @@
   <button
     data-button="save"
     type="submit"
-    class="btn btn-small"
+    class="button button-primary"
     disabled={{@disabled}}
   >
     Save
@@ -22,7 +22,7 @@
     <button
       data-button="cancel"
       type="button"
-      class="btn btn-small"
+      class="button"
       {{on 'click' (fn @onCancel)}}
       disabled={{@disabled}}
     >
