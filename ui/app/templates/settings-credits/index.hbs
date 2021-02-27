@@ -2,7 +2,7 @@
   count=model.meta.count
   noResultsMessage="No credits were found with these filters"
 }}
-  <CountParagraph @result={{model}} @name="credit" />
+  <Pagination @result={{model}} @name="credit" />
   <Table data-test-settings-credits-list>
     <thead>
       <tr>

@@ -1,5 +1,6 @@
 import Component from '@glimmer/component';
 import { inject as service } from '@ember/service';
+import { pluralize } from 'ember-inflector';
 
 export default class PaginationComponent extends Component {
   @service('router') router;
@@ -9,7 +10,7 @@ export default class PaginationComponent extends Component {
   }
 
   get limit() {
-    return parseInt(this.args.limit, 10);
+    return parseInt(this.args.limit || Number.MAX_SAVE_INTEGER, 10);
   }
 
   get totalCount() {
@@ -68,5 +69,19 @@ export default class PaginationComponent extends Component {
       offset: offset - limit,
       limit,
     };
+  }
+
+  get itemName() {
+    const {
+      totalCount,
+      singularName = 'result',
+      pluralName,
+    } = this.args;
+
+    if (totalCount === 0 || totalCount > 1) {
+      return pluralName || pluralize(singularName);
+    }
+
+    return singularName;
   }
 }

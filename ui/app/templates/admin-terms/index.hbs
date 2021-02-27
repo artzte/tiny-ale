@@ -2,6 +2,6 @@
   count=model.meta.count
   noResultsMessage="No terms were found matching these filters"
 }}
-  <CountParagraph @result={{model}} @name="term" />
+  <Pagination @result={{model}} @name="term" />
   <AdminTermsList @terms={{terms}} />
 {{/check-empty}}

@@ -2,7 +2,7 @@
   <h1>Contracts</h1>
 
   <p>
-    <LinkTo @route="contracts.new" class="btn">
+    <LinkTo @route="contracts.new" class="button button-primary">
       Add contract
     </LinkTo>
   </p>
@@ -22,9 +22,11 @@
   @noResultsMessage="No contracts were found with these filters"
   class="m-h-2"
 >
-  <CountParagraph
-    @result={{this.model}}
-    @name="contract"
+  <Pagination
+    @itemName="contract"
+    @totalCount={{this.model.meta.count}}
+    @offset={{this.offset}}
+    @limit={{this.limit}}
   />
 
   <ContractsList
@@ -32,6 +34,7 @@
   />
 
   <Pagination
+    @itemName="contract"
     @totalCount={{this.model.meta.count}}
     @offset={{this.offset}}
     @limit={{this.limit}}

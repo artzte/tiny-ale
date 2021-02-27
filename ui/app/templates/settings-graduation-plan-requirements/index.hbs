@@ -19,7 +19,7 @@
   count=countOfStatus
   noResultsMessage="No graduation plan requirements were found"
 }}
-  <CountParagraph @count={{countOfStatus}} @name="requirement" />
+  <Pagination @count={{countOfStatus}} @name="requirement" />
 
   <h3>Credit requirements</h3>
   <GraduationPlanRequirementsList @graduationPlanRequirements={{graduationPlanRequirements}} @updateSeries={{action "updateSeries"}} @requirementType="credit" @status={{status}} />

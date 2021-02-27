@@ -17,6 +17,12 @@ export default Route.extend({
     grade: {
       refreshModel: true,
     },
+    offset: {
+      refreshModel: true,
+    },
+    limit: {
+      refreshModel: true,
+    },
   },
 
   model(params) {
@@ -26,11 +32,15 @@ export default Route.extend({
       coordinator,
       schoolYear,
       grade,
+      offset,
+      limit,
     } = params;
 
     const requestParams = {
-      limit: 20,
+      offset,
+      limit,
       order: 'lastName,firstName,nickname',
+      include: ['coordinator'],
     };
 
     if (name) {

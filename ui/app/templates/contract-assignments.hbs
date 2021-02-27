@@ -4,6 +4,6 @@
   count=model.meta.count
   noResultsMessage="No assignments as of yet"
 }}
-  <CountParagraph @result={{model}} @name="assignment" />
+  <Pagination @result={{model}} @name="assignment" />
   <ContractAssignmentsList @assignments={{assignments}} @enrollments={{enrollments}} @getNotes={{route-action "getNotes"}} />
 {{/check-empty}}
