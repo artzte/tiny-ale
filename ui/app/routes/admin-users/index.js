@@ -23,6 +23,12 @@ export default Route.extend({
     status: {
       refreshModel: true,
     },
+    offset: {
+      refreshModel: true,
+    },
+    limit: {
+      refreshModel: true,
+    },
   },
 
   model(params) {
@@ -34,12 +40,15 @@ export default Route.extend({
       role,
       schoolYear,
       status,
+      offset,
+      limit,
     } = params;
 
     const requestParams = {
-      limit: 20,
       order: 'lastName,firstName,nickname',
       include: 'coordinator',
+      offset,
+      limit,
     };
 
     if (name) {
@@ -78,9 +87,12 @@ export default Route.extend({
       .filter(user => user.attributes.email)
       .map(user => user.attributes.email);
 
+    if (emails.length === 0) return;
+
     const emailsFilter = emails
       .map(email => `"${email}"`)
       .join(' OR ');
+
     const loginsResult = await this.tinyData.fetch('/api/admin/logins', {
       data: {
         q: `email:(${emailsFilter})`,
@@ -101,7 +113,7 @@ export default Route.extend({
     controller.setProperties({
       ...queryParams,
       users: users.data,
-      logins: loginsResult.data,
+      logins: loginsResult && loginsResult.data,
     });
 
     const usersController = this.controllerFor('admin-users');

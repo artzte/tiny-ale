@@ -11,9 +11,9 @@ export default Route.extend({
     const { tinyData } = this;
     return all([
       tinyData.fetch('/api/categories'),
-      tinyData.fetch('/api/staff?status=active&limit=-1'),
+      tinyData.fetch('/api/staff?status=active'),
       tinyData.fetch('/api/learning-requirements'),
-      tinyData.fetch('/api/terms?limit=-1'),
+      tinyData.fetch('/api/terms'),
     ]);
   },
 });

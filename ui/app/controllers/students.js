@@ -1,16 +1,21 @@
-import Controller, { inject } from '@ember/controller';
+import Controller, { inject as controller } from '@ember/controller';
+import { action } from '@ember/object';
 
-export default Controller.extend({
-  'students.index': inject(),
+export default class StudentsController extends Controller {
+  @controller('students.index') studentsIndexController;
 
-  queryParams: (() => ({}))(),
-  terms: (() => ([]))(),
-  staff: (() => ([]))(),
+  queryParams = {};
 
-  actions: {
-    filterStudents(queryParams) {
-      const studentsIndexController = this['students.index'];
-      studentsIndexController.setProperties(queryParams);
-    },
-  },
-});
+  terms = [];
+
+  staff = [];
+
+  @action filterStudents(queryParams) {
+    const { studentsIndexController } = this;
+
+    studentsIndexController.setProperties({
+      ...queryParams,
+      offset: 0,
+    });
+  }
+}

@@ -2,6 +2,17 @@
   count=model.meta.count
   noResultsMessage="No users were found with these filters"
 }}
-  <Pagination @result={{model}} @name="user" />
+  <Pagination
+    @totalCount={{this.model.meta.count}}
+    @offset={{this.offset}}
+    @limit={{this.limit}}
+    @singularName="user"
+  />
   <UsersList @users={{users}} @logins={{logins}} />
+  <Pagination
+    @totalCount={{this.model.meta.count}}
+    @offset={{this.offset}}
+    @limit={{this.limit}}
+    @singularName="user"
+  />
 {{/check-empty}}

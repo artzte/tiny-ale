@@ -11,7 +11,9 @@ module UserControllerMethods
   end
 
   def index
-    order = (search_conditions[:order] || '')
+    user_params = get_params
+
+    order = (user_params[:order] || '')
             .split(',')
             .map(&:strip)
             .map(&:underscore)
@@ -28,14 +30,14 @@ module UserControllerMethods
 
     additional_conditions = nil
 
-    conditions[:district_grade] = search_conditions[:grade] if search_conditions[:grade]
+    conditions[:district_grade] = user_params[:grade] if user_params[:grade]
 
     coordinators_join = nil
-    if search_conditions[:coordinators] == 'true'
-      coordinators_join = 'INNER JOIN (SELECT DISTINCT coordinator_id FROM users)  AS coordinators ON users.id = coordinators.coordinator_id'
+    if user_params[:coordinators] == 'true'
+      coordinators_join = 'INNER JOIN (SELECT DISTINCT coordinator_id FROM users) AS coordinators ON users.id = coordinators.coordinator_id'
     end
 
-    conditions[:privilege] = case search_conditions[:role]
+    conditions[:privilege] = case user_params[:role]
       when 'administrator'
         User::PRIVILEGE_ADMIN
       when 'staff'
@@ -47,9 +49,9 @@ module UserControllerMethods
       else
         return render json: { message: 'invalid role parameter' }, status: 400
     end
-    conditions.delete(:privilege) unless conditions[:privilege]
+    conditions.delete(:privilege) unless user_params[:privilege]
 
-    conditions[:status] = case search_conditions[:status]
+    conditions[:status] = case user_params[:status]
                           when 'active'
                             User::STATUS_ACTIVE
                           when 'inactive'
@@ -62,7 +64,7 @@ module UserControllerMethods
                             return render json: { message: 'invalid status parameter' }, status: 400
     end
 
-    case search_conditions[:status]
+    case user_params[:status]
     when nil
       conditions.delete :status
     when 'reportable'
@@ -75,18 +77,18 @@ module UserControllerMethods
       ]
     end
 
-    if search_conditions[:coordinatorIds]
-      conditions[:coordinator_id] = search_conditions[:coordinatorIds].split(',')
+    if user_params[:coordinatorIds]
+      conditions[:coordinator_id] = user_params[:coordinatorIds].split(',')
     end
 
-    if search_conditions[:name]
-      name_like = "%#{search_conditions[:name]}%"
+    if user_params[:name]
+      name_like = "%#{user_params[:name]}%"
       name_conditions = ['first_name LIKE :name OR last_name LIKE :name OR nickname LIKE :name', { name: name_like }]
     end
 
     year_conditions = nil
-    if search_conditions[:schoolYear]
-      start_month, end_month = Term.reporting_dates_for_year(search_conditions[:schoolYear])
+    if user_params[:schoolYear]
+      start_month, end_month = Term.reporting_dates_for_year(user_params[:schoolYear])
       year_conditions = ['(date_active <= :start_date) AND (date_inactive IS NULL OR date_inactive >= :end_date)', { start_date: start_month, end_date: end_month.end_of_month }]
     end
 
@@ -97,9 +99,9 @@ module UserControllerMethods
              .where(year_conditions)
              .where(name_conditions)
              .where(scope_conditions)
-             .includes(:coordinator)
              .joins(coordinators_join)
-             .limit(@limit)
+             .limit(get_limit)
+             .offset(get_offset)
              .order(Arel.sql(order))
 
     count = User
@@ -109,7 +111,6 @@ module UserControllerMethods
             .where(year_conditions)
             .where(scope_conditions)
             .where(name_conditions)
-            .includes(:coordinator)
             .joins(coordinators_join)
             .count
 
@@ -149,9 +150,11 @@ module UserControllerMethods
   end
 
   def get_includes
-    return [] unless params[:include]
+    includes = get_params[:include]
 
-    params[:include].split(',') & ALLOWED_INCLUDES
+    return [] unless includes
+
+    includes.split(',') & ALLOWED_INCLUDES
   end
 
   # override
@@ -164,7 +167,19 @@ module UserControllerMethods
     {}
   end
 
-  def search_conditions
-    params.permit(:name, :status, :order, :grade, :role, :coordinatorIds, :schoolYear, :scope, :limit)
+  def get_params
+    params.permit(:include, :name, :status, :order, :grade, :role, :coordinators, :coordinatorIds, :schoolYear, :scope, :offset, :limit)
+  end
+
+  def get_offset
+    offset = get_params[:offset]
+
+    offset || 0
+  end
+
+  def get_limit
+    limit = get_params[:limit]
+
+    limit || @limit
   end
 end

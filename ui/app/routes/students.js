@@ -6,7 +6,7 @@ export default Route.extend({
   tinyData: service(),
   model() {
     return all([
-      this.tinyData.fetch('/api/staff?order=lastName,firstName&coordinators=true'),
+      this.tinyData.fetch('/api/staff?order=lastName,firstName&coordinators=true&limit=1000'),
     ]);
   },
   setupController(controller, model) {

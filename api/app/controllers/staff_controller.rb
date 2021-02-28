@@ -10,7 +10,6 @@ class StaffController < ApiBaseController
       firstName
       lastName
       nickname
-      coordinatees
       status
       role
       isStaff

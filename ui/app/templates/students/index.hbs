@@ -5,7 +5,14 @@
   <Pagination 
     @offset={{this.offset}}
     @limit={{this.limit}}
+    @totalCount={{model.meta.count}}
     @singularName="student"
   />
   <StudentsList @students={{students}} />
+  <Pagination 
+    @offset={{this.offset}}
+    @limit={{this.limit}}
+    @totalCount={{model.meta.count}}
+    @singularName="student"
+  />
 {{/check-empty}}

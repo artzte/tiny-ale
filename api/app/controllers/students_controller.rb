@@ -17,7 +17,6 @@ class StudentsController < ApiBaseController
       districtGrade
       isActive
       status
-      coordinator
       role
     ]
   end

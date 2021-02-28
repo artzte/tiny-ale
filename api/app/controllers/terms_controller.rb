@@ -59,4 +59,8 @@ class TermsController < ApiBaseController
 
     render json: TermSerializer.new(term), status: 200
   end
+
+  def coor
+    render json: Term.coor(params[:year])
+  end
 end

@@ -1,6 +1,6 @@
 <nav class="bg-white px-4 py-3 flex items-center justify-between sm:px-6" aria-label="Pagination">
   <div class="hidden sm:block">
-    <p class="text-gray-700">
+    <div class="text-gray-700">
       Showing
       <span class="font-medium">
         {{numeric this.rangeStart}}
@@ -14,7 +14,7 @@
         {{numeric @totalCount}}
       </span>
       {{itemName}}
-    </p>
+    </div>
   </div>
 
   {{#unless this.hidePrevNextControls}}
