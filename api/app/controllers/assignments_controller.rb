@@ -21,6 +21,6 @@ class AssignmentsController < ApiBaseController
       includes: [:turnins]
     }
 
-    render json: AssignmentSerializer.new(result, options), status: 200
+    render json: AssignmentSerializer.new(result, options)
   end
 end

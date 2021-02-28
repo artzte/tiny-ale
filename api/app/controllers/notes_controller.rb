@@ -22,7 +22,7 @@ class NotesController < ApiBaseController
       include: ['creator']
     }
 
-    render json: NoteSerializer.new(result, options), status: 200
+    render json: NoteSerializer.new(result, options)
   end
 
   def create

@@ -20,7 +20,7 @@ class GraduationPlanRequirementsController < ApiBaseController
       }
     }
 
-    render json: GraduationPlanRequirementSerializer.new(result, options), status: 200
+    render json: GraduationPlanRequirementSerializer.new(result, options)
   end
 
   def show

@@ -38,7 +38,7 @@ class StatusController < ApiBaseController
 
     if params[:studentIds]
       studentIds = params[:studentIds]
-      return render json: emptyResult, status: 200 if studentIds.blank?
+      return render json: emptyResult if studentIds.blank?
 
       conditions[:statusable_id] = studentIds.split(',')
       conditions[:statusable_type] = 'User'
@@ -46,7 +46,7 @@ class StatusController < ApiBaseController
 
     if params[:enrollmentIds]
       enrollmentIds = params[:enrollmentIds]
-      return render json: emptyResult, status: 200 if enrollmentIds.blank?
+      return render json: emptyResult if enrollmentIds.blank?
 
       conditions[:statusable_id] = params[:enrollmentIds].split(',')
       conditions[:statusable_type] = 'Enrollment'
@@ -71,6 +71,6 @@ class StatusController < ApiBaseController
       include: [:creator]
     }
 
-    render json: StatusSerializer.new(result, options), status: 200
+    render json: StatusSerializer.new(result, options)
   end
 end

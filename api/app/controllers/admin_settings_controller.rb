@@ -12,7 +12,7 @@ class AdminSettingsController < AdminController
       end
       setting.save!
     end
-    render json: SettingSerializer.new(Setting.where(name: settings.keys)), status: 200
+    render json: SettingSerializer.new(Setting.where(name: settings.keys))
   end
 
   private

@@ -122,7 +122,7 @@ module UserControllerMethods
       include: get_includes
     }
 
-    render json: UserSerializer.new(result, options), status: 200
+    render json: UserSerializer.new(result, options)
   end
 
   def show

@@ -51,16 +51,16 @@ class TermsController < ApiBaseController
       options[:params][:usage] = Term.enrollments_report(result.map(&:id))
     end
 
-    render json: TermSerializer.new(result, options), status: 200
+    render json: TermSerializer.new(result, options)
   end
 
   def show
     term = Term.find params[:id]
 
-    render json: TermSerializer.new(term), status: 200
+    render json: TermSerializer.new(term)
   end
 
   def coor
-    render json: Term.coor(params[:year])
+    render json: TermSerializer.new Term.coor(params[:year])
   end
 end
