@@ -61,6 +61,7 @@ class TermsController < ApiBaseController
   end
 
   def coor
-    render json: TermSerializer.new Term.coor(params[:year])
+    coor_term = Term.coor(params[:year])
+    render json: TermSerializer.new(coor_term)
   end
 end

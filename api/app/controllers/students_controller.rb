@@ -18,6 +18,7 @@ class StudentsController < ApiBaseController
       isActive
       status
       role
+      coordinator
     ]
   end
 
