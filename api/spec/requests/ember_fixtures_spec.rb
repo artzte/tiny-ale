@@ -368,7 +368,7 @@ RSpec.describe 'Ember fixtures script', type: :request do
         write_fixture "/api/statuses?studentIds=#{@staff2.coordinatees.map(&:id).join(',')}&months=#{@term_coor_current.months.join(',')}&type=student", 'coor-statuses.js'
 
         # all active students for all-coor summary
-        write_fixture '/api/students?status=reportable&order=lastName,firstName&limit=-1', 'all-coor-students.js'
+        write_fixture '/api/students?status=reportable&order=lastName,firstName', 'all-coor-students.js'
 
         # all active coordinators
         write_fixture '/api/staff?status=active&coordinators=true&order=lastName,firstName', 'all-coor-staff.js'
