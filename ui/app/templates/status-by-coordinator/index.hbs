@@ -3,8 +3,8 @@
   @noResultsMessage="No coordinatees"
 >    
   <Pagination
-    @result={{students}}
-    @name="coordinatee"
+    @totalCount={{students.length}}
+    @singularName="coordinatee"
   />
 
   <StatusByCoordinator

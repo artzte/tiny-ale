@@ -14,8 +14,8 @@
   @noResultsMessage="No enrollments as of yet"
 >
   <Pagination
-    @result={{this.model}}
-    @name="enrollment"
+    @totalCount={{this.model.meta.count}}
+    @singularName="enrollment"
   />
 
   <ContractEnrollmentsList

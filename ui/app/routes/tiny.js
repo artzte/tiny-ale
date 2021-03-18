@@ -8,6 +8,10 @@ export default Route.extend({
 
   async beforeModel() {
     const { tinyData } = this;
+    const applicationController = this.controllerFor('application');
+
+    applicationController.set('loading', true);
+
     const results = await Promise.all([
       tinyData.fetch('/api/profile'),
       fetch('/api/settings/years'),
@@ -33,6 +37,10 @@ export default Route.extend({
   },
 
   setupController(...args) {
+    const applicationController = this.controllerFor('application');
+
+    applicationController.set('loading', false);
+
     this._super(...args);
 
     const user = this.tinyData.getUser();

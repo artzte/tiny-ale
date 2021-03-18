@@ -33,7 +33,6 @@ export default Component.extend({
     // build the bones of the hash
     //
     const result = coordinators
-      .data
       .reduce((memoC, coordinator) => {
         memoC[coordinator.id] = months.reduce((memoM, month) => {
           memoM[month] = {
@@ -50,7 +49,6 @@ export default Component.extend({
     // fill in student-count expectations
     //
     students
-      .data
       .forEach(student => {
         const coordinatorHash = result[student.relationships.coordinator.data.id];
 
@@ -71,7 +69,7 @@ export default Component.extend({
 
     // fill in status counts
     //
-    statuses.data.forEach(status => {
+    statuses.forEach(status => {
       // skip inactive student
       //
       const student = tinyData.get('user', status.relationships.statusable.data.id);

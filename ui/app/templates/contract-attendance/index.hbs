@@ -18,6 +18,11 @@
   count=model.meta.count
   noResultsMessage="No attendance taken as of yet"
 }}
-  <Pagination @result={{model}} @name="meeting" />
-  <ContractAttendanceList @contract={{contract}} />
+  <Pagination
+    @totalCount={{this.model.meta.count}}
+    @singularName="meeting"
+  />
+  <ContractAttendanceList
+    @contract={{contract}}
+  />
 {{/check-empty}}

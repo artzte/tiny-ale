@@ -6,11 +6,13 @@ export default class PaginationComponent extends Component {
   @service('router') router;
 
   get offset() {
-    return parseInt(this.args.offset, 10);
+    const { offset = 0 } = this.args;
+    return parseInt(offset, 10);
   }
 
   get limit() {
-    return parseInt(this.args.limit || Number.MAX_SAVE_INTEGER, 10);
+    const { limit = Number.MAX_SAFE_INTEGER } = this.args;
+    return parseInt(limit, 10);
   }
 
   get totalCount() {

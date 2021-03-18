@@ -15,28 +15,20 @@ export default Route.extend({
           order: 'lastName, firstName',
         },
       }),
-      this.tinyData.fetch('/api/terms', {
-        data: {
-          type: 'coor',
-          status: 'active',
-          schoolYear: this.tinyData.getSchoolYear(),
-        },
-      }),
+      this.tinyData.fetch(`/api/terms/coor?year=${this.tinyData.getSchoolYear()}`),
     ]).then(results => {
-      const [students, terms] = results;
-
-      Object.assign(this, { students, terms });
+      debugger
+      [this.students, this.term] = results;
     });
   },
 
   model() {
-    const [term] = this.terms.data;
-    this.term = term;
+    const [term, students] = this.term.data;
 
     return this.tinyData.fetch('/api/statuses', {
       data: {
-        studentIds: this.students.data.map(student => student.id),
-        months: this.term.attributes.months,
+        studentIds: students.data.map(student => student.id),
+        months: term.data.attributes.months,
         type: 'student',
         limit: 10000,
       },
@@ -48,8 +40,8 @@ export default Route.extend({
 
     controller.setProperties({
       statuses,
-      students: this.students,
-      term: this.term,
+      students: this.students.data,
+      term: this.term.data,
     });
   },
 

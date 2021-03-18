@@ -2,12 +2,15 @@
   count=viewModels.length
   noResultsMessage="There are no finalized credits."
 }}
-  <Pagination @totalCount={{viewModels.length}} @singularName="credit" />
+  <Pagination
+    @totalCount={{viewModels.length}}
+    @singularName="credit"
+  />
   <Table data-test-settings-credits-list>
     <thead>
       <tr>
         <th></th>
-        <th>Credit</th>
+        <th></th>
         <th>Term</th>
         <th class="text-right">Credits</th>
         <th class="text-right">Completed</th>
@@ -20,5 +23,4 @@
       {{/each}}
     </tbody>
   </Table>
-  <Pagination @totalCount={{viewModels.length}} @singularName="credit" />
 {{/check-empty}}

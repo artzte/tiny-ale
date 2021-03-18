@@ -6,31 +6,24 @@ export default Route.extend({
   tinyData: service(),
   templateName: 'status-by-student',
 
-  beforeModel(params) {
+  async beforeModel(params) {
     const { tinyData } = this;
     this.currentSchoolYear = tinyData.getSchoolYear();
     this.schoolYear = params.schoolYear || this.currentSchoolYear;
 
-    return tinyData.fetch('/api/terms', {
-      data: {
-        type: 'coor',
-        status: 'active',
-        schoolYear: this.schoolYear,
-      },
-    }).then(terms => {
-      this.term = terms.data.shift();
-    });
+    this.term = await tinyData.fetch(`/api/terms/coor?year=${this.schoolYear}`);
   },
 
   model(params) {
     const { tinyData } = this;
+    const { term } = this;
     const studentId = params.student_id;
-    const months = this.term.attributes.months.join(',');
+    const months = term.data.attributes.months.join(',');
 
     this.currentTab = params.show;
 
     return all([
-      tinyData.fetch(`/api/students/${studentId}`),
+      tinyData.fetch(`/api/students/${studentId}?include=coordinator`),
       tinyData.fetch(`/api/statuses?months=${months}&studentIds=${studentId}`),
     ]).then(results => {
       const [student, statuses] = results;
@@ -63,7 +56,7 @@ export default Route.extend({
       currentTab: this.currentTab,
       student,
       coordinator,
-      term,
+      term: term.data,
       statuses: statuses.data,
       schoolYear,
       today: new Date(),

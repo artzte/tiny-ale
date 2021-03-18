@@ -19,7 +19,10 @@
   count=categoryLearningRequirements.length
   noResultsMessage="No entries in this category"
 }}
-  <Pagination @count={{categoryLearningRequirements.length}} @name="learning requirement" />
+  <Pagination
+    @totalCount={{categoryLearningRequirements.length}}
+    @singularName="learning requirement"
+  />
   <Table data-test-settings-learning-requirement-list>
     <thead>
       <tr>

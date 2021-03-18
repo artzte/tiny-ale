@@ -1,2 +1,10 @@
-<Pagination @result={{coordinators}} @name="coordinator" />
-<StatusAllCoordinators @coordinators={{coordinators}} @students={{students}} @statuses={{statuses}} @term={{term}} />
+<Pagination
+  @totalCount={{coordinators.length}}
+  @singularName="coordinator"
+/>
+<StatusAllCoordinators
+  @coordinators={{coordinators}}
+  @students={{students}}
+  @statuses={{statuses}}
+  @term={{term}}
+/>

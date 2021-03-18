@@ -8,7 +8,11 @@
   count=model.meta.count
   noResultsMessage="No categories were found"
 }}
-  <Pagination @result={{model}} @name="contract category" />
+  <Pagination
+    @totalCount={{this.model.meta.count}}
+    @singularName="contract category"
+    @pluralName="contract categories"
+  />
   <Table data-test-categories-list>
     <thead>
       <tr>
