@@ -43,7 +43,7 @@ export function stubRouter(currentRouteName) {
   const { owner } = getContext();
 
   const routerMock = {
-    get currentURL() { return 'currentURL()' },
+    get currentURL() { return 'currentURL()'; },
     currentRouteName,
     currentRoute: {
       query: { foo: 1, bar: 2 },

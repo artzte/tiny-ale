@@ -7,9 +7,9 @@ import { stubTinyData } from '../../helpers/stub-tiny-data';
 import coorStaff from '../../fixtures/all-coor-staff';
 import coorStatus from '../../fixtures/all-coor-statuses';
 import coorStudents from '../../fixtures/all-coor-students';
-import coorTerms from '../../fixtures/coor-terms';
+import coorTerm from '../../fixtures/coor-term';
 
-const [term] = coorTerms.data;
+const { data: term } = coorTerm;
 let tinyDataServiceMock;
 let coordinator;
 
@@ -34,12 +34,12 @@ module('Integration | Component | status-all-coordinators', hooks => {
     tinyDataServiceMock.setToday(new Date(2019, 8, 15));
 
     await render(hbs`
-      {{status-all-coordinators
-        coordinators=coordinators
-        students=students
-        term=term
-        statuses=statuses
-      }}
+      <StatusAllCoordinators
+        @coordinators={{this.coordinators.data}}
+        @students={{this.students.data}}
+        @term={{this.term}}
+        @statuses={{this.statuses.data}}
+      />
     `);
 
     const cols = findAll('thead th[data-test-term-month]');
@@ -84,12 +84,12 @@ module('Integration | Component | status-all-coordinators', hooks => {
     tinyDataServiceMock.setToday(new Date(2019, 11, 15));
 
     await render(hbs`
-      {{status-all-coordinators
-        coordinators=coordinators
-        students=students
-        term=term
-        statuses=statuses
-      }}
+      <StatusAllCoordinators
+        @coordinators={{this.coordinators.data}}
+        @students={{this.students.data}}
+        @term={{this.term}}
+        @statuses={{this.statuses.data}}
+      />
     `);
 
     const cols = findAll('thead th[data-test-term-month]');

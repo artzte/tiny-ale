@@ -301,8 +301,8 @@ RSpec.describe 'Ember fixtures script', type: :request do
         # years
         write_fixture '/api/settings/years', 'years.js'
 
-        # active coor terms
-        write_fixture '/api/terms?type=coor&status=active', 'coor-terms.js'
+        # active coor term
+        write_fixture '/api/terms/coor?year=2019', 'coor-term.js'
 
         # contract list
         write_fixture "/api/contracts?limit=20&order=name&include=term,category,facilitator&schoolYear=#{CURRENT_YEAR}", "contracts-list.js"

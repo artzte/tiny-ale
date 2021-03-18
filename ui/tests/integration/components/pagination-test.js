@@ -24,7 +24,7 @@ module('Integration | Component | pagination', function (hooks) {
     `);
   }
 
-  test('it renders with various disablements and enablements', async function(assert) {
+  test('it renders with various disablements and enablements', async function (assert) {
     await renderComponent();
 
     assert.matches(this.element.textContent.trim(), /Showing\s+1\s+to\s+30\s+of\s+100\s+results/);

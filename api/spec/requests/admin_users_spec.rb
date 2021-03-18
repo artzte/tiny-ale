@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
+require 'timecop'
 
 RSpec.describe 'Admin users API', type: :request do
   before(:each) do

@@ -17,7 +17,6 @@ export default Route.extend({
       }),
       this.tinyData.fetch(`/api/terms/coor?year=${this.tinyData.getSchoolYear()}`),
     ]).then(results => {
-      debugger
       [this.students, this.term] = results;
     });
   },

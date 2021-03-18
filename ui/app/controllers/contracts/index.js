@@ -21,7 +21,7 @@ export default class ContractsIndexController extends Controller {
   @action filterContracts(queryParams) {
     this.setProperties({
       offset: 0,
-      ...queryParams
+      ...queryParams,
     });
   }
 }
