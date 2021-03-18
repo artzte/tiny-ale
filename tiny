@@ -11,17 +11,17 @@ usage () {
   echo ""
   echo "Commands:"
   echo "---------"
-  echo "getSecrets | generally one-time S3 download of any dev secrets files - requires AWS profile and access key"
+  echo "api:shell  | opens a bash shell on the Rails API container"
+  echo "api:test   | runs test suite for API"
   echo "build      | applies docker-compose to start the API stack"
-  echo "initDb     | sets up the development database; will delete the existing data if it exists"
-  echo "server     | starts the development server"
-  echo "shell:api  | opens a bash shell on the Rails API container"
-  echo "shell:ui   | opens a bash shell on the EmberJS client container"
-  echo "shell:db   | opens a mysql shell on the mariadb container"
+  echo "db:init    | sets up the development database; will delete the existing data if it exists"
+  echo "db:shell   | opens a mysql shell on the mariadb container"
+  echo "getSecrets | generally one-time S3 download of any dev secrets files - requires AWS profile and access key"
   echo "log        | tail the production log"
   echo "reset      | deletes the docker images for the API and DB"
-  echo "test:api   | runs test suite for API"
-  echo "test:ui    | runs test suite for UI"
+  echo "server     | starts the development server"
+  echo "ui:shell   | opens a bash shell on the EmberJS client container"
+  echo "ui:test    | runs test suite for UI"
 }
 
 if [ -z $1 ]
@@ -42,77 +42,73 @@ UI=${PROJECT}_ux_1
 DB=${PROJECT}_db_1
 ADMINER=${PROJECT}_adminer_1
 
-createDb () {
+db:create () {
   docker exec $API rake db:create
 }
 
-migrateDb () {
+db:migrate () {
   docker exec $API rake db:migrate
 }
 
-dropDb () {
+db:drop () {
   docker exec -e DISABLE_DATABASE_ENVIRONMENT_CHECK=1 $API rake db:drop
 }
 
-seedDb () {
+db:seed () {
   docker exec $API rake db:seed
 }
 
-testPrepare () {
-  docker exec $API rake db:test:prepare
+db:prepare:test () {
+  docker exec $API rake db:prepare:test
 }
 
-deleteDbVolume () {
+db:volumeRemove () {
   docker volume remove $PROJECT_tinysis_data
 }
 
-shell:api () {
+api:shell () {
   ARGS=${REST_ARGS:-bash}
   docker exec -it $API $ARGS
 } 
 
-shell:ui () {
+ui:shell () {
   ARGS=${REST_ARGS:-bash}
   docker exec -it $UI $ARGS
 }
 
-shell:db () {
+db:shell () {
   docker run -it --network tiny-ale_default --rm --mount src="$(pwd)",target=/src,type=bind mariadb mysql -h db -u root -proot
 }
 
 db:import () {
-  docker run --network tiny-ale_default --rm --mount src="$(pwd)",target=/src,type=bind mariadb mysql -h db -u root -proot -D nova_production < ./import/mysql_tinysis_210210.sql
+  docker exec -i 4a9df3e5b35a /bin/bash -c "export TERM=xterm && mysql -proot -uroot nova_production" < $ARGS
 }
 
-server () {
-  docker exec -it $API rm -rf /api/tmp/pids/server.pid && rails s
-}
-
-initDb () {
-  dropDb
-  createDb
-  migrateDb
-  seedDb
-  testPrepare
+db:init () {
+  db:drop
+  db:create
+  db:migrate
+  db:seed
+  db:prepare:test
 }
 
 remove () {
-  reset:ui
-  reset:db
-  reset:api
+  ui:reset
+  db:reset
+  api:reset
 }
 
-reset:ui () {
+ui:reset () {
   docker rm $UI
   docker rmi ${PROJECT}_ux
 }
 
-reset:api () {
+api:reset () {
   docker rm $API
   docker rmi ${PROJECT}_web
 }
 
-reset:db () {
+db:reset () {
   docker rm $DB
   docker rmi ${PROJECT}_db
 }
@@ -135,7 +131,7 @@ getSecrets () {
 }
 
 build () {
-  docker-compose build --parallel
+  docker-compose build --memory 1GB
   docker-compose up
 }
 
@@ -143,24 +139,24 @@ log () {
   docker exec -it tiny-ale_web_1 tail -f "log/development.log"
 }
 
-test:api () {
+api:test () {
   docker exec -e RAILS_ENV=test $API bundle exec rspec
 }
 
-test:ui () {
+ui:test () {
   docker exec $UI npm test
 }
 
-build:api () {
+api:build () {
   docker build api --tag name:TINYSIS_PROD --tag sha:$(git rev-parse HEAD)
 }
 
-build:ui () {
+ui:build () {
   docker exec $UI ember build --environment=production
 }
 
 case $COMMAND in
-  getSecrets|initDb|build|server|shell:ui|shell:api|shell:db|log|reset|test:api|test:ui|reset:ui|reset:api|stop|build:api|build:ui)
+  getSecrets|db:init|build|ui:shell|api:shell|db:shell|log|reset|api:test|ui:test|ui:reset|api:reset|stop|api:build|ui:build)
       $COMMAND;;
   *)
       usage
