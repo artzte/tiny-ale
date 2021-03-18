@@ -178,8 +178,6 @@ module UserControllerMethods
   end
 
   def get_limit
-    limit = get_params[:limit]
-
-    limit || @limit
+    @limit
   end
 end

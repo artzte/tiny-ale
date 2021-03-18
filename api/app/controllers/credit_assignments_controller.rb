@@ -108,7 +108,7 @@ class CreditAssignmentsController < ApiBaseController
   def approve
     credit_assignment = CreditAssignment.find params[:id]
 
-    credit_assignment.district_approve @user, approval_attributes[:district_finalize_approved_on]
+    credit_assignment.district_approve @user, get_approval_attributes[:district_finalize_approved_on]
 
     render json: CreditAssignmentSerializer.new(credit_assignment, params: { forFulfilled: true })
   end
