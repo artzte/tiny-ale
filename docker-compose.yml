@@ -11,6 +11,7 @@ services:
     restart: always
     volumes:
       - tiny_ale_data:/var/lib/mysql
+      - import:/import
   web:
     build:
       context: ./api
@@ -55,3 +56,4 @@ services:
       - "3001:3001"
 volumes:
   tiny_ale_data:
+  import:
