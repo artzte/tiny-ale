@@ -59,7 +59,7 @@ db:seed () {
 }
 
 db:prepare:test () {
-  docker exec $API rake db:prepare:test
+  docker exec $API rake db:test:prepare
 }
 
 db:volumeRemove () {

@@ -22,7 +22,7 @@ export default Route.extend({
   },
 
   model() {
-    const [term, students] = this.term.data;
+    const { term, students } = this;
 
     return this.tinyData.fetch('/api/statuses', {
       data: {

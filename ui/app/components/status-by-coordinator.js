@@ -1,16 +1,9 @@
-import Component from '@ember/component';
-import { computed } from '@ember/object';
-import { alias } from '@ember/object/computed';
+import Component from '@glimmer/component';
 import { hashByStatusableIdAndMonth } from '../utils/status-utils';
 
-export default Component.extend({
-  tagName: '',
-
-  months: alias('term.attributes.months'),
-
-  statusHash: computed('statuses', function () {
-    const { statuses } = this;
-
+export default class StatusByCoordinator extends Component {
+  get statusHash() {
+    const { statuses } = this.args;
     return hashByStatusableIdAndMonth(statuses);
-  }),
-});
+  }
+}
