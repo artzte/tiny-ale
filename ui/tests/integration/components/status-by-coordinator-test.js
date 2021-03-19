@@ -20,7 +20,7 @@ module('Integration | Component | status-by-coordinator', hooks => {
 
     const props = {
       students: tinyDataServiceMock.get('user').filter(user => user.attributes.role === 'student'),
-      term: coorTerm,
+      term: coorTerm.data,
       statuses: tinyDataServiceMock.get('status'),
     };
 

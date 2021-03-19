@@ -1,4 +1,8 @@
-<nav class="bg-white px-4 py-3 flex items-center justify-between sm:px-6" aria-label="Pagination">
+<nav
+  class="bg-white px-4 py-3 flex items-center justify-between sm:px-6"
+  aria-label="Pagination"
+  data-test-total-count={{@totalCount}}
+>
   <div class="hidden sm:block">
     <div class="text-gray-700">
       {{#if this.isPaginated}}

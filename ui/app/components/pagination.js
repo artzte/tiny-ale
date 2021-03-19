@@ -19,6 +19,11 @@ export default class PaginationComponent extends Component {
     return parseInt(this.args.totalCount, 10);
   }
 
+  get isPaginated() {
+    const { limit } = this;
+    return limit !== undefined;
+  }
+
   get offsetNext() {
     const {
       offset,

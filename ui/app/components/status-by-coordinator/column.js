@@ -22,7 +22,7 @@ export default class StatusByCoordinatorColumn extends Component {
 
   get isException() {
     const { showStatus, status } = this;
-console.log('this.args.month', this.status)
+
     if (!showStatus) return false;
 
     if (!status) return true;
@@ -59,7 +59,7 @@ console.log('this.args.month', this.status)
     return statusText.join(' ');
   }
 
-  showStatus() {
+  get showStatus() {
     const today = this.tinyData.getToday();
 
     const { month, student } = this.args;
