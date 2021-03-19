@@ -1,5 +1,10 @@
-<td>{{full-name student}}</td>
-<td>{{studentStatus}}</td>
-{{#each months as |month|}}
-  <StatusByCoordinator::Column @student={{student}} @month={{month}} @term={{term}} @studentHash={{studentHash}} />
+<td>{{full-name @student}}</td>
+<td>{{this.studentStatus}}</td>
+{{#each @term.attributes.months as |month|}}
+  <StatusByCoordinator::Column
+    @student={{@student}}
+    @month={{month}}
+    @term={{@term}}
+    @statusHash={{@statusHash}}
+  />
 {{/each}}

@@ -3,3 +3,5 @@ node_modules
 aws
 actions-runner
 ./import/*.sql
+import
+.vscode

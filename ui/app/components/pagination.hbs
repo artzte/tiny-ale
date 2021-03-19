@@ -1,19 +1,27 @@
 <nav class="bg-white px-4 py-3 flex items-center justify-between sm:px-6" aria-label="Pagination">
   <div class="hidden sm:block">
     <div class="text-gray-700">
-      Showing
-      <span class="font-medium">
-        {{numeric this.rangeStart}}
-      </span>
-      to
-      <span class="font-medium">
-        {{numeric this.rangeEnd}}
-      </span>
-      of
-      <span class="font-medium">
-        {{numeric @totalCount}}
-      </span>
-      {{itemName}}
+      {{#if this.isPaginated}}
+        Showing
+        <span class="font-medium">
+          {{numeric this.rangeStart}}
+        </span>
+        to
+        <span class="font-medium">
+          {{numeric this.rangeEnd}}
+        </span>
+        of
+        <span class="font-medium">
+          {{numeric @totalCount}}
+        </span>
+        {{itemName}}
+      {{else}}
+        Found
+        <span class="font-medium">
+          {{numeric @totalCount}}
+        </span>
+        {{itemName}}
+      {{/if}}
     </div>
   </div>
 

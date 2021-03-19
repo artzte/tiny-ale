@@ -1,12 +1,17 @@
 <td
-  class="text-center {{if isException "text-red-500"}}"
-  data-test-status-id={{status.id}}
-  data-test-has-status={{hasStatus}}
-  data-test-has-exception={{isException}}
+  data-test-status-id={{this.status.id}}
+  data-test-has-status={{this.hasStatus}}
+  data-test-has-exception={{this.isException}}
 >
-  {{#if showStatus}}
-    <LinkTo @route="status-by-student-for-coordinator" @model={{student.id}} @query={{hash schoolYear=schoolYear}} @title={{academicStatusName}}>
-      {{statusAbbreviation}}
+  {{#if this.showStatus}}
+    <LinkTo
+      class="{{if this.isException "text-red-500"}}"
+      @route="status-by-student-for-coordinator"
+      @model={{@student.id}}
+      @query={{hash schoolYear=this.schoolYear}}
+      @title={{this.academicStatusName}}
+    >
+      {{this.statusAbbreviation}}
     </LinkTo>
   {{/if}}
-</td>
+</td> 

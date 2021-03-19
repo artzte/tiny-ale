@@ -13,6 +13,7 @@ class StaffController < ApiBaseController
       status
       role
       isStaff
+      coordinatees
     ]
   end
 
