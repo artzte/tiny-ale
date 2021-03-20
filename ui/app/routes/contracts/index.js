@@ -29,12 +29,6 @@ export default Route.extend({
     status: {
       refreshModel: true,
     },
-    offset: {
-      refreshModel: true,
-    },
-    limit: {
-      refreshModel: true,
-    },
   },
 
   model(params) {
@@ -45,13 +39,10 @@ export default Route.extend({
       facilitator,
       category,
       status,
-      offset,
-      limit,
     } = params;
 
     const requestParams = {
-      offset,
-      limit,
+      limit: 20,
       order: 'name',
       include: 'term,category,facilitator',
     };
