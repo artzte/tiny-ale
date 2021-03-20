@@ -9,7 +9,7 @@
 </p>
 
 <LinkTo
-  class="btn"
+  class="button"
   @route="settings-learning-requirements.new"
 >
   Add a learning requirement
@@ -19,7 +19,10 @@
   count=categoryLearningRequirements.length
   noResultsMessage="No entries in this category"
 }}
-  <CountParagraph @count={{categoryLearningRequirements.length}} @name="learning requirement" />
+  <Pagination
+    @totalCount={{categoryLearningRequirements.length}}
+    @singularName="learning requirement"
+  />
   <Table data-test-settings-learning-requirement-list>
     <thead>
       <tr>
@@ -68,7 +71,7 @@
     <p>Are you sure you want to delete this?</p>
     <footer>
       <button
-        class="btn"
+        class="button"
         onclick={{action "confirmDelete" learningRequirement}}
         type="submit"
       >

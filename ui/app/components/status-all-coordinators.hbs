@@ -8,7 +8,7 @@
     </tr>
   </thead>
   <tbody>
-    {{#each coordinators.data as |coordinator|}}
+    {{#each coordinators as |coordinator|}}
       <StatusAllCoordinators::Row @coordinator={{coordinator}} @coordinatorsHash={{coordinatorsHash}} @months={{months}} @term={{term}} />
     {{else}}
       <tr class="no-results">

@@ -8,7 +8,7 @@ class AdminLearningPlanGoalsController < ApplicationController
       .where('active = true')
       .count
     options = { meta: { count: count } }
-    render json: LearningPlanGoalSerializer.new(result, options), status: 200
+    render json: LearningPlanGoalSerializer.new(result, options)
   end
 
   def create

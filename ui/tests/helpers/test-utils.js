@@ -1,4 +1,6 @@
 import clone from 'tinysis-ui/utils/clone';
+import { getContext } from '@ember/test-helpers';
+import Service from '@ember/service';
 import jwtFixture from '../fixtures/auth0-jwt';
 
 export class MockLocalStorage {
@@ -36,3 +38,19 @@ export class MockLocalStorage {
 }
 
 export { clone };
+
+export function stubRouter(currentRouteName) {
+  const { owner } = getContext();
+
+  const routerMock = {
+    get currentURL() { return 'currentURL()'; },
+    currentRouteName,
+    currentRoute: {
+      query: { foo: 1, bar: 2 },
+    },
+  };
+
+  owner.register('service:router', Service.extend(routerMock));
+
+  return routerMock;
+}

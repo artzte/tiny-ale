@@ -4,7 +4,7 @@ import { inject as service } from '@ember/service';
 export default Route.extend({
   tinyData: service(),
   model() {
-    return this.tinyData.fetch('/api/admin/users?order=lastName,firstName');
+    return this.tinyData.fetch('/api/staff?coordinators=true&order=lastName,firstName');
   },
   setupController(controller, model) {
     this._super(controller, model);

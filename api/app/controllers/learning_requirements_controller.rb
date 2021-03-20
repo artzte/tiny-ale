@@ -9,6 +9,6 @@ class LearningRequirementsController < ApiBaseController
       .sort
     count = LearningRequirement.count
     options = { meta: { count: count } }
-    render json: LearningRequirementSerializer.new(result, options), status: 200
+    render json: LearningRequirementSerializer.new(result, options)
   end
 end

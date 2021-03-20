@@ -1,16 +1,17 @@
-import Controller, { inject } from '@ember/controller';
+import Controller, { inject as controller } from '@ember/controller';
+import { action } from '@ember/object';
 
-export default Controller.extend({
-  'admin-users.index': inject(),
+export default class AdminUsersController extends Controller {
+  @controller('admin-users.index') adminUsersIndex;
 
-  queryParams: (() => ({}))(),
-  terms: (() => ([]))(),
-  staff: (() => ([]))(),
+  queryParams = {};
 
-  actions: {
-    filterUsers(queryParams) {
-      const adminIndexController = this['admin-users.index'];
-      adminIndexController.setProperties(queryParams);
-    },
-  },
-});
+  terms = [];
+
+  staff = [];
+
+  @action filterUsers(queryParams) {
+    const adminIndexController = this.adminUsersIndex;
+    adminIndexController.setProperties({ ...queryParams, offset: 0 });
+  }
+}

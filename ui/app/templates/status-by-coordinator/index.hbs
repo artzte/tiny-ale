@@ -1,14 +1,15 @@
 <CheckEmpty
-  @count={{students.meta.count}}
+  @count={{this.students.length}}
   @noResultsMessage="No coordinatees"
 >    
-  <CountParagraph
-    @result={{students}}
-    @name="coordinatee"
+  <Pagination
+    @totalCount={{this.students.length}}
+    @singularName="coordinatee"
   />
 
   <StatusByCoordinator
-    @students={{students}}
-    @term={{term}} @statuses={{statuses}}
+    @students={{this.students}}
+    @term={{this.term}}
+    @statuses={{this.statuses}}
   />
 </CheckEmpty>

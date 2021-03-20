@@ -6,7 +6,7 @@ import { resolve } from 'rsvp';
 import { stubTinyData } from '../../helpers/stub-tiny-data';
 
 import student from '../../fixtures/student';
-import coorTerms from '../../fixtures/coor-terms';
+import coorTerm from '../../fixtures/coor-term';
 import studentStatuses from '../../fixtures/student-statuses';
 import notesStudentStatuses from '../../fixtures/notes-student-statuses';
 
@@ -19,7 +19,7 @@ module('Integration | Component | status-by-student', hooks => {
     tinyDataServiceMock = stubTinyData();
 
     this.getNotes = () => resolve(notesStudentStatuses);
-    [this.term] = coorTerms.data;
+    this.term = coorTerm.data;
     this.statuses = studentStatuses.data;
     this.student = student.data;
   });

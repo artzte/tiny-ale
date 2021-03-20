@@ -15,6 +15,6 @@ class CategoriesController < ApiBaseController
 
     options = { meta: { count: count } }
 
-    render json: CategorySerializer.new(result, options), status: 200
+    render json: CategorySerializer.new(result, options)
   end
 end

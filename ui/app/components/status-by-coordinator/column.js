@@ -1,26 +1,26 @@
-import Component from '@ember/component';
+import Component from '@glimmer/component';
 import { inject as service } from '@ember/service';
-import { computed } from '@ember/object';
-import { alias, and } from '@ember/object/computed';
 import { wasActive } from '../../utils/user-utils';
 import { isUnacceptable, getAcademicStatusName } from '../../utils/status-utils';
 
-export default Component.extend({
-  tinyData: service(),
+export default class StatusByCoordinatorColumn extends Component {
+  @service('tinyData') tinyData;
 
-  tagName: '',
+  get schoolYear() {
+    return this.args.term.attributes.schoolYear;
+  }
 
-  schoolYear: alias('term.attributes.schoolYear'),
+  get hasStatus() {
+    return this.status && this.showStatus;
+  }
 
-  hasStatus: and('status.id', 'showStatus'),
+  get status() {
+    const { month, student, statusHash } = this.args;
 
-  status: computed('month', 'studentHash', function () {
-    const { month, studentHash } = this;
+    return statusHash[student.id] && statusHash[student.id][month];
+  }
 
-    return studentHash[month];
-  }),
-
-  isException: computed('showStatus', 'student', function () {
+  get isException() {
     const { showStatus, status } = this;
 
     if (!showStatus) return false;
@@ -30,10 +30,10 @@ export default Component.extend({
     if (!status.attributes.heldPeriodicCheckins) return true;
 
     return isUnacceptable(status);
-  }),
+  }
 
-  statusAbbreviation: computed('status.attributes', function () {
-    const statusAttributes = this.get('status.attributes') || {};
+  get statusAbbreviation() {
+    const statusAttributes = this.hasStatus ? this.status.attributes : {};
     const { academicStatus, fteHours } = statusAttributes;
     const statusText = [];
     let showHours = true;
@@ -57,24 +57,24 @@ export default Component.extend({
     if (showHours) statusText.push(fteHours);
 
     return statusText.join(' ');
-  }),
+  }
 
-  showStatus: computed('month', 'student', function () {
+  get showStatus() {
     const today = this.tinyData.getToday();
 
-    const { month, student } = this;
+    const { month, student } = this.args;
 
     if (today.isBefore(month)) return false;
 
     return wasActive(student, month);
-  }),
+  }
 
-  academicStatusName: computed('status', function () {
+  get academicStatusName() {
     const { status } = this;
     if (!(status && status.attributes.heldPeriodicCheckins)) {
       return '?';
     }
 
     return getAcademicStatusName(status);
-  }),
-});
+  }
+}

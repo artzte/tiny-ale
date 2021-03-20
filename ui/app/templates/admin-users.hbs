@@ -1,11 +1,19 @@
-<h2>Users</h2>
+<div class="pb-5 sm:flex sm:items-center sm:justify-between">
+  <h2>Users</h2>
+  <div class="mt-3 sm:mt-0 sm:ml-4">
+    <LinkTo @route="admin-user.new" class="button button-primary">
+      Add user
+    </LinkTo>
+  </div>
+</div>
 
-<StudentsFilter @queryParams={{queryParams}} @schoolYears={{schoolYears}} @coordinators={{staff}} @showRole={{true}} @showStatus={{true}} @onQuery={{action "filterUsers"}} />
-
-<p>
-  <LinkTo @route="admin-user.new" class="btn">
-    Add a user
-  </LinkTo>
-</p>
+<StudentsFilter
+  @queryParams={{queryParams}}
+  @schoolYears={{schoolYears}}
+  @coordinators={{staff}}
+  @showRole={{true}}
+  @showStatus={{true}}
+  @onQuery={{action "filterUsers"}}
+/>
 
 {{outlet}}

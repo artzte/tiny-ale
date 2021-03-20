@@ -1,5 +1,5 @@
 <p>
-  <LinkTo @route="settings-contract-categories.new" class="btn">
+  <LinkTo @route="settings-contract-categories.new" class="button">
     Add a category
   </LinkTo>
 </p>
@@ -8,7 +8,11 @@
   count=model.meta.count
   noResultsMessage="No categories were found"
 }}
-  <CountParagraph @result={{model}} @name="contract category" />
+  <Pagination
+    @totalCount={{this.model.meta.count}}
+    @singularName="contract category"
+    @pluralName="contract categories"
+  />
   <Table data-test-categories-list>
     <thead>
       <tr>

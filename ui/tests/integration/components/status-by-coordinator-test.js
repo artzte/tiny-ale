@@ -5,9 +5,9 @@ import hbs from 'htmlbars-inline-precompile';
 import { stubTinyData } from '../../helpers/stub-tiny-data';
 import coorStatus from '../../fixtures/coor-statuses';
 import coorStudents from '../../fixtures/coor-students';
-import coorTerms from '../../fixtures/coor-terms';
+import coorTerm from '../../fixtures/coor-term';
 
-const [term] = coorTerms.data;
+const { data: term } = coorTerm;
 let tinyDataServiceMock;
 
 module('Integration | Component | status-by-coordinator', hooks => {
@@ -17,12 +17,11 @@ module('Integration | Component | status-by-coordinator', hooks => {
     tinyDataServiceMock = stubTinyData();
     tinyDataServiceMock.addResult(coorStatus);
     tinyDataServiceMock.addResult(coorStudents);
-    tinyDataServiceMock.addResult(coorTerms);
 
     const props = {
-      students: { data: tinyDataServiceMock.get('user').filter(user => user.attributes.role === 'student') },
-      term: tinyDataServiceMock.get('term', term.id),
-      statuses: { data: tinyDataServiceMock.get('status') },
+      students: tinyDataServiceMock.get('user').filter(user => user.attributes.role === 'student'),
+      term: coorTerm.data,
+      statuses: tinyDataServiceMock.get('status'),
     };
 
     this.setProperties(props);
@@ -31,7 +30,13 @@ module('Integration | Component | status-by-coordinator', hooks => {
   test('it renders expected markup with two students on 9/15/2019', async assert => {
     tinyDataServiceMock.setToday(new Date(2019, 8, 15));
 
-    await render(hbs`{{status-by-coordinator students=students term=term statuses=statuses}}`);
+    await render(hbs`
+      <StatusByCoordinator
+        @students={{this.students}}
+        @term={{this.term}}
+        @statuses={{this.statuses}}
+      />
+    `);
 
     const cols = findAll('thead th[data-test-term-month]');
     assert.equal(cols.length, term.attributes.months.length, 'expected number of month columns were rendered');
@@ -59,8 +64,13 @@ module('Integration | Component | status-by-coordinator', hooks => {
   test('it renders expected markup with two students on 12/15/2019', async assert => {
     tinyDataServiceMock.setToday(new Date(2019, 11, 15));
 
-    await render(hbs`{{status-by-coordinator students=students term=term statuses=statuses}}`);
-
+    await render(hbs`
+      <StatusByCoordinator
+        @students={{this.students}}
+        @term={{this.term}}
+        @statuses={{this.statuses}}
+      />
+    `);
     const cols = findAll('thead th[data-test-term-month]');
     assert.equal(cols.length, term.attributes.months.length, 'expected number of month columns were rendered');
 

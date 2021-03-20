@@ -8,7 +8,7 @@ class SettingsController < ApiBaseController
 
     options = { meta: { count: count } }
 
-    render json: SettingSerializer.new(result, options), status: 200
+    render json: SettingSerializer.new(result, options)
   end
 
   def years

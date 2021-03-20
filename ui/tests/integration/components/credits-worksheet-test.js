@@ -52,8 +52,8 @@ module('Integration | Component | credits-worksheet', hooks => {
     assert.ok(find('[data-test-credits-worksheet]'), 'worksheet table rendered');
 
     const unbatched = creditAssignments.filter(ca => !(ca.relationships.creditTransmittalBatch.data || ca.relationships.parentCreditAssignment.data));
-    const countParagraph = find(`[data-test-count-paragraph="${unbatched.length}"]`);
-    assert.ok(countParagraph, 'the expected count was rendered');
+    const pagination = find(`[data-test-total-count="${unbatched.length}"]`);
+    assert.ok(pagination, 'the expected count was rendered');
 
     assert.equal(findAll('tbody tr').length, unbatched.length, 'expected count of rows rendered');
 

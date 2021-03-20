@@ -2,16 +2,21 @@
   count=viewModels.length
   noResultsMessage="There are no credits to approve."
 }}
-  <CountParagraph @count={{viewModels.length}} @name="credit" />
+  <Pagination
+    @totalCount={{viewModels.length}}
+    @singularName="credit"
+  />
   <p class="flex">
-    <TLink
+    <button
+      type="button"
+      class="button"
       data-test-combine-credits
-      @action={{action "combineCredits"}}
-      @disabled={{combineLinkDisabled}}
+      {{action "combineCredits"}}
+      disabled={{combineLinkDisabled}}
     >
       <FaIcon @icon="object-group" class="no-underline mr-2" />
       Combine selected credits
-    </TLink>
+    </button>
   </p>
   <Table data-test-credits-worksheet>
     <thead>
@@ -19,9 +24,9 @@
         <th></th>
         <th>Credit</th>
         <th>Term</th>
-        <th class="text-right">Credits</th>
-        <th class="text-right">Completed</th>
-        <th class="text-right">Approved</th>
+        <th>Credits</th>
+        <th>Completed</th>
+        <th>Approved</th>
         <th>Actions</th>
       </tr>
     </thead>

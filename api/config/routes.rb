@@ -58,6 +58,7 @@ Rails.application.routes.draw do
     get '/categories', to: 'categories#index'
 
     get '/terms', to: 'terms#index'
+    get '/terms/coor', to: 'terms#coor'
     get '/terms/:id', to: 'terms#show'
 
     get '/settings', to: 'settings#index'

@@ -7,7 +7,7 @@ import { resolve } from 'rsvp';
 import { stubTinyData } from '../../helpers/stub-tiny-data';
 
 import student from '../../fixtures/student';
-import coorTerms from '../../fixtures/coor-terms';
+import coorTerm from '../../fixtures/coor-term';
 import studentEnrollments from '../../fixtures/student-enrollments';
 import studentEnrollmentStatuses from '../../fixtures/student-enrollments-statuses';
 import notesStudentEnrollmentStatuses from '../../fixtures/notes-student-enrollment-statuses';
@@ -22,14 +22,13 @@ module('Integration | Component | status-by-student-enrollments', hooks => {
     tinyDataServiceMock = stubTinyData();
 
     tinyDataServiceMock.addResult(student);
-    tinyDataServiceMock.addResult(coorTerms);
     tinyDataServiceMock.addResult(notesStudentEnrollmentStatuses);
     tinyDataServiceMock.addResult(studentEnrollments);
     tinyDataServiceMock.addResult(studentEnrollmentStatuses);
 
     this.getNotes = () => resolve(notesStudentEnrollmentStatuses);
 
-    this.term = tinyDataServiceMock.get('term', coorTerms.data[0].id);
+    this.term = coorTerm.data;
     this.statuses = tinyDataServiceMock.get('status');
     this.student = tinyDataServiceMock.get('user', student.data.id);
     this.enrollments = tinyDataServiceMock.get('enrollment');

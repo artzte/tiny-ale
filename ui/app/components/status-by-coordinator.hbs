@@ -3,17 +3,26 @@
     <tr>
       <th>Name</th>
       <th>Status</th>
-      {{#each months as |month|}}
-        <th data-test-term-month title={{t-date month "compactTermMonth"}}>{{t-date month "MMM"}}</th>
+      {{#each @term.attributes.months as |month|}}
+        <th
+          data-test-term-month
+          title={{t-date month "compactTermMonth"}}
+        >
+          {{t-date month "MMM"}}
+        </th>
       {{/each}}
     </tr>
   </thead>
   <tbody>
-    {{#each students.data as |student|}}
-      <StatusByCoordinator::Row @student={{student}} @statusHash={{statusHash}} @months={{months}} @term={{term}} />
+    {{#each @students as |student|}}
+      <StatusByCoordinator::Row
+        @student={{student}}
+        @statusHash={{this.statusHash}}
+        @term={{@term}}
+      />
     {{else}}
       <tr class="no-results">
-        <td>No coordinatees</td>
+        <td>No students</td>
       </tr>
     {{/each}}
   </tbody>

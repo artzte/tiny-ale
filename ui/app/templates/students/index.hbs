@@ -2,6 +2,17 @@
   count=model.meta.count
   noResultsMessage="No students were found with these filters"
 }}
-  <CountParagraph @result={{model}} @name="student" />
+  <Pagination 
+    @offset={{this.offset}}
+    @limit={{this.limit}}
+    @totalCount={{model.meta.count}}
+    @singularName="student"
+  />
   <StudentsList @students={{students}} />
+  <Pagination 
+    @offset={{this.offset}}
+    @limit={{this.limit}}
+    @totalCount={{model.meta.count}}
+    @singularName="student"
+  />
 {{/check-empty}}

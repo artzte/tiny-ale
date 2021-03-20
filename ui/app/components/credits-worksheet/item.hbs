@@ -44,26 +44,30 @@
   </td>
   <td>
     {{#if showSplit}}
-      <FaIcon @icon="columns" />
-      <TLink
+      <button
         data-test-split-link
-        @action={{action "splitCredit"}}
+        class="button"
+        type="button"
+        {{action "splitCredit"}}
       >
+        <FaIcon @icon="columns" />
         Split
-      </TLink>
+      </button>
     {{/if}}
     {{#if showApproveForTransmittal}}
-      <TLink
+      <button
         data-test-approve-link
-        @action={{action "approveCredit"}}
+        class="button"
+        type="button"
+        {{action "approveCredit"}}
       >
         {{#if isApproved}}
-          <FaIcon @icon="times" data-test-approved class="text-red-700" />
+          <FaIcon @icon="times" data-test-approved class="text-red-700 mr-2" />
         {{else}}
-          <FaIcon @icon="check" data-test-unapproved class="text-green-700" />
+          <FaIcon @icon="check" data-test-unapproved class="text-green-700 mr-2" />
         {{/if}}
         Approve
-      </TLink>
+      </button>
     {{/if}}
   </td>
 </tr>

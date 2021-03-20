@@ -1,11 +1,9 @@
-<div class="w-full flex justify-between">
+<div class="w-full flex justify-between align-middle">
   <h1>Contracts</h1>
 
-  <p>
-    <LinkTo @route="contracts.new" class="btn">
-      Add contract
-    </LinkTo>
-  </p>
+  <LinkTo @route="contracts.new" class="block button button-primary">
+    Add contract
+  </LinkTo>
 </div>
 
 <ContractsListFilter
@@ -22,12 +20,21 @@
   @noResultsMessage="No contracts were found with these filters"
   class="m-h-2"
 >
-  <CountParagraph
-    @result={{model}}
-    @name="contract"
+  <Pagination
+    @itemName="contract"
+    @totalCount={{this.model.meta.count}}
+    @offset={{this.offset}}
+    @limit={{this.limit}}
   />
 
   <ContractsList
     @contracts={{model.data}}
+  />
+
+  <Pagination
+    @itemName="contract"
+    @totalCount={{this.model.meta.count}}
+    @offset={{this.offset}}
+    @limit={{this.limit}}
   />
 </CheckEmpty>

@@ -47,7 +47,7 @@ class EnrollmentsController < ApiBaseController
       include: included_models || []
     }
 
-    render json: EnrollmentSerializer.new(result, options), status: 200
+    render json: EnrollmentSerializer.new(result, options)
   end
 
   def show
@@ -57,7 +57,7 @@ class EnrollmentsController < ApiBaseController
       include: included_models || []
     }
 
-    render json: EnrollmentSerializer.new(@enrollment, options), status: 200
+    render json: EnrollmentSerializer.new(@enrollment, options)
   end
 
   def create
@@ -71,7 +71,7 @@ class EnrollmentsController < ApiBaseController
       Enrollment.enroll_student contract, User.find(participant_id), @user
     end
 
-    render json: EnrollmentSerializer.new(enrollments, { include: [:participant, :credit_assignments] }), status: 200
+    render json: EnrollmentSerializer.new(enrollments, { include: [:participant, :credit_assignments] })
   end
 
   def update
