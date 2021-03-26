@@ -77,8 +77,10 @@ Rails.application.routes.draw do
     post '/learning-plans/:learning_plan_id/goals/:id', to: 'learning_plans#add_goal'
     delete '/learning-plans/:learning_plan_id/goals/:id', to: 'learning_plans#remove_goal'
 
+    get '/statuses/:statusable_type', to: 'status#index', statusable_type: /enrollments|students/
+    put '/statuses/:statusable_type/:statusable_id/:month', to: 'status#update', statusable_type: /enrollments|students/
+
     resources :staff
-    resources :statuses, controller: 'status'
 
     scope '/admin' do
       get '/users', to: 'admin_users#index'

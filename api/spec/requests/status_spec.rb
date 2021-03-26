@@ -14,32 +14,26 @@ RSpec.describe 'Statuses API', type: :request do
       Timecop.return
     end
 
-    it 'returns all status records in the system' do
-      get '/api/statuses'
+    it 'returns all student status records for a given month' do
+      get '/api/statuses/students?months=2018-01-01,2018-02-01'
 
       expect(response).to have_http_status(200)
       expect(json).not_to be_empty
-      expect(json['data'].size).to eq(12)
-      expect(json['meta']['count']).to eq(12)
-    end
 
-    it 'returns all status records for a given month' do
-      get '/api/statuses?months=2018-01-01,2018-02-01'
+      statuses = Status.where(statusable_type: 'User', month: ['2018-01-01', '2018-02-01'])
 
-      expect(response).to have_http_status(200)
-      expect(json).not_to be_empty
-      expect(json['data'].size).to eq(8)
-      expect(json['meta']['count']).to eq(8)
+      expect(json['data'].size).to eq(statuses.count)
+      expect(json['meta']['count']).to eq(statuses.count)
 
       january = json['data'].find_all { |status| status['attributes']['month'] == '2018-01-01' }
       february = json['data'].find_all { |status| status['attributes']['month'] == '2018-02-01' }
 
-      expect(january.size).to eq(4)
-      expect(february.size).to eq(4)
+      expect(january.size).to eq(Status.where(statusable_type: 'User', month: ['2018-01-01']).count)
+      expect(february.size).to eq(Status.where(statusable_type: 'User', month: ['2018-02-01']).count)
     end
 
     it 'returns status records for given enrollments' do
-      get "/api/statuses?enrollmentIds=#{@enrollment1.id},#{@enrollment2.id}"
+      get "/api/statuses/enrollments?enrollmentIds=#{@enrollment1.id},#{@enrollment2.id}"
 
       expect(response).to have_http_status(200)
       expect(json).not_to be_empty
@@ -57,7 +51,7 @@ RSpec.describe 'Statuses API', type: :request do
     end
 
     it 'returns status records for given students' do
-      get "/api/statuses?studentIds=#{@student1.id}"
+      get "/api/statuses/students?studentIds=#{@student1.id}"
 
       expect(response).to have_http_status(200)
       expect(json).not_to be_empty
@@ -75,7 +69,7 @@ RSpec.describe 'Statuses API', type: :request do
     end
 
     it 'returns status records by type and by month utilizing abbreviated months syntax' do
-      get '/api/statuses?type=student&months=2018-01,2018-02'
+      get '/api/statuses/students?months=2018-01,2018-02'
 
       expect(response).to have_http_status(200)
       expect(json).not_to be_empty
