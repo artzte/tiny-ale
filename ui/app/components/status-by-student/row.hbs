@@ -4,15 +4,27 @@
       {{t-date @month "termMonth"}}
     </h3>
   </div>
-  <div class="border-t border-gray-200 px-4 my-5 sm:m-0">
+  <form
+    class="border-t border-gray-200 px-4 my-5 sm:m-0"
+    {{on "submit" this.submitStatus}}
+  >
     <dl class="sm:divide-y sm:divide-gray-200">
-      {{#if this.status}}
+      {{#if this.hasStatus}}
         <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
           <dt class="font-bold text-gray-900">
             Academic
           </dt>
           <dd class="mt-1 text-gray-900 sm:mt-0 sm:col-span-2" data-test-academic>
-            {{this.academic}}
+            {{#if this.isEditing}}
+              <TSelect
+                @value={{this.pojo.attributes.academic}}
+                @optionsList={{this.statusOptions}}
+                name="academic"
+                @onchange={{fn this.onChange}}
+              />
+            {{else}}
+              {{this.academic}}
+            {{/if}}
           </dd>
         </div>
         <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -20,7 +32,17 @@
             FTE hours
           </dt>
           <dd class="mt-1 text-gray-900 sm:mt-0 sm:col-span-2" data-test-fte>
-            {{this.status.attributes.fteHours}}
+            {{#if this.isEditing}}
+              <input
+                type="text"
+                class="right"
+                value={{this.pojo.attributes.fte}}
+                name="fte"
+                readonly={{true}}
+              />
+            {{else}}
+              {{this.status.attributes.fteHours}}
+            {{/if}}
           </dd>
         </div>
         <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -28,41 +50,85 @@
             Held periodic checkins?
           </dt>
           <dd class="mt-1 text-gray-900 sm:mt-0 sm:col-span-2" data-test-checkins>
-            {{#if this.heldPeriodicCheckins}}
-              Yes
+            {{#if this.isEditing}}
+              <input
+                type="checkbox"
+                value="true"
+                checked={{this.pojo.attributes.heldPeriodicCheckins}}
+                name="metFteRequirements"
+                {{on "click" (fn this.onChange)}}
+              />
             {{else}}
-              No
+              {{#if this.heldPeriodicCheckins}}
+                Yes
+              {{else}}
+                No
+              {{/if}}
             {{/if}}
           </dd>
         </div>
+        {{#if this.isEditing}}
           <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="font-medium text-gray-900">
-            <button type="button" class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-              Edit status for {{t-date @month "termMonth"}}
-            </button>
-          </dt>
-        </div>
+            <dt class="font-bold text-gray-900">
+              Notes
+            </dt>
+            <dd class="mt-1 text-gray-900 sm:mt-0 sm:col-span-2" data-test-checkins>
+              <textarea
+                placeholder="Enter comments to be added to the notes for this status report"
+                name="notes"
+                {{on "change" (fn this.onChange)}}
+              />
+            </dd>
+          </div>
+        {{/if}}
+
         <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="font-bold text-gray-900">
-            Notes
+          <dt class="font-medium text-gray-900">
+            {{#if this.isEditing}}
+              <EditSaveCancel
+                @disabled={{@disabled}}
+                @editing={{true}}
+                @onCancel={{fn this.showDetails}}
+              />
+            {{else}}
+              <button
+                type="button"
+                class="button button-primary"
+                {{on "click" this.setEditing}}
+              >
+                Edit status for {{t-date @month "termMonth"}}
+              </button>
+            {{/if}}
           </dt>
-          <dd class="mt-1 text-gray-900 sm:mt-0 sm:col-span-2">
-            <NotesList
-              class="notes-row w-full md:w-1/2 {{loadingNotes}}"
-              @notes={{notes}}
-              @notable={{status}}
-            />
-          </dd>
         </div>
+
+        {{#unless this.isEditing}}
+          <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+            <dt class="font-bold text-gray-900">
+              Notes
+            </dt>
+            <dd class="mt-1 text-gray-900 sm:mt-0 sm:col-span-2">
+              <NotesList
+                class="notes-row w-full md:w-1/2 {{loadingNotes}}"
+                @notes={{notes}}
+                @notable={{status}}
+              />
+            </dd>
+          </div>
+        {{/unless}}
       {{else}}
         <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6" data-test-month-has-no-status>
           <dt class="font-medium text-gray-900">
-            <button type="button" class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+            <button
+              type="button"
+              class="button button-primary"
+              {{on "click" this.setEditing}}
+            >
               Report status for {{t-date @month "termMonth"}}
             </button>
           </dt>
         </div>
       {{/if}}
     </dl>
-  </div>
+  </form>
 </div>
