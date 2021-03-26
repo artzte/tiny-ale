@@ -12,6 +12,9 @@ gem 'mysql2'
 
 gem 'jsonapi-serializer'
 
+# temp mimemagic
+gem 'mimemagic', '~> 0.3.6'
+
 # Use Puma as the app server
 gem 'puma', '~> 3.12.6'
 
