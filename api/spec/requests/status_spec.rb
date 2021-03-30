@@ -100,7 +100,6 @@ RSpec.describe 'Statuses API', type: :request do
       body = { attributes: attributes }
 
       put "/api/statuses/students/#{@student1.id}/#{month}", params: body.to_json, headers: json_request_headers
-      Rails.logger.info json
 
       expect(response).to have_http_status(200)
       expect(json).not_to be_empty
@@ -163,5 +162,34 @@ RSpec.describe 'Statuses API', type: :request do
       expect(status.academic_status).to eq(Status::STATUS_PARTICIPATING)
     end
 
+
+    it 'requires sensible values when creating a new status' do
+      month = '2020-09-01'
+      status = Status.where(statusable_type: 'User', statusable_id: @student1.id, month: month).first
+      expect(status).to be_nil
+
+      attributes = {
+        fteHours: 'boobles',
+        academicStatus: '',
+      }
+      body = { attributes: attributes }
+
+      put "/api/statuses/students/#{@student1.id}/#{month}", params: body.to_json, headers: json_request_headers
+      
+      expect(response).to have_http_status(422)
+
+      expect(json['message']).to eq('Validation error')
+      expect(json['errors']).to be_present
+      expect(json['errors']['fte_hours']).to be_present
+      expect(json['errors']['academic_status']).to be_present
+
+      body = {
+        attributes: attributes.merge(academicStatus: 'satisfactory', fteHours: '27.5'),
+      }
+
+      put "/api/statuses/students/#{@student1.id}/#{month}", params: body.to_json, headers: json_request_headers
+
+      expect(response).to have_http_status(200)
+    end
   end
 end
