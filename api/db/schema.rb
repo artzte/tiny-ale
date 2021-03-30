@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_14_171321) do
+ActiveRecord::Schema.define(version: 2021_03_27_171233) do
 
   create_table "assignments", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.integer "contract_id"
@@ -263,7 +263,7 @@ ActiveRecord::Schema.define(version: 2019_09_14_171321) do
     t.datetime "updated_at"
     t.integer "statusable_id"
     t.string "statusable_type"
-    t.integer "fte_hours", default: 25
+    t.string "fte_hours", default: "25"
     t.boolean "met_fte_requirements", default: true
     t.boolean "held_periodic_checkins", default: false
     t.index ["statusable_id", "statusable_type", "month"], name: "index_statuses_on_statusable_and_month", unique: true
