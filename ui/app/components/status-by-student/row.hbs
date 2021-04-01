@@ -17,9 +17,9 @@
           <dd class="mt-1 text-gray-900 sm:mt-0 sm:col-span-2" data-test-academic>
             {{#if this.isEditing}}
               <TSelect
-                @value={{this.pojo.attributes.academic}}
+                @value={{this.pojo.attributes.academicStatus}}
                 @optionsList={{this.statusOptions}}
-                name="academic"
+                name="academicStatus"
                 @onchange={{fn this.onChange}}
               />
             {{else}}
@@ -36,8 +36,8 @@
               <input
                 type="text"
                 class="right"
-                value={{this.pojo.attributes.fte}}
-                name="fte"
+                value={{this.pojo.attributes.fteHours}}
+                name="fteHours"
                 readonly={{true}}
               />
             {{else}}
@@ -51,11 +51,10 @@
           </dt>
           <dd class="mt-1 text-gray-900 sm:mt-0 sm:col-span-2" data-test-checkins>
             {{#if this.isEditing}}
-              <input
-                type="checkbox"
-                value="true"
-                checked={{this.pojo.attributes.heldPeriodicCheckins}}
-                name="metFteRequirements"
+              <Input
+                @type="checkbox"
+                @checked={{this.pojo.attributes.heldPeriodicCheckins}}
+                name="heldPeriodicCheckins"
                 {{on "click" (fn this.onChange)}}
               />
             {{else}}

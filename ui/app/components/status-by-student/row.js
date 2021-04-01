@@ -1,12 +1,18 @@
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
+import { inject as service } from '@ember/service';
 import { getAcademicStatusName } from '../../utils/status-utils';
 
 export default class StatusByStudentRow extends Component {
   @tracked isEditing = false;
 
-  statusOptions = ['Acceptable', 'Participating', 'Unacceptable'].map(name => ({ name, value: name.toLowerCase() }))
+  @tracked _status = null;
+
+  @service('tinyData') tinyData;
+
+  statusOptions = ['Satisfactory', 'Participating', 'Unsatisfactory']
+    .map(name => ({ name, value: name.toLowerCase() }))
 
   get hasStatus() {
     return this.isEditing || this.status;
@@ -15,7 +21,7 @@ export default class StatusByStudentRow extends Component {
   get status() {
     const { month, statusHash } = this.args;
 
-    return statusHash[month];
+    return this._status || statusHash[month];
   }
 
   get academic() {
@@ -27,9 +33,8 @@ export default class StatusByStudentRow extends Component {
 
   get heldPeriodicCheckins() {
     const { status } = this;
-    if (!status) return false;
 
-    return status.attributes.heldPeriodicCheckins;
+    return status && status.attributes.heldPeriodicCheckins;
   }
 
   get notes() {
@@ -47,8 +52,8 @@ export default class StatusByStudentRow extends Component {
     } else {
       this.pojo = {
         attributes: {
-          academic: 'satisfactory',
-          fte: 27.5,
+          academicStatus: 'satisfactory',
+          fteHours: 27.5,
           heldPeriodicCheckins: true,
         },
       };
@@ -70,7 +75,7 @@ export default class StatusByStudentRow extends Component {
     } = element;
 
     let newValue;
-    if (name === 'metFteRequirements') {
+    if (/heldPeriodicCheckins|metFteRequirements/.test(name)) {
       newValue = checked;
     } else {
       newValue = value;
@@ -83,11 +88,17 @@ export default class StatusByStudentRow extends Component {
         [name]: newValue,
       },
     };
-    console.log(this.pojo);
   }
 
-  @action submitStatus(event) {
+  @action async submitStatus(event) {
     event.preventDefault();
-    console.warn(this.pojo)
+
+    const response = await this.tinyData.fetch(`/api/statuses/students/${this.args.student.id}/${this.args.month}`, {
+      method: 'PUT',
+      data: this.pojo,
+    });
+
+    this._status = await response.data;
+    this.isEditing = false;
   }
 }

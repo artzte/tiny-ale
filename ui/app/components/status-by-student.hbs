@@ -1,6 +1,7 @@
 <section class="bg-gray-200 p-5">
   {{#each months as |month|}}
     <StatusByStudent::Row
+      @student={{@student}}
       @month={{month}}
       @statusHash={{this.statusHash}}
       @notablesHash={{this.notablesHash}}

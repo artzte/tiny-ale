@@ -34,7 +34,7 @@ export default Route.extend({
         },
       }),
 
-      this.tinyData.fetch('/api/statuses', {
+      this.tinyData.fetch('/api/statuses/students', {
         data: {
           studentIds: students.map(student => student.id),
           months: term.attributes.months,

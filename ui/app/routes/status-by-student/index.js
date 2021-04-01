@@ -15,7 +15,7 @@ export default Route.extend({
 
   async afterModel(enrollments) {
     const enrollmentIds = enrollments.data.map(e => e.id).join(',');
-    this.enrollmentStatuses = await this.tinyData.fetch(`/api/statuses?enrollmentIds=${enrollmentIds}`);
+    this.enrollmentStatuses = await this.tinyData.fetch(`/api/statuses/enrollments?enrollmentIds=${enrollmentIds}`);
   },
 
   setupController(controller, model) {
