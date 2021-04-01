@@ -7,7 +7,9 @@ class Status < ApplicationRecord
 
   validates_uniqueness_of :month, scope: %i[statusable_id statusable_type]
   validates_format_of :fte_hours, with: /\d+(\.\d{1,2})?/, message: 'should be a number with up to two decimal places'
-  validates_presence_of :academic_status, :attendance_status, :month, :fte_hours, :met_fte_requirements
+  validates_presence_of :academic_status, :attendance_status, :month, :fte_hours
+  validates_inclusion_of :met_fte_requirements, in: [true, false]
+  validates_inclusion_of :held_periodic_checkins, in: [true, false]
 
   STATUS_ACCEPTABLE = 0
   STATUS_UNACCEPTABLE = 1
