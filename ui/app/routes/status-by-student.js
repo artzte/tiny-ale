@@ -24,7 +24,7 @@ export default Route.extend({
 
     return all([
       tinyData.fetch(`/api/students/${studentId}?include=coordinator`),
-      tinyData.fetch(`/api/statuses?months=${months}&studentIds=${studentId}`),
+      tinyData.fetch(`/api/statuses/students?months=${months}&studentIds=${studentId}`),
     ]).then(results => {
       const [student, statuses] = results;
       this.params = params;

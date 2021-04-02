@@ -1,4 +1,5 @@
 const colors = require('tailwindcss/colors');
+const forms = require('@tailwindcss/forms');
 
 module.exports = {
   purge: [],
@@ -851,5 +852,7 @@ module.exports = {
     wordBreak: ['responsive'],
     zIndex: ['responsive', 'focus-within', 'focus'],
   },
-  plugins: [],
+  plugins: [
+    forms,
+  ],
 };

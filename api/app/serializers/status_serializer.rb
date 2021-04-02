@@ -3,7 +3,9 @@
 class StatusSerializer < ApplicationSerializer
   set_type :status
 
-  attributes :month, :created_at, :updated_at, :fte_hours, :met_fte_requirements, :held_periodic_checkins
+  attributes :month, :created_at, :updated_at, :met_fte_requirements, :held_periodic_checkins
+
+  attributes :fte_hours
 
   attribute :academic_status do |record|
     Status::STATUS_NAMES[record.academic_status].downcase
@@ -15,4 +17,5 @@ class StatusSerializer < ApplicationSerializer
 
   belongs_to :creator
   belongs_to :statusable, polymorphic: true
+  has_many :notes
 end

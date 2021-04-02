@@ -70,7 +70,7 @@ class AdminUsersController < AdminController
   def update_status(model, status)
     return if status.nil?
     unless %w[active inactive].include? status
-      raise ActiveRecordInvalidException(model, :status, 'should be either "active" or "inactive"')
+      raiseActiveRecordInvalidException(model, :status, 'should be either "active" or "inactive"')
     end
 
     model.status = case status
@@ -84,7 +84,7 @@ class AdminUsersController < AdminController
   def update_privilege(model, role)
     return if role.nil?
     unless %w[administrator staff student].include? role
-      raise ActiveRecordInvalidException(model, :role, 'allowed values are student, administrator, or staff')
+      raiseActiveRecordInvalidException(model, :role, 'allowed values are student, administrator, or staff')
     end
 
     model.privilege = case role

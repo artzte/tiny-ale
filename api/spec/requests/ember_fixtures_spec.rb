@@ -354,7 +354,7 @@ RSpec.describe 'Ember fixtures script', type: :request do
         write_fixture "/api/notes?notableType=Enrollment&notableIds=#{enrollment_ids.join(',')}", 'notes-contract-enrollments.js'
 
         # status by contract enrollments
-        response = write_fixture "/api/statuses?enrollmentIds=#{enrollment_ids.join(',')}", 'contract-statuses.js'
+        response = write_fixture "/api/statuses/enrollments?enrollmentIds=#{enrollment_ids.join(',')}", 'contract-statuses.js'
 
         # notes for the contract enrollment statuses
         contract_status_response = JSON.parse(response.body)
@@ -365,7 +365,7 @@ RSpec.describe 'Ember fixtures script', type: :request do
         write_fixture "/api/students?coordinatorIds=#{@staff2.id}&status=reportable&order=lastName,firstName", 'coor-students.js'
 
         # statuses for a coordinator's students
-        write_fixture "/api/statuses?studentIds=#{@staff2.coordinatees.map(&:id).join(',')}&months=#{@term_coor_current.months.join(',')}&type=student", 'coor-statuses.js'
+        write_fixture "/api/statuses/students?studentIds=#{@staff2.coordinatees.map(&:id).join(',')}&months=#{@term_coor_current.months.join(',')}&type=student", 'coor-statuses.js'
 
         # all active students for all-coor summary
         write_fixture '/api/students?status=reportable&order=lastName,firstName', 'all-coor-students.js'
@@ -380,7 +380,7 @@ RSpec.describe 'Ember fixtures script', type: :request do
         # all coor status records for active students
         student_ids = @students.map(&:id).join(',')
         query = { studentIds: student_ids, months: @term_coor_current.months.join(','), type: 'student', limit: -1 }.to_query
-        response = write_fixture "/api/statuses?#{query}", 'all-coor-statuses.js'
+        response = write_fixture "/api/statuses/students?#{query}", 'all-coor-statuses.js'
 
         # notes for a coor status
         coor_status_response = JSON.parse(response.body)
@@ -396,7 +396,7 @@ RSpec.describe 'Ember fixtures script', type: :request do
         # statuses for enrollments
         student_enrollments_response = JSON.parse(response.body)
         student_enrollment_ids = student_enrollments_response['data'].map { |enrollment| enrollment['id'] }
-        response = write_fixture "/api/statuses?enrollmentIds=#{student_enrollment_ids.join(',')}", 'student-enrollments-statuses.js'
+        response = write_fixture "/api/statuses/enrollments?enrollmentIds=#{student_enrollment_ids.join(',')}", 'student-enrollments-statuses.js'
 
         # notes for statuses for enrollments
         student_enrollments_status_response = JSON.parse(response.body)
@@ -405,7 +405,7 @@ RSpec.describe 'Ember fixtures script', type: :request do
 
         # statuses for coor
         query = { studentIds: @student1.id, months: @term_coor_current.months.join(','), limit: -1 }.to_query
-        response = write_fixture "/api/statuses?#{query}", 'student-statuses.js'
+        response = write_fixture "/api/statuses/students?#{query}", 'student-statuses.js'
 
         # notes for coor statuses
         student_status_response = JSON.parse(response.body)
