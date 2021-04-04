@@ -3,9 +3,13 @@
 class StatusSerializer < ApplicationSerializer
   set_type :status
 
-  attributes :month, :created_at, :updated_at, :met_fte_requirements, :held_periodic_checkins
+  attributes :month, :created_at, :updated_at
 
   attributes :fte_hours
+
+  attribute :met_fte_requirements, if: Proc.new { |record| record.statusable_type == 'Enrollment'  }
+
+  attribute :held_periodic_checkins, if: Proc.new { |record| record.statusable_type == 'User'  }
 
   attribute :academic_status do |record|
     Status::STATUS_NAMES[record.academic_status].downcase

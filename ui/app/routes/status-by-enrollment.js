@@ -9,7 +9,7 @@ export default Route.extend({
   },
 
   async afterModel(enrollmentResult) {
-    this.statuses = await this.tinyData.fetch(`/api/statuses?enrollmentIds=${enrollmentResult.data.id}`);
+    this.statuses = await this.tinyData.fetch(`/api/statuses/enrollments?enrollmentIds=${enrollmentResult.data.id}`);
   },
 
   setupController(controller, enrollmentResult) {

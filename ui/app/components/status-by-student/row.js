@@ -3,7 +3,6 @@ import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
 import { getAcademicStatusName } from '../../utils/status-utils';
-import notes from '../../mixins/notes';
 
 export default class StatusByStudentRow extends Component {
   @tracked isEditing = false;
@@ -12,9 +11,29 @@ export default class StatusByStudentRow extends Component {
 
   @tracked _status = null;
 
+  @tracked pojo = null;
+
   @service('tinyData') tinyData;
 
-  statusOptions = ['Satisfactory', 'Participating', 'Unsatisfactory']
+  // Begin override attributes
+  statusablePathSegment = 'students';
+
+  statusableViabilityLabel = 'Held periodic checkins?'
+
+  statusableViabilityField = 'heldPeriodicCheckins'
+
+  statusStrings = ['Satisfactory', 'Unsatisfactory']
+
+  get statusableViabilityValue() {
+    return this.pojo.attributes.heldPeriodicCheckins;
+  }
+
+  get statusable() {
+    return this.args.student;
+  }
+  // End override attributes
+
+  statusOptions = this.statusStrings
     .map(name => ({ name, value: name.toLowerCase() }))
 
   get hasStatus() {
@@ -98,7 +117,7 @@ export default class StatusByStudentRow extends Component {
   @action async submitStatus(event) {
     event.preventDefault();
 
-    const response = await this.tinyData.fetch(`/api/statuses/students/${this.args.student.id}/${this.args.month}`, {
+    const response = await this.tinyData.fetch(`/api/statuses/${this.statusablePathSegment}/${this.statusable.id}/${this.args.month}`, {
       method: 'PUT',
       data: this.pojo,
     });
