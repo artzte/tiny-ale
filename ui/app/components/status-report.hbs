@@ -1,0 +1,17 @@
+<section class="bg-gray-200 p-5">
+  {{#each months as |month index|}}
+    <StatusReport::Row
+      @statusable={{@statusable}}
+      @isEnrollmentStatus={{this.isEnrollmentStatus}}
+      @isUserStatus={{this.isUserStatus}}
+      @statusablePathSegment={{this.statusablePathSegment}}
+      @isViableLabel={{this.isViableLabel}}
+      @isViableField={{this.isViableField}}
+      @academicStatusOptions={{this.academicStatusOptions}}
+      @attendanceStatusOptions={{this.attendanceStatusOptions}}
+      @month={{month}}
+      @statusHash={{this.statusHash}}
+      @notablesHash={{this.notablesHash}}
+    />
+  {{/each}}
+</section>

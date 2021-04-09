@@ -9,15 +9,18 @@ export default Route.extend({
   },
 
   async afterModel(enrollmentResult) {
-    this.statuses = await this.tinyData.fetch(`/api/statuses?enrollmentIds=${enrollmentResult.data.id}`);
+    this.statuses = await this.tinyData.fetch(`/api/statuses/enrollments?enrollmentIds=${enrollmentResult.data.id}`);
   },
 
   setupController(controller, enrollmentResult) {
     this._super(controller, enrollmentResult);
+    const contract = this.modelFor('contract').data;
+    const term = this.tinyData.get('term', contract.relationships.term.data.id);
     controller.setProperties({
       enrollment: enrollmentResult.data,
-      contract: this.modelFor('contract').data,
+      contract,
       statuses: this.statuses.data,
+      term,
     });
   },
 });

@@ -15,12 +15,12 @@
 </section>  
 
 <section class="bg-gray-200 p-5">
-  <StatusByEnrollment
-    @contract={{contract}} 
-    @enrollment={{enrollment}}
-    @statuses={{statuses}}
+  <StatusReport
+    @statusable={{this.enrollment}}
+    @statuses={{this.statuses}}
+    @term={{this.term}}
     @getNotes={{route-action "getNotes"}}
-   />
+  />
 </section>
 
 <section class="bg-gray-200 p-5">

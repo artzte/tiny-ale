@@ -2,20 +2,23 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
-import { getAcademicStatusName } from '../../utils/status-utils';
-import notes from '../../mixins/notes';
+import { getAcademicStatusName, attendanceStatusName, STATUS_UNACCEPTABLE } from '../../utils/status-utils';
 
-export default class StatusByStudentRow extends Component {
+export default class StatusReportRow extends Component {
   @tracked isEditing = false;
 
   @tracked _notes = null;
 
   @tracked _status = null;
 
+  @tracked pojo = null;
+
   @service('tinyData') tinyData;
 
-  statusOptions = ['Satisfactory', 'Participating', 'Unsatisfactory']
-    .map(name => ({ name, value: name.toLowerCase() }))
+  get isViable() {
+    const attrSource = this.pojo || this._status || this.status;
+    return attrSource.attributes[this.args.isViableField];
+  }
 
   get hasStatus() {
     return this.isEditing || this.status;
@@ -27,6 +30,10 @@ export default class StatusByStudentRow extends Component {
     return this._status || statusHash[month];
   }
 
+  get model() {
+    return this.pojo || this._status || this.status;
+  }
+
   get academic() {
     const { status } = this;
     if (!status) return '';
@@ -34,10 +41,29 @@ export default class StatusByStudentRow extends Component {
     return getAcademicStatusName(status);
   }
 
-  get heldPeriodicCheckins() {
+  get isException() {
     const { status } = this;
+    if (!status) return false;
 
-    return status && status.attributes.heldPeriodicCheckins;
+    if (this.isEnrollmentStatus) {
+      return status.attributes.academicStatus === STATUS_UNACCEPTABLE
+        || status.attributes.attendanceStatus === STATUS_UNACCEPTABLE
+        || status.attributes.metFteRequirements === false;
+    }
+
+    return status.attributes.academicStatus === STATUS_UNACCEPTABLE
+    || status.attributes.heldPeriodicCheckins === false;
+  }
+
+  get attendance() {
+    const { status } = this;
+    if (!status) return '';
+
+    return attendanceStatusName(status);
+  }
+
+  get isEnrollmentStatus() {
+    return this.status && this.status.relationships.statusable.data.type === 'enrollment';
   }
 
   get notes() {
@@ -60,6 +86,7 @@ export default class StatusByStudentRow extends Component {
           academicStatus: 'satisfactory',
           fteHours: 27.5,
           heldPeriodicCheckins: true,
+          metFteRequirements: true,
         },
       };
     }
@@ -98,7 +125,15 @@ export default class StatusByStudentRow extends Component {
   @action async submitStatus(event) {
     event.preventDefault();
 
-    const response = await this.tinyData.fetch(`/api/statuses/students/${this.args.student.id}/${this.args.month}`, {
+    const {
+      month,
+      statusable,
+      statusablePathSegment,
+    } = this.args;
+
+    const statusPutPath = `/api/statuses/${statusablePathSegment}/${statusable.id}/${month}`;
+
+    const response = await this.tinyData.fetch(statusPutPath, {
       method: 'PUT',
       data: this.pojo,
     });

@@ -1,8 +1,13 @@
 <div class="bg-white shadow overflow-hidden sm:rounded-lg mb-5" data-test-status-row={{@month}}>
-  <div class="px-4 my-5 sm:px-6">
+  <div class="flex justify-between px-4 my-5 sm:px-6">
     <h3 class="text-lg leading-6 font-bold text-gray-900">
       {{t-date @month "termMonth"}}
     </h3>
+    <div>
+      {{#if this.isException}}
+        <FaIcon @icon="exclamation" @prefix="fal" class="text-gray-700" />
+      {{/if}}
+    </div>
   </div>
   <form
     class="border-t border-gray-200 px-4 my-5 sm:m-0"
@@ -18,7 +23,7 @@
             {{#if this.isEditing}}
               <TSelect
                 @value={{this.pojo.attributes.academicStatus}}
-                @optionsList={{this.statusOptions}}
+                @optionsList={{@academicStatusOptions}}
                 name="academicStatus"
                 @onchange={{fn this.onChange}}
               />
@@ -27,38 +32,62 @@
             {{/if}}
           </dd>
         </div>
+        {{#if isEnrollmentStatus}}
+          <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+            <dt class="font-bold text-gray-900">
+              Attendance
+            </dt>
+            <dd class="mt-1 text-gray-900 sm:mt-0 sm:col-span-2" data-test-attendance>
+              {{#if this.isEditing}}
+                <TSelect
+                  @value={{this.pojo.attributes.attendanceStatus}}
+                  @optionsList={{@attendanceStatusOptions}}
+                  name="academicStatus"
+                  @onchange={{fn this.onChange}}
+                />
+              {{else}}
+                {{this.attendance}}
+              {{/if}}
+            </dd>
+          </div>
+        {{/if}}
+        {{#if isUserStatus}}
+          <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+            <dt class="font-bold text-gray-900">
+              FTE hours
+            </dt>
+            <dd class="mt-1 text-gray-900 sm:mt-0 sm:col-span-2" data-test-fte>
+              {{#if this.isEditing}}
+                <input
+                  type="text"
+                  class="right"
+                  value={{this.pojo.attributes.fteHours}}
+                  name="fteHours"
+                  readonly={{true}}
+                />
+              {{else}}
+                {{this.status.attributes.fteHours}}
+              {{/if}}
+            </dd>
+          </div>
+        {{/if}}
         <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
           <dt class="font-bold text-gray-900">
-            FTE hours
+            <label for="{{@isViableField}}-{{@month}}">
+              {{@isViableLabel}}
+            </label>
           </dt>
-          <dd class="mt-1 text-gray-900 sm:mt-0 sm:col-span-2" data-test-fte>
-            {{#if this.isEditing}}
-              <input
-                type="text"
-                class="right"
-                value={{this.pojo.attributes.fteHours}}
-                name="fteHours"
-                readonly={{true}}
-              />
-            {{else}}
-              {{this.status.attributes.fteHours}}
-            {{/if}}
-          </dd>
-        </div>
-        <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="font-bold text-gray-900">
-            Held periodic checkins?
-          </dt>
-          <dd class="mt-1 text-gray-900 sm:mt-0 sm:col-span-2" data-test-checkins>
+          <dd class="mt-1 text-gray-900 sm:mt-0 sm:col-span-2" data-test-viability>
             {{#if this.isEditing}}
               <Input
                 @type="checkbox"
-                @checked={{this.pojo.attributes.heldPeriodicCheckins}}
-                name="heldPeriodicCheckins"
+                @checked={{this.isViable}}
+                @name={{@isViableField}}
+                @id="{{@isViableField}}-{{@month}}"
                 {{on "click" (fn this.onChange)}}
               />
             {{else}}
-              {{#if this.heldPeriodicCheckins}}
+              {{#if this.isViable}}
                 Yes
               {{else}}
                 No
@@ -81,7 +110,7 @@
           </div>
         {{/if}}
 
-        <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <div class="py-4 sm:py-5 sm:px-6">
           <dt class="font-medium text-gray-900">
             {{#if this.isEditing}}
               <EditSaveCancel
@@ -102,13 +131,13 @@
         </div>
 
         {{#unless this.isEditing}}
-          <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <div class="py-4 sm:py-5">
             <dt class="font-bold text-gray-900">
               Notes
             </dt>
             <dd class="mt-1 text-gray-900 sm:mt-0 sm:col-span-2">
               <NotesList
-                class="notes-row w-full md:w-1/2 {{loadingNotes}}"
+                class="notes-row w-full md:w-2/3 {{loadingNotes}}"
                 @notes={{notes}}
                 @notable={{status}}
               />
@@ -116,7 +145,7 @@
           </div>
         {{/unless}}
       {{else}}
-        <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6" data-test-month-has-no-status>
+        <div class="py-4 sm:py-5 sm:px-6" data-test-month-has-no-status>
           <dt class="font-medium text-gray-900">
             <button
               type="button"
