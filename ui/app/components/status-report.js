@@ -4,12 +4,46 @@ import { inject as service } from '@ember/service';
 import { activeMonths } from 'tinysis-ui/utils/status-utils';
 import { generateNotableHash } from 'tinysis-ui/utils/note-utils';
 
-export default class StatusByStudent extends Component {
+export default class StatusReport extends Component {
   @tracked notes;
 
   @tracked loadingNotes;
 
   @service tinyData;
+
+  get statusableType() {
+    return this.args.statusable.type;
+  }
+
+  get statusablePathSegment() {
+    return this.args.statusable.type === 'user'
+      ? 'students'
+      : 'enrollments';
+  }
+
+  get isViableLabel() {
+    return this.args.statusable.type === 'user'
+      ? 'Held periodic checkins'
+      : 'Met FTE requirements';
+  }
+
+  get isViableField() {
+    return this.args.statusable.type === 'user'
+      ? 'heldPeriodicCheckins'
+      : 'metFteRequirements';
+  }
+
+  get academicStatusOptions() {
+    const strings = this.args.statusable.type === 'user'
+      ? ['Satisfactory', 'Unsatisfactory']
+      : ['Satisfactory', 'Participating', 'Unsatisfactory'];
+
+    return strings
+      .map(name => ({ name, value: name.toLowerCase() }));
+  }
+
+  attendanceStatusOptions = ['Satisfactory', 'Unsatisfactory']
+    .map(name => ({ name, value: name.toLowerCase() }))
 
   get months() {
     const active = activeMonths(this.args.term, this.tinyData.getToday());

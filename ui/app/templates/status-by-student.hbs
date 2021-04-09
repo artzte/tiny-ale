@@ -2,8 +2,8 @@
   {{full-name this.student "first-last"}}
 </h2>
 
-<StatusByStudent
-  @student={{this.student}}
+<StatusReport
+  @statusable={{this.student}}
   @statuses={{this.statuses}}
   @term={{this.term}}
   @getNotes={{route-action "getNotes"}}

@@ -12,7 +12,7 @@ import notesStudentStatuses from '../../fixtures/notes-student-statuses';
 
 let tinyDataServiceMock;
 
-module('Integration | Component | status-by-student', hooks => {
+module('Integration | Component | status-report', hooks => {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(function () {
@@ -29,12 +29,12 @@ module('Integration | Component | status-by-student', hooks => {
     tinyDataServiceMock.addResult(notesStudentStatuses);
 
     await render(hbs`
-      {{status-by-student
-        student=student
-        statuses=statuses
-        term=term
-        getNotes=getNotes
-      }}
+      <StatusReport
+        @statusable={{this.student}}
+        @statuses={{this.statuses}}
+        @term={{this.term}}
+        @getNotes={{this.getNotes}}
+      />
     `);
 
     const rows = findAll('[data-test-status-row]');
@@ -48,12 +48,12 @@ module('Integration | Component | status-by-student', hooks => {
     tinyDataServiceMock.addResult(notesStudentStatuses);
 
     await render(hbs`
-      {{status-by-student
-        student=student
-        statuses=statuses
-        term=term
-        getNotes=getNotes
-      }}
+      <StatusReport
+        @statusable={{this.student}}
+        @statuses={{this.statuses}}
+        @term={{this.term}}
+        @getNotes={{this.getNotes}}
+      />
     `);
 
     const rows = findAll('[data-test-status-row]');

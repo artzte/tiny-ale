@@ -14,10 +14,13 @@ export default Route.extend({
 
   setupController(controller, enrollmentResult) {
     this._super(controller, enrollmentResult);
+    const contract = this.modelFor('contract').data;
+    const term = this.tinyData.get('term', contract.relationships.term.data.id);
     controller.setProperties({
       enrollment: enrollmentResult.data,
-      contract: this.modelFor('contract').data,
+      contract,
       statuses: this.statuses.data,
+      term,
     });
   },
 });
