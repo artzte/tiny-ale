@@ -92,6 +92,11 @@ db:init () {
   db:prepare:test
 }
 
+rehome () {
+  sudo chown -R $USER .
+  sudo chgrp -R $USER .
+}
+
 remove () {
   ui:reset
   db:reset
@@ -156,7 +161,7 @@ ui:build () {
 }
 
 case $COMMAND in
-  getSecrets|db:init|build|ui:shell|api:shell|db:shell|log|reset|api:test|ui:test|ui:reset|api:reset|stop|api:build|ui:build)
+  getSecrets|rehome|db:init|build|ui:shell|api:shell|db:shell|log|reset|api:test|ui:test|ui:reset|api:reset|stop|api:build|ui:build)
       $COMMAND;;
   *)
       usage
