@@ -16,7 +16,7 @@
     {{/if}}
   </td>
   <td>
-    {{t-date user.attributes.dateActive "MM-DD-YYYY"}}
+    <DateTime @date={{user.attributes.dateActive}} @format= "MM-DD-YYYY" />
   </td>
   <td>
     {{t-date user.attributes.dateInactive "MM-DD-YYYY"

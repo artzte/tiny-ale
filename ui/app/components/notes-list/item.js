@@ -1,12 +1,10 @@
-import Component from '@ember/component';
+import Component from '@glimmer/component';
 import { inject as service } from '@ember/service';
-import { computed } from '@ember/object';
 
-export default Component.extend({
-  tinyData: service(),
-  tagName: 'li',
-  classNames: 'notes-list-item',
-  creator: computed('note.relationships.creator.data.id', function () {
-    return this.tinyData.get('user', this.note.relationships.creator.data.id);
-  }),
-});
+export default class NotesListItem extends Component {
+  @service('tinyData') tinyData;
+
+  get creator() {
+    return this.tinyData.get('user', this.args.note.relationships.creator.data.id);
+  }
+}

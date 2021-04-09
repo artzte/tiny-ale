@@ -6,9 +6,9 @@
       {{#each @term.attributes.months as |month|}}
         <th
           data-test-term-month
-          title={{t-date month "compactTermMonth"}}
+          title=<DateTime @date={{month}} @format= "compactTermMonth" />
         >
-          {{t-date month "MMM"}}
+          <DateTime @date={{month}} @format= "MMM" />
         </th>
       {{/each}}
     </tr>

@@ -10,7 +10,7 @@
     {{/if}}
   </td>
   <td data-test-assignment-due>
-    {{t-date assignment.attributes.dueDate "MM/DD/YY"}}
+    <DateTime @date={{assignment.attributes.dueDate}} @format= "MM/DD/YY" />
   </td>
   <td data-test-assignment-status>
     {{titleize status}}
