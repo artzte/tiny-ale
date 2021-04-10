@@ -3,13 +3,17 @@ import dayjs from 'dayjs';
 import 'dayjs/locale/en';
 
 export default class DateTimeComponent extends Component {
+  get titleString() {
+    return this.args.titleString || this.isoString;
+  }
+
   get isoString() {
-    return this.date.format('YYYY-MM-DD');
+    return this.date && this.date.format('YYYY-MM-DD');
   }
 
   get date() {
     const { date } = this.args;
-    return dayjs(date, 'YYYY-MM-DD');
+    return date && dayjs(date, 'YYYY-MM-DD');
   }
 
   get formattedDate() {
