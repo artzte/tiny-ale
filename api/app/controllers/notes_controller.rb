@@ -39,7 +39,33 @@ class NotesController < ApiBaseController
     render json: NoteSerializer.new(note)
   end
 
-  protected
+  def update
+    note = Note.find(params[:id])
+
+    privilege = note.privileges(@user)
+
+    render status: :forbidden, json: { message: 'You cannot edit this note' } unless privilege == Note::PRIVILEGE_EDIT
+
+    note.note = note_attributes[:note]
+
+    note.save!
+
+    render json: NoteSerializer.new(note)
+  end
+
+  def destroy
+    note = Note.find(params[:id])
+
+    privilege = note.privileges(@user)
+
+    render status: :forbidden, json: { message: 'You cannot delete this note' } unless privilege == Note::PRIVILEGE_EDIT
+
+    note.destroy!
+
+    render nothing: true, status: 204
+  end
+
+protected
 
   def query_attributes
     params

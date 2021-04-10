@@ -140,13 +140,14 @@ RSpec.describe 'Statuses API', type: :request do
       put "/api/statuses/enrollments/#{@enrollment1.id}/#{month}", params: body.to_json, headers: json_request_headers
 
       expect(response).to have_http_status(200)
-      expect(json).not_to be_empty
+      expect(json).not_to be_empty  
+
       expect(json['data']['attributes']).to be_present
       expect(json['data']['id']).to be_present
       expect(json['data']['attributes']['month']).to eq(month.strftime('%Y-%m-%d'))
       expect(json['data']['attributes']['academicStatus']).to eq(attributes[:academicStatus])
       expect(json['data']['attributes']['fteHours']).to eq(status.fte_hours)
-      expect(json['data']['attributes']['heldPeriodicCheckins']).to eq(status.held_periodic_checkins)
+      expect(json['data']['attributes']['metFteRequirements']).to eq(status.met_fte_requirements)
       
       expect(json['data']['relationships']).to be_present
       expect(json['data']['relationships']['notes']).to be_present

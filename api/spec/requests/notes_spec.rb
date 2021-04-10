@@ -62,4 +62,43 @@ RSpec.describe 'Notes API', type: :request do
       expect(json['data']['relationships']['notable']['data']['type']).to eq('creditAssignment')
     end
   end
+
+  describe 'PUT /api/notes/:id' do
+    it 'returns a 200 when updating a note' do
+      note = @credit_assignment_1.notes.first
+
+      note_text = "Hallo!"
+      body = {
+        data: {
+          attributes: {
+            note: note_text
+          }
+        }
+      }
+      put "/api/notes/#{note.id}", params: body.to_json, headers: json_request_headers
+
+      expect(response).to have_http_status(200)
+
+      expect(json).not_to be_empty
+      expect(json['data']).to be_present
+      expect(json['data']['relationships']).to be_present
+      expect(json['data']['relationships']['notable']['data']).to be_present
+      expect(json['data']['relationships']['notable']['data']['id']).to eq(@credit_assignment_1.id.to_s)
+      expect(json['data']['relationships']['notable']['data']['type']).to eq('creditAssignment')
+      expect(json['data']['attributes']['note']).to eq(note_text)      
+    end
+  end
+
+  describe 'DELETE /api/notes/:id' do
+    it 'returns a 204 when updating a note' do
+      note = @credit_assignment_1.notes.first
+
+      delete "/api/notes/#{note.id}", headers: json_request_headers
+
+      expect(response).to have_http_status(204)
+
+      note = Note.find_by_id note.id
+      expect(note).to be_nil
+    end
+  end
 end

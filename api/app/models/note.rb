@@ -40,21 +40,4 @@ class Note < ApplicationRecord
     PRIVILEGE_NONE
   end
 
-  def dom_id
-    "view_note_#{id}"
-  end
-
-  def self.notes_hash(coll)
-    result = {}
-
-    return result if coll.empty?
-
-    notes = Note.find(:all, conditions: ['notable_type = ? and notable_id in (?)', coll.first.class.to_s, coll.collect { |c| c.id }], include: :author)
-    notes.each do |note|
-      result[note.notable_id] ||= []
-      result[note.notable_id] << note
-    end
-    result.default = []
-    result
-  end
 end
