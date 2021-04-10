@@ -1,7 +1,7 @@
 <div class="bg-white shadow overflow-hidden sm:rounded-lg mb-5" data-test-status-row={{@month}}>
   <div class="flex justify-between px-4 my-5 sm:px-6">
     <h3 class="text-lg leading-6 font-bold text-gray-900">
-      <DateTime @date={{@month}} @format= "termMonth" />
+      <DateTime @date={{@month}} @format="MMMM YYYY" />
     </h3>
     <div>
       {{#if this.isException}}
@@ -124,7 +124,7 @@
                 class="button button-primary"
                 {{on "click" this.setEditing}}
               >
-                Edit status for <DateTime @date={{@month}} @format= "termMonth" />
+                Edit status for <DateTime @date={{@month}} @format="MMMM YYYY" />
               </button>
             {{/if}}
           </dt>
@@ -152,7 +152,7 @@
               class="button button-primary"
               {{on "click" this.setEditing}}
             >
-              Report status for <DateTime @date={{@month}} @format= "termMonth" />
+              Report status for <DateTime @date={{@month}} @format="MMMM YYYY" />
             </button>
           </dt>
         </div>

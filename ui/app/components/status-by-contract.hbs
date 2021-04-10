@@ -4,8 +4,8 @@
       <th>Name</th>
       <th>Status</th>
       {{#each months as |month|}}
-        <th data-test-term-month title=<DateTime @date={{month}} @format= "compactTermMonth" />>
-          <DateTime @date={{month}} @format= "MMM" />
+        <th data-test-term-month>
+          <DateTime @date={{month}} @format="MMM" />
         </th>
       {{/each}}
     </tr>

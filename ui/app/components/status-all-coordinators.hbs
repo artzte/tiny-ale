@@ -3,7 +3,9 @@
     <tr>
       <th>Coordinator</th>
       {{#each term.attributes.months as |month|}}
-        <th data-test-term-month class="center" title=<DateTime @date={{month}} @format= "compactTermMonth" />><DateTime @date={{month}} @format= "MMM" /></th>
+        <th data-test-term-month class="center">
+          <DateTime @date={{month}} @format="MMM" />
+        </th>
       {{/each}}
     </tr>
   </thead>

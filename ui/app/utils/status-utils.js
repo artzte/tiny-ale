@@ -81,7 +81,6 @@ export function hashByMonth(statuses) {
 export function hashByStatusableIdAndMonth(statuses) {
   return statuses.reduce((hash, status) => {
     const key = status.relationships.statusable.data.id;
-
     const h = hash[key] || {};
 
     h[status.attributes.month] = status;

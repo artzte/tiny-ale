@@ -16,12 +16,17 @@
     {{/if}}
   </td>
   <td>
-    <DateTime @date={{user.attributes.dateActive}} @format= "MM-DD-YYYY" />
+    <DateTime
+      @date={{user.attributes.dateActive}}
+      @format="MM-DD-YYYY"
+    />
   </td>
   <td>
-    {{t-date user.attributes.dateInactive "MM-DD-YYYY"
-      substitute="-"
-    }}
+    <DateTime
+      @date={{user.attributes.dateInactive}}
+      @format={{"MM-DD-YYYY"}}
+      @substitute="-"
+    />
   </td>
   {{#if isStudent}}
     <td data-test-district-id>

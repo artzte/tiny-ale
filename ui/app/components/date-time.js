@@ -3,30 +3,26 @@ import dayjs from 'dayjs';
 import 'dayjs/locale/en';
 
 export default class DateTimeComponent extends Component {
+  get isoString() {
+    return this.date.format('YYYY-MM-DD');
+  }
+
+  get date() {
+    const { date } = this.args;
+    return dayjs(date, 'YYYY-MM-DD');
+  }
+
   get formattedDate() {
     const {
-      date,
+      date: dateArgs,
       substitute,
+      format,
     } = this.args;
 
-    if (!date) {
+    if (!dateArgs) {
       return substitute || '';
     }
 
-    let format;
-
-    switch (this.args.format) {
-      case 'compactTermMonth':
-        format = 'MMM';
-        break;
-      case 'termMonth':
-        format = 'MMMM YYYY';
-        break;
-      default:
-        format = _format || 'D MMMM, YYYY';
-    }
-
-    return dayjs(date)
-      .format(format);
+    return this.date.format(format || 'D MMMM, YYYY');
   }
 }
