@@ -124,7 +124,8 @@
                 class="button button-primary"
                 {{on "click" this.setEditing}}
               >
-                Edit status for <DateTime @date={{@month}} @format="MMMM YYYY" />
+                Edit status for
+                <DateTime class="pl-2" @date={{@month}} @format="MMMM YYYY" />
               </button>
             {{/if}}
           </dt>

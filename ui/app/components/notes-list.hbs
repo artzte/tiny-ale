@@ -4,8 +4,8 @@
       {{#unless disabled}}
         <a
           href="#"
-          class="action-icon add-note text-gray-700 hover:text-gray-800"
-          onClick={{action "doAdd"}}
+          class="text-gray-700 hover:text-gray-800"
+          onClick={{action "showAdd"}}
         >
           <FaIcon @icon="plus" @prefix="fal" />
           Add a note
@@ -17,8 +17,34 @@
         <NotesList::Item
           @note={{note}}
           @expanded={{true}}
+          @editNote={{fn this.showEdit note}}
         />
       {{/each}}
     </div>
   </div>
 </div>
+
+{{#if showDialog}}
+  <ModalDialog
+    @containerClass="pointer-events-auto w-full lg:w-1/2"
+    @translucentOverlay={{true}}
+    @overlayClass="pointer-events-none"
+  >
+    <form class="grid w-full">
+      <fieldset>
+        <label for="edit-note" class="font-bold text-gray-900">
+          Notes from {{this.noteAuthor}} on <DateTime @date={{this.note.attributes.createdOn}} />
+        </label>
+        <textarea
+          name="notess"
+          {{on "input" (fn this.updateNoteText)}}
+        >{{this.noteText}}</textarea>
+      </fieldset>
+      <EditSaveCancel
+        @disabled={{@disabled}}
+        @editing={{true}}
+        @onCancel={{action 'cancelEdit'}}
+      />
+    </form>
+  </ModalDialog>
+{{/if}}
