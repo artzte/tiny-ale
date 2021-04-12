@@ -34,7 +34,7 @@ export const tinyDataService = {
   },
 
   getUser() {
-    return this._data.user;
+    return clone(this._data.user);
   },
 
   setUser(user) {
@@ -187,10 +187,11 @@ export const tinyDataService = {
 
     const notableType = firstNotable.type;
     const notableIds = notables.map(notable => notable.id);
-    return this.fetch('/api/notes', {
+    return this.fnetch('/api/notes', {
       data: {
         notableType,
         notableIds: notableIds.join(','),
+        order: 'createdAt DESC',
       },
     });
   },

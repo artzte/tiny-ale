@@ -8,7 +8,7 @@ export default class DateTimeComponent extends Component {
   }
 
   get isoString() {
-    return this.date && this.date.format('YYYY-MM-DD');
+    return this.date && this.date.toISOString();
   }
 
   get date() {

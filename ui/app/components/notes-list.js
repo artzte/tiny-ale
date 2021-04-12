@@ -4,17 +4,20 @@ import { inject as service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import { dasherize } from '@ember/string';
 import { replaceModel } from '../utils/json-api';
+import Validator from '../utils/validator';
 
 export default class NotesList extends Component {
   @service('tinyData') tinyData;
 
   @tracked _notes;
 
-  @tracked note;
+  @tracked noteToEdit;
 
-  @tracked noteText;
-
-  @tracked showDialog = false;
+  validator = new Validator({
+    note: [{
+      type: 'required',
+    }],
+  });
 
   get notes() {
     return this._notes || this.args.notes;
@@ -26,75 +29,74 @@ export default class NotesList extends Component {
       .sort((note1, note2) => note1.attributes.createdAt.localeCompare(note2.attributes.createdAt));
   }
 
-  createNote(notable, note) {
+  createNote(note) {
     const {
       type,
       id,
-    } = notable;
+    } = note.relationships.notable.data;
     return this.tinyData.fetch(`/api/notes/${dasherize(type)}/${id}`, {
       method: 'POST',
-      data: {
-        data: {
-          attributes: {
-            note,
-          },
-        },
-      },
+      data: { data: note },
     });
   }
 
-  updateNote(model, note) {
-    return this.tinyData.fetch(`/api/notes/${model.id}`, {
+  updateNote(note) {
+    return this.tinyData.fetch(`/api/notes/${note.id}`, {
       method: 'PUT',
-      data: {
-        data: {
-          attributes: {
-            note,
-          },
-        },
-      },
+      data: { data: note },
     });
+  }
+
+  get creator() {
+    const { noteToEdit } = this;
+
+    if (!noteToEdit) return null;
+
+    if (!noteToEdit.id) {
+      return this.tinyData.getUser();
+    }
+
+    return this.tinyData.get('user', noteToEdit.relationships.creator.data.id);
   }
 
   @action showAdd() {
-    this.showDialog = true;
-    this.note = { attributes: { note: '' } };
-    this.noteText = '';
+    this.noteToEdit = {
+      attributes: {
+        note: '',
+      },
+      relationships: {
+        notable: {
+          data: this.args.notable,
+        },
+      },
+    };
   }
 
   @action showEdit(note) {
-    console.log('showEdit', note)
-    this.showDialog = true;
-    this.note = note;
-    this.noteText = note.attributes.note;
+    this.noteToEdit = note;
   }
 
-  @action updateNoteText(event) {
-    this.noteText = event.target.value;
-  }
-
-  @action async save() {
-    const {
-      note,
-      notable,
-      noteText,
-    } = this;
-
+  @action async save(note) {
     try {
       if (note.id) {
-        const newModel = await this.updateNote(note, noteText);
-        this._notes = [newModel, ...this.notes];
+        const newModel = await this.updateNote(note);
+        this._notes = replaceModel(this.notes, newModel.data);
       } else {
-        const newModel = await this.createNote(notable, noteText);
-        this._notes = replaceModel(newModel, this.notes);
+        const newModel = await this.createNote(note);
+        this._notes = [newModel.data, ...this.notes];
       }
-    } catch(e) {
-      debugger;
+    } catch (e) {
+      this.flashMessages.danger(`Could not save your note - error was ${e.message}`);
     }
-    this.showDialog = false;
+    this.cancelEdit();
   }
 
   @action cancelEdit() {
-    this.showDialog = false;
+    this.noteToEdit = null;
   }
+
+  @action reportError(error) {
+    console.error(error);
+  }
+
 }

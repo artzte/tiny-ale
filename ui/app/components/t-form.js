@@ -8,8 +8,7 @@ import clone from '../utils/clone';
 
 export default Component.extend({
   showErrors: false,
-  classNames: ['t-form'],
-  tagName: 'form',
+  tagName: '',
 
   didReceiveAttrs() {
     this._super();
@@ -33,16 +32,6 @@ export default Component.extend({
 
     if (this.onUpdatePojo) {
       this.onUpdatePojo(this.serializeModel(this.pojo, this.model, this.relationships));
-    }
-  },
-
-  didInsertElement(...args) {
-    this._super(...args);
-    const autofocus = this.element.querySelector('[autofocus]');
-
-    if (autofocus) {
-      autofocus.focus();
-      autofocus.select();
     }
   },
 
@@ -82,6 +71,29 @@ export default Component.extend({
         reference = null;
       }
       this.handleChange(name, reference, 'relationships');
+    },
+
+    onSubmit(event) {
+      event.preventDefault();
+  
+      if (this.isInvalid) {
+        this.set('showErrors', true);
+        if (this.reportError) {
+          this.reportError(this.errors);
+        }
+        return;
+      }
+  
+      this.set('disabled', true);
+  
+      const { model, hasUpdates, updates } = this.serialize();
+      const result = this.save(model, hasUpdates && updates);
+  
+      result.finally(() => {
+        if (this.isDestroyed) return;
+  
+        this.set('disabled', false);
+      });
     },
   },
 
@@ -232,28 +244,5 @@ export default Component.extend({
       updates,
       hasUpdates,
     };
-  },
-
-  submit(event) {
-    event.preventDefault();
-
-    if (this.isInvalid) {
-      this.set('showErrors', true);
-      if (this.reportError) {
-        this.reportError(this.errors);
-      }
-      return;
-    }
-
-    this.set('disabled', true);
-
-    const { model, hasUpdates, updates } = this.serialize();
-    const result = this.save(model, hasUpdates && updates);
-
-    result.finally(() => {
-      if (this.isDestroyed) return;
-
-      this.set('disabled', false);
-    });
   },
 });
