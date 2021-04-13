@@ -1,6 +1,6 @@
 <fieldset>
   <p>
-    <FormInput @error={{errors.name}} @showError={{showErrors}} @label="Name">
+    <FormInput @error={{this.errors.name}} @showError={{this.showErrors}} @label="Name">
       <input
         type="text"
         name="name"
@@ -11,26 +11,26 @@
     </FormInput>
   </p>
   <p>
-    <FormInput @error={{errors.schoolYear}} @showError={{showErrors}} @label="School year">
+    <FormInput @error={{this.errors.schoolYear}} @showError={{this.showErrors}} @label="School year">
       <TSelect
         name="schoolYear"
         @value={{pojo.schoolYear}}
-        @optionsList={{sortedSchoolYears}}
+        @optionsList={{this.sortedSchoolYears}}
         @onchange={{action "didChangeSchoolYear"}}
       />
     </FormInput>
   </p>
   <p>
-    <FormInput @error={{errors.creditDate}} @showError={{showErrors}} @label="Credit date">
+    <FormInput @error={{this.errors.creditDate}} @showError={{this.showErrors}} @label="Credit date">
       <TPikaday @popup={{true}} @name="creditDate" @value={{pojo.creditDate}} @onchange={{action "onChange"}} />
     </FormInput>
   </p>
 </fieldset>
 <fieldset>
   <h3>Status reporting months</h3>
-  <TFormErrorMessage @message={{errors.months}} @show={{showErrors}} @className="absolute -mt-4" />
+  <TFormErrorMessage @message={{this.errors.months}} @show={{this.showErrors}} @className="absolute -mt-4" />
   <div class="inputs-horizontal">
-    {{#each reportingMonthOptions as |month|}}
+    {{#each this.reportingMonthOptions as |month|}}
       <AdminTermForm::ReportingMonth @month={{month}} @months={{pojo.months}} @onclick={{action "toggleMonth"}} />
     {{/each}}
   </div>

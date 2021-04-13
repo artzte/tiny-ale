@@ -10,6 +10,7 @@ class NotesController < ApiBaseController
 
     result = Note
              .where(conditions)
+             .order('created_at DESC')
              .limit(@limit)
     count = Note
             .where(conditions)

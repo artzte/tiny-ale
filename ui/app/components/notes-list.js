@@ -23,12 +23,6 @@ export default class NotesList extends Component {
     return this._notes || this.args.notes;
   }
 
-  get sortedNotes() {
-    const { notes } = this;
-    return (notes || [])
-      .sort((note1, note2) => note1.attributes.createdAt.localeCompare(note2.attributes.createdAt));
-  }
-
   createNote(note) {
     const {
       type,
@@ -98,5 +92,4 @@ export default class NotesList extends Component {
   @action reportError(error) {
     console.error(error);
   }
-
 }
