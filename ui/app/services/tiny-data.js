@@ -187,7 +187,7 @@ export const tinyDataService = {
 
     const notableType = firstNotable.type;
     const notableIds = notables.map(notable => notable.id);
-    return this.fnetch('/api/notes', {
+    return this.fetch('/api/notes', {
       data: {
         notableType,
         notableIds: notableIds.join(','),

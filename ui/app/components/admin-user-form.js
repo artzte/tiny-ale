@@ -1,44 +1,55 @@
-import { computed, get } from '@ember/object';
-import { equal, bool } from '@ember/object/computed';
-
+import { action, get } from '@ember/object';
 import {
   roleTypes,
   ROLE_STUDENT,
+  ROLE_STAFF,
+  ROLE_ADMIN,
   isStaffRole,
   STATUS_INACTIVE,
 } from '../utils/user-utils';
 import Validator from '../utils/validator';
 import TForm from './t-form';
 
-export default TForm.extend({
-  roleOptions: roleTypes,
-  classNames: ['w-full', 'lg:w-1/2', 'xl:w-1/3'],
-  attributeBindings: ['autocomplete'],
-  autocomplete: 'off',
-  isActive: equal('pojo.status', 'active'),
-  isExistingUser: bool('model.id'),
-  isStudent: equal('pojo.role', ROLE_STUDENT),
-  isStaff: computed('pojo.role', function () {
-    const role = this.get('pojo.role');
-    return isStaffRole(role);
-  }),
+function getVerifyFunctionForRole(...roles) {
+  return (key, value, pojo) => roles.includes(pojo.role);
+}
 
-  coordinatorOptions: computed('staff', function () {
-    return this.staff
+export default class AdminUserForm extends TForm {
+  roleOptions = roleTypes;
+
+  get isActive() {
+    return this.pojo.status === 'active';
+  }
+
+  get isExistingUser() {
+    return Boolean(this.args.model.id);
+  }
+
+  get isStudent() {
+    return this.pojo.role === ROLE_STUDENT;
+  }
+
+  get isStaff() {
+    const { role } = this.pojo;
+    return isStaffRole(role);
+  }
+
+  get coordinatorOptions() {
+    return this.args.staff
       .map(staff => ({
         id: staff.id,
         name: `${staff.attributes.lastName}, ${staff.attributes.firstName}`,
       }));
-  }),
+  }
 
-  grades: computed(() => ([
+  grades = [
     { name: 'Freshman', value: '9' },
     { name: 'Sophomore', value: '10' },
     { name: 'Junior', value: '11' },
     { name: 'Senior', value: '12' },
-  ])),
+  ];
 
-  validator: computed('isStudent', function () {
+  get validator() {
     const { isStudent } = this;
 
     // dateInactive must be present if isActive is false
@@ -76,64 +87,50 @@ export default TForm.extend({
     const requiredForStudents = [
       'districtId',
       'districtGrade',
-      'coordinatorId',
     ];
 
-    let requiredKeys = requiredForAll;
-    if (isStudent) {
-      requiredKeys = requiredKeys.concat(requiredForStudents);
-    } else {
-      requiredKeys = requiredKeys.concat(requiredForStaff);
-    }
-
-    validationsHash = requiredKeys.reduce((memo, key) => {
+    validationsHash = requiredForAll.reduce((memo, key) => {
       memo[key] = { type: 'required' };
       return memo;
     }, validationsHash);
 
+    if (isStudent) {
+      validationsHash = requiredForStudents.reduce((memo, key) => {
+        memo[key] = {
+          type: 'required',
+          if: getVerifyFunctionForRole(ROLE_STUDENT),
+        };
+        return memo;
+      }, validationsHash);
+    } else {
+      validationsHash = requiredForStaff.reduce((memo, key) => {
+        memo[key] = {
+          type: 'required',
+          if: getVerifyFunctionForRole(ROLE_STAFF, ROLE_ADMIN)
+        };
+        return memo;
+      }, validationsHash);
+    }
+
     return new Validator(validationsHash);
-  }),
+  }
 
-  actions: {
-    handleCoordinatorChange(coordinatorId) {
-      this.updatePojo({ coordinatorId });
-    },
+  validateRelationships = new Validator({
+    coordinator: [{
+      type: 'required',
+      if: getVerifyFunctionForRole(ROLE_STUDENT),
+      message: 'Coordinator must be assigned to student',
+    }],
+  });
 
-    updateDate(date, name) {
-      const update = {};
-      update[name] = date;
-      this.updatePojo(update);
-      this.validate();
-    },
-  },
+  @action handleCoordinatorChange(coordinatorId) {
+    this.updatePojo({ coordinatorId });
+  }
 
-  normalizeModel(model) {
-    const pojo = this._super(model);
-    const coordinatorId = get(model, 'relationships.coordinator.data.id');
-
-    if (coordinatorId) {
-      pojo.coordinatorId = coordinatorId;
-    }
-
-    return pojo;
-  },
-
-  serializeModel(pojo, model) {
-    const outbound = this._super(pojo, model);
-
-    delete outbound.attributes.coordinatorId;
-
-    if (pojo.coordinatorId) {
-      outbound.relationships = {
-        coordinator: {
-          data: {
-            id: pojo.coordinatorId,
-            type: 'user',
-          },
-        },
-      };
-    }
-
-    return outbound;
-  },
-});
+  @action updateDate(date, name) {
+    const update = {};
+    update[name] = date;
+    this.updatePojo(update);
+    this.validate();
+  }
+}

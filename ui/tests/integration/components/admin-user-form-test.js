@@ -50,12 +50,12 @@ module('Integration | Component | admin-user-form', hooks => {
 
   test('it renders student', async assert => {
     await render(hbs`
-      {{admin-user-form
-        staff=allStaff
-        model=student
-        save=saveUser
-        reportError=reportError
-      }}
+      <AdminUserForm
+        @staff={{allStaff}}
+        @model={{student}}
+        @save={{saveUser}}
+        @reportError={{reportError}}
+      />
     `);
 
     await click('button');
@@ -70,12 +70,12 @@ module('Integration | Component | admin-user-form', hooks => {
 
   test('it renders staff member', async assert => {
     await render(hbs`
-      {{admin-user-form
-        staff=allStaff
-        model=staff
-        save=saveUser
-        reportError=reportError
-      }}
+      <AdminUserForm
+        @staff={{allStaff}}
+        @model={{staff}}
+        @save={{saveUser}}
+        @reportError={{reportError}}
+      />
     `);
 
     await click('button');
@@ -90,12 +90,12 @@ module('Integration | Component | admin-user-form', hooks => {
 
   test('it renders admin', async assert => {
     await render(hbs`
-      {{admin-user-form
-        staff=allStaff
-        model=admin
-        save=saveUser
-        reportError=reportError
-      }}
+      <AdminUserForm
+        @staff={{allStaff}}
+        @model={{admin}}
+        @save={{saveUser}}
+        @reportError={{reportError}}
+      />
     `);
 
     await click('button');
@@ -115,14 +115,13 @@ module('Integration | Component | admin-user-form', hooks => {
     this.set('noName', noName);
 
     await render(hbs`
-      {{admin-user-form
-        staff=allStaff
-        model=noName
-        save=saveUser
-        reportError=reportError
-      }}
+      <AdminUserForm
+        @staff={{allStaff}}
+        @model={{noName}}
+        @save={{saveUser}}
+        @reportError={{reportError}}
+      />
     `);
-
     await click('button');
 
     assert.equal(requests.length, 1, 'Submitted one callback');
@@ -134,12 +133,12 @@ module('Integration | Component | admin-user-form', hooks => {
 
   test('it renders admin and handles edits', async assert => {
     await render(hbs`
-      {{admin-user-form
-        staff=allStaff
-        model=admin
-        save=saveUser
-        reportError=reportError
-      }}
+      <AdminUserForm
+        @staff={{allStaff}}
+        @model={{admin}}
+        @save={{saveUser}}
+        @reportError={{reportError}}
+      />
     `);
 
     await fillIn('input[name="firstName"]', 'Sally');

@@ -101,7 +101,7 @@ export default class TForm extends Component {
     this.relationships = normalizeRelationships(model);
 
     this['updates-pojo'] = {};
-    this['updates-relationship'] = {};
+    this['updates-relationships'] = {};
 
     this.validate();
 
@@ -152,8 +152,8 @@ export default class TForm extends Component {
 
     if (this.isInvalid) {
       this.showErrors = true;
-      if (this.reportError) {
-        this.reportError(this.errors);
+      if (this.args.reportError) {
+        this.args.reportError(this.errors);
       }
       return;
     }
@@ -161,7 +161,7 @@ export default class TForm extends Component {
     this.disabled = true;
 
     const { model, hasUpdates, updates } = this.serialize();
-    const result = this.save(model, hasUpdates && updates);
+    const result = this.args.save(model, hasUpdates && updates);
 
     result.finally(() => {
       if (this.isDestroyed) return;
@@ -214,10 +214,14 @@ export default class TForm extends Component {
 
     if (this.validateRelationships) {
       const { isInvalid, errors } = this.validateRelationships.validate({ ...this.relationships, ...this['updates-relationships'] });
-      results = { isInvalid: isInvalid || results.isInvalid, errors: { ...results.errors, ...errors } };
+      results = {
+        isInvalid: (isInvalid || results.isInvalid),
+        errors: { ...results.errors, ...errors },
+      };
     }
 
-    Object.keys(results).forEach(key => { this[key] = key; });
+    this.isInvalid = results.isInvalid;
+    this.errors = results.errors;
 
     return results;
   }
@@ -231,8 +235,11 @@ export default class TForm extends Component {
       'updates-pojo': pojoUpdates,
       relationships,
       'updates-relationships': relationshipsUpdates,
-      model: _model,
     } = this;
+
+    const {
+      model: _model,
+    } = this.args;
 
     const model = serializeModel(pojo, _model, relationships);
     const hasUpdates = Boolean(Object.keys(pojoUpdates).length || Object.keys(relationshipsUpdates).length);
