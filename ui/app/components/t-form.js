@@ -206,14 +206,17 @@ export default class TForm extends Component {
 
   validate() {
     let results = { isInvalid: false, errors: {} };
+    const validator = this.args.validator || this.validator;
 
-    if (this.validator) {
-      const { isInvalid, errors } = this.validator.validate({ ...this.pojo, ...this['updates-pojo'] });
+    if (validator) {
+      const { isInvalid, errors } = validator.validate({ ...this.pojo, ...this['updates-pojo'] });
       results = { isInvalid, errors };
     }
 
-    if (this.validateRelationships) {
-      const { isInvalid, errors } = this.validateRelationships.validate({ ...this.relationships, ...this['updates-relationships'] });
+    const validateRelationships = this.args.validateRelationships || this.validateRelationships;
+
+    if (validateRelationships) {
+      const { isInvalid, errors } = validateRelationships.validate({ ...this.relationships, ...this['updates-relationships'] });
       results = {
         isInvalid: (isInvalid || results.isInvalid),
         errors: { ...results.errors, ...errors },

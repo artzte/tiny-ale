@@ -45,31 +45,31 @@ module('Integration | Component | t-form', hooks => {
 
   test('it renders and submits expected calls', async function (assert) {
     await render(hbs`
-      {{#t-form
-        validator=validator
-        model=model
-        save=save
-        reportError=reportError
+      <TForm
+        @validator={{this.validator}}
+        @model={{this.model}}
+        @save={{fn this.save}}
+        @reportError={{this.reportError}}
         as |form|
-      }}
+      >
         <input
           name="name"
-          value={{pojo.name}}
+          value={{this.pojo.name}}
           onchange={{action "onChange" target=form}}
         >
         <input
           name="age"
-          value={{pojo.age}}
+          value={{this.pojo.age}}
           onchange={{action "onChange" target=form}}
         >
         <input
           name="booOrFalse"
           type="checkbox"
-          checked={{pojo.booOrFalse}}
+          checked={{this.pojo.booOrFalse}}
           onchange={{action "toggleValue" "booOrFalse" target=form}}
         >
         <button type="submit">Save</button>
-      {{/t-form}}
+      </TForm>
     `);
 
     assert.ok(find('form'), 'form element found');
