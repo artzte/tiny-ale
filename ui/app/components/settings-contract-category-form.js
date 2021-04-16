@@ -1,26 +1,20 @@
-import { computed } from '@ember/object';
 import TForm from './t-form';
 import Validator from '../utils/validator';
 
-export default TForm.extend({
-  classNames: ['w-full', 'lg:w-1/2', 'xl:w-1/3'],
-  reportingOptions: computed(() => ([
+export default class SettingsContractCategoryForm extends TForm {
+  reportingOptions = [
     { name: 'Monthly', value: 'monthly' },
     { name: 'End of term', value: 'end-of-term' },
     { name: 'None', value: 'none' },
-  ])),
-  validator: computed(() => (
-    new Validator({
-      name: [{ type: 'required' }],
-      sequence: [
-        {
-          type: 'required',
-        },
-        {
-          type: 'format',
-          regex: /\d+/,
-        },
-      ],
-    })
-  )),
-});
+  ];
+
+  validator = new Validator({
+    name: [{ type: 'required' }],
+    sequence: [{
+      type: 'required',
+    }, {
+      type: 'format',
+      regex: /\d+/,
+    }],
+  });
+}
