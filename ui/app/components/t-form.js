@@ -33,7 +33,9 @@ function normalizeRelationships(model) {
   const relationships = Object.keys(modelRelationships)
     .reduce((memo, key) => {
       const relation = modelRelationships[key];
-      if (!relation) throw new Error(`Malformed relationship: "${key}"`);
+
+      if (!relation) return memo;
+
       memo[key] = relation.data;
       return memo;
     }, {});

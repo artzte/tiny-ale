@@ -1,5 +1,5 @@
 import { inject as service } from '@ember/service';
-import { get } from '@ember/object';
+import { action, get } from '@ember/object';
 import TForm from '../t-form';
 import Validator from '../../utils/validator';
 
@@ -7,49 +7,50 @@ import Validator from '../../utils/validator';
 // or a decimal with no whole number
 //
 export const creditsRegex = /(^\d+(\.(75|5|25))?$)|(^\.(75|5|25)$)/;
-const validator = new Validator({
-  creditHours: {
-    type: 'format',
-    regex: creditsRegex,
-    message: 'Invalid credit value - please override with a value having a 0.25 multiple',
-  },
-});
-const relationshipsValidator = new Validator({
-  credit: { type: 'required' },
-});
 
 // Credit is required
 // Denormalized contract term is required if assgned to user
-//
-export default TForm.extend({
-  tinyData: service(),
-  creditAssignment: service(),
-  classNames: ['w-128'],
-  validator,
-  relationshipsValidator,
-  didReceiveAttrs() {
-    const { model } = this;
+export default class CreditAssignmentCreateEditDialog extends TForm {
+  @service('tinyData') tinyData;
+
+  @service('creditAssignment') creditAssignment;
+
+  validator = new Validator({
+    creditHours: {
+      type: 'format',
+      regex: creditsRegex,
+      message: 'Invalid credit value - please override with a value having a 0.25 multiple',
+    },
+  });
+
+  relationshipsValidator = new Validator({
+    credit: { type: 'required' },
+  });
+
+  constructor(...args) {
+    super(...args);
+
+    const { model } = this.args;
     const creditId = get(model, 'relationships.credit.data.id');
     if (creditId) {
       const credit = this.tinyData.get('credit', creditId);
       this.creditResult = [{ value: credit.id, name: credit.attributes.courseName }];
     }
+  }
 
-    this._super();
-  },
-  actions: {
-    close() {
-      this.close();
-    },
-    onChangeCredit(id) {
-      this.updateRelationship('credit', { id, type: 'credit' });
-    },
-    async searchCredits(search) {
-      const credits = await this.creditAssignment.searchCredits({ search });
-      return credits.data.map(c => ({
-        name: c.attributes.courseName,
-        value: c.id,
-      }));
-    },
-  },
-});
+  @action close() {
+    this.args.close();
+  }
+
+  @action onChangeCredit(id) {
+    this.updateRelationship('credit', { id, type: 'credit' });
+  }
+
+  async searchCredits(search) {
+    const credits = await this.creditAssignment.searchCredits({ search });
+    return credits.data.map(c => ({
+      name: c.attributes.courseName,
+      value: c.id,
+    }));
+  }
+}

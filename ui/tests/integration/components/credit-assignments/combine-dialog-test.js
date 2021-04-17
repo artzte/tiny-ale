@@ -18,6 +18,7 @@ import termsFixture from '../../../fixtures/terms';
 import { stubTinyData } from '../../../helpers/stub-tiny-data';
 
 let tinyData;
+let combineModel;
 let creditAssignments;
 let credits;
 let terms;
@@ -39,6 +40,17 @@ module('Integration | Component | CreditAssignments::CombineDialog', hooks => {
     creditAssignments = tinyData.get('creditAssignment');
     terms = tinyData.get('term');
 
+    combineModel = {
+      id: null,
+      type: 'creditAssignment',
+      attributes: {},
+      relationships: {
+        contractTerm: null,
+        credit: null,
+        childCreditAssignments: null,
+      },
+    };
+
     this.owner.lookup('service:credit-assignment').mockTinyData(tinyData);
 
     creditsToCombine = creditAssignments
@@ -52,6 +64,7 @@ module('Integration | Component | CreditAssignments::CombineDialog', hooks => {
       credits,
       terms,
       today: new Date(2019, 8, 1),
+      combineModel,
       save: model => {
         requests.push({ type: 'save', model });
         return resolve(model);
@@ -68,6 +81,7 @@ module('Integration | Component | CreditAssignments::CombineDialog', hooks => {
   test('it renders and can post through a default combined credit', async assert => {
     await render(hbs`
       <CreditAssignments::CombineDialog
+        @model={{combineModel}}
         @creditAssignments={{creditsToCombine}}
         @today={{today}}
         @terms={{terms}}
@@ -130,13 +144,13 @@ module('Integration | Component | CreditAssignments::CombineDialog', hooks => {
   test('it renders a combined credit and then reports and recovers from validation failure', async assert => {
     await render(hbs`
       <CreditAssignments::CombineDialog
+        @model={{combineModel}}
         @creditAssignments={{creditsToCombine}}
         @today={{today}}
         @terms={{terms}}
         @save={{this.save}}
         @close={{this.close}}
         @reportError={{this.reportError}}
-
       />
     `);
 
@@ -188,6 +202,7 @@ module('Integration | Component | CreditAssignments::CombineDialog', hooks => {
 
     await render(hbs`
       <CreditAssignments::CombineDialog
+        @model={{combineModel}}
         @creditAssignments={{creditsToCombine}}
         @today={{today}}
         @terms={{terms}}

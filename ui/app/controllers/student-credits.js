@@ -3,6 +3,7 @@ import dayjs from 'dayjs';
 import { inject as service } from '@ember/service';
 import { replaceModel } from '../utils/json-api';
 import NotesMixin from '../mixins/notes';
+import clone from '../utils/clone';
 
 export default Controller.extend(NotesMixin, {
   tinyData: service(),
@@ -16,10 +17,17 @@ export default Controller.extend(NotesMixin, {
       const { student } = this;
       const url = `/api/students/${student.id}/credit-assignments`;
 
+      const model = clone(combineModel);
+
+      if (!model.attributes.enableOverride) {
+        delete model.attributes.creditsOverride;
+      }
+      delete model.attributes.enableOverride;
+
       const newCreditAssignment = await this.tinyData.fetch(url, {
         method: 'POST',
         data: {
-          data: combineModel,
+          data: model,
         },
       });
 

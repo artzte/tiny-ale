@@ -26,6 +26,7 @@
   <ModalDialog @onClose={{action "hideCombine"}} @translucentOverlay={{true}}>
     <CreditAssignments::CombineDialog
       @creditAssignments={{creditsToCombine}}
+      @model={{combineModel}}
       @today={{today}}
       @terms={{terms}}
       @save={{action "combineCredits"}}
