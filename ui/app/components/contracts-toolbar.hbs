@@ -1,40 +1,40 @@
 <h1>{{this.contract.attributes.name}}</h1>
 
-  <nav class="flex items-center items-baseline space-x-4">
-      <LinkTo
-        class="text-gray-800 hover:bg-gray-100 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
-        @route="contracts.index"
-      >
-        All contracts
-      </LinkTo>
-      <LinkTo
-        class="text-gray-800 hover:bg-gray-100 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
-        @route="contract.index"
-      >
-        Syllabus
-      </LinkTo>
-      <LinkTo
-        class="text-gray-800 hover:bg-gray-100 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
-        @route="contract-enrollments"
-      >
-        Enrollments
-      </LinkTo>
-      <LinkTo
-        class="text-gray-800 hover:bg-gray-100 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
-        @route="status-by-contract"
-      >
-        Status
-      </LinkTo>
-      <LinkTo
-        class="text-gray-800 hover:bg-gray-100 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
-        @route="contract-assignments"
-      >
-        Assignments
-      </LinkTo>
-      <LinkTo
-        class="text-gray-800 hover:bg-gray-100 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
-        @route="contract-attendance"
-      >
-        Attendance
-      </LinkTo>
+<nav class="flex items-center items-baseline space-x-4">
+  <LinkTo
+    class="text-gray-800 hover:bg-gray-100 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
+    @route="contracts.index"
+  >
+    All contracts
+  </LinkTo>
+  <LinkTo
+    class="text-gray-800 hover:bg-gray-100 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
+    @route="contract.index"
+  >
+    Syllabus
+  </LinkTo>
+  <LinkTo
+    class="text-gray-800 hover:bg-gray-100 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
+    @route="contract-enrollments"
+  >
+    Enrollments
+  </LinkTo>
+  <LinkTo
+    class="text-gray-800 hover:bg-gray-100 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
+    @route="status-by-contract"
+  >
+    Status
+  </LinkTo>
+  <LinkTo
+    class="text-gray-800 hover:bg-gray-100 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
+    @route="contract-assignments"
+  >
+    Assignments
+  </LinkTo>
+  <LinkTo
+    class="text-gray-800 hover:bg-gray-100 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
+    @route="contract-attendance"
+  >
+    Attendance
+  </LinkTo>
 </nav>
