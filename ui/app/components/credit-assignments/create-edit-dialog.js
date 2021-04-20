@@ -42,11 +42,7 @@ export default class CreditAssignmentCreateEditDialog extends TForm {
     this.args.close();
   }
 
-  @action onChangeCredit(id) {
-    this.updateRelationship('credit', { id, type: 'credit' });
-  }
-
-  async searchCredits(search) {
+  @action async searchCredits(search) {
     const credits = await this.creditAssignment.searchCredits({ search });
     return credits.data.map(c => ({
       name: c.attributes.courseName,
