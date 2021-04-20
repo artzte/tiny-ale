@@ -14,7 +14,6 @@ export default Route.extend({
   setupController(controller, model) {
     this._super(controller, model);
     controller.setProperties({
-      combineModel: this.buildCombineModel(model.data),
       student: this.student,
       creditAssignments: model.data,
       selectedCredits: [],
@@ -31,7 +30,7 @@ export default Route.extend({
  * Builds a combine model for credits
  */
 
-  _buildCombineModel(creditAssignments) {
+  buildCombineModel(creditAssignments) {
     const { tinyData } = this;
     const creditHours = creditAssignments
       .reduce(

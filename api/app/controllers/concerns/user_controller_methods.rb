@@ -133,7 +133,7 @@ module UserControllerMethods
              )
              .includes(get_includes)
              
-    raise ActiveRecord::NotFound if result.empty?
+    raise ActiveRecord::RecordNotFound if result.empty?
 
     options = {
       fields: get_allowed_fields,

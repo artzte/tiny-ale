@@ -2,10 +2,9 @@ import Controller from '@ember/controller';
 import dayjs from 'dayjs';
 import { inject as service } from '@ember/service';
 import { replaceModel } from '../utils/json-api';
-import NotesMixin from '../mixins/notes';
 import clone from '../utils/clone';
 
-export default Controller.extend(NotesMixin, {
+export default Controller.extend({
   tinyData: service(),
   flashMessages: service(),
 
