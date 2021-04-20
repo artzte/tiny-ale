@@ -59,7 +59,7 @@ module('Integration | Component | status-by-enrollment-assignments', hooks => {
     assert.matches(assnRow.querySelector('[data-test-assignment-name').textContent, assignment.attributes.name, 'assignment name rendered');
     assert.matches(assnRow.querySelector('[data-test-assignment-due').textContent, dayjs(assignment.attributes.dueDate).format('YY'), 'expected year rendered for due date');
     assert.matches(assnRow.querySelector('[data-test-assignment-status]').textContent, 'Complete', 'status is marked as complete');
-    assert.equal(assnRow.querySelectorAll('.notes-list-item').length, notes.length, 'expected number of notes rendered');
+    assert.equal(assnRow.querySelectorAll('[data-test-notes-list-item]').length, notes.length, 'expected number of notes rendered');
   });
 
   test('it renders with incomplete assignment with assignment due', async assert => {
