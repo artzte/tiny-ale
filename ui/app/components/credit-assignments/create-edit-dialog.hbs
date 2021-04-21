@@ -24,8 +24,8 @@
           @autofocusInput={{true}}
           @value={{form.relationships.credit.id}}
           @results={{form.creditResult}}
-          @onSearch={{action "searchCredits"}}
-          @onChange={{action "onChangeRelationship" target=form }}
+          @onSearch={{fn this.searchCredits}}
+          @onChange={{fn form.onChangeRelationship}}
         />
       </FormInput>
     </p>
@@ -44,7 +44,7 @@
           name="creditHours"
           data-test-credit-hours
           value={{form.pojo.creditHours}}
-          onchange={{action "onChange" target=form }}
+          onchange={{fn form.onChange}}
         >
       </FormInput>
     </p>
@@ -59,7 +59,7 @@
         <textarea
           value={{form.pojo.note}}
           name="note"
-          onchange={{action "onChange" target=form}}
+          onchange={{fn form.onChange}}
         />
       </FormInput>
     </p>

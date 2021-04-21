@@ -1,6 +1,6 @@
+import Component from '@glimmer/component';
 import { inject as service } from '@ember/service';
 import { action, get } from '@ember/object';
-import TForm from '../t-form';
 import Validator from '../../utils/validator';
 
 // credits allow a number followed by an optional, constrained decimal fraction,
@@ -10,7 +10,7 @@ export const creditsRegex = /(^\d+(\.(75|5|25))?$)|(^\.(75|5|25)$)/;
 
 // Credit is required
 // Denormalized contract term is required if assgned to user
-export default class CreditAssignmentCreateEditDialog extends TForm {
+export default class CreditAssignmentCreateEditDialog extends Component {
   @service('tinyData') tinyData;
 
   @service('creditAssignment') creditAssignment;
