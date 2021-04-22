@@ -1,4 +1,4 @@
-import { action, get } from '@ember/object';
+import { action } from '@ember/object';
 import {
   roleTypes,
   ROLE_STUDENT,
@@ -106,7 +106,7 @@ export default class AdminUserForm extends TForm {
       validationsHash = requiredForStaff.reduce((memo, key) => {
         memo[key] = {
           type: 'required',
-          if: getVerifyFunctionForRole(ROLE_STAFF, ROLE_ADMIN)
+          if: getVerifyFunctionForRole(ROLE_STAFF, ROLE_ADMIN),
         };
         return memo;
       }, validationsHash);

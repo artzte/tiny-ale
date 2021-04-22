@@ -1,7 +1,6 @@
 import Component from '@glimmer/component';
 import { get, action } from '@ember/object';
 import { capitalize } from '../helpers/titleize';
-import { tracked } from '@glimmer/tracking';
 
 export default class TSelect extends Component {
   /**
@@ -36,14 +35,7 @@ export default class TSelect extends Component {
       });
   }
 
-
-  @action onClick(event) {
-    console.log('onClick', event)
-  }
-
-
   @action onChange(event) {
-    console.log('onChange', event)
     if (!this.args.onchange) return;
 
     const select = event.target;

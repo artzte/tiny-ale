@@ -1,8 +1,8 @@
 import dayjs from 'dayjs';
 import { action } from '@ember/object';
+import { tracked } from '@glimmer/tracking';
 import Validator from '../utils/validator';
 import TForm from './t-form';
-import { tracked } from '@glimmer/tracking';
 
 export default class AdminTermForm extends TForm {
   @tracked pojo = {};
@@ -24,7 +24,7 @@ export default class AdminTermForm extends TForm {
   get reportingMonthOptions() {
     const { reportingBaseMonth } = this.args;
     const { pojo } = this;
-console.log('computing reportingMonthOptions', reportingBaseMonth, pojo)
+
     const { schoolYear } = pojo;
     const baseMonth = dayjs(new Date(schoolYear, reportingBaseMonth - 1, 1));
     const months = [];

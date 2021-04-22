@@ -131,11 +131,15 @@ finalized_credits = []
     credit1 = CreditAssignment.create! enrollment: enrollment, credit: @credit1, credit_hours: 0.25
     credit2 = CreditAssignment.create! enrollment: enrollment, credit: @credit2, credit_hours: 0.5
     credit3 = CreditAssignment.create! enrollment: enrollment, credit: @credit2, credit_hours: 0.5
+    credit4 = CreditAssignment.create! enrollment: enrollment, credit: @credit1, credit_hours: 0.25
+    credit5 = CreditAssignment.create! enrollment: enrollment, credit: @credit2, credit_hours: 0.5
+    credit6 = CreditAssignment.create! enrollment: enrollment, credit: @credit2, credit_hours: 0.5
 
     Note.create! note: "Note for #{student.last_name} for enrollment in #{contract.name}", notable: enrollment, creator: contract.facilitator
 
     finalized_credits.push credit1
     finalized_credits.push credit2
+    finalized_credits.push credit3
 
     enrollment.set_closed Enrollment::COMPLETION_FULFILLED, contract.facilitator
     enrollment.set_finalized @admin1
