@@ -3,95 +3,112 @@
   @creditAssignments={{creditAssignments}}
   @disabled={{true}}
 />
-<fieldset>
-  <p>
-    <FormInput
-      @error={{errors.credit}}
-      @showError={{showErrors}}
-      @label="Course"
-    >
-      <TTypeAhead
-        data-test-name="credit"
-        @name="credit"
-        @prompt="Type a course name or course code to match"
-        @autofocusInput={{true}}
-        @value={{relationships.credit.id}}
-        @results={{creditResult}}
-        @onSearch={{action "searchCredits"}}
-        @onChange={{action "onChangeRelationship"}}
-      />
-    </FormInput>
-  </p>
-</fieldset>
-<fieldset>
-  <p>
-    <FormInput @error={{errors.creditHours}} @showError={{showErrors}}>
-      <div class="flex justify-between">
-        <span class="font-semibold">
-          Credit hours
-        </span>
-        <span>
-          {{#if pojo.enableOverride}}
-            <FaIcon @icon="check" class="inline no-underline text-orange-500 mr-2" />
-          {{/if}}
-          <TLink
-            class="font-normal"
-            data-test-toggle-override
-            @action={{action "toggleOverride"}}
+<TForm
+  @save={{fn @save}}
+  @model={{@model}}
+  as |form|
+>
+  <fieldset>
+    <p>
+      <FormInput
+        @error={{form.errors.credit}}
+        @showError={{form.showErrors}}
+        @label="Course"
+      >
+        <TTypeAhead
+          data-test-name="credit"
+          @name="credit"
+          @prompt="Type a course name or course code to match"
+          @autofocusInput={{true}}
+          @value={{form.relationships.credit.id}}
+          @results={{this.creditResult}}
+          @onSearch={{fn this.searchCredits}}
+          @onChange={{fn form.onChangeRelationship}}
+        />
+      </FormInput>
+    </p>
+  </fieldset>
+  <fieldset>
+    <p>
+      <FormInput
+        @error={{form.errors.creditHours}}
+        @showError={{form.showErrors}}
+      >
+        <div class="flex justify-between">
+          <span class="font-semibold">
+            Credit hours
+          </span>
+          <span>
+            {{#if this.enableOverride}}
+              <FaIcon @icon="check" class="inline no-underline text-orange-500 mr-2" />
+            {{/if}}
+            <TLink
+              class="font-normal"
+              data-test-toggle-override
+              @action={{fn this.toggleOverride}}
+            >
+              Override
+            </TLink>
+          </span>
+        </div>
+        {{#if this.enableOverride}}
+          <input
+            type="number"
+            step="0.25"
+            min="0"
+            name="creditsOverride"
+            data-test-credit-hours
+            value={{form.pojo.creditsOverride}}
+            onchange={{fn form.onChange}}
           >
-            Override
-          </TLink>
-        </span>
-      </div>
-      {{#if pojo.enableOverride}}
-        <input
-          type="number"
-          step="0.25"
-          min="0"
-          name="creditsOverride"
-          data-test-credit-hours
-          value={{pojo.creditsOverride}}
-          onchange={{action "onChange"}}
-        >
-      {{else}}
-        <span data-test-credit-hours class="field">
-          {{pojo.creditHours}}
-        </span>
-      {{/if}}
-    </FormInput>
-  </p>
-</fieldset>
-<fieldset>
-  <p>
-    <FormInput @error={{errors.contractTerm}} @showError={{showErrors}} @label="Term">
-      <TermSelect
-        name="contractTerm"
-        @value={{relationships.contractTerm.id}}
-        @prompt="Select a term"
-        @terms={{terms}}
-        @onchange={{action "onChangeRelationship"}}
-      />
-    </FormInput>
-  </p>
-</fieldset>
-<fieldset>
-  <p>
-    <FormInput @error={{errors.note}} @showError={{showErrors}} @label="Notes">
-      <textarea
-        value={{pojo.note}}
-        name="note"
-        onchange={{action "onChange"}}
-      />
-    </FormInput>
-  </p>
-</fieldset>
-<footer>
-  <button class="button" type="submit">
-    Combine
-  </button>
-  <TLink
-    @action={{action "close"}}
-  >
-    Cancel
-  </TLink>
-</footer>
+        {{else}}
+          <span data-test-credit-hours class="field">
+            {{form.pojo.creditHours}}
+          </span>
+        {{/if}}
+      </FormInput>
+    </p>
+  </fieldset>
+  <fieldset>
+    <p>
+      <FormInput
+        @error={{form.errors.contractTerm}}
+        @showError={{form.showErrors}}
+        @label="Term"
+      >
+        <TermSelect
+          name="contractTerm"
+          @value={{form.relationships.contractTerm.id}}
+          @prompt="Select a term"
+          @terms={{@terms}}
+          @onchange={{fn form.onChangeRelationship}}
+        />
+      </FormInput>
+    </p>
+  </fieldset>
+  <fieldset>
+    <p>
+      <FormInput
+        @error={{form.errors.note}}
+        @showError={{form.showErrors}}
+        @label="Notes"
+      >
+        <textarea
+          value={{form.pojo.note}}
+          name="note"
+          onchange={{fn form.onChange}}
+        />
+      </FormInput>
+    </p>
+  </fieldset>
+  <footer>
+    <button class="button" type="submit">
+      Combine
+    </button>
+    <TLink
+      @action={{fn this.close}}
+    >
+      Cancel
+    </TLink>
+  </footer>
+</TForm>

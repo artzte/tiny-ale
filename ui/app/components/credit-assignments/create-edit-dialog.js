@@ -32,6 +32,7 @@ export default class CreditAssignmentCreateEditDialog extends Component {
 
     const { model } = this.args;
     const creditId = get(model, 'relationships.credit.data.id');
+
     if (creditId) {
       const credit = this.tinyData.get('credit', creditId);
       this.creditResult = [{ value: credit.id, name: credit.attributes.courseName }];

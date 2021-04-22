@@ -11,6 +11,7 @@ import {
 import { resolve } from 'rsvp';
 import hbs from 'htmlbars-inline-precompile';
 import { stubCreditAssignment } from 'tinysis-ui/services/credit-assignment';
+import { buildCombineModel } from 'tinysis-ui/utils/credit-utils';
 
 import studentCreditAssignmentsFixture from '../../../fixtures/student-credit-assignments';
 import creditsFixture from '../../../fixtures/credits-index';
@@ -40,17 +41,6 @@ module('Integration | Component | CreditAssignments::CombineDialog', hooks => {
     creditAssignments = tinyData.get('creditAssignment');
     terms = tinyData.get('term');
 
-    combineModel = {
-      id: null,
-      type: 'creditAssignment',
-      attributes: {},
-      relationships: {
-        contractTerm: null,
-        credit: null,
-        childCreditAssignments: null,
-      },
-    };
-
     this.owner.lookup('service:credit-assignment').mockTinyData(tinyData);
 
     creditsToCombine = creditAssignments
@@ -58,6 +48,8 @@ module('Integration | Component | CreditAssignments::CombineDialog', hooks => {
       .slice(0, 3);
 
     requests = [];
+
+    combineModel = buildCombineModel(creditsToCombine, tinyData);
 
     this.setProperties({
       creditsToCombine,
@@ -81,10 +73,10 @@ module('Integration | Component | CreditAssignments::CombineDialog', hooks => {
   test('it renders and can post through a default combined credit', async assert => {
     await render(hbs`
       <CreditAssignments::CombineDialog
-        @model={{combineModel}}
-        @creditAssignments={{creditsToCombine}}
-        @today={{today}}
-        @terms={{terms}}
+        @model={{this.combineModel}}
+        @creditAssignments={{this.creditsToCombine}}
+        @today={{this.today}}
+        @terms={{this.terms}}
         @save={{this.save}}
         @close={{this.close}}
         @reportError={{this.reportError}}
@@ -108,13 +100,14 @@ module('Integration | Component | CreditAssignments::CombineDialog', hooks => {
 
     assert.ok(expectedTermOption, 'found expected term selection');
     assert.ok(expectedCreditOption, 'found expected credit selection');
-
     assert.ok(expectedTermOption.selected, 'expected term option is selected');
 
     const computedCredits = creditsToCombine.reduce((sum, ca) => {
       sum = ca.attributes.creditHours + sum;
       return sum;
     }, 0);
+
+    assert.equal(combineModel.attributes.creditHours, computedCredits, 'the combined sum of credit hours of the credit assignments being merged, is correct on the built combine model');
 
     let creditHours = find('span[data-test-credit-hours]');
     assert.ok(creditHours, 'creditHours static field is rendered');

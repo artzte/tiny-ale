@@ -1,5 +1,6 @@
 import { schedule } from '@ember/runloop';
 import { action } from '@ember/object';
+import { tracked } from '@glimmer/tracking';
 import CreditAssignmentsCreateEditDialog, {
   creditsRegex,
 } from './create-edit-dialog';
@@ -24,19 +25,21 @@ export default class CreditAssignmentsCombineDialog extends CreditAssignmentsCre
     },
   });
 
+  @tracked enableOverride = false;
+
   validateRelationships = new Validator({
     contractTerm: { type: 'required' },
     credit: { type: 'required' },
   });
 
   @action toggleOverride() {
-    const enableOverride = !this.pojo.enableOverride;
-    this.updatePojo({ enableOverride });
+    this.enableOverride = !this.enableOverride;
 
-    if (enableOverride) {
+    if (this.enableOverride) {
       schedule('afterRender', this, function () {
-        const element = this.element.querySelector('input[name="creditsOverride"]');
-        element.focus();
+        // const element = this.element.querySelector('input[name="creditsOverride"]');
+        // element.focus();
+        console.log('afterRender setting focus to creditsOverride element');
       });
     }
   }

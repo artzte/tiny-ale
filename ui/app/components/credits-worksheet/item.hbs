@@ -63,10 +63,11 @@
       >
         {{#if isApproved}}
           <FaIcon @icon="times" data-test-approved class="text-red-700 mr-2" />
+          Un-approve
         {{else}}
           <FaIcon @icon="check" data-test-unapproved class="text-green-700 mr-2" />
+          Approve
         {{/if}}
-        Approve
       </button>
     {{/if}}
   </td>
