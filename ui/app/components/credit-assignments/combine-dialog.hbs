@@ -5,7 +5,10 @@
 />
 <TForm
   @save={{fn @save}}
+  @reportError={{fn @reportError}}
   @model={{@model}}
+  @validator={{this.validator}}
+  @validateRelationships={{this.validateRelationships}}
   as |form|
 >
   <fieldset>
@@ -39,19 +42,19 @@
             Credit hours
           </span>
           <span>
-            {{#if this.enableOverride}}
+            {{#if form.pojo.enableOverride}}
               <FaIcon @icon="check" class="inline no-underline text-orange-500 mr-2" />
             {{/if}}
             <TLink
               class="font-normal"
               data-test-toggle-override
-              @action={{fn this.toggleOverride}}
+              @action={{fn form.toggleValue 'enableOverride'}}
             >
               Override
             </TLink>
           </span>
         </div>
-        {{#if this.enableOverride}}
+        {{#if form.pojo.enableOverride}}
           <input
             type="number"
             step="0.25"

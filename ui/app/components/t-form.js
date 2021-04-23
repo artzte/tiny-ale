@@ -113,7 +113,7 @@ export default class TForm extends Component {
   }
 
   @action toggleValue(name, event) {
-    event.stopPropagation();
+    if (event) event.stopPropagation();
     this.handleChange(name, !this.pojo[name], 'pojo');
   }
 
@@ -146,6 +146,7 @@ export default class TForm extends Component {
       // a blank was passed (i.e., a prompt value)
       reference = null;
     }
+
     this.handleChange(name, reference, 'relationships');
   }
 

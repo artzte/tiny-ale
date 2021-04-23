@@ -70,18 +70,22 @@ module('Integration | Component | CreditAssignments::CombineDialog', hooks => {
     });
   });
 
-  test('it renders and can post through a default combined credit', async assert => {
-    await render(hbs`
+  function renderComponent() {
+    return render(hbs`
       <CreditAssignments::CombineDialog
-        @model={{this.combineModel}}
-        @creditAssignments={{this.creditsToCombine}}
-        @today={{this.today}}
-        @terms={{this.terms}}
-        @save={{this.save}}
-        @close={{this.close}}
-        @reportError={{this.reportError}}
+        @model={{combineModel}}
+        @creditAssignments={{creditsToCombine}}
+        @today={{today}}
+        @terms={{terms}}
+        @save={{fn this.save}}
+        @close={{fn this.close}}
+        @reportError={{fn this.reportError}}
       />
     `);
+  }
+
+  test('it renders and can post through a default combined credit', async assert => {
+    await renderComponent();
 
     assert.ok(find('form'), 'the form rendered');
 
@@ -135,17 +139,7 @@ module('Integration | Component | CreditAssignments::CombineDialog', hooks => {
   });
 
   test('it renders a combined credit and then reports and recovers from validation failure', async assert => {
-    await render(hbs`
-      <CreditAssignments::CombineDialog
-        @model={{combineModel}}
-        @creditAssignments={{creditsToCombine}}
-        @today={{today}}
-        @terms={{terms}}
-        @save={{this.save}}
-        @close={{this.close}}
-        @reportError={{this.reportError}}
-      />
-    `);
+    await renderComponent();
 
     assert.ok(find('form'), 'the form rendered');
 
@@ -188,22 +182,14 @@ module('Integration | Component | CreditAssignments::CombineDialog', hooks => {
     assert.equal(request.type, 'save', 'it was a save request');
   });
 
-  test('it does not permit submittal with invalid computed credit, but permits submittal with valid overridden credit', async assert => {
+  test('it does not permit submittal with invalid computed credit, but permits submittal with valid overridden credit', async function (assert) {
     creditsToCombine.forEach(ca => {
       ca.attributes.creditHours = 0.111;
     });
 
-    await render(hbs`
-      <CreditAssignments::CombineDialog
-        @model={{combineModel}}
-        @creditAssignments={{creditsToCombine}}
-        @today={{today}}
-        @terms={{terms}}
-        @save={{this.save}}
-        @close={{this.close}}
-        @reportError={{this.reportError}}
-      />
-    `);
+    this.combineModel = buildCombineModel(creditsToCombine, tinyData);
+
+    await renderComponent();
 
     await click('button[type="submit"]');
 

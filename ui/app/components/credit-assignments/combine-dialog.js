@@ -25,12 +25,12 @@ export default class CreditAssignmentsCombineDialog extends CreditAssignmentsCre
     },
   });
 
-  @tracked enableOverride = false;
-
   validateRelationships = new Validator({
     contractTerm: { type: 'required' },
     credit: { type: 'required' },
   });
+
+  @tracked enableOverride = false;
 
   @action toggleOverride() {
     this.enableOverride = !this.enableOverride;
