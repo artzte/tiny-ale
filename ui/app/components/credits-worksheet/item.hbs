@@ -1,5 +1,6 @@
 <tr
   data-test-credit-id={{creditAssignment.id}}
+  data-test-credit-item
 >
   <td class="align-center">
     <input
@@ -62,10 +63,10 @@
         {{action "approveCredit"}}
       >
         {{#if isApproved}}
-          <FaIcon @icon="times" data-test-approved class="text-red-700 mr-2" />
+          <FaIcon @icon="times" data-test-district-unapprove class="text-red-700 mr-2" />
           Un-approve
         {{else}}
-          <FaIcon @icon="check" data-test-unapproved class="text-green-700 mr-2" />
+          <FaIcon @icon="check" data-test-district-approve class="text-green-700 mr-2" />
           Approve
         {{/if}}
       </button>

@@ -4,10 +4,13 @@ import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
 import dayjs from 'dayjs';
 import { replaceModel } from '../utils/json-api';
+import { buildCombineModel } from '../utils/credit-utils';
 import clone from '../utils/clone';
 
 export default class CreditsWorksheet extends Component {
   @service('tinyData') tinyData;
+
+  @service('flashMessages') flashMessages;
 
   @tracked selectedCredits = [];
 
@@ -73,7 +76,10 @@ export default class CreditsWorksheet extends Component {
   }
 
   @action async approveCredit(creditAssignment) {
-    const { student } = this;
+    const {
+      student,
+      creditAssignments,
+    } = this.args;
     const isApproved = Boolean(creditAssignment.attributes.districtFinalizeApprovedOn);
     const districtFinalizeApprovedOn = dayjs().format('YYYY-MM-DD');
     let url;
@@ -95,10 +101,18 @@ export default class CreditsWorksheet extends Component {
       },
     });
 
-    const { creditAssignments } = this;
     this.args.updateCreditAssignments(replaceModel(creditAssignments, newCreditAssignment.data));
 
     return newCreditAssignment;
+  }
+
+  @action selectCredit(creditAssignment) {
+    const { selectedCredits } = this;
+    if (selectedCredits.find(ca => ca === creditAssignment)) {
+      this.selectedCredits = selectedCredits.filter(ca => ca !== creditAssignment);
+    } else {
+      this.selectedCredits = selectedCredits.concat([creditAssignment]);
+    }
   }
 
   get combineLinkDisabled() {
@@ -119,14 +133,5 @@ export default class CreditsWorksheet extends Component {
         credit: tinyData.get('credit', creditAssignment.relationships.credit.data.id),
       }))
       .sort((vm1, vm2) => vm1.credit.attributes.courseName.localeCompare(vm2.credit.attributes.courseName));
-  }
-
-  @action selectCredit(creditAssignment) {
-    const { selectedCredits } = this;
-    if (selectedCredits.find(ca => ca === creditAssignment)) {
-      this.selectedCredits = selectedCredits.filter(ca => ca !== creditAssignment);
-    } else {
-      this.selectedCredits = selectedCredits.concat([creditAssignment]);
-    }
   }
 }
