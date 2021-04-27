@@ -6,6 +6,10 @@ export default class StudentCreditsController extends Controller {
   @tracked creditAssignments;
 
   @action updateCreditAssignments(creditAssignments) {
-    this.creditAssignments = creditAssignments;
+    if (creditAssignments) {
+      this.creditAssignments = creditAssignments;
+    } else {
+      this.send('refreshModel');
+    }
   }
 }

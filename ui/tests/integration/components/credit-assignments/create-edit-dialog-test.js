@@ -11,6 +11,7 @@ import { resolve } from 'rsvp';
 import hbs from 'htmlbars-inline-precompile';
 import { stubCreditAssignment } from 'tinysis-ui/services/credit-assignment';
 import { getNewCreditAssignmentForCreditable } from 'tinysis-ui/utils/credit-utils';
+import { creditsRegex } from 'tinysis-ui/components/credit-assignments/create-edit-dialog';
 
 import contractEnrollmentsFixture from '../../../fixtures/contract-enrollments';
 import creditsFixture from '../../../fixtures/credits-index';
@@ -56,6 +57,33 @@ module('Integration | Component | CreditAssignments::CreateEditDialog', hooks =>
       close: () => {
         requests.push({ type: 'close' });
       },
+    });
+  });
+
+  test('creditsRegex can recognize good and bad values', assert => {
+    [
+      '0.25',
+      '1.0',
+      '1',
+      '.5',
+      '.75',
+      '.25',
+      '.50',
+      '0.50',
+    ].forEach(goodValue => {
+      assert.ok(creditsRegex.test(goodValue), `a credit value ${goodValue} is correctly flagged as ok`);
+    });
+
+    [
+      '0.1',
+      '1.1',
+      '',
+      '.33',
+      '0.33',
+      '.20',
+      '.255',
+    ].forEach(badValue => {
+      assert.notOk(creditsRegex.test(badValue), `a credit value ${badValue} is correctly flagged as invalid`);
     });
   });
 

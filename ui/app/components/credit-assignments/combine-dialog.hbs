@@ -1,117 +1,120 @@
 <h3>Combine credits</h3>
 <CreditAssignments
-  @creditAssignments={{creditAssignments}}
+  @creditAssignments={{@creditAssignments}}
   @disabled={{true}}
 />
 <TForm
+  data-test-combine-term-form
   @save={{fn @save}}
   @reportError={{fn @reportError}}
   @model={{@model}}
   @validator={{this.validator}}
   @validateRelationships={{this.validateRelationships}}
-  as |form|
+  as |tform|
 >
-  <fieldset>
-    <p>
-      <FormInput
-        @error={{form.errors.credit}}
-        @showError={{form.showErrors}}
-        @label="Course"
-      >
-        <TTypeAhead
-          data-test-name="credit"
-          @name="credit"
-          @prompt="Type a course name or course code to match"
-          @autofocusInput={{true}}
-          @value={{form.relationships.credit.id}}
-          @results={{this.creditResult}}
-          @onSearch={{fn this.searchCredits}}
-          @onChange={{fn form.onChangeRelationship}}
-        />
-      </FormInput>
-    </p>
-  </fieldset>
-  <fieldset>
-    <p>
-      <FormInput
-        @error={{form.errors.creditHours}}
-        @showError={{form.showErrors}}
-      >
-        <div class="flex justify-between">
-          <span class="font-semibold">
-            Credit hours
-          </span>
-          <span>
-            {{#if form.pojo.enableOverride}}
-              <FaIcon @icon="check" class="inline no-underline text-orange-500 mr-2" />
-            {{/if}}
-            <TLink
-              class="font-normal"
-              data-test-toggle-override
-              @action={{fn form.toggleValue 'enableOverride'}}
+  <form onsubmit={{fn tform.onSubmit}} data-test-combine-credit-assignments>
+    <fieldset>
+      <p>
+        <FormInput
+          @error={{tform.errors.credit}}
+          @showError={{tform.showErrors}}
+          @label="Course"
+        >
+          <TTypeAhead
+            data-test-name="credit"
+            @name="credit"
+            @prompt="Type a course name or course code to match"
+            @autofocusInput={{true}}
+            @value={{tform.relationships.credit.id}}
+            @results={{this.creditResult}}
+            @onSearch={{fn this.searchCredits}}
+            @onChange={{fn tform.onChangeRelationship}}
+          />
+        </FormInput>
+      </p>
+    </fieldset>
+    <fieldset>
+      <p>
+        <FormInput
+          @error={{tform.errors.creditHours}}
+          @showError={{tform.showErrors}}
+        >
+          <div class="flex justify-between">
+            <span class="font-semibold">
+              Credit hours
+            </span>
+            <span>
+              {{#if tform.pojo.enableOverride}}
+                <FaIcon @icon="check" class="inline no-underline text-orange-500 mr-2" />
+              {{/if}}
+              <TLink
+                class="font-normal"
+                data-test-toggle-override
+                @action={{fn tform.toggleValue 'enableOverride'}}
+              >
+                Override
+              </TLink>
+            </span>
+          </div>
+          {{#if tform.pojo.enableOverride}}
+            <input
+              type="number"
+              step="0.25"
+              min="0"
+              name="creditsOverride"
+              data-test-credit-hours
+              value={{tform.pojo.creditsOverride}}
+              onchange={{fn tform.onChange}}
             >
-              Override
-            </TLink>
-          </span>
-        </div>
-        {{#if form.pojo.enableOverride}}
-          <input
-            type="number"
-            step="0.25"
-            min="0"
-            name="creditsOverride"
-            data-test-credit-hours
-            value={{form.pojo.creditsOverride}}
-            onchange={{fn form.onChange}}
-          >
-        {{else}}
-          <span data-test-credit-hours class="field">
-            {{form.pojo.creditHours}}
-          </span>
-        {{/if}}
-      </FormInput>
-    </p>
-  </fieldset>
-  <fieldset>
-    <p>
-      <FormInput
-        @error={{form.errors.contractTerm}}
-        @showError={{form.showErrors}}
-        @label="Term"
+          {{else}}
+            <span data-test-credit-hours class="field">
+              {{tform.pojo.creditHours}}
+            </span>
+          {{/if}}
+        </FormInput>
+      </p>
+    </fieldset>
+    <fieldset>
+      <p>
+        <FormInput
+          @error={{tform.errors.contractTerm}}
+          @showError={{tform.showErrors}}
+          @label="Term"
+        >
+          <TermSelect
+            name="contractTerm"
+            @value={{tform.relationships.contractTerm.id}}
+            @prompt="Select a term"
+            @terms={{@terms}}
+            @onchange={{fn tform.onChangeRelationship}}
+          />
+        </FormInput>
+      </p>
+    </fieldset>
+    <fieldset>
+      <p>
+        <FormInput
+          @error={{tform.errors.note}}
+          @showError={{tform.showErrors}}
+          @label="Notes"
+        >
+          <textarea
+            value={{tform.pojo.note}}
+            name="note"
+            onchange={{fn tform.onChange}}
+          />
+        </FormInput>
+      </p>
+    </fieldset>
+    <footer>
+      <button class="button" type="submit">
+        Combine
+      </button>
+      <TLink
+        @action={{fn this.close}}
       >
-        <TermSelect
-          name="contractTerm"
-          @value={{form.relationships.contractTerm.id}}
-          @prompt="Select a term"
-          @terms={{@terms}}
-          @onchange={{fn form.onChangeRelationship}}
-        />
-      </FormInput>
-    </p>
-  </fieldset>
-  <fieldset>
-    <p>
-      <FormInput
-        @error={{form.errors.note}}
-        @showError={{form.showErrors}}
-        @label="Notes"
-      >
-        <textarea
-          value={{form.pojo.note}}
-          name="note"
-          onchange={{fn form.onChange}}
-        />
-      </FormInput>
-    </p>
-  </fieldset>
-  <footer>
-    <button class="button" type="submit">
-      Combine
-    </button>
-    <TLink
-      @action={{fn this.close}}
-    >
-      Cancel
-    </TLink>
-  </footer>
+        Cancel
+      </TLink>
+    </footer>
+  </form>
 </TForm>

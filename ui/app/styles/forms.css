@@ -50,6 +50,10 @@ input[type="text"], input[type="email"], input[type="number"], select, textarea,
   }
 }
 
+input[type="checkbox"]:disabled {
+  @apply bg-gray-200;
+}
+
 div.field {
   span::after {
     content: ' ',

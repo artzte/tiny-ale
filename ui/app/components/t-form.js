@@ -132,6 +132,11 @@ export default class TForm extends Component {
   // the value is changed to an object reference. If the control
   // sends a change event with an object, that object becomes the
   // value sent.
+  //
+  // note here, the relationships pojo just has a direct ref from the
+  // attribute name to the relationships object, without the intervening
+  // "data" path segment
+  //
   @action onChangeRelationship(_value, _name) {
     const { name, value } = extractNameValue(_name, _value);
     let reference;
@@ -171,14 +176,6 @@ export default class TForm extends Component {
 
       this.disabled = false;
     });
-  }
-
-  /* Helper function callable by forms to update a relationship
-  */
-  updateRelationship(key, relation) {
-    if (typeof key !== 'string') throw new Error('Requires relationship key for first argument');
-
-    return this.handleChange(key, relation, 'relationships');
   }
 
   updatePojo(updates, updatePath = 'pojo') {

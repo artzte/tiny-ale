@@ -1,5 +1,6 @@
 import Route from '@ember/routing/route';
 import { inject as service } from '@ember/service';
+import { sortTerms } from '../utils/term-utils';
 
 export default Route.extend({
   tinyData: service(),
@@ -15,6 +16,12 @@ export default Route.extend({
     controller.setProperties({
       student: this.student,
       creditAssignments: model.data,
+      terms: sortTerms(this.tinyData.get('term')),
     });
+  },
+  actions: {
+    refreshModel() {
+      this.refresh();
+    },
   },
 });

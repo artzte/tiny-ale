@@ -3,6 +3,8 @@ import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import CreditAssignmentsCreateEditDialog, {
   creditsRegex,
+  creditAssignmentValidationRules,
+  creditAssignmentRelationshipValidationRules,
 } from './create-edit-dialog';
 import Validator from '../../utils/validator';
 
@@ -11,6 +13,7 @@ import Validator from '../../utils/validator';
 //
 export default class CreditAssignmentsCombineDialog extends CreditAssignmentsCreateEditDialog {
   validator = new Validator({
+    ...creditAssignmentValidationRules,
     creditHours: {
       type: 'format',
       regex: creditsRegex,
@@ -26,8 +29,9 @@ export default class CreditAssignmentsCombineDialog extends CreditAssignmentsCre
   });
 
   validateRelationships = new Validator({
-    contractTerm: { type: 'required' },
+    ...creditAssignmentRelationshipValidationRules,
     credit: { type: 'required' },
+    contractTerm: { type: 'required' },
   });
 
   @tracked enableOverride = false;

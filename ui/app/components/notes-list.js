@@ -89,6 +89,7 @@ export default class NotesList extends Component {
     this.noteToEdit = null;
   }
 
+  // eslint-disable-next-line class-methods-use-this
   @action reportError(error) {
     console.error(error);
   }

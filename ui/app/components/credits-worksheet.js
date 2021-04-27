@@ -43,9 +43,9 @@ export default class CreditsWorksheet extends Component {
       await this.createNote(newCreditAssignment.data, note);
     }
 
-    this.hideCombineDialog();
+    this.hideCombine();
 
-    this.send('refreshModel');
+    this.args.updateCreditAssignments();
 
     this.flashMessages.success('Credits were combined.');
   }
@@ -58,6 +58,12 @@ export default class CreditsWorksheet extends Component {
     });
 
     this.flashMessages.success('Credits were split.');
+
+    this.args.updateCreditAssignments();
+  }
+
+  @action reportError() {
+    this.flashMessages.warning('Credit update did not succeed. Please check the values and try again.');
   }
 
   @action hideCombine() {
@@ -65,11 +71,6 @@ export default class CreditsWorksheet extends Component {
   }
 
   @action async showCombine() {
-    if (!this.terms) {
-      const terms = await this.tinyData.fetch('/api/terms?status=active');
-      this.terms = terms.data;
-    }
-
     this.combineModel = buildCombineModel(this.selectedCredits, this.tinyData);
 
     this.showCombineDialog = true;

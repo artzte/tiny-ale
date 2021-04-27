@@ -3,6 +3,7 @@ import { setupRenderingTest } from 'ember-qunit';
 import {
   render,
   find,
+  findAll,
   click,
   fillIn,
   waitFor,
@@ -88,6 +89,8 @@ module('Integration | Component | CreditAssignments::CombineDialog', hooks => {
     await renderComponent();
 
     assert.ok(find('form'), 'the form rendered');
+
+    assert.equal(findAll('[data-test-credit-assignment-id]').length, creditsToCombine.length, 'expected summary of child credit assignments displayed');
 
     const termSelect = find('select[name="contractTerm"]');
     const creditSelect = find('t-type-ahead[data-test-name="credit"]');
@@ -193,7 +196,7 @@ module('Integration | Component | CreditAssignments::CombineDialog', hooks => {
 
     await click('button[type="submit"]');
 
-    let request = requests.pop();
+    let request = requests.shift();
 
     assert.ok(request, 'a request was made');
     assert.equal(request.type, 'error', 'error reported');
@@ -203,7 +206,7 @@ module('Integration | Component | CreditAssignments::CombineDialog', hooks => {
     await fillIn('input[data-test-credit-hours]', '.25');
     await click('button[type="submit"]');
 
-    request = requests.pop();
+    request = requests.shift();
 
     assert.ok(request, 'a request was made');
     assert.equal(request.type, 'save', 'save reported');
