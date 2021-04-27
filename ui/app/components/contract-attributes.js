@@ -69,6 +69,8 @@ export default class ContractAttributes extends Component {
     this.staff = this.tinyData.get('user').filter(user => [ROLE_STAFF, ROLE_ADMIN].includes(user.attributes.role));
     this.categories = this.tinyData.get('category');
     this.isEditing = this.args.isEditing || false;
+
+    console.log(this)
   }
 
   get staffOptions() {
