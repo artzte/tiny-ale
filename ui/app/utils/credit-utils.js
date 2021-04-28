@@ -56,7 +56,7 @@ export function buildCombineModel(creditAssignments, tinyData) {
     attributes: {
       enableOverride: false,
       creditHours,
-      creditsOverride: creditHours,
+      overrideHours: creditHours,
     },
     relationships: {
       contractTerm: { data: termCandidate.attributes.status === 'active' ? { id: termCandidate.id } : null },

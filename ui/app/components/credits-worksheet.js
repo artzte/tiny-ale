@@ -27,7 +27,7 @@ export default class CreditsWorksheet extends Component {
     const model = clone(combineModel);
 
     if (!model.attributes.enableOverride) {
-      delete model.attributes.creditsOverride;
+      delete model.attributes.overrideHours;
     }
     delete model.attributes.enableOverride;
 

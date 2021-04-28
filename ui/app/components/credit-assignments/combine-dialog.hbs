@@ -1,4 +1,5 @@
 <h3>Combine credits</h3>
+
 <CreditAssignments
   @creditAssignments={{@creditAssignments}}
   @disabled={{true}}
@@ -61,14 +62,15 @@
               type="number"
               step="0.25"
               min="0"
-              name="creditsOverride"
-              data-test-credit-hours
-              value={{tform.pojo.creditsOverride}}
+              name="overrideHours"
+              data-test-override-hours
+              value={{tform.pojo.overrideHours}}
               onchange={{fn tform.onChange}}
+              {{did-insert this.setFocusToOverrideField}}
             >
           {{else}}
-            <span data-test-credit-hours class="field">
-              {{tform.pojo.creditHours}}
+            <span data-test-override-hours class="field">
+              {{tform.pojo.overrideHours}}
             </span>
           {{/if}}
         </FormInput>

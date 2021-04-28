@@ -12,12 +12,19 @@ let tinyData;
 let meetings;
 let enrollments;
 let meetingParticipants;
+let requests;
 
 module('Integration | Component | contract-attendance-list', hooks => {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(function () {
-    tinyData = stubTinyData();
+    requests = [];
+    tinyData = stubTinyData({
+      fetch: (url, options) => {
+        requests.push({ type: 'fetch', url, options });
+        return { data: {} };
+      },
+    });
     tinyData.addResult(contractDetail);
     tinyData.addResult(contractAttendanceFixture);
     tinyData.addResult(contractAttendanceEnrollmentsFixture);

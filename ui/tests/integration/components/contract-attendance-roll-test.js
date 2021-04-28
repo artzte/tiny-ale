@@ -21,12 +21,23 @@ let tinyData;
 let enrollments;
 let absentParticipant;
 let presentParticipant;
+let requests;
 
 module('Integration | Component | contract-attendance-roll', hooks => {
   setupRenderingTest(hooks);
 
+  requests = [];
+
   hooks.beforeEach(function () {
-    tinyData = stubTinyData();
+    const fetchData = {
+      data: [],
+    };
+    tinyData = stubTinyData({
+      fetch: (url, options) => {
+        requests.push({ type: 'fetch', url, options });
+        return fetchData;
+      },
+    });
     tinyData.addResult(contractDetailFixture);
     tinyData.addResult(contractAttendanceRollMeeting);
     tinyData.addResult(contractAttendanceRollEnrollments);

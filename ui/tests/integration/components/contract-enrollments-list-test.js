@@ -36,7 +36,7 @@ module('Integration | Component | contract-enrollments-list', hooks => {
 
     const enrollmentRow = find(`tbody tr[data-test-enrollment-id="${enrollment.id}"]`);
     assert.ok(enrollmentRow, 'the row for the first enrollment rendered');
-    assert.ok(enrollmentRow.querySelector('.notes-list'), 'notes list rendered in this row');
-    assert.equal(notes.length, enrollmentRow.querySelectorAll('.notes-list li').length, 'expected count of notes were rendered');
+    assert.ok(enrollmentRow.querySelector('[data-test-notes-list]'), 'notes list rendered in this row');
+    assert.equal(notes.length, enrollmentRow.querySelectorAll('[data-test-notes-list-item]').length, 'expected count of notes were rendered');
   });
 });
