@@ -4,6 +4,6 @@
 
 FactoryBot.define do
   factory :assignment do
-    name { Faker::Lorem.sentence(5, 0) }
+    name { Faker::Lorem.sentence(word_count: 5, supplemental: 0) }
   end
 end

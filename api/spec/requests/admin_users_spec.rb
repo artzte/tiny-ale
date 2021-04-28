@@ -164,7 +164,7 @@ RSpec.describe 'Admin users API', type: :request do
           attributes: {
             firstName: Faker::Name.first_name,
             lastName: Faker::Name.last_name,
-            login: Faker::Lorem.characters(12),
+            login: Faker::Lorem.characters(number: 12),
             role: 'student'
           }
         }

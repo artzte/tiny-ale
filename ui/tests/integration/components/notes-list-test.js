@@ -40,7 +40,7 @@ module('Integration | Component | notes-list', hooks => {
       />
     `);
 
-    assert.matches(find('ul').textContent, new RegExp(this.notes[0].attributes.note));
-    assert.equal(findAll('li.notes-list-item').length, this.notes.length, 'expected correct number of list items');
+    assert.matches(find('[data-test-notes-list]').textContent, new RegExp(this.notes[0].attributes.note));
+    assert.equal(findAll('[data-test-notes-list-item]').length, this.notes.length, 'expected correct number of list items');
   });
 });

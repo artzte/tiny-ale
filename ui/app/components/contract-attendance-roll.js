@@ -2,12 +2,11 @@ import Component from '@ember/component';
 import { computed } from '@ember/object';
 import { inject as service } from '@ember/service';
 import ContractRelations from '../mixins/contract-relations';
-import Notes from '../mixins/notes';
 import { generateNotableHash } from '../utils/note-utils';
 import clone from '../utils/clone';
 import { replaceModel } from '../utils/json-api';
 
-export default Component.extend(ContractRelations, Notes, {
+export default Component.extend(ContractRelations, {
   tinyData: service(),
   tagName: 't-contract-attendance-roll',
 
@@ -42,7 +41,7 @@ export default Component.extend(ContractRelations, Notes, {
 
   async didReceiveAttrs() {
     this._super();
-    const notes = await this.getNotes(this.meetingParticipants);
+    const notes = await this.tinyData.getNotes(this.meetingParticipants);
     if (!this.isDestroyed) this.set('notes', notes);
   },
 

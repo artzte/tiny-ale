@@ -21,12 +21,23 @@ let tinyData;
 let enrollments;
 let absentParticipant;
 let presentParticipant;
+let requests;
 
 module('Integration | Component | contract-attendance-roll', hooks => {
   setupRenderingTest(hooks);
 
+  requests = [];
+
   hooks.beforeEach(function () {
-    tinyData = stubTinyData();
+    const fetchData = {
+      data: [],
+    };
+    tinyData = stubTinyData({
+      fetch: (url, options) => {
+        requests.push({ type: 'fetch', url, options });
+        return fetchData;
+      },
+    });
     tinyData.addResult(contractDetailFixture);
     tinyData.addResult(contractAttendanceRollMeeting);
     tinyData.addResult(contractAttendanceRollEnrollments);
@@ -75,8 +86,8 @@ module('Integration | Component | contract-attendance-roll', hooks => {
     assert.ok(contractAttendanceRollNotes.data.find(note => note.relationships.notable.data.id === presentParticipant.id), 'verify note for present participant');
     assert.ok(contractAttendanceRollNotes.data.find(note => note.relationships.notable.data.id === absentParticipant.id), 'verify note for absent participant');
 
-    assert.ok(presentRow.querySelector('.notes-list-item'), 'a note item was rendered for present participant');
-    assert.ok(absentRow.querySelector('.notes-list-item'), 'note rendered for absent participant');
+    assert.ok(presentRow.querySelectorAll('[data-test-notes-list-item]'), 'a note item was rendered for present participant');
+    assert.ok(absentRow.querySelectorAll('[data-test-notes-list-item]'), 'note rendered for absent participant');
   });
 
   test('it renders with four participants, two of whom has no meeting participant', async assert => {

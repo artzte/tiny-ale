@@ -59,10 +59,10 @@ module('Integration | Component | contract-assignments-list/row', hooks => {
     const notesTr = find('tr.notes-row');
     assert.ok(notesTr, 'notes row was rendered');
 
-    const notesUl = find('tr.notes-row .notes-list > ul');
+    const notesUl = find('[data-test-notes-list]');
     assert.ok(notesUl, 'notes list was rendered');
 
-    const notesLi = findAll('tr.notes-row .notes-list > ul li');
+    const notesLi = findAll('[data-test-notes-list-item]');
 
     assert.equal(contractAssignmentsNotes.data.length, notesLi.length, 'expected number of notes rendered');
   });

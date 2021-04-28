@@ -1,19 +1,20 @@
-import { computed } from '@ember/object';
+/* eslint-disable class-methods-use-this */
 import TForm from './t-form';
 
-export default TForm.extend({
-  statusOptions: computed(() => (
-    ['Active', 'Inactive']
+export default class CreditForm extends TForm {
+  get statusOptions() {
+    return ['Active', 'Inactive']
       .map(status => ({
         name: status,
         value: status.toLowerCase(),
-      }))
-  )),
-  courseTypeOptions: computed(() => (
-    ['Course', 'General']
+      }));
+  }
+
+  get courseTypeOptions() {
+    return ['Course', 'General']
       .map(type => ({
         name: type,
         value: type.toLowerCase(),
-      }))
-  )),
-});
+      }));
+  }
+}

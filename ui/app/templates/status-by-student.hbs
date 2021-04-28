@@ -2,6 +2,8 @@
   {{full-name this.student "first-last"}}
 </h2>
 
+<StudentToolbar @student={{this.student}} />
+
 <StatusReport
   @statusable={{this.student}}
   @statuses={{this.statuses}}

@@ -11,8 +11,8 @@
       type="button"
       class="button"
       data-test-combine-credits
-      {{action "combineCredits"}}
-      disabled={{combineLinkDisabled}}
+      onclick={{fn this.showCombine}}
+      disabled={{this.combineLinkDisabled}}
     >
       <FaIcon @icon="object-group" class="no-underline mr-2" />
       Combine selected credits
@@ -24,16 +24,38 @@
         <th></th>
         <th>Credit</th>
         <th>Term</th>
-        <th>Credits</th>
-        <th>Completed</th>
-        <th>Approved</th>
+        <th class="text-right">Credits</th>
+        <th class="text-right">Completed</th>
+        <th class="text-right">Approved</th>
         <th>Actions</th>
       </tr>
     </thead>
     <tbody>
       {{#each viewModels as |viewModel|}}
-        <CreditsWorksheet::Item @creditAssignment={{viewModel.creditAssignment}} @splitCredit={{action "splitCredit"}} @selectCredit={{action "selectCredit"}} @approveCredit={{action "approveCredit"}} />
+        <CreditsWorksheet::Item
+          @creditAssignment={{viewModel.creditAssignment}}
+          @splitCredit={{fn this.splitCredit}}
+          @selectCredit={{fn this.selectCredit}}
+          @approveCredit={{fn this.approveCredit}}
+        />
       {{/each}}
     </tbody>
   </Table>
 {{/check-empty}}
+
+{{#if showCombineDialog}}
+  <ModalDialog
+    @onClose={{fn this.hideCombine}}
+    @translucentOverlay={{true}}
+  >
+    <CreditAssignments::CombineDialog
+      @creditAssignments={{this.selectedCredits}}
+      @model={{this.combineModel}}
+      @today={{this.today}}
+      @terms={{@terms}}
+      @save={{fn this.combineCredits}}
+      @close={{fn this.hideCombine}}
+      @reportError={{fn this.reportError}}
+    />
+  </ModalDialog>
+{{/if}}

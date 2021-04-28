@@ -1,5 +1,12 @@
 # frozen_string_literal: true
 
+# Credit state transitions
+#
+# 1) Facilitator creates the credit and links to an enrollment
+# 2) Facilitator closes the enrollment as Fulfilled
+# 3) Admin finalizes a collection of enrollments for a given term, assigning the earned credits to the user.
+# 4) Coordinator approves the finalized credit for transcript, possibly combining it with other approved credits.
+
 class CreditAssignment < ApplicationRecord
   belongs_to :credit
   belongs_to :legacy_creditable, polymorphic: true, optional: true

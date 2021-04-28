@@ -21,7 +21,7 @@
           </LinkTo>
         </td>
         <td>{{term.attributes.schoolYear}}</td> 
-        <td>{{t-date term.attributes.creditDate "MMM d, YYYY"}}</td>
+        <td><DateTime @date={{term.attributes.creditDate}} @format="MMM d, YYYY" /></td>
         <td>
           {{#if term.isActive}}
             A

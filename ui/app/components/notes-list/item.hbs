@@ -1,4 +1,8 @@
-<span class="notes-list-item-header">
-  {{full-name creator "first-last"}} - {{t-date note.attributes.updatedAt "DD MMM YY"}}: {{note.attributes.title}}
-</span>
-{{note.attributes.note}}
+<div data-test-notes-list-item>
+  <button type="button" class="mt-2 block text-gray-500" onclick={{action @editNote this.note}}>
+    {{full-name this.creator "first-last"}}
+    on 
+    <DateTime @date={{@note.attributes.createdAt}} @format="D MMM YYYY" />
+  </button>
+  {{{this.formattedNote}}}
+</div>

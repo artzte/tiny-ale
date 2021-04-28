@@ -40,7 +40,7 @@ module('Integration | Component | status-report', hooks => {
     const rows = findAll('[data-test-status-row]');
     assert.equal(rows.length, studentStatuses.data.length, 'expected number of months rendered');
 
-    assert.equal(findAll('.notes-list').length, 2, 'expected count of populated notes rows rendered');
+    assert.equal(findAll('[data-test-notes-list-item]').length, 2, 'expected count of populated notes rows rendered');
   });
 
   test('it renders with two current status months and two pending status months', async assert => {

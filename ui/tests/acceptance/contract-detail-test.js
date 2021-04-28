@@ -46,7 +46,7 @@ module('Acceptance | contract detail', hooks => {
 
     // this should always be done with mocks.
     // prevents test from hanging for minutes when Pretender crashes.
-    assert.timeout(500);
+    assert.timeout(800);
   });
 
   hooks.afterEach(() => {

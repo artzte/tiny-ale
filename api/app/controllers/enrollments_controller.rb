@@ -90,7 +90,7 @@ class EnrollmentsController < ApiBaseController
   end
 
   def destroy
-    @enrollment.destroy
+    @enrollment.set_dropped @user
 
     render nothing: true, status: 204
   end

@@ -35,14 +35,15 @@ module('Integration | Component | settings-contract-category-form', hooks => {
 
   test('it renders and submits the same category without changes', async assert => {
     await render(hbs`
-      {{settings-contract-category-form
-        model=category
-        save=save
-        reportError=reportError
-      }}
+      <SettingsContractCategoryForm
+        @model={{this.category}}
+        @save={{this.save}}
+        @reportError={{this.reportError}}
+      />
     `);
 
     assert.ok(find('form'), 'container rendered');
+
     await click('button[type="submit"]');
 
     const request = requests.pop();

@@ -1,1 +1,8 @@
-{{yield this}}
+<form
+  ...attributes
+  class="t-form"
+  onsubmit={{action 'onSubmit'}}
+  {{autofocus-form}}
+>
+  {{yield this}}
+</form>

@@ -53,14 +53,14 @@ coor.first.save!
 
 def make_contract(attributes = {})
   contract = Contract.new(
-    name: Faker::Lorem.sentence(5, 0),
+    name: Faker::Lorem.sentence(word_count: 5, supplemental: 0),
     contract_status: Contract::STATUS_ACTIVE,
     timeslots: [{ start: '8:45', end: '10:30', weekdays: '01234' }],
-    learning_objectives: Faker::Lorem.sentence(5, 0),
-    competencies: Faker::Lorem.sentence(5, 0),
-    evaluation_methods: Faker::Lorem.sentence(5, 0),
-    instructional_materials: Faker::Lorem.sentence(5, 0),
-    location: Faker::Lorem.sentence(5, 0)
+    learning_objectives: Faker::Lorem.sentence(word_count: 5, supplemental: 0),
+    competencies: Faker::Lorem.sentence(word_count: 5, supplemental: 0),
+    evaluation_methods: Faker::Lorem.sentence(word_count: 5, supplemental: 0),
+    instructional_materials: Faker::Lorem.sentence(word_count: 5, supplemental: 0),
+    location: Faker::Lorem.sentence(word_count: 5, supplemental: 0)
   )
   contract.update_attributes attributes
   contract.save!
@@ -131,11 +131,15 @@ finalized_credits = []
     credit1 = CreditAssignment.create! enrollment: enrollment, credit: @credit1, credit_hours: 0.25
     credit2 = CreditAssignment.create! enrollment: enrollment, credit: @credit2, credit_hours: 0.5
     credit3 = CreditAssignment.create! enrollment: enrollment, credit: @credit2, credit_hours: 0.5
+    credit4 = CreditAssignment.create! enrollment: enrollment, credit: @credit1, credit_hours: 0.25
+    credit5 = CreditAssignment.create! enrollment: enrollment, credit: @credit2, credit_hours: 0.5
+    credit6 = CreditAssignment.create! enrollment: enrollment, credit: @credit2, credit_hours: 0.5
 
     Note.create! note: "Note for #{student.last_name} for enrollment in #{contract.name}", notable: enrollment, creator: contract.facilitator
 
     finalized_credits.push credit1
     finalized_credits.push credit2
+    finalized_credits.push credit3
 
     enrollment.set_closed Enrollment::COMPLETION_FULFILLED, contract.facilitator
     enrollment.set_finalized @admin1

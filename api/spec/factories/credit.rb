@@ -4,6 +4,6 @@
 
 FactoryBot.define do
   factory :credit do
-    course_name { Faker::Lorem.sentence(2, 0) }
+    course_name { Faker::Lorem.sentence(word_count: 2, supplemental: 0) }
   end
 end

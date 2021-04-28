@@ -1,8 +1,37 @@
-<nav class="toolbar flex items-center mb-4">
-  <ul class="flex list-reset">
-    <TinyToolbar::Item @currentRoute={{currentRoute}} @route="student-transcript" @label="Transcript" />
-    <TinyToolbar::Item @currentRoute={{currentRoute}} @route="student-learning-plan" @label="Learning plan" />
-    <TinyToolbar::Item @currentRoute={{currentRoute}} @route="student-credits" @label="Credits" />
-    <TinyToolbar::Item @currentRoute={{currentRoute}} @route="student-graduation-plan" @label="Graduation plan" />
-  </ul>
+<nav class="flex items-baseline space-x-4">
+  <LinkTo
+    class="text-gray-800 hover:bg-gray-100 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
+    @route="status-by-student"
+    @model={{@student.id}}
+  >
+    Status
+  </LinkTo>
+  <LinkTo
+    class="text-gray-800 hover:bg-gray-100 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
+    @route="student-transcript"
+    @model={{@student.id}}
+  >
+    Transcript
+  </LinkTo>
+  <LinkTo
+    class="text-gray-800 hover:bg-gray-100 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
+    @route="student-learning-plan"
+    @model={{@student.id}}
+  >
+    Learning plan
+  </LinkTo>
+  <LinkTo
+    class="text-gray-800 hover:bg-gray-100 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
+    @route="student-credits"
+    @model={{@student.id}}
+  >
+    Credits
+  </LinkTo>
+  <LinkTo
+    class="text-gray-800 hover:bg-gray-100 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
+    @route="student-graduation-plan"
+    @model={{@student.id}}
+  >
+    Graduation plan
+  </LinkTo>
 </nav>

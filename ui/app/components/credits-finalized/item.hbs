@@ -20,12 +20,12 @@
     {{creditHours}}
   </td>
   <td class="text-right">
-    {{t-date creditAssignment.attributes.enrollmentFinalizedOn "M/D/YYYY"}}
+    <DateTime @date={{creditAssignment.attributes.enrollmentFinalizedOn}} @format="M/D/YYYY" />
   </td>
   <td
     class="text-right"
     title={{creditAssignment.attributes.districtFinalizeApprovedBy}}
   >
-    {{t-date creditAssignment.attributes.districtFinalizeApprovedOn "M/D/YYYY"}}
+    <DateTime @date={{creditAssignment.attributes.districtFinalizeApprovedOn}} @format="M/D/YYYY" />
   </td>
 </tr>

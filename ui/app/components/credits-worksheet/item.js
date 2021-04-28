@@ -12,12 +12,12 @@ export default Component.extend(CreditAssignmentPropsMixin, {
 
   showSplit: computed.reads('hasChildren'),
 
-  selectionDisabled: computed('disabled', 'hasChildren', function () {
+  selectionDisabled: computed('disabled', 'hasChildren', 'creditAssignment.attributes.districtFinalizeApprovedOn', function () {
     if (this.disabled) {
       return true;
     }
 
-    return this.hasChildren;
+    return this.hasChildren || this.creditAssignment.attributes.districtFinalizeApprovedOn;
   }),
 
   notes: computed('creditAssignment.relationships.notes.data', function () {

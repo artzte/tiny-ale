@@ -4,6 +4,6 @@
 
 FactoryBot.define do
   factory :learning_requirement do
-    ealr { Faker::Lorem.sentence(5, 0) }
+    ealr { Faker::Lorem.sentence(word_count: 5, supplemental: 0) }
   end
 end

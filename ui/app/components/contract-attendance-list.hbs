@@ -8,7 +8,7 @@
       {{#each sortedMeetings as |meeting|}}
         <th data-test-meeting data-test-meeting-date={{meeting.attributes.meetingDate}}>
           <LinkTo @route="contract-attendance-roll" @model={{meeting.id}}>
-            {{t-date meeting.attributes.meetingDate "M/D"}}
+            <DateTime @date={{meeting.attributes.meetingDate}} @format="M/D" />
           </LinkTo>
         </th>
       {{/each}}

@@ -43,6 +43,6 @@ module('Integration | Component | contract-assignments-list', hooks => {
       .find(enrollment => enrollment.relationships.turnins.data.length);
     const { participant } = enrollmentWithTurnins.relationships;
 
-    assert.equal(findAll(`[data-student-id="${participant.data.id}"] .notes-list > ul li`).length, contractAssignmentsNotes.data.length, 'one enrollee has notes and matches fixture');
+    assert.equal(findAll(`[data-student-id="${participant.data.id}"] [data-test-notes-list-item]`).length, contractAssignmentsNotes.data.length, 'one enrollee has notes and matches fixture');
   });
 });

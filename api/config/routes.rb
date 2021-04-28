@@ -30,6 +30,8 @@ Rails.application.routes.draw do
 
     get '/notes', to: 'notes#index'
     post '/notes/:notable_type/:notable_id', to: 'notes#create'
+    put '/notes/:id', to: 'notes#update'
+    delete '/notes/:id', to: 'notes#destroy'
 
     get '/contracts', to: 'contracts#index'
     get '/contracts/:id', to: 'contracts#show'

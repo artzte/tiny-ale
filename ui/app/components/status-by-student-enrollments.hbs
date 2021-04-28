@@ -4,7 +4,7 @@
       <th class="class">Class</th>
       <th class="status">Status</th>
       {{#each months as |month|}}
-        <th class="month">{{t-date month "compactTermMonth"}}</th>
+        <th class="month"><DateTime @date={{month}} @format="MMM" /></th>
       {{/each}}
     </tr>
   </thead>

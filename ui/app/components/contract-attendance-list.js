@@ -9,10 +9,9 @@ import {
   PARTICIPATION_EXCUSED,
 } from '../utils/meeting-utils';
 import ContractRelations from '../mixins/contract-relations';
-import Notes from '../mixins/notes';
 import clone from '../utils/clone';
 
-export default Component.extend(ContractRelations, Notes, {
+export default Component.extend(ContractRelations, {
   tinyData: service(),
   tagName: '',
 
@@ -103,7 +102,7 @@ export default Component.extend(ContractRelations, Notes, {
 
   async didReceiveAttrs() {
     this._super();
-    const notes = await this.getNotes(this.meetingParticipants);
+    const notes = await this.tinyData.getNotes(this.meetingParticipants);
     if (!this.isDestroyed) this.set('notes', notes);
   },
 });

@@ -34,7 +34,7 @@ export const tinyDataService = {
   },
 
   getUser() {
-    return this._data.user;
+    return clone(this._data.user);
   },
 
   setUser(user) {
@@ -179,6 +179,21 @@ export const tinyDataService = {
 
   _reportUpdatedState() {
     stateCallbacks.forEach(callback => callback());
+  },
+
+  getNotes(notables) {
+    const [firstNotable] = notables;
+    if (!firstNotable) return Promise.resolve({ data: [], meta: { count: 0 } });
+
+    const notableType = firstNotable.type;
+    const notableIds = notables.map(notable => notable.id);
+    return this.fetch('/api/notes', {
+      data: {
+        notableType,
+        notableIds: notableIds.join(','),
+        order: 'createdAt DESC',
+      },
+    });
   },
 };
 

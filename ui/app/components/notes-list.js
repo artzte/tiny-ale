@@ -1,31 +1,96 @@
-import Component from '@ember/component';
-import { computed } from '@ember/object';
-import { bool, alias } from '@ember/object/computed';
-import { log } from '../utils/logger';
+import Component from '@glimmer/component';
+import { action } from '@ember/object';
+import { inject as service } from '@ember/service';
+import { tracked } from '@glimmer/tracking';
+import { dasherize } from '@ember/string';
+import { replaceModel } from '../utils/json-api';
+import Validator from '../utils/validator';
 
-export default Component.extend({
-  classNames: 'notes-list',
-  hasNotes: bool('count'),
-  count: alias('notes.length'),
-  pluralNotes: computed('notes', function () {
-    const { notes } = this;
-    return notes && (notes.length === 1) ? 'note' : 'notes';
-  }),
+export default class NotesList extends Component {
+  @service('tinyData') tinyData;
 
-  sortedNotes: computed('notes', function () {
-    const { notes } = this;
-    return (notes || [])
-      .sort((note1, note2) => note1.attributes.updatedAt.localeCompare(note2.attributes.updatedAt));
-  }),
+  @tracked _notes;
 
-  notesIcons: computed('notes', function () {
-    return this.notes.slice(0, 5);
-  }),
+  @tracked noteToEdit;
 
-  actions: {
-    doAdd(event) {
-      event.preventDefault();
-      log('do add');
-    },
-  },
-});
+  validator = new Validator({
+    note: [{
+      type: 'required',
+    }],
+  });
+
+  get notes() {
+    return this._notes || this.args.notes;
+  }
+
+  createNote(note) {
+    const {
+      type,
+      id,
+    } = note.relationships.notable.data;
+    return this.tinyData.fetch(`/api/notes/${dasherize(type)}/${id}`, {
+      method: 'POST',
+      data: { data: note },
+    });
+  }
+
+  updateNote(note) {
+    return this.tinyData.fetch(`/api/notes/${note.id}`, {
+      method: 'PUT',
+      data: { data: note },
+    });
+  }
+
+  get creator() {
+    const { noteToEdit } = this;
+
+    if (!noteToEdit) return null;
+
+    if (!noteToEdit.id) {
+      return this.tinyData.getUser();
+    }
+
+    return this.tinyData.get('user', noteToEdit.relationships.creator.data.id);
+  }
+
+  @action showAdd() {
+    this.noteToEdit = {
+      attributes: {
+        note: '',
+      },
+      relationships: {
+        notable: {
+          data: this.args.notable,
+        },
+      },
+    };
+  }
+
+  @action showEdit(note) {
+    this.noteToEdit = note;
+  }
+
+  @action async save(note) {
+    try {
+      if (note.id) {
+        const newModel = await this.updateNote(note);
+        this._notes = replaceModel(this.notes, newModel.data);
+      } else {
+        const newModel = await this.createNote(note);
+        this._notes = [newModel.data, ...this.notes];
+      }
+    } catch (e) {
+      this.flashMessages.danger(`Could not save your note - error was ${e.message}`);
+    }
+    this.cancelEdit();
+  }
+
+  @action cancelEdit() {
+    this.noteToEdit = null;
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  @action reportError(error) {
+    console.error(error);
+  }
+}

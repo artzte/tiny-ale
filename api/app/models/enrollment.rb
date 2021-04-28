@@ -1,11 +1,29 @@
 # frozen_string_literal: true
 
+# Permissible state transitions
+#
+# If Proposed
+# - Approve
+# - Delete
+#
+# If Closed
+# - Reactivate (approve)
+# - Delete (drop)
+#
+# If Enrolled
+# - Fulfill
+# - Cancel
+# - Switch from "student" to "instructor" role or vice versa
+#
+# If Finalized with a Canceled status
+# - Reinstate (approve)
+
 class Enrollment < ApplicationRecord
   require './lib/tiny_privileges'
 
   # Enrollments have four possible states. The state transitions are as follows.
   #
-  # Proposed - Active, Drop (destroy)
+  # Proposed - Active, Dropped (destroyed)
   # Active - Closed (fulfilled), Closed (canceled)
   # Closed - Active, Finalized (fulfilled), Finalized (canceled)
   # Finalized - cannot change state
@@ -179,6 +197,19 @@ class Enrollment < ApplicationRecord
 
     true
   end
+
+	def set_dropped(user)
+		privs = privileges(user)
+
+		# check privileges
+		unless (self.enrollment_status == STATUS_PROPOSED and (privs[:edit] or user.id == participant.id)) or 
+		  (self.enrollment_status == STATUS_CLOSED and privs[:edit])
+			raise TinyException, TinyException::MESSAGES[TinyException::NOPRIVILEGES]
+		end
+		
+		destroy
+		true
+	end
 
   # performs a student enrollment, setting the enrollment_status
   # appropriately depending on the enrolling user's privileges.

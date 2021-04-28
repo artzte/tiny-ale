@@ -3,156 +3,180 @@
 - updates should be the only things pushed on submit
 */
 
-import Component from '@ember/component';
+import Component from '@glimmer/component';
+import { tracked } from '@glimmer/tracking';
+import { action } from '@ember/object';
+
 import clone from '../utils/clone';
 
-export default Component.extend({
-  showErrors: false,
-  classNames: ['t-form'],
-  tagName: 'form',
+function normalizeModel(model) {
+  return clone(model.attributes);
+}
 
-  didReceiveAttrs() {
-    this._super();
-    if (this.lastModel === this.model) {
-      return;
-    }
+/*
+ * Relationships are normalized into a more compact form,
+ * with keys pointing directly to the resource linkage
+ * (skipping the data attribute). E.g.
+ *
+ *   { relationships: { boo: { data: { id: 1, type: 'foo' }}}}
+ *
+ * is normalized as
+ *
+ *   { boo: { id: 1, type: 'foo' } }
+ *
+ * Allows for easier use in templates and easier validation
+ */
+function normalizeRelationships(model) {
+  const modelRelationships = model.relationships;
+  if (!modelRelationships) return null;
 
-    const pojo = this.normalizeModel(this.model);
-    const relationships = this.normalizeRelationships(this.model);
+  const relationships = Object.keys(modelRelationships)
+    .reduce((memo, key) => {
+      const relation = modelRelationships[key];
 
-    this.lastModel = this.model;
+      if (!relation) return memo;
 
-    this.setProperties({
-      pojo,
-      relationships,
-      'updates-pojo': {},
-      'updates-relationships': {},
-    });
+      memo[key] = relation.data;
+      return memo;
+    }, {});
+
+  return relationships;
+}
+
+function serializeRelationships(relationships) {
+  return Object.keys(relationships)
+    .reduce((memo, key) => {
+      memo[key] = {
+        data: relationships[key],
+      };
+      return memo;
+    }, {});
+}
+
+function serializeModel(pojo, model, relationships) {
+  const serialized = {
+    ...model,
+    attributes: {
+      ...pojo,
+    },
+  };
+
+  // with relationships if present
+  if (relationships) {
+    return {
+      ...serialized,
+      relationships: serializeRelationships(relationships),
+    };
+  }
+
+  return serialized;
+}
+
+function extractNameValue(_name, _value) {
+  let value;
+  let name;
+
+  if (_value instanceof Event) {
+    ({ value, name } = _value.target);
+  } else {
+    value = _value;
+    name = _name;
+  }
+  return { name, value };
+}
+
+export default class TForm extends Component {
+  @tracked showErrors = false;
+
+  @tracked disabled = false;
+
+  @tracked pojo = {};
+
+  @tracked relationships = {};
+
+  constructor(...args) {
+    super(...args);
+
+    const { model } = this.args;
+
+    this.pojo = normalizeModel(model);
+    this.relationships = normalizeRelationships(model);
+
+    this['updates-pojo'] = {};
+    this['updates-relationships'] = {};
 
     this.validate();
 
     if (this.onUpdatePojo) {
-      this.onUpdatePojo(this.serializeModel(this.pojo, this.model, this.relationships));
+      this.onUpdatePojo(serializeModel(this.pojo, model, this.relationships));
     }
-  },
+  }
 
-  didInsertElement(...args) {
-    this._super(...args);
-    const autofocus = this.element.querySelector('[autofocus]');
+  @action toggleValue(name, event) {
+    if (event) event.stopPropagation();
+    this.handleChange(name, !this.pojo[name], 'pojo');
+  }
 
-    if (autofocus) {
-      autofocus.focus();
-      autofocus.select();
+  /* An action handler for change events, that works both with various
+     controls that send along the value, name signature, along with
+     generic DOM inputs that send an event
+  */
+  @action onChange(_value, _name) {
+    const { name, value } = extractNameValue(_name, _value);
+
+    this.handleChange(name, value, 'pojo');
+  }
+
+  // Set up to handle simple one-of relationships to allow a control
+  // to just send a simple value which should be an ID. In this case
+  // the value is changed to an object reference. If the control
+  // sends a change event with an object, that object becomes the
+  // value sent.
+  //
+  // note here, the relationships pojo just has a direct ref from the
+  // attribute name to the relationships object, without the intervening
+  // "data" path segment
+  //
+  @action onChangeRelationship(_value, _name) {
+    const { name, value } = extractNameValue(_name, _value);
+    let reference;
+
+    if (typeof value === 'object') {
+      // an object is assumed to be a fully-fledged reference
+      reference = value;
+    } else if (value) {
+      // a non-empty string was passed (i.e., an id)
+      reference = { id: value };
+    } else {
+      // a blank was passed (i.e., a prompt value)
+      reference = null;
     }
-  },
 
-  actions: {
-    toggleValue(name, event) {
-      event.stopPropagation();
-      this.handleChange(name, !this.pojo[name], 'pojo');
-    },
+    this.handleChange(name, reference, 'relationships');
+  }
 
-    /* An action handler for change events, that works both with various
-       controls that send along the value, name signature, along with
-       generic DOM inputs that send an event
-     */
-    onChange(_value, _name) {
-      const { name, value } = this.extractNameValue(_name, _value);
+  @action onSubmit(event) {
+    event.preventDefault();
 
-      this.handleChange(name, value, 'pojo');
-    },
-
-    // Set up to handle simple one-of relationships to allow a control
-    // to just send a simple value which should be an ID. In this case
-    // the value is changed to an object reference. If the control
-    // sends a change event with an object, that object becomes the
-    // value sent.
-    onChangeRelationship(_value, _name) {
-      const { name, value } = this.extractNameValue(_name, _value);
-      let reference;
-
-      if (typeof value === 'object') {
-        // an object is assumed to be a fully-fledged reference
-        reference = value;
-      } else if (value) {
-        // a non-empty string was passed (i.e., an id)
-        reference = { id: value };
-      } else {
-        // a blank was passed (i.e., a prompt value)
-        reference = null;
+    if (this.isInvalid) {
+      this.showErrors = true;
+      if (this.args.reportError) {
+        this.args.reportError(this.errors);
       }
-      this.handleChange(name, reference, 'relationships');
-    },
-  },
-
-  normalizeModel(model) {
-    return clone(model.attributes);
-  },
-
-  /* Helper function callable by forms to update a relationship
-   */
-  updateRelationship(key, relation) {
-    if (typeof key !== 'string') throw new Error('Requires relationship key for first argument');
-
-    return this.handleChange(key, relation, 'relationships');
-  },
-
-  /*
-   * Relationships are normalized into a more compact form,
-   * with keys pointing directly to the resource linkage
-   * (skipping the data attribute). E.g.
-   *
-   *   { relationships: { boo: { data: { id: 1, type: 'foo' }}}}
-   *
-   * is normalized as
-   *
-   *   { boo: { id: 1, type: 'foo' } }
-   *
-   * Allows for easier use in templates and easier validation
-   */
-  normalizeRelationships(model) {
-    const modelRelationships = model.relationships;
-    if (!modelRelationships) return null;
-
-    const relationships = Object.keys(modelRelationships)
-      .reduce((memo, key) => {
-        const relation = modelRelationships[key];
-        if (!relation) throw new Error(`Malformed relationship: "${key}"`);
-        memo[key] = relation.data;
-        return memo;
-      }, {});
-
-    return relationships;
-  },
-
-  serializeModel(pojo, model, relationships) {
-    const serialized = {
-      ...model,
-      attributes: {
-        ...pojo,
-      },
-    };
-
-    // with relationships if present
-    if (relationships) {
-      return {
-        ...serialized,
-        relationships: this.serializeRelationships(relationships),
-      };
+      return;
     }
 
-    return serialized;
-  },
+    this.disabled = true;
 
-  serializeRelationships(relationships) {
-    return Object.keys(relationships)
-      .reduce((memo, key) => {
-        memo[key] = {
-          data: relationships[key],
-        };
-        return memo;
-      }, {});
-  },
+    const { model, hasUpdates, updates } = this.serialize();
+    const result = this.args.save(model, hasUpdates && updates);
+
+    result.finally(() => {
+      if (this.isDestroyed) return;
+
+      this.disabled = false;
+    });
+  }
 
   updatePojo(updates, updatePath = 'pojo') {
     const pojo = this[updatePath];
@@ -162,25 +186,12 @@ export default Component.extend({
       ...updates,
     };
 
-    this.set(updatePath, newPojo);
+    this[updatePath] = newPojo;
 
     if (this.onUpdatePojo) {
-      this.onUpdatePojo(this.serializeModel(this.pojo, this.model, this.relationships));
+      this.onUpdatePojo(serializeModel(this.pojo, this.model, this.relationships));
     }
-  },
-
-  extractNameValue(_name, _value) {
-    let value;
-    let name;
-
-    if (_value instanceof Event) {
-      ({ value, name } = _value.target);
-    } else {
-      value = _value;
-      name = _name;
-    }
-    return { name, value };
-  },
+  }
 
   handleChange(name, value, updatePath) {
     const updates = {
@@ -191,25 +202,32 @@ export default Component.extend({
     this.updatePojo(updates, `updates-${updatePath}`);
 
     this.validate();
-  },
+  }
 
   validate() {
     let results = { isInvalid: false, errors: {} };
+    const validator = this.args.validator || this.validator;
 
-    if (this.validator) {
-      const { isInvalid, errors } = this.validator.validate({ ...this.pojo, ...this['updates-pojo'] });
+    if (validator) {
+      const { isInvalid, errors } = validator.validate({ ...this.pojo, ...this['updates-pojo'] });
       results = { isInvalid, errors };
     }
 
-    if (this.validateRelationships) {
-      const { isInvalid, errors } = this.validateRelationships.validate({ ...this.relationships, ...this['updates-relationships'] });
-      results = { isInvalid: isInvalid || results.isInvalid, errors: { ...results.errors, ...errors } };
+    const validateRelationships = this.args.validateRelationships || this.validateRelationships;
+
+    if (validateRelationships) {
+      const { isInvalid, errors } = validateRelationships.validate({ ...this.relationships, ...this['updates-relationships'] });
+      results = {
+        isInvalid: (isInvalid || results.isInvalid),
+        errors: { ...results.errors, ...errors },
+      };
     }
 
-    this.setProperties(results);
+    this.isInvalid = results.isInvalid;
+    this.errors = results.errors;
 
     return results;
-  },
+  }
 
   // Builds output models - a full model with updates, a boolean indicating
   // whether any updates happened, and a lightweight updates model with changes only.
@@ -220,40 +238,20 @@ export default Component.extend({
       'updates-pojo': pojoUpdates,
       relationships,
       'updates-relationships': relationshipsUpdates,
-      model: _model,
     } = this;
 
-    const model = this.serializeModel(pojo, _model, relationships);
+    const {
+      model: _model,
+    } = this.args;
+
+    const model = serializeModel(pojo, _model, relationships);
     const hasUpdates = Boolean(Object.keys(pojoUpdates).length || Object.keys(relationshipsUpdates).length);
-    const updates = this.serializeModel(pojoUpdates, { id: model.id }, relationshipsUpdates);
+    const updates = serializeModel(pojoUpdates, { id: model.id }, relationshipsUpdates);
 
     return {
       model,
       updates,
       hasUpdates,
     };
-  },
-
-  submit(event) {
-    event.preventDefault();
-
-    if (this.isInvalid) {
-      this.set('showErrors', true);
-      if (this.reportError) {
-        this.reportError(this.errors);
-      }
-      return;
-    }
-
-    this.set('disabled', true);
-
-    const { model, hasUpdates, updates } = this.serialize();
-    const result = this.save(model, hasUpdates && updates);
-
-    result.finally(() => {
-      if (this.isDestroyed) return;
-
-      this.set('disabled', false);
-    });
-  },
-});
+  }
+}
