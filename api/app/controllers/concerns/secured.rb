@@ -19,9 +19,6 @@ module Secured
   end
 
   def authenticate_request!
-    ## for offline
-    # @user = User.find_by_last_name "Grey"
-
     permissions = get_permissions
 
     render_unauthorized && return if permissions.empty?
