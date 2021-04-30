@@ -30,6 +30,74 @@ RSpec.describe 'Admin learning plan goals API', type: :request do
     end
   end
 
+  describe 'PUT /api/admin/learning-plan-goals/:id/reorder' do
+    it 'returns a 200 with successful reordering to first position' do
+      body = {
+        data: {
+          attributes: {
+            position: 0
+          }
+        }
+      }
+      put "/api/admin/learning-plan-goals/#{@goal5.id}/reorder", params: body.to_json, headers: json_request_headers
+
+      expect(response).to have_http_status(200)
+
+      expect(json).not_to be_empty
+      expect(json['data']).not_to be_empty
+
+      expect(json['meta']['count']).to eq(LearningPlanGoal.count)
+
+      expect(json['data'].first['id']).to eq(@goal5.id.to_s)
+      expect(json['data'].second['id']).to eq(@goal0.id.to_s)
+      expect(json['data'].last['id']).to eq(@goal4.id.to_s)
+    end
+
+    it 'returns a 200 with successful reordering to second position' do
+      body = {
+        data: {
+          attributes: {
+            position: 1
+          }
+        }
+      }
+      put "/api/admin/learning-plan-goals/#{@goal5.id}/reorder", params: body.to_json, headers: json_request_headers
+
+      expect(response).to have_http_status(200)
+
+      expect(json).not_to be_empty
+      expect(json['data']).not_to be_empty
+
+      expect(json['meta']['count']).to eq(LearningPlanGoal.count)
+
+      expect(json['data'].first['id']).to eq(@goal0.id.to_s)
+      expect(json['data'].second['id']).to eq(@goal5.id.to_s)
+      expect(json['data'].last['id']).to eq(@goal4.id.to_s)
+    end
+ 
+    it 'returns a 200 with successful reordering to last position' do
+      body = {
+        data: {
+          attributes: {
+            position: 99
+          }
+        }
+      }
+      put "/api/admin/learning-plan-goals/#{@goal3.id}/reorder", params: body.to_json, headers: json_request_headers
+
+      expect(response).to have_http_status(200)
+
+      expect(json).not_to be_empty
+      expect(json['data']).not_to be_empty
+
+      expect(json['meta']['count']).to eq(LearningPlanGoal.count)
+
+      expect(json['data'].first['id']).to eq(@goal0.id.to_s)
+      expect(json['data'].second['id']).to eq(@goal1.id.to_s)
+      expect(json['data'].last['id']).to eq(@goal3.id.to_s)
+    end
+  end
+
   describe 'POST /api/admin/learning-plan-goals' do
     it 'returns a 200 with successful goal creation' do
       postBody = {

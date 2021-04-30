@@ -37,31 +37,37 @@ class AdminLearningPlanGoalsController < AdminController
 
   def reorder
     goals = LearningPlanGoal
-      .where(active: true)
       .order("position")
 
-    goal = goals.find{|goal| goal.id == params[:id]}
-    old_position = goal.position
-    new_position = goal_attributes[:position]
+    goal = goals.find{|g| g.id.to_s == params[:id]}
+    render nothing, status: 404 unless goal
 
-    goal.position = new_position
-
-    goals.each do |g, i|
-      next if g.id == params[:id] 
-      
-      next if g.position < new_position
-
-      goal.update_attribute! position: i
+    if goal_attributes[:position] >= goals.count
+      new_position = goals.count - 1
+    else
+      new_position = goal_attributes[:position]
     end
 
-    index
+    goals = goals
+      .filter{|g| g != goal}
+      .insert(new_position, goal)
+
+    goals.each_with_index do |g, i|
+      next if goal.position = i
+      goal.position = i
+      goal.save!
+    end
+
+    options = { meta: { count: goals.length } }
+    render json: LearningPlanGoalSerializer.new(goals, options)
   end
 
-  private
+private
 
   def goal_attributes
     params.require(:data)
       .require(:attributes)
       .permit(:description, :required, :active, :position)
   end
+
 end
