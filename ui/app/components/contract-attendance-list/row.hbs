@@ -4,19 +4,19 @@
       {{full-name student}}
     </td>
     <td class="center">
-      {{number-or roll.present "-"}}
+      <NumberOr @number={{roll.present}} />
       {{#if roll.tardy}}
         ({{roll.tardy}}T)
       {{/if}}
     </td>
     <td class="center">
-      {{number-or roll.absent "-"}}
+      <NumberOr @number={{roll.absent}} />
       {{#if roll.excused}}
         ({{roll.excused}}E)
       {{/if}}
     </td>
     <td class="center">
-      {{number-or roll.tardy "-"}}
+      <NumberOr @number={{roll.tardy}} />
     </td>
     {{#each meetings as |meeting|}}
       <ContractAttendanceList::Column @meeting={{meeting}} @row={{row}} @roll={{roll}} />
