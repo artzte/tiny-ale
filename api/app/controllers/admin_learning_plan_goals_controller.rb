@@ -1,38 +1,60 @@
-class AdminLearningPlanGoalsController < ApplicationController
+class AdminLearningPlanGoalsController < AdminController
   def index
     result = LearningPlanGoal
       .with_counts
-      .where('active = true')
       .order("position")
     count = LearningPlanGoal
-      .where('active = true')
       .count
     options = { meta: { count: count } }
     render json: LearningPlanGoalSerializer.new(result, options)
   end
 
   def create
-    requirement = LearningPlanGoal.new goal_attributes
+    goal = LearningPlanGoal.new goal_attributes
 
-    requirement.save!
+    goal.position = 100000
 
-    render json: LearningPlanGoalSerializer.new(requirement)
+    goal.save!
+
+    render json: LearningPlanGoalSerializer.new(goal)
   end
 
   def update
-    requirement = LearningPlanGoal.find params[:id]
+    goal = LearningPlanGoal.find params[:id]
 
-    requirement.update_attributes! goal_attributes
+    goal.update_attributes! goal_attributes
 
-    render json: LearningPlanGoalSerializer.new(requirement)
+    render json: LearningPlanGoalSerializer.new(goal)
   end
 
   def destroy
-    requirement = LearningPlanGoal.find params[:id]
+    goal = LearningPlanGoal.find params[:id]
 
-    requirement.destroy!
+    goal.destroy!
 
     render nothing: true, status: 204
+  end
+
+  def reorder
+    goals = LearningPlanGoal
+      .where(active: true)
+      .order("position")
+
+    goal = goals.find{|goal| goal.id == params[:id]}
+    old_position = goal.position
+    new_position = goal_attributes[:position]
+
+    goal.position = new_position
+
+    goals.each do |g, i|
+      next if g.id == params[:id] 
+      
+      next if g.position < new_position
+
+      goal.update_attribute! position: i
+    end
+
+    index
   end
 
   private
