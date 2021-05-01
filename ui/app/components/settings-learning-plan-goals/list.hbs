@@ -1,0 +1,17 @@
+<section
+  class="bg-gray-200 p-5 {{this.isDraggingOverTopClasses}}"
+  ondragenter={{fn this.onDragEnter}}
+  ondragover={{fn this.onDragOver}}
+  ondragleave={{fn this.onDragLeave}}
+  ondrop={{fn this.onDrop}}
+>
+  {{#each @goals as |goal i|}}
+    <SettingsLearningPlanGoals::ListItem
+      @goal={{goal}}
+      @index={{i}}
+      @draggedItem={{this.draggedItem}}
+      @startDraggingItem={{fn this.startDraggingItem}}
+      @dropItem={{fn this.dropItem}}
+    />
+  {{/each}}
+</section>

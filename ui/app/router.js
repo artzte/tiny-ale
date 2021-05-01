@@ -203,6 +203,14 @@ Router.map(function () {
             path: ':id',
           });
         });
+        this.route('settings-learning-plan-goals', {
+          resetNamespace: true,
+          path: '/learning-plan-goals',
+        }, function () {
+          this.route('index', { path: '/' });
+          this.route('new');
+          this.route('edit', { path: ':id' });
+        });
         this.route('settings-learning-requirements', {
           resetNamespace: true,
           path: '/learning-requirements',
@@ -210,10 +218,6 @@ Router.map(function () {
           this.route('index', { path: '/' });
           this.route('new');
           this.route('edit', { path: ':id' });
-        });
-        this.route('settings-learning-plan-goals', {
-          resetNamespace: true,
-          path: '/learning-plan-goals',
         });
         this.route('settings-graduation-plan-requirements', {
           resetNamespace: true,

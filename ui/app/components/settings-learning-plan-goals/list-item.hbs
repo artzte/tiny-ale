@@ -1,0 +1,38 @@
+<div
+  class="bg-white shadow overflow-hidden sm:rounded-lg mb-5 {{isDraggedClasses}} {{isDropTargetClasses}}"
+  draggable="true"
+  data-test-goal-row={{@goal.id}}
+  ondragstart={{fn this.onDragStart}}
+  ondragend={{fn this.onDragEnd}}
+  ondragover={{fn this.onDragOver}}
+  ondragenter={{fn this.onDragEnter}}
+  ondragleave={{fn this.onDragLeave}}
+  ondrop={{fn this.onDrop}}
+>
+  <div class="grid grid-cols-6 md:grid-cols-8 gap-4 px-4 my-5 sm:px-6">
+    {{#if @goal}}
+      <div class="grid-cols-1">
+        <TDragHandle />
+      </div>
+      <div class="col-span-5 md:col-span-7 text-large leading-6 text-gray-900">
+        {{@goal.attributes.description}}
+      </div>
+      <div class="col-start-4 col-span-3 md:col-start-7 md:col-span-2 text-right">
+        {{this.planCountPhrase}}
+      </div>
+      <div class="col-start-4 col-span-3 md:col-start-7 md:col-span-2 text-right">
+        {{#if @goal.attributes.required}}
+          Required
+        {{else}}
+          Optional
+        {{/if}}
+          /
+        {{#if @goal.attributes.active}}
+          active
+        {{else}}
+          inactive
+        {{/if}}
+      </div>
+    {{/if}}
+  </div>
+</div>

@@ -217,15 +217,15 @@ GraduationPlanMapping.create! graduation_plan: graduation_plan, graduation_plan_
 GraduationPlanMapping.create! graduation_plan: graduation_plan, graduation_plan_requirement: gradService1, notes: 'It is serviced', date_completed: '2019-06-15'
 
 (1..4).each do |i|
-  LearningPlanGoal.create! description: Faker::Lorem.paragraph(sentence_count: 5), active: true, required: true, position: 0
+  LearningPlanGoal.create! description: Faker::Lorem.paragraph(sentence_count: 5), active: true, required: true, position: i
 end
 
-(1..4).each do |i|
-  LearningPlanGoal.create! description: Faker::Lorem.paragraph(sentence_count: 5), active: true, required: false, position: 1
+(5..8).each do |i|
+  LearningPlanGoal.create! description: Faker::Lorem.paragraph(sentence_count: 5), active: true, required: false, position: i
 end
 
-(1..4).each do |i|
-  LearningPlanGoal.create! description: Faker::Lorem.paragraph(sentence_count: 5), active: false, required: false, position: 2
+(9..12).each do |i|
+  LearningPlanGoal.create! description: Faker::Lorem.paragraph(sentence_count: 5), active: false, required: i % 2 == 0, position: i
 end
 
 [CURRENT_YEAR, LAST_YEAR].each do |year|
