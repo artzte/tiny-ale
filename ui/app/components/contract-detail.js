@@ -18,7 +18,7 @@ export default class ContractDetail extends contractModelFactory(Component) {
     this.loading = true;
     const result = await this.tinyData.fetch(`/api/contracts/${this.contract.id}`, {
       method: 'put',
-      body: JSON.stringify({ data: updates }),
+      data: updates,
     });
     this.loading = false;
     this.contract = result.data;

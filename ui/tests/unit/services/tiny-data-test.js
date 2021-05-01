@@ -59,7 +59,7 @@ module('Unit | Service | tiny-data', hooks => {
   test('it handles query params', function (assert) {
     const service = this.owner.lookup('service:tiny-data');
     service.fetch(api, {
-      data: {
+      query: {
         bee: 1,
         boo: 'boo',
       },
@@ -78,7 +78,7 @@ module('Unit | Service | tiny-data', hooks => {
   test('it handles a mix of query params', function (assert) {
     const service = this.owner.lookup('service:tiny-data');
     service.fetch(`${api}?foo=bar`, {
-      data: {
+      query: {
         bee: 1,
         boo: 'boo',
       },

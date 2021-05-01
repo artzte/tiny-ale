@@ -68,7 +68,7 @@ export default Route.extend({
     this.qp = { ...params, schoolYear: requestParams.schoolYear };
 
     return tinyData.fetch('/api/contracts', {
-      data: requestParams,
+      query: requestParams,
     });
   },
 

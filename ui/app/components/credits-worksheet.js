@@ -33,9 +33,7 @@ export default class CreditsWorksheet extends Component {
 
     const newCreditAssignment = await this.tinyData.fetch(url, {
       method: 'POST',
-      data: {
-        data: model,
-      },
+      data: model,
     });
 
     const note = (combineModel.attributes.note || '').trim();
@@ -94,10 +92,8 @@ export default class CreditsWorksheet extends Component {
     const newCreditAssignment = await this.tinyData.fetch(url, {
       method: 'PUT',
       data: {
-        data: {
-          attributes: {
-            districtFinalizeApprovedOn,
-          },
+        attributes: {
+          districtFinalizeApprovedOn,
         },
       },
     });

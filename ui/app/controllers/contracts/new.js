@@ -13,8 +13,8 @@ export default class ContractsNewController extends Controller {
     this.loading = true;
 
     const result = await this.tinyData.fetch('/api/contracts', {
-      method: 'post',
-      body: JSON.stringify({ data: model }),
+      method: 'POST',
+      data: model,
     });
     this.loading = false;
     this.contract = result.data;

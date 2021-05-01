@@ -9,7 +9,7 @@ export default Route.extend({
     const coordinator = this.getCoordinator();
     return all([
       this.tinyData.fetch('/api/students', {
-        data: {
+        query: {
           coordinatorIds: coordinator.id,
           status: 'reportable',
           order: 'lastName, firstName',
@@ -25,7 +25,7 @@ export default Route.extend({
     const { term, students } = this;
 
     return this.tinyData.fetch('/api/statuses/students', {
-      data: {
+      query: {
         studentIds: students.data.map(student => student.id),
         months: term.data.attributes.months,
         type: 'student',

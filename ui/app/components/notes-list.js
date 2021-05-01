@@ -30,14 +30,14 @@ export default class NotesList extends Component {
     } = note.relationships.notable.data;
     return this.tinyData.fetch(`/api/notes/${dasherize(type)}/${id}`, {
       method: 'POST',
-      data: { data: note },
+      data: note,
     });
   }
 
   updateNote(note) {
     return this.tinyData.fetch(`/api/notes/${note.id}`, {
       method: 'PUT',
-      data: { data: note },
+      data: note,
     });
   }
 

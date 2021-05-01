@@ -31,7 +31,7 @@ export default Controller.extend({
       tinyData.addResult({ data });
       return this.tinyData.fetch('/api/admin/graduation-plan-requirements/sort', {
         method: 'PUT',
-        body: JSON.stringify({ data: data.map(req => ({ id: req.id })) }),
+        data: data.map(req => ({ id: req.id })),
       });
     },
   },
