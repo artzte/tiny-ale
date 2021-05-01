@@ -50,15 +50,17 @@ class JsonWebToken
   end
 
   def self.extract_permissions(http_token)
-    ## Offline usage
-    ## return ['get:config', 'manage:config']
+    if Rails.env == "development" and Rails.application.config.constants[:OFFLINE]
+      return ['get:config', 'manage:config']
+    end
 
     extract_token http_token, 'permissions'
   end
 
   def self.extract_user_id(http_token)
-    ## Offline usage
-    ## return User.find_by_last_name 'Grey'
+    if Rails.env == "development" and Rails.application.config.constants[:OFFLINE]
+      return User.find_by_last_name('Grey').id
+    end
 
     key = "#{Rails.application.credentials.auth0_api_audience.chomp('/')}.databaseId"
     
