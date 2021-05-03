@@ -3,7 +3,7 @@ import { formatNumber } from 'accounting';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 
-const isDropTargetClasses = 'border border-gray-700 border-dashed';
+const isDropTargetClasses = 'mb-24';
 const isDraggedClasses = 'bg-gray-400';
 
 export default class SettingsLearningPlanGoalsListItemComponent extends Component {
@@ -49,8 +49,6 @@ export default class SettingsLearningPlanGoalsListItemComponent extends Componen
   }
 
   @action onDrop(event) {
-    console.log('item onDrop', this.isCurrentDropTarget)
-
     event.preventDefault();
     event.stopPropagation();
 
@@ -58,7 +56,8 @@ export default class SettingsLearningPlanGoalsListItemComponent extends Componen
 
     this.isDraggingOver = false;
 
-    this.args.dropItem(this.args.index);
+    // dropping item on me, means put it after me
+    this.args.dropItem(this.args.index + 1);
   }
 
   @action onDragEnd(event) {

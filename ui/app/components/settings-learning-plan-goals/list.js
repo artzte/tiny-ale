@@ -1,13 +1,22 @@
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
+import { inject as service } from '@ember/service';
 
 const isDraggingOverTopClasses = 'pt-20';
 
 export default class SettingsLearningPlanGoalsListComponent extends Component {
+  @service('tinyData') tinyData;
+
   @tracked draggedItem = null;
 
   @tracked isDraggingOverTop = false;
+
+  @tracked _goals = null;
+
+  get goals() {
+    return this._goals || this.args.goals;
+  }
 
   get isDraggingOverTopClasses() {
     if (!this.isDraggingOverTop) return null;
@@ -56,7 +65,12 @@ export default class SettingsLearningPlanGoalsListComponent extends Component {
     this.isDraggingOverTop = false;
   }
 
-  @action doReorderGoals(goal, newPosition) {
-    console.log(goal.attributes.position, newPosition, goal.attributes.description);
+  @action async doReorderGoals(goal, newPosition) {
+    const data = { ...goal, attributes: { ...goal.attributes, position: newPosition } };
+    const result = await this.tinyData.fetch(`/api/admin/learning-plan-goals/${goal.id}/reorder`, {
+      method: 'PUT',
+      data,
+    });
+    this._goals = result.data;
   }
 }
