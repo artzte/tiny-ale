@@ -55,7 +55,7 @@ class AdminLearningPlanGoalsController < AdminController
       .insert(new_position, goal)
 
     goals.each_with_index do |item, i|
-      position = i + 1
+      position = i
       next if item.position == position
 
       item.position = position
