@@ -2,7 +2,7 @@
 
 require 'faker'
 
-CURRENT_YEAR = 2019
+CURRENT_YEAR = Date.today.month > 8 ? Date.today.year : Date.today.year - 1
 LAST_YEAR = CURRENT_YEAR - 1
 
 # create our new fixture settings time period
@@ -97,16 +97,16 @@ LearningRequirement.all.each do |req|
 end
 @contract1_current.save!
 
-@student1 = User.create! privilege: User::PRIVILEGE_STUDENT, status: User::STATUS_ACTIVE, first_name: 'Riley', last_name: 'Freed', district_id: Random.rand(10**10).to_s, coordinator: @staff1, date_active: Date.new(LAST_YEAR, 8, 1), district_grade: 9
-@student2 = User.create! privilege: User::PRIVILEGE_STUDENT, status: User::STATUS_ACTIVE, first_name: 'Cary', last_name: 'Jenkins', district_id: Random.rand(10**10).to_s, coordinator: @staff2, date_active: Date.new(LAST_YEAR, 8, 1), district_grade: 10
-@student3 = User.create! privilege: User::PRIVILEGE_STUDENT, status: User::STATUS_ACTIVE, first_name: 'Janey', last_name: 'Edmunds', district_id: Random.rand(10**10).to_s, coordinator: @staff2, date_active: Date.new(LAST_YEAR, 8, 1), district_grade: 11
-@student_inactive = User.create! privilege: User::PRIVILEGE_STUDENT, status: User::STATUS_INACTIVE, first_name: 'Grey', last_name: 'Sanderson', district_id: Random.rand(10**10).to_s, coordinator: @staff2, date_active: Date.new(LAST_YEAR, 8, 1), date_inactive: Date.new(CURRENT_YEAR, 10, 1), district_grade: 12
-@students = [@student1, @student2, @student3]
+@studentActiveRileyFreed = User.create! privilege: User::PRIVILEGE_STUDENT, status: User::STATUS_ACTIVE, first_name: 'Riley', last_name: 'Freed', district_id: Random.rand(10**10).to_s, coordinator: @staff1, date_active: Date.new(LAST_YEAR, 8, 1), district_grade: 9
+@studentActiveCaryJenkins = User.create! privilege: User::PRIVILEGE_STUDENT, status: User::STATUS_ACTIVE, first_name: 'Cary', last_name: 'Jenkins', district_id: Random.rand(10**10).to_s, coordinator: @staff2, date_active: Date.new(LAST_YEAR, 8, 1), district_grade: 10
+@studentActiveJaneyEdmunds = User.create! privilege: User::PRIVILEGE_STUDENT, status: User::STATUS_ACTIVE, first_name: 'Janey', last_name: 'Edmunds', district_id: Random.rand(10**10).to_s, coordinator: @staff2, date_active: Date.new(LAST_YEAR, 8, 1), district_grade: 11
+@studentInactiveGreySanderson = User.create! privilege: User::PRIVILEGE_STUDENT, status: User::STATUS_INACTIVE, first_name: 'Grey', last_name: 'Sanderson', district_id: Random.rand(10**10).to_s, coordinator: @staff2, date_active: Date.new(LAST_YEAR, 8, 1), date_inactive: Date.new(CURRENT_YEAR, 10, 1), district_grade: 12
+@students = [@studentActiveRileyFreed, @studentActiveCaryJenkins, @studentActiveJaneyEdmunds]
 
 # current contracts should have active enrollments. reporting as if we are three months into
 # the current contracts.
 [@contract1_current, @contract2_current].each do |contract|
-  [@student1, @student2].each do |student|
+  [@studentActiveRileyFreed, @studentActiveCaryJenkins].each do |student|
     enrollment = Enrollment.create! participant: student, contract: contract, creator: contract.facilitator
     enrollment.set_active @admin1
     CreditAssignment.create! enrollment: enrollment, credit: @credit1, credit_hours: 1
@@ -126,7 +126,7 @@ finalized_credits = []
 
 # closed contracts should have fulfilled enrollments and finalized credits
 [@contract1_last, @contract2_last, @contract3_last].each do |contract|
-  [@student2, @student3].each do |student|
+  [@studentActiveCaryJenkins, @studentActiveJaneyEdmunds].each do |student|
     enrollment = Enrollment.create! enrollment_status: Enrollment::STATUS_ENROLLED, participant: student, contract: contract, creator: contract.facilitator
     credit1 = CreditAssignment.create! enrollment: enrollment, credit: @credit1, credit_hours: 0.25
     credit2 = CreditAssignment.create! enrollment: enrollment, credit: @credit2, credit_hours: 0.5
@@ -171,11 +171,11 @@ months.each do |month|
 end
 
 # create five assignments and turnins for the contract 1 current
-enrollment = @contract1_current.enrollments.find { |e| e.participant == @student1 }
+enrollment = @contract1_current.enrollments.find { |e| e.participant == @studentActiveRileyFreed }
 (1..5).each do |assignment_number|
   assignment = Assignment.create! contract: @contract1_current, creator: @contract1_current.facilitator, name: "Assignment #{assignment_number}", description: "Here is assignment number #{assignment_number}", due_date: @term1_current.months[0] + assignment_number.days
   turnin = Turnin.create! enrollment: enrollment, assignment: assignment, status: :complete
-  Note.create! notable: turnin, creator: @contract1_current.facilitator, note: "Note by #{@contract1_current.facilitator.last_name} for student #{@student1.last_name} / assignment #{assignment_number}"
+  Note.create! notable: turnin, creator: @contract1_current.facilitator, note: "Note by #{@contract1_current.facilitator.last_name} for student #{@studentActiveRileyFreed.last_name} / assignment #{assignment_number}"
 end
 
 # for contract 1, define 5 meetings which are attended only by student 1
@@ -183,7 +183,7 @@ end
   meeting = Meeting.create contract: @contract1_current, meeting_date: @contract1_current.term.months.first + meeting_number.days
 
   @contract1_current.enrollments.each do |enrollment|
-    attendance = if enrollment.participant.id == @student1.id
+    attendance = if enrollment.participant.id == @studentActiveRileyFreed.id
                    MeetingParticipant::PRESENT
                  else
                    MeetingParticipant::ABSENT
@@ -206,9 +206,9 @@ GraduationPlanRequirement.create! name: 'General2', requirement_type: 'general',
 gradService1 = GraduationPlanRequirement.create! name: 'Service1', requirement_type: 'service', position: 1
 GraduationPlanRequirement.create! name: 'Service2', requirement_type: 'service', position: 2
 
-credit_assignments = @student2.credit_assignments.filter { |ca| ca.facilitator_approved? }
+credit_assignments = @studentActiveCaryJenkins.credit_assignments.filter { |ca| ca.facilitator_approved? }
 
-graduation_plan = GraduationPlan.create! user: @student2
+graduation_plan = GraduationPlan.create! user: @studentActiveCaryJenkins
 
 GraduationPlanMapping.create! graduation_plan: graduation_plan, graduation_plan_requirement: gradMath, credit_assignment: credit_assignments.pop
 GraduationPlanMapping.create! graduation_plan: graduation_plan, graduation_plan_requirement: gradLang1, credit_assignment: credit_assignments.pop

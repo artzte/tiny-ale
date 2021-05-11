@@ -27,6 +27,7 @@ Rails.application.routes.draw do
     patch '/enrollments/:id/:command', to: 'enrollments#update'
     delete '/enrollments/:id', to: 'enrollments#destroy'
     post '/contracts/:id/enrollments', to: 'enrollments#create'
+    get '/students/:id/enrollments', to: 'enrollments#student_enrollments'
 
     get '/notes', to: 'notes#index'
     post '/notes/:notable_type/:notable_id', to: 'notes#create'
@@ -73,11 +74,12 @@ Rails.application.routes.draw do
     get '/learning-requirements', to: 'learning_requirements#index'
 
     get '/learning-plans/:student_id/:year', to: 'learning_plans#show'
-    get '/learning-plans/:student_id', to: 'learning_plans#show'
-    post '/learning-plans/:student_id', to: 'learning_plans#create'
+    post '/learning-plans/:student_id/:year', to: 'learning_plans#create'
     put '/learning-plans/:learning_plan_id', to: 'learning_plans#update'
     post '/learning-plans/:learning_plan_id/goals/:id', to: 'learning_plans#add_goal'
     delete '/learning-plans/:learning_plan_id/goals/:id', to: 'learning_plans#remove_goal'
+
+    get '/learning-plan-goals', to: 'learning_plan_goals#index'
 
     get '/statuses/:statusable_type', to: 'status#index', statusable_type: /enrollments|students/
     put '/statuses/:statusable_type/:statusable_id/:month', to: 'status#update', statusable_type: /enrollments|students/

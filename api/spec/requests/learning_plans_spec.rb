@@ -28,7 +28,7 @@ RSpec.describe 'Learning plans API', type: :request do
 
   describe 'GET /api/learning_plans' do
     it 'returns a student learning plan for current year' do
-      get "/api/learning-plans/#{@student.id}"
+      get "/api/learning-plans/#{@student.id}/#{Setting.current_year}"
       expect(response).to have_http_status(200)
       expect(json).not_to be_empty
 
@@ -87,7 +87,7 @@ RSpec.describe 'Learning plans API', type: :request do
     end
   end
 
-  describe 'POST /api/learning_plans/:student_id' do
+  describe 'POST /api/learning_plans/:student_id/:year' do
     before(:each) do
       @do_things_and_pass = 'Do things and pass'
       @hours = 20
@@ -104,7 +104,7 @@ RSpec.describe 'Learning plans API', type: :request do
     end
   
     it 'creates a student learning plan for next year' do
-      post "/api/learning-plans/#{@student.id}",
+      post "/api/learning-plans/#{@student.id}/#{@year}",
         params: @body.to_json,
         headers: json_request_headers
 
@@ -119,7 +119,7 @@ RSpec.describe 'Learning plans API', type: :request do
 
     it 'mistakenly creates another student learning plan for a duplicate year' do
       @body[:data][:attributes][:year] = @learning_plan.year
-      post "/api/learning-plans/#{@student.id}",
+      post "/api/learning-plans/#{@student.id}/#{@learning_plan.year}",
         params: @body.to_json,
         headers: json_request_headers
 

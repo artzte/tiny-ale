@@ -50,6 +50,21 @@ class EnrollmentsController < ApiBaseController
     render json: EnrollmentSerializer.new(result, options)
   end
 
+  def student_enrollments
+    user = User.find params[:id]
+
+    result = user.enrollments_report school_year: params[:schoolYear]
+
+    options = {
+      meta: {
+        count: result.count
+      },
+      include: [],
+    }
+
+    render json: EnrollmentSerializer.new(result, options)
+  end
+
   def show
     included_models = get_includes params[:include]
 

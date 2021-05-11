@@ -61,7 +61,7 @@ class LearningPlansController < ApiBaseController
   def update
 
 
-  end
+  end    
 
 protected
   def find_learning_plan
