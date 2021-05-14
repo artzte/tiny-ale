@@ -284,9 +284,10 @@ RSpec.describe 'Ember fixtures script', type: :request do
       goal2 = create :learning_plan_goal, required: true
       goal3 = create :learning_plan_goal, required: true
       create :learning_plan_goal, required: false
+      create :learning_plan_goal, year: CURRENT_YEAR, required: true      
 
       [@student1, @student2].each do |student|
-        plan = create :learning_plan, user: student
+        plan = create :learning_plan, user: student, year: CURRENT_YEAR
         plan.learning_plan_goals << goal1
         plan.learning_plan_goals << goal2
         plan.learning_plan_goals << goal3

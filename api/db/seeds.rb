@@ -229,9 +229,13 @@ end
 end
 
 [CURRENT_YEAR, LAST_YEAR].each do |year|
+  LearningPlanGoal.create! description:"#{year} Annual LP Goal. #{Faker::Lorem.paragraph(sentence_count: 5)}", active: true, required: true, year: year, position: 100
+end
+
+[CURRENT_YEAR, LAST_YEAR].each do |year|
   @students.each do |student|
     plan = LearningPlan.create user: student, year: year, weekly_hours: 25, user_goals: 'Make friends and achieve success'
-    plan.learning_plan_goals << LearningPlanGoal.where('active = true AND required = true')
+    plan.learning_plan_goals << LearningPlanGoal.where(active: true, required: true, year: [nil, year])
     plan.save!
   end
 end
