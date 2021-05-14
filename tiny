@@ -81,7 +81,7 @@ db:shell () {
 }
 
 db:import () {
-  docker exec -i 4a9df3e5b35a /bin/bash -c "export TERM=xterm && mysql -proot -uroot nova_production" < $ARGS
+  docker exec -i `docker ps --filter name=tiny-ale_db --format "{{.ID}}"` /bin/bash -c "export TERM=xterm && mysql -proot -uroot nova_production" < $ARGS
 }
 
 db:init () {
@@ -145,7 +145,7 @@ log () {
 }
 
 api:test () {
-  docker exec -e RAILS_ENV=test $API bundle exec rspec
+  docker exec -e RAILS_ENV=test $API bundle exec rspec $REST_ARGS
 }
 
 ui:test () {
