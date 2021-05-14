@@ -1,15 +1,26 @@
-<h2>
+<h1>
   {{full-name this.student "first-last"}}
-</h2>
+</h1>
+
+<p>
+  {{student-status-summary this.student}}
+</p>
 
 <StudentToolbar @student={{this.student}} />
 
-<StatusReport
-  @statusable={{this.student}}
-  @statuses={{this.statuses}}
-  @term={{this.term}}
-  @getNotes={{route-action "getNotes"}}
-/>
+<h2>Status Report</h2>
+
+<CheckEmpty
+  @result={{this.model}}
+  @noResultsMessage="Student does not have any active enrollments."
+>
+  <StatusReport
+    @statusable={{this.student}}
+    @statuses={{this.statuses}}
+    @term={{this.term}}
+    @getNotes={{route-action "getNotes"}}
+  />
+</CheckEmpty>
 
 {{#if this.showCoordinatorNav}}
   <EmberWormhole @to="status-page-navigator">

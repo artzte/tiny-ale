@@ -241,4 +241,5 @@ Router.map(function () {
   this.route('404', { path: '/*path' });
 
   return null;
+  this.route('student-learning-plan');
 });

@@ -1,0 +1,26 @@
+<h2>Learning Plan</h2>
+
+<div>
+  <label for="schoolYear" class="block text-sm font-medium text-gray-700">
+    School year
+  </label>
+  <TSelect
+    id="schoolYear"
+    name="schoolYear"
+    class="mt-1 block w-24 pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
+    @optionsList={{this.years}}
+    @onchange={{fn this.changeSchoolYear}}
+    @value={{this.year}}
+  />
+</div>
+
+<LearningPlan
+  @student={{this.student}}
+  @learningPlan={{this.learningPlan}}
+  @year={{this.year}}
+/>
+
+<EnrollmentsSummary
+  @student={{this.student}}
+  @year={{this.year}}
+/>

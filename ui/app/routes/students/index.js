@@ -61,9 +61,7 @@ export default Route.extend({
 
     this.qp = { ...params, schoolYear: requestParams.schoolYear };
 
-    return tinyData.fetch('/api/students', {
-      data: requestParams,
-    });
+    return tinyData.fetch('/api/students', { query: requestParams });
   },
 
   setupController(controller, students) {

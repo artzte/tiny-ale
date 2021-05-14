@@ -1,0 +1,65 @@
+{{#if learningPlan}}
+  <EditSaveCancel
+    @onEdit={{fn this.edit}}
+    @onSave={{fn this.save}}
+    @onCancel={{fn this.cancel}}
+    @disabled={{@disabled}}
+    @editing={{this.isEditing}}
+  />
+
+  <h3>
+    This plan meets state and district graduation requirements.
+  </h3>
+  <p>
+    Weekly hours engaged in learning activity: {{@plan.weekly_hours}}
+  </p>
+  <h2>
+    Standard Student Goals
+  </h2> 
+  <ul>
+    {{#each this.requiredLearningPlanGoals as |goal|}}
+      <li>
+        {{goal.attributes.description}}
+      </li>
+    {{/each}}
+  </ul>
+
+  <h2>
+    Personal goals
+  </h2>
+
+  {{#if this.showPersonalGoals}}
+    <p>
+      <MarkdownBox
+        @content={{this.personalGoals}}
+        @isEditing={{this.isEditing}}
+        @onchange={{fn this.onChangePersonalGoals}}
+      />
+    </p>
+  {{else}}
+    <p>
+      No personal goals recorded
+    </p>
+  {{/if}}
+
+  <h2>
+    Monthly progress notes
+  </h2>
+  <p>
+    Add notes below to comment on the student's learning progress, or to identify any needed interventions.
+  </p>
+
+  <NotesList
+    @notable={{this.learningPlan}}
+  />
+{{else}}
+  <button
+    class="button"
+    type="button"
+    disabled={{disabled}}
+    onclick={{fn this.createLearningPlan @year}}
+  >
+    Create learning plan for {{@year}}
+  </button>
+{{/if}}
+

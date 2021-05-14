@@ -1,3 +1,11 @@
 <h2>Enrollments</h2>
 
-<StatusByStudentEnrollments @student={{student}} @enrollments={{enrollments}} @enrollmentStatuses={{enrollmentStatuses}} @term={{term}} @getNotes={{route-action "getNotes"}} />  
+<CheckEmpty @result={{this.model}}>
+  <StatusByStudentEnrollments
+    @student={{student}}
+    @enrollments={{enrollments}}
+    @enrollmentStatuses={{enrollmentStatuses}}
+    @term={{term}}
+    @getNotes={{route-action "getNotes"}}
+  />  
+</CheckEmpty>

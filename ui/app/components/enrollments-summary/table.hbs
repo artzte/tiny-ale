@@ -1,0 +1,23 @@
+<h3>{{@title}}</h3>
+{{#if @enrollments.length}}
+  <Table ...attributes>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Facilitator</th>
+        <th>Periods</th>
+        <th>Credits</th>
+        <th>Enrollment status</th>
+      </tr>       
+    </thead>
+    <tbody>
+      {{#each @enrollments as |enrollment|}}
+        <EnrollmentsSummary::Row
+          @enrollment={{enrollment}}
+        />
+      {{/each}}
+    </tbody>
+  </Table>
+{{else}}
+  <p>No enrollments</p>
+{{/if}}

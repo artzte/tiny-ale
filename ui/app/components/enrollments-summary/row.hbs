@@ -1,0 +1,32 @@
+<tr>
+  <td>
+    <LinkTo
+      @route="contract.index"
+      @model={{@enrollment.relationships.contract.data.id}}
+    >
+      {{@enrollment.attributes.contractName}}
+    </LinkTo>
+  </td>
+  <td>
+    {{@enrollment.attributes.facilitatorName}}
+  </td>
+  <td>
+    <ul class="list-none mx-0 px-0">
+      {{#each @enrollment.attributes.timeslots as |timeslot|}}
+        <li>{{timeslot}}</li>
+      {{/each}}
+    </ul>
+  </td>
+  <td>
+    {{@enrollment.attributes.creditString}}
+  </td>
+  <td class={{this.enrollmentStatusClass}}>
+    <LinkTo
+      @route="status-by-enrollment"
+      @models={{array @enrollment.relationships.contract.data.id @enrollment.id}}
+    >
+      {{titleize @enrollment.attributes.enrollmentStatus}}
+    </LinkTo>
+  
+  </td>
+</tr>
