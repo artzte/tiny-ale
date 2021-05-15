@@ -1,10 +1,10 @@
 import { helper } from '@ember/component/helper';
-import showdown from 'showdown';
+import MarkdownIt from 'markdown-it';
 import { htmlSafe } from '@ember/string';
 
 export default helper(params => {
   const [text] = params;
-  const converter = new showdown.Converter();
+  const md = new MarkdownIt();
 
-  return htmlSafe(converter.makeHtml(text));
+  return htmlSafe(md.render(text || ''));
 });
