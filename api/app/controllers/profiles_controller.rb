@@ -8,6 +8,6 @@ class ProfilesController < ApiBaseController
       }
     }
 
-    render json: UserSerializer.new(@user, options)
+    render json: UserSerializer.new(current_user, options)
   end
 end

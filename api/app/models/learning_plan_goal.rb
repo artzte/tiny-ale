@@ -7,8 +7,9 @@ class LearningPlanGoal < ApplicationRecord
   validates_length_of :description, minimum: 10
 
   validates_inclusion_of :active, in: [true, false]
-  validates_inclusion_of :required, in: [true, false]
   validates_numericality_of :position
+
+  validates_numericality_of :year
 
   scope :with_counts, -> {
     select('learning_plan_goals.*, COALESCE(plans.count,0) AS plans_count')

@@ -46,6 +46,9 @@ class User < ApplicationRecord
   # contracts created under this user's login
   has_many :contracts_created, class_name: 'Contract', foreign_key: 'creator_id'
 
+  # contracts created under this user's login
+  has_many :learning_plans_created, class_name: 'LearningPlan', foreign_key: 'creator_id'
+
   # user enrollments. these are attached to the user through the enrollments
   # table. students are enrolled in classes. they have contracts through the
   # enrollments table.

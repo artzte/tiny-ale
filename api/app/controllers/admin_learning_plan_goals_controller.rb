@@ -71,7 +71,7 @@ private
   def goal_attributes
     params.require(:data)
       .require(:attributes)
-      .permit(:description, :required, :active, :position)
+      .permit(:description, :required, :active,:year, :position)
   end
 
 end

@@ -4,16 +4,16 @@ require 'rails_helper'
 
 RSpec.describe 'Learning plan goals API', type: :request do
   before(:each) do
-    @goal1 = create :learning_plan_goal, description: Faker::Lorem.paragraph, active: true, required: true, position: 1
-    @goal2 = create :learning_plan_goal, description: Faker::Lorem.paragraph, active: true, required: true, position: 2
-    @goal3 = create :learning_plan_goal, description: Faker::Lorem.paragraph, active: true, required: true, position: 3
-    @goal4 = create :learning_plan_goal, description: Faker::Lorem.paragraph, active: true, required: true, position: 4
-    @goal5 = create :learning_plan_goal, description: Faker::Lorem.paragraph, active: false, required: true, position: 5
-    @goal6 = create :learning_plan_goal, description: Faker::Lorem.paragraph, active: true, required: true, year: Setting.current_year, position: 100
-    @goal7 = create :learning_plan_goal, description: Faker::Lorem.paragraph, active: true, required: true, year: Setting.current_year - 1, position: 101
+    @goal1 = create :learning_plan_goal, description: Faker::Lorem.paragraph, active: true, position: 1, year: Setting.current_year
+    @goal2 = create :learning_plan_goal, description: Faker::Lorem.paragraph, active: true, position: 2, year: Setting.current_year
+    @goal3 = create :learning_plan_goal, description: Faker::Lorem.paragraph, active: true, position: 3, year: Setting.current_year
+    @goal4 = create :learning_plan_goal, description: Faker::Lorem.paragraph, active: true, position: 4, year: Setting.current_year
+    @goal5 = create :learning_plan_goal, description: Faker::Lorem.paragraph, active: false, position: 5, year: Setting.current_year
+    @goal6 = create :learning_plan_goal, description: Faker::Lorem.paragraph, active: true, year: Setting.current_year, position: 100
+    @goal7 = create :learning_plan_goal, description: Faker::Lorem.paragraph, active: true, year: Setting.current_year - 1, position: 101
 
     # make a little piggy-wiggy outa order
-    @goal0 = create :learning_plan_goal, description: Faker::Lorem.paragraph, active: true, required: false, position: 0
+    @goal0 = create :learning_plan_goal, description: Faker::Lorem.paragraph, active: true, position: 0, year: Setting.current_year
   end
 
   describe 'GET /api/learning-plan-goals/:year' do

@@ -4,14 +4,15 @@ require 'rails_helper'
 
 RSpec.describe 'Admin learning plan goals API', type: :request do
   before(:each) do
-    @goal1 = create :learning_plan_goal, description: Faker::Lorem.paragraph, active: true, required: true, position: 1
-    @goal2 = create :learning_plan_goal, description: Faker::Lorem.paragraph, active: true, required: true, position: 2
-    @goal3 = create :learning_plan_goal, description: Faker::Lorem.paragraph, active: true, required: true, position: 3
-    @goal4 = create :learning_plan_goal, description: Faker::Lorem.paragraph, active: true, required: true, position: 4
-    @goal5 = create :learning_plan_goal, description: Faker::Lorem.paragraph, active: false, required: true, position: 5
+    Setting.current_year = 2020
+    @goal1 = create :learning_plan_goal, description: Faker::Lorem.paragraph, active: true, position: 1, year: Setting.current_year
+    @goal2 = create :learning_plan_goal, description: Faker::Lorem.paragraph, active: true, position: 2, year: Setting.current_year
+    @goal3 = create :learning_plan_goal, description: Faker::Lorem.paragraph, active: true, position: 3, year: Setting.current_year
+    @goal4 = create :learning_plan_goal, description: Faker::Lorem.paragraph, active: true, position: 4, year: Setting.current_year
+    @goal5 = create :learning_plan_goal, description: Faker::Lorem.paragraph, active: false, position: 5, year: Setting.current_year
 
     # make a little piggy-wiggy outa order
-    @goal0 = create :learning_plan_goal, description: Faker::Lorem.paragraph, active: true, required: true, position: 0
+    @goal0 = create :learning_plan_goal, description: Faker::Lorem.paragraph, active: true, position: 0, year: Setting.current_year
   end
 
   describe 'GET /api/admin/learning-plan-goals' do
@@ -120,10 +121,11 @@ RSpec.describe 'Admin learning plan goals API', type: :request do
           attributes: {
             description: Faker::Lorem.paragraph,
             active: true,
-            required: true,
+            year: Setting.current_year
           },
         }
       }
+
       post '/api/admin/learning-plan-goals', params: postBody.to_json, headers: json_request_headers
 
       expect(response).to have_http_status(200)
@@ -132,7 +134,7 @@ RSpec.describe 'Admin learning plan goals API', type: :request do
       expect(json['data']['id']).not_to be_empty
 
       attributes = json['data']['attributes']
-      %w[description status required active].each do |key|
+      %w[description status active].each do |key|
         expect(attributes[key]).to eq(postBody[:data][:attributes][key.to_sym])
       end
     end

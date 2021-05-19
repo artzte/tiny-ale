@@ -72,7 +72,7 @@ class StatusController < ApiBaseController
       model = Status.new statusable_type: statusable_type,
         statusable_id: params[:statusable_id],
         month: params[:month],
-        creator: @user
+        creator: current_user
     end
 
     model.update_attributes! status_attributes.merge(
@@ -82,7 +82,7 @@ class StatusController < ApiBaseController
 
     notes = notes_attribute[:notes]
     if notes.present?
-      Note.create! notable: model, note: notes, creator: @user
+      Note.create! notable: model, note: notes, creator: current_user
     end
 
     render json: StatusSerializer.new(model, { include: ['notes'] })

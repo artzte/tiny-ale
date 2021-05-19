@@ -280,14 +280,14 @@ RSpec.describe 'Ember fixtures script', type: :request do
       allow(JsonWebToken).to receive(:extract_user_id).and_return(@admin1.id)
 
       # learning plans
-      goal1 = create :learning_plan_goal, required: true
-      goal2 = create :learning_plan_goal, required: true
-      goal3 = create :learning_plan_goal, required: true
-      create :learning_plan_goal, required: false
-      create :learning_plan_goal, year: CURRENT_YEAR, required: true      
+      goal1 = create :learning_plan_goal, year: CURRENT_YEAR
+      goal2 = create :learning_plan_goal, year: CURRENT_YEAR
+      goal3 = create :learning_plan_goal, year: CURRENT_YEAR
+      create :learning_plan_goal, year: LAST_YEAR
+      create :learning_plan_goal, year: CURRENT_YEAR
 
       [@student1, @student2].each do |student|
-        plan = create :learning_plan, user: student, year: CURRENT_YEAR
+        plan = create :learning_plan, user: student, year: CURRENT_YEAR, creator: student.coordinator
         plan.learning_plan_goals << goal1
         plan.learning_plan_goals << goal2
         plan.learning_plan_goals << goal3

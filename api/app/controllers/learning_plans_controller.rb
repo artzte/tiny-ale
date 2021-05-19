@@ -50,17 +50,28 @@ class LearningPlansController < ApiBaseController
     student = User.find student_id_param
     plan = LearningPlan.create(learning_plan_attributes)
     plan.user = student
+    plan.creator = current_user
     plan.save!
 
-    active_goals = LearningPlanGoal.where(active: true, required: true)
+    active_goals = LearningPlanGoal.where(year: year_param, active: true)
     plan.learning_plan_goals << active_goals
 
     render json: LearningPlanSerializer.new(plan)
   end
 
   def update
+    plan = LearningPlan.find params[:learning_plan_id]
+    raise ActiveRecord::RecordNotFound unless plan
+    
+    active_goals = LearningPlanGoal.where(year: plan.year, active: true)
+    plan.learning_plan_goals = active_goals
 
+    plan.creator = current_user unless plan.creator
 
+    plan.user_goals = learning_plan_attributes[:user_goals] unless learning_plan_attributes[:user_goals].nil?
+    plan.weekly_hours = learning_plan_attributes[:user_goals] unless learning_plan_attributes[:weekly_hours].nil?
+
+    render json: LearningPlanSerializer.new(plan, include: [:learning_plan_goals])
   end    
 
 protected

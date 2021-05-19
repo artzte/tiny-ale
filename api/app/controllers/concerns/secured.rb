@@ -12,6 +12,10 @@ module Secured
     before_action :authenticate_request!
   end
 
+  def current_user
+    @user
+  end
+
   private
 
   def render_unauthorized(message = 'Not authorized')

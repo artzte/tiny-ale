@@ -217,25 +217,25 @@ GraduationPlanMapping.create! graduation_plan: graduation_plan, graduation_plan_
 GraduationPlanMapping.create! graduation_plan: graduation_plan, graduation_plan_requirement: gradService1, notes: 'It is serviced', date_completed: '2019-06-15'
 
 (1..4).each do |i|
-  LearningPlanGoal.create! description: Faker::Lorem.paragraph(sentence_count: 5), active: true, required: true, position: i
+  LearningPlanGoal.create! description: Faker::Lorem.paragraph(sentence_count: 5), active: true, position: i, year: CURRENT_YEAR
 end
 
 (5..8).each do |i|
-  LearningPlanGoal.create! description: Faker::Lorem.paragraph(sentence_count: 5), active: true, required: false, position: i
+  LearningPlanGoal.create! description: Faker::Lorem.paragraph(sentence_count: 5), active: true, position: i, year: CURRENT_YEAR
 end
 
 (9..12).each do |i|
-  LearningPlanGoal.create! description: Faker::Lorem.paragraph(sentence_count: 5), active: false, required: i % 2 == 0, position: i
+  LearningPlanGoal.create! description: Faker::Lorem.paragraph(sentence_count: 5), active: false, position: i, year: LAST_YEAR
 end
 
 [CURRENT_YEAR, LAST_YEAR].each do |year|
-  LearningPlanGoal.create! description:"#{year} Annual LP Goal. #{Faker::Lorem.paragraph(sentence_count: 5)}", active: true, required: true, year: year, position: 100
+  LearningPlanGoal.create! description:"#{year} Annual LP Goal. #{Faker::Lorem.paragraph(sentence_count: 5)}", active: true, year: year, position: 100
 end
 
 [CURRENT_YEAR, LAST_YEAR].each do |year|
   @students.each do |student|
-    plan = LearningPlan.create user: student, year: year, weekly_hours: 25, user_goals: 'Make friends and achieve success'
-    plan.learning_plan_goals << LearningPlanGoal.where(active: true, required: true, year: [nil, year])
+    plan = LearningPlan.create user: student, creator: student.coordinator, year: year, weekly_hours: 25, user_goals: 'Make friends and achieve success'
+    plan.learning_plan_goals << LearningPlanGoal.where(active: true, year: year)
     plan.save!
   end
 end

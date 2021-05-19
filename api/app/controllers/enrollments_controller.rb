@@ -83,7 +83,7 @@ class EnrollmentsController < ApiBaseController
     contract = Contract.find(params[:id])
 
     enrollments = enrollment_create_params.map do |participant_id|
-      Enrollment.enroll_student contract, User.find(participant_id), @user
+      Enrollment.enroll_student contract, User.find(participant_id), current_user
     end
 
     render json: EnrollmentSerializer.new(enrollments, { include: [:participant, :credit_assignments] })
@@ -92,11 +92,11 @@ class EnrollmentsController < ApiBaseController
   def update
     case params[:command]
     when 'cancel'
-      @enrollment.set_closed Enrollment::COMPLETION_CANCELED, @user
+      @enrollment.set_closed Enrollment::COMPLETION_CANCELED, current_user
     when 'fulfill'
-      @enrollment.set_closed Enrollment::COMPLETION_FULFILLED, @user
+      @enrollment.set_closed Enrollment::COMPLETION_FULFILLED, current_user
     when 'approve'
-      @enrollment.set_active @user
+      @enrollment.set_active current_user
     else
       raise TinyException, 'Invalid update command'
     end
@@ -105,7 +105,7 @@ class EnrollmentsController < ApiBaseController
   end
 
   def destroy
-    @enrollment.set_dropped @user
+    @enrollment.set_dropped current_user
 
     render nothing: true, status: 204
   end

@@ -66,7 +66,7 @@ class ContractsController < ApiBaseController
 
   def create
     @contract = Contract.create
-    @contract.creator = @user
+    @contract.creator = current_user
 
     update_contract
 

@@ -4,9 +4,10 @@ class LearningPlan < ApplicationRecord
   include StripTagsValidator
 
   belongs_to :user
+  belongs_to :creator, foreign_key: 'creator_id', class_name: 'User'
   has_and_belongs_to_many :learning_plan_goals, join_table: 'learning_plans_to_goals', order: 'required DESC, position'
   has_many :notes, as: :notable
-  validates_presence_of :year, :user
+  validates_presence_of :year, :user, :creator
 
   # Return a hash describing privileges of the specified user
   # on this learning plan

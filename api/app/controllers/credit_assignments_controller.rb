@@ -79,7 +79,7 @@ class CreditAssignmentsController < ApiBaseController
       raise ActionController::ParameterMissing, 'childCreditAssignments'
     end
 
-    new_credit_assignment = CreditAssignment.combine(@student, credit[:id], term[:id], attributes[:override_hours], child_credit_assignments, @user)
+    new_credit_assignment = CreditAssignment.combine(@student, credit[:id], term[:id], attributes[:override_hours], child_credit_assignments, current_user)
 
     update_note new_credit_assignment
 
@@ -108,7 +108,7 @@ class CreditAssignmentsController < ApiBaseController
   def approve
     credit_assignment = CreditAssignment.find params[:id]
 
-    credit_assignment.district_approve @user, get_approval_attributes[:district_finalize_approved_on]
+    credit_assignment.district_approve current_user, get_approval_attributes[:district_finalize_approved_on]
 
     render json: CreditAssignmentSerializer.new(credit_assignment, params: { forFulfilled: true })
   end
@@ -155,7 +155,7 @@ class CreditAssignmentsController < ApiBaseController
     note_text = get_note
     return if note_text.blank?
 
-    note = credit_assignment.notes.create! note: note_text, creator: @user
+    note = credit_assignment.notes.create! note: note_text, creator: current_user
   end
 
   def entitle_student
