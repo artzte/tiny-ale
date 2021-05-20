@@ -95,19 +95,19 @@ RSpec.describe 'Learning plans API', type: :request do
   describe 'PUT /api/learning_plans/:learning_plan_id' do
     it 'updates an existing learning plan and attaches the current goals' do
       @do_things_and_pass = 'Do things and pass'
-      @hours = 20
+      @hours = '20'
       @year = Setting.current_year
       @body = {
         data: {
           attributes: {
             year: @year,
-            weekly_hours: @hours,
-            user_goals: @do_things_and_pass
+            weeklyHours: @hours,
+            userGoals: @do_things_and_pass
           }
         }
       }
 
-      plan = create :learning_plan, user_goals: 'Hello world I am awesome', weekly_hours: @hours + 7, year: @year, user: @student, creator: @student.coordinator
+      plan = create :learning_plan, user_goals: 'Hello world I am awesome', weekly_hours: '66', year: @year, user: @student, creator: @student.coordinator
       goal = @goals.first
       plan.learning_plan_goals << goal
 
@@ -124,10 +124,10 @@ RSpec.describe 'Learning plans API', type: :request do
       
       expect(json['data']['id']).to eq(plan.id.to_s)
       expect(json['data']['attributes']['userGoals']).to eq(@do_things_and_pass)
-      expect(json['data']['attributes']['weekly_hours']).to eq(@hours)
-
+      
+      expect(json['data']['attributes']['weeklyHours']).to eq(@hours)
       expect(json['data']['relationships']['learningPlanGoals']['data'].size).to eq(@goals.size)
-      expect(json['data']['relationships']['learningPlanGoals']['data'].map{|goal| goal.id}.sort).to eq(@goals.map(&:id).sort)
+      expect(json['data']['relationships']['learningPlanGoals']['data'].map{|goal| goal['id']}.sort).to eq(@goals.map{|goal| goal[:id].to_s}.sort)
     end
   end
 

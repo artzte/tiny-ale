@@ -69,7 +69,7 @@ class LearningPlansController < ApiBaseController
     plan.creator = current_user unless plan.creator
 
     plan.user_goals = learning_plan_attributes[:user_goals] unless learning_plan_attributes[:user_goals].nil?
-    plan.weekly_hours = learning_plan_attributes[:user_goals] unless learning_plan_attributes[:weekly_hours].nil?
+    plan.weekly_hours = learning_plan_attributes[:weekly_hours] unless learning_plan_attributes[:weekly_hours].nil?
 
     render json: LearningPlanSerializer.new(plan, include: [:learning_plan_goals])
   end    
