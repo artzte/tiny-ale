@@ -51,6 +51,7 @@ class LearningPlansController < ApiBaseController
     plan = LearningPlan.create(learning_plan_attributes)
     plan.user = student
     plan.creator = current_user
+    plan.year = params[:year]
     plan.save!
 
     active_goals = LearningPlanGoal.where(year: year_param, active: true)

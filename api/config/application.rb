@@ -40,6 +40,8 @@ module TinysisApi
       MAX_TITLE: 255,
       MIN_TITLE: 4,
       DEFAULT_LIMIT: 30,
+      DEFAULT_FTE_HOURS: '27.5'
+
       # OFFLINE: true,
     }
 

@@ -192,7 +192,7 @@ ActiveRecord::Schema.define(version: 2021_05_16_043348) do
     t.integer "user_id", default: 0, null: false
     t.integer "year", default: 0, null: false
     t.text "user_goals"
-    t.string "weekly_hours", default: "0", null: false
+    t.string "weekly_hours", default: "27.5", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "creator_id", null: false

@@ -234,7 +234,11 @@ end
 
 [CURRENT_YEAR, LAST_YEAR].each do |year|
   @students.each do |student|
-    plan = LearningPlan.create user: student, creator: student.coordinator, year: year, weekly_hours: 25, user_goals: 'Make friends and achieve success'
+    plan = LearningPlan.create user: student,
+      creator: student.coordinator,
+      year: year,
+      weekly_hours: Rails.configuration.constants[:DEFAULT_FTE_HOURS],
+      user_goals: 'Make friends and achieve success'
     plan.learning_plan_goals << LearningPlanGoal.where(active: true, year: year)
     plan.save!
   end

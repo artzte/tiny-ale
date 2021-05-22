@@ -5,6 +5,7 @@ require 'rails_helper'
 RSpec.describe 'Learning plans API', type: :request do
   before(:each) do
     Setting.current_year= 2020
+    Setting.weekly_hours = '27.5'
 
     @coordinator = create :user, privilege: User::PRIVILEGE_STAFF
     @student = create :user, coordinator: @coordinator
@@ -138,13 +139,11 @@ RSpec.describe 'Learning plans API', type: :request do
   describe 'POST /api/learning_plans/:student_id/:year' do
     before(:each) do
       @do_things_and_pass = 'Do things and pass'
-      @hours = '27.5'
+      @hours = Rails.configuration.constants[:DEFAULT_FTE_HOURS]
       @year = Setting.current_year - 2
       @body = {
         data: {
           attributes: {
-            year: @year,
-            weekly_hours: @hours,
             user_goals: @do_things_and_pass
           }
         }
