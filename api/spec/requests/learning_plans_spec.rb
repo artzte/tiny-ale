@@ -128,6 +128,10 @@ RSpec.describe 'Learning plans API', type: :request do
       expect(json['data']['attributes']['weeklyHours']).to eq(@hours)
       expect(json['data']['relationships']['learningPlanGoals']['data'].size).to eq(@goals.size)
       expect(json['data']['relationships']['learningPlanGoals']['data'].map{|goal| goal['id']}.sort).to eq(@goals.map{|goal| goal[:id].to_s}.sort)
+
+      plan = LearningPlan.find plan.id
+      expect(plan.weekly_hours).to eq(@hours)
+      expect(plan.user_goals).to eq(@do_things_and_pass)
     end
   end
 

@@ -275,12 +275,14 @@ END
     q << 'LEFT JOIN credit_assignments ON credit_assignments.enrollment_id = enrollments.id'
     q << 'LEFT JOIN credits ON credit_assignments.credit_id = credits.id'
     q << "WHERE enrollments.participant_id = #{id}"
+
     case options[:fulfilled]
     when true
       q << "AND enrollments.completion_status = #{Enrollment::COMPLETION_FULFILLED}"
     when false
       q << "AND enrollments.completion_status != #{Enrollment::COMPLETION_FULFILLED}"
     end
+
     case options[:canceled]
     when true
       q << "AND enrollments.completion_status = #{Enrollment::COMPLETION_CANCELED}"
