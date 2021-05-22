@@ -1,9 +1,15 @@
-<label class={{if hasErrorToShow "error"}}>
-  {{#if label}}
-    <span data-test-label class="font-semibold">
-      {{label}}
-    </span>
-  {{/if}}
-  {{yield}}
-  <TFormErrorMessage @message={{error}} @show={{showErrors}} @className="static absolute -mt-px" />
-</label>
+<p ...attributes>
+  <label class={{if hasErrorToShow "error"}}>
+    {{#if @label}}
+      <span data-test-label class="font-semibold">
+        {{@label}}
+      </span>
+    {{/if}}
+    {{yield}}
+    <TFormErrorMessage
+      @message={{@error}}
+      @show={{@showErrors}}
+      @className="static absolute -mt-px"
+    />
+  </label>
+</p>

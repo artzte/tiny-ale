@@ -6,7 +6,7 @@ export default class StudentLearningPlanRoute extends Route {
 
   queryParams = {
     year: {
-      refreshRoute: true,
+      refreshModel: true,
     },
   };
 
@@ -26,10 +26,10 @@ export default class StudentLearningPlanRoute extends Route {
   }
 
   setupController(controller, model) {
+    console.log('setupController', model)
     super.setupController(controller, model);
-    controller.years = this.tinyData.getYears();
     controller.year = this.year;
-    controller.learningPlan = model.data;
+    controller.learningPlan = (model && model.data) || this.tinyData.getEmptyRecord('learningPlan');
     controller.student = this.modelFor('student').data;
   }
 }

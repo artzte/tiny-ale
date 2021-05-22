@@ -7,11 +7,9 @@ export default class StudentLearningPlanController extends Controller {
 
   @tracked year = null;
 
-  @action createLearningPlan(year) {
-    console.log(year);
-  }
+  @tracked learningPlan = null;
 
-  @action changeSchoolYear(year) {
+  @action onChangeYear(year) {
     this.year = year;
   }
 }

@@ -4,25 +4,37 @@ import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
 
 export default class LearningPlanComponent extends Component {
-  @tracked learningPlan = null;
+  @service('tinyData') tinyData;
 
   @tracked isEditing = false;
 
   @tracked allLearningPlanGoals = null;
 
-  @service('tinyData') tinyData;
+  @tracked _learningPlan = null;
 
   constructor(...args) {
     super(...args);
 
-    this.learningPlan = this.args.learningPlan;
+    this.years = this.tinyData.getYears();
   }
 
-  get showPersonalGoals() {
-    return this.isEditing || this.args.learningPlan.attributes.personalGoals;
+  get learningPlan() {
+    return this._learningPlan || this.args.learningPlan;
   }
 
-  get requiredLearningPlanGoals() {
+  set learningPlan(newPlan) {
+    this._learningPlan = newPlan;
+  }
+
+  get hasUserGoals() {
+    return this.isEditing || this.args.learningPlan.attributes.userGoals;
+  }
+
+  get hasLearningPlan() {
+    return Boolean(this.learningPlan.id !== null);
+  }
+
+  get learningPlanGoals() {
     const {
       tinyData,
       learningPlan,
@@ -33,19 +45,24 @@ export default class LearningPlanComponent extends Component {
       const { allLearningPlanGoals } = this;
       if (!allLearningPlanGoals) return [];
 
-      return allLearningPlanGoals && allLearningPlanGoals.filter(goal => goal.attributes.required);
+      return allLearningPlanGoals;
     }
 
     return learningPlan
       .relationships
       .learningPlanGoals
       .data
-      .map(ref => tinyData.get('learningPlanGoal', ref.id))
-      .filter(goal => goal.attributes.required);
+      .map(ref => tinyData.get('learningPlanGoal', ref.id));
   }
 
   @action async createLearningPlan() {
-    console.log('createLearningPlan')
+    const result = await this.tinyData.fetch(`/api/learning-plan-goals/${this.args.year}`, {
+      method: 'POST',
+      data: {
+        year: this.args.year,
+      },
+    });
+    this._learningPlan = result.data;
   }
 
   @action async edit() {
@@ -56,8 +73,14 @@ export default class LearningPlanComponent extends Component {
     this.isEditing = true;
   }
 
-  @action async save() {
+  @action async onSave(model) {
+    const result = await this.tinyData.fetch(`/api/learning-plans/${model.id}`, {
+      method: 'PUT',
+      data: model,
+    });
 
+    this._learningPlan = result.data;
+    this.isEditing = false;
   }
 
   @action cancel() {

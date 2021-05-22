@@ -195,6 +195,16 @@ export const tinyDataService = {
       },
     });
   },
+
+  getEmptyRecord(type) {
+    return {
+      type,
+      id: null,
+      attributes: {},
+      relationships: {},
+      included: [],
+    };
+  },
 };
 
 export default Service.extend(tinyDataService);

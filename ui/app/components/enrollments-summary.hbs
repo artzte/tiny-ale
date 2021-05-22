@@ -1,19 +1,25 @@
-{{#if this.enrollmentsReport}}
-  <CheckEmpty
-    @noResultsMessage="No enrollments found for this student"
-    @result={{this.enrollmentsReport}}
-  >
-    <EnrollmentsSummary::Table
-      class="w-full l:w-4/5 xl:w-3/5"
-      @title="Active enrollments"
-      @enrollments={{this.activeEnrollments}}
-    />
-    <EnrollmentsSummary::Table
-      class="w-full l:w-4/5 xl:w-3/5"
-      @title="Completed enrollments"
-      @enrollments={{this.inactiveEnrollments}}
-    />
-  </CheckEmpty>
-{{else}}
-  <p>Loading enrollments...</p>
-{{/if}}
+<div
+  {{did-update this.checkYearEnrollments @year}}
+>
+  <h2>{{@year}} Enrollments</h2>
+
+  {{#if this.enrollmentsReport}}
+    <CheckEmpty
+      @noResultsMessage="No enrollments for this school year"
+      @result={{this.enrollmentsReport}}
+    >
+      <EnrollmentsSummary::Table
+        class="w-full l:w-4/5 xl:w-3/5"
+        @title="Active enrollments"
+        @enrollments={{this.activeEnrollments}}
+      />
+      <EnrollmentsSummary::Table
+        class="w-full l:w-4/5 xl:w-3/5"
+        @title="Completed enrollments"
+        @enrollments={{this.inactiveEnrollments}}
+      />
+    </CheckEmpty>
+  {{else}}
+    <p>Loading enrollments...</p>
+  {{/if}}
+</div>

@@ -1,47 +1,99 @@
-{{#if learningPlan}}
-  <EditSaveCancel
-    @onEdit={{fn this.edit}}
-    @onSave={{fn this.save}}
-    @onCancel={{fn this.cancel}}
-    @disabled={{@disabled}}
-    @editing={{this.isEditing}}
-  />
-
-  <h3>
-    This plan meets state and district graduation requirements.
-  </h3>
-  <p>
-    Weekly hours engaged in learning activity: {{@plan.weekly_hours}}
-  </p>
-  <h2>
-    Standard Student Goals
-  </h2> 
-  <ul>
-    {{#each this.requiredLearningPlanGoals as |goal|}}
-      <li>
-        {{goal.attributes.description}}
-      </li>
-    {{/each}}
-  </ul>
-
-  <h2>
-    Personal goals
-  </h2>
-
-  {{#if this.showPersonalGoals}}
-    <p>
-      <MarkdownBox
-        @content={{this.personalGoals}}
-        @isEditing={{this.isEditing}}
-        @onchange={{fn this.onChangePersonalGoals}}
+<TForm
+  class="mt-10"
+  @model={{@learningPlan}}
+  @save={{fn this.onSave}}
+  as |form|
+>
+  <div class="flex items-end">
+    <div>
+      <label for="schoolYear" class="block text-sm font-medium text-gray-700">
+        School year
+      </label>
+      <TSelect
+        id="schoolYear"
+        name="schoolYear"
+        class="mt-1 block w-24 pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
+        disabled={{this.isEditing}}
+        @optionsList={{this.years}}
+        @onchange={{fn @onChangeYear}}
+        @value={{@year}}
       />
-    </p>
-  {{else}}
-    <p>
-      No personal goals recorded
-    </p>
-  {{/if}}
+    </div>
+    <div class="ml-4">
+      {{#if this.hasLearningPlan}}
+        <EditSaveCancel
+          @onEdit={{fn this.edit}}
+          @onCancel={{fn this.cancel}}
+          @disabled={{@disabled}}
+          @editing={{this.isEditing}}
+        />
+      {{else}}
+        <button
+          class="button"
+          type="button"
+          disabled={{disabled}}
+          onclick={{fn this.createLearningPlan @year}}
+        >
+          Create learning plan for {{@year}}
+        </button>
+      {{/if}}
+    </div>
+  </div>
 
+  {{#if this.hasLearningPlan}}
+    <h3>
+      This plan meets state and district graduation requirements.
+    </h3>
+    {{#if this.isEditing}}
+      <FormInput
+        @label="Weekly hours engaged in learning activity"
+      >
+        <div class="w-16">
+          <input
+            type="text"
+            class="text-right"
+            name="weeklyHours"
+            onchange={{fn form.onChange}}
+            value={{form.pojo.weeklyHours}}
+          />
+        </div>
+      </FormInput>
+    {{else}}
+      Weekly hours engaged in learning activity: {{@learningPlan.attributes.weeklyHours}}
+    {{/if}}
+
+    <h2>
+      Standard Student Goals
+    </h2> 
+    <ul>
+      {{#each this.learningPlanGoals as |goal|}}
+        <li>
+          {{goal.attributes.description}}
+        </li>
+      {{/each}}
+    </ul>
+
+    <h2>
+      Personal goals
+    </h2>
+
+    {{#if this.hasUserGoals}}
+      <p>
+        <MarkdownBox
+          name="userGoals"
+          @isEditing={{this.isEditing}}
+          @onchange={{fn form.onChange}}
+        >{{form.pojo.userGoals}}</MarkdownBox>
+      </p>
+    {{else}}
+      <p>
+        No personal goals recorded
+      </p>
+    {{/if}}
+  {{/if}}
+</TForm>
+
+{{#if this.hasLearningPlan}}
   <h2>
     Monthly progress notes
   </h2>
@@ -52,14 +104,5 @@
   <NotesList
     @notable={{this.learningPlan}}
   />
-{{else}}
-  <button
-    class="button"
-    type="button"
-    disabled={{disabled}}
-    onclick={{fn this.createLearningPlan @year}}
-  >
-    Create learning plan for {{@year}}
-  </button>
 {{/if}}
 
