@@ -5,7 +5,6 @@ require 'rails_helper'
 RSpec.describe 'Learning plans API', type: :request do
   before(:each) do
     Setting.current_year= 2020
-    Setting.weekly_hours = '27.5'
 
     @coordinator = create :user, privilege: User::PRIVILEGE_STAFF
     @student = create :user, coordinator: @coordinator
@@ -141,19 +140,11 @@ RSpec.describe 'Learning plans API', type: :request do
       @do_things_and_pass = 'Do things and pass'
       @hours = Rails.configuration.constants[:DEFAULT_FTE_HOURS]
       @year = Setting.current_year - 2
-      @body = {
-        data: {
-          attributes: {
-            user_goals: @do_things_and_pass
-          }
-        }
-      }
       @year_goals = (1..4).map{|i| create(:learning_plan_goal, description: "Learning requirement #{i}", active: true, year: @year)}
     end
   
     it 'creates a student learning plan for two years ago' do
       post "/api/learning-plans/#{@student.id}/#{@year}",
-        params: @body.to_json,
         headers: json_request_headers
 
       expect(response).to have_http_status(200)
@@ -161,14 +152,11 @@ RSpec.describe 'Learning plans API', type: :request do
 
       expect(json['data']['attributes']['year']).to eq(@year)
       expect(json['data']['attributes']['weeklyHours']).to eq(@hours)
-      expect(json['data']['attributes']['userGoals']).to eq(@do_things_and_pass)
       expect(json["data"]["relationships"]["learningPlanGoals"]["data"].size).to eq(@year_goals.size)
     end
 
     it 'mistakenly creates another student learning plan for a duplicate year' do
-      @body[:data][:attributes][:year] = @learning_plan.year
       post "/api/learning-plans/#{@student.id}/#{@learning_plan.year}",
-        params: @body.to_json,
         headers: json_request_headers
 
       expect(response).to have_http_status(422)

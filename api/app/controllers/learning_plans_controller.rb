@@ -48,7 +48,7 @@ class LearningPlansController < ApiBaseController
     end
     
     student = User.find student_id_param
-    plan = LearningPlan.create(learning_plan_attributes)
+    plan = LearningPlan.create
     plan.user = student
     plan.creator = current_user
     plan.year = params[:year]
