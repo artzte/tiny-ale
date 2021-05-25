@@ -59,7 +59,7 @@
         </div>
       </FormInput>
     {{else}}
-      Weekly hours engaged in learning activity: {{@learningPlan.attributes.weeklyHours}}
+      Weekly hours engaged in learning activity: {{this.learningPlan.attributes.weeklyHours}}
     {{/if}}
 
     <h2>
@@ -77,7 +77,7 @@
       Personal goals
     </h2>
 
-    {{#if this.hasUserGoals}}
+    {{#if this.isEditing}}
       <p>
         <MarkdownBox
           name="userGoals"
@@ -86,9 +86,7 @@
         >{{form.pojo.userGoals}}</MarkdownBox>
       </p>
     {{else}}
-      <p>
-        No personal goals recorded
-      </p>
+      {{t-markdown this.learningPlan.attributes.userGoals "No personal goals defined"}}
     {{/if}}
   {{/if}}
 </TForm>

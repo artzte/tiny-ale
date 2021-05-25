@@ -12,10 +12,19 @@ export default class LearningPlanComponent extends Component {
 
   @tracked _learningPlan = null;
 
-  constructor(...args) {
-    super(...args);
+  get years() {
+    return this.tinyData.getYears()
+      .map(year => {
+        const value = year.toString();
+        return {
+          name: value,
+          value,
+        };
+      });
+  }
 
-    this.years = this.tinyData.getYears();
+  get year() {
+    return parseInt(this.args.year, 10);
   }
 
   get learningPlan() {
@@ -48,6 +57,8 @@ export default class LearningPlanComponent extends Component {
       return allLearningPlanGoals;
     }
 
+    if (!learningPlan.relationships.learningPlanGoals) return [];
+
     return learningPlan
       .relationships
       .learningPlanGoals
@@ -56,13 +67,10 @@ export default class LearningPlanComponent extends Component {
   }
 
   @action async createLearningPlan() {
-    const result = await this.tinyData.fetch(`/api/learning-plan-goals/${this.args.year}`, {
+    const result = await this.tinyData.fetch(`/api/learning-plans/${this.args.student.id}/${this.args.year}`, {
       method: 'POST',
-      data: {
-        year: this.args.year,
-      },
     });
-    this._learningPlan = result.data;
+    this.learningPlan = result.data;
   }
 
   @action async edit() {
