@@ -48,6 +48,10 @@ coor.first.save!
 @term_coor_current.set_dates CURRENT_YEAR, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 @term_coor_current.save!
 
+@term_coor_next = Term.create name: "#{CURRENT_YEAR + 1} COOR", school_year: CURRENT_YEAR + 1
+@term_coor_next.set_dates CURRENT_YEAR + 1, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+@term_coor_next.save!
+
 @category1 = Category.create! name: 'Math'
 @category2 = Category.create! name: 'Language Arts'
 
@@ -217,19 +221,9 @@ GraduationPlanMapping.create! graduation_plan: graduation_plan, graduation_plan_
 GraduationPlanMapping.create! graduation_plan: graduation_plan, graduation_plan_requirement: gradService1, notes: 'It is serviced', date_completed: '2019-06-15'
 
 (1..4).each do |i|
-  LearningPlanGoal.create! description: Faker::Lorem.paragraph(sentence_count: 5), active: true, position: i, year: CURRENT_YEAR
-end
-
-(5..8).each do |i|
-  LearningPlanGoal.create! description: Faker::Lorem.paragraph(sentence_count: 5), active: true, position: i, year: CURRENT_YEAR
-end
-
-(9..12).each do |i|
-  LearningPlanGoal.create! description: Faker::Lorem.paragraph(sentence_count: 5), active: false, position: i, year: LAST_YEAR
-end
-
-[CURRENT_YEAR, LAST_YEAR].each do |year|
-  LearningPlanGoal.create! description:"#{year} Annual LP Goal. #{Faker::Lorem.paragraph(sentence_count: 5)}", active: true, year: year, position: 100
+  [CURRENT_YEAR + 1, CURRENT_YEAR, LAST_YEAR].each do |year|
+    LearningPlanGoal.create! description: "#{year} LP Goal #{i}. #{Faker::Lorem.paragraph(sentence_count: 5)}", active: true, position: i, year: year
+  end
 end
 
 [CURRENT_YEAR, LAST_YEAR].each do |year|

@@ -52,12 +52,15 @@ class LearningPlansController < ApiBaseController
     plan.user = student
     plan.creator = current_user
     plan.year = params[:year]
+
+    # weekly hours is set via the database default
+  
     plan.save!
 
     active_goals = LearningPlanGoal.where(year: year_param, active: true)
     plan.learning_plan_goals << active_goals
 
-    render json: LearningPlanSerializer.new(plan)
+    render json: LearningPlanSerializer.new(plan, include: [:learning_plan_goals])
   end
 
   def update

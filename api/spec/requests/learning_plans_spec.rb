@@ -153,6 +153,7 @@ RSpec.describe 'Learning plans API', type: :request do
       expect(json['data']['attributes']['year']).to eq(@year)
       expect(json['data']['attributes']['weeklyHours']).to eq(@hours)
       expect(json["data"]["relationships"]["learningPlanGoals"]["data"].size).to eq(@year_goals.size)
+      expect(json['included'].filter{|goal| goal['type'] == 'learningPlanGoal'}.size).to eq(@year_goals.size)
     end
 
     it 'mistakenly creates another student learning plan for a duplicate year' do
