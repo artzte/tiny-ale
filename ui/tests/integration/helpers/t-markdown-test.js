@@ -20,5 +20,11 @@ module('Integration | Helper | t-markdown', hooks => {
 
     assert.ok(find('h1'), 'heading was rendered');
     assert.equal(findAll('li').length, 3, 'three bullets were rendered');
+
+    this.set('markdown', '');
+
+    await render(hbs`{{t-markdown markdown 'whoops nothings here'}}`);
+
+    assert.matches(find('p').innerHTML, /whoops/);
   });
 });
