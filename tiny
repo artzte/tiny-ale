@@ -58,8 +58,8 @@ db:seed () {
   docker exec $API rake db:seed
 }
 
-db:prepare:test () {
-  docker exec $API rake db:test:prepare
+db:test:load () {
+  docker exec $API rake db:test:load
 }
 
 db:volumeRemove () {
@@ -89,7 +89,7 @@ db:init () {
   db:create
   db:migrate
   db:seed
-  db:prepare:test
+  db:test:load
 }
 
 rehome () {
@@ -156,12 +156,16 @@ api:build () {
   docker build api --tag name:TINYSIS_PROD --tag sha:$(git rev-parse HEAD)
 }
 
+api:console () {
+  docker exec -it $API rails c
+}
+
 ui:build () {
   docker exec $UI ember build --environment=production
 }
 
 case $COMMAND in
-  getSecrets|rehome|db:init|build|ui:shell|api:shell|db:shell|log|reset|api:test|ui:test|ui:reset|api:reset|stop|api:build|ui:build)
+  getSecrets|rehome|db:init|build|ui:shell|api:shell|db:shell|log|reset|api:test|ui:test|ui:reset|api:reset|stop|api:build|ui:build|api:console)
       $COMMAND;;
   *)
       usage
