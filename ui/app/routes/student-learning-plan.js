@@ -26,7 +26,6 @@ export default class StudentLearningPlanRoute extends Route {
   }
 
   setupController(controller, model) {
-    console.log('setupController', model)
     super.setupController(controller, model);
     controller.year = this.year;
     controller.learningPlan = (model && model.data) || this.tinyData.getEmptyRecord('learningPlan');

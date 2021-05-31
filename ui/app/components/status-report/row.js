@@ -15,6 +15,8 @@ export default class StatusReportRow extends Component {
 
   @service('tinyData') tinyData;
 
+  @service('flashMessages') flashMessages;
+
   get isViable() {
     const attrSource = this.pojo || this._status || this.status;
     return attrSource.attributes[this.args.isViableField];
@@ -133,13 +135,18 @@ export default class StatusReportRow extends Component {
 
     const statusPutPath = `/api/statuses/${statusablePathSegment}/${statusable.id}/${month}`;
 
-    const response = await this.tinyData.fetch(statusPutPath, {
-      method: 'PUT',
-      data: this.pojo,
-    });
+    try {
+      const response = await this.tinyData.fetch(statusPutPath, {
+        method: 'PUT',
+        data: this.pojo,
+      });
 
-    this._status = response.data;
-    this._notes = response.included.filter(json => json.type === 'note');
-    this.isEditing = false;
+      this._status = response.data;
+      this._notes = response.included.filter(json => json.type === 'note');
+      this.isEditing = false;
+      this.flashMessages.success('Status report was updated');
+    } catch (e) {
+      this.flashMessages.alert('Could not update status report');
+    }
   }
 }

@@ -4,7 +4,7 @@ import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
 
 export default class SettingsLearningPlanGoalsIndexController extends Controller {
-  queryParams = ["year"];
+  queryParams = ['year'];
 
   @service('tinyData') tinyData;
 

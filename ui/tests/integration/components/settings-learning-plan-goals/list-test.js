@@ -3,7 +3,7 @@ import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 import { stubTinyData } from '../../../helpers/stub-tiny-data';
-import adminLearningPlanGoals from '../../../fixtures/learning-requirements'
+import adminLearningPlanGoals from '../../../fixtures/learning-requirements';
 
 let tinyData;
 
@@ -25,7 +25,7 @@ module('Integration | Component | settings-learning-plan-goals/list', function (
     `);
   }
 
-  test('it renders', async function(assert) {
+  test('it renders', async function (assert) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
 

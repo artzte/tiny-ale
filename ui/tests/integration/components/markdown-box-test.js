@@ -31,7 +31,7 @@ module('Integration | Component | markdown-box', hooks => {
     this.isEditing = true;
 
     const events = [];
-    this.onChange = function(value, name, event) {
+    this.onChange = function (value, name, event) {
       events.push({ name, value, event });
     };
 
