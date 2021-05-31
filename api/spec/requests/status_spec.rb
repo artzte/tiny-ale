@@ -97,7 +97,7 @@ RSpec.describe 'Statuses API', type: :request do
         academicStatus: 'satisfactory',
         notes: 'Very satisfactory work',
       }
-      body = { attributes: attributes }
+      body = { data: { attributes: attributes } }
 
       put "/api/statuses/students/#{@student1.id}/#{month}", params: body.to_json, headers: json_request_headers
 
@@ -135,7 +135,7 @@ RSpec.describe 'Statuses API', type: :request do
         academicStatus: 'participating',
         notes: 'He\'s off to a meh start, but promises to catch up'
       }
-      body = { attributes: attributes }
+      body = { data: { attributes: attributes } }
 
       put "/api/statuses/enrollments/#{@enrollment1.id}/#{month}", params: body.to_json, headers: json_request_headers
 
@@ -173,7 +173,7 @@ RSpec.describe 'Statuses API', type: :request do
         fteHours: 'boobles',
         academicStatus: '',
       }
-      body = { attributes: attributes }
+      body = { data: { attributes: attributes } }
 
       put "/api/statuses/students/#{@student1.id}/#{month}", params: body.to_json, headers: json_request_headers
       
@@ -184,9 +184,7 @@ RSpec.describe 'Statuses API', type: :request do
       expect(json['errors']['fte_hours']).to be_present
       expect(json['errors']['academic_status']).to be_present
 
-      body = {
-        attributes: attributes.merge(academicStatus: 'satisfactory', fteHours: '27.5'),
-      }
+      body = { data: { attributes: attributes.merge(academicStatus: 'satisfactory', fteHours: '27.5') } }
 
       put "/api/statuses/students/#{@student1.id}/#{month}", params: body.to_json, headers: json_request_headers
 

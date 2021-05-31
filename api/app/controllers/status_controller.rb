@@ -90,11 +90,17 @@ class StatusController < ApiBaseController
 
 protected
   def status_attributes
-    params.require(:attributes).permit(:academic_status, :attendance_status, :fte_hours, :met_fte_requirements, :held_periodic_checkins)
+    params
+      .require(:data)
+      .require(:attributes)
+      .permit(:academic_status, :attendance_status, :fte_hours, :met_fte_requirements, :held_periodic_checkins)
   end
 
   def notes_attribute
-    params.require(:attributes).permit(:notes)
+    params
+      .require(:data)
+      .require(:attributes)
+      .permit(:notes)
   end
 
 private
