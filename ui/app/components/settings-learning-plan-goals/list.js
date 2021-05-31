@@ -18,6 +18,17 @@ export default class SettingsLearningPlanGoalsListComponent extends Component {
     return this._goals || this.args.goals;
   }
 
+  get filteredGoals() {
+    const { year } = this.args;
+    const { goals } = this;
+
+    if (!year) return goals;
+
+    const compareYear = parseInt(year, 10);
+
+    return goals.filter(goal => goal.attributes.year === compareYear);
+  }
+
   get isDraggingOverTopClasses() {
     if (!this.isDraggingOverTop) return null;
     if (this.draggedItem === 0) return null;
@@ -26,7 +37,7 @@ export default class SettingsLearningPlanGoalsListComponent extends Component {
   }
 
   @action dropItem(dropTarget) {
-    this.doReorderGoals(this.args.goals[this.draggedItem], dropTarget);
+    this.doReorderGoals(this.filteredGoals[this.draggedItem], dropTarget);
 
     this.draggedItem = null;
   }
@@ -58,7 +69,7 @@ export default class SettingsLearningPlanGoalsListComponent extends Component {
     event.preventDefault();
 
     if (this.isDraggingOverTop) {
-      this.doReorderGoals(this.args.goals[this.draggedItem], 0);
+      this.doReorderGoals(this.filteredGoals[this.draggedItem], 0);
     }
 
     this.draggedItem = null;

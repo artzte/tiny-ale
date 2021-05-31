@@ -1,1 +1,67 @@
-{{yield}}
+<TForm
+  class="mt-10"
+  @model={{@learningPlan}}
+  @save={{fn this.onSave}}
+  @reportError={{fn this.onError}}
+  @validator={{this.validator}}
+  {{autofocus-form}}
+  as |form|
+>
+  <fieldset>
+    <p>
+      <FormInput
+        @error={{form.errors.description}}
+        @showErrors={{form.showErrors}}
+        @label="Goal"
+      >
+        <textarea
+          name="description"
+          autofocus
+          placeholder="Description of goal"
+          value={{form.pojo.description}}
+          onchange={{fn form.onChange}}
+          rows="5"
+        >{{form.pojo.description}}</textarea>
+      </FormInput>
+    </p>
+    <p>
+      <FormInput
+        @label="Year"
+        @error={{form.errors.year}}
+        @showErrors={{form.showErrors}}
+      >
+        <TSelect
+          name="year"
+          @prompt="Select a school year"
+          @optionsList={{this.yearOptions}}
+          @value={{form.pojo.year}}
+          @onchange={{fn form.onChange}}
+        />
+      </FormInput>
+    </p>
+  </fieldset>
+
+  <fieldset>
+    <p>
+      <FormInput @for="active">
+        <input
+          id="active"
+          type="checkbox"
+          name="active"
+          checked={{form.pojo.active}}
+          onchange={{action "toggleValue" "active" target=form}}
+        >
+        Active?
+      </FormInput>
+    </p>
+  </fieldset>
+
+  <TFormActionsRow @disabled={{disabled}}>
+    <LinkTo
+      @route="settings-learning-plan-goals.index"
+      class="button"
+    >
+      Cancel
+    </LinkTo>
+  </TFormActionsRow>
+</TForm>

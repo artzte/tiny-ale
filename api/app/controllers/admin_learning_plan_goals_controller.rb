@@ -2,11 +2,18 @@ class AdminLearningPlanGoalsController < AdminController
   def index
     result = LearningPlanGoal
       .with_counts
-      .order("position")
+      .order("year", "position")
     count = LearningPlanGoal
       .count
     options = { meta: { count: count } }
     render json: LearningPlanGoalSerializer.new(result, options)
+  end
+
+  def show
+    result = LearningPlanGoal
+      .with_counts
+      .find(params[:id])
+    render json: LearningPlanGoalSerializer.new(result)
   end
 
   def create

@@ -5,7 +5,7 @@
   ondragleave={{fn this.onDragLeave}}
   ondrop={{fn this.onDrop}}
 >
-  {{#each this.goals as |goal i|}}
+  {{#each this.filteredGoals as |goal i|}}
     <SettingsLearningPlanGoals::ListItem
       @goal={{goal}}
       @index={{i}}

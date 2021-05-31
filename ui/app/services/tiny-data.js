@@ -196,13 +196,14 @@ export const tinyDataService = {
     });
   },
 
-  getEmptyRecord(type) {
+  getEmptyRecord(type, additions = {}) {
     return {
       type,
       id: null,
       attributes: {},
       relationships: {},
       included: [],
+      ...additions,
     };
   },
 };

@@ -9,29 +9,33 @@
   ondragleave={{fn this.onDragLeave}}
   ondrop={{fn this.onDrop}}
 >
-  <div class="grid grid-cols-6 md:grid-cols-8 gap-4 px-4 my-5 sm:px-6">
+  <div class="grid grid-cols-12 gap-4 px-4 my-5 sm:px-6">
     {{#if @goal}}
-      <div class="grid-cols-1">
+      <div>
         <TDragHandle />
       </div>
-      <div class="col-span-5 md:col-span-7 text-large leading-6 text-gray-900">
+      <div class="col-span-8 text-large leading-6 text-gray-900">
         {{@goal.attributes.description}}
       </div>
-      <div class="col-start-4 col-span-3 md:col-start-7 md:col-span-2 text-right">
-        {{this.planCountPhrase}}
-      </div>
-      <div class="col-start-4 col-span-3 md:col-start-7 md:col-span-2 text-right">
-        {{#if @goal.attributes.required}}
-          Required
-        {{else}}
-          Optional
-        {{/if}}
-          /
-        {{#if @goal.attributes.active}}
-          active
-        {{else}}
-          inactive
-        {{/if}}
+      <div class="col-span-3 text-right">
+        <p>
+          <LinkTo
+            @route='settings-learning-plan-goals.edit'
+            @model={{@goal.id}}
+          >
+            Edit
+          </LinkTo>
+        </p>
+        <p>
+          {{this.planCountPhrase}}
+        </p>
+        <p>
+          {{#if @goal.attributes.active}}
+            Active
+          {{else}}
+            Inactive
+          {{/if}}
+        </p>
       </div>
     {{/if}}
   </div>

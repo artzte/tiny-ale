@@ -120,6 +120,7 @@ Rails.application.routes.draw do
       put '/credits/:id', to: 'admin_credits#update'
 
       get '/learning-plan-goals', to: 'admin_learning_plan_goals#index'
+      get '/learning-plan-goals/:id', to: 'admin_learning_plan_goals#show'
       post '/learning-plan-goals', to: 'admin_learning_plan_goals#create'
       put '/learning-plan-goals/:id/reorder', to: 'admin_learning_plan_goals#reorder'
       put '/learning-plan-goals/:id', to: 'admin_learning_plan_goals#update'

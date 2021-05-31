@@ -222,7 +222,7 @@ GraduationPlanMapping.create! graduation_plan: graduation_plan, graduation_plan_
 
 (1..4).each do |i|
   [CURRENT_YEAR + 1, CURRENT_YEAR, LAST_YEAR].each do |year|
-    LearningPlanGoal.create! description: "#{year} LP Goal #{i}. #{Faker::Lorem.paragraph(sentence_count: 5)}", active: true, position: i, year: year
+    LearningPlanGoal.create! description: "#{year} LP Goal #{i}. #{Faker::Lorem.paragraph(sentence_count: 20)}", active: true, position: i, year: year
   end
 end
 
