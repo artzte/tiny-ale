@@ -77,7 +77,7 @@ class LearningPlansController < ApiBaseController
     plan.save!
   
     render json: LearningPlanSerializer.new(plan, include: [:learning_plan_goals])
-  end    
+  end
 
 protected
   def find_learning_plan

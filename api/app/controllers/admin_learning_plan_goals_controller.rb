@@ -42,31 +42,17 @@ class AdminLearningPlanGoalsController < AdminController
     render nothing: true, status: 204
   end
 
-  # Inserts the pushed learning plan goal into its designated
-  # position, moving others back. Entire list of goals is returned
+  # Sets the positions of learning plan goals with the provided IDs,
+  # to match their ordering within the passed data array
   def reorder
-    goals = LearningPlanGoal
-      .order("position")
+    goals = []
+    params.require(:data).each_with_index do |id, i|
+      goal = LearningPlanGoal.find id
+      return render :nothing, status: 404 unless goal
 
-    goal = goals.find{|g| g.id.to_s == params[:id]}
-    render :nothing, status: 404 unless goal
-
-    if goal_attributes[:position] >= goals.count
-      new_position = goals.count - 1
-    else
-      new_position = goal_attributes[:position]
-    end
-
-    goals = goals
-      .without(goal)
-      .insert(new_position, goal)
-
-    goals.each_with_index do |item, i|
-      position = i
-      next if item.position == position
-
-      item.position = position
-      item.save!
+      goal.position = i
+      goal.save!
+      goals << goal
     end
 
     options = { meta: { count: goals.length } }
