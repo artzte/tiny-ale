@@ -8,7 +8,7 @@ export default class SettingsLearningPlanGoalsIndexController extends Controller
 
   @service('tinyData') tinyData;
 
-  get years() {
+  get yearsOptions() {
     return [{
       name: 'All years',
       value: null,
@@ -26,9 +26,5 @@ export default class SettingsLearningPlanGoalsIndexController extends Controller
 
   get yearAsNumber() {
     return this.year && parseInt(this.year, 10);
-  }
-
-  get yearQuery() {
-    return { year: this.year };
   }
 }

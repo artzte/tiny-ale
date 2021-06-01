@@ -2,6 +2,14 @@
   Edit learning plan goal
 </h2>
 
+<p>
+  <LinkTo
+    @route="settings-learning-plan-goals.index"
+  >
+    Return to list of learning-plan goals
+  </LinkTo>
+</p>
+
 <SettingsLearningPlanGoals::Form
   @learningPlan={{this.model.data}}
 />

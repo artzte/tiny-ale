@@ -12,6 +12,7 @@ export default class SettingsLearningPlansGoalsIndexRoute extends Route {
     super.setupController(controller, model);
     controller.setProperties({
       learningPlanGoals: model.data,
+      years: this.tinyData.getYears().sort((y1, y2) => y2 - y1),
     });
   }
 }

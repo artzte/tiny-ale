@@ -36,6 +36,10 @@ export default class SettingsLearningPlanGoalsListComponent extends Component {
     return isDraggingOverTopClasses;
   }
 
+  get yearQuery() {
+    return { year: this.year };
+  }
+
   @action dropItem(dropTarget) {
     this.doReorderGoals(this.filteredGoals[this.draggedItem], dropTarget);
 
@@ -77,8 +81,12 @@ export default class SettingsLearningPlanGoalsListComponent extends Component {
   }
 
   @action async doReorderGoals(goal, newPosition) {
-    const data = { ...goal, attributes: { ...goal.attributes, position: newPosition } };
-    const result = await this.tinyData.fetch(`/api/admin/learning-plan-goals/${goal.id}/reorder`, {
+    const allGoals = this.filteredGoals.concat([]);
+    const oldPosition = allGoals.findIndex(g => g.id === goal.id);
+    allGoals.splice(newPosition, 0, goal);
+    allGoals.splice(oldPosition < newPosition ? oldPosition : oldPosition + 1, 1);
+    const data = allGoals.map(g => g.id);
+    const result = await this.tinyData.fetch('/api/admin/learning-plan-goals/reorder', {
       method: 'PUT',
       data,
     });

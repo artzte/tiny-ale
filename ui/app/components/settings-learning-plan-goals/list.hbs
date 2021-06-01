@@ -1,3 +1,13 @@
+<div class="flex justify-between">
+  <h3>{{@year}}</h3>
+  <LinkTo
+    @route="settings-learning-plan-goals.new"
+    @query={{this.yearQuery}}
+    class="button"
+  >
+    Add a learning plan goal for {{@year}}
+  </LinkTo>
+</div>
 <section
   class="bg-gray-200 p-5 {{this.isDraggingOverTopClasses}}"
   ondragenter={{fn this.onDragEnter}}

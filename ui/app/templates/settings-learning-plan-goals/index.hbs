@@ -7,21 +7,23 @@
       id="schoolYear"
       name="schoolYear"
       class="mt-1 block w-36 pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
-      @optionsList={{this.years}}
+      @optionsList={{this.yearsOptions}}
       @onchange={{fn this.filterByYear}}
       @value={{this.yearAsNumber}}
     />
   </div>
-  <LinkTo
-    @route="settings-learning-plan-goals.new"
-    @query={{this.yearQuery}}
-    class="button"
-  >
-    Add a learning plan goal
-  </LinkTo>
 </div>
 
-<SettingsLearningPlanGoals::List
-  @year={{this.yearAsNumber}}
-  @goals={{this.learningPlanGoals}}
-/>
+{{#if yearAsNumber}}
+  <SettingsLearningPlanGoals::List
+    @year={{this.yearAsNumber}}
+    @goals={{this.learningPlanGoals}}
+  />
+{{else}}
+  {{#each years as |year| }}
+    <SettingsLearningPlanGoals::List
+      @year={{year}}
+      @goals={{this.learningPlanGoals}}
+    />
+  {{/each}}
+{{/if}}
