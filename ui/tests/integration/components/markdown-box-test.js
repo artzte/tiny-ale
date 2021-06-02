@@ -22,13 +22,12 @@ module('Integration | Component | markdown-box', hooks => {
     const element = find('textarea');
 
     assert.ok(element, 'textarea rendered');
-    assert.ok(element.readOnly, 'textarea is set to readonly by default');
+    assert.notOk(element.readOnly, 'textarea is readable/writeable by default');
     assert.matches(element.value, this.text, 'text matches argument passed');
   });
 
   test('it handles editing', async function (assert) {
     this.isDisabled = false;
-    this.isEditing = true;
 
     const events = [];
     this.onChange = function (value, name, event) {
@@ -37,7 +36,6 @@ module('Integration | Component | markdown-box', hooks => {
 
     await render(hbs`
       <MarkdownBox
-        @isEditing={{this.isEditing}}
         @isDisabled={{this.isDisabled}}
         @onchange={{this.onChange}}
         name="shelby"
