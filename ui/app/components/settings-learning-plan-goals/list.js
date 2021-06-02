@@ -37,7 +37,7 @@ export default class SettingsLearningPlanGoalsListComponent extends Component {
   }
 
   get yearQuery() {
-    return { year: this.year };
+    return { year: this.args.year };
   }
 
   @action dropItem(dropTarget) {
