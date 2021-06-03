@@ -2,55 +2,55 @@
 export default {
   data: [
     {
-      id: '12',
+      id: '1',
       type: 'learningRequirement',
       attributes: {
-        ealr: 'Adnuo taedium bos et eum.',
+        ealr: 'Defessus uredo assumenda inflammatio vitae.',
         seq: '1.1',
         category: 'Category 1',
       },
     },
     {
-      id: '13',
+      id: '2',
       type: 'learningRequirement',
       attributes: {
-        ealr: 'Cariosus blandior solum animadverto acsi.',
+        ealr: 'Velociter cado denego tempore ait.',
         seq: '1.2',
         category: 'Category 1',
       },
     },
     {
-      id: '14',
+      id: '3',
       type: 'learningRequirement',
       attributes: {
-        ealr: 'Tergo ulterius dapifer vicissitudo commodi.',
+        ealr: 'Defleo dolor sperno dolores cerno.',
         seq: '2.1',
         category: 'Category 2',
       },
     },
     {
-      id: '15',
+      id: '4',
       type: 'learningRequirement',
       attributes: {
-        ealr: 'Causa claustrum argentum condico thalassinus.',
+        ealr: 'Depereo argumentum vilis somniculosus viriliter.',
         seq: '2.2',
         category: 'Category 2',
       },
     },
     {
-      id: '16',
+      id: '5',
       type: 'learningRequirement',
       attributes: {
-        ealr: 'Cavus cohibeo subnecto adeptio thema.',
+        ealr: 'Sto sumo saepe aperio amaritudo.',
         seq: '3.1',
         category: 'Category 3',
       },
     },
     {
-      id: '17',
+      id: '6',
       type: 'learningRequirement',
       attributes: {
-        ealr: 'Perferendis vos ater vilitas despirmatio.',
+        ealr: 'Vado amo cupiditate expedita cibus.',
         seq: '3.2',
         category: 'Category 3',
       },

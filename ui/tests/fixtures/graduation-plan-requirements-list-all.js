@@ -6,7 +6,7 @@ export default {
       type: 'graduationPlanRequirement',
       attributes: {
         name: 'General1',
-        notes: 'Aspernatur libero molestias. Quis omnis quos. Hic asperiores ea.\\n\\nEt possimus explicabo. Et recusandae suscipit. Impedit accusamus esse.\\n\\nExcepturi voluptatem quos. Quas dolores necessitatibus. Aut voluptas veniam.',
+        notes: 'Est dolores culpa. Ea tempora accusantium. Libero facilis voluptas.\\n\\nAspernatur dolorum quod. Alias quidem laborum. Aut voluptas excepturi.\\n\\nSed tenetur et. Quidem deleniti molestias. At tenetur nam.',
         position: 1,
         requirementType: 'general',
         status: 'active',
@@ -27,7 +27,7 @@ export default {
       type: 'graduationPlanRequirement',
       attributes: {
         name: 'Language1',
-        notes: 'Ut officia dignissimos. Suscipit molestiae ipsam. Commodi et dicta.\\n\\nQuaerat id molestiae. Mollitia dolorem ut. Accusamus aut illo.\\n\\nEst quos eius. Officia similique molestiae. Sed dolor voluptas.',
+        notes: 'Qui quia et. Nemo est quis. Ut voluptatem amet.\\n\\nQuia natus veniam. Ullam placeat est. Fugit molestias sit.\\n\\nOfficia maxime quos. In ut et. Voluptatem nemo tempora.',
         position: 1,
         requirementType: 'credit',
         status: 'active',
@@ -51,7 +51,7 @@ export default {
       type: 'graduationPlanRequirement',
       attributes: {
         name: 'Math',
-        notes: 'Et nemo consectetur. Tempora odit ut. Voluptas tempora id.\\n\\nVoluptatem fugit atque. Aperiam fugit quo. Animi perferendis iusto.\\n\\nExplicabo ut odit. Id ut sed. Amet repellat non.',
+        notes: 'Facilis dolore velit. Qui nostrum qui. Quia cumque error.\\n\\nIste voluptas ea. Animi iure vitae. Quia inventore et.\\n\\nEst voluptatum harum. Quia tempore pariatur. Consectetur ut et.',
         position: 1,
         requirementType: 'credit',
         status: 'active',
@@ -72,7 +72,7 @@ export default {
       type: 'graduationPlanRequirement',
       attributes: {
         name: 'Service1',
-        notes: 'Distinctio nobis dignissimos. Cumque dolorum aliquid. Non nihil nemo.\\n\\nEt eaque recusandae. Nihil ullam consequatur. Rem consequatur at.\\n\\nUt dignissimos architecto. Aliquid aut perspiciatis. Neque eum nostrum.',
+        notes: 'Voluptas sit expedita. Reprehenderit sit sit. Pariatur ut eos.\\n\\nConsequatur eum et. Dolorem id nostrum. Consequatur quaerat ut.\\n\\nEt atque consequatur. Ut dolore distinctio. Ut recusandae minus.',
         position: 1,
         requirementType: 'service',
         status: 'active',
@@ -93,7 +93,7 @@ export default {
       type: 'graduationPlanRequirement',
       attributes: {
         name: 'General2',
-        notes: 'Est quibusdam sit. Omnis at molestiae. Sit et vel.\\n\\nIllum earum quasi. Iusto nihil blanditiis. Dolorum illo veritatis.\\n\\nQuis porro consequatur. Cupiditate accusamus beatae. Similique sit cupiditate.',
+        notes: 'Aperiam explicabo aut. Blanditiis autem debitis. Ut dolores quae.\\n\\nIpsa consectetur fugiat. Rerum dolor et. Consectetur at laborum.\\n\\nConsequuntur ipsa non. Velit quisquam repudiandae. Esse numquam iste.',
         position: 2,
         requirementType: 'general',
         status: 'active',
@@ -114,7 +114,7 @@ export default {
       type: 'graduationPlanRequirement',
       attributes: {
         name: 'Language',
-        notes: 'Dolorem aut voluptate. Assumenda quod distinctio. Nostrum sed quia.\\n\\nVero deleniti nisi. Quas est sit. Iusto aut sed.\\n\\nPossimus quasi corporis. Tempora voluptas quidem. Atque praesentium consequatur.',
+        notes: 'Error sed culpa. Et ut nostrum. Numquam porro nulla.\\n\\nOdit quis et. Minima temporibus ullam. Nostrum quas excepturi.\\n\\nReiciendis reprehenderit voluptatibus. Libero dicta consequatur. Laborum non eos.',
         position: 2,
         requirementType: 'credit',
         status: 'active',
@@ -142,7 +142,7 @@ export default {
       type: 'graduationPlanRequirement',
       attributes: {
         name: 'Language2',
-        notes: 'Cum necessitatibus iusto. Animi impedit accusantium. Quibusdam recusandae sit.\\n\\nTempore ut dolores. Ratione suscipit et. Laudantium ut voluptatem.\\n\\nDeleniti voluptatem distinctio. Alias eum rerum. Quae et placeat.',
+        notes: 'Enim doloribus veniam. Eos aliquam repudiandae. Et et ut.\\n\\nAperiam adipisci excepturi. Alias libero dignissimos. Atque maxime tenetur.\\n\\nVoluptatem maiores temporibus. Voluptatum reprehenderit minus. Eum non sit.',
         position: 2,
         requirementType: 'credit',
         status: 'active',
@@ -166,7 +166,7 @@ export default {
       type: 'graduationPlanRequirement',
       attributes: {
         name: 'Service2',
-        notes: 'Molestiae id ullam. Adipisci sunt corporis. Fugit nostrum reprehenderit.\\n\\nEt et veritatis. Tempora quam esse. Hic ratione omnis.\\n\\nAut repellendus provident. Perspiciatis ad vel. Modi reprehenderit necessitatibus.',
+        notes: 'Animi illum enim. Quis nobis vitae. Culpa nihil velit.\\n\\nAspernatur sit odio. Ut quis est. Est occaecati aut.\\n\\nOfficiis nihil eaque. Tenetur et sed. Eveniet totam nulla.',
         position: 2,
         requirementType: 'service',
         status: 'active',
@@ -187,7 +187,7 @@ export default {
       type: 'graduationPlanRequirement',
       attributes: {
         name: 'Defunct',
-        notes: 'Error non magni. Totam voluptas inventore. Reiciendis nihil rerum.\\n\\nAsperiores praesentium atque. Cumque dolorem asperiores. Est perferendis vitae.\\n\\nEst consequatur error. Facilis sint quibusdam. Harum doloribus sed.',
+        notes: 'Velit et ut. Et ut vitae. Deleniti velit iure.\\n\\nUt enim dolorem. Asperiores consequatur perspiciatis. Quis enim voluptatum.\\n\\nUt qui debitis. Nostrum neque enim. Aspernatur non nihil.',
         position: 3,
         requirementType: 'credit',
         status: 'inactive',
@@ -208,7 +208,7 @@ export default {
       type: 'graduationPlanRequirement',
       attributes: {
         name: 'Science',
-        notes: 'Ratione cum omnis. Sapiente facere cum. Autem quasi at.\\n\\nEa debitis delectus. Eos sed qui. Nihil repellendus dolor.\\n\\nQuam debitis atque. Perferendis et et. Doloribus rerum ea.',
+        notes: 'Qui ut sit. Non et aut. Et velit quasi.\\n\\nMinima qui tempore. Dolores quisquam saepe. Dolor repellat nulla.\\n\\nPorro ut dolores. Quod ullam aut. Placeat quo ad.',
         position: 3,
         requirementType: 'credit',
         status: 'active',

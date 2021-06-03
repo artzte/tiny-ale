@@ -1,9 +1,10 @@
 // GET /api/terms/coor?year=2019
 export default {
   data: {
+    id: null,
     type: 'term',
     attributes: {
-      name: 'COOR Current',
+      name: 'COOR 2019',
       schoolYear: 2019,
       creditDate: null,
       months: [
@@ -20,5 +21,6 @@ export default {
       ],
       status: 'active',
     },
+    meta: null,
   },
 };

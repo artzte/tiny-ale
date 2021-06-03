@@ -2,40 +2,40 @@
 export default {
   data: [
     {
-      id: '10',
+      id: '1',
       type: 'contract',
       attributes: {
-        name: 'Deserunt vehemens speculum abstergo vapulus.',
+        name: 'Caries aegre ars dolore vestigium.',
         status: 'closed',
       },
       relationships: {
         enrollments: {
           data: [
             {
-              id: '25',
+              id: '7',
               type: 'enrollment',
             },
             {
-              id: '26',
+              id: '8',
               type: 'enrollment',
             },
           ],
         },
         facilitator: {
           data: {
-            id: '52',
+            id: '2',
             type: 'user',
           },
         },
         term: {
           data: {
-            id: '10',
+            id: '1',
             type: 'term',
           },
         },
         category: {
           data: {
-            id: '10',
+            id: '1',
             type: 'category',
           },
         },
@@ -45,438 +45,84 @@ export default {
           ],
         },
         creditAssignments: {
-          data: [
-            {
-              id: '49',
-              type: 'creditAssignment',
-            },
-            {
-              id: '61',
-              type: 'creditAssignment',
-            },
-            {
-              id: '62',
-              type: 'creditAssignment',
-            },
-            {
-              id: '63',
-              type: 'creditAssignment',
-            },
-            {
-              id: '64',
-              type: 'creditAssignment',
-            },
-            {
-              id: '65',
-              type: 'creditAssignment',
-            },
-            {
-              id: '66',
-              type: 'creditAssignment',
-            },
-          ],
-        },
-        meetings: {
-          data: [
-
-          ],
-        },
-        learningRequirements: {
-          data: [
-
-          ],
-        },
-      },
-    },
-    {
-      id: '11',
-      type: 'contract',
-      attributes: {
-        name: 'Molestias beneficium sunt aedificium decumbo.',
-        status: 'closed',
-      },
-      relationships: {
-        enrollments: {
-          data: [
-            {
-              id: '27',
-              type: 'enrollment',
-            },
-            {
-              id: '28',
-              type: 'enrollment',
-            },
-          ],
-        },
-        facilitator: {
-          data: {
-            id: '53',
-            type: 'user',
-          },
-        },
-        term: {
-          data: {
-            id: '11',
-            type: 'term',
-          },
-        },
-        category: {
-          data: {
-            id: '11',
-            type: 'category',
-          },
-        },
-        assignments: {
-          data: [
-
-          ],
-        },
-        creditAssignments: {
-          data: [
-            {
-              id: '51',
-              type: 'creditAssignment',
-            },
-            {
-              id: '67',
-              type: 'creditAssignment',
-            },
-            {
-              id: '68',
-              type: 'creditAssignment',
-            },
-            {
-              id: '69',
-              type: 'creditAssignment',
-            },
-            {
-              id: '70',
-              type: 'creditAssignment',
-            },
-            {
-              id: '71',
-              type: 'creditAssignment',
-            },
-            {
-              id: '72',
-              type: 'creditAssignment',
-            },
-          ],
-        },
-        meetings: {
-          data: [
-
-          ],
-        },
-        learningRequirements: {
-          data: [
-
-          ],
-        },
-      },
-    },
-    {
-      id: '12',
-      type: 'contract',
-      attributes: {
-        name: 'Curto sub tracto paulatim pax.',
-        status: 'closed',
-      },
-      relationships: {
-        enrollments: {
-          data: [
-            {
-              id: '29',
-              type: 'enrollment',
-            },
-            {
-              id: '30',
-              type: 'enrollment',
-            },
-          ],
-        },
-        facilitator: {
-          data: {
-            id: '53',
-            type: 'user',
-          },
-        },
-        term: {
-          data: {
-            id: '11',
-            type: 'term',
-          },
-        },
-        category: {
-          data: {
-            id: '11',
-            type: 'category',
-          },
-        },
-        assignments: {
-          data: [
-
-          ],
-        },
-        creditAssignments: {
-          data: [
-            {
-              id: '53',
-              type: 'creditAssignment',
-            },
-            {
-              id: '73',
-              type: 'creditAssignment',
-            },
-            {
-              id: '74',
-              type: 'creditAssignment',
-            },
-            {
-              id: '75',
-              type: 'creditAssignment',
-            },
-            {
-              id: '76',
-              type: 'creditAssignment',
-            },
-            {
-              id: '77',
-              type: 'creditAssignment',
-            },
-            {
-              id: '78',
-              type: 'creditAssignment',
-            },
-          ],
-        },
-        meetings: {
-          data: [
-
-          ],
-        },
-        learningRequirements: {
-          data: [
-
-          ],
-        },
-      },
-    },
-    {
-      id: '13',
-      type: 'contract',
-      attributes: {
-        name: 'Infit quis asperiores conduco auxilium.',
-        status: 'closed',
-      },
-      relationships: {
-        enrollments: {
-          data: [
-
-          ],
-        },
-        facilitator: {
-          data: {
-            id: '53',
-            type: 'user',
-          },
-        },
-        term: {
-          data: {
-            id: '11',
-            type: 'term',
-          },
-        },
-        category: {
-          data: {
-            id: '11',
-            type: 'category',
-          },
-        },
-        assignments: {
-          data: [
-
-          ],
-        },
-        creditAssignments: {
-          data: [
-            {
-              id: '54',
-              type: 'creditAssignment',
-            },
-          ],
-        },
-        meetings: {
-          data: [
-
-          ],
-        },
-        learningRequirements: {
-          data: [
-
-          ],
-        },
-      },
-    },
-    {
-      id: '14',
-      type: 'contract',
-      attributes: {
-        name: 'Acidus copiose peior coruscus utpote.',
-        status: 'active',
-      },
-      relationships: {
-        enrollments: {
-          data: [
-            {
-              id: '19',
-              type: 'enrollment',
-            },
-            {
-              id: '20',
-              type: 'enrollment',
-            },
-            {
-              id: '21',
-              type: 'enrollment',
-            },
-          ],
-        },
-        facilitator: {
-          data: {
-            id: '52',
-            type: 'user',
-          },
-        },
-        term: {
-          data: {
-            id: '12',
-            type: 'term',
-          },
-        },
-        category: {
-          data: {
-            id: '10',
-            type: 'category',
-          },
-        },
-        assignments: {
           data: [
             {
               id: '1',
-              type: 'assignment',
-            },
-            {
-              id: '2',
-              type: 'assignment',
-            },
-            {
-              id: '3',
-              type: 'assignment',
-            },
-            {
-              id: '4',
-              type: 'assignment',
-            },
-            {
-              id: '5',
-              type: 'assignment',
-            },
-          ],
-        },
-        creditAssignments: {
-          data: [
-            {
-              id: '50',
               type: 'creditAssignment',
-            },
-          ],
-        },
-        meetings: {
-          data: [
-            {
-              id: '1',
-              type: 'meeting',
-            },
-            {
-              id: '2',
-              type: 'meeting',
-            },
-            {
-              id: '3',
-              type: 'meeting',
-            },
-            {
-              id: '4',
-              type: 'meeting',
-            },
-            {
-              id: '5',
-              type: 'meeting',
-            },
-          ],
-        },
-        learningRequirements: {
-          data: [
-            {
-              id: '12',
-              type: 'learningRequirement',
             },
             {
               id: '13',
-              type: 'learningRequirement',
+              type: 'creditAssignment',
             },
             {
               id: '14',
-              type: 'learningRequirement',
+              type: 'creditAssignment',
             },
             {
               id: '15',
-              type: 'learningRequirement',
+              type: 'creditAssignment',
             },
+            {
+              id: '16',
+              type: 'creditAssignment',
+            },
+            {
+              id: '17',
+              type: 'creditAssignment',
+            },
+            {
+              id: '18',
+              type: 'creditAssignment',
+            },
+          ],
+        },
+        meetings: {
+          data: [
+
+          ],
+        },
+        learningRequirements: {
+          data: [
+
           ],
         },
       },
     },
     {
-      id: '15',
+      id: '2',
       type: 'contract',
       attributes: {
-        name: 'Demum verus sed sit valens.',
-        status: 'active',
+        name: 'Theologus canonicus architecto venustas cotidie.',
+        status: 'closed',
       },
       relationships: {
         enrollments: {
           data: [
             {
-              id: '22',
+              id: '9',
               type: 'enrollment',
             },
             {
-              id: '23',
-              type: 'enrollment',
-            },
-            {
-              id: '24',
+              id: '10',
               type: 'enrollment',
             },
           ],
         },
         facilitator: {
           data: {
-            id: '53',
+            id: '3',
             type: 'user',
           },
         },
         term: {
           data: {
-            id: '12',
+            id: '2',
             type: 'term',
           },
         },
         category: {
           data: {
-            id: '11',
+            id: '2',
             type: 'category',
           },
         },
@@ -488,7 +134,361 @@ export default {
         creditAssignments: {
           data: [
             {
-              id: '52',
+              id: '3',
+              type: 'creditAssignment',
+            },
+            {
+              id: '19',
+              type: 'creditAssignment',
+            },
+            {
+              id: '20',
+              type: 'creditAssignment',
+            },
+            {
+              id: '21',
+              type: 'creditAssignment',
+            },
+            {
+              id: '22',
+              type: 'creditAssignment',
+            },
+            {
+              id: '23',
+              type: 'creditAssignment',
+            },
+            {
+              id: '24',
+              type: 'creditAssignment',
+            },
+          ],
+        },
+        meetings: {
+          data: [
+
+          ],
+        },
+        learningRequirements: {
+          data: [
+
+          ],
+        },
+      },
+    },
+    {
+      id: '3',
+      type: 'contract',
+      attributes: {
+        name: 'Ara correptius venio temperantia ultra.',
+        status: 'closed',
+      },
+      relationships: {
+        enrollments: {
+          data: [
+            {
+              id: '11',
+              type: 'enrollment',
+            },
+            {
+              id: '12',
+              type: 'enrollment',
+            },
+          ],
+        },
+        facilitator: {
+          data: {
+            id: '3',
+            type: 'user',
+          },
+        },
+        term: {
+          data: {
+            id: '2',
+            type: 'term',
+          },
+        },
+        category: {
+          data: {
+            id: '2',
+            type: 'category',
+          },
+        },
+        assignments: {
+          data: [
+
+          ],
+        },
+        creditAssignments: {
+          data: [
+            {
+              id: '5',
+              type: 'creditAssignment',
+            },
+            {
+              id: '25',
+              type: 'creditAssignment',
+            },
+            {
+              id: '26',
+              type: 'creditAssignment',
+            },
+            {
+              id: '27',
+              type: 'creditAssignment',
+            },
+            {
+              id: '28',
+              type: 'creditAssignment',
+            },
+            {
+              id: '29',
+              type: 'creditAssignment',
+            },
+            {
+              id: '30',
+              type: 'creditAssignment',
+            },
+          ],
+        },
+        meetings: {
+          data: [
+
+          ],
+        },
+        learningRequirements: {
+          data: [
+
+          ],
+        },
+      },
+    },
+    {
+      id: '4',
+      type: 'contract',
+      attributes: {
+        name: 'Arbitro depromo tripudio totus viduo.',
+        status: 'closed',
+      },
+      relationships: {
+        enrollments: {
+          data: [
+
+          ],
+        },
+        facilitator: {
+          data: {
+            id: '3',
+            type: 'user',
+          },
+        },
+        term: {
+          data: {
+            id: '2',
+            type: 'term',
+          },
+        },
+        category: {
+          data: {
+            id: '2',
+            type: 'category',
+          },
+        },
+        assignments: {
+          data: [
+
+          ],
+        },
+        creditAssignments: {
+          data: [
+            {
+              id: '6',
+              type: 'creditAssignment',
+            },
+          ],
+        },
+        meetings: {
+          data: [
+
+          ],
+        },
+        learningRequirements: {
+          data: [
+
+          ],
+        },
+      },
+    },
+    {
+      id: '5',
+      type: 'contract',
+      attributes: {
+        name: 'Acidus contabesco trucido non careo.',
+        status: 'active',
+      },
+      relationships: {
+        enrollments: {
+          data: [
+            {
+              id: '1',
+              type: 'enrollment',
+            },
+            {
+              id: '2',
+              type: 'enrollment',
+            },
+            {
+              id: '3',
+              type: 'enrollment',
+            },
+          ],
+        },
+        facilitator: {
+          data: {
+            id: '2',
+            type: 'user',
+          },
+        },
+        term: {
+          data: {
+            id: '3',
+            type: 'term',
+          },
+        },
+        category: {
+          data: {
+            id: '1',
+            type: 'category',
+          },
+        },
+        assignments: {
+          data: [
+            {
+              id: '1',
+              type: 'assignment',
+            },
+            {
+              id: '2',
+              type: 'assignment',
+            },
+            {
+              id: '3',
+              type: 'assignment',
+            },
+            {
+              id: '4',
+              type: 'assignment',
+            },
+            {
+              id: '5',
+              type: 'assignment',
+            },
+          ],
+        },
+        creditAssignments: {
+          data: [
+            {
+              id: '2',
+              type: 'creditAssignment',
+            },
+          ],
+        },
+        meetings: {
+          data: [
+            {
+              id: '1',
+              type: 'meeting',
+            },
+            {
+              id: '2',
+              type: 'meeting',
+            },
+            {
+              id: '3',
+              type: 'meeting',
+            },
+            {
+              id: '4',
+              type: 'meeting',
+            },
+            {
+              id: '5',
+              type: 'meeting',
+            },
+          ],
+        },
+        learningRequirements: {
+          data: [
+            {
+              id: '1',
+              type: 'learningRequirement',
+            },
+            {
+              id: '2',
+              type: 'learningRequirement',
+            },
+            {
+              id: '3',
+              type: 'learningRequirement',
+            },
+            {
+              id: '4',
+              type: 'learningRequirement',
+            },
+          ],
+        },
+      },
+    },
+    {
+      id: '6',
+      type: 'contract',
+      attributes: {
+        name: 'Vilitas cultellus articulus vereor est.',
+        status: 'active',
+      },
+      relationships: {
+        enrollments: {
+          data: [
+            {
+              id: '4',
+              type: 'enrollment',
+            },
+            {
+              id: '5',
+              type: 'enrollment',
+            },
+            {
+              id: '6',
+              type: 'enrollment',
+            },
+          ],
+        },
+        facilitator: {
+          data: {
+            id: '3',
+            type: 'user',
+          },
+        },
+        term: {
+          data: {
+            id: '3',
+            type: 'term',
+          },
+        },
+        category: {
+          data: {
+            id: '2',
+            type: 'category',
+          },
+        },
+        assignments: {
+          data: [
+
+          ],
+        },
+        creditAssignments: {
+          data: [
+            {
+              id: '4',
               type: 'creditAssignment',
             },
           ],

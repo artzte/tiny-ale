@@ -1,24 +1,24 @@
-// GET /api/admin/users/56
+// GET /api/admin/users/6
 export default {
   data: {
-    id: '56',
+    id: '6',
     type: 'user',
     attributes: {
-      firstName: 'Jerold',
-      lastName: 'Klein',
+      firstName: 'Mitchell',
+      lastName: 'Funk',
       nickname: null,
       dateActive: '2018-08-01',
       dateInactive: null,
-      districtId: '4809648277',
+      districtId: '1701223197',
       districtGrade: 9,
       status: 'active',
       role: 'student',
-      email: 'catricegislason@gottlieb.net',
+      email: 'val.hermann@connelly-kuvalis.io',
     },
     relationships: {
       coordinator: {
         data: {
-          id: '52',
+          id: '2',
           type: 'user',
         },
       },

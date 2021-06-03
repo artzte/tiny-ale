@@ -1,189 +1,231 @@
-// GET /api/statuses?enrollmentIds=19,22
+// GET /api/statuses/enrollments?enrollmentIds=4,1
 export default {
   data: [
     {
-      id: '37',
+      id: '1',
       type: 'status',
       attributes: {
         month: '2019-09-01',
         createdAt: '2019-11-15T00:00:00.000Z',
         updatedAt: '2019-11-15T00:00:00.000Z',
-        fteHours: 25,
+        fteHours: '25',
         metFteRequirements: true,
-        heldPeriodicCheckins: true,
         academicStatus: 'satisfactory',
         attendanceStatus: 'satisfactory',
       },
       relationships: {
         creator: {
           data: {
-            id: '52',
+            id: '2',
             type: 'user',
           },
         },
         statusable: {
           data: {
-            id: '19',
+            id: '1',
             type: 'enrollment',
           },
+        },
+        notes: {
+          data: [
+            {
+              id: '4',
+              type: 'note',
+            },
+          ],
         },
       },
     },
     {
-      id: '38',
+      id: '2',
       type: 'status',
       attributes: {
         month: '2019-10-01',
         createdAt: '2019-11-15T00:00:00.000Z',
         updatedAt: '2019-11-15T00:00:00.000Z',
-        fteHours: 25,
+        fteHours: '25',
         metFteRequirements: true,
-        heldPeriodicCheckins: true,
         academicStatus: 'satisfactory',
         attendanceStatus: 'satisfactory',
       },
       relationships: {
         creator: {
           data: {
-            id: '52',
+            id: '2',
             type: 'user',
           },
         },
         statusable: {
           data: {
-            id: '19',
+            id: '1',
             type: 'enrollment',
           },
+        },
+        notes: {
+          data: [
+            {
+              id: '5',
+              type: 'note',
+            },
+          ],
         },
       },
     },
     {
-      id: '39',
+      id: '3',
       type: 'status',
       attributes: {
         month: '2019-11-01',
         createdAt: '2019-11-15T00:00:00.000Z',
         updatedAt: '2019-11-15T00:00:00.000Z',
-        fteHours: 25,
+        fteHours: '25',
         metFteRequirements: true,
-        heldPeriodicCheckins: true,
         academicStatus: 'satisfactory',
         attendanceStatus: 'satisfactory',
       },
       relationships: {
         creator: {
           data: {
-            id: '52',
+            id: '2',
             type: 'user',
           },
         },
         statusable: {
           data: {
-            id: '19',
+            id: '1',
             type: 'enrollment',
           },
+        },
+        notes: {
+          data: [
+            {
+              id: '6',
+              type: 'note',
+            },
+          ],
         },
       },
     },
     {
-      id: '46',
+      id: '10',
       type: 'status',
       attributes: {
         month: '2019-09-01',
         createdAt: '2019-11-15T00:00:00.000Z',
         updatedAt: '2019-11-15T00:00:00.000Z',
-        fteHours: 25,
+        fteHours: '25',
         metFteRequirements: true,
-        heldPeriodicCheckins: true,
         academicStatus: 'satisfactory',
         attendanceStatus: 'satisfactory',
       },
       relationships: {
         creator: {
           data: {
-            id: '53',
+            id: '3',
             type: 'user',
           },
         },
         statusable: {
           data: {
-            id: '22',
+            id: '4',
             type: 'enrollment',
           },
+        },
+        notes: {
+          data: [
+            {
+              id: '16',
+              type: 'note',
+            },
+          ],
         },
       },
     },
     {
-      id: '47',
+      id: '11',
       type: 'status',
       attributes: {
         month: '2019-10-01',
         createdAt: '2019-11-15T00:00:00.000Z',
         updatedAt: '2019-11-15T00:00:00.000Z',
-        fteHours: 25,
+        fteHours: '25',
         metFteRequirements: true,
-        heldPeriodicCheckins: true,
         academicStatus: 'satisfactory',
         attendanceStatus: 'satisfactory',
       },
       relationships: {
         creator: {
           data: {
-            id: '53',
+            id: '3',
             type: 'user',
           },
         },
         statusable: {
           data: {
-            id: '22',
+            id: '4',
             type: 'enrollment',
           },
+        },
+        notes: {
+          data: [
+            {
+              id: '17',
+              type: 'note',
+            },
+          ],
         },
       },
     },
     {
-      id: '48',
+      id: '12',
       type: 'status',
       attributes: {
         month: '2019-11-01',
         createdAt: '2019-11-15T00:00:00.000Z',
         updatedAt: '2019-11-15T00:00:00.000Z',
-        fteHours: 25,
+        fteHours: '25',
         metFteRequirements: true,
-        heldPeriodicCheckins: true,
         academicStatus: 'satisfactory',
         attendanceStatus: 'satisfactory',
       },
       relationships: {
         creator: {
           data: {
-            id: '53',
+            id: '3',
             type: 'user',
           },
         },
         statusable: {
           data: {
-            id: '22',
+            id: '4',
             type: 'enrollment',
           },
+        },
+        notes: {
+          data: [
+            {
+              id: '18',
+              type: 'note',
+            },
+          ],
         },
       },
     },
   ],
   included: [
     {
-      id: '52',
+      id: '2',
       type: 'user',
       attributes: {
-        firstName: 'Shayla',
-        lastName: 'Torp',
+        firstName: 'Sergio',
+        lastName: 'Morissette',
         nickname: null,
         dateActive: '2012-09-01',
         dateInactive: null,
         districtId: null,
         districtGrade: 12,
-        email: 'solomon@hills.name',
-        name: 'Shayla Torp',
+        email: 'caitlin.rath@weissnat.net',
+        name: 'Sergio Morissette',
         status: 'active',
         role: 'staff',
         isStaff: true,
@@ -192,7 +234,7 @@ export default {
         coordinatees: {
           data: [
             {
-              id: '56',
+              id: '6',
               type: 'user',
             },
           ],
@@ -200,18 +242,18 @@ export default {
       },
     },
     {
-      id: '53',
+      id: '3',
       type: 'user',
       attributes: {
-        firstName: 'Connie',
-        lastName: 'Hilpert',
+        firstName: 'Paige',
+        lastName: 'Raynor',
         nickname: null,
         dateActive: '2013-02-01',
         dateInactive: null,
         districtId: null,
         districtGrade: 12,
-        email: 'rico@reichel.com',
-        name: 'Connie Hilpert',
+        email: 'patria.luettgen@langworth.name',
+        name: 'Paige Raynor',
         status: 'active',
         role: 'staff',
         isStaff: true,
@@ -220,11 +262,11 @@ export default {
         coordinatees: {
           data: [
             {
-              id: '57',
+              id: '7',
               type: 'user',
             },
             {
-              id: '58',
+              id: '8',
               type: 'user',
             },
           ],

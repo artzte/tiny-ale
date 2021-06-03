@@ -2,11 +2,11 @@
 export default {
   data: [
     {
-      id: '53',
+      id: '2',
       type: 'user',
       attributes: {
-        firstName: 'Connie',
-        lastName: 'Hilpert',
+        firstName: 'Sergio',
+        lastName: 'Morissette',
         nickname: null,
         status: 'active',
         role: 'staff',
@@ -16,11 +16,7 @@ export default {
         coordinatees: {
           data: [
             {
-              id: '57',
-              type: 'user',
-            },
-            {
-              id: '58',
+              id: '6',
               type: 'user',
             },
           ],
@@ -28,30 +24,11 @@ export default {
       },
     },
     {
-      id: '51',
+      id: '3',
       type: 'user',
       attributes: {
-        firstName: 'Christopher',
-        lastName: 'Lueilwitz',
-        nickname: null,
-        status: 'active',
-        role: 'administrator',
-        isStaff: true,
-      },
-      relationships: {
-        coordinatees: {
-          data: [
-
-          ],
-        },
-      },
-    },
-    {
-      id: '52',
-      type: 'user',
-      attributes: {
-        firstName: 'Shayla',
-        lastName: 'Torp',
+        firstName: 'Paige',
+        lastName: 'Raynor',
         nickname: null,
         status: 'active',
         role: 'staff',
@@ -61,34 +38,19 @@ export default {
         coordinatees: {
           data: [
             {
-              id: '56',
+              id: '7',
               type: 'user',
             },
-          ],
-        },
-      },
-    },
-    {
-      id: '55',
-      type: 'user',
-      attributes: {
-        firstName: 'Rashad',
-        lastName: 'Ziemann',
-        nickname: null,
-        status: 'active',
-        role: 'administrator',
-        isStaff: true,
-      },
-      relationships: {
-        coordinatees: {
-          data: [
-
+            {
+              id: '8',
+              type: 'user',
+            },
           ],
         },
       },
     },
   ],
   meta: {
-    count: 4,
+    count: 2,
   },
 };

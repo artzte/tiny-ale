@@ -1,10 +1,10 @@
-// GET /api/terms/12
+// GET /api/terms/3
 export default {
   data: {
-    id: '12',
+    id: '3',
     type: 'term',
     attributes: {
-      name: 'Mandatory 24/7 moratorium',
+      name: 'Grass-roots 24/7 archive',
       schoolYear: 2019,
       creditDate: '2020-01-31',
       months: [

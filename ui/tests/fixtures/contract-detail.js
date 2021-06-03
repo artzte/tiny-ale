@@ -1,16 +1,16 @@
-// GET /api/contracts/14?include=category,facilitator,assignments,meetings,creditAssignments,creditAssignments.credit,term,learningRequirements
+// GET /api/contracts/5?include=category,facilitator,assignments,meetings,creditAssignments,creditAssignments.credit,term,learningRequirements
 export default {
   data: {
-    id: '14',
+    id: '5',
     type: 'contract',
     attributes: {
-      name: 'Acidus copiose peior coruscus utpote.',
+      name: 'Acidus contabesco trucido non careo.',
       status: 'active',
-      learningObjectives: 'Learning objectives Depereo conitor celebrer reprehenderit atqui.',
-      competencies: 'Competencies Teneo vita apostolus acceptus vulgivagus.',
-      evaluationMethods: 'Evaluation methods Architecto modi terminatio stella sollers.',
-      instructionalMaterials: 'Instructional materials Custodia vespillo quo mollitia ver.',
-      location: 'Location Amor voveo curriculum carcer suadeo.',
+      learningObjectives: 'Learning objectives Verumtamen ante coaegresco benigne vetus.',
+      competencies: 'Competencies Adnuo amo suffoco tabesco concido.',
+      evaluationMethods: 'Evaluation methods Aptus verus dolores et articulus.',
+      instructionalMaterials: 'Instructional materials Quia cupressus termes summa ago.',
+      location: 'Location Rem repellendus bonus talio unde.',
       timeslots: [
         {
           start: '8:45',
@@ -23,34 +23,34 @@ export default {
       enrollments: {
         data: [
           {
-            id: '19',
+            id: '1',
             type: 'enrollment',
           },
           {
-            id: '20',
+            id: '2',
             type: 'enrollment',
           },
           {
-            id: '21',
+            id: '3',
             type: 'enrollment',
           },
         ],
       },
       facilitator: {
         data: {
-          id: '52',
+          id: '2',
           type: 'user',
         },
       },
       term: {
         data: {
-          id: '12',
+          id: '3',
           type: 'term',
         },
       },
       category: {
         data: {
-          id: '10',
+          id: '1',
           type: 'category',
         },
       },
@@ -81,7 +81,7 @@ export default {
       creditAssignments: {
         data: [
           {
-            id: '50',
+            id: '2',
             type: 'creditAssignment',
           },
         ],
@@ -113,19 +113,19 @@ export default {
       learningRequirements: {
         data: [
           {
-            id: '12',
+            id: '1',
             type: 'learningRequirement',
           },
           {
-            id: '13',
+            id: '2',
             type: 'learningRequirement',
           },
           {
-            id: '14',
+            id: '3',
             type: 'learningRequirement',
           },
           {
-            id: '15',
+            id: '4',
             type: 'learningRequirement',
           },
         ],
@@ -133,6 +133,60 @@ export default {
     },
   },
   included: [
+    {
+      id: '1',
+      type: 'category',
+      attributes: {
+        name: 'Category 1',
+        sequence: 0,
+        public: false,
+        reporting: 'none',
+        activeContractsCount: 1,
+        homeroom: false,
+      },
+      relationships: {
+        contracts: {
+          data: [
+            {
+              id: '1',
+              type: 'contract',
+            },
+            {
+              id: '5',
+              type: 'contract',
+            },
+          ],
+        },
+      },
+    },
+    {
+      id: '2',
+      type: 'user',
+      attributes: {
+        firstName: 'Sergio',
+        lastName: 'Morissette',
+        nickname: null,
+        dateActive: '2012-09-01',
+        dateInactive: null,
+        districtId: null,
+        districtGrade: 12,
+        email: 'caitlin.rath@weissnat.net',
+        name: 'Sergio Morissette',
+        status: 'active',
+        role: 'staff',
+        isStaff: true,
+      },
+      relationships: {
+        coordinatees: {
+          data: [
+            {
+              id: '6',
+              type: 'user',
+            },
+          ],
+        },
+      },
+    },
     {
       id: '1',
       type: 'assignment',
@@ -226,158 +280,6 @@ export default {
             },
           ],
         },
-      },
-    },
-    {
-      id: '10',
-      type: 'category',
-      attributes: {
-        name: 'Category 1',
-        sequence: 0,
-        public: false,
-        reporting: 'none',
-        activeContractsCount: 1,
-        homeroom: false,
-      },
-      relationships: {
-        contracts: {
-          data: [
-            {
-              id: '10',
-              type: 'contract',
-            },
-            {
-              id: '14',
-              type: 'contract',
-            },
-          ],
-        },
-      },
-    },
-    {
-      id: '50',
-      type: 'creditAssignment',
-      attributes: {
-        creditHours: 1.0,
-      },
-      relationships: {
-        credit: {
-          data: {
-            id: '22',
-            type: 'credit',
-          },
-        },
-        graduationPlanMapping: {
-          data: null,
-        },
-        notes: {
-          data: [
-
-          ],
-        },
-        contractTerm: {
-          data: null,
-        },
-        contractFacilitator: {
-          data: null,
-        },
-        contract: {
-          data: {
-            id: '14',
-            type: 'contract',
-          },
-        },
-        user: {
-          data: null,
-        },
-        creditTransmittalBatch: {
-          data: null,
-        },
-        enrollment: {
-          data: null,
-        },
-        childCreditAssignments: {
-          data: [
-
-          ],
-        },
-        parentCreditAssignment: {
-          data: null,
-        },
-      },
-    },
-    {
-      id: '22',
-      type: 'credit',
-      attributes: {
-        courseId: '0',
-        courseName: 'Course 1',
-        status: 'active',
-        courseType: 'none',
-      },
-    },
-    {
-      id: '52',
-      type: 'user',
-      attributes: {
-        firstName: 'Shayla',
-        lastName: 'Torp',
-        nickname: null,
-        dateActive: '2012-09-01',
-        dateInactive: null,
-        districtId: null,
-        districtGrade: 12,
-        email: 'solomon@hills.name',
-        name: 'Shayla Torp',
-        status: 'active',
-        role: 'staff',
-        isStaff: true,
-      },
-      relationships: {
-        coordinatees: {
-          data: [
-            {
-              id: '56',
-              type: 'user',
-            },
-          ],
-        },
-      },
-    },
-    {
-      id: '12',
-      type: 'learningRequirement',
-      attributes: {
-        ealr: 'Adnuo taedium bos et eum.',
-        seq: '1.1',
-        category: 'Category 1',
-      },
-    },
-    {
-      id: '13',
-      type: 'learningRequirement',
-      attributes: {
-        ealr: 'Cariosus blandior solum animadverto acsi.',
-        seq: '1.2',
-        category: 'Category 1',
-      },
-    },
-    {
-      id: '14',
-      type: 'learningRequirement',
-      attributes: {
-        ealr: 'Tergo ulterius dapifer vicissitudo commodi.',
-        seq: '2.1',
-        category: 'Category 2',
-      },
-    },
-    {
-      id: '15',
-      type: 'learningRequirement',
-      attributes: {
-        ealr: 'Causa claustrum argentum condico thalassinus.',
-        seq: '2.2',
-        category: 'Category 2',
       },
     },
     {
@@ -511,10 +413,72 @@ export default {
       },
     },
     {
-      id: '12',
+      id: '1',
+      type: 'credit',
+      attributes: {
+        courseId: '0',
+        courseName: 'Course 1',
+        status: 'active',
+        courseType: 'none',
+      },
+    },
+    {
+      id: '2',
+      type: 'creditAssignment',
+      attributes: {
+        creditHours: 1.0,
+      },
+      relationships: {
+        credit: {
+          data: {
+            id: '1',
+            type: 'credit',
+          },
+        },
+        graduationPlanMapping: {
+          data: null,
+        },
+        notes: {
+          data: [
+
+          ],
+        },
+        contractTerm: {
+          data: null,
+        },
+        contractFacilitator: {
+          data: null,
+        },
+        contract: {
+          data: {
+            id: '5',
+            type: 'contract',
+          },
+        },
+        user: {
+          data: null,
+        },
+        creditTransmittalBatch: {
+          data: null,
+        },
+        enrollment: {
+          data: null,
+        },
+        childCreditAssignments: {
+          data: [
+
+          ],
+        },
+        parentCreditAssignment: {
+          data: null,
+        },
+      },
+    },
+    {
+      id: '3',
       type: 'term',
       attributes: {
-        name: 'Mandatory 24/7 moratorium',
+        name: 'Grass-roots 24/7 archive',
         schoolYear: 2019,
         creditDate: '2020-01-31',
         months: [
@@ -527,6 +491,42 @@ export default {
         status: 'active',
       },
       meta: null,
+    },
+    {
+      id: '1',
+      type: 'learningRequirement',
+      attributes: {
+        ealr: 'Defessus uredo assumenda inflammatio vitae.',
+        seq: '1.1',
+        category: 'Category 1',
+      },
+    },
+    {
+      id: '2',
+      type: 'learningRequirement',
+      attributes: {
+        ealr: 'Velociter cado denego tempore ait.',
+        seq: '1.2',
+        category: 'Category 1',
+      },
+    },
+    {
+      id: '3',
+      type: 'learningRequirement',
+      attributes: {
+        ealr: 'Defleo dolor sperno dolores cerno.',
+        seq: '2.1',
+        category: 'Category 2',
+      },
+    },
+    {
+      id: '4',
+      type: 'learningRequirement',
+      attributes: {
+        ealr: 'Depereo argumentum vilis somniculosus viriliter.',
+        seq: '2.2',
+        category: 'Category 2',
+      },
     },
   ],
 };

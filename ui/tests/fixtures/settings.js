@@ -2,7 +2,7 @@
 export default {
   data: [
     {
-      id: '46',
+      id: '4',
       type: 'setting',
       attributes: {
         name: 'reporting_base_month',
@@ -10,7 +10,7 @@ export default {
       },
     },
     {
-      id: '47',
+      id: '5',
       type: 'setting',
       attributes: {
         name: 'reporting_end_month',
@@ -18,7 +18,7 @@ export default {
       },
     },
     {
-      id: '48',
+      id: '6',
       type: 'setting',
       attributes: {
         name: 'current_year',

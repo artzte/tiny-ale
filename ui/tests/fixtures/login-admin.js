@@ -1,23 +1,23 @@
-// auth for user 55
+// auth for user 5
 export default {
   data: {
-    email: 'garret@kirlin.io',
+    email: 'myra@ratke-lesch.name',
     email_verified: false,
     updated_at: '2019-06-23T23:44:29.877Z',
-    user_id: 'auth0|6dec61dcef7be6b388c06e61bc4f2355',
-    name: 'Rashad Ziemann',
+    user_id: 'auth0|aa22bfd857206b1a5365d4d10558fa46',
+    name: 'Neil Runte',
     identities: [
       {
         connection: 'Username-Password-Authentication',
         provider: 'auth0',
-        user_id: '6dec61dcef7be6b388c06e61bc4f2355',
+        user_id: 'aa22bfd857206b1a5365d4d10558fa46',
         isSocial: false,
       },
     ],
     created_at: '2019-05-25T00:24:18.815Z',
     last_password_reset: '2019-06-10T04:09:05.883Z',
-    given_name: 'Rashad',
-    family_name: 'Ziemann',
+    given_name: 'Neil',
+    family_name: 'Runte',
     nickname: null,
     last_login: '2019-06-23T23:44:29.877Z',
     last_ip: '208.100.155.216',
