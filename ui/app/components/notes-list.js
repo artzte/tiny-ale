@@ -9,6 +9,8 @@ import Validator from '../utils/validator';
 export default class NotesList extends Component {
   @service('tinyData') tinyData;
 
+  @service('flashMessages') flashMessages;
+
   @tracked _notes;
 
   @tracked noteToEdit;
@@ -30,14 +32,14 @@ export default class NotesList extends Component {
     } = note.relationships.notable.data;
     return this.tinyData.fetch(`/api/notes/${dasherize(type)}/${id}`, {
       method: 'POST',
-      data: { data: note },
+      data: note,
     });
   }
 
   updateNote(note) {
     return this.tinyData.fetch(`/api/notes/${note.id}`, {
       method: 'PUT',
-      data: { data: note },
+      data: note,
     });
   }
 
@@ -89,8 +91,7 @@ export default class NotesList extends Component {
     this.noteToEdit = null;
   }
 
-  // eslint-disable-next-line class-methods-use-this
-  @action reportError(error) {
-    console.error(error);
+  @action reportError(/* error */) {
+    this.flashMessages.alert('Please fill out your note and try again');
   }
 }

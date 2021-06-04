@@ -1,10 +1,13 @@
 import { helper } from '@ember/component/helper';
-import showdown from 'showdown';
+import MarkdownIt from 'markdown-it';
 import { htmlSafe } from '@ember/string';
 
 export default helper(params => {
-  const [text] = params;
-  const converter = new showdown.Converter();
+  const [text, altText] = params;
+  const md = new MarkdownIt();
+  const output = md.render(text || '');
 
-  return htmlSafe(converter.makeHtml(text));
+  if (output.trim() === '' && altText) return htmlSafe(md.render(altText));
+
+  return htmlSafe(output);
 });

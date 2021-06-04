@@ -4,7 +4,7 @@ export default EditController.extend({
   updateModel(data) {
     return this.tinyData.fetch('/api/admin/terms', {
       method: 'POST',
-      data: { data },
+      data,
     });
   },
 });

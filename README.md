@@ -107,4 +107,4 @@ For the client
     npm test
     npm run lint
 
-# Copyright (c) 2019-2020 Juniper Swordplay, LLC - All rights reserved
+# Copyright (c) 2019-2021 Juniper Swordplay, LLC - All rights reserved

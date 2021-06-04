@@ -52,7 +52,6 @@ module('Integration | Component | ContractLearningRequirements', hooks => {
 
     assert.equal(requests.length, 1, 'a save request was issued');
     const [oneRemoved] = requests;
-
-    assert.equal(oneRemoved.data.relationships.learningRequirements.data.length, 3);
+    assert.equal(oneRemoved.relationships.learningRequirements.data.length, 3);
   });
 });

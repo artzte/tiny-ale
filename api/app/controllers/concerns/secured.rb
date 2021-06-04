@@ -12,6 +12,10 @@ module Secured
     before_action :authenticate_request!
   end
 
+  def current_user
+    @user
+  end
+
   private
 
   def render_unauthorized(message = 'Not authorized')
@@ -19,9 +23,6 @@ module Secured
   end
 
   def authenticate_request!
-    ## for offline
-    # @user = User.find_by_last_name "Grey"
-
     permissions = get_permissions
 
     render_unauthorized && return if permissions.empty?
@@ -54,16 +55,14 @@ module Secured
   end
 
   def get_permissions
-    ## for offline
-    # return ['bleah']
-
     JsonWebToken.extract_permissions(http_token)
   end
 
   def get_user_id
-    ## for offline
-    # return User.find_by_last_name('Grey').id
-  
+    if Rails.env == "development" and Rails.application.config.constants[:OFFLINE]
+      return User.find_by_last_name('Grey').id
+    end
+
     JsonWebToken.extract_user_id(http_token)
   end
 end

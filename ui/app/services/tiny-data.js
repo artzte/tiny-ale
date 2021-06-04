@@ -188,12 +188,23 @@ export const tinyDataService = {
     const notableType = firstNotable.type;
     const notableIds = notables.map(notable => notable.id);
     return this.fetch('/api/notes', {
-      data: {
+      query: {
         notableType,
         notableIds: notableIds.join(','),
         order: 'createdAt DESC',
       },
     });
+  },
+
+  getEmptyRecord(type, additions = {}) {
+    return {
+      type,
+      id: null,
+      attributes: {},
+      relationships: {},
+      included: [],
+      ...additions,
+    };
   },
 };
 

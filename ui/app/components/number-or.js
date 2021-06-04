@@ -1,20 +1,35 @@
-import Component from '@ember/component';
-import { computed } from '@ember/object';
+import Component from '@glimmer/component';
+import { formatNumber } from 'accounting';
 
-const NumberOr = Component.extend({
-  or: '-',
-  renderedNumber: computed('number', 'or', function () {
+export default class NumberOr extends Component {
+  get or() {
+    return this.args.or === undefined ? '-' : this.args.or;
+  }
+
+  get number() {
+    const {
+      number: numberFromArgs,
+    } = this.args;
+
+    if ([null, undefined].includes(numberFromArgs)) return null;
+
+    try {
+      const float = parseFloat(numberFromArgs);
+
+      if (Number.isNaN(float)) throw new Error('NaN');
+      return float;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  get renderedNumber() {
     const { number } = this;
+
     if (Number.isFinite(number) && number > 0) {
-      return number;
+      return formatNumber(number, 2).replace(/\.0+$/, '');
     }
 
     return this.or;
-  }),
-});
-
-NumberOr.reopenClass({
-  positionalParams: ['number', 'or'],
-});
-
-export default NumberOr;
+  }
+}

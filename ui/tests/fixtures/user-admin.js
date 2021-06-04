@@ -1,11 +1,11 @@
-// GET /api/admin/users/55
+// GET /api/admin/users/5
 export default {
   data: {
-    id: '55',
+    id: '5',
     type: 'user',
     attributes: {
-      firstName: 'Rashad',
-      lastName: 'Ziemann',
+      firstName: 'Neil',
+      lastName: 'Runte',
       nickname: null,
       dateActive: '2011-07-01',
       dateInactive: null,
@@ -13,7 +13,7 @@ export default {
       districtGrade: 12,
       status: 'active',
       role: 'administrator',
-      email: 'garret@kirlin.io',
+      email: 'myra@ratke-lesch.name',
     },
     relationships: {
     },

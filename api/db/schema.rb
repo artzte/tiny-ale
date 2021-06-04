@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_27_171233) do
+ActiveRecord::Schema.define(version: 2021_05_16_043348) do
 
   create_table "assignments", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.integer "contract_id"
@@ -181,20 +181,21 @@ ActiveRecord::Schema.define(version: 2021_03_27_171233) do
 
   create_table "learning_plan_goals", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.text "description"
-    t.boolean "required", default: false
     t.boolean "active", default: true
     t.integer "position"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "year", null: false
   end
 
   create_table "learning_plans", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.integer "user_id", default: 0, null: false
     t.integer "year", default: 0, null: false
     t.text "user_goals"
-    t.integer "weekly_hours", default: 0, null: false
+    t.string "weekly_hours", default: "27.5", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "creator_id", null: false
     t.index ["user_id", "year"], name: "index_learning_plans_on_user_id_and_year"
   end
 

@@ -13,9 +13,7 @@ export default Controller.extend({
       const { student } = this;
       return this.tinyData.fetch(`/api/graduation-plan-mappings/${student.id}`, {
         method: 'POST',
-        data: {
-          data: createEntity('graduationPlanMapping', {}, requirement, creditAssignment),
-        },
+        data: createEntity('graduationPlanMapping', {}, requirement, creditAssignment),
       });
     },
     saveMapping(mapping) {
@@ -31,9 +29,7 @@ export default Controller.extend({
       }
       return this.tinyData.fetch(url, {
         method,
-        data: {
-          data: mapping,
-        },
+        data: mapping,
       });
     },
     removeMapping(mapping) {

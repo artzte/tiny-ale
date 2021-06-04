@@ -52,7 +52,7 @@ export default Controller.extend({
 
       return this.tinyData.fetch('/api/admin/logins', {
         method: 'POST',
-        data: { data: model },
+        data: model,
       });
     },
 
@@ -61,7 +61,7 @@ export default Controller.extend({
         try {
           const result = await this.tinyData.fetch(`/api/admin/users/${model.id}`, {
             method: 'PUT',
-            data: { data: model },
+            data: model,
           });
 
           const postSaveAction = await this.syncLogin(model, this.login);
@@ -132,7 +132,7 @@ export default Controller.extend({
 
     return this.tinyData.fetch(`/api/admin/logins/${login.user_id}`, {
       method: 'PATCH',
-      data: { data: model },
+      data: model,
     });
   },
 });

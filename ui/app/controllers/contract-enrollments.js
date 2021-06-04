@@ -33,10 +33,8 @@ export default class ContractEnrollmentController extends Controller {
     await tinyData.fetch(`/api/contracts/${contract.id}/enrollments`, {
       method: 'POST',
       data: {
-        data: {
-          relationships: {
-            user_ids: userIds,
-          },
+        relationships: {
+          user_ids: userIds,
         },
       },
     });

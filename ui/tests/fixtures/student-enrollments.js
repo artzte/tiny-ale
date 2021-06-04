@@ -1,8 +1,8 @@
-// GET /api/enrollments?participantIds=56&status=enrolled&include=contract,contract.facilitator,contract.term,credit_assignments,credit_assignments.credit,participant
+// GET /api/enrollments?participantIds=6&status=enrolled&include=contract,contract.facilitator,contract.term,credit_assignments,credit_assignments.credit,participant
 export default {
   data: [
     {
-      id: '19',
+      id: '4',
       type: 'enrollment',
       attributes: {
         finalizedOn: null,
@@ -12,20 +12,61 @@ export default {
       relationships: {
         contract: {
           data: {
-            id: '14',
+            id: '6',
             type: 'contract',
           },
         },
         participant: {
           data: {
-            id: '56',
+            id: '6',
             type: 'user',
           },
         },
         creditAssignments: {
           data: [
             {
-              id: '55',
+              id: '10',
+              type: 'creditAssignment',
+            },
+          ],
+        },
+        turnins: {
+          data: [
+
+          ],
+        },
+        meetingParticipants: {
+          data: [
+
+          ],
+        },
+      },
+    },
+    {
+      id: '1',
+      type: 'enrollment',
+      attributes: {
+        finalizedOn: null,
+        enrollmentStatus: 'enrolled',
+        completionStatus: 'incomplete',
+      },
+      relationships: {
+        contract: {
+          data: {
+            id: '5',
+            type: 'contract',
+          },
+        },
+        participant: {
+          data: {
+            id: '6',
+            type: 'user',
+          },
+        },
+        creditAssignments: {
+          data: [
+            {
+              id: '7',
               type: 'creditAssignment',
             },
           ],
@@ -80,182 +121,21 @@ export default {
         },
       },
     },
-    {
-      id: '22',
-      type: 'enrollment',
-      attributes: {
-        finalizedOn: null,
-        enrollmentStatus: 'enrolled',
-        completionStatus: 'incomplete',
-      },
-      relationships: {
-        contract: {
-          data: {
-            id: '15',
-            type: 'contract',
-          },
-        },
-        participant: {
-          data: {
-            id: '56',
-            type: 'user',
-          },
-        },
-        creditAssignments: {
-          data: [
-            {
-              id: '58',
-              type: 'creditAssignment',
-            },
-          ],
-        },
-        turnins: {
-          data: [
-
-          ],
-        },
-        meetingParticipants: {
-          data: [
-
-          ],
-        },
-      },
-    },
   ],
   included: [
     {
-      id: '14',
-      type: 'contract',
-      attributes: {
-        name: 'Acidus copiose peior coruscus utpote.',
-        status: 'active',
-      },
-      relationships: {
-        enrollments: {
-          data: [
-            {
-              id: '19',
-              type: 'enrollment',
-            },
-            {
-              id: '20',
-              type: 'enrollment',
-            },
-            {
-              id: '21',
-              type: 'enrollment',
-            },
-          ],
-        },
-        facilitator: {
-          data: {
-            id: '52',
-            type: 'user',
-          },
-        },
-        term: {
-          data: {
-            id: '12',
-            type: 'term',
-          },
-        },
-        category: {
-          data: {
-            id: '10',
-            type: 'category',
-          },
-        },
-        assignments: {
-          data: [
-            {
-              id: '1',
-              type: 'assignment',
-            },
-            {
-              id: '2',
-              type: 'assignment',
-            },
-            {
-              id: '3',
-              type: 'assignment',
-            },
-            {
-              id: '4',
-              type: 'assignment',
-            },
-            {
-              id: '5',
-              type: 'assignment',
-            },
-          ],
-        },
-        creditAssignments: {
-          data: [
-            {
-              id: '50',
-              type: 'creditAssignment',
-            },
-          ],
-        },
-        meetings: {
-          data: [
-            {
-              id: '1',
-              type: 'meeting',
-            },
-            {
-              id: '2',
-              type: 'meeting',
-            },
-            {
-              id: '3',
-              type: 'meeting',
-            },
-            {
-              id: '4',
-              type: 'meeting',
-            },
-            {
-              id: '5',
-              type: 'meeting',
-            },
-          ],
-        },
-        learningRequirements: {
-          data: [
-            {
-              id: '12',
-              type: 'learningRequirement',
-            },
-            {
-              id: '13',
-              type: 'learningRequirement',
-            },
-            {
-              id: '14',
-              type: 'learningRequirement',
-            },
-            {
-              id: '15',
-              type: 'learningRequirement',
-            },
-          ],
-        },
-      },
-    },
-    {
-      id: '52',
+      id: '3',
       type: 'user',
       attributes: {
-        firstName: 'Shayla',
-        lastName: 'Torp',
+        firstName: 'Paige',
+        lastName: 'Raynor',
         nickname: null,
-        dateActive: '2012-09-01',
+        dateActive: '2013-02-01',
         dateInactive: null,
         districtId: null,
         districtGrade: 12,
-        email: 'solomon@hills.name',
-        name: 'Shayla Torp',
+        email: 'patria.luettgen@langworth.name',
+        name: 'Paige Raynor',
         status: 'active',
         role: 'staff',
         isStaff: true,
@@ -264,7 +144,11 @@ export default {
         coordinatees: {
           data: [
             {
-              id: '56',
+              id: '7',
+              type: 'user',
+            },
+            {
+              id: '8',
               type: 'user',
             },
           ],
@@ -272,10 +156,10 @@ export default {
       },
     },
     {
-      id: '12',
+      id: '3',
       type: 'term',
       attributes: {
-        name: 'Mandatory 24/7 moratorium',
+        name: 'Grass-roots 24/7 archive',
         schoolYear: 2019,
         creditDate: '2020-01-31',
         months: [
@@ -290,132 +174,44 @@ export default {
       meta: null,
     },
     {
-      id: '55',
-      type: 'creditAssignment',
-      attributes: {
-        creditHours: 1.0,
-      },
-      relationships: {
-        credit: {
-          data: {
-            id: '22',
-            type: 'credit',
-          },
-        },
-        graduationPlanMapping: {
-          data: null,
-        },
-        notes: {
-          data: [
-
-          ],
-        },
-        contractTerm: {
-          data: null,
-        },
-        contractFacilitator: {
-          data: null,
-        },
-        contract: {
-          data: null,
-        },
-        user: {
-          data: null,
-        },
-        creditTransmittalBatch: {
-          data: null,
-        },
-        enrollment: {
-          data: {
-            id: '19',
-            type: 'enrollment',
-          },
-        },
-        childCreditAssignments: {
-          data: [
-
-          ],
-        },
-        parentCreditAssignment: {
-          data: null,
-        },
-      },
-    },
-    {
-      id: '22',
-      type: 'credit',
-      attributes: {
-        courseId: '0',
-        courseName: 'Course 1',
-        status: 'active',
-        courseType: 'none',
-      },
-    },
-    {
-      id: '56',
-      type: 'user',
-      attributes: {
-        firstName: 'Jerold',
-        lastName: 'Klein',
-        nickname: null,
-        dateActive: '2018-08-01',
-        dateInactive: null,
-        districtId: '4809648277',
-        districtGrade: 9,
-        email: 'catricegislason@gottlieb.net',
-        name: 'Jerold Klein',
-        status: 'active',
-        role: 'student',
-        isStaff: false,
-      },
-      relationships: {
-        coordinator: {
-          data: {
-            id: '52',
-            type: 'user',
-          },
-        },
-      },
-    },
-    {
-      id: '15',
+      id: '6',
       type: 'contract',
       attributes: {
-        name: 'Demum verus sed sit valens.',
+        name: 'Vilitas cultellus articulus vereor est.',
         status: 'active',
       },
       relationships: {
         enrollments: {
           data: [
             {
-              id: '22',
+              id: '4',
               type: 'enrollment',
             },
             {
-              id: '23',
+              id: '5',
               type: 'enrollment',
             },
             {
-              id: '24',
+              id: '6',
               type: 'enrollment',
             },
           ],
         },
         facilitator: {
           data: {
-            id: '53',
+            id: '3',
             type: 'user',
           },
         },
         term: {
           data: {
-            id: '12',
+            id: '3',
             type: 'term',
           },
         },
         category: {
           data: {
-            id: '11',
+            id: '2',
             type: 'category',
           },
         },
@@ -427,7 +223,7 @@ export default {
         creditAssignments: {
           data: [
             {
-              id: '52',
+              id: '4',
               type: 'creditAssignment',
             },
           ],
@@ -445,39 +241,17 @@ export default {
       },
     },
     {
-      id: '53',
-      type: 'user',
+      id: '1',
+      type: 'credit',
       attributes: {
-        firstName: 'Connie',
-        lastName: 'Hilpert',
-        nickname: null,
-        dateActive: '2013-02-01',
-        dateInactive: null,
-        districtId: null,
-        districtGrade: 12,
-        email: 'rico@reichel.com',
-        name: 'Connie Hilpert',
+        courseId: '0',
+        courseName: 'Course 1',
         status: 'active',
-        role: 'staff',
-        isStaff: true,
-      },
-      relationships: {
-        coordinatees: {
-          data: [
-            {
-              id: '57',
-              type: 'user',
-            },
-            {
-              id: '58',
-              type: 'user',
-            },
-          ],
-        },
+        courseType: 'none',
       },
     },
     {
-      id: '58',
+      id: '10',
       type: 'creditAssignment',
       attributes: {
         creditHours: 1.0,
@@ -485,7 +259,7 @@ export default {
       relationships: {
         credit: {
           data: {
-            id: '22',
+            id: '1',
             type: 'credit',
           },
         },
@@ -514,7 +288,233 @@ export default {
         },
         enrollment: {
           data: {
-            id: '22',
+            id: '4',
+            type: 'enrollment',
+          },
+        },
+        childCreditAssignments: {
+          data: [
+
+          ],
+        },
+        parentCreditAssignment: {
+          data: null,
+        },
+      },
+    },
+    {
+      id: '6',
+      type: 'user',
+      attributes: {
+        firstName: 'Mitchell',
+        lastName: 'Funk',
+        nickname: null,
+        dateActive: '2018-08-01',
+        dateInactive: null,
+        districtId: '1701223197',
+        districtGrade: 9,
+        email: 'val.hermann@connelly-kuvalis.io',
+        name: 'Mitchell Funk',
+        status: 'active',
+        role: 'student',
+        isStaff: false,
+      },
+      relationships: {
+        coordinator: {
+          data: {
+            id: '2',
+            type: 'user',
+          },
+        },
+      },
+    },
+    {
+      id: '2',
+      type: 'user',
+      attributes: {
+        firstName: 'Sergio',
+        lastName: 'Morissette',
+        nickname: null,
+        dateActive: '2012-09-01',
+        dateInactive: null,
+        districtId: null,
+        districtGrade: 12,
+        email: 'caitlin.rath@weissnat.net',
+        name: 'Sergio Morissette',
+        status: 'active',
+        role: 'staff',
+        isStaff: true,
+      },
+      relationships: {
+        coordinatees: {
+          data: [
+            {
+              id: '6',
+              type: 'user',
+            },
+          ],
+        },
+      },
+    },
+    {
+      id: '5',
+      type: 'contract',
+      attributes: {
+        name: 'Acidus contabesco trucido non careo.',
+        status: 'active',
+      },
+      relationships: {
+        enrollments: {
+          data: [
+            {
+              id: '1',
+              type: 'enrollment',
+            },
+            {
+              id: '2',
+              type: 'enrollment',
+            },
+            {
+              id: '3',
+              type: 'enrollment',
+            },
+          ],
+        },
+        facilitator: {
+          data: {
+            id: '2',
+            type: 'user',
+          },
+        },
+        term: {
+          data: {
+            id: '3',
+            type: 'term',
+          },
+        },
+        category: {
+          data: {
+            id: '1',
+            type: 'category',
+          },
+        },
+        assignments: {
+          data: [
+            {
+              id: '1',
+              type: 'assignment',
+            },
+            {
+              id: '2',
+              type: 'assignment',
+            },
+            {
+              id: '3',
+              type: 'assignment',
+            },
+            {
+              id: '4',
+              type: 'assignment',
+            },
+            {
+              id: '5',
+              type: 'assignment',
+            },
+          ],
+        },
+        creditAssignments: {
+          data: [
+            {
+              id: '2',
+              type: 'creditAssignment',
+            },
+          ],
+        },
+        meetings: {
+          data: [
+            {
+              id: '1',
+              type: 'meeting',
+            },
+            {
+              id: '2',
+              type: 'meeting',
+            },
+            {
+              id: '3',
+              type: 'meeting',
+            },
+            {
+              id: '4',
+              type: 'meeting',
+            },
+            {
+              id: '5',
+              type: 'meeting',
+            },
+          ],
+        },
+        learningRequirements: {
+          data: [
+            {
+              id: '1',
+              type: 'learningRequirement',
+            },
+            {
+              id: '2',
+              type: 'learningRequirement',
+            },
+            {
+              id: '3',
+              type: 'learningRequirement',
+            },
+            {
+              id: '4',
+              type: 'learningRequirement',
+            },
+          ],
+        },
+      },
+    },
+    {
+      id: '7',
+      type: 'creditAssignment',
+      attributes: {
+        creditHours: 1.0,
+      },
+      relationships: {
+        credit: {
+          data: {
+            id: '1',
+            type: 'credit',
+          },
+        },
+        graduationPlanMapping: {
+          data: null,
+        },
+        notes: {
+          data: [
+
+          ],
+        },
+        contractTerm: {
+          data: null,
+        },
+        contractFacilitator: {
+          data: null,
+        },
+        contract: {
+          data: null,
+        },
+        user: {
+          data: null,
+        },
+        creditTransmittalBatch: {
+          data: null,
+        },
+        enrollment: {
+          data: {
+            id: '1',
             type: 'enrollment',
           },
         },

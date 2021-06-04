@@ -1,5 +1,16 @@
 # frozen_string_literal: true
 
+REPORT_ATTRIBUTES = [
+  :contract_name,
+  :facilitator_name,
+  :term_name,
+  :term_school_year,
+  :term_credit_date,
+  :credit_string,
+  :timeslots,
+  :assignments_count,
+]
+
 class EnrollmentSerializer < ApplicationSerializer
   set_type :enrollment
 
@@ -18,5 +29,9 @@ class EnrollmentSerializer < ApplicationSerializer
 
   attribute :completion_status do |object|
     Enrollment::COMPLETION_NAMES[object.completion_status].downcase
+  end
+
+  REPORT_ATTRIBUTES.each do |attr|
+    attribute attr, if: Proc.new { |record| !record[attr].nil? }
   end
 end

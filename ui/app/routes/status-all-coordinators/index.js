@@ -8,7 +8,7 @@ export default Route.extend({
   beforeModel() {
     return all([
       this.tinyData.fetch('/api/students', {
-        data: {
+        query: {
           status: 'reportable',
           order: 'lastName, firstName',
           limit: -1,
@@ -26,7 +26,7 @@ export default Route.extend({
 
     return all([
       this.tinyData.fetch('/api/staff', {
-        data: {
+        query: {
           status: 'active',
           coordinators: true,
           order: 'lastName, firstName',
@@ -35,7 +35,7 @@ export default Route.extend({
       }),
 
       this.tinyData.fetch('/api/statuses/students', {
-        data: {
+        query: {
           studentIds: students.map(student => student.id),
           months: term.attributes.months,
           type: 'student',

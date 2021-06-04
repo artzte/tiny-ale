@@ -1,9 +1,7 @@
-import Component from '@ember/component';
-import { computed } from '@ember/object';
+import Component from '@glimmer/component';
 
-export default Component.extend({
-  tagName: '',
-  hasErrorToShow: computed('error', 'showErrors', function () {
-    return Boolean(this.error && this.showErrors);
-  }),
-});
+export default class FormInputComponent extends Component {
+  get hasErrorToShow() {
+    return Boolean(this.args.error && this.args.showErrors);
+  }
+}

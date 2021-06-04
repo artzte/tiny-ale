@@ -1,8 +1,14 @@
-<h2>
+<h1>
   {{full-name this.student "first-last"}}
-</h2>
+</h1>
+
+<p>
+  {{student-status-summary this.student}}
+</p>
 
 <StudentToolbar @student={{this.student}} />
+
+<h2>Status Report</h2>
 
 <StatusReport
   @statusable={{this.student}}
@@ -20,3 +26,5 @@
     />
   </EmberWormhole>
 {{/if}}
+
+{{outlet}}

@@ -55,7 +55,7 @@ export default Service.extend({
   }) {
     const { tinyData } = this;
     return tinyData.fetch('/api/credits', {
-      data: {
+      query: {
         status,
         limit,
         order,
@@ -74,9 +74,7 @@ export default Service.extend({
     const [method, url] = endpointFor(creditable, creditAssignmentModel);
     return tinyData.fetch(url, {
       method,
-      data: {
-        data: creditAssignmentModel,
-      },
+      data: creditAssignmentModel,
     });
   },
 });

@@ -58,8 +58,8 @@ db:seed () {
   docker exec $API rake db:seed
 }
 
-db:prepare:test () {
-  docker exec $API rake db:test:prepare
+db:test:load () {
+  docker exec $API rake db:test:load
 }
 
 db:volumeRemove () {
@@ -81,7 +81,7 @@ db:shell () {
 }
 
 db:import () {
-  docker exec -i 4a9df3e5b35a /bin/bash -c "export TERM=xterm && mysql -proot -uroot nova_production" < $ARGS
+  docker exec -i `docker ps --filter name=tiny-ale_db --format "{{.ID}}"` /bin/bash -c "export TERM=xterm && mysql -proot -uroot nova_production" < $ARGS
 }
 
 db:init () {
@@ -89,7 +89,7 @@ db:init () {
   db:create
   db:migrate
   db:seed
-  db:prepare:test
+  db:test:load
 }
 
 rehome () {
@@ -145,7 +145,7 @@ log () {
 }
 
 api:test () {
-  docker exec -e RAILS_ENV=test $API bundle exec rspec
+  docker exec -e RAILS_ENV=test $API bundle exec rspec $REST_ARGS
 }
 
 ui:test () {
@@ -156,12 +156,16 @@ api:build () {
   docker build api --tag name:TINYSIS_PROD --tag sha:$(git rev-parse HEAD)
 }
 
+api:console () {
+  docker exec -it $API rails c
+}
+
 ui:build () {
   docker exec $UI ember build --environment=production
 }
 
 case $COMMAND in
-  getSecrets|rehome|db:init|build|ui:shell|api:shell|db:shell|log|reset|api:test|ui:test|ui:reset|api:reset|stop|api:build|ui:build)
+  getSecrets|rehome|db:init|build|ui:shell|api:shell|db:shell|log|reset|api:test|ui:test|ui:reset|api:reset|stop|api:build|ui:build|api:console)
       $COMMAND;;
   *)
       usage

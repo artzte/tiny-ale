@@ -1,15 +1,14 @@
-// GET /api/statuses?studentIds=57,58&months=2019-09-01,2019-10-01,2019-11-01,2019-12-01,2020-01-01,2020-02-01,2020-03-01,2020-04-01,2020-05-01,2020-06-01&type=student
+// GET /api/statuses/students?studentIds=7,8&months=2019-09-01,2019-10-01,2019-11-01,2019-12-01,2020-01-01,2020-02-01,2020-03-01,2020-04-01,2020-05-01,2020-06-01&type=student
 export default {
   data: [
     {
-      id: '86',
+      id: '50',
       type: 'status',
       attributes: {
         month: '2019-09-01',
         createdAt: '2019-11-15T00:00:00.000Z',
         updatedAt: '2019-11-15T00:00:00.000Z',
-        fteHours: 25,
-        metFteRequirements: true,
+        fteHours: '25',
         heldPeriodicCheckins: true,
         academicStatus: 'satisfactory',
         attendanceStatus: 'satisfactory',
@@ -17,27 +16,34 @@ export default {
       relationships: {
         creator: {
           data: {
-            id: '53',
+            id: '3',
             type: 'user',
           },
         },
         statusable: {
           data: {
-            id: '57',
+            id: '7',
             type: 'user',
           },
+        },
+        notes: {
+          data: [
+            {
+              id: '62',
+              type: 'note',
+            },
+          ],
         },
       },
     },
     {
-      id: '89',
+      id: '53',
       type: 'status',
       attributes: {
         month: '2019-10-01',
         createdAt: '2019-11-15T00:00:00.000Z',
         updatedAt: '2019-11-15T00:00:00.000Z',
-        fteHours: 25,
-        metFteRequirements: true,
+        fteHours: '25',
         heldPeriodicCheckins: true,
         academicStatus: 'satisfactory',
         attendanceStatus: 'satisfactory',
@@ -45,27 +51,34 @@ export default {
       relationships: {
         creator: {
           data: {
-            id: '53',
+            id: '3',
             type: 'user',
           },
         },
         statusable: {
           data: {
-            id: '57',
+            id: '7',
             type: 'user',
           },
+        },
+        notes: {
+          data: [
+            {
+              id: '65',
+              type: 'note',
+            },
+          ],
         },
       },
     },
     {
-      id: '87',
+      id: '51',
       type: 'status',
       attributes: {
         month: '2019-09-01',
         createdAt: '2019-11-15T00:00:00.000Z',
         updatedAt: '2019-11-15T00:00:00.000Z',
-        fteHours: 25,
-        metFteRequirements: true,
+        fteHours: '25',
         heldPeriodicCheckins: true,
         academicStatus: 'satisfactory',
         attendanceStatus: 'satisfactory',
@@ -73,27 +86,34 @@ export default {
       relationships: {
         creator: {
           data: {
-            id: '53',
+            id: '3',
             type: 'user',
           },
         },
         statusable: {
           data: {
-            id: '58',
+            id: '8',
             type: 'user',
           },
+        },
+        notes: {
+          data: [
+            {
+              id: '63',
+              type: 'note',
+            },
+          ],
         },
       },
     },
     {
-      id: '90',
+      id: '54',
       type: 'status',
       attributes: {
         month: '2019-10-01',
         createdAt: '2019-11-15T00:00:00.000Z',
         updatedAt: '2019-11-15T00:00:00.000Z',
-        fteHours: 25,
-        metFteRequirements: true,
+        fteHours: '25',
         heldPeriodicCheckins: true,
         academicStatus: 'satisfactory',
         attendanceStatus: 'satisfactory',
@@ -101,33 +121,41 @@ export default {
       relationships: {
         creator: {
           data: {
-            id: '53',
+            id: '3',
             type: 'user',
           },
         },
         statusable: {
           data: {
-            id: '58',
+            id: '8',
             type: 'user',
           },
+        },
+        notes: {
+          data: [
+            {
+              id: '66',
+              type: 'note',
+            },
+          ],
         },
       },
     },
   ],
   included: [
     {
-      id: '53',
+      id: '3',
       type: 'user',
       attributes: {
-        firstName: 'Connie',
-        lastName: 'Hilpert',
+        firstName: 'Paige',
+        lastName: 'Raynor',
         nickname: null,
         dateActive: '2013-02-01',
         dateInactive: null,
         districtId: null,
         districtGrade: 12,
-        email: 'rico@reichel.com',
-        name: 'Connie Hilpert',
+        email: 'patria.luettgen@langworth.name',
+        name: 'Paige Raynor',
         status: 'active',
         role: 'staff',
         isStaff: true,
@@ -136,11 +164,11 @@ export default {
         coordinatees: {
           data: [
             {
-              id: '57',
+              id: '7',
               type: 'user',
             },
             {
-              id: '58',
+              id: '8',
               type: 'user',
             },
           ],

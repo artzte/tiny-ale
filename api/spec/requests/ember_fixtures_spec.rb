@@ -278,6 +278,21 @@ RSpec.describe 'Ember fixtures script', type: :request do
       create :graduation_plan_mapping, graduation_plan: graduation_plan, graduation_plan_requirement: gradService1, notes: 'It is serviced', date_completed: '2019-06-15'
 
       allow(JsonWebToken).to receive(:extract_user_id).and_return(@admin1.id)
+
+      # learning plans
+      goal1 = create :learning_plan_goal, year: CURRENT_YEAR
+      goal2 = create :learning_plan_goal, year: CURRENT_YEAR
+      goal3 = create :learning_plan_goal, year: CURRENT_YEAR
+      create :learning_plan_goal, year: LAST_YEAR
+      create :learning_plan_goal, year: CURRENT_YEAR
+
+      [@student1, @student2].each do |student|
+        plan = create :learning_plan, user: student, year: CURRENT_YEAR, creator: student.coordinator
+        plan.learning_plan_goals << goal1
+        plan.learning_plan_goals << goal2
+        plan.learning_plan_goals << goal3
+      end
+
     end
   end
 
@@ -389,6 +404,11 @@ RSpec.describe 'Ember fixtures script', type: :request do
 
         # student detail
         write_fixture "/api/students/#{@student1.id}", 'student.js'
+
+        # learning plan goals
+        write_fixture "/api/admin/learning-plan-goals", 'admin-learning-plan-goals.js'
+
+        write_fixture "/api/learning-plans/#{@student1.id}/#{Setting.current_year}", 'student-learning-plan.js'
 
         # student enrollments
         response = write_fixture "/api/enrollments?participantIds=#{@student1.id}&status=enrolled&include=contract,contract.facilitator,contract.term,credit_assignments,credit_assignments.credit,participant", 'student-enrollments.js'

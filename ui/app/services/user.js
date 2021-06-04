@@ -37,7 +37,7 @@ const UserServiceMembers = {
   }) {
     const { tinyData } = this;
     return tinyData.fetch('/api/students', {
-      data: {
+      query: {
         name,
         status,
         scope,

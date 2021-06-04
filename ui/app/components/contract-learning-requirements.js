@@ -24,11 +24,9 @@ export default class ContractLearningRequirements extends Component {
     } = this;
 
     const payload = {
-      data: {
-        relationships: {
-          learningRequirements: {
-            data: Object.values(selections).filter(req => req),
-          },
+      relationships: {
+        learningRequirements: {
+          data: Object.values(selections).filter(req => req),
         },
       },
     };

@@ -90,7 +90,6 @@
     "prettier": "^2.2.1",
     "qunit": "^2.13.0",
     "qunit-dom": "^1.6.0",
-    "showdown": "^1.9.1",
     "svg-to-dataurl": "^1.0.0",
     "tailwindcss": "^2.0.4"
   },

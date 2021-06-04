@@ -34,20 +34,22 @@ export default async function fetch(_url, callerOptions = {}) {
 
   const urlObj = new URL(`${window.location.origin}${_url}`);
   const headers = callerOptions.headers || {};
-  const { data } = callerOptions;
+  const {
+    data: _data,
+    query,
+  } = callerOptions;
   const options = {
     method: 'GET',
     ...callerOptions,
     headers,
-    data: null,
+    data: undefined,
+    query: undefined,
   };
 
-  if (data) {
-    if (options.method === 'GET' || options.method === 'DELETE') {
-      Object.keys(data).forEach(key => urlObj.searchParams.append(key, data[key]));
-    } else {
-      options.body = JSON.stringify(data);
-    }
+  if (_data) {
+    options.body = JSON.stringify({ data: _data });
+  } else if (query) {
+    Object.keys(query).forEach(key => urlObj.searchParams.append(key, query[key]));
   }
 
   const url = `${urlObj.pathname}${urlObj.search}`;

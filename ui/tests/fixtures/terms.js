@@ -2,10 +2,10 @@
 export default {
   data: [
     {
-      id: '10',
+      id: '1',
       type: 'term',
       attributes: {
-        name: 'Exclusive maximized interface',
+        name: 'Enhanced composite framework',
         schoolYear: 2018,
         creditDate: '2019-01-31',
         months: [
@@ -20,10 +20,10 @@ export default {
       meta: null,
     },
     {
-      id: '11',
+      id: '2',
       type: 'term',
       attributes: {
-        name: 'Balanced object-oriented infrastructure',
+        name: 'User-friendly contextually-based core',
         schoolYear: 2018,
         creditDate: '2019-06-15',
         months: [
@@ -38,10 +38,10 @@ export default {
       meta: null,
     },
     {
-      id: '12',
+      id: '3',
       type: 'term',
       attributes: {
-        name: 'Mandatory 24/7 moratorium',
+        name: 'Grass-roots 24/7 archive',
         schoolYear: 2019,
         creditDate: '2020-01-31',
         months: [
@@ -56,10 +56,10 @@ export default {
       meta: null,
     },
     {
-      id: '13',
+      id: '4',
       type: 'term',
       attributes: {
-        name: 'Decentralized actuating instruction set',
+        name: 'Virtual high-level process improvement',
         schoolYear: 2019,
         creditDate: '2020-06-15',
         months: [
@@ -74,7 +74,7 @@ export default {
       meta: null,
     },
     {
-      id: '14',
+      id: '5',
       type: 'term',
       attributes: {
         name: 'COOR Last',
@@ -97,7 +97,7 @@ export default {
       meta: null,
     },
     {
-      id: '15',
+      id: '6',
       type: 'term',
       attributes: {
         name: 'COOR Current',

@@ -1,18 +1,18 @@
 // GET /api/profile
 export default {
   data: {
-    id: '55',
+    id: '5',
     type: 'user',
     attributes: {
-      firstName: 'Rashad',
-      lastName: 'Ziemann',
+      firstName: 'Neil',
+      lastName: 'Runte',
       nickname: null,
       dateActive: '2011-07-01',
       dateInactive: null,
       districtId: null,
       districtGrade: 12,
-      email: 'garret@kirlin.io',
-      name: 'Rashad Ziemann',
+      email: 'myra@ratke-lesch.name',
+      name: 'Neil Runte',
       status: 'active',
       role: 'administrator',
       isStaff: true,

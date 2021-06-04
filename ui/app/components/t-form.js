@@ -94,6 +94,8 @@ export default class TForm extends Component {
 
   @tracked relationships = {};
 
+  @tracked errors = {};
+
   constructor(...args) {
     super(...args);
 

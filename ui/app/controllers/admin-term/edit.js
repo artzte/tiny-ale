@@ -24,7 +24,7 @@ export default Controller.extend({
   updateModel(data) {
     return this.tinyData.fetch(`/api/admin/terms/${data.id}`, {
       method: 'PUT',
-      data: { data },
+      data,
     });
   },
 });

@@ -7,7 +7,7 @@ export default Controller.extend({
   actions: {
     updateRoll(meetingParticipant) {
       const { tinyData } = this;
-      const data = { data: meetingParticipant };
+      const data = meetingParticipant;
 
       if (meetingParticipant.id) {
         return tinyData.fetch(`/api/meeting_participants/${meetingParticipant.id}`, {
@@ -25,11 +25,9 @@ export default Controller.extend({
     updateAllRolls(contactType, participation) {
       const { meeting, tinyData } = this;
       const data = {
-        data: {
-          attributes: {
-            contactType,
-            participation,
-          },
+        attributes: {
+          contactType,
+          participation,
         },
       };
 

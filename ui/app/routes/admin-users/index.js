@@ -78,7 +78,7 @@ export default Route.extend({
     this.qp = { ...params };
 
     return tinyData.fetch('/api/admin/users', {
-      data: requestParams,
+      query: requestParams,
     });
   },
 
@@ -94,7 +94,7 @@ export default Route.extend({
       .join(' OR ');
 
     const loginsResult = await this.tinyData.fetch('/api/admin/logins', {
-      data: {
+      query: {
         q: `email:(${emailsFilter})`,
       },
     });

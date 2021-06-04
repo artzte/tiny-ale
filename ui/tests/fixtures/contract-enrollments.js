@@ -1,8 +1,8 @@
-// GET /api/enrollments?contractIds=14&include=creditAssignments,creditAssignments.credit,participant
+// GET /api/enrollments?contractIds=5&include=creditAssignments,creditAssignments.credit,participant
 export default {
   data: [
     {
-      id: '19',
+      id: '1',
       type: 'enrollment',
       attributes: {
         finalizedOn: null,
@@ -12,20 +12,20 @@ export default {
       relationships: {
         contract: {
           data: {
-            id: '14',
+            id: '5',
             type: 'contract',
           },
         },
         participant: {
           data: {
-            id: '56',
+            id: '6',
             type: 'user',
           },
         },
         creditAssignments: {
           data: [
             {
-              id: '55',
+              id: '7',
               type: 'creditAssignment',
             },
           ],
@@ -81,7 +81,7 @@ export default {
       },
     },
     {
-      id: '20',
+      id: '2',
       type: 'enrollment',
       attributes: {
         finalizedOn: null,
@@ -91,20 +91,20 @@ export default {
       relationships: {
         contract: {
           data: {
-            id: '14',
+            id: '5',
             type: 'contract',
           },
         },
         participant: {
           data: {
-            id: '57',
+            id: '7',
             type: 'user',
           },
         },
         creditAssignments: {
           data: [
             {
-              id: '56',
+              id: '8',
               type: 'creditAssignment',
             },
           ],
@@ -141,7 +141,7 @@ export default {
       },
     },
     {
-      id: '21',
+      id: '3',
       type: 'enrollment',
       attributes: {
         finalizedOn: null,
@@ -151,20 +151,20 @@ export default {
       relationships: {
         contract: {
           data: {
-            id: '14',
+            id: '5',
             type: 'contract',
           },
         },
         participant: {
           data: {
-            id: '58',
+            id: '8',
             type: 'user',
           },
         },
         creditAssignments: {
           data: [
             {
-              id: '57',
+              id: '9',
               type: 'creditAssignment',
             },
           ],
@@ -203,59 +203,7 @@ export default {
   ],
   included: [
     {
-      id: '55',
-      type: 'creditAssignment',
-      attributes: {
-        creditHours: 1.0,
-      },
-      relationships: {
-        credit: {
-          data: {
-            id: '22',
-            type: 'credit',
-          },
-        },
-        graduationPlanMapping: {
-          data: null,
-        },
-        notes: {
-          data: [
-
-          ],
-        },
-        contractTerm: {
-          data: null,
-        },
-        contractFacilitator: {
-          data: null,
-        },
-        contract: {
-          data: null,
-        },
-        user: {
-          data: null,
-        },
-        creditTransmittalBatch: {
-          data: null,
-        },
-        enrollment: {
-          data: {
-            id: '19',
-            type: 'enrollment',
-          },
-        },
-        childCreditAssignments: {
-          data: [
-
-          ],
-        },
-        parentCreditAssignment: {
-          data: null,
-        },
-      },
-    },
-    {
-      id: '22',
+      id: '1',
       type: 'credit',
       attributes: {
         courseId: '0',
@@ -265,18 +213,70 @@ export default {
       },
     },
     {
-      id: '56',
+      id: '7',
+      type: 'creditAssignment',
+      attributes: {
+        creditHours: 1.0,
+      },
+      relationships: {
+        credit: {
+          data: {
+            id: '1',
+            type: 'credit',
+          },
+        },
+        graduationPlanMapping: {
+          data: null,
+        },
+        notes: {
+          data: [
+
+          ],
+        },
+        contractTerm: {
+          data: null,
+        },
+        contractFacilitator: {
+          data: null,
+        },
+        contract: {
+          data: null,
+        },
+        user: {
+          data: null,
+        },
+        creditTransmittalBatch: {
+          data: null,
+        },
+        enrollment: {
+          data: {
+            id: '1',
+            type: 'enrollment',
+          },
+        },
+        childCreditAssignments: {
+          data: [
+
+          ],
+        },
+        parentCreditAssignment: {
+          data: null,
+        },
+      },
+    },
+    {
+      id: '6',
       type: 'user',
       attributes: {
-        firstName: 'Jerold',
-        lastName: 'Klein',
+        firstName: 'Mitchell',
+        lastName: 'Funk',
         nickname: null,
         dateActive: '2018-08-01',
         dateInactive: null,
-        districtId: '4809648277',
+        districtId: '1701223197',
         districtGrade: 9,
-        email: 'catricegislason@gottlieb.net',
-        name: 'Jerold Klein',
+        email: 'val.hermann@connelly-kuvalis.io',
+        name: 'Mitchell Funk',
         status: 'active',
         role: 'student',
         isStaff: false,
@@ -284,14 +284,14 @@ export default {
       relationships: {
         coordinator: {
           data: {
-            id: '52',
+            id: '2',
             type: 'user',
           },
         },
       },
     },
     {
-      id: '56',
+      id: '8',
       type: 'creditAssignment',
       attributes: {
         creditHours: 1.0,
@@ -299,7 +299,7 @@ export default {
       relationships: {
         credit: {
           data: {
-            id: '22',
+            id: '1',
             type: 'credit',
           },
         },
@@ -328,7 +328,7 @@ export default {
         },
         enrollment: {
           data: {
-            id: '20',
+            id: '2',
             type: 'enrollment',
           },
         },
@@ -343,18 +343,18 @@ export default {
       },
     },
     {
-      id: '57',
+      id: '7',
       type: 'user',
       attributes: {
-        firstName: 'Marlin',
-        lastName: 'Tremblay',
+        firstName: 'Yesenia',
+        lastName: 'Jakubowski',
         nickname: null,
         dateActive: '2018-08-01',
         dateInactive: null,
-        districtId: '9616779893',
+        districtId: '990519298',
         districtGrade: 10,
-        email: 'reginald@jacobs.co',
-        name: 'Marlin Tremblay',
+        email: 'carolin@koelpin.info',
+        name: 'Yesenia Jakubowski',
         status: 'active',
         role: 'student',
         isStaff: false,
@@ -362,14 +362,14 @@ export default {
       relationships: {
         coordinator: {
           data: {
-            id: '53',
+            id: '3',
             type: 'user',
           },
         },
       },
     },
     {
-      id: '57',
+      id: '9',
       type: 'creditAssignment',
       attributes: {
         creditHours: 1.0,
@@ -377,7 +377,7 @@ export default {
       relationships: {
         credit: {
           data: {
-            id: '22',
+            id: '1',
             type: 'credit',
           },
         },
@@ -406,7 +406,7 @@ export default {
         },
         enrollment: {
           data: {
-            id: '21',
+            id: '3',
             type: 'enrollment',
           },
         },
@@ -421,18 +421,18 @@ export default {
       },
     },
     {
-      id: '58',
+      id: '8',
       type: 'user',
       attributes: {
-        firstName: 'Milly',
-        lastName: 'Tromp',
+        firstName: 'Palmer',
+        lastName: 'Willms',
         nickname: null,
         dateActive: '2018-08-01',
         dateInactive: '2019-10-01',
-        districtId: '1998684872',
+        districtId: '4579851298',
         districtGrade: 12,
-        email: 'kemberlyreichel@lubowitzgerhold.info',
-        name: 'Milly Tromp',
+        email: 'gregory@jacobi-gusikowski.com',
+        name: 'Palmer Willms',
         status: 'inactive',
         role: 'student',
         isStaff: false,
@@ -440,7 +440,7 @@ export default {
       relationships: {
         coordinator: {
           data: {
-            id: '53',
+            id: '3',
             type: 'user',
           },
         },

@@ -16,17 +16,13 @@ export default class SettingsLearningRequirementsEditController extends Controll
     if (model.id) {
       promise = tinyData.fetch(`/api/admin/learning-requirements/${model.id}`, {
         method: 'PUT',
-        data: {
-          data: model,
-        },
+        data: model,
       });
     }
 
     promise = tinyData.fetch('/api/admin/learning-requirements', {
       method: 'POST',
-      data: {
-        data: model,
-      },
+      data: model,
     });
 
     promise.then(() => {

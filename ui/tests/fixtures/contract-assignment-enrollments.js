@@ -1,8 +1,8 @@
-// GET /api/enrollments?contractIds=14&include=turnins,participant
+// GET /api/enrollments?contractIds=5&include=turnins,participant
 export default {
   data: [
     {
-      id: '19',
+      id: '1',
       type: 'enrollment',
       attributes: {
         finalizedOn: null,
@@ -12,20 +12,20 @@ export default {
       relationships: {
         contract: {
           data: {
-            id: '14',
+            id: '5',
             type: 'contract',
           },
         },
         participant: {
           data: {
-            id: '56',
+            id: '6',
             type: 'user',
           },
         },
         creditAssignments: {
           data: [
             {
-              id: '55',
+              id: '7',
               type: 'creditAssignment',
             },
           ],
@@ -81,7 +81,7 @@ export default {
       },
     },
     {
-      id: '20',
+      id: '2',
       type: 'enrollment',
       attributes: {
         finalizedOn: null,
@@ -91,20 +91,20 @@ export default {
       relationships: {
         contract: {
           data: {
-            id: '14',
+            id: '5',
             type: 'contract',
           },
         },
         participant: {
           data: {
-            id: '57',
+            id: '7',
             type: 'user',
           },
         },
         creditAssignments: {
           data: [
             {
-              id: '56',
+              id: '8',
               type: 'creditAssignment',
             },
           ],
@@ -141,7 +141,7 @@ export default {
       },
     },
     {
-      id: '21',
+      id: '3',
       type: 'enrollment',
       attributes: {
         finalizedOn: null,
@@ -151,20 +151,20 @@ export default {
       relationships: {
         contract: {
           data: {
-            id: '14',
+            id: '5',
             type: 'contract',
           },
         },
         participant: {
           data: {
-            id: '58',
+            id: '8',
             type: 'user',
           },
         },
         creditAssignments: {
           data: [
             {
-              id: '57',
+              id: '9',
               type: 'creditAssignment',
             },
           ],
@@ -203,32 +203,6 @@ export default {
   ],
   included: [
     {
-      id: '56',
-      type: 'user',
-      attributes: {
-        firstName: 'Jerold',
-        lastName: 'Klein',
-        nickname: null,
-        dateActive: '2018-08-01',
-        dateInactive: null,
-        districtId: '4809648277',
-        districtGrade: 9,
-        email: 'catricegislason@gottlieb.net',
-        name: 'Jerold Klein',
-        status: 'active',
-        role: 'student',
-        isStaff: false,
-      },
-      relationships: {
-        coordinator: {
-          data: {
-            id: '52',
-            type: 'user',
-          },
-        },
-      },
-    },
-    {
       id: '1',
       type: 'turnin',
       attributes: {
@@ -243,7 +217,7 @@ export default {
         },
         enrollment: {
           data: {
-            id: '19',
+            id: '1',
             type: 'enrollment',
           },
         },
@@ -264,7 +238,7 @@ export default {
         },
         enrollment: {
           data: {
-            id: '19',
+            id: '1',
             type: 'enrollment',
           },
         },
@@ -285,7 +259,7 @@ export default {
         },
         enrollment: {
           data: {
-            id: '19',
+            id: '1',
             type: 'enrollment',
           },
         },
@@ -306,7 +280,7 @@ export default {
         },
         enrollment: {
           data: {
-            id: '19',
+            id: '1',
             type: 'enrollment',
           },
         },
@@ -327,25 +301,25 @@ export default {
         },
         enrollment: {
           data: {
-            id: '19',
+            id: '1',
             type: 'enrollment',
           },
         },
       },
     },
     {
-      id: '57',
+      id: '6',
       type: 'user',
       attributes: {
-        firstName: 'Marlin',
-        lastName: 'Tremblay',
+        firstName: 'Mitchell',
+        lastName: 'Funk',
         nickname: null,
         dateActive: '2018-08-01',
         dateInactive: null,
-        districtId: '9616779893',
-        districtGrade: 10,
-        email: 'reginald@jacobs.co',
-        name: 'Marlin Tremblay',
+        districtId: '1701223197',
+        districtGrade: 9,
+        email: 'val.hermann@connelly-kuvalis.io',
+        name: 'Mitchell Funk',
         status: 'active',
         role: 'student',
         isStaff: false,
@@ -353,25 +327,51 @@ export default {
       relationships: {
         coordinator: {
           data: {
-            id: '53',
+            id: '2',
             type: 'user',
           },
         },
       },
     },
     {
-      id: '58',
+      id: '7',
       type: 'user',
       attributes: {
-        firstName: 'Milly',
-        lastName: 'Tromp',
+        firstName: 'Yesenia',
+        lastName: 'Jakubowski',
+        nickname: null,
+        dateActive: '2018-08-01',
+        dateInactive: null,
+        districtId: '990519298',
+        districtGrade: 10,
+        email: 'carolin@koelpin.info',
+        name: 'Yesenia Jakubowski',
+        status: 'active',
+        role: 'student',
+        isStaff: false,
+      },
+      relationships: {
+        coordinator: {
+          data: {
+            id: '3',
+            type: 'user',
+          },
+        },
+      },
+    },
+    {
+      id: '8',
+      type: 'user',
+      attributes: {
+        firstName: 'Palmer',
+        lastName: 'Willms',
         nickname: null,
         dateActive: '2018-08-01',
         dateInactive: '2019-10-01',
-        districtId: '1998684872',
+        districtId: '4579851298',
         districtGrade: 12,
-        email: 'kemberlyreichel@lubowitzgerhold.info',
-        name: 'Milly Tromp',
+        email: 'gregory@jacobi-gusikowski.com',
+        name: 'Palmer Willms',
         status: 'inactive',
         role: 'student',
         isStaff: false,
@@ -379,7 +379,7 @@ export default {
       relationships: {
         coordinator: {
           data: {
-            id: '53',
+            id: '3',
             type: 'user',
           },
         },

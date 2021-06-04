@@ -46,6 +46,9 @@ class User < ApplicationRecord
   # contracts created under this user's login
   has_many :contracts_created, class_name: 'Contract', foreign_key: 'creator_id'
 
+  # contracts created under this user's login
+  has_many :learning_plans_created, class_name: 'LearningPlan', foreign_key: 'creator_id'
+
   # user enrollments. these are attached to the user through the enrollments
   # table. students are enrolled in classes. they have contracts through the
   # enrollments table.
@@ -272,12 +275,14 @@ END
     q << 'LEFT JOIN credit_assignments ON credit_assignments.enrollment_id = enrollments.id'
     q << 'LEFT JOIN credits ON credit_assignments.credit_id = credits.id'
     q << "WHERE enrollments.participant_id = #{id}"
+
     case options[:fulfilled]
     when true
       q << "AND enrollments.completion_status = #{Enrollment::COMPLETION_FULFILLED}"
     when false
       q << "AND enrollments.completion_status != #{Enrollment::COMPLETION_FULFILLED}"
     end
+
     case options[:canceled]
     when true
       q << "AND enrollments.completion_status = #{Enrollment::COMPLETION_CANCELED}"

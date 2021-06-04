@@ -33,7 +33,7 @@ class NotesController < ApiBaseController
 
     attributes = note_attributes
     attributes[:notable] = notable
-    attributes[:creator] = @user
+    attributes[:creator] = current_user
 
     note = Note.create! attributes
 
@@ -43,7 +43,7 @@ class NotesController < ApiBaseController
   def update
     note = Note.find(params[:id])
 
-    privilege = note.privileges(@user)
+    privilege = note.privileges(current_user)
 
     render status: :forbidden, json: { message: 'You cannot edit this note' } unless privilege == Note::PRIVILEGE_EDIT
 
@@ -57,7 +57,7 @@ class NotesController < ApiBaseController
   def destroy
     note = Note.find(params[:id])
 
-    privilege = note.privileges(@user)
+    privilege = note.privileges(current_user)
 
     render status: :forbidden, json: { message: 'You cannot delete this note' } unless privilege == Note::PRIVILEGE_EDIT
 

@@ -1,45 +1,70 @@
-class AdminLearningPlanGoalsController < ApplicationController
+class AdminLearningPlanGoalsController < AdminController
   def index
     result = LearningPlanGoal
       .with_counts
-      .where('active = true')
-      .order("position")
+      .order("year", "position")
     count = LearningPlanGoal
-      .where('active = true')
       .count
     options = { meta: { count: count } }
     render json: LearningPlanGoalSerializer.new(result, options)
   end
 
+  def show
+    result = LearningPlanGoal
+      .with_counts
+      .find(params[:id])
+    render json: LearningPlanGoalSerializer.new(result)
+  end
+
   def create
-    requirement = LearningPlanGoal.new goal_attributes
+    goal = LearningPlanGoal.new goal_attributes
 
-    requirement.save!
+    goal.position = 100000
 
-    render json: LearningPlanGoalSerializer.new(requirement)
+    goal.save!
+
+    render json: LearningPlanGoalSerializer.new(goal)
   end
 
   def update
-    requirement = LearningPlanGoal.find params[:id]
+    goal = LearningPlanGoal.find params[:id]
 
-    requirement.update_attributes! goal_attributes
+    goal.update_attributes! goal_attributes
 
-    render json: LearningPlanGoalSerializer.new(requirement)
+    render json: LearningPlanGoalSerializer.new(goal)
   end
 
   def destroy
-    requirement = LearningPlanGoal.find params[:id]
+    goal = LearningPlanGoal.find params[:id]
 
-    requirement.destroy!
+    goal.destroy!
 
     render nothing: true, status: 204
   end
 
-  private
+  # Sets the positions of learning plan goals with the provided IDs,
+  # to match their ordering within the passed data array
+  def reorder
+    goals = []
+    params.require(:data).each_with_index do |id, i|
+      goal = LearningPlanGoal.find id
+      return render :nothing, status: 404 unless goal
+
+      goal.position = i
+      goal.save!
+      goals << goal
+    end
+
+    options = { meta: { count: goals.length } }
+    render json: LearningPlanGoalSerializer.new(goals, options)
+  end
+
+private
 
   def goal_attributes
     params.require(:data)
       .require(:attributes)
-      .permit(:description, :required, :active, :position)
+      .permit(:description, :required, :active,:year, :position)
   end
+
 end

@@ -2,29 +2,7 @@
 export default {
   data: [
     {
-      id: '11',
-      type: 'term',
-      attributes: {
-        name: 'Balanced object-oriented infrastructure',
-        schoolYear: 2018,
-        creditDate: '2019-06-15',
-        months: [
-          '2019-02-01',
-          '2019-03-01',
-          '2019-04-01',
-          '2019-05-01',
-          '2019-06-01',
-        ],
-        status: 'active',
-      },
-      meta: {
-        contractsCount: 3,
-        enrollmentsCount: 4,
-        enrollmentsOpenCount: 0,
-      },
-    },
-    {
-      id: '15',
+      id: '6',
       type: 'term',
       attributes: {
         name: 'COOR Current',
@@ -51,7 +29,7 @@ export default {
       },
     },
     {
-      id: '14',
+      id: '5',
       type: 'term',
       attributes: {
         name: 'COOR Last',
@@ -78,32 +56,10 @@ export default {
       },
     },
     {
-      id: '13',
+      id: '1',
       type: 'term',
       attributes: {
-        name: 'Decentralized actuating instruction set',
-        schoolYear: 2019,
-        creditDate: '2020-06-15',
-        months: [
-          '2020-02-01',
-          '2020-03-01',
-          '2020-04-01',
-          '2020-05-01',
-          '2020-06-01',
-        ],
-        status: 'active',
-      },
-      meta: {
-        contractsCount: 0,
-        enrollmentsCount: 0,
-        enrollmentsOpenCount: 0,
-      },
-    },
-    {
-      id: '10',
-      type: 'term',
-      attributes: {
-        name: 'Exclusive maximized interface',
+        name: 'Enhanced composite framework',
         schoolYear: 2018,
         creditDate: '2019-01-31',
         months: [
@@ -122,10 +78,10 @@ export default {
       },
     },
     {
-      id: '12',
+      id: '3',
       type: 'term',
       attributes: {
-        name: 'Mandatory 24/7 moratorium',
+        name: 'Grass-roots 24/7 archive',
         schoolYear: 2019,
         creditDate: '2020-01-31',
         months: [
@@ -141,6 +97,50 @@ export default {
         contractsCount: 2,
         enrollmentsCount: 6,
         enrollmentsOpenCount: 6,
+      },
+    },
+    {
+      id: '2',
+      type: 'term',
+      attributes: {
+        name: 'User-friendly contextually-based core',
+        schoolYear: 2018,
+        creditDate: '2019-06-15',
+        months: [
+          '2019-02-01',
+          '2019-03-01',
+          '2019-04-01',
+          '2019-05-01',
+          '2019-06-01',
+        ],
+        status: 'active',
+      },
+      meta: {
+        contractsCount: 3,
+        enrollmentsCount: 4,
+        enrollmentsOpenCount: 0,
+      },
+    },
+    {
+      id: '4',
+      type: 'term',
+      attributes: {
+        name: 'Virtual high-level process improvement',
+        schoolYear: 2019,
+        creditDate: '2020-06-15',
+        months: [
+          '2020-02-01',
+          '2020-03-01',
+          '2020-04-01',
+          '2020-05-01',
+          '2020-06-01',
+        ],
+        status: 'active',
+      },
+      meta: {
+        contractsCount: 0,
+        enrollmentsCount: 0,
+        enrollmentsOpenCount: 0,
       },
     },
   ],

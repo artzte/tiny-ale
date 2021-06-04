@@ -1,4 +1,4 @@
-// GET /api/graduation-plan-mappings/57
+// GET /api/graduation-plan-mappings/7
 export default {
   data: [
     {
@@ -11,7 +11,7 @@ export default {
       relationships: {
         student: {
           data: {
-            id: '57',
+            id: '7',
             type: 'user',
           },
         },
@@ -23,7 +23,7 @@ export default {
         },
         creditAssignment: {
           data: {
-            id: '75',
+            id: '27',
             type: 'creditAssignment',
           },
         },
@@ -39,7 +39,7 @@ export default {
       relationships: {
         student: {
           data: {
-            id: '57',
+            id: '7',
             type: 'user',
           },
         },
@@ -51,7 +51,7 @@ export default {
         },
         creditAssignment: {
           data: {
-            id: '74',
+            id: '26',
             type: 'creditAssignment',
           },
         },
@@ -67,7 +67,7 @@ export default {
       relationships: {
         student: {
           data: {
-            id: '57',
+            id: '7',
             type: 'user',
           },
         },
@@ -79,7 +79,7 @@ export default {
         },
         creditAssignment: {
           data: {
-            id: '73',
+            id: '25',
             type: 'creditAssignment',
           },
         },
@@ -95,7 +95,7 @@ export default {
       relationships: {
         student: {
           data: {
-            id: '57',
+            id: '7',
             type: 'user',
           },
         },
@@ -120,7 +120,7 @@ export default {
       relationships: {
         student: {
           data: {
-            id: '57',
+            id: '7',
             type: 'user',
           },
         },
@@ -138,88 +138,11 @@ export default {
   ],
   included: [
     {
-      id: '75',
-      type: 'creditAssignment',
-      attributes: {
-        creditHours: 0.5,
-      },
-      relationships: {
-        credit: {
-          data: {
-            id: '23',
-            type: 'credit',
-          },
-        },
-        graduationPlanMapping: {
-          data: {
-            id: '1',
-            type: 'graduationPlanMapping',
-          },
-        },
-        notes: {
-          data: [
-
-          ],
-        },
-        contractTerm: {
-          data: {
-            id: '11',
-            type: 'term',
-          },
-        },
-        contractFacilitator: {
-          data: {
-            id: '53',
-            type: 'user',
-          },
-        },
-        contract: {
-          data: {
-            id: '12',
-            type: 'contract',
-          },
-        },
-        user: {
-          data: {
-            id: '57',
-            type: 'user',
-          },
-        },
-        creditTransmittalBatch: {
-          data: null,
-        },
-        enrollment: {
-          data: {
-            id: '29',
-            type: 'enrollment',
-          },
-        },
-        childCreditAssignments: {
-          data: [
-
-          ],
-        },
-        parentCreditAssignment: {
-          data: null,
-        },
-      },
-    },
-    {
-      id: '23',
-      type: 'credit',
-      attributes: {
-        courseId: '0',
-        courseName: 'Course 2',
-        status: 'active',
-        courseType: 'none',
-      },
-    },
-    {
       id: '1',
       type: 'graduationPlanRequirement',
       attributes: {
         name: 'Math',
-        notes: 'Et nemo consectetur. Tempora odit ut. Voluptas tempora id.\\n\\nVoluptatem fugit atque. Aperiam fugit quo. Animi perferendis iusto.\\n\\nExplicabo ut odit. Id ut sed. Amet repellat non.',
+        notes: 'Facilis dolore velit. Qui nostrum qui. Quia cumque error.\\n\\nIste voluptas ea. Animi iure vitae. Quia inventore et.\\n\\nEst voluptatum harum. Quia tempore pariatur. Consectetur ut et.',
         position: 1,
         requirementType: 'credit',
         status: 'active',
@@ -236,7 +159,17 @@ export default {
       },
     },
     {
-      id: '74',
+      id: '2',
+      type: 'credit',
+      attributes: {
+        courseId: '0',
+        courseName: 'Course 2',
+        status: 'active',
+        courseType: 'none',
+      },
+    },
+    {
+      id: '27',
       type: 'creditAssignment',
       attributes: {
         creditHours: 0.5,
@@ -244,13 +177,13 @@ export default {
       relationships: {
         credit: {
           data: {
-            id: '23',
+            id: '2',
             type: 'credit',
           },
         },
         graduationPlanMapping: {
           data: {
-            id: '2',
+            id: '1',
             type: 'graduationPlanMapping',
           },
         },
@@ -261,25 +194,25 @@ export default {
         },
         contractTerm: {
           data: {
-            id: '11',
+            id: '2',
             type: 'term',
           },
         },
         contractFacilitator: {
           data: {
-            id: '53',
+            id: '3',
             type: 'user',
           },
         },
         contract: {
           data: {
-            id: '12',
+            id: '3',
             type: 'contract',
           },
         },
         user: {
           data: {
-            id: '57',
+            id: '7',
             type: 'user',
           },
         },
@@ -288,7 +221,7 @@ export default {
         },
         enrollment: {
           data: {
-            id: '29',
+            id: '11',
             type: 'enrollment',
           },
         },
@@ -307,7 +240,7 @@ export default {
       type: 'graduationPlanRequirement',
       attributes: {
         name: 'Language1',
-        notes: 'Ut officia dignissimos. Suscipit molestiae ipsam. Commodi et dicta.\\n\\nQuaerat id molestiae. Mollitia dolorem ut. Accusamus aut illo.\\n\\nEst quos eius. Officia similique molestiae. Sed dolor voluptas.',
+        notes: 'Qui quia et. Nemo est quis. Ut voluptatem amet.\\n\\nQuia natus veniam. Ullam placeat est. Fugit molestias sit.\\n\\nOfficia maxime quos. In ut et. Voluptatem nemo tempora.',
         position: 1,
         requirementType: 'credit',
         status: 'active',
@@ -327,21 +260,21 @@ export default {
       },
     },
     {
-      id: '73',
+      id: '26',
       type: 'creditAssignment',
       attributes: {
-        creditHours: 0.25,
+        creditHours: 0.5,
       },
       relationships: {
         credit: {
           data: {
-            id: '22',
+            id: '2',
             type: 'credit',
           },
         },
         graduationPlanMapping: {
           data: {
-            id: '3',
+            id: '2',
             type: 'graduationPlanMapping',
           },
         },
@@ -352,37 +285,34 @@ export default {
         },
         contractTerm: {
           data: {
-            id: '11',
+            id: '2',
             type: 'term',
           },
         },
         contractFacilitator: {
           data: {
-            id: '53',
+            id: '3',
             type: 'user',
           },
         },
         contract: {
           data: {
-            id: '12',
+            id: '3',
             type: 'contract',
           },
         },
         user: {
           data: {
-            id: '57',
+            id: '7',
             type: 'user',
           },
         },
         creditTransmittalBatch: {
-          data: {
-            id: '1',
-            type: 'creditTransmittalBatch',
-          },
+          data: null,
         },
         enrollment: {
           data: {
-            id: '29',
+            id: '11',
             type: 'enrollment',
           },
         },
@@ -397,21 +327,11 @@ export default {
       },
     },
     {
-      id: '22',
-      type: 'credit',
-      attributes: {
-        courseId: '0',
-        courseName: 'Course 1',
-        status: 'active',
-        courseType: 'none',
-      },
-    },
-    {
       id: '5',
       type: 'graduationPlanRequirement',
       attributes: {
         name: 'Language2',
-        notes: 'Cum necessitatibus iusto. Animi impedit accusantium. Quibusdam recusandae sit.\\n\\nTempore ut dolores. Ratione suscipit et. Laudantium ut voluptatem.\\n\\nDeleniti voluptatem distinctio. Alias eum rerum. Quae et placeat.',
+        notes: 'Enim doloribus veniam. Eos aliquam repudiandae. Et et ut.\\n\\nAperiam adipisci excepturi. Alias libero dignissimos. Atque maxime tenetur.\\n\\nVoluptatem maiores temporibus. Voluptatum reprehenderit minus. Eum non sit.',
         position: 2,
         requirementType: 'credit',
         status: 'active',
@@ -431,11 +351,91 @@ export default {
       },
     },
     {
+      id: '1',
+      type: 'credit',
+      attributes: {
+        courseId: '0',
+        courseName: 'Course 1',
+        status: 'active',
+        courseType: 'none',
+      },
+    },
+    {
+      id: '25',
+      type: 'creditAssignment',
+      attributes: {
+        creditHours: 0.25,
+      },
+      relationships: {
+        credit: {
+          data: {
+            id: '1',
+            type: 'credit',
+          },
+        },
+        graduationPlanMapping: {
+          data: {
+            id: '3',
+            type: 'graduationPlanMapping',
+          },
+        },
+        notes: {
+          data: [
+
+          ],
+        },
+        contractTerm: {
+          data: {
+            id: '2',
+            type: 'term',
+          },
+        },
+        contractFacilitator: {
+          data: {
+            id: '3',
+            type: 'user',
+          },
+        },
+        contract: {
+          data: {
+            id: '3',
+            type: 'contract',
+          },
+        },
+        user: {
+          data: {
+            id: '7',
+            type: 'user',
+          },
+        },
+        creditTransmittalBatch: {
+          data: {
+            id: '1',
+            type: 'creditTransmittalBatch',
+          },
+        },
+        enrollment: {
+          data: {
+            id: '11',
+            type: 'enrollment',
+          },
+        },
+        childCreditAssignments: {
+          data: [
+
+          ],
+        },
+        parentCreditAssignment: {
+          data: null,
+        },
+      },
+    },
+    {
       id: '7',
       type: 'graduationPlanRequirement',
       attributes: {
         name: 'General1',
-        notes: 'Aspernatur libero molestias. Quis omnis quos. Hic asperiores ea.\\n\\nEt possimus explicabo. Et recusandae suscipit. Impedit accusamus esse.\\n\\nExcepturi voluptatem quos. Quas dolores necessitatibus. Aut voluptas veniam.',
+        notes: 'Est dolores culpa. Ea tempora accusantium. Libero facilis voluptas.\\n\\nAspernatur dolorum quod. Alias quidem laborum. Aut voluptas excepturi.\\n\\nSed tenetur et. Quidem deleniti molestias. At tenetur nam.',
         position: 1,
         requirementType: 'general',
         status: 'active',
@@ -456,7 +456,7 @@ export default {
       type: 'graduationPlanRequirement',
       attributes: {
         name: 'Service1',
-        notes: 'Distinctio nobis dignissimos. Cumque dolorum aliquid. Non nihil nemo.\\n\\nEt eaque recusandae. Nihil ullam consequatur. Rem consequatur at.\\n\\nUt dignissimos architecto. Aliquid aut perspiciatis. Neque eum nostrum.',
+        notes: 'Voluptas sit expedita. Reprehenderit sit sit. Pariatur ut eos.\\n\\nConsequatur eum et. Dolorem id nostrum. Consequatur quaerat ut.\\n\\nEt atque consequatur. Ut dolore distinctio. Ut recusandae minus.',
         position: 1,
         requirementType: 'service',
         status: 'active',
