@@ -3,12 +3,13 @@
 >
   <h2>{{@year}} Enrollments</h2>
 
-  {{#if this.enrollmentsReport}}
+  {{#if this.yearEnrollments}}
     <CheckEmpty
       @noResultsMessage="No enrollments for this school year"
-      @result={{this.enrollmentsReport}}
+      @result={{this.yearEnrollments}}
     >
       <EnrollmentsSummary::Table
+        data-test-enrollments-summary-table
         class="w-full l:w-4/5 xl:w-3/5"
         @title="Active enrollments"
         @enrollments={{this.activeEnrollments}}

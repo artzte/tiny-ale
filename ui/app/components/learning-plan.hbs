@@ -67,7 +67,7 @@
     </h2> 
     <ul>
       {{#each this.learningPlanGoals as |goal|}}
-        <li>
+        <li data-test-learning-plan-goal>
           {{goal.attributes.description}}
         </li>
       {{/each}}

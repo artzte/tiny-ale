@@ -2,6 +2,7 @@ import clone from 'tinysis-ui/utils/clone';
 import { getContext } from '@ember/test-helpers';
 import Service from '@ember/service';
 import jwtFixture from '../fixtures/auth0-jwt';
+import settingsFixture from '../fixtures/settings';
 
 export class MockLocalStorage {
   constructor(mockStubs = { _tinySisSession: JSON.stringify(jwtFixture) }) {
@@ -53,4 +54,11 @@ export function stubRouter(currentRouteName) {
   owner.register('service:router', Service.extend(routerMock));
 
   return routerMock;
+}
+
+export function getSettings() {
+  return settingsFixture.data.reduce((memo, setting) => {
+    memo[setting.name] = setting.value;
+    return memo;
+  }, {});
 }
