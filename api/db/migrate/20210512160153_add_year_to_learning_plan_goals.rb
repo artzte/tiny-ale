@@ -4,7 +4,7 @@ class AddYearToLearningPlanGoals < ActiveRecord::Migration[5.2]
 
     reversible do |dir|
       dir.up do
-        LearningPlanGoal.update_all year: 1900
+        LearningPlanGoal.update_all year: Setting.current_year
       end
     end
   end

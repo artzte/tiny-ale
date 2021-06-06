@@ -1,41 +1,45 @@
-<input
-  type="text"
-  oninput={{action "doInput" target=this}}
-  onkeydown={{action "doKeyDown"}}
-  disabled={{unless result false}}
-  autofocus={{autofocusInput}}
-  placeholder={{prompt}}
->
-<ul class="flex m-0 p-0" data-test-values>
-  {{#each selections as |selection i|}}
-    <li class="inline-block cursor-text bg-gray-800 text-gray-200 p-2 m-1" data-test-clear-result data-test-value={{selection.value}}>
-      {{selection.name}}
-      <span class="cursor-pointer pl-2" data-test-clear-selection onclick={{action "doClearSelection" i}}>
-        <FaIcon @icon="times" @prefix="fas" @size="1x" class="text-white" />
-      </span>
-    </li>
-  {{/each}}
-</ul>
-{{#if showResults}}
-  <ul
-    class="absolute search-results bg-white border border-black-600 list-reset p-0 z-100"
+<t-type-ahead data-test-name={{@name}}>
+  <input
+    ...attributes
+    type="text"
+    placeholder={{@placeholder}}
+    oninput={{fn this.doInput}}
+    onkeydown={{fn this.doKeyDown}}
+    disabled={{unless result false}}
   >
-    {{#if results}}
-      {{#each results as |result i|}}
-        <TTypeAhead::Item
-          @result={{result}}
-          @index={{i}}
-          @selection={{index}}
-          @onClick={{action "doSelect" i result}}
-          @onMouseOver={{action "doMouseOverSearchResult" i}}
-        />
-      {{/each}}
-    {{else}}
-      {{#if searchValue}}
-        <li class="list-reset">
-          No matches found
-        </li>
-      {{/if}}
-    {{/if}}
+  <ul class="flex m-0 p-0" data-test-values>
+    {{#each selections as |selection i|}}
+      <li
+        class="inline-block cursor-text bg-gray-800 text-gray-200 p-2 m-1"
+        data-test-clear-result
+        data-test-value={{selection.value}}
+      >
+        {{selection.name}}
+        <span class="cursor-pointer pl-2" data-test-clear-selection onclick={{action "doClearSelection" i}}>
+          <FaIcon @icon="times" @prefix="fas" @size="1x" class="text-white" />
+        </span>
+      </li>
+    {{/each}}
   </ul>
-{{/if}}
+  {{#if showResults}}
+    <ul
+      class="absolute search-results bg-white border border-black-600 list-reset p-0 z-100"
+    >
+        {{#each this.results as |result i|}}
+          <TTypeAhead::Item
+            @result={{result}}
+            @index={{i}}
+            @selection={{index}}
+            @onClick={{action "doSelect" i result}}
+            @onMouseOver={{action "doMouseOverSearchResult" i}}
+          />
+      {{else}}
+        {{#if searchValue}}
+          <li class="list-reset">
+            No matches found
+          </li>
+        {{/if}}
+      {{/each}}
+    </ul>
+  {{/if}}
+</t-type-ahead>

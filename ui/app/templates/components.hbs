@@ -3,10 +3,10 @@
   <fieldset>
     <FormInput @label="Typeahead single select">
       <TTypeAhead
+        autofocus
+        @placeholder="Search for a mountain"
         @name="typeahead-single"
-        @prompt="Search for a mountain"
         @value={{brokenTop}}
-        @autofocusInput={{true}}
         @onSearch={{searchMountains}}
         @onChange={{selectMountain}}
         @results={{searchMountainsResults}}
@@ -17,8 +17,8 @@
   <fieldset>
     <FormInput @label="Typeahead multi select">
       <TTypeAhead
+        @placeholder="Search for mountains"
         @name="typeahead-multiple"
-        @prompt="Search for mountains"
         @value={{sistersAndBachelor}}
         @multiselect={{true}}
         @onSearch={{searchMountains}}

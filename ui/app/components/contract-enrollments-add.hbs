@@ -1,15 +1,16 @@
 <form
   {{action 'handleSubmit' on='submit'}}
+  {{autofocus-form}}
   class="t-form"
 >
   <fieldset>
     <p>
       <FormInput @error={{errors.enrollees}} @showError={{showErrors}} @label="Enrollees">
         <TTypeAhead
+          autofocus={{true}}
+          @placeholder="Search for a student to enroll"
           @name="enrollees"
-          prompt="Search for a student to enroll"
           @multiselect={{true}}
-          @autofocusInput={{true}}
           @onSearch={{action "onSearchCandidates"}}
           @onChange={{action "onChangeCandidate"}}
         />

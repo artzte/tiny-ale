@@ -1,4 +1,4 @@
-import Component from '@ember/component';
+import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import { schedule } from '@ember/runloop';
@@ -15,21 +15,27 @@ export default class TTypeAhead extends Component {
 
   @tracked selections = [];
 
-  onChange = () => {};
+  @tracked index;
 
-  tagName = 't-type-ahead'
+  onChange = () => {};
 
   get hasResults() {
     const { results } = this;
     return results && results.length;
   }
 
-  didReceiveAttrs() {
-    super.didReceiveAttrs();
+  constructor(...args) {
+    super(...args);
+
     const {
-      hasResults,
       results,
       value,
+    } = this.args;
+
+    this.results = results;
+
+    const {
+      hasResults,
     } = this;
 
     if (!(hasResults && value !== null && value !== undefined)) return;
@@ -104,14 +110,14 @@ export default class TTypeAhead extends Component {
 
   @action
   doMouseOverSearchResult(index) {
-    this.set('index', index);
+    this.index = index;
   }
 
   async handleSearch(searchValue) {
     let results;
 
     if (searchValue) {
-      const handler = this.onSearch || onSearch;
+      const handler = this.args.onSearch || onSearch;
       results = await handler(searchValue);
     } else {
       results = [];
@@ -123,15 +129,16 @@ export default class TTypeAhead extends Component {
   }
 
   notifyChange() {
-    const { selections, multiselect } = this;
+    const { selections, args } = this;
+    const { multiselect, name } = args;
     const values = selections.map(s => s.value);
 
-    this.onChange(multiselect ? values : values[0], this.name, multiselect ? selections : selections[0]);
+    this.args.onChange(multiselect ? values : values[0], name, multiselect ? selections : selections[0]);
   }
 
   handleChange(index, selection, initOnly = false) {
     let { selections } = this;
-    const { multiselect } = this;
+    const { multiselect } = this.args;
 
     if (multiselect) {
       selections = selections.concat([selection]);
@@ -154,9 +161,9 @@ export default class TTypeAhead extends Component {
       index,
     } = this;
     if (index + 1 >= results.length) {
-      this.set('index', results.length - 1);
+      this.index = results.length - 1;
     } else {
-      this.set('index', index + 1);
+      this.index = index + 1;
     }
   }
 
@@ -165,9 +172,9 @@ export default class TTypeAhead extends Component {
       index,
     } = this;
     if (index - 1 < 0) {
-      this.set('index', 0);
+      this.index = 0;
     } else {
-      this.set('index', index - 1);
+      this.index = index - 1;
     }
   }
 
