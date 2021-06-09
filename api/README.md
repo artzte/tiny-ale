@@ -75,6 +75,15 @@ Running only some tests (filter by name)
 
 ## Database notes
 
+To load a .sql dump into the MariaDB container:
+
+    ./tiny db:shell
+
+    MariaDB [(none)]> use tinysis;   
+    MariaDB [tinysis]>  source /src/import/mysql_tinysis_210606.sql
+
+Create necessary users for localhost:
+
     create database nova_test;
     create database nova_development;
 
@@ -86,5 +95,3 @@ Running only some tests (filter by name)
 
     GRANT CREATE ON nova_development.* TO nova_development@localhost;
     GRANT ALL PRIVILEGES ON nova_development.* to `nova_development`@`localhost`;
-
-    rake db:test:prepare
