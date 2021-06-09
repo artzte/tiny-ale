@@ -14,6 +14,7 @@ const purgeCSS = {
       './app/index.html',
       './app/templates/**/*.hbs',
       './app/components/**/*.hbs',
+      './app/components/**/*.js',
     ],
     defaultExtractor: content => content.match(/[A-Za-z0-9-_:/]+/g) || [],
     safelist: [/fa-/, /--fa/, /ember-modal/, /translucent/, /pointer-events/, /emd-/],
