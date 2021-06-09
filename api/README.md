@@ -80,7 +80,7 @@ To load a .sql dump into the MariaDB container:
     ./tiny db:shell
 
     MariaDB [(none)]> use tinysis;   
-    MariaDB [tinysis]>  source /src/import/mysql_tinysis_210606.sql
+    MariaDB [tinysis]> source /src/import/mysql_tinysis_210606.sql
 
 Create necessary users for localhost:
 

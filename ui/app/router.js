@@ -93,10 +93,6 @@ Router.map(function () {
       path: 'student/:id',
       resetNamespace: true,
     }, function () {
-      this.route('student-transcript', {
-        path: '/transcript',
-        resetNamespace: true,
-      });
       this.route('student-learning-plan', {
         path: '/learning',
         resetNamespace: true,
