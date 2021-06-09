@@ -148,6 +148,6 @@ END
     coor = self.coor(year)
     months = coor.get_reporting_months
     base_month, *, end_month = months
-    [base_month, end_month]
+    [base_month, end_month.end_of_month]
   end
 end

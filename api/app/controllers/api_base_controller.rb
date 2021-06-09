@@ -7,6 +7,5 @@ class ApiBaseController < ApplicationController
   
   def get_limit
     @limit = params[:limit] || Rails.configuration.constants[:DEFAULT_LIMIT]
-    @limit = nil if @limit == '-1'
   end
 end

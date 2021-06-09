@@ -89,7 +89,7 @@ module UserControllerMethods
     year_conditions = nil
     if user_params[:schoolYear]
       start_month, end_month = Term.reporting_dates_for_year(user_params[:schoolYear])
-      year_conditions = ['(date_active <= :start_date) AND (date_inactive IS NULL OR date_inactive >= :end_date)', { start_date: start_month, end_date: end_month.end_of_month }]
+      year_conditions = ['(date_active <= :end_date) AND (date_inactive IS NULL OR date_inactive >= :start_date)', { start_date: start_month, end_date: end_month.end_of_month }]
     end
 
     result = User
@@ -175,9 +175,5 @@ module UserControllerMethods
     offset = get_params[:offset]
 
     offset || 0
-  end
-
-  def get_limit
-    @limit
   end
 end
