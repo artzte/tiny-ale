@@ -11,7 +11,7 @@ services:
     restart: always
     volumes:
       - tiny_ale_data:/var/lib/mysql
-      - import:/import
+      - ./import:/import
   web:
     build:
       context: ./api

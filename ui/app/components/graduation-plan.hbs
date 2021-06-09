@@ -17,8 +17,16 @@
 </div>
 
 {{#if showDialog}}
-  <ModalDialog @containerClass="w-3/4 lg:w-1/2 xl:w-5/12" @onClose={{action "cancelDialog"}} @translucentOverlay={{true}}>
-    <TForm @model={{mappingToEdit}} @save={{action "saveMapping"}} as |form|>
+  <ModalDialog
+    @containerClass="w-3/4 lg:w-1/2 xl:w-5/12"
+    @onClose={{action "cancelDialog"}}
+    @translucentOverlay={{true}}
+  >
+    <TForm
+      @model={{mappingToEdit}}
+      @save={{action "saveMapping"}}
+      as |form|
+    >
       <p>
         {{full-name student "first-last"}}: 
         {{requirementToEdit.attributes.name}}

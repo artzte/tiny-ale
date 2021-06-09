@@ -22,9 +22,9 @@
       >
         <TTypeAhead
           data-test-name="credit"
+          autofocus
+          @placeholder="Type a course name or course code to match"
           @name="credit"
-          @prompt="Type a course name or course code to match"
-          @autofocusInput={{true}}
           @value={{tform.relationships.credit.id}}
           @results={{this.creditResult}}
           @onSearch={{fn this.searchCredits}}
@@ -107,14 +107,14 @@
       </FormInput>
     </p>
   </fieldset>
-  <footer>
-    <button class="button" type="submit">
-      Combine
-    </button>
-    <TLink
-      @action={{fn this.close}}
+  <TFormActionsRow
+    @submitCaption="Combine"
+  >
+    <button
+      type="button"
+      onclick={{fn this.close}}
     >
       Cancel
-    </TLink>
-  </footer>
+    </button>
+  </TFormActionsRow>
 </TForm>

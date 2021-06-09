@@ -11,6 +11,14 @@
     {{student.attributes.districtGrade}}
   </td>
   <td>
+    <DateTime @date={{student.attributes.dateActive}} @format="M-D-YY" /> -
+    {{#if student.attributes.dateInactive}}
+      <DateTime @date={{student.attributes.dateInactive}} @format="M-D-YY" />
+    {{else}}
+      present
+    {{/if}}
+  </td>
+  <td>
     <ul class="actions-list">
       <li class="actions-list-item">
         <LinkTo @route="status-by-student" @model={{student.id}}>COOR report</LinkTo>

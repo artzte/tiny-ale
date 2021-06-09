@@ -137,10 +137,14 @@ protected
   end
 
   def enrollment_create_params
-    params
+    user_ids = params
       .require(:data)
       .require(:relationships)
       .require(:user_ids)
+
+    return user_ids.split(',') if user_ids.is_a? String
+
+    user_ids
   end
 
 end

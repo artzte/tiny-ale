@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_16_043348) do
+ActiveRecord::Schema.define(version: 2021_06_06_023836) do
 
   create_table "assignments", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.integer "contract_id"
@@ -311,6 +311,7 @@ ActiveRecord::Schema.define(version: 2021_05_16_043348) do
     t.date "date_inactive"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "pronouns"
     t.index ["coordinator_id"], name: "index_users_on_coordinator_id"
     t.index ["date_active", "date_inactive"], name: "index_users_on_active_dates"
     t.index ["date_active"], name: "index_users_on_date_active"
