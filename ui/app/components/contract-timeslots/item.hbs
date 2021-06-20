@@ -1,1 +1,10 @@
-{{weekdays}} {{timeslot.start}}-{{timeslot.end}}
+<li
+  class="flex space-between"
+>
+  <span class="inline-block mr-2 w-48">{{this.days}} {{@timeslot.start}}-{{@timeslot.end}}</span>
+  {{#if @isEditing}}
+    <button type="button" onclick={{fn @removeTimeslot}}>
+      <FaIcon @icon="times" />
+    </button>
+  {{/if}}
+</li>

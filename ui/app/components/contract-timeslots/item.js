@@ -1,14 +1,20 @@
-import Component from '@ember/component';
-import { computed } from '@ember/object';
+import Component from '@glimmer/component';
+import { error } from '../../utils/logger';
 
-const days = ['M', 'T', 'W', 'R', 'F'];
+const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 
-export default Component.extend({
-  tagName: 'li',
-  weekdays: computed('timeslot', function () {
-    const { weekdays } = this.timeslot;
-    return (weekdays || '').split('')
-      .map(day => days[day])
-      .join('/');
-  }),
-});
+export default class ContractTimeslotComponent extends Component {
+  get days() {
+    try {
+      const { weekdays = '' } = this.args.timeslot;
+      return weekdays
+        .split('')
+        .map(day => days[parseInt(day, 10)])
+        .join('/');
+    } catch (e) {
+      error('Malformed timeslots, apparently');
+      error(e.message);
+      return 'TBD';
+    }
+  }
+}
