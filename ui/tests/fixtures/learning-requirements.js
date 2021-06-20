@@ -2,55 +2,55 @@
 export default {
   data: [
     {
-      id: '1',
+      id: '12',
       type: 'learningRequirement',
       attributes: {
-        ealr: 'Defessus uredo assumenda inflammatio vitae.',
+        ealr: 'Aliquam copia tunc amet voluptatum.',
         seq: '1.1',
         category: 'Category 1',
       },
     },
     {
-      id: '2',
+      id: '13',
       type: 'learningRequirement',
       attributes: {
-        ealr: 'Velociter cado denego tempore ait.',
+        ealr: 'Fugiat solus atrocitas censura casso.',
         seq: '1.2',
         category: 'Category 1',
       },
     },
     {
-      id: '3',
+      id: '14',
       type: 'learningRequirement',
       attributes: {
-        ealr: 'Defleo dolor sperno dolores cerno.',
+        ealr: 'Succurro autem atrocitas clam circumvenio.',
         seq: '2.1',
         category: 'Category 2',
       },
     },
     {
-      id: '4',
+      id: '15',
       type: 'learningRequirement',
       attributes: {
-        ealr: 'Depereo argumentum vilis somniculosus viriliter.',
+        ealr: 'Patrocinor valens caecus cetera atrocitas.',
         seq: '2.2',
         category: 'Category 2',
       },
     },
     {
-      id: '5',
+      id: '16',
       type: 'learningRequirement',
       attributes: {
-        ealr: 'Sto sumo saepe aperio amaritudo.',
+        ealr: 'Coma asperiores aegrus trepide sint.',
         seq: '3.1',
         category: 'Category 3',
       },
     },
     {
-      id: '6',
+      id: '17',
       type: 'learningRequirement',
       attributes: {
-        ealr: 'Vado amo cupiditate expedita cibus.',
+        ealr: 'Concedo adversus sint impedit attollo.',
         seq: '3.2',
         category: 'Category 3',
       },

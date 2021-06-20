@@ -1,24 +1,24 @@
-// GET /api/admin/users/6
+// GET /api/admin/users/51
 export default {
   data: {
-    id: '6',
+    id: '51',
     type: 'user',
     attributes: {
-      firstName: 'Mitchell',
-      lastName: 'Funk',
+      firstName: 'Wilburn',
+      lastName: 'Hirthe',
       nickname: null,
       dateActive: '2018-08-01',
       dateInactive: null,
-      districtId: '1701223197',
+      districtId: '735019319',
       districtGrade: 9,
       status: 'active',
       role: 'student',
-      email: 'val.hermann@connelly-kuvalis.io',
+      email: 'reid.bruen@hane-stroman.info',
     },
     relationships: {
       coordinator: {
         data: {
-          id: '2',
+          id: '47',
           type: 'user',
         },
       },

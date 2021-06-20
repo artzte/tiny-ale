@@ -2,27 +2,30 @@
 export default {
   data: [
     {
-      id: '4',
+      id: '67',
       type: 'setting',
       attributes: {
         name: 'reporting_base_month',
         value: '9',
+        periods: null,
       },
     },
     {
-      id: '5',
+      id: '68',
       type: 'setting',
       attributes: {
         name: 'reporting_end_month',
         value: '6',
+        periods: null,
       },
     },
     {
-      id: '6',
+      id: '69',
       type: 'setting',
       attributes: {
         name: 'current_year',
         value: '2019',
+        periods: null,
       },
     },
   ],

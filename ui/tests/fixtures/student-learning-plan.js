@@ -1,17 +1,17 @@
-// GET /api/learning-plans/6/2019
+// GET /api/learning-plans/51/2019
 export default {
   data: {
     id: '1',
     type: 'learningPlan',
     attributes: {
       year: 2019,
-      userGoals: 'Iure maxime velit. Culpa ducimus aliquid. Quos saepe et.\\n\\nSit est veniam. Autem non doloremque. Minus qui consequatur.\\n\\nUt enim cumque. Ipsa asperiores voluptatibus. Voluptatem vel quisquam.',
+      userGoals: 'Magni cupiditate enim. Quisquam hic qui. Harum placeat consequatur.\\n\\nEveniet dolor quo. Voluptate placeat dolor. Pariatur quidem quas.\\n\\nLaborum est nesciunt. Facere facilis et. Quae quidem fugit.',
       weeklyHours: '27.5',
     },
     relationships: {
       user: {
         data: {
-          id: '6',
+          id: '51',
           type: 'user',
         },
       },
@@ -43,7 +43,7 @@ export default {
       id: '1',
       type: 'learningPlanGoal',
       attributes: {
-        description: 'Qui tempore ratione. Deleniti ipsam suscipit.',
+        description: 'Facere asperiores adipisci. Dolorem dicta neque.',
         active: true,
         plansCount: null,
         year: 2019,
@@ -54,7 +54,7 @@ export default {
       id: '2',
       type: 'learningPlanGoal',
       attributes: {
-        description: 'Iste cumque alias. Aut sed laborum.',
+        description: 'Distinctio consequuntur et. Eos magni excepturi.',
         active: true,
         plansCount: null,
         year: 2019,
@@ -65,7 +65,7 @@ export default {
       id: '3',
       type: 'learningPlanGoal',
       attributes: {
-        description: 'Saepe rerum iusto. Delectus doloremque repellat.',
+        description: 'Magni iure quaerat. Iure minus eveniet.',
         active: true,
         plansCount: null,
         year: 2019,

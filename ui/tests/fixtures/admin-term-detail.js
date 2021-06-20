@@ -1,10 +1,10 @@
-// GET /api/terms/3
+// GET /api/terms/41
 export default {
   data: {
-    id: '3',
+    id: '41',
     type: 'term',
     attributes: {
-      name: 'Grass-roots 24/7 archive',
+      name: 'Centralized regional model',
       schoolYear: 2019,
       creditDate: '2020-01-31',
       months: [
