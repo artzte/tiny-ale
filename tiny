@@ -62,7 +62,7 @@ db:test:load () {
   docker exec $API rake db:test:load
 }
 
-db:volumeRemove () {
+db:remove () {
   docker volume remove $PROJECT_tinysis_data
 }
 
@@ -81,7 +81,7 @@ db:shell () {
 }
 
 db:import () {
-  docker exec -i `docker ps --filter name=tiny-ale_db --format "{{.ID}}"` /bin/bash -c "export TERM=xterm && mysql -proot -uroot nova_production" < $ARGS
+  docker exec -i `docker ps --filter name=tiny-ale_db --format "{{.ID}}"` /bin/bash -c "export TERM=xterm && mysql -proot -uroot nova_production" < $REST_ARGSsourc
 }
 
 db:init () {
@@ -165,7 +165,7 @@ ui:build () {
 }
 
 case $COMMAND in
-  getSecrets|rehome|db:init|build|ui:shell|api:shell|db:shell|log|reset|api:test|ui:test|ui:reset|api:reset|stop|api:build|ui:build|api:console)
+  getSecrets|rehome|db:init|build|ui:shell|api:shell|db:shell|db:import|db:remove|log|reset|api:test|ui:test|ui:reset|api:reset|stop|api:build|ui:build|api:console)
       $COMMAND;;
   *)
       usage

@@ -68,7 +68,7 @@ RSpec.describe 'Contracts API', type: :request do
   describe 'PUT /contracts/:id' do
     it 'updates learning requirements and returns updates' do
       learning_requirement = create :learning_requirement
-      post_body = {
+      put_body = {
         data: {
           relationships: {
             learningRequirements: {
@@ -80,11 +80,42 @@ RSpec.describe 'Contracts API', type: :request do
         }
       }
       
-      put "/api/contracts/#{@contract1_2008.id}", params: post_body.to_json, headers: json_request_headers
+      put "/api/contracts/#{@contract1_2008.id}", params: put_body.to_json, headers: json_request_headers
+
+      expect(response).to have_http_status(200)
 
       expect(@contract1_2008.learning_requirements.length).to eq(1)
 
       expect(json['data']['relationships']['learningRequirements']['data'][0]['id']).to eq(learning_requirement.id.to_s)
+    end
+
+    it 'updates timeslots and returns updates' do
+      put_body = {
+        data: {
+          attributes: {
+            timeslots: [{
+              start: '1:00',
+              end: '2:00',
+              days: '012',
+            }, {
+              start: '3:00',
+              end: '4:00',
+              days: '34',
+            }]
+          }
+        }
+      }
+      
+      put "/api/contracts/#{@contract1_2008.id}", params: put_body.to_json, headers: json_request_headers
+
+      expect(response).to have_http_status(200)
+
+      expect(json['data']['attributes']['timeslots'][0]['end']).to eq(put_body[:data][:attributes][:timeslots][0][:end])
+
+      @contract1_2008.reload
+
+      expect(@contract1_2008.timeslots[0][:start]).to eq(put_body[:data][:attributes][:timeslots][0][:start])
+      expect(@contract1_2008.timeslots[1][:days]).to eq(put_body[:data][:attributes][:timeslots][1][:days])
     end
   end
 
@@ -120,6 +151,7 @@ RSpec.describe 'Contracts API', type: :request do
       
       post "/api/contracts", params: post_body.to_json, headers: json_request_headers
 
+      expect(response).to have_http_status(200)
       expect(json['data']['relationships']['term']['data']['id']).to eq(@term2_2009.id.to_s)
       expect(json['data']['relationships']['facilitator']['data']['id']).to eq(@staff2.id.to_s)
       expect(json['data']['relationships']['category']['data']['id']).to eq(@category1.id.to_s)

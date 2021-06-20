@@ -394,7 +394,7 @@ RSpec.describe 'Ember fixtures script', type: :request do
 
         # all coor status records for active students
         student_ids = @students.map(&:id).join(',')
-        query = { studentIds: student_ids, months: @term_coor_current.months.join(','), type: 'student', limit: -1 }.to_query
+        query = { studentIds: student_ids, months: @term_coor_current.months.join(','), type: 'student', limit: 10000 }.to_query
         response = write_fixture "/api/statuses/students?#{query}", 'all-coor-statuses.js'
 
         # notes for a coor status
@@ -424,7 +424,7 @@ RSpec.describe 'Ember fixtures script', type: :request do
         write_fixture "/api/notes?notableType=Status&notableIds=#{status_ids.join(',')}", 'notes-student-enrollment-statuses.js'
 
         # statuses for coor
-        query = { studentIds: @student1.id, months: @term_coor_current.months.join(','), limit: -1 }.to_query
+        query = { studentIds: @student1.id, months: @term_coor_current.months.join(','), limit: 10000 }.to_query
         response = write_fixture "/api/statuses/students?#{query}", 'student-statuses.js'
 
         # notes for coor statuses

@@ -60,7 +60,10 @@ module Secured
 
   def get_user_id
     if Rails.env == "development" and Rails.application.config.constants[:OFFLINE]
-      return User.find_by_last_name('Grey').id
+      # get either Jane Grey from the bootstrap seeds, or the user with ID 1,
+      # which would be Eric's old tinySIS admin identity.
+      admin_user = User.find_by_last_name('Grey') || User.find(1)
+      return admin_user.id
     end
 
     JsonWebToken.extract_user_id(http_token)
