@@ -95,6 +95,7 @@ RSpec.describe 'Ember fixtures script', type: :request do
       create :setting, name: 'reporting_base_month', value: 9
       create :setting, name: 'reporting_end_month', value: 6
       create :setting, name: 'current_year', value: CURRENT_YEAR
+      create :setting, name: 'periods', value: Marshal.dump([{ start: '8:00', end: '9:00' }, { start: '9:00', end: '10:00' }, { start: '10:00', end: '11:00' } ])
 
       @staff1 = create :user, privilege: User::PRIVILEGE_STAFF, date_active: Date.new(2012, 9, 1), email: Faker::Internet.email
       @staff2 = create :user, privilege: User::PRIVILEGE_STAFF, date_active: Date.new(2013, 2, 1), email: Faker::Internet.email
