@@ -3,6 +3,7 @@ import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import { schedule } from '@ember/runloop';
 import { resolve } from 'rsvp';
+import { ref } from 'ember-ref-bucket';
 
 function onSearch() {
   resolve([]);
@@ -18,6 +19,8 @@ export default class TTypeAhead extends Component {
   @tracked index;
 
   onChange = () => {};
+
+  @ref('input') input;
 
   get hasResults() {
     const { results } = this;
@@ -102,7 +105,7 @@ export default class TTypeAhead extends Component {
 
     const newSelections = selections.slice(0, index).concat(selections.slice(index + 1));
 
-    schedule('afterRender', this, () => this.element.querySelector('input').focus());
+    schedule('afterRender', this, this.input.focus());
 
     this.selections = newSelections;
     this.notifyChange();

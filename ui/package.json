@@ -58,6 +58,7 @@
     "ember-modal-dialog": "^3.0.1",
     "ember-modifier": "^2.1.1",
     "ember-qunit": "^5.1.1",
+    "ember-ref-bucket": "^2.0.0",
     "ember-resolver": "~8.0.0",
     "ember-route-action-helper": "^2.0.7",
     "ember-sinon": "^4.1.1",
