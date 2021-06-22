@@ -8,9 +8,9 @@
 </div>
 
 <StudentsFilter
-  @queryParams={{queryParams}}
-  @schoolYears={{schoolYears}}
-  @coordinators={{staff}}
+  @queryParams={{this.queryParams}}
+  @schoolYears={{this.schoolYears}}
+  @coordinators={{this.staff}}
   @showRole={{true}}
   @showStatus={{true}}
   @onQuery={{action "filterUsers"}}

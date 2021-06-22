@@ -1,5 +1,5 @@
 {{#check-empty
-  count=requirementsList.length
+  count=this.requirementsList.length
   noResultsMessage="None of this type matching current filters"
 }}
   <Table data-graduation-plan-requirements-list>
@@ -11,8 +11,8 @@
         <th>Notes</th>
       </tr>
     </thead>
-    {{#each requirementsList as |requirement|}}
-      <GraduationPlanRequirementsList::PrimaryItem @requirement={{requirement}} @status={{status}} @dropTarget={{dropTarget}} @setDrop={{action (mut dropTarget)}} @onDrop={{action "onDrop"}} />
+    {{#each this.requirementsList as |requirement|}}
+      <GraduationPlanRequirementsList::PrimaryItem @requirement={{requirement}} @status={{this.status}} @dropTarget={{this.dropTarget}} @setDrop={{action (mut this.dropTarget)}} @onDrop={{action "onDrop"}} />
     {{/each}}
   </Table>
 {{/check-empty}}

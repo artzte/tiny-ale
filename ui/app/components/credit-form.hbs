@@ -1,11 +1,11 @@
 <form onsubmit={{this.onSubmit}}>
   <fieldset>
     <p>
-      <FormInput @error={{errors.courseName}} @showError={{showErrors}} @label="Course name">
+      <FormInput @error={{this.errors.courseName}} @showError={{this.showErrors}} @label="Course name">
         <input
           type="text"
           name="courseName"
-          value={{pojo.courseName}}
+          value={{this.pojo.courseName}}
           autofocus
           onchange={{action "onChange"}}
 
@@ -13,22 +13,22 @@
       </FormInput>
     </p>
     <p>
-      <FormInput @error={{errors.courseId}} @showError={{showErrors}} @abel="Course ID">
+      <FormInput @error={{this.errors.courseId}} @showError={{this.showErrors}} @abel="Course ID">
         <input
           type="text"
           name="courseId"
-          value={{pojo.courseId}}
+          value={{this.pojo.courseId}}
           onchange={{action "onChange"}}
         >
       </FormInput>
     </p>
 
     <p>
-      <FormInput @error={{errors.courseType}} @showError={{showErrors}} @label="Course type">
+      <FormInput @error={{this.errors.courseType}} @showError={{this.showErrors}} @label="Course type">
         <TSelect
-          @value={{pojo.courseType}}
+          @value={{this.pojo.courseType}}
           @prompt="Select a course type"
-          @optionsList={{courseTypeOptions}}
+          @optionsList={{this.courseTypeOptions}}
           name="courseType"
           @onchange={{action "onChange"}}
         />
@@ -36,10 +36,10 @@
     </p>
 
     <p>
-      <FormInput @error={{errors.status}} @showError={{showErrors}} @label="Status">
+      <FormInput @error={{this.errors.status}} @showError={{this.showErrors}} @label="Status">
         <TSelect
-          @value={{pojo.status}}
-          @optionsList={{statusOptions}}
+          @value={{this.pojo.status}}
+          @optionsList={{this.statusOptions}}
           name="status"
           @onchange={{action "onChange"}}
         />
@@ -47,7 +47,7 @@
     </p>
   </fieldset>
 
-  <TFormActionsRow @disabled={{disabled}}>
+  <TFormActionsRow @disabled={{this.disabled}}>
     <LinkTo @route="settings-credits.index" class="button">
       Cancel
     </LinkTo>

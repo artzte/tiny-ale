@@ -10,7 +10,7 @@ module('Integration | Helper | titleize', hooks => {
   test('it renders', async function (assert) {
     this.set('inputValue', '1234');
 
-    await render(hbs`{{titleize inputValue}}`);
+    await render(hbs`{{titleize this.inputValue}}`);
 
     assert.equal(this.element.textContent, '1234', '1234');
 

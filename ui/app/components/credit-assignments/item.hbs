@@ -1,23 +1,23 @@
-<li data-test-credit-assignment-id={{creditAssignment.id}}>
+<li data-test-credit-assignment-id={{this.creditAssignment.id}}>
   <TLink
-    @action={{editCreditAssignment}}
-    @disabled={{disabled}}
+    @action={{this.editCreditAssignment}}
+    @disabled={{this.disabled}}
   >
-    {{courseName}} ({{credit.attributes.courseId}})
+    {{this.courseName}} ({{this.credit.attributes.courseId}})
     /
-    {{hours}}
+    {{this.hours}}
   </TLink>
-  {{#if creditAssignment.attributes.overrideBy}}
+  {{#if this.creditAssignment.attributes.overrideBy}}
     <note
-      title="was {{creditAssignment.attributes.creditHours}}; by {{creditAssignment.attributes.overrideBy}}"
+      title="was {{this.creditAssignment.attributes.creditHours}}; by {{this.creditAssignment.attributes.overrideBy}}"
     >
       (O)
     </note>
   {{/if}}
   {{yield
     (hash
-      creditAssignment=creditAssignment
-      credit=credit
+      creditAssignment=this.creditAssignment
+      credit=this.credit
     )
   }}
 </li>

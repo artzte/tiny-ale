@@ -3,13 +3,13 @@
     <tr>
       <th class="class">Class</th>
       <th class="status">Status</th>
-      {{#each months as |month|}}
+      {{#each this.months as |month|}}
         <th class="month"><DateTime @date={{month}} @format="MMM" /></th>
       {{/each}}
     </tr>
   </thead>
 
-  {{#each enrollmentsList as |enrollment|}}
-    <StatusByStudentEnrollments::Row @enrollment={{enrollment}} @statusHash={{statusHash}} @notablesHash={{notablesHash}} @months={{months}} />
+  {{#each this.enrollmentsList as |enrollment|}}
+    <StatusByStudentEnrollments::Row @enrollment={{enrollment}} @statusHash={{this.statusHash}} @notablesHash={{this.notablesHash}} @months={{this.months}} />
   {{/each}}
 </Table>

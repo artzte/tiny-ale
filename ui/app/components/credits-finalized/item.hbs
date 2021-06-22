@@ -1,31 +1,31 @@
 <tr>
   <td class="text-center">
-    {{#if creditAssignment.relationships.creditTransmittalBatch.data.id}}
+    {{#if this.creditAssignment.relationships.creditTransmittalBatch.data.id}}
       <FaIcon
         @icon="check"
-        data-test-credit-transmittal-batch-id={{creditAssignment.relationships.creditTransmittalBatch.data.id}}
+        data-test-credit-transmittal-batch-id={{this.creditAssignment.relationships.creditTransmittalBatch.data.id}}
       />
     {{/if}}
   </td>
   <td>
-    {{courseName}}
-    {{#if childCreditAssignments}}
-      <CreditAssignments @creditAssignments={{childCreditAssignments}} />
+    {{this.courseName}}
+    {{#if this.childCreditAssignments}}
+      <CreditAssignments @creditAssignments={{this.childCreditAssignments}} />
     {{/if}}
   </td>
   <td>
-    {{term.attributes.name}}
+    {{this.term.attributes.name}}
   </td>
   <td class="text-right">
-    {{creditHours}}
+    {{this.creditHours}}
   </td>
   <td class="text-right">
-    <DateTime @date={{creditAssignment.attributes.enrollmentFinalizedOn}} @format="M/D/YYYY" />
+    <DateTime @date={{this.creditAssignment.attributes.enrollmentFinalizedOn}} @format="M/D/YYYY" />
   </td>
   <td
     class="text-right"
-    title={{creditAssignment.attributes.districtFinalizeApprovedBy}}
+    title={{this.creditAssignment.attributes.districtFinalizeApprovedBy}}
   >
-    <DateTime @date={{creditAssignment.attributes.districtFinalizeApprovedOn}} @format="M/D/YYYY" />
+    <DateTime @date={{this.creditAssignment.attributes.districtFinalizeApprovedOn}} @format="M/D/YYYY" />
   </td>
 </tr>

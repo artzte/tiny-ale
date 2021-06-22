@@ -1,14 +1,14 @@
-<tr data-test-status-row data-test-status-id={{status.id}}>
-  <td>{{full-name participant}}</td>
-  <td>{{titleize enrollmentStatus}}</td>
-  {{#each months as |month|}}
-    <StatusByContract::Column @student={{participant}} @enrollment={{enrollment}} @month={{month}} @term={{term}} @enrollmentStatusHash={{enrollmentStatusHash}} />
+<tr data-test-status-row data-test-status-id={{this.status.id}}>
+  <td>{{full-name this.participant}}</td>
+  <td>{{titleize this.enrollmentStatus}}</td>
+  {{#each this.months as |month|}}
+    <StatusByContract::Column @student={{this.participant}} @enrollment={{this.enrollment}} @month={{month}} @term={{this.term}} @enrollmentStatusHash={{this.enrollmentStatusHash}} />
   {{/each}}
 </tr>
-<tr data-test-status-id={{status.id}} class="notes-row {{loadingNotes}}">
-  <td colspan={{columnCount}}>
-    {{#unless loadingNotes}}
-      <NotesList @notes={{notes}} />
+<tr data-test-status-id={{this.status.id}} class="notes-row {{this.loadingNotes}}">
+  <td colspan={{this.columnCount}}>
+    {{#unless this.loadingNotes}}
+      <NotesList @notes={{this.notes}} />
     {{/unless}}
   </td>
 </tr>

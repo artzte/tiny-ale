@@ -5,7 +5,7 @@
 </p>
 
 {{#check-empty
-  count=model.meta.count
+  count=this.model.meta.count
   noResultsMessage="No categories were found"
 }}
   <Pagination
@@ -24,7 +24,7 @@
       </tr>    
     </thead>
     <tbody>
-      {{#each categoriesList as |category|}}
+      {{#each this.categoriesList as |category|}}
         <SettingsContractCategories::Row @category={{category}} as |row|>
           <tr>
             <td>

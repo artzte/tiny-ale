@@ -1,27 +1,27 @@
-<tr data-test-enrollment-id="{{enrollment.id}}">
+<tr data-test-enrollment-id="{{this.enrollment.id}}">
   <td>
-    {{full-name participant}}
+    {{full-name this.participant}}
   </td>
   <td>
-    {{titleize enrollmentStatus}}
+    {{titleize this.enrollmentStatus}}
   </td>
   <td>
     <CreditAssignments
-      @creditable={{enrollment}}
-      @creditAssignments={{creditAssignments}}
-      @disabled={{enrollmentIsDisabled}}
+      @creditable={{this.enrollment}}
+      @creditAssignments={{this.creditAssignments}}
+      @disabled={{this.enrollmentIsDisabled}}
     />
   </td>
   <td>
     <NotesList
-      @notes={{notes}}
-      @notable={{enrollment}}
+      @notes={{this.notes}}
+      @notable={{this.enrollment}}
     />
   </td>
   <td>
     <ContractEnrollmentsList::Status
-      @disabled={{enrollmentIsDisabled}}
-      @enrollment={{enrollment}}
+      @disabled={{this.enrollmentIsDisabled}}
+      @enrollment={{this.enrollment}}
       @deleteEnrollment={{action "deleteEnrollment"}}
       @updateEnrollment={{action "updateEnrollment"}}
     />

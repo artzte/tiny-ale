@@ -1,16 +1,16 @@
-<h2>{{full-name user}} ({{titleize user.attributes.role}})</h2>
+<h2>{{full-name this.user}} ({{titleize this.user.attributes.role}})</h2>
 
 <div class="flex hb-4">
   <AdminUserForm
-    @staff={{staff}}
-    @model={{user}}
+    @staff={{this.staff}}
+    @model={{this.user}}
     @save={{action "saveUser"}}
     @reportError={{action "reportError"}}
     @updateLogin={{action "updateLogin"}}
   />
 
   <AdminUserLogin
-    @user={{user}}
+    @user={{this.user}}
     @createLogin={{action "createLogin"}}
     @updateLogin={{action "updateLogin"}}
     @destroyLogin={{action "destroyLogin"}}

@@ -32,7 +32,7 @@
             {{/if}}
           </dd>
         </div>
-        {{#if isEnrollmentStatus}}
+        {{#if this.isEnrollmentStatus}}
           <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
             <dt class="font-bold text-gray-900">
               Attendance
@@ -51,7 +51,7 @@
             </dd>
           </div>
         {{/if}}
-        {{#if isUserStatus}}
+        {{#if this.isUserStatus}}
           <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
             <dt class="font-bold text-gray-900">
               FTE hours
@@ -138,9 +138,9 @@
             </dt>
             <dd class="mt-1 text-gray-900 sm:mt-0 sm:col-span-2">
               <NotesList
-                class="notes-row w-full md:w-2/3 {{loadingNotes}}"
-                @notes={{notes}}
-                @notable={{status}}
+                class="notes-row w-full md:w-2/3 {{this.loadingNotes}}"
+                @notes={{this.notes}}
+                @notable={{this.status}}
               />
             </dd>
           </div>

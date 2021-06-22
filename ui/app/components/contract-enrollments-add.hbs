@@ -5,7 +5,7 @@
 >
   <fieldset>
     <p>
-      <FormInput @error={{errors.enrollees}} @showError={{showErrors}} @label="Enrollees">
+      <FormInput @error={{this.errors.enrollees}} @showError={{this.showErrors}} @label="Enrollees">
         <TTypeAhead
           autofocus={{true}}
           @placeholder="Search for a student to enroll"

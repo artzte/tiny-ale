@@ -5,11 +5,11 @@
     placeholder={{@placeholder}}
     oninput={{fn this.doInput}}
     onkeydown={{fn this.doKeyDown}}
-    disabled={{unless result false}}
+    disabled={{unless this.result false}}
     {{create-ref 'input'}}
   >
   <ul class="flex m-0 p-0" data-test-values>
-    {{#each selections as |selection i|}}
+    {{#each this.selections as |selection i|}}
       <li
         class="inline-block cursor-text bg-gray-800 text-gray-200 p-2 m-1"
         data-test-clear-result
@@ -22,7 +22,7 @@
       </li>
     {{/each}}
   </ul>
-  {{#if showResults}}
+  {{#if this.showResults}}
     <ul
       class="absolute search-results bg-white border border-black-600 list-reset p-0 z-100"
     >
@@ -30,12 +30,12 @@
           <TTypeAhead::Item
             @result={{result}}
             @index={{i}}
-            @selection={{index}}
+            @selection={{this.index}}
             @onClick={{action "doSelect" i result}}
             @onMouseOver={{action "doMouseOverSearchResult" i}}
           />
       {{else}}
-        {{#if searchValue}}
+        {{#if this.searchValue}}
           <li class="list-reset">
             No matches found
           </li>

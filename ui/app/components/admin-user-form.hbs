@@ -52,7 +52,7 @@
     </p>
   </fieldset>
 
-  {{#if isStaff}}
+  {{#if this.isStaff}}
     <fieldset>
       <p>
         <FormInput @error={{this.errors.email}} @showError={{this.showErrors}} @label="Email">
@@ -87,7 +87,7 @@
           <input
             type="radio"
             value="inactive"
-            checked={{if isActive false true}}
+            checked={{if this.isActive false true}}
             name="status"
             onchange={{action "onChange"}}
           >
@@ -106,7 +106,7 @@
       </FormInput>
     </p>
   </fieldset>
-  {{#if isStudent}}
+  {{#if this.isStudent}}
     <fieldset>
       <h3>Student Settings</h3>
       <p>

@@ -1,18 +1,18 @@
 {{#check-empty
-  count=model.meta.count
+  count=this.model.meta.count
   noResultsMessage="No students were found with these filters"
 }}
   <Pagination 
     @offset={{this.offset}}
     @limit={{this.limit}}
-    @totalCount={{model.meta.count}}
+    @totalCount={{this.model.meta.count}}
     @singularName="student"
   />
-  <StudentsList @students={{students}} />
+  <StudentsList @students={{this.students}} />
   <Pagination 
     @offset={{this.offset}}
     @limit={{this.limit}}
-    @totalCount={{model.meta.count}}
+    @totalCount={{this.model.meta.count}}
     @singularName="student"
   />
 {{/check-empty}}

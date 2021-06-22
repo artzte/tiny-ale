@@ -9,7 +9,7 @@ module('Integration | Helper | numeric', hooks => {
   test('it renders', async function (assert) {
     this.set('inputValue', '1234');
 
-    await render(hbs`{{numeric inputValue}}`);
+    await render(hbs`{{numeric this.inputValue}}`);
 
     assert.equal(this.element.textContent.trim(), '1,234');
   });

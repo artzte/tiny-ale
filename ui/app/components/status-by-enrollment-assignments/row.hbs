@@ -1,21 +1,21 @@
-<tr data-test-assignment-id={{assignment.id}}>
+<tr data-test-assignment-id={{this.assignment.id}}>
   <td data-test-assignment-name>
     <h4>
-      {{assignment.attributes.name}}
+      {{this.assignment.attributes.name}}
     </h4>
-    {{#if assignment.attributes.description}}
+    {{#if this.assignment.attributes.description}}
       <p>
-        {{assignment.attributes.description}}
+        {{this.assignment.attributes.description}}
       </p>
     {{/if}}
   </td>
   <td data-test-assignment-due>
-    <DateTime @date={{assignment.attributes.dueDate}} @format="MM/DD/YY" />
+    <DateTime @date={{this.assignment.attributes.dueDate}} @format="MM/DD/YY" />
   </td>
   <td data-test-assignment-status>
-    {{titleize status}}
+    {{titleize this.status}}
   </td>
   <td data-test-assignment-notes>
-    <NotesList @notes={{notes}} @notable={{turnin}} @expanded={{true}} />
+    <NotesList @notes={{this.notes}} @notable={{this.turnin}} @expanded={{true}} />
   </td>
 </tr>

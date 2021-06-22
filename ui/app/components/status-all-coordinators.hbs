@@ -2,7 +2,7 @@
   <thead>
     <tr>
       <th>Coordinator</th>
-      {{#each term.attributes.months as |month|}}
+      {{#each this.term.attributes.months as |month|}}
         <th data-test-term-month class="center">
           <DateTime @date={{month}} @format="MMM" />
         </th>
@@ -10,8 +10,8 @@
     </tr>
   </thead>
   <tbody>
-    {{#each coordinators as |coordinator|}}
-      <StatusAllCoordinators::Row @coordinator={{coordinator}} @coordinatorsHash={{coordinatorsHash}} @months={{months}} @term={{term}} />
+    {{#each this.coordinators as |coordinator|}}
+      <StatusAllCoordinators::Row @coordinator={{coordinator}} @coordinatorsHash={{this.coordinatorsHash}} @months={{this.months}} @term={{this.term}} />
     {{else}}
       <tr class="no-results">
         <td>No coordinators</td>

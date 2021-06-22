@@ -1,8 +1,8 @@
 <h2>Enrollments</h2>
 
 <ContractCreditAssignments
-  @contract={{contract}}
-  @disabled={{disabled}}
+  @contract={{this.contract}}
+  @disabled={{this.disabled}}
 />
 
 <button type="button" class="button" {{on "click" (fn this.showAddEnrollment true)}}>
@@ -20,7 +20,7 @@
 
   <ContractEnrollmentsList
     @enrollments={{this.model.data}}
-    @contractIsDisabled={{contractIsDisabled}}
+    @contractIsDisabled={{this.contractIsDisabled}}
     @deleteEnrollment={{action "deleteEnrollment"}}
     @updateEnrollment={{action "updateEnrollment"}}
     @getNotes={{route-action "getNotes" this.model.data}}

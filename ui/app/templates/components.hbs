@@ -6,10 +6,10 @@
         autofocus
         @placeholder="Search for a mountain"
         @name="typeahead-single"
-        @value={{brokenTop}}
-        @onSearch={{searchMountains}}
-        @onChange={{selectMountain}}
-        @results={{searchMountainsResults}}
+        @value={{this.brokenTop}}
+        @onSearch={{this.searchMountains}}
+        @onChange={{this.selectMountain}}
+        @results={{this.searchMountainsResults}}
       />
     </FormInput>
   </fieldset>
@@ -19,13 +19,13 @@
       <TTypeAhead
         @placeholder="Search for mountains"
         @name="typeahead-multiple"
-        @value={{sistersAndBachelor}}
+        @value={{this.sistersAndBachelor}}
         @multiselect={{true}}
-        @onSearch={{searchMountains}}
-        @onChange={{selectMountains}}
-        @results={{searchMountainsResults}}
+        @onSearch={{this.searchMountains}}
+        @onChange={{this.selectMountains}}
+        @results={{this.searchMountainsResults}}
       />
-      <p>Mountains: {{mountainNames}}</p>
+      <p>Mountains: {{this.mountainNames}}</p>
     </FormInput>
   </fieldset>
 

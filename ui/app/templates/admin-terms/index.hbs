@@ -1,10 +1,10 @@
 {{#check-empty
-  count=model.meta.count
+  count=this.model.meta.count
   noResultsMessage="No terms were found matching these filters"
 }}
   <Pagination
     @totalCount={{this.model.meta.count}}
     @singularName="term"
   />
-  <AdminTermsList @terms={{terms}} />
+  <AdminTermsList @terms={{this.terms}} />
 {{/check-empty}}

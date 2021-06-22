@@ -13,8 +13,8 @@
     </tr>
   </thead>
   <tbody>
-    {{#each users as |user|}}
-      <UsersList::Row @user={{user}} @usersWithLogin={{usersWithLogin}} />
+    {{#each this.users as |user|}}
+      <UsersList::Row @user={{user}} @usersWithLogin={{this.usersWithLogin}} />
     {{/each}}
   </tbody>
 </Table>

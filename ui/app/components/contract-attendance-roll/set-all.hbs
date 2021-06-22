@@ -5,18 +5,18 @@
         <label>Mark all enrollees:</label>
         <TSelect
           name="participation"
-          @value={{participation}}
-          @optionsList={{participationOptions}}
-          @onchange={{action (mut participation)}}
+          @value={{this.participation}}
+          @optionsList={{this.participationOptions}}
+          @onchange={{action (mut this.participation)}}
         />
       </li>
       <li class="filter-item flex items-center">
         <label>Contact type:</label>
         <TSelect
           name="contactType"
-          @value={{contactType}}
-          @optionsList={{contactTypeOptions}}
-          @onchange={{action (mut contactType)}}
+          @value={{this.contactType}}
+          @optionsList={{this.contactTypeOptions}}
+          @onchange={{action (mut this.contactType)}}
         />
       </li>
       <li class="filter-item items-center" data-test-submit>

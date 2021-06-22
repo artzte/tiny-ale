@@ -1,9 +1,9 @@
 <form onsubmit={{fn this.onSubmit}}>
   <fieldset>
     <p>
-      <FormInput @error={{errors.name}} @showError={{showErrors}} @label="Category name">
+      <FormInput @error={{this.errors.name}} @showError={{this.showErrors}} @label="Category name">
         <input
-          value={{pojo.name}}
+          value={{this.pojo.name}}
           name="name"
           type="text"
           onchange={{action "onChange"}}
@@ -18,18 +18,18 @@
           id="category-public"
           type="checkbox"
           name="public"
-          checked={{pojo.public}}
+          checked={{this.pojo.public}}
           onchange={{action "toggleValue" "public"}}
         >
         Show in catalog?
       </FormInput>
     </p>
     <p>
-      <FormInput @error={{errors.name}} @showError={{showErrors}} @label="Reporting">
+      <FormInput @error={{this.errors.name}} @showError={{this.showErrors}} @label="Reporting">
         <TSelect
           name="reporting"
-          @value={{pojo.reporting}}
-          @optionsList={{reportingOptions}}
+          @value={{this.pojo.reporting}}
+          @optionsList={{this.reportingOptions}}
           @onchange={{action "onChange"}}
         />
       </FormInput>
@@ -40,25 +40,25 @@
           id="homeroom"
           type="checkbox"
           name="homeroom"
-          checked={{pojo.homeroom}}
+          checked={{this.pojo.homeroom}}
           onchange={{action "toggleValue" "homeroom"}}
         >
         Homeroom?
       </FormInput>
     </p>
     <p>
-      <FormInput @error={{errors.sequence}} @showError={{showErrors}} @label="Sequence group">
+      <FormInput @error={{this.errors.sequence}} @showError={{this.showErrors}} @label="Sequence group">
         <t-help>Use this number to group related categories together</t-help>
         <input
           type="number"
           name="sequence"
-          value={{pojo.sequence}}
+          value={{this.pojo.sequence}}
           onchange={{action "onChange"}}
         >
       </FormInput>
     </p>
   </fieldset>
-  <TFormActionsRow @disabled={{disabled}}>
+  <TFormActionsRow @disabled={{this.disabled}}>
     <LinkTo @route="settings-contract-categories.index" class="button">
       Cancel
     </LinkTo>

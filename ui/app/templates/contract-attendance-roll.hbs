@@ -1,11 +1,11 @@
 <h3>
-  {{meeting.attributes.title}}
+  {{this.meeting.attributes.title}}
 </h3>
 
 <p>
-  <LinkTo @route="contract-attendance" @model={{contract.id}}>
+  <LinkTo @route="contract-attendance" @model={{this.contract.id}}>
     Return to all meetings
   </LinkTo>
 </p>
 
-<ContractAttendanceRoll @contract={{contract}} @meeting={{meeting}} @updateRoll={{action "updateRoll"}} @updateAllRolls={{action "updateAllRolls"}} />
+<ContractAttendanceRoll @contract={{this.contract}} @meeting={{this.meeting}} @updateRoll={{action "updateRoll"}} @updateAllRolls={{action "updateAllRolls"}} />

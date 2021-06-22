@@ -10,7 +10,7 @@
         <FormInput @error={{form.errors.current_year}} @showError={{form.showErrors}} @label="Current school year">
           <t-help>This is the year in which the Fall term begins. By default, screens show terms for the current year only</t-help>
           <TSelect
-            @optionsList={{yearOptions}}
+            @optionsList={{this.yearOptions}}
             @value={{form.pojo.current_year}}
             name="current_year"
             @prompt="Choose a school year"
@@ -23,7 +23,7 @@
         <FormInput @error={{form.errors.reporting_base_month}} @showError={{form.showErrors}} @label="First month of school year">
           <t-help>COOR status reporting begins at the starting month</t-help>
           <TSelect
-            @optionsList={{monthOptions}}
+            @optionsList={{this.monthOptions}}
             @value={{form.pojo.reporting_base_month}}
             name="reporting_base_month"
             @prompt="Choose a starting month"
@@ -36,7 +36,7 @@
         <FormInput @error={{form.errors.reporting_end_month}} @showError={{form.showErrors}} @label="Last month of school year">
           <t-help>COOR status reporting ends on the ending month</t-help>
           <TSelect
-            @optionsList={{monthOptions}}
+            @optionsList={{this.monthOptions}}
             @value={{form.pojo.reporting_end_month}}
             name="reporting_end_month"
             @prompt="Choose an ending month"
@@ -105,7 +105,7 @@
       </ol>
     </fieldset>
 
-    <TFormActionsRow class="my-8" @disabled={{disabled}}>
+    <TFormActionsRow class="my-8" @disabled={{this.disabled}}>
       <LinkTo @route="admin-settings.index" class="button">
         Return to list of settings
       </LinkTo>

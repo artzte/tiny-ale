@@ -1,4 +1,4 @@
-{{#check-empty count=assignments.length noResultsMessage="No assignments defined for this contract."}}
+{{#check-empty count=this.assignments.length noResultsMessage="No assignments defined for this contract."}}
   <Table>
     <thead>
       <tr>
@@ -9,8 +9,8 @@
       </tr>
     </thead>
     <tbody>
-      {{#each sortedAssignments as |assignment|}}
-        <StatusByEnrollmentAssignments::Row @enrollment={{enrollment}} @assignment={{assignment}} @notesHash={{notesHash}} @turninsByAssignment={{turninsByAssignment}} />
+      {{#each this.sortedAssignments as |assignment|}}
+        <StatusByEnrollmentAssignments::Row @enrollment={{this.enrollment}} @assignment={{assignment}} @notesHash={{this.notesHash}} @turninsByAssignment={{this.turninsByAssignment}} />
       {{/each}}
     </tbody>
   </Table>

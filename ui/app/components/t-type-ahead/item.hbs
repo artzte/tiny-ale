@@ -1,8 +1,8 @@
 <li
-  class="px-2 py-1 cursor-pointer {{if isSelected "bg-gray-200"}}"
+  class="px-2 py-1 cursor-pointer {{if this.isSelected "bg-gray-200"}}"
   onclick={{action "doClick"}}
   onmouseover={{action "doMouseOver"}}
-  data-test-value={{result.value}}
+  data-test-value={{this.result.value}}
 >
-  {{result.name}}
+  {{this.result.name}}
 </li>

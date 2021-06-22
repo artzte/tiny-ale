@@ -1,9 +1,9 @@
 <li
-  data-test-credit-assignment-id={{creditAssignment.id}}
+  data-test-credit-assignment-id={{this.creditAssignment.id}}
   ondragstart={{action "onDragStart"}}
   draggable="true"
 >
-  {{courseName}}
+  {{this.courseName}}
   /
-  {{creditAssignment.attributes.creditHours}}
+  {{this.creditAssignment.attributes.creditHours}}
 </li>

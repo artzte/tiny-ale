@@ -1,19 +1,19 @@
-<tr data-test-student-id={{student.attributes.id}} data-test-students-list-row>
+<tr data-test-student-id={{this.student.attributes.id}} data-test-students-list-row>
   <td data-test-student-name>
-    <LinkTo @route="status-by-student" @model={{student.id}}>
-      {{full-name student}}
+    <LinkTo @route="status-by-student" @model={{this.student.id}}>
+      {{full-name this.student}}
     </LinkTo>
   </td>
   <td data-test-coordinator-name>
-    {{full-name coordinator "first-last"}}
+    {{full-name this.coordinator "first-last"}}
   </td>
   <td data-test-district-grade>
-    {{student.attributes.districtGrade}}
+    {{this.student.attributes.districtGrade}}
   </td>
   <td>
-    <DateTime @date={{student.attributes.dateActive}} @format="M-D-YY" /> -
-    {{#if student.attributes.dateInactive}}
-      <DateTime @date={{student.attributes.dateInactive}} @format="M-D-YY" />
+    <DateTime @date={{this.student.attributes.dateActive}} @format="M-D-YY" /> -
+    {{#if this.student.attributes.dateInactive}}
+      <DateTime @date={{this.student.attributes.dateInactive}} @format="M-D-YY" />
     {{else}}
       present
     {{/if}}
@@ -21,19 +21,19 @@
   <td>
     <ul class="actions-list">
       <li class="actions-list-item">
-        <LinkTo @route="status-by-student" @model={{student.id}}>COOR report</LinkTo>
+        <LinkTo @route="status-by-student" @model={{this.student.id}}>COOR report</LinkTo>
       </li>
       <li class="actions-list-item">
-        <LinkTo @route="student-transcript" @model={{student.id}}>Status</LinkTo>
+        <LinkTo @route="student-transcript" @model={{this.student.id}}>Status</LinkTo>
       </li>
       <li class="actions-list-item">
-        <LinkTo @route="student-learning-plan" @model={{student.id}}>Learning plan</LinkTo>
+        <LinkTo @route="student-learning-plan" @model={{this.student.id}}>Learning plan</LinkTo>
       </li>
       <li class="actions-list-item">
-        <LinkTo @route="student-credits" @model={{student.id}}>Credits</LinkTo>
+        <LinkTo @route="student-credits" @model={{this.student.id}}>Credits</LinkTo>
       </li>
       <li class="actions-list-item">
-        <LinkTo @route="student-graduation-plan" @model={{student.id}}>Graduation plan</LinkTo>
+        <LinkTo @route="student-graduation-plan" @model={{this.student.id}}>Graduation plan</LinkTo>
       </li>
     </ul>
   </td>

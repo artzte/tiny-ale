@@ -5,7 +5,7 @@
       <th>Present</th>
       <th>Absent</th>
       <th>Tardy</th>
-      {{#each sortedMeetings as |meeting|}}
+      {{#each this.sortedMeetings as |meeting|}}
         <th data-test-meeting data-test-meeting-date={{meeting.attributes.meetingDate}}>
           <LinkTo @route="contract-attendance-roll" @model={{meeting.id}}>
             <DateTime @date={{meeting.attributes.meetingDate}} @format="M/D" />
@@ -14,7 +14,7 @@
       {{/each}}
     </tr>
   </thead>
-  {{#each participants as |participant i|}}
-    <ContractAttendanceList::Row @meetings={{sortedMeetings}} @row={{i}} @enrollment={{participant.enrollment}} @student={{participant.student}} @attendanceHash={{attendanceHash}} />
+  {{#each this.participants as |participant i|}}
+    <ContractAttendanceList::Row @meetings={{this.sortedMeetings}} @row={{i}} @enrollment={{participant.enrollment}} @student={{participant.student}} @attendanceHash={{this.attendanceHash}} />
   {{/each}}
 </Table>

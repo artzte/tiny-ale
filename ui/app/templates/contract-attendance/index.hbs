@@ -8,14 +8,14 @@
   </button>
 </p>
 
-{{#if showNew}}
+{{#if this.showNew}}
   <ModalDialog @onClose={{action "toggleNew"}} @translucentOverlay={{true}}>
-    <ContractAttendanceNew @meetings={{meetings}} @today={{today}} @createMeeting={{action "createMeeting"}} />
+    <ContractAttendanceNew @meetings={{this.meetings}} @today={{this.today}} @createMeeting={{action "createMeeting"}} />
   </ModalDialog>
 {{/if}}
 
 {{#check-empty
-  count=model.meta.count
+  count=this.model.meta.count
   noResultsMessage="No attendance taken as of yet"
 }}
   <Pagination
@@ -23,6 +23,6 @@
     @singularName="meeting"
   />
   <ContractAttendanceList
-    @contract={{contract}}
+    @contract={{this.contract}}
   />
 {{/check-empty}}

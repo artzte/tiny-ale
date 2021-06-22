@@ -1,10 +1,10 @@
 <value-button
  tabindex="0"
- data-test-is-checked={{if isChecked "checked"}}
+ data-test-is-checked={{if this.isChecked "checked"}}
  onkeydown={{action "onKeyDown" preventDefault=false}}
  onclick={{action "onClick"}}
 >
-  {{#if isChecked}}
+  {{#if this.isChecked}}
     <FaIcon @icon="check" />
   {{else}}
     -

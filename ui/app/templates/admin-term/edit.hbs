@@ -1,12 +1,12 @@
 <h2>
-  {{term.attributes.name}} / {{term.attributes.schoolYear}}
+  {{this.term.attributes.name}} / {{this.term.attributes.schoolYear}}
 </h2>
 
 <AdminTermForm
-  @model={{term}}
-  @schoolYear={{schoolYear}} 
-  @schoolYears={{schoolYears}} 
-  @reportingBaseMonth={{reportingBaseMonth}} 
+  @model={{this.term}}
+  @schoolYear={{this.schoolYear}}
+  @schoolYears={{this.schoolYears}}
+  @reportingBaseMonth={{this.reportingBaseMonth}}
   @save={{action "saveTerm"}}
   @reportError={{action "reportError"}}
 />

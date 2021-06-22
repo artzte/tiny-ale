@@ -1,10 +1,10 @@
 <h2>
-  {{full-name coordinator "first-last"}}
+  {{full-name this.coordinator "first-last"}}
 </h2>
 
 <Pagination
-  @totalCount={{students.length}}
+  @totalCount={{this.students.length}}
   @singularName="coordinatee"
 />
 
-<StatusByCoordinator @students={{students}} @term={{term}} @statuses={{statuses}} />
+<StatusByCoordinator @students={{this.students}} @term={{this.term}} @statuses={{this.statuses}} />
