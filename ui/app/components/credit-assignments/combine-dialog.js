@@ -35,10 +35,6 @@ export default class CreditAssignmentsCombineDialog extends CreditAssignmentsCre
 
   @tracked enableOverride = false;
 
-  @action registerElement(element) {
-    this.element = element;
-  }
-
   // eslint-disable-next-line class-methods-use-this
   @action setFocusToOverrideField(input) {
     input.focus();
