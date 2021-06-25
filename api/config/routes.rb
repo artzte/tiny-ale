@@ -39,6 +39,7 @@ Rails.application.routes.draw do
     post '/contracts', to: 'contracts#create'
     put '/contracts/:id', to: 'contracts#update'
     delete '/contracts/:id', to: 'contracts#destroy'
+    patch '/contracts/:id/sync-credits', to: 'contracts#sync_credits'
 
     get '/meetings', to: 'meetings#index'
     get '/meetings/:id', to: 'meetings#show'

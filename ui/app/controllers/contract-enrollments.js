@@ -21,13 +21,11 @@ export default class ContractEnrollmentController extends Controller {
     return !this.user.canEdit(contract);
   }
 
-  @action
-  showAddEnrollment(show) {
+  @action showAddEnrollment(show) {
     this.set('showAddEnrollmentDialog', show);
   }
 
-  @action
-  async addEnrollments(userIds) {
+  @action async addEnrollments(userIds) {
     const { contract, tinyData } = this;
 
     await tinyData.fetch(`/api/contracts/${contract.id}/enrollments`, {
@@ -44,21 +42,31 @@ export default class ContractEnrollmentController extends Controller {
     this.flashMessages.success(`Enrolled ${userIds.length} students`);
   }
 
-  @action
-  async updateEnrollment(enrollment, command) {
-    const response = await this.tinyData.fetch(`/api/enrollments/${enrollment.id}/${command}`, {
+  @action updateEnrollment(enrollment, command) {
+    return this.tinyData.fetch(`/api/enrollments/${enrollment.id}/${command}`, {
       method: 'PATCH',
     });
-
-    this.set('model', { ...this.model, data: replaceModel(this.model.data, response.data) });
   }
 
-  @action
-  async deleteEnrollment(enrollment) {
+  @action async deleteEnrollment(enrollment) {
     await this.tinyData.fetch(`/api/enrollments/${enrollment.id}`, {
       method: 'DELETE',
     });
 
-    this.set('model', { data: this.model.data.filter(e => e.id !== enrollment.id), meta: { count: this.model.meta.count - 1 } });
+    const newModel = {
+      data: this.model.data
+        .filter(e => e.id !== enrollment.id)
+        .map(e => this.tinyData.get('enrollment', e.id)),
+      meta: { count: this.model.meta.count - 1 },
+    };
+
+    this.set('enrollments', newModel.data);
+    this.set('model', newModel);
+  }
+
+  @action async updateModel(contract) {
+    const { tinyData } = this;
+    const enrollments = await tinyData.fetch(`/api/enrollments?contractIds=${contract.id}&include=credit_assignments,credit_assignments.credit,participant`);
+    this.set('enrollments', enrollments.data);
   }
 }

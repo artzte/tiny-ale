@@ -1,10 +1,12 @@
-<footer class="submit-row-inner">
-  <button
-    type="submit"
-    class="button-primary"
-    disabled={{this.disabled}}
-  >
-    {{this.submitCaption}}
-  </button>
-  {{yield}}
+<footer class="submit-row">
+  <div class="submit-row-inner">
+    <button
+      type="submit"
+      class="button-primary"
+      disabled={{this.disabled}}
+    >
+      {{this.submitCaption}}
+    </button>
+    {{yield}}
+  </div>
 </footer>

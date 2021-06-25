@@ -1,9 +1,4 @@
 <h3>Add credit assignment</h3>
-<ErrorFlash
-  @error={{@saveCreditAssignmentError}}
-  @defaultMessage="Failed to save credit assignment"
-/>
-<p>For {{titleize this.creditable.type}}</p>
 <TForm
   @save={{@save}}
   @reportError={{@reportError}}
@@ -11,6 +6,13 @@
   @model={{@model}}
   as |form|
 >
+  {{#if form.showErrors}}
+    <ErrorFlash
+      @error={{@saveCreditAssignmentError}}
+      @defaultMessage="Failed to save credit assignment"
+    />
+  {{/if}}
+
   <fieldset>
     <p>
       <FormInput
@@ -23,7 +25,7 @@
           @name="credit"
           @placeholder="Type a course name or course code to match"
           @value={{form.relationships.credit.id}}
-          @results={{form.creditResult}}
+          @results={{this.creditResult}}
           @onSearch={{fn this.searchCredits}}
           @onChange={{fn form.onChangeRelationship}}
         />
@@ -64,14 +66,11 @@
       </FormInput>
     </p>
   </fieldset>
-  <footer>
-    <button class="button" type="submit">
-      Save
-    </button>
+  <TFormActionsRow>
     <TLink
-      @action={{action "close"}}
+      @action={{fn @close}}
     >
       Cancel
     </TLink>
-  </footer>
+  </TFormActionsRow>
 </TForm>

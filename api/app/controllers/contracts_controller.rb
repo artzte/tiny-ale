@@ -3,7 +3,7 @@
 class ContractsController < ApiBaseController
   PERMITTED_INCLUDES = %w[category facilitator assignments meetings credit_assignments credit_assignments.credit term learning_requirements].freeze
 
-  before_action :get_contract, only: [:destroy, :update]
+  before_action :get_contract, only: [:show, :destroy, :update, :sync_credits]
 
   def index
     order = (params[:order] || '').split(',').map(&:underscore).join(',')
@@ -59,9 +59,7 @@ class ContractsController < ApiBaseController
   end
 
   def show
-    contract = Contract.find params[:id]
-
-    render json: ContractSerializer.new(contract, detail_options)
+    render json: ContractSerializer.new(@contract, detail_options)
   end
 
   def create
@@ -81,6 +79,12 @@ class ContractsController < ApiBaseController
 
   def destroy
 
+  end
+
+  def sync_credits
+    @contract.sync_credits
+
+    render nothing: true, status: 204
   end
 
 protected

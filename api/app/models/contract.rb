@@ -387,6 +387,15 @@ class Contract < ApplicationRecord
     participants
   end
 
+  def sync_credits
+    syncable_enrollments = self.enrollments
+      .where(enrollment_status: [Enrollment::STATUS_ENROLLED, Enrollment::STATUS_PROPOSED])
+
+    syncable_enrollments.each do |e|
+      e.inherit_credits
+    end
+  end
+
   def after_initialize
     # set the helper attributes for a contract on add
     self.timeslots ||= [{}]

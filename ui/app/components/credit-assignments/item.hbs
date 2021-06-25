@@ -1,22 +1,35 @@
-<li data-test-credit-assignment-id={{this.creditAssignment.id}}>
-  <TLink
-    @action={{this.editCreditAssignment}}
-    @disabled={{this.disabled}}
+<li data-test-credit-assignment-id={{@creditAssignment.id}} class="my-1">
+  <button
+    type='button'
+    onclick={{fn @editCreditAssignment}}
+    disabled={{@disabled}}
+    class={{unless @disabled "hover:underline"}}
   >
     {{this.courseName}} ({{this.credit.attributes.courseId}})
     /
     {{this.hours}}
-  </TLink>
-  {{#if this.creditAssignment.attributes.overrideBy}}
+  </button>
+  {{#if @creditAssignment.attributes.overrideBy}}
     <note
-      title="was {{this.creditAssignment.attributes.creditHours}}; by {{this.creditAssignment.attributes.overrideBy}}"
+      title="was {{@creditAssignment.attributes.creditHours}}; by {{@creditAssignment.attributes.overrideBy}}"
     >
       (O)
     </note>
   {{/if}}
+  {{#unless @disabled}}
+    <button
+      type="button"
+      onclick={{fn @deleteCreditAssignment}}
+      class="inline-block ml-2 text-gray-400 hover:text-gray-800"
+    >
+      <FaIcon
+        @icon="times"
+      />
+    </button>
+  {{/unless}}
   {{yield
     (hash
-      creditAssignment=this.creditAssignment
+      creditAssignment=@creditAssignment
       credit=this.credit
     )
   }}

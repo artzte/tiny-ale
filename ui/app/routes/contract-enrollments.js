@@ -11,6 +11,7 @@ export default Route.extend({
     this._super(controller, model);
     controller.setProperties({
       contract: this.modelFor('contract').data,
+      enrollments: model.data,
     });
   },
 });

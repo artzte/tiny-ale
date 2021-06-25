@@ -49,20 +49,21 @@ export default class TTypeAhead extends Component {
     selections.forEach(selection => this.handleChange(0, selection, true));
   }
 
-  @action
-  async doInput(event) {
+  focusInput() {
+    this.input.focus();
+  }
+
+  @action async doInput(event) {
     const searchValue = event.target.value.trim();
     this.searchValue = searchValue;
     this.handleSearch(searchValue);
   }
 
-  @action
-  doSelect(index, selection) {
+  @action doSelect(index, selection) {
     this.handleChange(index, selection);
   }
 
-  @action
-  doKeyDown(event) {
+  @action doKeyDown(event) {
     switch (event.key) {
       case 'ArrowDown':
         if (this.showResults) {
@@ -99,20 +100,20 @@ export default class TTypeAhead extends Component {
     }
   }
 
-  @action
-  doClearSelection(index) {
+  @action doClearSelection(index) {
     const { selections } = this;
 
     const newSelections = selections.slice(0, index).concat(selections.slice(index + 1));
 
-    schedule('afterRender', this, this.input.focus());
+    schedule('afterRender', this, () => {
+      this.focusInput();
+    });
 
     this.selections = newSelections;
     this.notifyChange();
   }
 
-  @action
-  doMouseOverSearchResult(index) {
+  @action doMouseOverSearchResult(index) {
     this.index = index;
   }
 

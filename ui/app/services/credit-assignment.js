@@ -77,4 +77,11 @@ export default Service.extend({
       data: creditAssignmentModel,
     });
   },
+
+  deleteCreditAssignment(creditAssignment) {
+    const { tinyData } = this;
+    return tinyData.fetch(`/api/credit-assignments/${creditAssignment.id}`, {
+      method: 'DELETE',
+    });
+  },
 });

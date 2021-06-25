@@ -2,7 +2,7 @@
   ...attributes
   onchange={{fn this.onChange}}
 >
-  {{#if hasBlock}}
+  {{#if (has-block)}}
     {{yield
       (hash
         option=(component "t-select-option" select=this)

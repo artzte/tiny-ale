@@ -1,6 +1,20 @@
-<h3>Default credits</h3>
-<CreditAssignments
-  @creditable={{this.contract}}
-  @creditAssignments={{this.creditAssignments}}
-  @disabled={{this.disabled}}
-/>
+<contract-credit-assignments class="w-full">
+  <h3>Default credits</h3>
+
+  <CreditAssignments
+    @creditable={{@contract}}
+    @creditAssignments={{this.creditAssignments}}
+    @disabled={{@disabled}}
+  />
+
+  <p>
+    <button
+      class="button"
+      type="button"
+      disabled={{this.syncIsDisabled}}
+      onclick={{fn this.applyDefaults}}
+    >
+      Apply to all active enrollments
+    </button>
+  </p>
+</contract-credit-assignments> 
