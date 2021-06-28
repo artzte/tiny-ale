@@ -19,7 +19,11 @@
       <NumberOr @number={{this.roll.tardy}} />
     </td>
     {{#each this.meetings as |meeting|}}
-      <ContractAttendanceList::Column @meeting={{meeting}} @row={{this.row}} @roll={{this.roll}} />
+      <ContractAttendanceList::Column
+        @meeting={{meeting}}
+        @row={{this.row}}
+        @roll={{this.roll}}
+      />
     {{/each}}
   </tr>
   <tr class="notes-row {{this.loadingNotes}}">
