@@ -3,6 +3,7 @@
  data-test-is-checked={{if this.isChecked "checked"}}
  onkeydown={{action "onKeyDown" preventDefault=false}}
  onclick={{action "onClick"}}
+ class="cursor-pointer p-4"
 >
   {{#if this.isChecked}}
     <FaIcon @icon="check" />

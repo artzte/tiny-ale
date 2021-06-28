@@ -35,11 +35,11 @@ module('Integration | Component | form-input', hooks => {
 
     assert.ok(find('label'), 'label wrapper rendered');
     assert.ok(find('label [data-test-label]'), 'label text appeared');
-    assert.notOk(find('.error-message'), 'no error message rendered b/c showErrors is false');
+    assert.notOk(find('[data-test-error-message]'), 'no error message rendered b/c showErrors is false');
 
     this.set('showErrors', true);
 
-    assert.ok(find('.error-message'), 'with showErrors positive, error message should render');
+    assert.ok(find('[data-test-error-message]'), 'with showErrors positive, error message should render');
   });
 
   test('it renders w/o label', async assert => {
@@ -54,6 +54,6 @@ module('Integration | Component | form-input', hooks => {
     `);
 
     assert.ok(find('label'), 'label wrapper rendered');
-    assert.notOk(find('label span.label-text'), 'label text appeared');
+    assert.notOk(find('label span'), 'label text element did not appear');
   });
 });
