@@ -1,11 +1,11 @@
-// GET /api/admin/users/2
+// GET /api/admin/users/47
 export default {
   data: {
-    id: '2',
+    id: '47',
     type: 'user',
     attributes: {
-      firstName: 'Sergio',
-      lastName: 'Morissette',
+      firstName: 'Marin',
+      lastName: 'Hodkiewicz',
       nickname: null,
       dateActive: '2012-09-01',
       dateInactive: null,
@@ -13,7 +13,7 @@ export default {
       districtGrade: 12,
       status: 'active',
       role: 'staff',
-      email: 'caitlin.rath@weissnat.net',
+      email: 'thuy.mcdermott@hirthe.io',
     },
     relationships: {
     },

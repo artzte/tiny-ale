@@ -140,11 +140,15 @@ class CreditAssignmentsController < ApiBaseController
 
     children = credit_assignment.child_credit_assignments
 
-    unless !children.empty? && !credit_assignment.transmitted?
+    if credit_assignment.transmitted?
       raise TinyException, 'Not permitted to delete this credit assignment'
     end
 
-    credit_assignment.uncombine
+    if children.present?
+      credit_assignment.uncombine
+    else
+      credit_assignment.destroy
+    end
 
     render nothing: true, status: 204
   end

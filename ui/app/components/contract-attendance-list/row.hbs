@@ -1,30 +1,34 @@
-<tbody data-test-contract-attendance-list-row data-test-enrollment-id={{enrollment.id}}>
+<tbody data-test-contract-attendance-list-row data-test-enrollment-id={{this.enrollment.id}}>
   <tr>
     <td>
-      {{full-name student}}
+      {{full-name this.student}}
     </td>
     <td class="center">
-      <NumberOr @number={{roll.present}} />
-      {{#if roll.tardy}}
-        ({{roll.tardy}}T)
+      <NumberOr @number={{this.roll.present}} />
+      {{#if this.roll.tardy}}
+        ({{this.roll.tardy}}T)
       {{/if}}
     </td>
     <td class="center">
-      <NumberOr @number={{roll.absent}} />
-      {{#if roll.excused}}
-        ({{roll.excused}}E)
+      <NumberOr @number={{this.roll.absent}} />
+      {{#if this.roll.excused}}
+        ({{this.roll.excused}}E)
       {{/if}}
     </td>
     <td class="center">
-      <NumberOr @number={{roll.tardy}} />
+      <NumberOr @number={{this.roll.tardy}} />
     </td>
-    {{#each meetings as |meeting|}}
-      <ContractAttendanceList::Column @meeting={{meeting}} @row={{row}} @roll={{roll}} />
+    {{#each this.meetings as |meeting|}}
+      <ContractAttendanceList::Column
+        @meeting={{meeting}}
+        @row={{this.row}}
+        @roll={{this.roll}}
+      />
     {{/each}}
   </tr>
-  <tr class="notes-row {{loadingNotes}}">
-    <td colspan={{columnsCount}}>
-      <NotesList @notes={{notes}} @expanded={{notesExpanded}} />
+  <tr class="notes-row {{this.loadingNotes}}">
+    <td colspan={{this.columnsCount}}>
+      <NotesList @notes={{this.notes}} @expanded={{this.notesExpanded}} />
     </td>
   </tr>
 </tbody>

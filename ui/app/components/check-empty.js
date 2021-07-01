@@ -1,6 +1,6 @@
 import Component from '@glimmer/component';
 
-export default class ContractEnrollmentsController extends Component {
+export default class CheckEmptyComponent extends Component {
   get resultsCount() {
     const { count, result } = this.args;
 

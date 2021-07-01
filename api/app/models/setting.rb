@@ -14,8 +14,6 @@ class Setting < ApplicationRecord
     setting = Setting.find_by_name('periods')
     return [{}] if setting.nil?
 
-    # what the hell is this?
-    ClassPeriod.new
     Marshal.load(setting.value)
   end
 

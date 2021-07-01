@@ -1,18 +1,18 @@
-{{#check-empty
-  count=model.meta.count
-  noResultsMessage="No users were found with these filters"
-}}
+<CheckEmpty
+  @count={{this.model.meta.count}}
+  @noResultsMessage="No users were found with these filters"
+>
   <Pagination
     @totalCount={{this.model.meta.count}}
     @offset={{this.offset}}
     @limit={{this.limit}}
     @singularName="user"
   />
-  <UsersList @users={{users}} @logins={{logins}} />
+  <UsersList @users={{this.users}} @logins={{this.logins}} />
   <Pagination
     @totalCount={{this.model.meta.count}}
     @offset={{this.offset}}
     @limit={{this.limit}}
     @singularName="user"
   />
-{{/check-empty}}
+</CheckEmpty>

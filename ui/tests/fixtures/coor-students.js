@@ -1,41 +1,17 @@
-// GET /api/students?coordinatorIds=3&status=reportable&order=lastName,firstName
+// GET /api/students?coordinatorIds=48&status=reportable&order=lastName,firstName
 export default {
   data: [
     {
-      id: '7',
+      id: '53',
       type: 'user',
       attributes: {
-        firstName: 'Yesenia',
-        lastName: 'Jakubowski',
+        firstName: 'Glennie',
+        lastName: 'Gutkowski',
         nickname: null,
-        name: 'Yesenia Jakubowski',
-        dateActive: '2018-08-01',
-        dateInactive: null,
-        districtId: '990519298',
-        districtGrade: 10,
-        status: 'active',
-        role: 'student',
-      },
-      relationships: {
-        coordinator: {
-          data: {
-            id: '3',
-            type: 'user',
-          },
-        },
-      },
-    },
-    {
-      id: '8',
-      type: 'user',
-      attributes: {
-        firstName: 'Palmer',
-        lastName: 'Willms',
-        nickname: null,
-        name: 'Palmer Willms',
+        name: 'Glennie Gutkowski',
         dateActive: '2018-08-01',
         dateInactive: '2019-10-01',
-        districtId: '4579851298',
+        districtId: '5594787411',
         districtGrade: 12,
         status: 'inactive',
         role: 'student',
@@ -43,7 +19,31 @@ export default {
       relationships: {
         coordinator: {
           data: {
-            id: '3',
+            id: '48',
+            type: 'user',
+          },
+        },
+      },
+    },
+    {
+      id: '52',
+      type: 'user',
+      attributes: {
+        firstName: 'Brittny',
+        lastName: 'Ritchie',
+        nickname: null,
+        name: 'Brittny Ritchie',
+        dateActive: '2018-08-01',
+        dateInactive: null,
+        districtId: '9669838669',
+        districtGrade: 10,
+        status: 'active',
+        role: 'student',
+      },
+      relationships: {
+        coordinator: {
+          data: {
+            id: '48',
             type: 'user',
           },
         },

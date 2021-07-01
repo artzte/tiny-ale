@@ -1,10 +1,10 @@
 <input
-  type={{fieldType}}
-  value={{todayString}}
-  name={{name}}
+  type={{this.fieldType}}
+  value={{this.todayString}}
+  name={{this.name}}
   onchange={{action "inputChanged"}}
 >
-{{#if showClear}}
+{{#if this.showClear}}
   <a href="#" class="block flex items-center justify-center no-underline" data-test-clear {{action "clear"}}>
     <FaIcon @icon="times-circle" class="block ml-2" />
   </a>

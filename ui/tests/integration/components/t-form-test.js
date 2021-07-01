@@ -23,6 +23,16 @@ module('Integration | Component | t-form', hooks => {
           name: 'Sam',
           age: null,
           booOrFalse: true,
+          array: [{
+            start: 1,
+            end: 2,
+          }, {
+            start: 3,
+            end: 4,
+          }, {
+            start: 5,
+            end: 6,
+          }],
         },
       },
       validator: new Validator({
@@ -182,5 +192,57 @@ module('Integration | Component | t-form', hooks => {
     assert.equal(request.outbound.attributes.name, this.model.attributes.name, 'name is present outbound');
     assert.equal(request.outbound.attributes.age, '55', 'updated age is present outbound');
     assert.equal(request.outbound.relationships.club.data.id, '1', 'club relationship was updated as expected');
+  });
+
+  test('it handles array attributes', async function (assert) {
+    this.setProperties({
+      model: {
+        attributes: {
+          array: [{
+            start: 1,
+            end: 2,
+          }, {
+            start: 3,
+            end: 4,
+          }, {
+            start: 5,
+            end: 6,
+          }],
+        },
+      },
+      save(outbound) {
+        requests.push({ type: 'submit', outbound });
+        return resolve({ data: outbound });
+      },
+    });
+
+    await render(hbs`
+      <TForm
+        @model={{this.model}}
+        @save={{fn this.save}}
+        @reportError={{this.reportError}}
+        as |form|
+      >
+        <ul data-test-starts>
+          {{#each form.pojo.array as |item i|}}
+            <li>
+              <input
+                type="text"
+                name={{join "array[" i "].start"}}
+                value={{item.start}}
+                onchange={{fn form.onChange}}
+              />
+            </li>
+          {{/each}}
+        </ul>
+        <button type="submit">Save</button>
+      </TForm>
+    `);
+
+    await fillIn('[data-test-starts] li:nth-child(2) input', 999);
+
+    await click('button');
+
+    assert.equal(requests[0].outbound.attributes.array[1].start, '999', 'expected value was updated in array');
   });
 });

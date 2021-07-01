@@ -1,13 +1,13 @@
 <tr
-  data-test-credit-id={{creditAssignment.id}}
+  data-test-credit-id={{this.creditAssignment.id}}
   data-test-credit-item
 >
   <td class="align-center">
     <input
       type="checkbox"
-      checked={{selected}}
+      checked={{this.selected}}
       onchange={{action "selectCredit"}}
-      disabled={{selectionDisabled}}
+      disabled={{this.selectionDisabled}}
     >
   </td>
   <td>
@@ -15,36 +15,36 @@
       class="no-underline-not-working"
       @action={{action "selectCredit"}}
     >
-      {{courseName}}
+      {{this.courseName}}
     </TLink>
-    {{#if hasChildren}}
+    {{#if this.hasChildren}}
       <CreditAssignments
-        @creditAssignments={{childCreditAssignments}}
+        @creditAssignments={{this.childCreditAssignments}}
       />
     {{/if}}
     <NotesList
-      @notes={{notes}}
-      @notable={{creditAssignment}}
+      @notes={{this.notes}}
+      @notable={{this.creditAssignment}}
       @expanded={{true}}
     />
   </td>
   <td>
-    {{term.attributes.name}}
+    {{this.term.attributes.name}}
   </td>
   <td class="text-right">
-    {{creditHours}}
+    {{this.creditHours}}
   </td>
   <td class="text-right">
-    <DateTime @date={{creditAssignment.attributes.enrollmentFinalizedOn}} @format="M/D/YYYY" />
+    <DateTime @date={{this.creditAssignment.attributes.enrollmentFinalizedOn}} @format="M/D/YYYY" />
   </td>
   <td
     class="text-right"
-    title={{creditAssignment.attributes.districtFinalizeApprovedBy}}
+    title={{this.creditAssignment.attributes.districtFinalizeApprovedBy}}
   >
-    <DateTime @date={{creditAssignment.attributes.districtFinalizeApprovedOn}} @format="M/D/YYYY" />
+    <DateTime @date={{this.creditAssignment.attributes.districtFinalizeApprovedOn}} @format="M/D/YYYY" />
   </td>
   <td>
-    {{#if showSplit}}
+    {{#if this.showSplit}}
       <button
         data-test-split-link
         class="button"
@@ -55,14 +55,14 @@
         Split
       </button>
     {{/if}}
-    {{#if showApproveForTransmittal}}
+    {{#if this.showApproveForTransmittal}}
       <button
         data-test-approve-link
         class="button"
         type="button"
         {{action "approveCredit"}}
       >
-        {{#if isApproved}}
+        {{#if this.isApproved}}
           <FaIcon @icon="times" data-test-district-unapprove class="text-red-700 mr-2" />
           Un-approve
         {{else}}

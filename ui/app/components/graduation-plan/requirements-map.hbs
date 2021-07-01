@@ -1,5 +1,5 @@
 <ul class="list-reset mr-4">
-  {{#each filteredRequirements as |requirement|}}
-    <GraduationPlan::RequirementsMapItem @requirement={{requirement}} @requirementType={{requirementType}} @mappingsHash={{mappingsHash}} @draggedCreditAssignment={{draggedCreditAssignment}} @editMapping={{editMapping}} @addMapping={{addMapping}} @removeMapping={{removeMapping}} />
+  {{#each this.filteredRequirements as |requirement|}}
+    <GraduationPlan::RequirementsMapItem @requirement={{requirement}} @requirementType={{this.requirementType}} @mappingsHash={{this.mappingsHash}} @draggedCreditAssignment={{this.draggedCreditAssignment}} @editMapping={{this.editMapping}} @addMapping={{this.addMapping}} @removeMapping={{this.removeMapping}} />
   {{/each}}
 </ul>

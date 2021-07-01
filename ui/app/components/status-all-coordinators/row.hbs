@@ -1,8 +1,8 @@
 <td>
-  <LinkTo @route="status-by-coordinator" @model={{coordinator.id}}>
-    {{full-name coordinator}}
+  <LinkTo @route="status-by-coordinator" @model={{this.coordinator.id}}>
+    {{full-name this.coordinator}}
   </LinkTo>
 </td>
-{{#each term.attributes.months as |month|}}
-  <StatusAllCoordinators::Column @coordinatorsHash={{coordinatorsHash}} @coordinator={{coordinator}} @month={{month}} @term={{term}} />
+{{#each this.term.attributes.months as |month|}}
+  <StatusAllCoordinators::Column @coordinatorsHash={{this.coordinatorsHash}} @coordinator={{this.coordinator}} @month={{month}} @term={{this.term}} />
 {{/each}}

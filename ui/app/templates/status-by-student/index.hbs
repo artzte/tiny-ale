@@ -4,10 +4,10 @@
   @result={{this.model}}
 >
   <StatusByStudentEnrollments
-    @student={{student}}
-    @enrollments={{enrollments}}
-    @enrollmentStatuses={{enrollmentStatuses}}
-    @term={{term}}
+    @student={{this.student}}
+    @enrollments={{this.enrollments}}
+    @enrollmentStatuses={{this.enrollmentStatuses}}
+    @term={{this.term}}
     @getNotes={{route-action "getNotes"}}
   />  
 </CheckEmpty>

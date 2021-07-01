@@ -1,10 +1,10 @@
 <Pagination
-  @totalCount={{coordinators.length}}
+  @totalCount={{this.coordinators.length}}
   @singularName="coordinator"
 />
 <StatusAllCoordinators
-  @coordinators={{coordinators}}
-  @students={{students}}
-  @statuses={{statuses}}
-  @term={{term}}
+  @coordinators={{this.coordinators}}
+  @students={{this.students}}
+  @statuses={{this.statuses}}
+  @term={{this.term}}
 />

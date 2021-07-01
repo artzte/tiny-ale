@@ -1,10 +1,10 @@
-{{#check-empty
-  count=model.meta.count
-  noResultsMessage="No terms were found matching these filters"
-}}
+<CheckEmpty
+  @count={{this.model.meta.count}}
+  @noResultsMessage="No terms were found matching these filters"
+>
   <Pagination
     @totalCount={{this.model.meta.count}}
     @singularName="term"
   />
-  <AdminTermsList @terms={{terms}} />
-{{/check-empty}}
+  <AdminTermsList @terms={{this.terms}} />
+</CheckEmpty>

@@ -180,6 +180,24 @@ export default class TForm extends Component {
     });
   }
 
+  @action doListDelete(name, index) {
+    const { pojo } = this;
+    const list = pojo[name];
+    this.pojo = {
+      ...pojo,
+      [name]: list.replace(index, 1),
+    };
+  }
+
+  @action doListCreate(name) {
+    const { pojo } = this;
+    const list = pojo[name];
+    this.pojo = {
+      ...pojo,
+      [name]: list.concat([{}]),
+    };
+  }
+
   updatePojo(updates, updatePath = 'pojo') {
     const pojo = this[updatePath];
 
@@ -196,9 +214,21 @@ export default class TForm extends Component {
   }
 
   handleChange(name, value, updatePath) {
-    const updates = {
-      [name]: value,
-    };
+    const parseNameForArrayReference = /^(\w+)\[(\d+)]\.(\w+)$/;
+    const arrayReferenceMatch = parseNameForArrayReference.exec(name);
+    let updates;
+    let index;
+    let leafName;
+
+    if (arrayReferenceMatch) {
+      [, name, index, leafName] = arrayReferenceMatch;
+      const arrayValue = this[updatePath][name];
+      const leafValue = arrayValue[index];
+
+      updates = { [name]: arrayValue.replace(index, 1, [{ ...leafValue, [leafName]: value }]) };
+    } else {
+      updates = { [name]: value };
+    }
 
     this.updatePojo(updates, updatePath);
     this.updatePojo(updates, `updates-${updatePath}`);

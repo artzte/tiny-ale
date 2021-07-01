@@ -32,6 +32,7 @@ export default Route.extend({
     tinyData.setUser(mergedProfile);
     tinyData.setYears(schoolYears);
     tinyData.setReportingBaseMonth(reportingBaseMonthSetting.attributes.value);
+    tinyData.setPeriods(settings.data.find(setting => setting.attributes.name === 'periods'));
 
     return results;
   },

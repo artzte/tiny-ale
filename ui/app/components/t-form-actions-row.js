@@ -1,7 +1,5 @@
-import Component from '@ember/component';
+import Component from '@glimmer/component';
 
-export default Component.extend({
-  tagName: 'footer',
-  classNames: ['submit-row'],
-  submitCaption: 'Save',
-});
+export default class TFormActionsRowComponent extends Component {
+  submitCaption = 'Save'
+}

@@ -2,7 +2,29 @@
 export default {
   data: [
     {
-      id: '6',
+      id: '41',
+      type: 'term',
+      attributes: {
+        name: 'Centralized regional model',
+        schoolYear: 2019,
+        creditDate: '2020-01-31',
+        months: [
+          '2019-09-01',
+          '2019-10-01',
+          '2019-11-01',
+          '2019-12-01',
+          '2020-01-01',
+        ],
+        status: 'active',
+      },
+      meta: {
+        contractsCount: 2,
+        enrollmentsCount: 6,
+        enrollmentsOpenCount: 6,
+      },
+    },
+    {
+      id: '44',
       type: 'term',
       attributes: {
         name: 'COOR Current',
@@ -29,7 +51,7 @@ export default {
       },
     },
     {
-      id: '5',
+      id: '43',
       type: 'term',
       attributes: {
         name: 'COOR Last',
@@ -56,54 +78,10 @@ export default {
       },
     },
     {
-      id: '1',
+      id: '40',
       type: 'term',
       attributes: {
-        name: 'Enhanced composite framework',
-        schoolYear: 2018,
-        creditDate: '2019-01-31',
-        months: [
-          '2018-09-01',
-          '2018-10-01',
-          '2018-11-01',
-          '2018-12-01',
-          '2019-01-01',
-        ],
-        status: 'active',
-      },
-      meta: {
-        contractsCount: 1,
-        enrollmentsCount: 2,
-        enrollmentsOpenCount: 0,
-      },
-    },
-    {
-      id: '3',
-      type: 'term',
-      attributes: {
-        name: 'Grass-roots 24/7 archive',
-        schoolYear: 2019,
-        creditDate: '2020-01-31',
-        months: [
-          '2019-09-01',
-          '2019-10-01',
-          '2019-11-01',
-          '2019-12-01',
-          '2020-01-01',
-        ],
-        status: 'active',
-      },
-      meta: {
-        contractsCount: 2,
-        enrollmentsCount: 6,
-        enrollmentsOpenCount: 6,
-      },
-    },
-    {
-      id: '2',
-      type: 'term',
-      attributes: {
-        name: 'User-friendly contextually-based core',
+        name: 'Front-line intangible algorithm',
         schoolYear: 2018,
         creditDate: '2019-06-15',
         months: [
@@ -122,10 +100,10 @@ export default {
       },
     },
     {
-      id: '4',
+      id: '42',
       type: 'term',
       attributes: {
-        name: 'Virtual high-level process improvement',
+        name: 'Switchable high-level protocol',
         schoolYear: 2019,
         creditDate: '2020-06-15',
         months: [
@@ -140,6 +118,28 @@ export default {
       meta: {
         contractsCount: 0,
         enrollmentsCount: 0,
+        enrollmentsOpenCount: 0,
+      },
+    },
+    {
+      id: '39',
+      type: 'term',
+      attributes: {
+        name: 'Upgradable non-volatile website',
+        schoolYear: 2018,
+        creditDate: '2019-01-31',
+        months: [
+          '2018-09-01',
+          '2018-10-01',
+          '2018-11-01',
+          '2018-12-01',
+          '2019-01-01',
+        ],
+        status: 'active',
+      },
+      meta: {
+        contractsCount: 1,
+        enrollmentsCount: 2,
         enrollmentsOpenCount: 0,
       },
     },

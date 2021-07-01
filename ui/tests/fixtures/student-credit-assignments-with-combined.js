@@ -1,15 +1,15 @@
-// GET /api/credit-assignments?studentIds=7&includeFulfilledAttributes=true&include=credit,contractTerm,contractFacilitator,contract
+// GET /api/credit-assignments?studentIds=52&includeFulfilledAttributes=true&include=credit,contractTerm,contractFacilitator,contract
 export default {
   data: [
     {
-      id: '13',
+      id: '58',
       type: 'creditAssignment',
       attributes: {
         creditHours: 0.25,
         enrollmentFinalizedOn: '2019-11-15',
-        contractName: 'Caries aegre ars dolore vestigium.',
-        contractFacilitatorName: 'Sergio Morissette',
-        districtFinalizeApprovedBy: 'Runte, Neil',
+        contractName: 'Colloco concido terga trans compello.',
+        contractFacilitatorName: 'Marin Hodkiewicz',
+        districtFinalizeApprovedBy: 'Moen, Janene',
         districtFinalizeApprovedOn: '2019-11-15',
         districtTransmittedOn: null,
         overrideHours: null,
@@ -18,7 +18,7 @@ export default {
       relationships: {
         credit: {
           data: {
-            id: '1',
+            id: '19',
             type: 'credit',
           },
         },
@@ -32,25 +32,25 @@ export default {
         },
         contractTerm: {
           data: {
-            id: '1',
+            id: '39',
             type: 'term',
           },
         },
         contractFacilitator: {
           data: {
-            id: '2',
+            id: '47',
             type: 'user',
           },
         },
         contract: {
           data: {
-            id: '1',
+            id: '7',
             type: 'contract',
           },
         },
         user: {
           data: {
-            id: '7',
+            id: '52',
             type: 'user',
           },
         },
@@ -62,7 +62,7 @@ export default {
         },
         enrollment: {
           data: {
-            id: '7',
+            id: '19',
             type: 'enrollment',
           },
         },
@@ -73,21 +73,21 @@ export default {
         },
         parentCreditAssignment: {
           data: {
-            id: '31',
+            id: '76',
             type: 'creditAssignment',
           },
         },
       },
     },
     {
-      id: '14',
+      id: '59',
       type: 'creditAssignment',
       attributes: {
         creditHours: 0.5,
         enrollmentFinalizedOn: '2019-11-15',
-        contractName: 'Caries aegre ars dolore vestigium.',
-        contractFacilitatorName: 'Sergio Morissette',
-        districtFinalizeApprovedBy: 'Runte, Neil',
+        contractName: 'Colloco concido terga trans compello.',
+        contractFacilitatorName: 'Marin Hodkiewicz',
+        districtFinalizeApprovedBy: 'Moen, Janene',
         districtFinalizeApprovedOn: '2019-11-15',
         districtTransmittedOn: null,
         overrideHours: null,
@@ -96,7 +96,7 @@ export default {
       relationships: {
         credit: {
           data: {
-            id: '2',
+            id: '20',
             type: 'credit',
           },
         },
@@ -110,25 +110,25 @@ export default {
         },
         contractTerm: {
           data: {
-            id: '1',
+            id: '39',
             type: 'term',
           },
         },
         contractFacilitator: {
           data: {
-            id: '2',
+            id: '47',
             type: 'user',
           },
         },
         contract: {
           data: {
-            id: '1',
+            id: '7',
             type: 'contract',
           },
         },
         user: {
           data: {
-            id: '7',
+            id: '52',
             type: 'user',
           },
         },
@@ -137,7 +137,7 @@ export default {
         },
         enrollment: {
           data: {
-            id: '7',
+            id: '19',
             type: 'enrollment',
           },
         },
@@ -148,20 +148,20 @@ export default {
         },
         parentCreditAssignment: {
           data: {
-            id: '31',
+            id: '76',
             type: 'creditAssignment',
           },
         },
       },
     },
     {
-      id: '15',
+      id: '60',
       type: 'creditAssignment',
       attributes: {
         creditHours: 0.5,
         enrollmentFinalizedOn: '2019-11-15',
-        contractName: 'Caries aegre ars dolore vestigium.',
-        contractFacilitatorName: 'Sergio Morissette',
+        contractName: 'Colloco concido terga trans compello.',
+        contractFacilitatorName: 'Marin Hodkiewicz',
         districtFinalizeApprovedBy: null,
         districtFinalizeApprovedOn: null,
         districtTransmittedOn: null,
@@ -171,7 +171,7 @@ export default {
       relationships: {
         credit: {
           data: {
-            id: '2',
+            id: '20',
             type: 'credit',
           },
         },
@@ -185,25 +185,25 @@ export default {
         },
         contractTerm: {
           data: {
-            id: '1',
+            id: '39',
             type: 'term',
           },
         },
         contractFacilitator: {
           data: {
-            id: '2',
+            id: '47',
             type: 'user',
           },
         },
         contract: {
           data: {
-            id: '1',
+            id: '7',
             type: 'contract',
           },
         },
         user: {
           data: {
-            id: '7',
+            id: '52',
             type: 'user',
           },
         },
@@ -212,7 +212,7 @@ export default {
         },
         enrollment: {
           data: {
-            id: '7',
+            id: '19',
             type: 'enrollment',
           },
         },
@@ -227,14 +227,14 @@ export default {
       },
     },
     {
-      id: '19',
+      id: '64',
       type: 'creditAssignment',
       attributes: {
         creditHours: 0.25,
         enrollmentFinalizedOn: '2019-11-15',
-        contractName: 'Theologus canonicus architecto venustas cotidie.',
-        contractFacilitatorName: 'Paige Raynor',
-        districtFinalizeApprovedBy: 'Runte, Neil',
+        contractName: 'Urbanus possimus valetudo studio veritatis.',
+        contractFacilitatorName: "Harris O'Connell",
+        districtFinalizeApprovedBy: 'Moen, Janene',
         districtFinalizeApprovedOn: '2019-11-15',
         districtTransmittedOn: null,
         overrideHours: null,
@@ -243,7 +243,7 @@ export default {
       relationships: {
         credit: {
           data: {
-            id: '1',
+            id: '19',
             type: 'credit',
           },
         },
@@ -257,25 +257,25 @@ export default {
         },
         contractTerm: {
           data: {
-            id: '2',
+            id: '40',
             type: 'term',
           },
         },
         contractFacilitator: {
           data: {
-            id: '3',
+            id: '48',
             type: 'user',
           },
         },
         contract: {
           data: {
-            id: '2',
+            id: '8',
             type: 'contract',
           },
         },
         user: {
           data: {
-            id: '7',
+            id: '52',
             type: 'user',
           },
         },
@@ -287,7 +287,7 @@ export default {
         },
         enrollment: {
           data: {
-            id: '9',
+            id: '21',
             type: 'enrollment',
           },
         },
@@ -302,14 +302,14 @@ export default {
       },
     },
     {
-      id: '20',
+      id: '65',
       type: 'creditAssignment',
       attributes: {
         creditHours: 0.5,
         enrollmentFinalizedOn: '2019-11-15',
-        contractName: 'Theologus canonicus architecto venustas cotidie.',
-        contractFacilitatorName: 'Paige Raynor',
-        districtFinalizeApprovedBy: 'Runte, Neil',
+        contractName: 'Urbanus possimus valetudo studio veritatis.',
+        contractFacilitatorName: "Harris O'Connell",
+        districtFinalizeApprovedBy: 'Moen, Janene',
         districtFinalizeApprovedOn: '2019-11-15',
         districtTransmittedOn: null,
         overrideHours: null,
@@ -318,7 +318,7 @@ export default {
       relationships: {
         credit: {
           data: {
-            id: '2',
+            id: '20',
             type: 'credit',
           },
         },
@@ -332,25 +332,25 @@ export default {
         },
         contractTerm: {
           data: {
-            id: '2',
+            id: '40',
             type: 'term',
           },
         },
         contractFacilitator: {
           data: {
-            id: '3',
+            id: '48',
             type: 'user',
           },
         },
         contract: {
           data: {
-            id: '2',
+            id: '8',
             type: 'contract',
           },
         },
         user: {
           data: {
-            id: '7',
+            id: '52',
             type: 'user',
           },
         },
@@ -359,7 +359,7 @@ export default {
         },
         enrollment: {
           data: {
-            id: '9',
+            id: '21',
             type: 'enrollment',
           },
         },
@@ -374,13 +374,13 @@ export default {
       },
     },
     {
-      id: '21',
+      id: '66',
       type: 'creditAssignment',
       attributes: {
         creditHours: 0.5,
         enrollmentFinalizedOn: '2019-11-15',
-        contractName: 'Theologus canonicus architecto venustas cotidie.',
-        contractFacilitatorName: 'Paige Raynor',
+        contractName: 'Urbanus possimus valetudo studio veritatis.',
+        contractFacilitatorName: "Harris O'Connell",
         districtFinalizeApprovedBy: null,
         districtFinalizeApprovedOn: null,
         districtTransmittedOn: null,
@@ -390,7 +390,7 @@ export default {
       relationships: {
         credit: {
           data: {
-            id: '2',
+            id: '20',
             type: 'credit',
           },
         },
@@ -404,25 +404,25 @@ export default {
         },
         contractTerm: {
           data: {
-            id: '2',
+            id: '40',
             type: 'term',
           },
         },
         contractFacilitator: {
           data: {
-            id: '3',
+            id: '48',
             type: 'user',
           },
         },
         contract: {
           data: {
-            id: '2',
+            id: '8',
             type: 'contract',
           },
         },
         user: {
           data: {
-            id: '7',
+            id: '52',
             type: 'user',
           },
         },
@@ -431,7 +431,7 @@ export default {
         },
         enrollment: {
           data: {
-            id: '9',
+            id: '21',
             type: 'enrollment',
           },
         },
@@ -446,14 +446,14 @@ export default {
       },
     },
     {
-      id: '25',
+      id: '70',
       type: 'creditAssignment',
       attributes: {
         creditHours: 0.25,
         enrollmentFinalizedOn: '2019-11-15',
-        contractName: 'Ara correptius venio temperantia ultra.',
-        contractFacilitatorName: 'Paige Raynor',
-        districtFinalizeApprovedBy: 'Runte, Neil',
+        contractName: 'Thema error aeneus cavus vilis.',
+        contractFacilitatorName: "Harris O'Connell",
+        districtFinalizeApprovedBy: 'Moen, Janene',
         districtFinalizeApprovedOn: '2019-11-15',
         districtTransmittedOn: null,
         overrideHours: null,
@@ -462,7 +462,7 @@ export default {
       relationships: {
         credit: {
           data: {
-            id: '1',
+            id: '19',
             type: 'credit',
           },
         },
@@ -479,25 +479,25 @@ export default {
         },
         contractTerm: {
           data: {
-            id: '2',
+            id: '40',
             type: 'term',
           },
         },
         contractFacilitator: {
           data: {
-            id: '3',
+            id: '48',
             type: 'user',
           },
         },
         contract: {
           data: {
-            id: '3',
+            id: '9',
             type: 'contract',
           },
         },
         user: {
           data: {
-            id: '7',
+            id: '52',
             type: 'user',
           },
         },
@@ -509,7 +509,7 @@ export default {
         },
         enrollment: {
           data: {
-            id: '11',
+            id: '23',
             type: 'enrollment',
           },
         },
@@ -524,14 +524,14 @@ export default {
       },
     },
     {
-      id: '26',
+      id: '71',
       type: 'creditAssignment',
       attributes: {
         creditHours: 0.5,
         enrollmentFinalizedOn: '2019-11-15',
-        contractName: 'Ara correptius venio temperantia ultra.',
-        contractFacilitatorName: 'Paige Raynor',
-        districtFinalizeApprovedBy: 'Runte, Neil',
+        contractName: 'Thema error aeneus cavus vilis.',
+        contractFacilitatorName: "Harris O'Connell",
+        districtFinalizeApprovedBy: 'Moen, Janene',
         districtFinalizeApprovedOn: '2019-11-15',
         districtTransmittedOn: null,
         overrideHours: null,
@@ -540,7 +540,7 @@ export default {
       relationships: {
         credit: {
           data: {
-            id: '2',
+            id: '20',
             type: 'credit',
           },
         },
@@ -557,25 +557,25 @@ export default {
         },
         contractTerm: {
           data: {
-            id: '2',
+            id: '40',
             type: 'term',
           },
         },
         contractFacilitator: {
           data: {
-            id: '3',
+            id: '48',
             type: 'user',
           },
         },
         contract: {
           data: {
-            id: '3',
+            id: '9',
             type: 'contract',
           },
         },
         user: {
           data: {
-            id: '7',
+            id: '52',
             type: 'user',
           },
         },
@@ -584,7 +584,7 @@ export default {
         },
         enrollment: {
           data: {
-            id: '11',
+            id: '23',
             type: 'enrollment',
           },
         },
@@ -599,13 +599,13 @@ export default {
       },
     },
     {
-      id: '27',
+      id: '72',
       type: 'creditAssignment',
       attributes: {
         creditHours: 0.5,
         enrollmentFinalizedOn: '2019-11-15',
-        contractName: 'Ara correptius venio temperantia ultra.',
-        contractFacilitatorName: 'Paige Raynor',
+        contractName: 'Thema error aeneus cavus vilis.',
+        contractFacilitatorName: "Harris O'Connell",
         districtFinalizeApprovedBy: null,
         districtFinalizeApprovedOn: null,
         districtTransmittedOn: null,
@@ -615,7 +615,7 @@ export default {
       relationships: {
         credit: {
           data: {
-            id: '2',
+            id: '20',
             type: 'credit',
           },
         },
@@ -632,25 +632,25 @@ export default {
         },
         contractTerm: {
           data: {
-            id: '2',
+            id: '40',
             type: 'term',
           },
         },
         contractFacilitator: {
           data: {
-            id: '3',
+            id: '48',
             type: 'user',
           },
         },
         contract: {
           data: {
-            id: '3',
+            id: '9',
             type: 'contract',
           },
         },
         user: {
           data: {
-            id: '7',
+            id: '52',
             type: 'user',
           },
         },
@@ -659,7 +659,7 @@ export default {
         },
         enrollment: {
           data: {
-            id: '11',
+            id: '23',
             type: 'enrollment',
           },
         },
@@ -674,13 +674,13 @@ export default {
       },
     },
     {
-      id: '31',
+      id: '76',
       type: 'creditAssignment',
       attributes: {
         creditHours: 0.75,
         enrollmentFinalizedOn: '2019-11-15',
         contractName: 'Combined',
-        contractFacilitatorName: 'Spinka, Inga',
+        contractFacilitatorName: 'Schmidt, Georgina',
         districtFinalizeApprovedBy: null,
         districtFinalizeApprovedOn: null,
         districtTransmittedOn: null,
@@ -690,7 +690,7 @@ export default {
       relationships: {
         credit: {
           data: {
-            id: '1',
+            id: '19',
             type: 'credit',
           },
         },
@@ -704,13 +704,13 @@ export default {
         },
         contractTerm: {
           data: {
-            id: '1',
+            id: '39',
             type: 'term',
           },
         },
         contractFacilitator: {
           data: {
-            id: '1',
+            id: '46',
             type: 'user',
           },
         },
@@ -719,7 +719,7 @@ export default {
         },
         user: {
           data: {
-            id: '7',
+            id: '52',
             type: 'user',
           },
         },
@@ -732,11 +732,11 @@ export default {
         childCreditAssignments: {
           data: [
             {
-              id: '13',
+              id: '58',
               type: 'creditAssignment',
             },
             {
-              id: '14',
+              id: '59',
               type: 'creditAssignment',
             },
           ],
@@ -749,7 +749,7 @@ export default {
   ],
   included: [
     {
-      id: '1',
+      id: '19',
       type: 'credit',
       attributes: {
         courseId: '0',
@@ -759,10 +759,10 @@ export default {
       },
     },
     {
-      id: '1',
+      id: '39',
       type: 'term',
       attributes: {
-        name: 'Enhanced composite framework',
+        name: 'Upgradable non-volatile website',
         schoolYear: 2018,
         creditDate: '2019-01-31',
         months: [
@@ -777,18 +777,18 @@ export default {
       meta: null,
     },
     {
-      id: '2',
+      id: '47',
       type: 'user',
       attributes: {
-        firstName: 'Sergio',
-        lastName: 'Morissette',
+        firstName: 'Marin',
+        lastName: 'Hodkiewicz',
         nickname: null,
         dateActive: '2012-09-01',
         dateInactive: null,
         districtId: null,
         districtGrade: 12,
-        email: 'caitlin.rath@weissnat.net',
-        name: 'Sergio Morissette',
+        email: 'thuy.mcdermott@hirthe.io',
+        name: 'Marin Hodkiewicz',
         status: 'active',
         role: 'staff',
         isStaff: true,
@@ -797,7 +797,7 @@ export default {
         coordinatees: {
           data: [
             {
-              id: '6',
+              id: '51',
               type: 'user',
             },
           ],
@@ -805,40 +805,40 @@ export default {
       },
     },
     {
-      id: '1',
+      id: '7',
       type: 'contract',
       attributes: {
-        name: 'Caries aegre ars dolore vestigium.',
+        name: 'Colloco concido terga trans compello.',
         status: 'closed',
       },
       relationships: {
         enrollments: {
           data: [
             {
-              id: '7',
+              id: '19',
               type: 'enrollment',
             },
             {
-              id: '8',
+              id: '20',
               type: 'enrollment',
             },
           ],
         },
         facilitator: {
           data: {
-            id: '2',
+            id: '47',
             type: 'user',
           },
         },
         term: {
           data: {
-            id: '1',
+            id: '39',
             type: 'term',
           },
         },
         category: {
           data: {
-            id: '1',
+            id: '7',
             type: 'category',
           },
         },
@@ -850,31 +850,31 @@ export default {
         creditAssignments: {
           data: [
             {
-              id: '1',
+              id: '46',
               type: 'creditAssignment',
             },
             {
-              id: '13',
+              id: '58',
               type: 'creditAssignment',
             },
             {
-              id: '14',
+              id: '59',
               type: 'creditAssignment',
             },
             {
-              id: '15',
+              id: '60',
               type: 'creditAssignment',
             },
             {
-              id: '16',
+              id: '61',
               type: 'creditAssignment',
             },
             {
-              id: '17',
+              id: '62',
               type: 'creditAssignment',
             },
             {
-              id: '18',
+              id: '63',
               type: 'creditAssignment',
             },
           ],
@@ -892,7 +892,7 @@ export default {
       },
     },
     {
-      id: '2',
+      id: '20',
       type: 'credit',
       attributes: {
         courseId: '0',
@@ -902,10 +902,10 @@ export default {
       },
     },
     {
-      id: '2',
+      id: '40',
       type: 'term',
       attributes: {
-        name: 'User-friendly contextually-based core',
+        name: 'Front-line intangible algorithm',
         schoolYear: 2018,
         creditDate: '2019-06-15',
         months: [
@@ -920,18 +920,18 @@ export default {
       meta: null,
     },
     {
-      id: '3',
+      id: '48',
       type: 'user',
       attributes: {
-        firstName: 'Paige',
-        lastName: 'Raynor',
+        firstName: 'Harris',
+        lastName: "O'Connell",
         nickname: null,
         dateActive: '2013-02-01',
         dateInactive: null,
         districtId: null,
         districtGrade: 12,
-        email: 'patria.luettgen@langworth.name',
-        name: 'Paige Raynor',
+        email: 'narcisa@ruecker.co',
+        name: "Harris O'Connell",
         status: 'active',
         role: 'staff',
         isStaff: true,
@@ -940,11 +940,11 @@ export default {
         coordinatees: {
           data: [
             {
-              id: '7',
+              id: '52',
               type: 'user',
             },
             {
-              id: '8',
+              id: '53',
               type: 'user',
             },
           ],
@@ -952,127 +952,40 @@ export default {
       },
     },
     {
-      id: '2',
+      id: '8',
       type: 'contract',
       attributes: {
-        name: 'Theologus canonicus architecto venustas cotidie.',
+        name: 'Urbanus possimus valetudo studio veritatis.',
         status: 'closed',
       },
       relationships: {
         enrollments: {
           data: [
             {
-              id: '9',
-              type: 'enrollment',
-            },
-            {
-              id: '10',
-              type: 'enrollment',
-            },
-          ],
-        },
-        facilitator: {
-          data: {
-            id: '3',
-            type: 'user',
-          },
-        },
-        term: {
-          data: {
-            id: '2',
-            type: 'term',
-          },
-        },
-        category: {
-          data: {
-            id: '2',
-            type: 'category',
-          },
-        },
-        assignments: {
-          data: [
-
-          ],
-        },
-        creditAssignments: {
-          data: [
-            {
-              id: '3',
-              type: 'creditAssignment',
-            },
-            {
-              id: '19',
-              type: 'creditAssignment',
-            },
-            {
-              id: '20',
-              type: 'creditAssignment',
-            },
-            {
               id: '21',
-              type: 'creditAssignment',
+              type: 'enrollment',
             },
             {
               id: '22',
-              type: 'creditAssignment',
-            },
-            {
-              id: '23',
-              type: 'creditAssignment',
-            },
-            {
-              id: '24',
-              type: 'creditAssignment',
-            },
-          ],
-        },
-        meetings: {
-          data: [
-
-          ],
-        },
-        learningRequirements: {
-          data: [
-
-          ],
-        },
-      },
-    },
-    {
-      id: '3',
-      type: 'contract',
-      attributes: {
-        name: 'Ara correptius venio temperantia ultra.',
-        status: 'closed',
-      },
-      relationships: {
-        enrollments: {
-          data: [
-            {
-              id: '11',
-              type: 'enrollment',
-            },
-            {
-              id: '12',
               type: 'enrollment',
             },
           ],
         },
         facilitator: {
           data: {
-            id: '3',
+            id: '48',
             type: 'user',
           },
         },
         term: {
           data: {
-            id: '2',
+            id: '40',
             type: 'term',
           },
         },
         category: {
           data: {
-            id: '2',
+            id: '8',
             type: 'category',
           },
         },
@@ -1084,31 +997,31 @@ export default {
         creditAssignments: {
           data: [
             {
-              id: '5',
+              id: '48',
               type: 'creditAssignment',
             },
             {
-              id: '25',
+              id: '64',
               type: 'creditAssignment',
             },
             {
-              id: '26',
+              id: '65',
               type: 'creditAssignment',
             },
             {
-              id: '27',
+              id: '66',
               type: 'creditAssignment',
             },
             {
-              id: '28',
+              id: '67',
               type: 'creditAssignment',
             },
             {
-              id: '29',
+              id: '68',
               type: 'creditAssignment',
             },
             {
-              id: '30',
+              id: '69',
               type: 'creditAssignment',
             },
           ],
@@ -1126,18 +1039,105 @@ export default {
       },
     },
     {
-      id: '1',
+      id: '9',
+      type: 'contract',
+      attributes: {
+        name: 'Thema error aeneus cavus vilis.',
+        status: 'closed',
+      },
+      relationships: {
+        enrollments: {
+          data: [
+            {
+              id: '23',
+              type: 'enrollment',
+            },
+            {
+              id: '24',
+              type: 'enrollment',
+            },
+          ],
+        },
+        facilitator: {
+          data: {
+            id: '48',
+            type: 'user',
+          },
+        },
+        term: {
+          data: {
+            id: '40',
+            type: 'term',
+          },
+        },
+        category: {
+          data: {
+            id: '8',
+            type: 'category',
+          },
+        },
+        assignments: {
+          data: [
+
+          ],
+        },
+        creditAssignments: {
+          data: [
+            {
+              id: '50',
+              type: 'creditAssignment',
+            },
+            {
+              id: '70',
+              type: 'creditAssignment',
+            },
+            {
+              id: '71',
+              type: 'creditAssignment',
+            },
+            {
+              id: '72',
+              type: 'creditAssignment',
+            },
+            {
+              id: '73',
+              type: 'creditAssignment',
+            },
+            {
+              id: '74',
+              type: 'creditAssignment',
+            },
+            {
+              id: '75',
+              type: 'creditAssignment',
+            },
+          ],
+        },
+        meetings: {
+          data: [
+
+          ],
+        },
+        learningRequirements: {
+          data: [
+
+          ],
+        },
+      },
+    },
+    {
+      id: '46',
       type: 'user',
       attributes: {
-        firstName: 'Inga',
-        lastName: 'Spinka',
+        firstName: 'Georgina',
+        lastName: 'Schmidt',
         nickname: null,
         dateActive: '2011-07-01',
         dateInactive: null,
         districtId: null,
         districtGrade: 12,
-        email: 'pat@reichel-prosacco.co',
-        name: 'Inga Spinka',
+        email: 'zulma_zulauf@kessler.name',
+        name: 'Georgina Schmidt',
         status: 'active',
         role: 'administrator',
         isStaff: true,

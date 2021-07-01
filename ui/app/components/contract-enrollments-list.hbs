@@ -7,11 +7,11 @@
     <th>Actions</th>
   </thead>
   <tbody>
-    {{#each enrollments as |enrollment|}}
+    {{#each this.enrollments as |enrollment|}}
       <ContractEnrollmentsList::Row
         @enrollment={{enrollment}}
-        @notablesHash={{notablesHash}}
-        @contractIsDisabled={{contractIsDisabled}}
+        @notablesHash={{this.notablesHash}}
+        @contractIsDisabled={{this.contractIsDisabled}}
         @deleteEnrollment={{this.deleteEnrollment}}
         @updateEnrollment={{this.updateEnrollment}}
       />

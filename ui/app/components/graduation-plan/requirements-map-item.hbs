@@ -1,35 +1,35 @@
 <li
-  class="req-map-item {{dragStateClass}}"
-  data-test-requirement-id={{requirement.id}}
+  class="req-map-item {{this.dragStateClass}}"
+  data-test-requirement-id={{this.requirement.id}}
   ondragover={{action "onDragOver"}}
   ondragenter={{action "onDragEnter"}}
   ondragleave={{action "onDragLeave"}}
   ondrop={{action "onDrop"}}
 >
   <div class="flex items-center">
-    <h4 class="my-1 flex-none">{{requirement.attributes.name}}</h4>
+    <h4 class="my-1 flex-none">{{this.requirement.attributes.name}}</h4>
     <div
-      data-test-sum={{sum}}
+      data-test-sum={{this.sum}}
       class="ml-4 flex-none"
     >
-      {{#if isCredit}}
-        {{#if showSum}}
-          <span class="text-lg text-purple-500 font-semibold">{{sum}}</span>
+      {{#if this.isCredit}}
+        {{#if this.showSum}}
+          <span class="text-lg text-purple-500 font-semibold">{{this.sum}}</span>
         {{else}}
           <span class="text-purple-500">0</span>
         {{/if}}
       {{else}}
-        {{#if requirementHash.mapping}}
-          {{#if requirementHash.mapping.attributes.dateCompleted}}
+        {{#if this.requirementHash.mapping}}
+          {{#if this.requirementHash.mapping.attributes.dateCompleted}}
             <span class="font-semibold text-purple-500">
               <FaIcon @icon="check" />
-              <DateTime @date={{requirementHash.mapping.attributes.dateCompleted}} @format="M/D/YY" />
+              <DateTime @date={{this.requirementHash.mapping.attributes.dateCompleted}} @format="M/D/YY" />
             </span>
           {{/if}}
         {{/if}}
       {{/if}}
     </div>
-    {{#unless isCredit}}
+    {{#unless this.isCredit}}
       <div class="flex-grow text-right">
         <a
           {{action "editMapping"}}
@@ -41,14 +41,14 @@
     {{/unless}}
   </div>
 
-  {{#if requirement.attributes.notes}}
+  {{#if this.requirement.attributes.notes}}
     <div class="my-2">
-      {{t-markdown requirement.attributes.notes}}
+      {{t-markdown this.requirement.attributes.notes}}
     </div>
   {{/if}}
 
-  {{#if isCredit}}
-    <CreditAssignments @creditAssignments={{requirementHash.creditAssignments}} as |params|>
+  {{#if this.isCredit}}
+    <CreditAssignments @creditAssignments={{this.requirementHash.creditAssignments}} as |params|>
       <a
         {{action "removeMapping" params.creditAssignment}}
         title="Remove"
@@ -60,14 +60,14 @@
     </CreditAssignments>
   {{/if}}
 
-  {{#if childRequirements}}
-    <GraduationPlan::RequirementsMap @requirementType={{requirementType}} @mappings={{mappings}} @showChildren={{true}} @requirements={{childRequirements}} @mappingsHash={{mappingsHash}} @draggedCreditAssignment={{draggedCreditAssignment}} @addMapping={{addMapping}} @removeMapping={{removeMapping}} />
+  {{#if this.childRequirements}}
+    <GraduationPlan::RequirementsMap @requirementType={{this.requirementType}} @mappings={{this.mappings}} @showChildren={{true}} @requirements={{this.childRequirements}} @mappingsHash={{this.mappingsHash}} @draggedCreditAssignment={{this.draggedCreditAssignment}} @addMapping={{this.addMapping}} @removeMapping={{this.removeMapping}} />
   {{/if}}
 
-  {{#if requirementHash.mapping.attributes.notes}}
+  {{#if this.requirementHash.mapping.attributes.notes}}
     <hrule class="block border-t border-gray-300 mt-4 mb-2" />
     <p>
-      {{requirementHash.mapping.attributes.notes}}
+      {{this.requirementHash.mapping.attributes.notes}}
     </p>
   {{/if}}
 </li>

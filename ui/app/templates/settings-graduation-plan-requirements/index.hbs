@@ -7,29 +7,29 @@
 <ul class="filter">
   <li class="filter-item" data-test-status>
     <TSelect
-      @optionsList={{statusOptions}}
-      @value={{status}}
+      @optionsList={{this.statusOptions}}
+      @value={{this.status}}
       name="status"
-      @onchange={{action (mut status)}}
+      @onchange={{action (mut this.status)}}
     />
   </li>
 </ul>
 
-{{#check-empty
-  count=countOfStatus
-  noResultsMessage="No graduation plan requirements were found"
-}}
+<CheckEmpty
+  @count={{this.countOfStatus}}
+  @noResultsMessage="No graduation plan requirements were found"
+>
   <Pagination
-    @totalCount={{countOfStatus}}
+    @totalCount={{this.countOfStatus}}
     @singularName="requirement"
   />
 
   <h3>Credit requirements</h3>
-  <GraduationPlanRequirementsList @graduationPlanRequirements={{graduationPlanRequirements}} @updateSeries={{action "updateSeries"}} @requirementType="credit" @status={{status}} />
+  <GraduationPlanRequirementsList @graduationPlanRequirements={{this.graduationPlanRequirements}} @updateSeries={{action "updateSeries"}} @requirementType="credit" @status={{this.status}} />
 
   <h3>General requirements</h3>
-  <GraduationPlanRequirementsList @graduationPlanRequirements={{graduationPlanRequirements}} @updateSeries={{action "updateSeries"}} @requirementType="general" @status={{status}} />
+  <GraduationPlanRequirementsList @graduationPlanRequirements={{this.graduationPlanRequirements}} @updateSeries={{action "updateSeries"}} @requirementType="general" @status={{this.status}} />
 
   <h3>Service requirements</h3>
-  <GraduationPlanRequirementsList @graduationPlanRequirements={{graduationPlanRequirements}} @updateSeries={{action "updateSeries"}} @requirementType="service" @status={{status}} />
-{{/check-empty}}
+  <GraduationPlanRequirementsList @graduationPlanRequirements={{this.graduationPlanRequirements}} @updateSeries={{action "updateSeries"}} @requirementType="service" @status={{this.status}} />
+</CheckEmpty>

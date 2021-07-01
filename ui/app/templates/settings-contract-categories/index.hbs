@@ -4,10 +4,10 @@
   </LinkTo>
 </p>
 
-{{#check-empty
-  count=model.meta.count
-  noResultsMessage="No categories were found"
-}}
+<CheckEmpty
+  @count={{this.model.meta.count}}
+  @noResultsMessage="No categories were found"
+>
   <Pagination
     @totalCount={{this.model.meta.count}}
     @singularName="contract category"
@@ -24,7 +24,7 @@
       </tr>    
     </thead>
     <tbody>
-      {{#each categoriesList as |category|}}
+      {{#each this.categoriesList as |category|}}
         <SettingsContractCategories::Row @category={{category}} as |row|>
           <tr>
             <td>
@@ -51,4 +51,4 @@
       {{/each}}
     </tbody>
   </Table>
-{{/check-empty}}
+</CheckEmpty>

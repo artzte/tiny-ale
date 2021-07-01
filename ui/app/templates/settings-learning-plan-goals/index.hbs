@@ -14,13 +14,13 @@
   </div>
 </div>
 
-{{#if yearAsNumber}}
+{{#if this.yearAsNumber}}
   <SettingsLearningPlanGoals::List
     @year={{this.yearAsNumber}}
     @goals={{this.learningPlanGoals}}
   />
 {{else}}
-  {{#each years as |year| }}
+  {{#each this.years as |year| }}
     <SettingsLearningPlanGoals::List
       @year={{year}}
       @goals={{this.learningPlanGoals}}

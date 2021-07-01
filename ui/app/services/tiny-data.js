@@ -57,6 +57,14 @@ export const tinyDataService = {
     this._data.reportingBaseMonth = reportingBaseMonth;
   },
 
+  getPeriods() {
+    return this._data.periods;
+  },
+
+  setPeriods(periodsSetting) {
+    this._data.periods = periodsSetting.attributes.periods;
+  },
+
   async getLearningRequirementCategories() {
     if (!this._data.competencyCategories) {
       this._data.competencyCategories = await fetch('/api/learning-requirements/categories');

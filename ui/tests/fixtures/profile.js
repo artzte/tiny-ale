@@ -1,18 +1,18 @@
 // GET /api/profile
 export default {
   data: {
-    id: '5',
+    id: '50',
     type: 'user',
     attributes: {
-      firstName: 'Neil',
-      lastName: 'Runte',
+      firstName: 'Janene',
+      lastName: 'Moen',
       nickname: null,
       dateActive: '2011-07-01',
       dateInactive: null,
       districtId: null,
       districtGrade: 12,
-      email: 'myra@ratke-lesch.name',
-      name: 'Neil Runte',
+      email: 'forrest_stanton@kirlin-kovacek.name',
+      name: 'Janene Moen',
       status: 'active',
       role: 'administrator',
       isStaff: true,

@@ -1,16 +1,16 @@
-// GET /api/contracts/5?include=category,facilitator,assignments,meetings,creditAssignments,creditAssignments.credit,term,learningRequirements
+// GET /api/contracts/11?include=category,facilitator,assignments,meetings,creditAssignments,creditAssignments.credit,term,learningRequirements
 export default {
   data: {
-    id: '5',
+    id: '11',
     type: 'contract',
     attributes: {
-      name: 'Acidus contabesco trucido non careo.',
+      name: 'Sodalitas sollicito aer alius apud.',
       status: 'active',
-      learningObjectives: 'Learning objectives Verumtamen ante coaegresco benigne vetus.',
-      competencies: 'Competencies Adnuo amo suffoco tabesco concido.',
-      evaluationMethods: 'Evaluation methods Aptus verus dolores et articulus.',
-      instructionalMaterials: 'Instructional materials Quia cupressus termes summa ago.',
-      location: 'Location Rem repellendus bonus talio unde.',
+      learningObjectives: 'Learning objectives Suspendo assentator tui amiculum socius.',
+      competencies: 'Competencies Vis timor ver ustulo adsidue.',
+      evaluationMethods: 'Evaluation methods Custodia cuppedia ut velut vero.',
+      instructionalMaterials: 'Instructional materials Valens amor possimus non bene.',
+      location: 'Location Ancilla totidem contra vaco magni.',
       timeslots: [
         {
           start: '8:45',
@@ -23,34 +23,34 @@ export default {
       enrollments: {
         data: [
           {
-            id: '1',
+            id: '13',
             type: 'enrollment',
           },
           {
-            id: '2',
+            id: '14',
             type: 'enrollment',
           },
           {
-            id: '3',
+            id: '15',
             type: 'enrollment',
           },
         ],
       },
       facilitator: {
         data: {
-          id: '2',
+          id: '47',
           type: 'user',
         },
       },
       term: {
         data: {
-          id: '3',
+          id: '41',
           type: 'term',
         },
       },
       category: {
         data: {
-          id: '1',
+          id: '7',
           type: 'category',
         },
       },
@@ -81,7 +81,7 @@ export default {
       creditAssignments: {
         data: [
           {
-            id: '2',
+            id: '47',
             type: 'creditAssignment',
           },
         ],
@@ -113,19 +113,19 @@ export default {
       learningRequirements: {
         data: [
           {
-            id: '1',
+            id: '12',
             type: 'learningRequirement',
           },
           {
-            id: '2',
+            id: '13',
             type: 'learningRequirement',
           },
           {
-            id: '3',
+            id: '14',
             type: 'learningRequirement',
           },
           {
-            id: '4',
+            id: '15',
             type: 'learningRequirement',
           },
         ],
@@ -134,7 +134,7 @@ export default {
   },
   included: [
     {
-      id: '1',
+      id: '7',
       type: 'category',
       attributes: {
         name: 'Category 1',
@@ -148,11 +148,11 @@ export default {
         contracts: {
           data: [
             {
-              id: '1',
+              id: '7',
               type: 'contract',
             },
             {
-              id: '5',
+              id: '11',
               type: 'contract',
             },
           ],
@@ -160,18 +160,18 @@ export default {
       },
     },
     {
-      id: '2',
+      id: '47',
       type: 'user',
       attributes: {
-        firstName: 'Sergio',
-        lastName: 'Morissette',
+        firstName: 'Marin',
+        lastName: 'Hodkiewicz',
         nickname: null,
         dateActive: '2012-09-01',
         dateInactive: null,
         districtId: null,
         districtGrade: 12,
-        email: 'caitlin.rath@weissnat.net',
-        name: 'Sergio Morissette',
+        email: 'thuy.mcdermott@hirthe.io',
+        name: 'Marin Hodkiewicz',
         status: 'active',
         role: 'staff',
         isStaff: true,
@@ -180,7 +180,7 @@ export default {
         coordinatees: {
           data: [
             {
-              id: '6',
+              id: '51',
               type: 'user',
             },
           ],
@@ -413,7 +413,7 @@ export default {
       },
     },
     {
-      id: '1',
+      id: '19',
       type: 'credit',
       attributes: {
         courseId: '0',
@@ -423,7 +423,7 @@ export default {
       },
     },
     {
-      id: '2',
+      id: '47',
       type: 'creditAssignment',
       attributes: {
         creditHours: 1.0,
@@ -431,7 +431,7 @@ export default {
       relationships: {
         credit: {
           data: {
-            id: '1',
+            id: '19',
             type: 'credit',
           },
         },
@@ -451,7 +451,7 @@ export default {
         },
         contract: {
           data: {
-            id: '5',
+            id: '11',
             type: 'contract',
           },
         },
@@ -475,10 +475,10 @@ export default {
       },
     },
     {
-      id: '3',
+      id: '41',
       type: 'term',
       attributes: {
-        name: 'Grass-roots 24/7 archive',
+        name: 'Centralized regional model',
         schoolYear: 2019,
         creditDate: '2020-01-31',
         months: [
@@ -493,37 +493,37 @@ export default {
       meta: null,
     },
     {
-      id: '1',
+      id: '12',
       type: 'learningRequirement',
       attributes: {
-        ealr: 'Defessus uredo assumenda inflammatio vitae.',
+        ealr: 'Aliquam copia tunc amet voluptatum.',
         seq: '1.1',
         category: 'Category 1',
       },
     },
     {
-      id: '2',
+      id: '13',
       type: 'learningRequirement',
       attributes: {
-        ealr: 'Velociter cado denego tempore ait.',
+        ealr: 'Fugiat solus atrocitas censura casso.',
         seq: '1.2',
         category: 'Category 1',
       },
     },
     {
-      id: '3',
+      id: '14',
       type: 'learningRequirement',
       attributes: {
-        ealr: 'Defleo dolor sperno dolores cerno.',
+        ealr: 'Succurro autem atrocitas clam circumvenio.',
         seq: '2.1',
         category: 'Category 2',
       },
     },
     {
-      id: '4',
+      id: '15',
       type: 'learningRequirement',
       attributes: {
-        ealr: 'Depereo argumentum vilis somniculosus viriliter.',
+        ealr: 'Patrocinor valens caecus cetera atrocitas.',
         seq: '2.2',
         category: 'Category 2',
       },

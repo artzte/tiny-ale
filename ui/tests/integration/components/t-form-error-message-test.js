@@ -17,21 +17,21 @@ module('Integration | Component | t-form-error-message', hooks => {
       show=show
     }}`);
 
-    assert.ok(find('.error-message'), 'with error present and showErrors true, message element renders');
-    assert.matches(find('.error-message').innerText, /Boo!/, 'expected error displayed');
+    assert.ok(find('[data-test-error-message]'), 'with error present and showErrors true, message element renders');
+    assert.matches(find('[data-test-error-message]').innerText, /Boo!/, 'expected error displayed');
 
     this.setProperties({
       message: undefined,
       show: true,
     });
 
-    assert.notOk(find('.error-message'), 'with no error and showErrors true, no message element');
+    assert.notOk(find('[data-test-error-message]'), 'with no error and showErrors true, no message element');
 
     this.setProperties({
       message: 'Boo!',
       show: false,
     });
 
-    assert.notOk(find('.error-message'), 'with error present and showErrors false, no message element');
+    assert.notOk(find('[data-test-error-message]'), 'with error present and showErrors false, no message element');
   });
 });

@@ -1,5 +1,5 @@
-{{#if showMessage}}
-  <p class="error-message {{className}}">
-    {{message}}
+{{#if this.showMessage}}
+  <p data-test-error-message class="text-red-500 text-sm font-normal">
+    {{this.message}}
   </p>
 {{/if}}

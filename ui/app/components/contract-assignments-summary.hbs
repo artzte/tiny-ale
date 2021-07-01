@@ -1,8 +1,14 @@
 <h2>Assignments</h2>
-<ul class="assignments-summary">
-  {{#each @assignments as |assignment|}}
-    <ContractAssignmentsSummary::Row
-      @assignment={{assignment}}
-    />
-  {{/each}}
-</ul>
+{{#if @assignments}}
+  <ul class="assignments-summary">
+    {{#each @assignments as |assignment|}}
+      <ContractAssignmentsSummary::Row
+        @assignment={{assignment}}
+      />
+    {{/each}}
+  </ul>
+{{else}}
+  <p>
+    No assignments defined for this contract.
+  </p>
+{{/if}}

@@ -2,7 +2,7 @@
 
 class SettingsController < ApiBaseController
   def index
-    result = Setting.where('name <> "periods"')
+    result = Setting.all
 
     count = Setting.count
 

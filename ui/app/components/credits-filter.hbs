@@ -5,15 +5,15 @@
         name="search"
         type="text"
         placeholder="Search"
-        value={{queryParams.search}}
+        value={{this.queryParams.search}}
         autocomplete="off"
         onchange={{action "onChangeSearch"}}
       >
     </li>
     <li class="filter-item" data-test-status>
       <TSelect
-        @optionsList={{courseTypeOptions}}
-        @value={{queryParams.courseType}}
+        @optionsList={{this.courseTypeOptions}}
+        @value={{this.queryParams.courseType}}
         name="courseType"
         @prompt="Any type"
         @optionValuePath="courseType"
@@ -23,8 +23,8 @@
     </li>
     <li class="filter-item" data-test-status>
       <TSelect
-        @optionsList={{statusOptions}}
-        @value={{queryParams.status}}
+        @optionsList={{this.statusOptions}}
+        @value={{this.queryParams.status}}
         name="status"
         @prompt="Any status"
         @optionValuePath="courseType"

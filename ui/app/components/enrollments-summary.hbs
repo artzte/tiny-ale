@@ -13,11 +13,13 @@
         class="w-full l:w-4/5 xl:w-3/5"
         @title="Active enrollments"
         @enrollments={{this.activeEnrollments}}
+        @showStatus={{@showStatus}}
       />
       <EnrollmentsSummary::Table
         class="w-full l:w-4/5 xl:w-3/5"
         @title="Completed enrollments"
         @enrollments={{this.inactiveEnrollments}}
+        @showStatus={{@showStatus}}
       />
     </CheckEmpty>
   {{else}}

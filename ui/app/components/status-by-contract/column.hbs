@@ -1,9 +1,9 @@
-<td data-test-month={{month}} data-test-status-id={{status.id}}>
-  {{#if showStatus}}
-    <LinkTo class="{{if isException "text-red-500"}}" @route="status-by-enrollment" @model={{enrollment.id}} @query={{hash month=month}}>
-      {{statusAbbreviation}}
-      {{#if status}}
-        {{#if status.attributes.metFteRequirements}}
+<td data-test-month={{this.month}} data-test-status-id={{this.status.id}}>
+  {{#if this.showStatus}}
+    <LinkTo class="{{if this.isException "text-red-500"}}" @route="status-by-enrollment" @model={{this.enrollment.id}} @query={{hash month=this.month}}>
+      {{this.statusAbbreviation}}
+      {{#if this.status}}
+        {{#if this.status.attributes.metFteRequirements}}
           M
         {{else}}
           U

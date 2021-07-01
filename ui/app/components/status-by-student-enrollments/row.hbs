@@ -1,32 +1,32 @@
-<tr data-test-enrollment-id={{enrollment.id}}>
+<tr data-test-enrollment-id={{this.enrollment.id}}>
   <td class="contract">  
     <div>
       <p>
-        <LinkTo @route="status-by-enrollment" @models={{array contract.id enrollment.id}}>
-          {{contract.attributes.name}}
+        <LinkTo @route="status-by-enrollment" @models={{array this.contract.id this.enrollment.id}}>
+          {{this.contract.attributes.name}}
         </LinkTo>
       </p>
       <p>
-        {{full-name facilitator "first-last"}}
+        {{full-name this.facilitator "first-last"}}
         /
-        {{term.attributes.name}}
+        {{this.term.attributes.name}}
       </p>
-      <CreditAssignments @creditAssignments={{creditAssignments}} />
+      <CreditAssignments @creditAssignments={{this.creditAssignments}} />
     </div>
   </td>
 
   <td class="enrollment-status">
-    {{enrollmentStatus}}
+    {{this.enrollmentStatus}}
   </td>
 
-  {{#each months as |month|}}
-    <StatusByStudentEnrollments::StatusColumn @month={{month}} @statusHash={{statusHash}} @enrollment={{enrollment}} />
+  {{#each this.months as |month|}}
+    <StatusByStudentEnrollments::StatusColumn @month={{month}} @statusHash={{this.statusHash}} @enrollment={{this.enrollment}} />
   {{/each}}
   
 </tr>
 
-<tr class="notes-row {{loadingNotes}}">
-  <td colspan={{columnsCount}}>
-    <NotesList @notes={{notes}} @notable={{enrollment}} />
+<tr class="notes-row {{this.loadingNotes}}">
+  <td colspan={{this.columnsCount}}>
+    <NotesList @notes={{this.notes}} @notable={{this.enrollment}} />
   </td>
 </tr>

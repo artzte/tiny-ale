@@ -1,23 +1,23 @@
-// auth for user 2
+// auth for user 47
 export default {
   data: {
-    email: 'caitlin.rath@weissnat.net',
+    email: 'thuy.mcdermott@hirthe.io',
     email_verified: false,
     updated_at: '2019-06-23T23:44:29.877Z',
-    user_id: 'auth0|3f3f98c8879f8d760fd14504d654b38b',
-    name: 'Sergio Morissette',
+    user_id: 'auth0|e052db264c2d4858f3cf520fde31bc15',
+    name: 'Marin Hodkiewicz',
     identities: [
       {
         connection: 'Username-Password-Authentication',
         provider: 'auth0',
-        user_id: '3f3f98c8879f8d760fd14504d654b38b',
+        user_id: 'e052db264c2d4858f3cf520fde31bc15',
         isSocial: false,
       },
     ],
     created_at: '2019-05-25T00:24:18.815Z',
     last_password_reset: '2019-06-10T04:09:05.883Z',
-    given_name: 'Sergio',
-    family_name: 'Morissette',
+    given_name: 'Marin',
+    family_name: 'Hodkiewicz',
     nickname: null,
     last_login: '2019-06-23T23:44:29.877Z',
     last_ip: '208.100.155.216',

@@ -1,9 +1,9 @@
-{{#check-empty
-  count=viewModels.length
-  noResultsMessage="There are no finalized credits."
-}}
+<CheckEmpty
+  @count={{this.viewModels.length}}
+  @noResultsMessage="There are no finalized credits."
+>
   <Pagination
-    @totalCount={{viewModels.length}}
+    @totalCount={{this.viewModels.length}}
     @singularName="credit"
   />
   <Table data-test-settings-credits-list>
@@ -18,9 +18,11 @@
       </tr>
     </thead>
     <tbody>
-      {{#each viewModels as |viewModel|}}
-        <CreditsFinalized::Item @creditAssignment={{viewModel.creditAssignment}} />
+      {{#each this.viewModels as |viewModel|}}
+        <CreditsFinalized::Item
+          @creditAssignment={{viewModel}}
+        />
       {{/each}}
     </tbody>
   </Table>
-{{/check-empty}}
+</CheckEmpty>

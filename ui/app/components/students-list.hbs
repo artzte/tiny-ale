@@ -9,7 +9,7 @@
     </tr>
   </thead>
   <tbody>
-    {{#each students as |student|}}
+    {{#each this.students as |student|}}
       <StudentsList::Row @student={{student}} />
     {{/each}}
   </tbody>

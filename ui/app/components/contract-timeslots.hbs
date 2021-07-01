@@ -1,3 +1,50 @@
-{{#each timeslots as |timeslot|}}
-  <ContractTimeslots::Item @timeslot={{timeslot}} />
-{{/each}}
+<contract-timeslots ...attributes>
+  <ul class="list-none px-0 my-4">
+    {{#each this.timeslots as |timeslot i|}}
+      <ContractTimeslots::Item
+        @timeslot={{timeslot}}
+        @isEditing={{@isEditing}}
+        @removeTimeslot={{fn this.removeTimeslot i}}
+      />
+    {{/each}}
+  </ul>
+  {{#if @isEditing}}
+    <div class="flex items-center border border-grey-200 p-2">
+      <li
+        class="flex items-center w-36 mr-8"
+      >
+        <TSelect
+          @optionsList={{this.periods}}
+          @onchange={{fn this.onChange}}
+          name="period"
+          class="mt-0"
+        />
+      </li>
+      {{#each this.days as |day i|}}
+        <label class="flex items-center mr-6">
+          <input
+            class="inline-block mr-2"
+            type="checkbox"
+            name={{day}} 
+            onchange={{fn this.onChange day day}}
+          />
+          <span class="leading-4">
+            {{day}}
+          </span>      
+        </label>
+      {{/each}}
+      <li
+        class="flex items-center"
+      >
+        <button
+          type="button"
+          class="button"
+          disabled={{this.addIsDisabled}}
+          onclick={{fn this.addTimeslot}}
+        >
+          Add a timeslot
+        </button>
+      </li>
+    </div>
+  {{/if}}
+</contract-timeslots>

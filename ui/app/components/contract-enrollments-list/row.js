@@ -39,8 +39,9 @@ export default Component.extend(EnrollmentRelations, {
     deleteEnrollment() {
       return this.deleteEnrollment(this.enrollment);
     },
-    updateEnrollment(command) {
-      return this.updateEnrollment(this.enrollment, command);
+    async updateEnrollment(command) {
+      const enrollment = await this.updateEnrollment(this.enrollment, command);
+      this.set('enrollment', enrollment.data);
     },
   },
 });

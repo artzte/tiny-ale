@@ -18,7 +18,7 @@ export default Component.extend(ContractRelations, {
   sortedMeetings: computed('meetings', function () {
     const { meetings } = this;
     return meetings
-      .sort((a1, a2) => a1.attributes.meetingDate.localeCompare(a2.attributes.meetingDate));
+      .sort((a1, a2) => a2.attributes.meetingDate.localeCompare(a1.attributes.meetingDate));
   }),
 
   notesHash: computed('notes', function () {

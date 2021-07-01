@@ -1,12 +1,12 @@
 <h2>Assignments</h2>
 
-{{#check-empty
-  count=model.meta.count
+<CheckEmpty
+  @count={{this.model.meta.count}}
   noResultsMessage="No assignments as of yet"
-}}
+>
   <Pagination
     @totalCount={{this.model.meta.count}}
     @singularName="assignment"
   />
-  <ContractAssignmentsList @assignments={{assignments}} @enrollments={{enrollments}} @getNotes={{route-action "getNotes"}} />
-{{/check-empty}}
+  <ContractAssignmentsList @assignments={{this.assignments}} @enrollments={{this.enrollments}} @getNotes={{route-action "getNotes"}} />
+</CheckEmpty>

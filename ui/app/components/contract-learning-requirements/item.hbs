@@ -1,23 +1,23 @@
-{{#if showRow}}
-  <tr data-test-id={{learningRequirement.id}}>
+{{#if this.showRow}}
+  <tr data-test-id={{this.learningRequirement.id}}>
     <td class="text-center">
       {{#if @isEditing}}
         <Input
           type="checkbox"
-          value={{learningRequirement.id}}
-          checked={{isChecked}}
+          value={{this.learningRequirement.id}}
+          checked={{this.isChecked}}
           onclick={{@onSelect}}
-          id={{id}}
+          id={{this.id}}
         />
       {{/if}}
     </td>
     <td class="pr-4 text-right w-16">
-      <label for={{id}}>
+      <label for={{this.id}}>
         {{@learningRequirement.attributes.seq}}
       </label>
     </td>
     <td>
-      <label for={{id}}>
+      <label for={{this.id}}>
         {{@learningRequirement.attributes.ealr}}
       </label>
     </td>

@@ -1,21 +1,21 @@
-{{#if disabled}}
-  {{titleize enrollmentStatus}}
+{{#if this.disabled}}
+  {{titleize this.enrollmentStatus}}
 {{else}}
-  {{#if isClosed}}
+  {{#if this.isClosed}}
     <li>
       <TLink
         @action={{action "update" "approve"}}
-        disabled={{loading}}
+        disabled={{this.loading}}
         data-test-command="approve"
       >
         Reinstate
       </TLink>
     </li>
-    {{#if isCanceled}}
+    {{#if this.isCanceled}}
       <li>
         <TLink
           @action={{action "delete"}}
-          disabled={{loading}}
+          disabled={{this.loading}}
           data-test-command="delete"
         >
           Delete
@@ -24,11 +24,11 @@
     {{/if}}
   {{/if}}
 
-  {{#if isPending}}
+  {{#if this.isPending}}
     <li>
       <TLink
         @action={{action "update" "approve"}}
-        disabled={{loading}}
+        disabled={{this.loading}}
         data-test-command="approve"
       >
         Approve
@@ -36,11 +36,11 @@
     </li>
   {{/if}}
 
-  {{#if isEnrolled}}
+  {{#if this.isEnrolled}}
     <li>
       <TLink
         @action={{action "update" "fulfill"}}
-        disabled={{loading}}
+        disabled={{this.loading}}
         data-test-command="fulfill"
       >
         Fulfill
@@ -48,11 +48,11 @@
     </li>
   {{/if}}
 
-  {{#if canCancel}}
+  {{#if this.canCancel}}
     <li>
       <TLink
         @action={{action "update" "cancel"}}
-        disabled={{loading}}
+        disabled={{this.loading}}
         data-test-command="cancel"
       >
         Cancel
@@ -60,12 +60,12 @@
     </li>
   {{/if}}
 
-  {{#if isFinalized}}
-    {{#if isCanceled}}
+  {{#if this.isFinalized}}
+    {{#if this.isCanceled}}
       <li>
         <TLink
           @action={{action "update" "approve"}}
-          disabled={{loading}}
+          disabled={{this.loading}}
           data-test-command="approve"
         >
           Reinstate

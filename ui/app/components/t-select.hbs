@@ -2,7 +2,7 @@
   ...attributes
   onchange={{fn this.onChange}}
 >
-  {{#if hasBlock}}
+  {{#if (has-block)}}
     {{yield
       (hash
         option=(component "t-select-option" select=this)
@@ -12,7 +12,7 @@
     {{#if @prompt}}
       <TSelect::Option @name={{@prompt}} @value="" @currentValue={{@value}} />
     {{/if}}
-    {{#each optionSelections as |opt|}}
+    {{#each this.optionSelections as |opt|}}
       <TSelect::Option @name={{opt.name}} @value={{opt.value}} @currentValue={{@value}} />
     {{/each}}
   {{/if}}

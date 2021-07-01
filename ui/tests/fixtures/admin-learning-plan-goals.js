@@ -5,7 +5,7 @@ export default {
       id: '4',
       type: 'learningPlanGoal',
       attributes: {
-        description: 'Molestias exercitationem quis. Nobis dicta quam.',
+        description: 'Eligendi aut facilis. Accusamus reprehenderit odio.',
         active: true,
         plansCount: 0,
         year: 2018,
@@ -16,7 +16,7 @@ export default {
       id: '1',
       type: 'learningPlanGoal',
       attributes: {
-        description: 'Qui tempore ratione. Deleniti ipsam suscipit.',
+        description: 'Facere asperiores adipisci. Dolorem dicta neque.',
         active: true,
         plansCount: 2,
         year: 2019,
@@ -27,7 +27,7 @@ export default {
       id: '2',
       type: 'learningPlanGoal',
       attributes: {
-        description: 'Iste cumque alias. Aut sed laborum.',
+        description: 'Distinctio consequuntur et. Eos magni excepturi.',
         active: true,
         plansCount: 2,
         year: 2019,
@@ -38,7 +38,7 @@ export default {
       id: '3',
       type: 'learningPlanGoal',
       attributes: {
-        description: 'Saepe rerum iusto. Delectus doloremque repellat.',
+        description: 'Magni iure quaerat. Iure minus eveniet.',
         active: true,
         plansCount: 2,
         year: 2019,
@@ -49,7 +49,7 @@ export default {
       id: '5',
       type: 'learningPlanGoal',
       attributes: {
-        description: 'Esse rerum et. Soluta aliquid perferendis.',
+        description: 'Ea tempora et. Dolores molestias cumque.',
         active: true,
         plansCount: 0,
         year: 2019,

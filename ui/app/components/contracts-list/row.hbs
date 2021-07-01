@@ -1,43 +1,43 @@
 <tr data-test-contracts-list-row>
   <td>
-    <LinkTo @route="contract" @model={{contract.id}}>
-      {{contract.attributes.name}}
+    <LinkTo @route="contract" @model={{this.contract.id}}>
+      {{this.contract.attributes.name}}
     </LinkTo>
   </td>
   <td>
-    <NumberOr @number={{contract.relationships.enrollments.data.length}} />
+    <NumberOr @number={{this.contract.relationships.enrollments.data.length}} />
   </td>
   <td>
-    {{category.attributes.name}}
+    {{this.category.attributes.name}}
   </td>
   <td>
-    {{full-name facilitator "first-last"}}
+    {{full-name this.facilitator "first-last"}}
   </td>
   <td>
-    {{term.attributes.name}}
+    {{this.term.attributes.name}}
   </td>
   <td>
-    {{titleize contract.attributes.status}}
+    {{titleize this.contract.attributes.status}}
   </td>
   <td>
     <ul class="actions-list">
       <li class="actions-list-item status">
-        <LinkTo @route="status-by-contract" @model={{contract.id}}>
+        <LinkTo @route="status-by-contract" @model={{this.contract.id}}>
           Status
         </LinkTo>
       </li>
       <li class="actions-list-item enrollments">
-        <LinkTo @route="contract-enrollments" @model={{contract.id}}>
+        <LinkTo @route="contract-enrollments" @model={{this.contract.id}}>
           Enrollments
         </LinkTo>
       </li>
       <li class="actions-list-item assignments">
-        <LinkTo @route="contract-assignments" @model={{contract.id}}>
+        <LinkTo @route="contract-assignments" @model={{this.contract.id}}>
           Assignments
         </LinkTo>
       </li>
       <li class="actions-list-item attendance">
-        <LinkTo @route="contract-attendance" @model={{contract.id}}>
+        <LinkTo @route="contract-attendance" @model={{this.contract.id}}>
           Attendance
         </LinkTo>
       </li>

@@ -10,9 +10,12 @@ module('Integration | Component | check-empty', hooks => {
     this.set('count', 0);
 
     await render(hbs`
-      {{#check-empty count=count noResultsMessage="Nothing here to see"}}
+      <CheckEmpty
+        @count={{this.count}}
+        @noResultsMessage="Nothing here to see"
+      >
         Something here to see
-      {{/check-empty}}
+      </CheckEmpty>
     `);
 
     assert.dom(this.element).hasText('Nothing here to see');
@@ -28,9 +31,12 @@ module('Integration | Component | check-empty', hooks => {
     this.set('result', { meta: { count } });
 
     await render(hbs`
-      {{#check-empty result=result noResultsMessage="Nothing here to see"}}
+      <CheckEmpty
+        @result={{result}}
+        @noResultsMessage="Nothing here to see"
+      >
         Something here to see
-      {{/check-empty}}
+      </CheckEmpty>
     `);
 
     assert.dom(this.element).hasText('Nothing here to see');

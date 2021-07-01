@@ -1,21 +1,21 @@
-<tr data-test-contract-attendance-roll-row data-test-enrollment-id={{enrollment.id}}>
+<tr data-test-contract-attendance-roll-row data-test-enrollment-id={{this.enrollment.id}}>
   <td>
-    {{full-name student}}
+    {{full-name this.student}}
   </td>
   <td>
     <TSelect
-      @value={{meetingParticipant.attributes.contactType}}
+      @value={{this.meetingParticipant.attributes.contactType}}
       name="contactType"
-      @optionsList={{contactTypeOptions}}
+      @optionsList={{this.contactTypeOptions}}
       @onchange={{action "setMeetingType"}}
     />
   </td>
-  {{#each participationOptions as |option|}}
+  {{#each this.participationOptions as |option|}}
     <td class="center" data-test-participation={{option.value}}>
-      <ValueButton @name="participation" @optionValue={{option.value}} @value={{meetingParticipant.attributes.participation}} @onchange={{action "setParticipation" option.value}} @onkeydown={{action "setParticipationByKey" option.value}} />
+      <ValueButton @name="participation" @optionValue={{option.value}} @value={{this.meetingParticipant.attributes.participation}} @onchange={{action "setParticipation" option.value}} @onkeydown={{action "setParticipationByKey" option.value}} />
     </td>
   {{/each}}
   <td>
-    <NotesList @notes={{notes}} @notable={{meetingParticipant}} @expanded={{true}} />
+    <NotesList @notes={{this.notes}} @notable={{this.meetingParticipant}} @expanded={{true}} />
   </td>
 </tr>

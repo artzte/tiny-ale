@@ -95,6 +95,7 @@ RSpec.describe 'Ember fixtures script', type: :request do
       create :setting, name: 'reporting_base_month', value: 9
       create :setting, name: 'reporting_end_month', value: 6
       create :setting, name: 'current_year', value: CURRENT_YEAR
+      create :setting, name: 'periods', value: Marshal.dump([{ start: '8:00', end: '9:00' }, { start: '9:00', end: '10:00' }, { start: '10:00', end: '11:00' } ])
 
       @staff1 = create :user, privilege: User::PRIVILEGE_STAFF, date_active: Date.new(2012, 9, 1), email: Faker::Internet.email
       @staff2 = create :user, privilege: User::PRIVILEGE_STAFF, date_active: Date.new(2013, 2, 1), email: Faker::Internet.email
@@ -394,7 +395,7 @@ RSpec.describe 'Ember fixtures script', type: :request do
 
         # all coor status records for active students
         student_ids = @students.map(&:id).join(',')
-        query = { studentIds: student_ids, months: @term_coor_current.months.join(','), type: 'student', limit: -1 }.to_query
+        query = { studentIds: student_ids, months: @term_coor_current.months.join(','), type: 'student', limit: 10000 }.to_query
         response = write_fixture "/api/statuses/students?#{query}", 'all-coor-statuses.js'
 
         # notes for a coor status
@@ -424,7 +425,7 @@ RSpec.describe 'Ember fixtures script', type: :request do
         write_fixture "/api/notes?notableType=Status&notableIds=#{status_ids.join(',')}", 'notes-student-enrollment-statuses.js'
 
         # statuses for coor
-        query = { studentIds: @student1.id, months: @term_coor_current.months.join(','), limit: -1 }.to_query
+        query = { studentIds: @student1.id, months: @term_coor_current.months.join(','), limit: 10000 }.to_query
         response = write_fixture "/api/statuses/students?#{query}", 'student-statuses.js'
 
         # notes for coor statuses

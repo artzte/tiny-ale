@@ -1,0 +1,115 @@
+<calendar-settings class="w-full lg:w-1/2 xl:w-1/2">
+  <TForm
+    @validator={{this.validator}}
+    @model={{this.settingsModel}}
+    @save={{fn this.save}}
+    @reportError={{fn this.reportError}} as |form|
+  >
+    <fieldset>
+      <p>
+        <FormInput @error={{form.errors.current_year}} @showError={{form.showErrors}} @label="Current school year">
+          <t-help>This is the year in which the Fall term begins. By default, screens show terms for the current year only</t-help>
+          <TSelect
+            @optionsList={{this.yearOptions}}
+            @value={{form.pojo.current_year}}
+            name="current_year"
+            @prompt="Choose a school year"
+            @onchange={{action "onChange" target=form}}
+          />
+        </FormInput>
+      </p>
+
+      <p>
+        <FormInput @error={{form.errors.reporting_base_month}} @showError={{form.showErrors}} @label="First month of school year">
+          <t-help>COOR status reporting begins at the starting month</t-help>
+          <TSelect
+            @optionsList={{this.monthOptions}}
+            @value={{form.pojo.reporting_base_month}}
+            name="reporting_base_month"
+            @prompt="Choose a starting month"
+            @onchange={{action "onChange" target=form}}
+          />
+        </FormInput>
+      </p>
+
+      <p>
+        <FormInput @error={{form.errors.reporting_end_month}} @showError={{form.showErrors}} @label="Last month of school year">
+          <t-help>COOR status reporting ends on the ending month</t-help>
+          <TSelect
+            @optionsList={{this.monthOptions}}
+            @value={{form.pojo.reporting_end_month}}
+            name="reporting_end_month"
+            @prompt="Choose an ending month"
+            @onchange={{action "onChange" target=form}}
+          />
+        </FormInput>
+      </p>
+    </fieldset>
+
+    <fieldset>
+      <p>
+        <FormInput @label="Default term for new contracts">
+          <t-help>COOR status reporting ends on the ending month</t-help>
+          <TermSelect
+            name="new_contract_term_default"
+            @value={{form.pojo.new_contract_term_default}}
+            @terms={{@terms}}
+            @prompt="Choose a default term"
+            @onchange={{action "onChange" target=form}}
+          />
+        </FormInput>
+      </p>
+    </fieldset>
+
+    <fieldset>
+      <h3>Class periods</h3>
+      <button
+        type="button"
+        class="block my-4"
+        onclick={{fn form.doListCreate 'periods'}}
+      >
+        <FaIcon @icon="plus" /> Add a period
+      </button>
+
+      <ol class="list-decimal">
+        {{#each form.pojo.periods as |period i|}}
+          <li class="pl-4">
+            <div class="flex">
+              <div class="w-16 mr-8 h-12 flex justify-center flex-col">
+                <input
+                  type="text"
+                  class="text-right mt-0"
+                  value={{period.start}}
+                  onchange={{fn form.onChange}}
+                  name={{join "periods[" i "].start"}}
+                />
+              </div>
+              <div class="w-16 h-12 flex justify-center flex-col">         
+                <input
+                  type="text"
+                  class="text-right mt-0"
+                  value={{period.end}}
+                  onchange={{fn form.onChange}}
+                  name={{join "periods[" i "].end"}}
+                />
+              </div>
+              <button
+                type="button"
+                onclick={{fn form.doListDelete 'periods' i}}
+              >
+                <FaIcon @icon="times" />
+              </button>
+            </div>
+          </li>
+        {{/each}}
+      </ol>
+    </fieldset>
+
+    <TFormActionsRow class="my-8" @disabled={{this.disabled}}>
+      <LinkTo @route="admin-settings.index" class="button">
+        Return to list of settings
+      </LinkTo>
+    </TFormActionsRow>
+
+  </TForm>
+</calendar-settings>

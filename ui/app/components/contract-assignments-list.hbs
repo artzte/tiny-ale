@@ -4,12 +4,12 @@
       <th>
         Participant
       </th>
-      {{#each sortedAssignments as |assignment|}}
+      {{#each this.sortedAssignments as |assignment|}}
         <ContractAssignmentsList::AssignmentHeader @assignment={{assignment}} />
       {{/each}}
     </tr>
   </thead>
-  {{#each participants as |participant|}}
-    <ContractAssignmentsList::Row @student={{participant.student}} @enrollment={{participant.enrollment}} @assignments={{sortedAssignments}} @notablesHash={{notablesHash}} @notesExpanded={{notesExpanded}} />
+  {{#each this.participants as |participant|}}
+    <ContractAssignmentsList::Row @student={{participant.student}} @enrollment={{participant.enrollment}} @assignments={{this.sortedAssignments}} @notablesHash={{this.notablesHash}} @notesExpanded={{this.notesExpanded}} />
 {{/each}}
 </Table>

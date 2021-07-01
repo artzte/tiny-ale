@@ -13,7 +13,7 @@
     </tr>
   </thead>
   <tbody>
-    {{#each termsList as |term|}}
+    {{#each this.termsList as |term|}}
       <tr>
         <td>
           <LinkTo @route="admin-term.edit" @model={{term.id}}>

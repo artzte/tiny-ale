@@ -1,5 +1,5 @@
 <div
-  class="bg-white shadow overflow-hidden sm:rounded-lg mb-5 {{isDraggedClasses}} {{isDropTargetClasses}}"
+  class="bg-white shadow overflow-hidden sm:rounded-lg mb-5 {{this.isDraggedClasses}} {{this.isDropTargetClasses}}"
   draggable="true"
   data-test-goal-row={{@goal.id}}
   ondragstart={{fn this.onDragStart}}

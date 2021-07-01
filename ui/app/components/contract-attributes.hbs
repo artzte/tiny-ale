@@ -2,7 +2,6 @@
   data-test-form="contract-attributes"
   @model={{@contract}}
   @save={{action "save"}}
-
   @reportError={{action "reportError"}}
   @onUpdatePojo={{action "didUpdatePojo"}}
   @validator={{this.validator}}
@@ -80,7 +79,6 @@
           @showErrors={{form.showErrors}}
           @label="Term" 
         >
-        {{form.relationships.term.id}}
           <TermSelect
             name="term"
             @prompt="Pick a term"
@@ -89,6 +87,17 @@
             @onchange={{action 'onChangeRelationship' target=form}}
           />
         </FormInput>
+      </p>
+    </fieldset>
+    <fieldset>
+      <label class="font-semibold">Schedule</label>
+      <p>
+        <ContractTimeslots
+          @name="timeslots"
+          @timeslots={{form.pojo.timeslots}}
+          @isEditing={{this.isEditing}}
+          @onChange={{fn form.onChange}}
+        />
       </p>
     </fieldset>
     <fieldset>
@@ -157,10 +166,10 @@
     </fieldset>
   {{else}}  {{!-- is not editing at the moment --}}
     {{#if this.hasDetails}}
-      {{#each detailSections as |section|}}
+      {{#each this.detailSections as |section|}}
         <h3>{{titleize section.name}}</h3>
         <p>
-          {{section.content}}
+          {{t-markdown section.content}}
         </p>
       {{/each}}
     {{else}}

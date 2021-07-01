@@ -10,8 +10,8 @@
     <th>Notes</th>
   </thead>
   <tbody>
-    {{#each activeParticipants as |participant|}}
-      <ContractAttendanceRoll::Row @enrollment={{participant.enrollment}} @meeting={{meeting}} @notesHash={{notesHash}} @meetingParticipantHash={{meetingParticipantHash}} @student={{participant.student}} @updateRoll={{updateRoll}} />
+    {{#each this.activeParticipants as |participant|}}
+      <ContractAttendanceRoll::Row @enrollment={{participant.enrollment}} @meeting={{this.meeting}} @notesHash={{this.notesHash}} @meetingParticipantHash={{this.meetingParticipantHash}} @student={{participant.student}} @updateRoll={{this.updateRoll}} />
     {{/each}}
   </tbody>
 </Table>

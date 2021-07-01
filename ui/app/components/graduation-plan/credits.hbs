@@ -1,8 +1,8 @@
 <StickyElement>
   <h3>Unassigned credits</h3>
   <ul>
-    {{#each unassignedCredits as |creditAssignment|}}
-      <GraduationPlan::CreditsItem @creditAssignment={{creditAssignment}} @onDrag={{onDrag}} />
+    {{#each this.unassignedCredits as |creditAssignment|}}
+      <GraduationPlan::CreditsItem @creditAssignment={{creditAssignment}} @onDrag={{this.onDrag}} />
     {{/each}}
   </ul>
 </StickyElement>

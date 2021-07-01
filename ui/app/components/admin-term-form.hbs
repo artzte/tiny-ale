@@ -8,7 +8,7 @@
         <input
           type="text"
           name="name"
-          value={{pojo.name}}
+          value={{this.pojo.name}}
           autofocus
           onchange={{action "onChange"}}
         >
@@ -18,7 +18,7 @@
       <FormInput @error={{this.errors.schoolYear}} @showError={{this.showErrors}} @label="School year">
         <TSelect
           name="schoolYear"
-          @value={{pojo.schoolYear}}
+          @value={{this.pojo.schoolYear}}
           @optionsList={{this.sortedSchoolYears}}
           @onchange={{action "didChangeSchoolYear"}}
         />
@@ -26,7 +26,7 @@
     </p>
     <p>
       <FormInput @error={{this.errors.creditDate}} @showError={{this.showErrors}} @label="Credit date">
-        <TPikaday @popup={{true}} @name="creditDate" @value={{pojo.creditDate}} @onchange={{action "onChange"}} />
+        <TPikaday @popup={{true}} @name="creditDate" @value={{this.pojo.creditDate}} @onchange={{action "onChange"}} />
       </FormInput>
     </p>
   </fieldset>
@@ -35,7 +35,7 @@
     <TFormErrorMessage @message={{this.errors.months}} @show={{this.showErrors}} @className="absolute -mt-4" />
     <div class="inputs-horizontal">
       {{#each this.reportingMonthOptions as |month|}}
-        <AdminTermForm::ReportingMonth @month={{month}} @months={{pojo.months}} @onclick={{action "toggleMonth"}} />
+        <AdminTermForm::ReportingMonth @month={{month}} @months={{this.pojo.months}} @onclick={{action "toggleMonth"}} />
       {{/each}}
     </div>
   </fieldset>
@@ -46,7 +46,7 @@
         <input
           name="status"
           type="radio"
-          checked={{isActive}}
+          checked={{this.isActive}}
           value="active"
           onclick={{action "toggleStatus"}}
         >
@@ -57,7 +57,7 @@
           name="status"
           type="radio"
           value="inactive"
-          checked={{isInactive}}
+          checked={{this.isInactive}}
           onclick={{action "toggleStatus"}}
         >
         Inactive

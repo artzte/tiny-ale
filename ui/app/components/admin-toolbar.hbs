@@ -1,7 +1,7 @@
 <nav class="flex items-baseline h-16 space-x-4">
-  <AdminToolbar::Item @currentRoute={{currentRoute}} @route="admin-settings.index" @label="Settings" @disabled={{disabled}} />
-  <AdminToolbar::Item @currentRoute={{currentRoute}} @route="admin-users" @label="Users" />
-  <AdminToolbar::Item @currentRoute={{currentRoute}} @route="admin-terms" @label="Terms" />
-  <AdminToolbar::Item @currentRoute={{currentRoute}} @route="admin-credit-batches" @label="Credit batches" />
-  <AdminToolbar::Item @currentRoute={{currentRoute}} @route="admin-reports" @label="Reports" />
+  <AdminToolbar::Item @currentRoute={{this.currentRoute}} @route="admin-settings.index" @label="Settings" @disabled={{this.disabled}} />
+  <AdminToolbar::Item @currentRoute={{this.currentRoute}} @route="admin-users" @label="Users" />
+  <AdminToolbar::Item @currentRoute={{this.currentRoute}} @route="admin-terms" @label="Terms" />
+  <AdminToolbar::Item @currentRoute={{this.currentRoute}} @route="admin-credit-batches" @label="Credit batches" />
+  <AdminToolbar::Item @currentRoute={{this.currentRoute}} @route="admin-reports" @label="Reports" />
 </nav>

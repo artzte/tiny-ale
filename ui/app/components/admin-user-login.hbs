@@ -1,32 +1,32 @@
 <div class="w-full lg:w-1/2 xl:w-1/3 p-4 ml-8">
-  {{#if loading}}
+  {{#if this.loading}}
     loading
   {{else}}
-    {{#if login}}
-      <h3>Login active for {{full-name user "first-last"}}</h3>
-      {{#if showRoleRequiresUpdate}}
+    {{#if this.login}}
+      <h3>Login active for {{full-name this.user "first-last"}}</h3>
+      {{#if this.showRoleRequiresUpdate}}
         <TNotice @type="alert">
           <p data-test-reason="roles">
             The login role needs to be synced with the application
-            role of {{titleize user.attributes.role}}.
+            role of {{titleize this.user.attributes.role}}.
           </p>
           
           <p>
             This mismatch
             can cause access or information privacy problems.
             Shall we update the login role to match the application
-            role of {{titleize user.attributes.role}}?
+            role of {{titleize this.user.attributes.role}}?
           </p>
           <button
             class="button"
-            onclick={{action (action "updateLogin" user login)}}
+            onclick={{action (action "updateLogin" this.user this.login)}}
             type="button"
           >
-            Click to update login role to {{titleize user.attributes.role}}
+            Click to update login role to {{titleize this.user.attributes.role}}
           </button>
         </TNotice>
       {{/if}}
-      {{#if showAttributesDontMatch}}
+      {{#if this.showAttributesDontMatch}}
         <TNotice @type="alert">
           <p data-test-reason="attributes">
             User settings for the login, such as names, are out of sync.
@@ -34,21 +34,21 @@
           </p>
           <button
             class="button"
-            onclick={{action (action "updateLogin" user login)}}
+            onclick={{action (action "updateLogin" this.user this.login)}}
             type="button"
           >
             Click to update now
           </button>
         </TNotice>
       {{/if}}
-      {{#if showRemoveOption}}
+      {{#if this.showRemoveOption}}
         <TNotice @type="alert">
           <p data-test-reason="deactivate">
-            {{full-name user "first-last"}} is no longer entitled to have a login.
+            {{full-name this.user "first-last"}} is no longer entitled to have a login.
           </p>
           <button
             class="button"
-            onclick={{action (action "destroyLogin" user login)}}
+            onclick={{action (action "destroyLogin" this.user this.login)}}
             type="button"
           >
             Click to remove their login now
@@ -57,19 +57,19 @@
       {{/if}}
     {{else}}
       {{!-- no login exists --}}
-      <h3>No login for {{full-name user "first-last"}}</h3>
+      <h3>No login for {{full-name this.user "first-last"}}</h3>
 
-      {{#if showAccessWarning}}
+      {{#if this.showAccessWarning}}
         <TNotice @type="alert">
           <p data-test-reason="activate">
-            {{full-name user "first-last"}} is active and has a role
-            of {{titleize user.attributes.role}}. Without
+            {{full-name this.user "first-last"}} is active and has a role
+            of {{titleize this.user.attributes.role}}. Without
             a login, no access is possible.
             Shall we create a login?
           </p>
           <button
             class="button"
-            onclick={{action "createLogin" user}}
+            onclick={{action "createLogin" this.user}}
             type="button"
           >
             Click to create a login

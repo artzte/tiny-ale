@@ -3,7 +3,7 @@
 class ContractsController < ApiBaseController
   PERMITTED_INCLUDES = %w[category facilitator assignments meetings credit_assignments credit_assignments.credit term learning_requirements].freeze
 
-  before_action :get_contract, only: [:destroy, :update]
+  before_action :get_contract, only: [:show, :destroy, :update, :sync_credits]
 
   def index
     order = (params[:order] || '').split(',').map(&:underscore).join(',')
@@ -59,9 +59,7 @@ class ContractsController < ApiBaseController
   end
 
   def show
-    contract = Contract.find params[:id]
-
-    render json: ContractSerializer.new(contract, detail_options)
+    render json: ContractSerializer.new(@contract, detail_options)
   end
 
   def create
@@ -83,40 +81,59 @@ class ContractsController < ApiBaseController
 
   end
 
+  def sync_credits
+    @contract.sync_credits
+
+    render nothing: true, status: 204
+  end
+
 protected
   def get_contract
     @contract = Contract.find params[:id]
   end
 
   def contract_attributes
-    attributes = params.dig(:data, :attributes)
-
-    return nil unless attributes
-
-    attributes.permit(:name, :location, :learning_objectives, :competencies, :evaluation_methods, :instructional_materials)
+    return nil unless params.dig(:data, :attributes)
+    attributes = params
+      .require(:data)
+      .require(:attributes)
+      .permit(:name, :status, :location, :learning_objectives, :competencies, :evaluation_methods, :instructional_materials, :timeslots => [:start, :end, :days])
   end
 
   [:facilitator, :category, :term].each do |relation|
     self.define_method("contract_#{relation}") do
+      return nil unless params.dig(:data, :relationships, relation, :data)
       params.require(:data)
-        .permit(relationships: {})
-        .dig(:relationships, relation, :data, :id)
+        .require(:relationships)
+        .require(relation)
+        .require(:data)
+        .permit(:id)
     end
   end
 
-  def update_contract
-    @contract.facilitator = User.find contract_facilitator if contract_facilitator
-    @contract.category = Category.find contract_category if contract_category
-    @contract.term = Term.find contract_term if contract_term
-    @contract.update_status contract_attributes[:status] if contract_attributes and contract_attributes[:status]
+  def contract_learning_requirements
+    return nil unless params.dig(:data, :relationships, :learning_requirements, :data)
+    params
+      .require(:data)
+      .require(:relationships)
+      .require(:learning_requirements)
+      .permit(:data => [:id])
+  end
 
-    learning_requirements = params.dig(:data, :relationships, :learning_requirements, :data)
+  def update_contract
+    @contract.creator = @contract.creator || current_user
+
+    @contract.facilitator = User.find contract_facilitator[:id] if contract_facilitator
+    @contract.category = Category.find contract_category[:id] if contract_category
+    @contract.term = Term.find contract_term[:id] if contract_term
+
+    learning_requirements = contract_learning_requirements[:data] if contract_learning_requirements
     if learning_requirements
       @contract.learning_requirements.clear
       new_learning_requirements = LearningRequirement.where(id: learning_requirements.map{|c| c[:id]})
       @contract.learning_requirements << new_learning_requirements
     end
-    
+
     @contract.update_attributes contract_attributes if contract_attributes
 
     @contract.save!

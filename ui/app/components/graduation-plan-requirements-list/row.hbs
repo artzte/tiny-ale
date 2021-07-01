@@ -1,10 +1,10 @@
 <td>
   <TDragHandle />
 </td>
-<td class={{if indented "pl-8"}}>
-  <LinkTo @route="settings-graduation-plan-requirements.edit" @model={{req.id}}>
-    {{req.attributes.name}}
+<td class={{if this.indented "pl-8"}}>
+  <LinkTo @route="settings-graduation-plan-requirements.edit" @model={{this.req.id}}>
+    {{this.req.attributes.name}}
   </LinkTo>
 </td> 
-<td>{{titleize req.attributes.status}}</td>
-<td>{{t-markdown req.attributes.notes}}</td>
+<td>{{titleize this.req.attributes.status}}</td>
+<td>{{t-markdown this.req.attributes.notes}}</td>

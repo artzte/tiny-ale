@@ -1,13 +1,13 @@
 <tr class="contract-assignments-list-participant">
   <td>
-    {{full-name student}}
+    {{full-name this.student}}
   </td>
-  {{#each assignments as |assignment|}}
-    <ContractAssignmentsList::Column @enrollment={{enrollment}} @assignment={{assignment}} @turninsHashedByAssignment={{turninsHashedByAssignment}} />
+  {{#each this.assignments as |assignment|}}
+    <ContractAssignmentsList::Column @enrollment={{this.enrollment}} @assignment={{assignment}} @turninsHashedByAssignment={{this.turninsHashedByAssignment}} />
   {{/each}}
 </tr>
-<tr class="notes-row {{loadingNotes}}">
+<tr class="notes-row {{this.loadingNotes}}">
   <td colspan="3">
-    <NotesList @notes={{notes}} @expanded={{notesExpanded}} />
+    <NotesList @notes={{this.notes}} @expanded={{this.notesExpanded}} />
   </td>
 </tr>

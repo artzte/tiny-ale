@@ -1,9 +1,9 @@
 <p>
   <TSelect
-    @optionsList={{categories}}
-    @onchange={{action (mut category)}}
+    @optionsList={{this.categories}}
+    @onchange={{action (mut this.category)}}
     name="category"
-    @value={{category}}
+    @value={{this.category}}
     @prompt="All categories"
   />
 </p>
@@ -15,12 +15,12 @@
   Add a learning requirement
 </LinkTo>
 
-{{#check-empty
-  count=categoryLearningRequirements.length
-  noResultsMessage="No entries in this category"
-}}
+<CheckEmpty
+  @count={{this.categoryLearningRequirements.length}}
+  @noResultsMessage="No entries in this category"
+>
   <Pagination
-    @totalCount={{categoryLearningRequirements.length}}
+    @totalCount={{this.categoryLearningRequirements.length}}
     @singularName="learning requirement"
   />
   <Table data-test-settings-learning-requirement-list>
@@ -33,7 +33,7 @@
       </tr>
     </thead>
     <tbody>
-      {{#each categoryLearningRequirements as |learningRequirement|}}
+      {{#each this.categoryLearningRequirements as |learningRequirement|}}
         <tr>
           <td>
             {{learningRequirement.attributes.seq}}
@@ -63,16 +63,16 @@
       {{/each}}
     </tbody>
   </Table>
-{{/check-empty}}
+</CheckEmpty>
 
-{{#if showDialog}}
+{{#if this.showDialog}}
   <ModalDialog>
-    <h3>Delete {{learningRequirement.attributes.category}} {{learningRequirement.attributes.seq}}</h3>
+    <h3>Delete {{this.learningRequirement.attributes.category}} {{this.learningRequirement.attributes.seq}}</h3>
     <p>Are you sure you want to delete this?</p>
     <footer>
       <button
         class="button"
-        onclick={{action "confirmDelete" learningRequirement}}
+        onclick={{action "confirmDelete" this.learningRequirement}}
         type="submit"
       >
         Delete

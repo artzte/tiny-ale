@@ -1,27 +1,27 @@
 <dt>Status</dt>
-<dd data-test-enrollment-status>{{enrollmentStatus}}</dd>
+<dd data-test-enrollment-status>{{this.enrollmentStatus}}</dd>
 <dt>Credits</dt>
 <dd>
-  <CreditAssignments @creditAssignments={{creditAssignments}} @creditable={{enrollment}} />
+  <CreditAssignments @creditAssignments={{this.creditAssignments}} @creditable={{this.enrollment}} />
 </dd>
 <dt>Assignments</dt>
 <dd data-test-assignments-status>
-  {{#if assignments}}
+  {{#if this.assignments}}
     Completed
-    {{completedAssignments.length}}
+    {{this.completedAssignments.length}}
     of
-    {{assignments.length}}
+    {{this.assignments.length}}
   {{else}}
     No assignments defined for this contract.
   {{/if}}
 </dd>
 <dt>Attendance</dt>
 <dd data-test-attendance-status>
-  {{#if meetings}}
+  {{#if this.meetings}}
     Attended
-    {{attendedMeetings.length}}
+    {{this.attendedMeetings.length}}
     of
-    {{meetings.length}}
+    {{this.meetings.length}}
   {{else}}
     No attendance defined for this contract.
   {{/if}}

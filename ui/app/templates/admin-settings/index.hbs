@@ -1,7 +1,7 @@
 <h2>Admin pages</h2>
 
 <ul class="list-none">
-  {{#each adminRoutes as |adminRoute|}}
+  {{#each this.adminRoutes as |adminRoute|}}
     <li>
       <LinkTo @route={{adminRoute.route}}>
         {{adminRoute.title}}
@@ -13,7 +13,7 @@
 <h2>Settings</h2>
 
 <ul class="list-none">
-  {{#each settingsRoutes as |settingRoute|}}
+  {{#each this.settingsRoutes as |settingRoute|}}
     <li>
       <LinkTo @route={{settingRoute.route}}>
         {{settingRoute.title}}

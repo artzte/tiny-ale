@@ -59,6 +59,7 @@ export default class NotesList extends Component {
     this.noteToEdit = {
       attributes: {
         note: '',
+        updatedAt: new Date().toISOString(),
       },
       relationships: {
         notable: {
@@ -93,5 +94,16 @@ export default class NotesList extends Component {
 
   @action reportError(/* error */) {
     this.flashMessages.alert('Please fill out your note and try again');
+  }
+
+  @action deleteNote(note) {
+    const {
+      tinyData,
+      notes,
+    } = this;
+
+    tinyData.fetch(`/api/notes/${note.id}`, { method: 'DELETE' });
+    this._notes = notes.filter(n => note.id !== n.id);
+    this.noteToEdit = null;
   }
 }

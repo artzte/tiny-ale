@@ -1,4 +1,4 @@
-<GraduationPlanRequirementsList::Row @requirement={{requirement}} @dropTarget={{dropTarget}} @setDrop={{setDrop}} @onDrop={{onDrop}} />
-{{#each children as |child|}}
-  <GraduationPlanRequirementsList::Row @indented={{true}} @requirement={{child}} @dropTarget={{dropTarget}} @setDrop={{setDrop}} @onDrop={{onDrop}} />
+<GraduationPlanRequirementsList::Row @requirement={{this.requirement}} @dropTarget={{this.dropTarget}} @setDrop={{this.setDrop}} @onDrop={{this.onDrop}} />
+{{#each this.children as |child|}}
+  <GraduationPlanRequirementsList::Row @indented={{true}} @requirement={{child}} @dropTarget={{this.dropTarget}} @setDrop={{this.setDrop}} @onDrop={{this.onDrop}} />
 {{/each}}
