@@ -1,7 +1,7 @@
-{{#check-empty
-  count=this.requirementsList.length
-  noResultsMessage="None of this type matching current filters"
-}}
+<CheckEmpty
+  @count={{this.requirementsList.length}}
+  @noResultsMessage="None of this type matching current filters"
+>
   <Table data-graduation-plan-requirements-list>
     <thead>
       <tr>
@@ -15,4 +15,4 @@
       <GraduationPlanRequirementsList::PrimaryItem @requirement={{requirement}} @status={{this.status}} @dropTarget={{this.dropTarget}} @setDrop={{action (mut this.dropTarget)}} @onDrop={{action "onDrop"}} />
     {{/each}}
   </Table>
-{{/check-empty}}
+</CheckEmpty>

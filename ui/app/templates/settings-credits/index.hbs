@@ -1,7 +1,7 @@
-{{#check-empty
-  count=this.model.meta.count
-  noResultsMessage="No credits were found with these filters"
-}}
+<CheckEmpty
+  @count={{this.model.meta.count}}
+  @noResultsMessage="No credits were found with these filters"
+>
   <Pagination
     @totalCount={{this.model.meta.count}}
     @singularName="credit"
@@ -30,4 +30,4 @@
       {{/each}}
     </tbody>
   </Table>
-{{/check-empty}}
+</CheckEmpty>

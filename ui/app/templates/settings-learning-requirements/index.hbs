@@ -15,10 +15,10 @@
   Add a learning requirement
 </LinkTo>
 
-{{#check-empty
-  count=this.categoryLearningRequirements.length
-  noResultsMessage="No entries in this category"
-}}
+<CheckEmpty
+  @count={{this.categoryLearningRequirements.length}}
+  @noResultsMessage="No entries in this category"
+>
   <Pagination
     @totalCount={{this.categoryLearningRequirements.length}}
     @singularName="learning requirement"
@@ -63,7 +63,7 @@
       {{/each}}
     </tbody>
   </Table>
-{{/check-empty}}
+</CheckEmpty>
 
 {{#if this.showDialog}}
   <ModalDialog>

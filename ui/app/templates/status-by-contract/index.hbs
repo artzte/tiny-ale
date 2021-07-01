@@ -1,12 +1,12 @@
 <h2>Status</h2>
-{{#check-empty
-  count=this.enrollments.length
-  noResultsMessage="No enrollments"
-}}
+<CheckEmpty
+  @count={{this.enrollments.length}}
+  @noResultsMessage="No enrollments"
+>
   <StatusByContract
     @statuses={{this.statuses}}
     @contract={{this.contract}}
     @enrollments={{this.enrollments}}
     @getNotes={{route-action "getNotes"}}
   />
-{{/check-empty}}
+</CheckEmpty>

@@ -1,4 +1,7 @@
-{{#check-empty count=this.assignments.length noResultsMessage="No assignments defined for this contract."}}
+<CheckEmpty
+  @count={{this.assignments.length}}
+  @noResultsMessage="No assignments defined for this contract."
+>
   <Table>
     <thead>
       <tr>
@@ -14,5 +17,5 @@
       {{/each}}
     </tbody>
   </Table>
-{{/check-empty}}
+</CheckEmpty>
 

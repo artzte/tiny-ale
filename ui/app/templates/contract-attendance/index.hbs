@@ -14,10 +14,10 @@
   </ModalDialog>
 {{/if}}
 
-{{#check-empty
-  count=this.model.meta.count
-  noResultsMessage="No attendance taken as of yet"
-}}
+<CheckEmpty
+  @count={{this.model.meta.count}}
+  @noResultsMessage="No attendance taken as of yet"
+>
   <Pagination
     @totalCount={{this.model.meta.count}}
     @singularName="meeting"
@@ -25,4 +25,4 @@
   <ContractAttendanceList
     @contract={{this.contract}}
   />
-{{/check-empty}}
+</CheckEmpty>

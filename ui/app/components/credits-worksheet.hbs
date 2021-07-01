@@ -1,7 +1,7 @@
-{{#check-empty
-  count=this.viewModels.length
-  noResultsMessage="There are no credits to approve."
-}}
+<CheckEmpty
+  @count={{this.viewModels.length}}
+  @noResultsMessage="There are no credits to approve."
+>
   <Pagination
     @totalCount={{this.viewModels.length}}
     @singularName="credit"
@@ -41,7 +41,7 @@
       {{/each}}
     </tbody>
   </Table>
-{{/check-empty}}
+</CheckEmpty>
 
 {{#if this.showCombineDialog}}
   <ModalDialog

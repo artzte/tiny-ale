@@ -1,7 +1,7 @@
-{{#check-empty
-  count=this.model.meta.count
-  noResultsMessage="No students were found with these filters"
-}}
+<CheckEmpty
+  @count={{this.model.meta.count}}
+  @noResultsMessage="No students were found with these filters"
+>
   <Pagination 
     @offset={{this.offset}}
     @limit={{this.limit}}
@@ -15,4 +15,4 @@
     @totalCount={{this.model.meta.count}}
     @singularName="student"
   />
-{{/check-empty}}
+</CheckEmpty>

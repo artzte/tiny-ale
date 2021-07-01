@@ -11,10 +11,10 @@
       </button>
     </div>
   {{/unless}}
-  {{#check-empty
-    count=@creditAssignments.length
-    noResultsMessage="No credits assigned"
-  }}
+  <CheckEmpty
+    @count={{@creditAssignments.length}}
+    @noResultsMessage="No credits assigned"
+  >
     <ul class="list-reset credit-assignments my-2">
       {{#each this.creditAssignmentsList as |creditAssignment|}}
         <CreditAssignments::Item
@@ -34,7 +34,7 @@
         </CreditAssignments::Item>
       {{/each}}
     </ul>
-  {{/check-empty}}
+  </CheckEmpty>
 </div>
 
 

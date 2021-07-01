@@ -15,10 +15,10 @@
   </li>
 </ul>
 
-{{#check-empty
-  count=this.countOfStatus
-  noResultsMessage="No graduation plan requirements were found"
-}}
+<CheckEmpty
+  @count={{this.countOfStatus}}
+  @noResultsMessage="No graduation plan requirements were found"
+>
   <Pagination
     @totalCount={{this.countOfStatus}}
     @singularName="requirement"
@@ -32,4 +32,4 @@
 
   <h3>Service requirements</h3>
   <GraduationPlanRequirementsList @graduationPlanRequirements={{this.graduationPlanRequirements}} @updateSeries={{action "updateSeries"}} @requirementType="service" @status={{this.status}} />
-{{/check-empty}}
+</CheckEmpty>
